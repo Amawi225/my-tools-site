@@ -1,111 +1,73 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>حاسبة القسط الشهري للقرض — احسب قسطك اونلاين مجاناً</title>
-<meta name="description" content="احسب القسط الشهري لأي قرض أو تمويل سيارة أو عقار مجاناً اونلاين. حاسبة القسط مع الفائدة وإجمالي المدفوع.">
-<meta name="keywords" content="حاسبة القسط الشهري, حاسبة القرض, تمويل سيارة, قسط القرض, loan calculator, حساب الفائدة">
+<meta name="description" content="احسب القسط الشهري لأي قرض أو تمويل مجاناً اونلاين.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="حاسبة القسط الشهري — أدواتي">
-<meta property="og:description" content="احسب القسط الشهري لأي قرض أو تمويل مجاناً مع إجمالي الفائدة.">
-<meta property="og:url" content="https://amawi225.github.io/my-tools-site/loan-calculator.html">
-<meta property="og:type" content="website">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-brand">أدواتي</a>
-    <div class="nav-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="about.html">من نحن</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </div>
-</nav>
-
-<main>
-  <div class="tool-page">
-    <div class="page-header">
-      <a href="index.html">← العودة للرئيسية</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon" style="background:#faf5ff;">🧮</div>
-      <div class="card-title">حاسبة القسط الشهري</div>
-      <div class="card-subtitle">احسب قسط أي قرض أو تمويل</div>
-      <div class="divider"></div>
-
-      <label for="amount">مبلغ القرض</label>
-      <input type="number" id="amount" placeholder="مثال: 50000" oninput="calcLoan()">
-
-      <label for="rate">نسبة الفائدة السنوية %</label>
-      <input type="number" id="rate" placeholder="مثال: 6" oninput="calcLoan()">
-
-      <label for="years">مدة السداد (بالسنوات)</label>
-      <input type="number" id="years" placeholder="مثال: 5" oninput="calcLoan()">
-
-      <div id="result" style="display:none; margin-top:20px;">
-        <div class="result-box show success" style="margin-top:0;">
-          <div class="result-value" id="monthlyPayment"></div>
-          <div class="result-label">القسط الشهري</div>
-        </div>
-        <div class="stat-grid" style="margin-top:12px;">
-          <div class="stat-box">
-            <div class="stat-val" id="totalPaid" style="font-size:17px;"></div>
-            <div class="stat-lbl">إجمالي المدفوع</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-val" id="totalInterest" style="font-size:17px; color:#ef4444;"></div>
-            <div class="stat-lbl">إجمالي الفائدة</div>
-          </div>
-        </div>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
       </div>
     </div>
   </div>
-</main>
-
-<footer class="footer">
-  <div class="footer-links">
-    <a href="about.html">من نحن</a>
-    <a href="contact.html">تواصل معنا</a>
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#faf5ff;">🧮</div>
+    <div class="card-title" data-i18n="loan_title">حاسبة القسط الشهري</div>
+    <div class="card-subtitle" data-i18n="loan_sub">احسب قسط أي قرض أو تمويل</div>
+    <div class="divider"></div>
+    <label for="amount" data-i18n="loan_amount">مبلغ القرض</label>
+    <input type="number" id="amount" data-i18n-ph="loan_amount" placeholder="مثال: 50000" oninput="calcLoan()">
+    <label for="rate" data-i18n="loan_rate">نسبة الفائدة السنوية %</label>
+    <input type="number" id="rate" data-i18n-ph="loan_rate" placeholder="مثال: 6" oninput="calcLoan()">
+    <label for="years" data-i18n="loan_years">مدة السداد (بالسنوات)</label>
+    <input type="number" id="years" data-i18n-ph="loan_years" placeholder="مثال: 5" oninput="calcLoan()">
+    <div id="result" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="monthlyPayment"></div>
+        <div class="result-label" data-i18n="loan_monthly">القسط الشهري</div>
+      </div>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-box"><div class="stat-val" id="totalPaid" style="font-size:17px;"></div><div class="stat-lbl" data-i18n="loan_total">إجمالي المدفوع</div></div>
+        <div class="stat-box"><div class="stat-val" id="totalInterest" style="font-size:17px;color:#ef4444;"></div><div class="stat-lbl" data-i18n="loan_interest">إجمالي الفائدة</div></div>
+      </div>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 أدواتي</div>
+</div></main>
+<footer class="footer">
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
 </footer>
-
 <script>
 function calcLoan() {
   const amount = parseFloat(document.getElementById('amount').value);
   const annualRate = parseFloat(document.getElementById('rate').value);
   const years = parseFloat(document.getElementById('years').value);
   const resultDiv = document.getElementById('result');
-
-  if (!amount || !years || amount <= 0 || years <= 0) {
-    resultDiv.style.display = 'none';
-    return;
-  }
-
-  const months = years * 12;
-  const monthlyRate = (annualRate || 0) / 100 / 12;
-  let monthly;
-
-  if (monthlyRate === 0) {
-    monthly = amount / months;
-  } else {
-    monthly = amount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-  }
-
-  const totalPaid = monthly * months;
-  const totalInterest = totalPaid - amount;
-
+  if (!amount || !years || amount<=0 || years<=0) { resultDiv.style.display='none'; return; }
+  const months = years*12, monthlyRate = (annualRate||0)/100/12;
+  const monthly = monthlyRate===0 ? amount/months : amount*(monthlyRate*Math.pow(1+monthlyRate,months))/(Math.pow(1+monthlyRate,months)-1);
+  const totalPaid = monthly*months;
   document.getElementById('monthlyPayment').textContent = monthly.toFixed(2);
   document.getElementById('totalPaid').textContent = totalPaid.toFixed(2);
-  document.getElementById('totalInterest').textContent = totalInterest.toFixed(2);
+  document.getElementById('totalInterest').textContent = (totalPaid-amount).toFixed(2);
   resultDiv.style.display = 'block';
 }
 </script>
-
-</body>
-</html>
+<script src="i18n.js"></script>
+</body></html>
