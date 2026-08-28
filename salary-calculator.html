@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة الراتب في عمان — راتب صافي مع PASI مجاناً</title>
+<meta name="description" content="احسب راتبك الصافي في سلطنة عمان مجاناً. يشمل خصم PASI للمواطنين العمانيين وجميع البدلات.">
+<meta name="keywords" content="حاسبة الراتب عمان, PASI عمان, راتب صافي, خصم التأمين الاجتماعي عمان, حاسبة الراتب">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/salary-calculator.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">💼</div>
+    <div class="card-title">حاسبة الراتب — سلطنة عُمان 🇴🇲</div>
+    <div class="card-subtitle">احسب راتبك الصافي مع خصم PASI للمواطنين</div>
+    <div class="divider"></div>
+
+    <label>الجنسية</label>
+    <div class="option-toggle">
+      <button class="option-btn active" id="natOmani" onclick="setNat('omani')">عماني (خصم PASI 7%)</button>
+      <button class="option-btn" id="natExpat" onclick="setNat('expat')">وافد (بدون خصم PASI)</button>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="basicSalary">الراتب الأساسي (ر.ع)</label>
+        <input type="number" id="basicSalary" placeholder="0.000" min="0" step="any" oninput="calculate()">
+      </div>
+      <div>
+        <label for="housingAllowance">بدل السكن (ر.ع)</label>
+        <input type="number" id="housingAllowance" placeholder="0.000" min="0" step="any" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="transportAllowance">بدل النقل (ر.ع)</label>
+        <input type="number" id="transportAllowance" placeholder="0.000" min="0" step="any" oninput="calculate()">
+      </div>
+      <div>
+        <label for="otherAllowance">بدلات أخرى (ر.ع)</label>
+        <input type="number" id="otherAllowance" placeholder="0.000" min="0" step="any" oninput="calculate()">
+      </div>
+    </div>
+
+    <div id="salResult" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="netSalaryDisplay"></div>
+        <div class="result-label">الراتب الصافي (ر.ع)</div>
+      </div>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-box">
+          <div class="stat-val" id="grossDisplay">0.000</div>
+          <div class="stat-lbl">الإجمالي قبل الخصم</div>
+        </div>
+        <div class="stat-box" style="background:#fef2f2;">
+          <div class="stat-val" id="pasiDisplay" style="color:#dc2626;">0.000</div>
+          <div class="stat-lbl" id="pasiLabel">خصم PASI (7%)</div>
+        </div>
+        <div class="stat-box" style="background:#fefce8;">
+          <div class="stat-val" id="annualDisplay" style="color:#ca8a04;">0.000</div>
+          <div class="stat-lbl">الراتب السنوي</div>
+        </div>
+      </div>
+      <div id="salBreakdown" style="margin-top:12px;padding:14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:14px;line-height:2.2;"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">📌 معلومات PASI في عُمان</div>
+    <div style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;">
+      <p>الهيئة العامة للتأمين الاجتماعي (PASI) هي صندوق التأمين الاجتماعي في سلطنة عُمان للعمانيين.</p>
+      <ul style="padding-inline-start:18px;margin-top:8px;">
+        <li>خصم الموظف: <strong>7%</strong> من الراتب الأساسي</li>
+        <li>مساهمة صاحب العمل: <strong>10.5%</strong> (لا تُخصم من الراتب)</li>
+        <li>تُطبَّق على العمانيين فقط — الوافدون غير مشمولين</li>
+        <li>يُحسب الخصم على الراتب الأساسي فقط (بدون البدلات)</li>
+      </ul>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">⚠️ النتائج استرشادية — راجع جهة عملك أو PASI للحسابات الرسمية.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الراتب الأساسي والإجمالي؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها).</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يُخصم PASI من البدلات؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. يُطبَّق خصم الـ7% على الراتب الأساسي فقط، وليس على بدلات السكن أو النقل أو غيرها.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الحد الأدنى للراتب في عمان؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأدنى للراتب للمواطن العماني هو 325 ريال عماني شهرياً (وفق المرسوم الأخير). تحقق من وزارة العمل للتحديثات الرسمية.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="end-of-service.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📋 حاسبة نهاية الخدمة</a>
+      <a href="vat-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+      <a href="loan-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">الشروط</a>
+    </div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+let nationality = 'omani';
+
+function setNat(n) {
+  nationality = n;
+  document.getElementById('natOmani').classList.toggle('active', n === 'omani');
+  document.getElementById('natExpat').classList.toggle('active', n === 'expat');
+  document.getElementById('pasiLabel').textContent = n === 'omani' ? 'خصم PASI (7%)' : 'خصم PASI (لا ينطبق)';
+  calculate();
+}
+
+function calculate() {
+  const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+  const housing = parseFloat(document.getElementById('housingAllowance').value) || 0;
+  const transport = parseFloat(document.getElementById('transportAllowance').value) || 0;
+  const other = parseFloat(document.getElementById('otherAllowance').value) || 0;
+
+  if (basic <= 0 && housing <= 0 && transport <= 0 && other <= 0) {
+    document.getElementById('salResult').style.display = 'none';
+    return;
+  }
+
+  const gross = basic + housing + transport + other;
+  const pasiDeduction = nationality === 'omani' ? basic * 0.07 : 0;
+  const net = gross - pasiDeduction;
+  const annual = net * 12;
+
+  document.getElementById('netSalaryDisplay').textContent = net.toFixed(3) + ' ر.ع';
+  document.getElementById('grossDisplay').textContent = gross.toFixed(3);
+  document.getElementById('pasiDisplay').textContent = pasiDeduction.toFixed(3);
+  document.getElementById('annualDisplay').textContent = annual.toFixed(3);
+
+  const bd = document.getElementById('salBreakdown');
+  bd.innerHTML =
+    'الراتب الأساسي: <strong>' + basic.toFixed(3) + ' ر.ع</strong><br>' +
+    (housing > 0 ? 'بدل السكن: <strong>' + housing.toFixed(3) + ' ر.ع</strong><br>' : '') +
+    (transport > 0 ? 'بدل النقل: <strong>' + transport.toFixed(3) + ' ر.ع</strong><br>' : '') +
+    (other > 0 ? 'بدلات أخرى: <strong>' + other.toFixed(3) + ' ر.ع</strong><br>' : '') +
+    'الإجمالي: <strong>' + gross.toFixed(3) + ' ر.ع</strong><br>' +
+    (nationality === 'omani' ? 'خصم PASI (7% من الأساسي): <strong style="color:#dc2626;">−' + pasiDeduction.toFixed(3) + ' ر.ع</strong><br>' : '') +
+    'الراتب الصافي: <strong style="color:#16a34a;">' + net.toFixed(3) + ' ر.ع</strong>';
+
+  document.getElementById('salResult').style.display = 'block';
+}
+</script>
+<script src="i18n.js"></script>
+</body></html>
