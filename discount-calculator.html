@@ -1,110 +1,83 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>حاسبة الخصم والنسبة المئوية — احسب السعر بعد الخصم</title>
-<meta name="description" content="احسب سعر أي منتج بعد الخصم مجاناً اونلاين. حاسبة النسبة المئوية والخصم بسرعة وبدون تعقيد.">
-<meta name="keywords" content="حاسبة الخصم, حساب الخصم, النسبة المئوية, سعر بعد الخصم, discount calculator, كم يساوي الخصم">
+<meta name="description" content="احسب سعر أي منتج بعد الخصم مجاناً اونلاين.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="حاسبة الخصم — أدواتي">
-<meta property="og:description" content="احسب سعر أي منتج بعد الخصم مجاناً واعرف كم وفّرت.">
-<meta property="og:url" content="https://amawi225.github.io/my-tools-site/discount-calculator.html">
-<meta property="og:type" content="website">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-brand">أدواتي</a>
-    <div class="nav-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="about.html">من نحن</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </div>
-</nav>
-
-<main>
-  <div class="tool-page">
-    <div class="page-header">
-      <a href="index.html">← العودة للرئيسية</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon" style="background:#fef2f2;">💯</div>
-      <div class="card-title">حاسبة نسبة وخصم</div>
-      <div class="card-subtitle">احسب النسب المئوية والخصومات بسرعة</div>
-      <div class="divider"></div>
-
-      <div class="tabs">
-        <div class="tab active" data-tab="percent" onclick="switchTab('percent')">نسبة مئوية</div>
-        <div class="tab" data-tab="discount" onclick="switchTab('discount')">خصم</div>
-      </div>
-
-      <div class="section active" id="section-percent">
-        <label for="p1">ما هي</label>
-        <input type="number" id="p1" placeholder="مثال: 25" oninput="calcPercent()">
-        <label for="p2">% من الرقم</label>
-        <input type="number" id="p2" placeholder="مثال: 200" oninput="calcPercent()">
-        <div id="result1" class="result-box success">
-          <div class="result-value" id="percentResult"></div>
-        </div>
-      </div>
-
-      <div class="section" id="section-discount">
-        <label for="d1">السعر الأصلي</label>
-        <input type="number" id="d1" placeholder="مثال: 100" oninput="calcDiscount()">
-        <label for="d2">نسبة الخصم %</label>
-        <input type="number" id="d2" placeholder="مثال: 20" oninput="calcDiscount()">
-        <div id="result2" class="result-box success">
-          <div class="result-value" id="discountResult"></div>
-          <div class="result-label" id="discountSub"></div>
-        </div>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
       </div>
     </div>
   </div>
-</main>
-
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fef2f2;">💯</div>
+    <div class="card-title" data-i18n="discount_title">حاسبة نسبة وخصم</div>
+    <div class="card-subtitle" data-i18n="discount_sub">احسب النسب المئوية والخصومات بسرعة</div>
+    <div class="divider"></div>
+    <div class="tabs">
+      <div class="tab active" data-tab="percent" onclick="switchTab('percent')" data-i18n="tab_percent">نسبة مئوية</div>
+      <div class="tab" data-tab="discount" onclick="switchTab('discount')" data-i18n="tab_discount">خصم</div>
+    </div>
+    <div class="section active" id="section-percent">
+      <label for="p1" data-i18n="percent_label1">ما هي</label>
+      <input type="number" id="p1" placeholder="مثال: 25" oninput="calcPercent()">
+      <label for="p2" data-i18n="percent_label2">% من الرقم</label>
+      <input type="number" id="p2" placeholder="مثال: 200" oninput="calcPercent()">
+      <div id="result1" class="result-box success"><div class="result-value" id="percentResult"></div></div>
+    </div>
+    <div class="section" id="section-discount">
+      <label for="d1" data-i18n="discount_label1">السعر الأصلي</label>
+      <input type="number" id="d1" placeholder="مثال: 100" oninput="calcDiscount()">
+      <label for="d2" data-i18n="discount_label2">نسبة الخصم %</label>
+      <input type="number" id="d2" placeholder="مثال: 20" oninput="calcDiscount()">
+      <div id="result2" class="result-box success"><div class="result-value" id="discountResult"></div><div class="result-label" id="discountSub"></div></div>
+    </div>
+  </div>
+</div></main>
 <footer class="footer">
-  <div class="footer-links">
-    <a href="about.html">من نحن</a>
-    <a href="contact.html">تواصل معنا</a>
-  </div>
-  <div class="footer-copy">© 2026 أدواتي</div>
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
 </footer>
-
 <script>
 function switchTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(`section-${tab}`).classList.add('active');
 }
-
 function calcPercent() {
-  const p1 = parseFloat(document.getElementById('p1').value);
-  const p2 = parseFloat(document.getElementById('p2').value);
-  const box = document.getElementById('result1');
-  if (isNaN(p1) || isNaN(p2)) { box.classList.remove('show'); return; }
-  const result = (p1 / 100) * p2;
-  document.getElementById('percentResult').textContent = `${p1}% من ${p2} = ${+result.toFixed(4)}`;
+  const p1=parseFloat(document.getElementById('p1').value), p2=parseFloat(document.getElementById('p2').value);
+  const box=document.getElementById('result1');
+  if(isNaN(p1)||isNaN(p2)){box.classList.remove('show');return;}
+  document.getElementById('percentResult').textContent=`${p1}% = ${+(p1/100*p2).toFixed(4)}`;
   box.classList.add('show');
 }
-
 function calcDiscount() {
-  const price = parseFloat(document.getElementById('d1').value);
-  const discount = parseFloat(document.getElementById('d2').value);
-  const box = document.getElementById('result2');
-  if (isNaN(price) || isNaN(discount)) { box.classList.remove('show'); return; }
-  const saved = (discount / 100) * price;
-  const finalPrice = price - saved;
-  document.getElementById('discountResult').textContent = finalPrice.toFixed(2).replace(/\.?0+$/, '');
-  document.getElementById('discountSub').textContent = `السعر بعد الخصم — وفّرت ${saved.toFixed(2).replace(/\.?0+$/, '')}`;
+  const price=parseFloat(document.getElementById('d1').value), disc=parseFloat(document.getElementById('d2').value);
+  const box=document.getElementById('result2');
+  if(isNaN(price)||isNaN(disc)){box.classList.remove('show');return;}
+  const saved=(disc/100)*price, final=price-saved;
+  document.getElementById('discountResult').textContent=final.toFixed(2).replace(/\.?0+$/,'');
+  document.getElementById('discountSub').textContent=`- ${saved.toFixed(2).replace(/\.?0+$/,'')}`;
   box.classList.add('show');
 }
 </script>
-
-</body>
-</html>
+<script src="i18n.js"></script>
+</body></html>
