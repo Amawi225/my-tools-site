@@ -490,7 +490,20 @@ function logoutUser() {
   updateSignupBtn();
 }
 
+function detectDefaultLang() {
+  const saved = localStorage.getItem('lang');
+  if (saved && T[saved]) return saved;
+  const browser = (navigator.language || navigator.userLanguage || 'ar').toLowerCase();
+  if (browser.startsWith('ar')) return 'ar';
+  if (browser.startsWith('fr')) return 'fr';
+  if (browser.startsWith('es')) return 'es';
+  if (browser.startsWith('de')) return 'de';
+  if (browser.startsWith('ru')) return 'ru';
+  if (browser.startsWith('en')) return 'en';
+  return 'ar';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  setLang(localStorage.getItem('lang') || 'ar');
+  setLang(detectDefaultLang());
   updateSignupBtn();
 });
