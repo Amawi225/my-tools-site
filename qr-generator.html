@@ -57,35 +57,34 @@
     <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 <script>
-let debounceTimer;
 function generateQR() {
-  clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(() => {
-    const text = document.getElementById('qrInput').value.trim();
-    const wrap = document.getElementById('qrWrap');
-    const empty = document.getElementById('qrEmpty');
-    const display = document.getElementById('qrDisplay');
-    if (!text) { wrap.style.display = 'none'; empty.style.display = 'block'; return; }
-    display.innerHTML = '';
-    const canvas = document.createElement('canvas');
-    QRCode.toCanvas(canvas, text, { width: 220, margin: 2, color: { dark: '#0f172a', light: '#ffffff' } }, function(err) {
-      if (!err) {
-        display.appendChild(canvas);
-        wrap.style.display = 'block';
-        empty.style.display = 'none';
-      }
-    });
-  }, 300);
+  const text = document.getElementById('qrInput').value.trim();
+  const wrap = document.getElementById('qrWrap');
+  const empty = document.getElementById('qrEmpty');
+  const display = document.getElementById('qrDisplay');
+  if (!text) { wrap.style.display = 'none'; empty.style.display = 'block'; return; }
+  const url = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=' + encodeURIComponent(text);
+  display.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = url;
+  img.width = 220;
+  img.height = 220;
+  img.alt = 'QR Code';
+  img.id = 'qrImg';
+  img.style.borderRadius = '4px';
+  display.appendChild(img);
+  wrap.style.display = 'block';
+  empty.style.display = 'none';
 }
 
 function downloadQR() {
-  const canvas = document.querySelector('#qrDisplay canvas');
-  if (!canvas) return;
+  const img = document.getElementById('qrImg');
+  if (!img) return;
   const a = document.createElement('a');
   a.download = 'qr-code.png';
-  a.href = canvas.toDataURL('image/png');
+  a.href = img.src;
+  a.target = '_blank';
   a.click();
 }
 </script>
