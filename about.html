@@ -3,37 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>من نحن - أدواتي</title>
+<title>من نحن — أدواتي</title>
 <meta name="description" content="تعرف على موقع أدواتي، مجموعة أدوات مجانية ومفيدة للحياة اليومية باللغة العربية.">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    min-height: 100vh; margin: 0;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .card {
-    background: #fff; border-radius: 16px; padding: 32px 24px;
-    max-width: 500px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    line-height: 1.8;
-  }
-  h1 { font-size: 22px; text-align: center; color: #2193b0; margin-bottom: 20px; }
-  p { color: #555; font-size: 15px; margin-bottom: 14px; }
-  a.back { display: block; text-align: center; margin-top: 20px; color: #2193b0; text-decoration: none; font-size: 14px; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h1>ℹ️ من نحن</h1>
-  <p>موقع "أدواتي" هو مجموعة أدوات إلكترونية مجانية وبسيطة، صُممت لمساعدة الزوار في إنجاز حسابات ومهام يومية بسرعة وبدون تعقيد — من حساب مؤشر كتلة الجسم إلى تحويل الوحدات وحساب الأقساط الشهرية.</p>
-  <p>هدفنا تقديم أدوات دقيقة وسهلة الاستخدام على أي جهاز، مع الحفاظ على خصوصية بياناتك — كل الحسابات تتم مباشرة على متصفحك ولا يتم تخزين أو إرسال بياناتك لأي سيرفر.</p>
-  <p>الموقع في تطوير مستمر، وبنضيف أدوات جديدة بشكل دوري بناءً على احتياجات الزوار.</p>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">أدواتي</a>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html" class="active">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
+    </div>
+  </div>
+</nav>
 
-  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
-</div>
+<main>
+  <div class="tool-page">
+    <div class="page-header">
+      <a href="index.html">← العودة للرئيسية</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:#eff6ff;">ℹ️</div>
+      <div class="card-title">من نحن</div>
+      <div class="card-subtitle">قصة أدواتي</div>
+      <div class="divider"></div>
+
+      <div class="prose">
+        <p>
+          موقع "أدواتي" هو مجموعة أدوات إلكترونية مجانية وبسيطة، صُممت لمساعدتك في إنجاز حسابات ومهام يومية بسرعة وبدون تعقيد — من حساب مؤشر كتلة الجسم إلى تحويل الوحدات وحساب الأقساط الشهرية.
+        </p>
+        <p>
+          هدفنا تقديم أدوات دقيقة وسهلة الاستخدام على أي جهاز، مع الحفاظ على خصوصية بياناتك تماماً — كل الحسابات تتم مباشرة على متصفحك ولا يُرسل أي شيء لأي سيرفر.
+        </p>
+        <p>
+          الموقع في تطوير مستمر، ونضيف أدوات جديدة بشكل دوري بناءً على احتياجات المستخدمين.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+  </div>
+  <div class="footer-copy">© 2026 أدواتي</div>
+</footer>
 
 </body>
 </html>
