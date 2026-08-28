@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة الفائدة المركبة — احسب نمو الاستثمار مجاناً</title>
+<meta name="description" content="احسب الفائدة المركبة وتنمية الاستثمارات مجاناً. أداة احترافية مع جدول تفصيلي سنوي.">
+<meta name="keywords" content="حاسبة الفائدة المركبة, فائدة مركبة, compound interest, نمو الاستثمار, حاسبة استثمار">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/compound-interest.html">
+<link rel="stylesheet" href="style.css">
+<style>
+.ci-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;}
+.ci-table th{padding:8px 10px;text-align:center;background:var(--surface-2);font-weight:700;border-bottom:2px solid var(--border);}
+.ci-table td{padding:7px 10px;text-align:center;border-bottom:1px solid var(--border);}
+.ci-table tr:last-child td{font-weight:700;background:var(--primary-light);color:var(--primary);}
+.ci-bar-wrap{width:100%;height:6px;background:var(--border);border-radius:3px;margin-top:4px;}
+.ci-bar{height:100%;background:var(--primary);border-radius:3px;transition:width 0.3s;}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">📈</div>
+    <div class="card-title">حاسبة الفائدة المركبة</div>
+    <div class="card-subtitle">احسب نمو استثمارك أو قرضك مع الفائدة المتراكمة</div>
+    <div class="divider"></div>
+
+    <div class="row">
+      <div>
+        <label for="principal">رأس المال (المبلغ الأساسي)</label>
+        <input type="number" id="principal" placeholder="مثال: 10000" min="0" step="any" oninput="calculate()">
+      </div>
+      <div>
+        <label for="rate">معدل الفائدة السنوي %</label>
+        <input type="number" id="rate" placeholder="مثال: 5" min="0" step="any" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="years">المدة (بالسنوات)</label>
+        <input type="number" id="years" placeholder="مثال: 10" min="1" max="50" step="1" oninput="calculate()">
+      </div>
+      <div>
+        <label for="freq">تكرار الاحتساب</label>
+        <select id="freq" onchange="calculate()">
+          <option value="1">سنوياً</option>
+          <option value="4">ربع سنوي</option>
+          <option value="12" selected>شهرياً</option>
+          <option value="365">يومياً</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label for="monthly">إضافة شهرية اختيارية (ر.ع)</label>
+      <input type="number" id="monthly" placeholder="0 (اختياري)" min="0" step="any" value="0" oninput="calculate()">
+    </div>
+
+    <div id="ciResult" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="finalAmount"></div>
+        <div class="result-label">المبلغ النهائي</div>
+      </div>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-box">
+          <div class="stat-val" id="principalDisplay">0</div>
+          <div class="stat-lbl">رأس المال الأصلي</div>
+        </div>
+        <div class="stat-box" style="background:#f0fdf4;">
+          <div class="stat-val" id="interestEarned" style="color:#16a34a;">0</div>
+          <div class="stat-lbl">إجمالي الفائدة</div>
+        </div>
+        <div class="stat-box" style="background:#eff6ff;">
+          <div class="stat-val" id="totalContrib" style="color:#2563eb;">0</div>
+          <div class="stat-lbl">إجمالي الإضافات</div>
+        </div>
+      </div>
+      <div id="growthBar" style="margin-top:16px;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px;">
+          <span>رأس المال</span><span>الفائدة</span>
+        </div>
+        <div style="display:flex;height:12px;border-radius:6px;overflow:hidden;">
+          <div id="barPrincipal" style="background:#2563eb;transition:width 0.4s;"></div>
+          <div id="barContrib" style="background:#7c3aed;transition:width 0.4s;"></div>
+          <div id="barInterest" style="background:#16a34a;transition:width 0.4s;"></div>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:6px;font-size:11px;color:var(--text-muted);">
+          <span><span style="display:inline-block;width:10px;height:10px;background:#2563eb;border-radius:2px;margin-left:4px;"></span>رأس المال</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#7c3aed;border-radius:2px;margin-left:4px;"></span>إضافات</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#16a34a;border-radius:2px;margin-left:4px;"></span>فائدة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tableCard" class="card" style="margin-top:16px;display:none;">
+    <div class="card-title" style="font-size:15px;">📊 جدول النمو السنوي</div>
+    <div style="overflow-x:auto;">
+      <table class="ci-table" id="ciTable">
+        <thead><tr>
+          <th>السنة</th>
+          <th>المبلغ</th>
+          <th>الفائدة المضافة</th>
+          <th>إجمالي الفائدة</th>
+        </tr></thead>
+        <tbody id="ciTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الفائدة البسيطة والمركبة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الفائدة البسيطة تُحسب على رأس المال الأصلي فقط. الفائدة المركبة تُحسب على رأس المال + الفائدة المتراكمة، فتنمو بشكل أسرع مع الوقت.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما قاعدة 72؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">قاعدة 72 تُعطيك تقديراً لمضاعفة استثمارك: اقسم 72 على نسبة الفائدة السنوية. مثال: بفائدة 6%، يتضاعف المبلغ في ≈12 سنة (72÷6).</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل هذه الأداة مناسبة للقروض؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، يمكن استخدامها لحساب إجمالي المبلغ المسدَّد على قرض بفائدة مركبة. لحساب القسط الشهري، استخدم <a href="loan-calculator.html">حاسبة القسط</a>.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="privacy.html">الخصوصية</a>
+    </div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+function fmt(n, d) { return n.toLocaleString('ar-EG', {minimumFractionDigits: d||3, maximumFractionDigits: d||3}); }
+
+function calculate() {
+  const P = parseFloat(document.getElementById('principal').value) || 0;
+  const r = parseFloat(document.getElementById('rate').value) || 0;
+  const t = parseInt(document.getElementById('years').value) || 0;
+  const n = parseInt(document.getElementById('freq').value) || 12;
+  const monthly = parseFloat(document.getElementById('monthly').value) || 0;
+
+  if (P <= 0 || r <= 0 || t <= 0) {
+    document.getElementById('ciResult').style.display = 'none';
+    document.getElementById('tableCard').style.display = 'none';
+    return;
+  }
+
+  const rate = r / 100;
+  let balance = P;
+  let totalContributions = 0;
+  const tbody = document.getElementById('ciTableBody');
+  tbody.innerHTML = '';
+  let cumulativeInterest = 0;
+
+  for (let year = 1; year <= Math.min(t, 30); year++) {
+    const startBalance = balance;
+    // Apply monthly contributions and compound interest month by month
+    for (let m = 0; m < 12; m++) {
+      balance = balance * (1 + rate / n) + monthly;
+      if (n < 12) {
+        // for frequencies less than monthly, do simple monthly add then compound at freq
+      }
+    }
+    const monthlyCompound = (monthly > 0)
+      ? monthly * 12 * (year <= t ? 1 : 0)
+      : 0;
+
+    // Simpler approach: calculate year by year
+    const yearEnd = P * Math.pow(1 + rate/n, n * year);
+    // Plus contributions: FV of annuity (monthly)
+    const rMonthly = rate / 12;
+    const nMonths = year * 12;
+    const fvContribs = monthly > 0
+      ? monthly * ((Math.pow(1 + rMonthly, nMonths) - 1) / rMonthly)
+      : 0;
+    const total = yearEnd + fvContribs;
+    const yearInterest = total - P - monthly * nMonths;
+    cumulativeInterest = yearInterest;
+    const addedThisYear = total - (year === 1 ? P : prevTotal);
+    var prevTotal = year === 1 ? P : prevTotal;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + year + '</td>' +
+      '<td style="font-weight:600;">' + total.toFixed(2) + '</td>' +
+      '<td style="color:#16a34a;">' + (total - (year > 1 ? prevYearTotal : P + monthly*12)).toFixed(2) + '</td>' +
+      '<td style="color:#2563eb;">' + yearInterest.toFixed(2) + '</td>';
+    tbody.appendChild(tr);
+    prevYearTotal = total;
+  }
+
+  // Final calculation
+  const finalPrincipal = P * Math.pow(1 + rate/n, n * t);
+  const rM = rate / 12;
+  const nM = t * 12;
+  const fvC = monthly > 0 ? monthly * ((Math.pow(1 + rM, nM) - 1) / rM) : 0;
+  const final = finalPrincipal + fvC;
+  const totalContrib = monthly * nM;
+  const interestEarned = final - P - totalContrib;
+
+  document.getElementById('finalAmount').textContent = final.toFixed(2);
+  document.getElementById('principalDisplay').textContent = P.toFixed(2);
+  document.getElementById('interestEarned').textContent = interestEarned.toFixed(2);
+  document.getElementById('totalContrib').textContent = totalContrib.toFixed(2);
+
+  // Progress bar
+  const barP = (P / final) * 100;
+  const barC = (totalContrib / final) * 100;
+  const barI = (interestEarned / final) * 100;
+  document.getElementById('barPrincipal').style.width = Math.max(0, barP) + '%';
+  document.getElementById('barContrib').style.width = Math.max(0, barC) + '%';
+  document.getElementById('barInterest').style.width = Math.max(0, barI) + '%';
+
+  document.getElementById('ciResult').style.display = 'block';
+  document.getElementById('tableCard').style.display = 'block';
+}
+</script>
+<script src="i18n.js"></script>
+</body></html>
