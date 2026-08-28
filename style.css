@@ -1266,6 +1266,24 @@ html.dark .copy-btn { background: var(--surface-2); border-color: var(--border);
   min-width: 140px;
   justify-content: center;
 }
+/* Favorite star button */
+.fav-star {
+  position: absolute;
+  top: 10px;
+  inset-inline-start: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 2;
+}
+.fav-star:hover, .fav-star.fav-active { opacity: 1; transform: scale(1.2); }
+.fav-star.fav-active { color: #f59e0b; }
+
 .related-link:hover {
   border-color: var(--primary);
   color: var(--primary);
