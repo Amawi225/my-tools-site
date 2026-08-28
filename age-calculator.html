@@ -3,73 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حاسبة العمر</title>
+<title>حاسبة العمر — أدواتي</title>
 <meta name="description" content="احسب عمرك بالتفصيل بالسنوات والشهور والأيام">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    min-height: 100vh; margin: 0;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .card {
-    background: #fff; border-radius: 16px; padding: 32px 24px;
-    max-width: 400px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  h1 { font-size: 22px; text-align: center; color: #2193b0; margin-bottom: 24px; }
-  label { display: block; font-size: 14px; color: #555; margin-bottom: 6px; margin-top: 16px; }
-  input {
-    width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;
-  }
-  input:focus { outline: none; border-color: #2193b0; }
-  button.calc {
-    width: 100%; margin-top: 22px; padding: 14px; background: #2193b0; color: #fff;
-    border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;
-  }
-  button.calc:hover { background: #1a7b94; }
-  #result { margin-top: 24px; display: none; }
-  #result.show { display: block; }
-  .stat-row { display: flex; gap: 8px; margin-bottom: 8px; }
-  .stat-box {
-    flex: 1; background: #f8f9fa; border-radius: 10px; padding: 14px 6px; text-align: center;
-  }
-  .stat-box .big { font-size: 22px; font-weight: bold; color: #2193b0; }
-  .stat-box .label { font-size: 11px; color: #777; margin-top: 2px; }
-  .extra {
-    background: #f8f9fa; border-radius: 10px; padding: 14px; text-align: center; margin-top: 8px; font-size: 14px; color: #555;
-  }
-  a.back { display: block; text-align: center; margin-top: 20px; color: #2193b0; text-decoration: none; font-size: 14px; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h1>📅 حاسبة العمر</h1>
-
-  <label for="birthdate">تاريخ ميلادك</label>
-  <input type="date" id="birthdate">
-
-  <button class="calc" onclick="calcAge()">احسب عمري</button>
-
-  <div id="result">
-    <div class="stat-row">
-      <div class="stat-box"><div class="big" id="years"></div><div class="label">سنة</div></div>
-      <div class="stat-box"><div class="big" id="months"></div><div class="label">شهر</div></div>
-      <div class="stat-box"><div class="big" id="days"></div><div class="label">يوم</div></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">أدواتي</a>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
     </div>
-    <div class="extra">📆 إجمالي الأيام: <b id="totalDays"></b></div>
-    <div class="extra">🎂 عدد الأيام حتى عيد ميلادك القادم: <b id="daysToNext"></b></div>
   </div>
+</nav>
 
-  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
-</div>
+<main>
+  <div class="tool-page">
+    <div class="page-header">
+      <a href="index.html">← العودة للرئيسية</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:#fff7ed;">📅</div>
+      <div class="card-title">حاسبة العمر</div>
+      <div class="card-subtitle">عمرك بالتفصيل — سنوات وأشهر وأيام</div>
+      <div class="divider"></div>
+
+      <label for="birthdate">تاريخ ميلادك</label>
+      <input type="date" id="birthdate">
+
+      <button class="btn btn-primary" onclick="calcAge()">احسب عمري</button>
+
+      <div id="result" style="display:none; margin-top:20px;">
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-val" id="years"></div><div class="stat-lbl">سنة</div></div>
+          <div class="stat-box"><div class="stat-val" id="months"></div><div class="stat-lbl">شهر</div></div>
+          <div class="stat-box"><div class="stat-val" id="days"></div><div class="stat-lbl">يوم</div></div>
+        </div>
+        <div class="stat-grid" style="margin-top:10px;">
+          <div class="stat-box">
+            <div class="stat-val" id="totalDays" style="font-size:17px;"></div>
+            <div class="stat-lbl">إجمالي الأيام</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="daysToNext" style="font-size:17px;"></div>
+            <div class="stat-lbl">يوم حتى عيد ميلادك</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+  </div>
+  <div class="footer-copy">© 2026 أدواتي</div>
+</footer>
 
 <script>
 function calcAge() {
   const birthInput = document.getElementById('birthdate').value;
-  if (!birthInput) { alert('اختار تاريخ ميلادك'); return; }
+  if (!birthInput) { alert('اختر تاريخ ميلادك'); return; }
 
   const birth = new Date(birthInput);
   const today = new Date();
@@ -80,29 +80,22 @@ function calcAge() {
 
   if (days < 0) {
     months--;
-    const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-    days += lastMonth.getDate();
+    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
   }
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
+  if (months < 0) { years--; months += 12; }
 
-  const totalDays = Math.floor((today - birth) / (1000 * 60 * 60 * 24));
+  const totalDays = Math.floor((today - birth) / 86400000);
 
-  let nextBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
-  if (nextBirthday < today) {
-    nextBirthday.setFullYear(today.getFullYear() + 1);
-  }
-  const daysToNext = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+  let next = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+  if (next <= today) next.setFullYear(today.getFullYear() + 1);
+  const daysToNext = Math.ceil((next - today) / 86400000);
 
   document.getElementById('years').textContent = years;
   document.getElementById('months').textContent = months;
   document.getElementById('days').textContent = days;
   document.getElementById('totalDays').textContent = totalDays.toLocaleString();
   document.getElementById('daysToNext').textContent = daysToNext;
-
-  document.getElementById('result').classList.add('show');
+  document.getElementById('result').style.display = 'block';
 }
 </script>
 
