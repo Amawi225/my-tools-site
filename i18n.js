@@ -93,6 +93,13 @@ const T = {
     search_placeholder:'ابحث عن أداة...', search_no_results:'لم يُعثر على أداة بهذا الاسم',
     related_title:'أدوات ذات صلة',
     pwa_title:'ثبّت التطبيق', pwa_sub:'أضف أدواتي للشاشة الرئيسية للوصول السريع بدون إنترنت', pwa_install:'تثبيت', pwa_later:'لاحقاً',
+    cat_oman:'🇴🇲 عمان',
+    vat_card_title:'حاسبة VAT الخليج', vat_card_desc:'احسب ضريبة القيمة المضافة لعمان والسعودية والإمارات',
+    sal_card_title:'حاسبة الراتب — عمان', sal_card_desc:'احسب راتبك الصافي مع خصم PASI للمواطنين',
+    eos_card_title:'حاسبة نهاية الخدمة', eos_card_desc:'احسب مكافأة نهاية خدمتك وفق قانون العمل العماني',
+    hijri_card_title:'محوّل التاريخ الهجري', hijri_card_desc:'حوّل بين التقويم الهجري والميلادي بسهولة',
+    fav_title:'⭐ المفضلة', recent_title:'🕘 استخدمتها مؤخراً',
+    badge_count:'18 أداة',
     dark_on:'🌙', dark_off:'☀️',
   },
   en: {
@@ -189,6 +196,13 @@ const T = {
     search_placeholder:'Search tools...', search_no_results:'No tools found with that name',
     related_title:'Related Tools',
     pwa_title:'Install App', pwa_sub:'Add Adawati to your home screen for quick offline access', pwa_install:'Install', pwa_later:'Later',
+    cat_oman:'🇴🇲 Oman',
+    vat_card_title:'VAT Calculator Gulf', vat_card_desc:'Calculate VAT for Oman, Saudi Arabia and UAE',
+    sal_card_title:'Salary Calculator — Oman', sal_card_desc:'Calculate your net salary including PASI deduction',
+    eos_card_title:'End of Service Calculator', eos_card_desc:'Calculate your gratuity under Omani labor law',
+    hijri_card_title:'Hijri Date Converter', hijri_card_desc:'Convert between Hijri and Gregorian calendars easily',
+    fav_title:'⭐ Favorites', recent_title:'🕘 Recently Used',
+    badge_count:'18 Tools',
     dark_on:'🌙', dark_off:'☀️',
   },
   fr: {
@@ -284,6 +298,13 @@ const T = {
     cat_all:'Tous', cat_health:'💪 Santé', cat_money:'💰 Argent', cat_productivity:'⚙️ Productivité', cat_quick:'⚡ Rapides',
     search_placeholder:'Rechercher un outil...', search_no_results:'Aucun outil trouvé', related_title:'Outils similaires',
     pwa_title:'Installer l\'app', pwa_sub:'Ajoutez Adawati à votre écran d\'accueil', pwa_install:'Installer', pwa_later:'Plus tard',
+    cat_oman:'🇴🇲 Oman',
+    vat_card_title:'Calculateur TVA Golfe', vat_card_desc:'Calculez la TVA pour Oman, l\'Arabie Saoudite et les EAU',
+    sal_card_title:'Calculateur de salaire — Oman', sal_card_desc:'Calculez votre salaire net avec déductions PASI',
+    eos_card_title:'Calculateur de fin de service', eos_card_desc:'Calculez votre indemnité selon le droit du travail omanais',
+    hijri_card_title:'Convertisseur de date Hijri', hijri_card_desc:'Convertissez entre les calendriers hijri et grégorien',
+    fav_title:'⭐ Favoris', recent_title:'🕘 Récemment utilisés',
+    badge_count:'18 Outils',
     dark_on:'🌙', dark_off:'☀️',
   },
   es: {
@@ -379,6 +400,13 @@ const T = {
     cat_all:'Todos', cat_health:'💪 Salud', cat_money:'💰 Dinero', cat_productivity:'⚙️ Productividad', cat_quick:'⚡ Rápidas',
     search_placeholder:'Buscar herramienta...', search_no_results:'No se encontraron herramientas', related_title:'Herramientas relacionadas',
     pwa_title:'Instalar app', pwa_sub:'Añade Adawati a tu pantalla de inicio', pwa_install:'Instalar', pwa_later:'Después',
+    cat_oman:'🇴🇲 Omán',
+    vat_card_title:'Calculadora IVA Golfo', vat_card_desc:'Calcula el IVA para Omán, Arabia Saudí y EAU',
+    sal_card_title:'Calculadora de sueldo — Omán', sal_card_desc:'Calcula tu sueldo neto con deducción PASI',
+    eos_card_title:'Calculadora de fin de servicio', eos_card_desc:'Calcula tu gratificación según la ley laboral omaní',
+    hijri_card_title:'Convertidor de fecha Hijri', hijri_card_desc:'Convierte entre calendarios hijri y gregoriano',
+    fav_title:'⭐ Favoritos', recent_title:'🕘 Usados recientemente',
+    badge_count:'18 Herramientas',
     dark_on:'🌙', dark_off:'☀️',
   },
   de: {
@@ -474,6 +502,13 @@ const T = {
     cat_all:'Alle', cat_health:'💪 Gesundheit', cat_money:'💰 Geld', cat_productivity:'⚙️ Produktivität', cat_quick:'⚡ Schnell',
     search_placeholder:'Werkzeug suchen...', search_no_results:'Kein Werkzeug gefunden', related_title:'Ähnliche Werkzeuge',
     pwa_title:'App installieren', pwa_sub:'Adawati zum Startbildschirm hinzufügen', pwa_install:'Installieren', pwa_later:'Später',
+    cat_oman:'🇴🇲 Oman',
+    vat_card_title:'Mehrwertsteuer-Rechner Golf', vat_card_desc:'MwSt. für Oman, Saudi-Arabien und VAE berechnen',
+    sal_card_title:'Gehaltsrechner — Oman', sal_card_desc:'Nettogehalt mit PASI-Abzug berechnen',
+    eos_card_title:'Abfindungsrechner', eos_card_desc:'Abfindung nach omanischem Arbeitsrecht berechnen',
+    hijri_card_title:'Hijri-Datumskonverter', hijri_card_desc:'Zwischen Hijri- und gregorianischem Kalender konvertieren',
+    fav_title:'⭐ Favoriten', recent_title:'🕘 Zuletzt verwendet',
+    badge_count:'18 Tools',
     dark_on:'🌙', dark_off:'☀️',
   },
   ru: {
@@ -569,6 +604,13 @@ const T = {
     cat_all:'Все', cat_health:'💪 Здоровье', cat_money:'💰 Деньги', cat_productivity:'⚙️ Продуктивность', cat_quick:'⚡ Быстрые',
     search_placeholder:'Поиск инструментов...', search_no_results:'Инструменты не найдены', related_title:'Похожие инструменты',
     pwa_title:'Установить приложение', pwa_sub:'Добавьте Adawati на главный экран', pwa_install:'Установить', pwa_later:'Позже',
+    cat_oman:'🇴🇲 Оман',
+    vat_card_title:'Калькулятор НДС Залив', vat_card_desc:'Рассчитайте НДС для Омана, Саудовской Аравии и ОАЭ',
+    sal_card_title:'Калькулятор зарплаты — Оман', sal_card_desc:'Рассчитайте чистую зарплату с вычетом PASI',
+    eos_card_title:'Калькулятор выходного пособия', eos_card_desc:'Рассчитайте выходное пособие по оманскому трудовому праву',
+    hijri_card_title:'Конвертер хиджры', hijri_card_desc:'Конвертируйте между хиджрой и григорианским календарём',
+    fav_title:'⭐ Избранное', recent_title:'🕘 Недавно использованные',
+    badge_count:'18 инструментов',
     dark_on:'🌙', dark_off:'☀️',
   }
 };
@@ -847,6 +889,10 @@ const RELATED_MAP = {
   'timezone-converter':  [['stopwatch','⏱️','sw_card_title'],['currency-converter','💱','currency_card_title']],
   'random-number':       [['stopwatch','⏱️','sw_card_title'],['qr-generator','📱','qr_card_title']],
   'stopwatch':           [['random-number','🎲','rng_card_title'],['timezone-converter','🕐','tz_card_title']],
+  'vat-calculator':     [['salary-calculator','💼','sal_card_title'],['loan-calculator','🧮','loan_card_title']],
+  'salary-calculator':  [['end-of-service','📋','eos_card_title'],['vat-calculator','🧾','vat_card_title']],
+  'end-of-service':     [['salary-calculator','💼','sal_card_title'],['loan-calculator','🧮','loan_card_title']],
+  'hijri-converter':    [['age-calculator','📅','age_card_title'],['end-of-service','📋','eos_card_title']],
 };
 
 function injectRelatedTools() {
@@ -875,6 +921,126 @@ function injectRelatedTools() {
   card.appendChild(section);
 }
 
+/* ── Favorites & Recent ── */
+const TOOL_META = {
+  'bmi-calculator':      {icon:'⚖️', bg:'#eff6ff', titleKey:'bmi_card_title', descKey:'bmi_card_desc'},
+  'diet-plan':           {icon:'🥗', bg:'#f0fdf4', titleKey:'diet_card_title', descKey:'diet_card_desc'},
+  'currency-converter':  {icon:'💱', bg:'#fefce8', titleKey:'currency_card_title', descKey:'currency_card_desc'},
+  'loan-calculator':     {icon:'🧮', bg:'#faf5ff', titleKey:'loan_card_title', descKey:'loan_card_desc'},
+  'age-calculator':      {icon:'📅', bg:'#fff7ed', titleKey:'age_card_title', descKey:'age_card_desc'},
+  'discount-calculator': {icon:'💯', bg:'#fef2f2', titleKey:'discount_card_title', descKey:'discount_card_desc'},
+  'tip-calculator':      {icon:'🤝', bg:'#fdf4ff', titleKey:'tip_card_title', descKey:'tip_card_desc'},
+  'unit-converter':      {icon:'🔄', bg:'#f0f9ff', titleKey:'unit_card_title', descKey:'unit_card_desc'},
+  'password-generator':  {icon:'🔑', bg:'#f8fafc', titleKey:'pass_card_title', descKey:'pass_card_desc'},
+  'word-counter':        {icon:'🔤', bg:'#fefce8', titleKey:'word_card_title', descKey:'word_card_desc'},
+  'qr-generator':        {icon:'📱', bg:'#f0fdf4', titleKey:'qr_card_title', descKey:'qr_card_desc'},
+  'timezone-converter':  {icon:'🕐', bg:'#fff7ed', titleKey:'tz_card_title', descKey:'tz_card_desc'},
+  'random-number':       {icon:'🎲', bg:'#fdf4ff', titleKey:'rng_card_title', descKey:'rng_card_desc'},
+  'stopwatch':           {icon:'⏱️', bg:'#eff6ff', titleKey:'sw_card_title', descKey:'sw_card_desc'},
+  'vat-calculator':      {icon:'🧾', bg:'#fefce8', titleKey:'vat_card_title', descKey:'vat_card_desc'},
+  'salary-calculator':   {icon:'💼', bg:'#f0fdf4', titleKey:'sal_card_title', descKey:'sal_card_desc'},
+  'end-of-service':      {icon:'📋', bg:'#f0f9ff', titleKey:'eos_card_title', descKey:'eos_card_desc'},
+  'hijri-converter':     {icon:'🌙', bg:'#fdf4ff', titleKey:'hijri_card_title', descKey:'hijri_card_desc'},
+};
+
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem('adawati_favs') || '[]'); } catch { return []; }
+}
+function saveFavs(arr) { localStorage.setItem('adawati_favs', JSON.stringify(arr)); }
+function isFav(id) { return getFavs().includes(id); }
+function toggleFav(id) {
+  const favs = getFavs();
+  const idx = favs.indexOf(id);
+  if (idx > -1) favs.splice(idx, 1); else favs.push(id);
+  saveFavs(favs);
+  renderFavSection();
+  document.querySelectorAll('.fav-star[data-id="' + id + '"]').forEach(function(s) {
+    s.textContent = isFav(id) ? '⭐' : '☆';
+    s.classList.toggle('fav-active', isFav(id));
+  });
+}
+function getRecent() {
+  try { return JSON.parse(localStorage.getItem('adawati_recent') || '[]'); } catch { return []; }
+}
+function trackRecent(id) {
+  var list = getRecent().filter(function(x) { return x !== id; });
+  list.unshift(id);
+  localStorage.setItem('adawati_recent', JSON.stringify(list.slice(0, 6)));
+}
+
+function buildMiniCard(id, t, base) {
+  const meta = TOOL_META[id];
+  if (!meta) return null;
+  const a = document.createElement('a');
+  a.href = base + '/' + id + '.html';
+  a.className = 'tool-card';
+  a.style.position = 'relative';
+  a.innerHTML =
+    '<div class="tool-icon-wrap" style="background:' + meta.bg + ';">' + meta.icon + '</div>' +
+    '<div class="tool-card-title">' + (t[meta.titleKey] || id) + '</div>' +
+    '<div class="tool-card-desc">' + (t[meta.descKey] || '') + '</div>' +
+    '<div class="tool-card-arrow">' + (t.start || '→') + '</div>';
+  return a;
+}
+
+function renderFavSection() {
+  const favSection = document.getElementById('favSection');
+  const favGrid = document.getElementById('favGrid');
+  if (!favSection || !favGrid) return;
+  const favs = getFavs();
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+  favGrid.innerHTML = '';
+  if (favs.length === 0) { favSection.style.display = 'none'; return; }
+  favs.forEach(function(id) {
+    const card = buildMiniCard(id, t, base);
+    if (card) favGrid.appendChild(card);
+  });
+  favSection.style.display = '';
+  injectStarBtns();
+}
+
+function renderRecentSection() {
+  const recentSection = document.getElementById('recentSection');
+  const recentGrid = document.getElementById('recentGrid');
+  if (!recentSection || !recentGrid) return;
+  const recent = getRecent();
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+  recentGrid.innerHTML = '';
+  if (recent.length === 0) { recentSection.style.display = 'none'; return; }
+  recent.forEach(function(id) {
+    const card = buildMiniCard(id, t, base);
+    if (card) recentGrid.appendChild(card);
+  });
+  recentSection.style.display = '';
+}
+
+function injectStarBtns() {
+  document.querySelectorAll('#toolsGrid .tool-card, #favGrid .tool-card, #recentGrid .tool-card').forEach(function(card) {
+    if (card.querySelector('.fav-star')) return;
+    const href = card.getAttribute('href') || '';
+    const id = href.split('/').pop().replace('.html', '');
+    if (!TOOL_META[id]) return;
+    const star = document.createElement('button');
+    star.className = 'fav-star' + (isFav(id) ? ' fav-active' : '');
+    star.setAttribute('data-id', id);
+    star.textContent = isFav(id) ? '⭐' : '☆';
+    star.title = isFav(id) ? 'إزالة من المفضلة' : 'إضافة للمفضلة';
+    star.onclick = function(e) { e.preventDefault(); e.stopPropagation(); toggleFav(id); };
+    card.style.position = 'relative';
+    card.appendChild(star);
+  });
+}
+
+/* ── Track recent on tool pages ── */
+function autoTrackRecent() {
+  const page = location.pathname.split('/').pop().replace('.html', '');
+  if (TOOL_META[page] && page !== 'index') trackRecent(page);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
   setLang(detectDefaultLang());
@@ -882,4 +1048,10 @@ document.addEventListener('DOMContentLoaded', function() {
   injectDarkToggle();
   injectRelatedTools();
   initPWA();
+  autoTrackRecent();
+  if (document.getElementById('toolsGrid')) {
+    renderFavSection();
+    renderRecentSection();
+    injectStarBtns();
+  }
 });
