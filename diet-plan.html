@@ -3,256 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حاسبة السعرات والخطة الغذائية</title>
+<title>حاسبة السعرات والخطة الغذائية — أدواتي</title>
 <meta name="description" content="احسب احتياجك اليومي من السعرات الحرارية واحصل على خطة غذائية مخصصة مجاناً.">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 32px 24px;
-    max-width: 420px;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  h1 {
-    font-size: 22px;
-    text-align: center;
-    color: #2193b0;
-    margin-bottom: 6px;
-  }
-  .subtitle {
-    text-align: center;
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 20px;
-  }
-  label {
-    display: block;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 6px;
-    margin-top: 14px;
-  }
-  input, select {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 15px;
-  }
-  input:focus, select:focus { outline: none; border-color: #2193b0; }
-  .row { display: flex; gap: 10px; }
-  .row > div { flex: 1; }
-  .gender-toggle {
-    display: flex;
-    gap: 8px;
-    margin-top: 6px;
-  }
-  .gender-btn {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    background: #f0f0f0;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #555;
-  }
-  .gender-btn.active { background: #2193b0; color: #fff; }
-  button.calc {
-    width: 100%;
-    margin-top: 22px;
-    padding: 14px;
-    background: #2193b0;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  button.calc:hover { background: #1a7b94; }
-
-  #freeResult {
-    margin-top: 22px;
-    display: none;
-  }
-  #freeResult.show { display: block; }
-  .stat-box {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  .stat-box .big {
-    font-size: 28px;
-    font-weight: bold;
-    color: #2193b0;
-  }
-  .stat-box .label {
-    font-size: 13px;
-    color: #777;
-    margin-top: 2px;
-  }
-  .macros {
-    display: flex;
-    gap: 8px;
-  }
-  .macro {
-    flex: 1;
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 12px 8px;
-    text-align: center;
-  }
-  .macro .val { font-weight: bold; font-size: 16px; color: #333; }
-  .macro .name { font-size: 11px; color: #888; margin-top: 2px; }
-
-  .pro-section {
-    margin-top: 24px;
-    border: 2px dashed #ffc107;
-    border-radius: 12px;
-    padding: 18px;
-    background: #fffbf0;
-    text-align: center;
-  }
-  .pro-section .pro-title {
-    font-weight: bold;
-    color: #856404;
-    font-size: 15px;
-    margin-bottom: 6px;
-  }
-  .pro-section ul {
-    text-align: right;
-    font-size: 13px;
-    color: #666;
-    padding-right: 18px;
-    margin: 10px 0;
-  }
-  .pro-section li { margin-bottom: 4px; }
-  .price {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2193b0;
-    margin: 10px 0;
-  }
-  button.buy {
-    width: 100%;
-    padding: 13px;
-    background: #ffc107;
-    color: #4a3800;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  button.buy:hover { background: #e0a800; }
-
-  a.back {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #2193b0;
-    text-decoration: none;
-    font-size: 14px;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h1>🥗 حاسبة السعرات والخطة الغذائية</h1>
-  <div class="subtitle">احسب احتياجك اليومي بدقة علمية</div>
-
-  <label>الجنس</label>
-  <div class="gender-toggle">
-    <div class="gender-btn active" data-gender="male" onclick="setGender('male')">ذكر</div>
-    <div class="gender-btn" data-gender="female" onclick="setGender('female')">أنثى</div>
-  </div>
-
-  <div class="row">
-    <div>
-      <label for="age">العمر</label>
-      <input type="number" id="age" placeholder="25">
-    </div>
-    <div>
-      <label for="weight">الوزن (كغم)</label>
-      <input type="number" id="weight" placeholder="70">
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">أدواتي</a>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
     </div>
   </div>
+</nav>
 
-  <div class="row">
-    <div>
+<main>
+  <div class="tool-page">
+    <div class="page-header">
+      <a href="index.html">← العودة للرئيسية</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:#f0fdf4;">🥗</div>
+      <div class="card-title">حاسبة السعرات والخطة الغذائية</div>
+      <div class="card-subtitle">احسب احتياجك اليومي بدقة علمية</div>
+      <div class="divider"></div>
+
+      <label>الجنس</label>
+      <div class="option-toggle">
+        <button class="option-btn active" data-gender="male" onclick="setGender('male')">ذكر</button>
+        <button class="option-btn" data-gender="female" onclick="setGender('female')">أنثى</button>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="age">العمر</label>
+          <input type="number" id="age" placeholder="25">
+        </div>
+        <div>
+          <label for="weight">الوزن (كغم)</label>
+          <input type="number" id="weight" placeholder="70">
+        </div>
+      </div>
+
       <label for="height">الطول (سم)</label>
       <input type="number" id="height" placeholder="175">
+
+      <label for="activity">مستوى النشاط</label>
+      <select id="activity">
+        <option value="1.2">قليل الحركة (مكتبي)</option>
+        <option value="1.375">نشاط خفيف (1–3 أيام رياضة)</option>
+        <option value="1.55" selected>نشاط متوسط (3–5 أيام رياضة)</option>
+        <option value="1.725">نشاط عالي (6–7 أيام رياضة)</option>
+        <option value="1.9">نشاط عالي جداً (رياضي / عمل بدني)</option>
+      </select>
+
+      <label for="goal">الهدف</label>
+      <select id="goal">
+        <option value="lose">نزول وزن</option>
+        <option value="maintain" selected>ثبات الوزن</option>
+        <option value="gain">زيادة وزن</option>
+      </select>
+
+      <button class="btn btn-primary" onclick="calculate()">احسب احتياجي اليومي</button>
+
+      <div id="freeResult" style="display:none; margin-top:20px;">
+        <div class="result-box show success" style="margin-top:0;">
+          <div class="result-value" id="calorieResult"></div>
+          <div class="result-label">سعرة حرارية يومياً</div>
+        </div>
+
+        <div class="stat-grid" style="margin-top:12px;">
+          <div class="stat-box"><div class="stat-val" id="proteinResult"></div><div class="stat-lbl">بروتين (غ)</div></div>
+          <div class="stat-box"><div class="stat-val" id="carbResult"></div><div class="stat-lbl">كارب (غ)</div></div>
+          <div class="stat-box"><div class="stat-val" id="fatResult"></div><div class="stat-lbl">دهون (غ)</div></div>
+        </div>
+
+        <div class="pro-section" style="margin-top:16px;">
+          <div class="pro-title">🔒 الخطة الغذائية الكاملة</div>
+          <ul class="pro-list">
+            <li>جدول وجبات يومي مفصّل (7 أيام)</li>
+            <li>قائمة بدائل الأطعمة حسب ذوقك</li>
+            <li>ملف PDF قابل للطباعة</li>
+            <li>تحديث أسبوعي حسب تقدمك</li>
+          </ul>
+          <div class="pro-price">$4.99</div>
+          <button class="btn-buy" onclick="buyPlan()">اشتري الخطة الكاملة</button>
+        </div>
+      </div>
     </div>
   </div>
+</main>
 
-  <label for="activity">مستوى النشاط</label>
-  <select id="activity">
-    <option value="1.2">قليل الحركة (مكتبي)</option>
-    <option value="1.375">نشاط خفيف (1-3 أيام رياضة)</option>
-    <option value="1.55" selected>نشاط متوسط (3-5 أيام رياضة)</option>
-    <option value="1.725">نشاط عالي (6-7 أيام رياضة)</option>
-    <option value="1.9">نشاط عالي جداً (رياضي/عمل بدني)</option>
-  </select>
-
-  <label for="goal">الهدف</label>
-  <select id="goal">
-    <option value="lose">نزول وزن</option>
-    <option value="maintain" selected>ثبات الوزن</option>
-    <option value="gain">زيادة وزن</option>
-  </select>
-
-  <button class="calc" onclick="calculate()">احسب احتياجي اليومي</button>
-
-  <div id="freeResult">
-    <div class="stat-box">
-      <div class="big" id="calorieResult"></div>
-      <div class="label">سعرة حرارية يومياً</div>
-    </div>
-    <div class="macros">
-      <div class="macro"><div class="val" id="proteinResult"></div><div class="name">بروتين (غ)</div></div>
-      <div class="macro"><div class="val" id="carbResult"></div><div class="name">كارب (غ)</div></div>
-      <div class="macro"><div class="val" id="fatResult"></div><div class="name">دهون (غ)</div></div>
-    </div>
-
-    <div class="pro-section">
-      <div class="pro-title">🔒 الخطة الغذائية الكاملة</div>
-      <ul>
-        <li>جدول وجبات يومي مفصّل (7 أيام)</li>
-        <li>قائمة بدائل الأطعمة حسب ذوقك</li>
-        <li>ملف PDF قابل للطباعة</li>
-        <li>تحديث أسبوعي حسب تقدمك</li>
-      </ul>
-      <div class="price">$4.99</div>
-      <button class="buy" onclick="buyPlan()">🛒 اشتري الخطة الكاملة</button>
-    </div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
   </div>
-
-  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
-</div>
+  <div class="footer-copy">© 2026 أدواتي</div>
+</footer>
 
 <script>
 let gender = 'male';
 
 function setGender(g) {
   gender = g;
-  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.gender-btn[data-gender="${g}"]`).classList.add('active');
+  document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.option-btn[data-gender="${g}"]`).classList.add('active');
 }
 
 function calculate() {
@@ -262,42 +122,26 @@ function calculate() {
   const activity = parseFloat(document.getElementById('activity').value);
   const goal = document.getElementById('goal').value;
 
-  if (!age || !weight || !height) {
-    alert('الرجاء تعبئة العمر والوزن والطول');
-    return;
-  }
+  if (!age || !weight || !height) { alert('الرجاء تعبئة العمر والوزن والطول'); return; }
 
-  // Mifflin-St Jeor Equation
-  let bmr;
-  if (gender === 'male') {
-    bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-  } else {
-    bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-  }
+  let bmr = gender === 'male'
+    ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+    : (10 * weight) + (6.25 * height) - (5 * age) - 161;
 
   let tdee = bmr * activity;
-
   if (goal === 'lose') tdee -= 500;
   if (goal === 'gain') tdee += 400;
-
   tdee = Math.round(tdee);
 
-  const protein = Math.round((tdee * 0.30) / 4);
-  const carbs = Math.round((tdee * 0.40) / 4);
-  const fat = Math.round((tdee * 0.30) / 9);
-
   document.getElementById('calorieResult').textContent = tdee;
-  document.getElementById('proteinResult').textContent = protein;
-  document.getElementById('carbResult').textContent = carbs;
-  document.getElementById('fatResult').textContent = fat;
-
-  document.getElementById('freeResult').classList.add('show');
+  document.getElementById('proteinResult').textContent = Math.round((tdee * 0.30) / 4);
+  document.getElementById('carbResult').textContent = Math.round((tdee * 0.40) / 4);
+  document.getElementById('fatResult').textContent = Math.round((tdee * 0.30) / 9);
+  document.getElementById('freeResult').style.display = 'block';
 }
 
 function buyPlan() {
-  // ⚠️ استبدل هذا الرابط برابط الدفع الفعلي من Stripe Payment Link أو Gumroad بعد إنشاء حسابك
-  alert('لتفعيل الدفع الفعلي: أنشئ حساب Stripe أو Gumroad، أضف منتج "الخطة الكاملة" بسعر $4.99، وضع رابط الدفع هنا بدل هذه الرسالة.');
-  // window.location.href = 'https://buy.stripe.com/your-payment-link';
+  alert('لتفعيل الدفع: أنشئ حساب Stripe أو Gumroad وضع رابط الدفع هنا.');
 }
 </script>
 
