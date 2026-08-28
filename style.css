@@ -139,8 +139,9 @@ body {
   font-weight: 700;
 }
 
-/* Signup button */
-.signup-nav-btn {
+/* Signup button — hidden until real auth is implemented */
+.signup-nav-btn { display: none !important; }
+.signup-nav-btn-DISABLED {
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: #fff;
   border: none;
