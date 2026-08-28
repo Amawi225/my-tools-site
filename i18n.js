@@ -98,8 +98,12 @@ const T = {
     sal_card_title:'حاسبة الراتب — عمان', sal_card_desc:'احسب راتبك الصافي مع خصم PASI للمواطنين',
     eos_card_title:'حاسبة نهاية الخدمة', eos_card_desc:'احسب مكافأة نهاية خدمتك وفق قانون العمل العماني',
     hijri_card_title:'محوّل التاريخ الهجري', hijri_card_desc:'حوّل بين التقويم الهجري والميلادي بسهولة',
+    pct_card_title:'حاسبة النسبة المئوية', pct_card_desc:'احسب النسب والخصومات والزيادات بسهولة',
+    ci_card_title:'حاسبة الفائدة المركبة', ci_card_desc:'احسب نمو استثمارك أو قرضك مع الفائدة المتراكمة',
+    dd_card_title:'الفرق بين تاريخين', dd_card_desc:'احسب عدد الأيام والأسابيع والأشهر بين أي تاريخين',
+    ic_card_title:'ضغط الصور', ic_card_desc:'قلّل حجم صورتك بدون رفعها لأي خادم',
     fav_title:'⭐ المفضلة', recent_title:'🕘 استخدمتها مؤخراً',
-    badge_count:'18 أداة',
+    badge_count:'23 أداة',
     dark_on:'🌙', dark_off:'☀️',
   },
   en: {
@@ -201,8 +205,12 @@ const T = {
     sal_card_title:'Salary Calculator — Oman', sal_card_desc:'Calculate your net salary including PASI deduction',
     eos_card_title:'End of Service Calculator', eos_card_desc:'Calculate your gratuity under Omani labor law',
     hijri_card_title:'Hijri Date Converter', hijri_card_desc:'Convert between Hijri and Gregorian calendars easily',
+    pct_card_title:'Percentage Calculator', pct_card_desc:'Calculate percentages, discounts and changes easily',
+    ci_card_title:'Compound Interest Calculator', ci_card_desc:'Calculate how your investment or loan grows over time',
+    dd_card_title:'Date Difference', dd_card_desc:'Count days, weeks and months between any two dates',
+    ic_card_title:'Image Compressor', ic_card_desc:'Reduce image size without uploading to any server',
     fav_title:'⭐ Favorites', recent_title:'🕘 Recently Used',
-    badge_count:'18 Tools',
+    badge_count:'23 Tools',
     dark_on:'🌙', dark_off:'☀️',
   },
   fr: {
@@ -303,8 +311,12 @@ const T = {
     sal_card_title:'Calculateur de salaire — Oman', sal_card_desc:'Calculez votre salaire net avec déductions PASI',
     eos_card_title:'Calculateur de fin de service', eos_card_desc:'Calculez votre indemnité selon le droit du travail omanais',
     hijri_card_title:'Convertisseur de date Hijri', hijri_card_desc:'Convertissez entre les calendriers hijri et grégorien',
+    pct_card_title:'Calculateur de pourcentage', pct_card_desc:'Calculez les pourcentages, remises et variations',
+    ci_card_title:'Intérêts composés', ci_card_desc:'Calculez la croissance de votre investissement',
+    dd_card_title:'Différence entre dates', dd_card_desc:'Comptez les jours, semaines et mois entre deux dates',
+    ic_card_title:'Compresseur d\'images', ic_card_desc:'Réduisez la taille de votre image sans envoi au serveur',
     fav_title:'⭐ Favoris', recent_title:'🕘 Récemment utilisés',
-    badge_count:'18 Outils',
+    badge_count:'23 Outils',
     dark_on:'🌙', dark_off:'☀️',
   },
   es: {
@@ -405,8 +417,12 @@ const T = {
     sal_card_title:'Calculadora de sueldo — Omán', sal_card_desc:'Calcula tu sueldo neto con deducción PASI',
     eos_card_title:'Calculadora de fin de servicio', eos_card_desc:'Calcula tu gratificación según la ley laboral omaní',
     hijri_card_title:'Convertidor de fecha Hijri', hijri_card_desc:'Convierte entre calendarios hijri y gregoriano',
+    pct_card_title:'Calculadora de porcentaje', pct_card_desc:'Calcula porcentajes, descuentos y variaciones',
+    ci_card_title:'Interés compuesto', ci_card_desc:'Calcula el crecimiento de tu inversión',
+    dd_card_title:'Diferencia entre fechas', dd_card_desc:'Cuenta días, semanas y meses entre dos fechas',
+    ic_card_title:'Compresor de imágenes', ic_card_desc:'Reduce el tamaño sin subir al servidor',
     fav_title:'⭐ Favoritos', recent_title:'🕘 Usados recientemente',
-    badge_count:'18 Herramientas',
+    badge_count:'23 Herramientas',
     dark_on:'🌙', dark_off:'☀️',
   },
   de: {
@@ -507,8 +523,12 @@ const T = {
     sal_card_title:'Gehaltsrechner — Oman', sal_card_desc:'Nettogehalt mit PASI-Abzug berechnen',
     eos_card_title:'Abfindungsrechner', eos_card_desc:'Abfindung nach omanischem Arbeitsrecht berechnen',
     hijri_card_title:'Hijri-Datumskonverter', hijri_card_desc:'Zwischen Hijri- und gregorianischem Kalender konvertieren',
+    pct_card_title:'Prozentrechner', pct_card_desc:'Prozentsätze, Rabatte und Änderungen berechnen',
+    ci_card_title:'Zinseszins-Rechner', ci_card_desc:'Investitionswachstum berechnen',
+    dd_card_title:'Datumsdifferenz', dd_card_desc:'Tage, Wochen und Monate zwischen zwei Daten zählen',
+    ic_card_title:'Bildkompressor', ic_card_desc:'Bildgröße ohne Server-Upload reduzieren',
     fav_title:'⭐ Favoriten', recent_title:'🕘 Zuletzt verwendet',
-    badge_count:'18 Tools',
+    badge_count:'23 Tools',
     dark_on:'🌙', dark_off:'☀️',
   },
   ru: {
@@ -609,8 +629,12 @@ const T = {
     sal_card_title:'Калькулятор зарплаты — Оман', sal_card_desc:'Рассчитайте чистую зарплату с вычетом PASI',
     eos_card_title:'Калькулятор выходного пособия', eos_card_desc:'Рассчитайте выходное пособие по оманскому трудовому праву',
     hijri_card_title:'Конвертер хиджры', hijri_card_desc:'Конвертируйте между хиджрой и григорианским календарём',
+    pct_card_title:'Калькулятор процентов', pct_card_desc:'Рассчитайте проценты, скидки и изменения',
+    ci_card_title:'Сложные проценты', ci_card_desc:'Рассчитайте рост инвестиций',
+    dd_card_title:'Разница между датами', dd_card_desc:'Считайте дни, недели и месяцы между датами',
+    ic_card_title:'Компрессор изображений', ic_card_desc:'Уменьшите размер без загрузки на сервер',
     fav_title:'⭐ Избранное', recent_title:'🕘 Недавно использованные',
-    badge_count:'18 инструментов',
+    badge_count:'23 инструмента',
     dark_on:'🌙', dark_off:'☀️',
   }
 };
@@ -941,6 +965,10 @@ const TOOL_META = {
   'salary-calculator':   {icon:'💼', bg:'#f0fdf4', titleKey:'sal_card_title', descKey:'sal_card_desc'},
   'end-of-service':      {icon:'📋', bg:'#f0f9ff', titleKey:'eos_card_title', descKey:'eos_card_desc'},
   'hijri-converter':     {icon:'🌙', bg:'#fdf4ff', titleKey:'hijri_card_title', descKey:'hijri_card_desc'},
+  'percentage-calculator':{icon:'💯', bg:'#fef2f2', titleKey:'pct_card_title', descKey:'pct_card_desc'},
+  'compound-interest':   {icon:'📈', bg:'#f0fdf4', titleKey:'ci_card_title', descKey:'ci_card_desc'},
+  'date-diff':           {icon:'📆', bg:'#fff7ed', titleKey:'dd_card_title', descKey:'dd_card_desc'},
+  'image-compressor':    {icon:'🖼️', bg:'#f0f9ff', titleKey:'ic_card_title', descKey:'ic_card_desc'},
 };
 
 function getFavs() {
@@ -1019,6 +1047,7 @@ function renderRecentSection() {
 }
 
 function injectStarBtns() {
+  if (!document.getElementById('toolsGrid')) return;
   document.querySelectorAll('#toolsGrid .tool-card, #favGrid .tool-card, #recentGrid .tool-card').forEach(function(card) {
     if (card.querySelector('.fav-star')) return;
     const href = card.getAttribute('href') || '';
