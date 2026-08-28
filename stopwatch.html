@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ساعة إيقاف ومؤقت — احترافي مجاناً</title>
+<meta name="description" content="ساعة توقيت ومؤقت احترافي للتمارين والعمل والدراسة مجاناً اونلاين.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#eff6ff;">⏱️</div>
+    <div class="card-title" data-i18n="sw_title">ساعة إيقاف ومؤقت</div>
+    <div class="card-subtitle" data-i18n="sw_sub">ساعة توقيت ومؤقت للتمارين والعمل</div>
+    <div class="divider"></div>
+    <div class="tabs">
+      <div class="tab active" data-tab="sw" onclick="switchMode('sw')" data-i18n="sw_tab">ساعة إيقاف</div>
+      <div class="tab" data-tab="timer" onclick="switchMode('timer')" data-i18n="timer_tab">مؤقت</div>
+    </div>
+
+    <!-- Stopwatch -->
+    <div id="section-sw">
+      <div style="text-align:center;padding:24px 0;">
+        <div id="swDisplay" style="font-size:64px;font-weight:900;font-family:monospace;color:var(--primary);letter-spacing:2px;line-height:1;">00:00.00</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <button id="swStartBtn" class="btn btn-primary" style="margin-top:0;" onclick="swToggle()" data-i18n="sw_start">ابدأ</button>
+        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="swLap()" data-i18n="sw_lap">دورة</button>
+        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="swReset()" data-i18n="sw_reset">إعادة</button>
+      </div>
+      <div id="swLaps" style="margin-top:14px;max-height:140px;overflow-y:auto;font-size:13px;"></div>
+    </div>
+
+    <!-- Timer -->
+    <div id="section-timer" style="display:none;">
+      <div style="text-align:center;padding:16px 0 8px;">
+        <div id="timerDisplay" style="font-size:64px;font-weight:900;font-family:monospace;color:var(--primary);letter-spacing:2px;line-height:1;">00:00</div>
+      </div>
+      <div class="row" style="margin-top:8px;">
+        <div><label data-i18n="timer_min">دقائق</label><input type="number" id="timerMin" value="5" min="0" max="99"></div>
+        <div><label data-i18n="timer_sec">ثواني</label><input type="number" id="timerSec" value="0" min="0" max="59"></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;">
+        <button id="timerStartBtn" class="btn btn-primary" style="margin-top:0;" onclick="timerToggle()" data-i18n="sw_start">ابدأ</button>
+        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="timerReset()" data-i18n="sw_reset">إعادة</button>
+      </div>
+      <div id="timerDone" style="display:none;text-align:center;margin-top:12px;padding:12px;background:var(--success-bg);border-radius:var(--radius-sm);color:var(--success-text);font-weight:700;" data-i18n="timer_done">⏰ انتهى الوقت!</div>
+    </div>
+  </div>
+</div></main>
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+<script>
+// Stopwatch
+let swRunning=false,swElapsed=0,swStart=0,swInterval=null,swLapCount=0;
+function pad(n,d=2){return String(n).padStart(d,'0');}
+function fmtSw(ms){const t=ms/10,cs=Math.floor(t%100),s=Math.floor(t/100%60),m=Math.floor(t/6000);return`${pad(m)}:${pad(s)}.${pad(cs)}`;}
+function swToggle(){
+  if(!swRunning){swStart=Date.now()-swElapsed;swInterval=setInterval(()=>{swElapsed=Date.now()-swStart;document.getElementById('swDisplay').textContent=fmtSw(swElapsed);},10);swRunning=true;document.getElementById('swStartBtn').textContent=document.querySelector('[data-i18n="sw_pause"]')?.textContent||'إيقاف مؤقت';}
+  else{clearInterval(swInterval);swRunning=false;document.getElementById('swStartBtn').textContent=document.querySelector('[data-i18n="sw_start"]')?.textContent||'استئناف';}
+}
+function swLap(){if(!swRunning)return;swLapCount++;const d=document.getElementById('swLaps');d.innerHTML=`<div style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;"><span>دورة ${swLapCount}</span><span style="font-family:monospace;font-weight:700;">${fmtSw(swElapsed)}</span></div>`+d.innerHTML;}
+function swReset(){clearInterval(swInterval);swRunning=false;swElapsed=0;swLapCount=0;document.getElementById('swDisplay').textContent='00:00.00';document.getElementById('swLaps').innerHTML='';document.getElementById('swStartBtn').textContent=document.querySelector('[data-i18n="sw_start"]')?.textContent||'ابدأ';}
+// Timer
+let timerRunning=false,timerLeft=0,timerInterval=null;
+function fmtTimer(s){return`${pad(Math.floor(s/60))}:${pad(s%60)}`;}
+function timerToggle(){
+  if(!timerRunning){
+    if(timerLeft<=0){timerLeft=parseInt(document.getElementById('timerMin').value||0)*60+parseInt(document.getElementById('timerSec').value||0);if(!timerLeft)return;}
+    document.getElementById('timerDone').style.display='none';
+    timerInterval=setInterval(()=>{timerLeft--;document.getElementById('timerDisplay').textContent=fmtTimer(timerLeft);if(timerLeft<=0){clearInterval(timerInterval);timerRunning=false;document.getElementById('timerDone').style.display='block';document.getElementById('timerStartBtn').textContent='ابدأ';try{new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAA').play();}catch(e){}}},1000);
+    timerRunning=true;document.getElementById('timerStartBtn').textContent='إيقاف';
+  } else {clearInterval(timerInterval);timerRunning=false;document.getElementById('timerStartBtn').textContent='استئناف';}
+}
+function timerReset(){clearInterval(timerInterval);timerRunning=false;timerLeft=0;document.getElementById('timerDisplay').textContent='00:00';document.getElementById('timerDone').style.display='none';document.getElementById('timerStartBtn').textContent='ابدأ';}
+function switchMode(m){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${m}"]`).classList.add('active');
+  document.getElementById('section-sw').style.display=m==='sw'?'block':'none';
+  document.getElementById('section-timer').style.display=m==='timer'?'block':'none';
+}
+</script>
+<script src="i18n.js"></script>
+</body></html>
