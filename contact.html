@@ -52,7 +52,9 @@ function sendMessage() {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
-  if (!name || !email || !message) { alert(t.contact_error); return; }
+  if (!name || !email || !message) { showToast(t.contact_error, 'error'); return; }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!emailRe.test(email)) { showToast(t.contact_email_invalid || 'Invalid email', 'error'); return; }
   const mailto = `mailto:ahmed.amawi@outlook.com?subject=${encodeURIComponent('Message from ' + name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + '\nEmail: ' + email)}`;
   window.location.href = mailto;
 }
