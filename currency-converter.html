@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -91,20 +91,28 @@ function populateSelects() {
 
 async function fetchRates() {
   document.getElementById('loading').style.display = 'block';
-  try {
-    const res = await fetch('https://open.er-api.com/v6/latest/USD');
-    const data = await res.json();
-    if (data && data.rates) {
-      rates = data.rates;
-      document.getElementById('loading').style.display = 'none';
-      convert();
-    }
-  } catch(e) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('offline').style.display = 'block';
-    rates = {USD:1,EUR:0.92,GBP:0.79,SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,EGP:48.5,TRY:32.1,INR:83.2,JPY:149,CNY:7.24,CAD:1.36,AUD:1.53,CHF:0.89};
-    convert();
+  const apis = [
+    'https://open.er-api.com/v6/latest/USD',
+    'https://api.exchangerate-api.com/v4/latest/USD'
+  ];
+  for (const url of apis) {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const r = data.rates || data.conversion_rates;
+      if (r && r.EUR) {
+        rates = r;
+        document.getElementById('loading').style.display = 'none';
+        convert();
+        return;
+      }
+    } catch(e) {}
   }
+  // Both APIs failed — use approximate fallback rates silently
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('offline').style.display = 'block';
+  rates = {USD:1,EUR:0.92,GBP:0.79,SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,OMR:0.385,JOD:0.71,EGP:48.5,TRY:32.1,INR:83.2,JPY:149,CNY:7.24,CAD:1.36,AUD:1.53,CHF:0.89};
+  convert();
 }
 
 function convert() {
