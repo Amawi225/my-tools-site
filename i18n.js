@@ -1,0 +1,496 @@
+const T = {
+  ar: {
+    nav_home:'الرئيسية', nav_about:'من نحن', nav_contact:'تواصل معنا',
+    back:'← العودة للرئيسية', footer_about:'من نحن', footer_contact:'تواصل معنا',
+    footer_copy:'© 2026 أدواتي — كل الأدوات مجانية وخاصة',
+    hero_title:'أدواتك اليومية في مكان واحد',
+    hero_sub:'أدوات دقيقة وسريعة، تعمل مباشرة على متصفحك — بدون تسجيل وبدون إعلانات',
+    badge_count:'8 أدوات', badge_free:'مجانية 100%', badge_noreg:'بدون تسجيل', badge_privacy:'خصوصية تامة',
+    bmi_card_title:'حاسبة مؤشر الجسم', bmi_card_desc:'احسب مؤشر كتلة جسمك واعرف وضعك الصحي',
+    diet_card_title:'حاسبة السعرات والخطة الغذائية', diet_card_desc:'احسب احتياجك اليومي + خطة غذائية كاملة',
+    loan_card_title:'حاسبة القسط الشهري', loan_card_desc:'احسب قسط أي قرض أو تمويل بسهولة',
+    age_card_title:'حاسبة العمر', age_card_desc:'عمرك بالتفصيل — سنوات وأشهر وأيام',
+    discount_card_title:'حاسبة نسبة وخصم', discount_card_desc:'احسب النسب المئوية والخصومات بسرعة',
+    unit_card_title:'محول الوحدات', unit_card_desc:'حول بين وحدات الطول والوزن والحرارة',
+    pass_card_title:'مولد كلمات المرور', pass_card_desc:'كلمات مرور قوية وآمنة بضغطة واحدة',
+    word_card_title:'عداد الكلمات والأحرف', word_card_desc:'عداد فوري لمقالاتك ونصوصك',
+    start:'ابدأ ←',
+    bmi_title:'حاسبة مؤشر كتلة الجسم', bmi_sub:'اعرف وضعك الصحي في ثانية',
+    bmi_weight:'الوزن (كيلوغرام)', bmi_height:'الطول (سنتيمتر)', bmi_btn:'احسب المؤشر',
+    bmi_underweight:'نقص في الوزن', bmi_normal:'وزن طبيعي ✓', bmi_overweight:'زيادة في الوزن', bmi_obese:'سمنة', bmi_invalid:'الرجاء إدخال أرقام صحيحة',
+    age_title:'حاسبة العمر', age_sub:'عمرك بالتفصيل — سنوات وأشهر وأيام',
+    age_label:'تاريخ ميلادك', age_btn:'احسب عمري',
+    age_years:'سنة', age_months:'شهر', age_days:'يوم', age_total:'إجمالي الأيام', age_next:'يوم حتى عيد ميلادك', age_alert:'اختر تاريخ ميلادك',
+    loan_title:'حاسبة القسط الشهري', loan_sub:'احسب قسط أي قرض أو تمويل',
+    loan_amount:'مبلغ القرض', loan_rate:'نسبة الفائدة السنوية %', loan_years:'مدة السداد (بالسنوات)',
+    loan_monthly:'القسط الشهري', loan_total:'إجمالي المدفوع', loan_interest:'إجمالي الفائدة',
+    discount_title:'حاسبة نسبة وخصم', discount_sub:'احسب النسب المئوية والخصومات بسرعة',
+    tab_percent:'نسبة مئوية', tab_discount:'خصم',
+    percent_label1:'ما هي', percent_label2:'% من الرقم',
+    discount_label1:'السعر الأصلي', discount_label2:'نسبة الخصم %',
+    unit_title:'محول الوحدات', unit_sub:'حول بين وحدات الطول والوزن',
+    tab_length:'الطول', tab_weight:'الوزن', unit_value:'القيمة', unit_from:'من', unit_to:'إلى',
+    pass_title:'مولد كلمات المرور', pass_sub:'كلمات مرور قوية وآمنة بضغطة واحدة',
+    pass_length:'الطول:', pass_numbers:'أرقام (0–9)', pass_symbols:'رموز (!@#$)', pass_upper:'الأحرف الكبيرة',
+    pass_btn:'توليد كلمة مرور جديدة', pass_copied:'تم النسخ ✓',
+    word_title:'عداد الكلمات والأحرف', word_sub:'عداد فوري لمقالاتك ونصوصك',
+    word_words:'كلمة', word_chars:'حرف', word_nospace:'بدون مسافات', word_sentences:'جملة',
+    diet_title:'حاسبة السعرات والخطة الغذائية', diet_sub:'احسب احتياجك اليومي بدقة علمية',
+    diet_gender:'الجنس', diet_male:'ذكر', diet_female:'أنثى',
+    diet_age:'العمر', diet_weight:'الوزن (كغم)', diet_height:'الطول (سم)',
+    diet_activity:'مستوى النشاط', diet_goal:'الهدف', diet_btn:'احسب احتياجي اليومي',
+    diet_calories:'سعرة حرارية يومياً', diet_protein:'بروتين (غ)', diet_carb:'كارب (غ)', diet_fat:'دهون (غ)',
+    diet_act1:'قليل الحركة (مكتبي)', diet_act2:'نشاط خفيف (1–3 أيام رياضة)',
+    diet_act3:'نشاط متوسط (3–5 أيام رياضة)', diet_act4:'نشاط عالي (6–7 أيام رياضة)', diet_act5:'نشاط عالي جداً (رياضي / عمل بدني)',
+    diet_goal1:'نزول وزن', diet_goal2:'ثبات الوزن', diet_goal3:'زيادة وزن',
+    diet_goal4:'تنشيف الجسم', diet_goal5:'شد الجسم', diet_goal6:'زيادة كتلة العضلات',
+    diet_free_badge:'🎉 عرض خاص — أول 21 يوم مجاناً تماماً!',
+    diet_pro_title:'🔒 الخطة الغذائية الكاملة',
+    diet_pro_f1:'جدول وجبات يومي مفصّل (7 أيام)', diet_pro_f2:'قائمة بدائل الأطعمة حسب ذوقك',
+    diet_pro_f3:'ملف قابل للطباعة والتنزيل', diet_pro_f4:'تحديث أسبوعي حسب تقدمك',
+    diet_trial:'21 يوم مجاناً • بدون بطاقة ائتمانية', diet_pro_btn:'ابدأ تجربتك المجانية الآن',
+    diet_alert:'الرجاء تعبئة العمر والوزن والطول',
+    about_title:'من نحن', about_sub:'قصة أدواتي',
+    about_p1:'موقع "أدواتي" هو مجموعة أدوات إلكترونية مجانية وبسيطة، صُممت لمساعدتك في إنجاز حسابات ومهام يومية بسرعة وبدون تعقيد.',
+    about_p2:'هدفنا تقديم أدوات دقيقة وسهلة الاستخدام على أي جهاز، مع الحفاظ على خصوصية بياناتك — كل الحسابات تتم مباشرة على متصفحك.',
+    about_p3:'الموقع في تطوير مستمر، ونضيف أدوات جديدة بشكل دوري بناءً على احتياجات المستخدمين.',
+    contact_title:'تواصل معنا', contact_sub:'عندك اقتراح لأداة جديدة أو واجهت مشكلة؟ راسلنا',
+    contact_name:'الاسم', contact_email:'البريد الإلكتروني', contact_msg:'رسالتك',
+    contact_btn:'إرسال الرسالة', contact_error:'الرجاء تعبئة جميع الحقول',
+    word_placeholder:'اكتب أو الصق نصك هنا...',
+    signup_btn:'تسجيل', signup_title:'إنشاء حساب مجاني', signup_name:'الاسم', signup_email:'البريد الإلكتروني',
+    signup_submit:'إنشاء الحساب', signup_welcome:'مرحباً', signup_logout:'خروج',
+    signup_note:'اختياري — احفظ إعداداتك عبر الأجهزة',
+  },
+  en: {
+    nav_home:'Home', nav_about:'About', nav_contact:'Contact',
+    back:'← Back to Home', footer_about:'About', footer_contact:'Contact',
+    footer_copy:'© 2026 Adawati — All tools are free and private',
+    hero_title:'Your Daily Tools in One Place',
+    hero_sub:'Fast and accurate tools that run directly in your browser — no registration, no ads',
+    badge_count:'8 Tools', badge_free:'100% Free', badge_noreg:'No Registration', badge_privacy:'Full Privacy',
+    bmi_card_title:'BMI Calculator', bmi_card_desc:'Calculate your Body Mass Index and check your health',
+    diet_card_title:'Calorie & Diet Plan Calculator', diet_card_desc:'Calculate your daily needs + get a full diet plan',
+    loan_card_title:'Monthly Payment Calculator', loan_card_desc:'Calculate payments for any loan or financing',
+    age_card_title:'Age Calculator', age_card_desc:'Your exact age in years, months and days',
+    discount_card_title:'Discount Calculator', discount_card_desc:'Calculate percentages and discounts instantly',
+    unit_card_title:'Unit Converter', unit_card_desc:'Convert between length, weight and temperature units',
+    pass_card_title:'Password Generator', pass_card_desc:'Strong and secure passwords in one click',
+    word_card_title:'Word & Character Counter', word_card_desc:'Instant counter for your texts and articles',
+    start:'Start →',
+    bmi_title:'BMI Calculator', bmi_sub:'Know your health status in seconds',
+    bmi_weight:'Weight (kg)', bmi_height:'Height (cm)', bmi_btn:'Calculate BMI',
+    bmi_underweight:'Underweight', bmi_normal:'Normal weight ✓', bmi_overweight:'Overweight', bmi_obese:'Obese', bmi_invalid:'Please enter valid numbers',
+    age_title:'Age Calculator', age_sub:'Your exact age in years, months and days',
+    age_label:'Date of Birth', age_btn:'Calculate My Age',
+    age_years:'Years', age_months:'Months', age_days:'Days', age_total:'Total Days', age_next:'Days to Birthday', age_alert:'Please select your date of birth',
+    loan_title:'Monthly Payment Calculator', loan_sub:'Calculate payments for any loan or financing',
+    loan_amount:'Loan Amount', loan_rate:'Annual Interest Rate %', loan_years:'Repayment Period (Years)',
+    loan_monthly:'Monthly Payment', loan_total:'Total Amount Paid', loan_interest:'Total Interest',
+    discount_title:'Discount & Percentage Calculator', discount_sub:'Calculate percentages and discounts quickly',
+    tab_percent:'Percentage', tab_discount:'Discount',
+    percent_label1:'What is', percent_label2:'% of the number',
+    discount_label1:'Original Price', discount_label2:'Discount %',
+    unit_title:'Unit Converter', unit_sub:'Convert between length and weight units',
+    tab_length:'Length', tab_weight:'Weight', unit_value:'Value', unit_from:'From', unit_to:'To',
+    pass_title:'Password Generator', pass_sub:'Strong and secure passwords in one click',
+    pass_length:'Length:', pass_numbers:'Numbers (0–9)', pass_symbols:'Symbols (!@#$)', pass_upper:'Uppercase Letters',
+    pass_btn:'Generate New Password', pass_copied:'Copied ✓',
+    word_title:'Word & Character Counter', word_sub:'Instant counter for your texts and articles',
+    word_words:'Words', word_chars:'Characters', word_nospace:'Without Spaces', word_sentences:'Sentences',
+    diet_title:'Calorie & Diet Plan Calculator', diet_sub:'Calculate your daily needs with scientific accuracy',
+    diet_gender:'Gender', diet_male:'Male', diet_female:'Female',
+    diet_age:'Age', diet_weight:'Weight (kg)', diet_height:'Height (cm)',
+    diet_activity:'Activity Level', diet_goal:'Goal', diet_btn:'Calculate My Daily Needs',
+    diet_calories:'Calories per Day', diet_protein:'Protein (g)', diet_carb:'Carbs (g)', diet_fat:'Fat (g)',
+    diet_act1:'Sedentary (desk job)', diet_act2:'Light activity (1–3 days/week)',
+    diet_act3:'Moderate activity (3–5 days/week)', diet_act4:'High activity (6–7 days/week)', diet_act5:'Very active (athlete / physical work)',
+    diet_goal1:'Lose Weight', diet_goal2:'Maintain Weight', diet_goal3:'Gain Weight',
+    diet_goal4:'Body Shredding', diet_goal5:'Body Toning', diet_goal6:'Muscle Mass Building',
+    diet_free_badge:'🎉 Special Offer — First 21 Days Completely Free!',
+    diet_pro_title:'🔒 Complete Diet Plan',
+    diet_pro_f1:'Detailed daily meal schedule (7 days)', diet_pro_f2:'Food alternatives list based on your taste',
+    diet_pro_f3:'Printable and downloadable file', diet_pro_f4:'Weekly update based on your progress',
+    diet_trial:'21 days free • No credit card required', diet_pro_btn:'Start Your Free Trial Now',
+    diet_alert:'Please fill in age, weight and height',
+    about_title:'About Us', about_sub:'The story of Adawati',
+    about_p1:'"Adawati" is a collection of free and simple online tools, designed to help you complete daily calculations and tasks quickly and without complexity.',
+    about_p2:'Our goal is to provide accurate and easy-to-use tools on any device, while fully protecting your privacy — all calculations happen directly in your browser.',
+    about_p3:'The site is continuously evolving, and we regularly add new tools based on user needs.',
+    contact_title:'Contact Us', contact_sub:'Have a suggestion or found a problem? Write to us',
+    contact_name:'Name', contact_email:'Email Address', contact_msg:'Message',
+    contact_btn:'Send Message', contact_error:'Please fill in all fields',
+    word_placeholder:'Type or paste your text here...',
+    signup_btn:'Sign Up', signup_title:'Create Free Account', signup_name:'Name', signup_email:'Email',
+    signup_submit:'Create Account', signup_welcome:'Welcome', signup_logout:'Sign Out',
+    signup_note:'Optional — save your settings across devices',
+  },
+  fr: {
+    nav_home:'Accueil', nav_about:'À propos', nav_contact:'Contact',
+    back:'← Retour à l\'accueil', footer_about:'À propos', footer_contact:'Contact',
+    footer_copy:'© 2026 Adawati — Tous les outils sont gratuits et privés',
+    hero_title:'Vos outils quotidiens en un seul endroit',
+    hero_sub:'Outils rapides et précis, fonctionnant directement dans votre navigateur — sans inscription ni publicité',
+    badge_count:'8 Outils', badge_free:'100% Gratuit', badge_noreg:'Sans inscription', badge_privacy:'Confidentialité totale',
+    bmi_card_title:'Calculateur d\'IMC', bmi_card_desc:'Calculez votre indice de masse corporelle',
+    diet_card_title:'Calculateur de calories', diet_card_desc:'Calculez vos besoins quotidiens + plan alimentaire',
+    loan_card_title:'Calculateur de mensualité', loan_card_desc:'Calculez les mensualités pour n\'importe quel prêt',
+    age_card_title:'Calculateur d\'âge', age_card_desc:'Votre âge exact en années, mois et jours',
+    discount_card_title:'Calculateur de remise', discount_card_desc:'Calculez les pourcentages et remises instantanément',
+    unit_card_title:'Convertisseur d\'unités', unit_card_desc:'Convertissez entre unités de longueur et de poids',
+    pass_card_title:'Générateur de mot de passe', pass_card_desc:'Mots de passe forts en un clic',
+    word_card_title:'Compteur de mots', word_card_desc:'Compteur instantané pour vos textes',
+    start:'Commencer →',
+    bmi_title:'Calculateur d\'IMC', bmi_sub:'Connaissez votre état de santé en secondes',
+    bmi_weight:'Poids (kg)', bmi_height:'Taille (cm)', bmi_btn:'Calculer l\'IMC',
+    bmi_underweight:'Insuffisance pondérale', bmi_normal:'Poids normal ✓', bmi_overweight:'Surpoids', bmi_obese:'Obésité', bmi_invalid:'Veuillez entrer des nombres valides',
+    age_title:'Calculateur d\'âge', age_sub:'Votre âge exact en années, mois et jours',
+    age_label:'Date de naissance', age_btn:'Calculer mon âge',
+    age_years:'Ans', age_months:'Mois', age_days:'Jours', age_total:'Total des jours', age_next:'Jours jusqu\'à votre anniversaire', age_alert:'Veuillez sélectionner votre date de naissance',
+    loan_title:'Calculateur de mensualité', loan_sub:'Calculez les mensualités pour n\'importe quel prêt',
+    loan_amount:'Montant du prêt', loan_rate:'Taux d\'intérêt annuel %', loan_years:'Durée (années)',
+    loan_monthly:'Mensualité', loan_total:'Total payé', loan_interest:'Total des intérêts',
+    discount_title:'Calculateur de remise', discount_sub:'Calculez les pourcentages et remises rapidement',
+    tab_percent:'Pourcentage', tab_discount:'Remise',
+    percent_label1:'Quelle est', percent_label2:'% du nombre',
+    discount_label1:'Prix original', discount_label2:'Remise %',
+    unit_title:'Convertisseur d\'unités', unit_sub:'Convertissez entre unités de longueur et de poids',
+    tab_length:'Longueur', tab_weight:'Poids', unit_value:'Valeur', unit_from:'De', unit_to:'À',
+    pass_title:'Générateur de mot de passe', pass_sub:'Mots de passe forts et sécurisés en un clic',
+    pass_length:'Longueur :', pass_numbers:'Chiffres (0–9)', pass_symbols:'Symboles (!@#$)', pass_upper:'Majuscules',
+    pass_btn:'Générer un nouveau mot de passe', pass_copied:'Copié ✓',
+    word_title:'Compteur de mots et caractères', word_sub:'Compteur instantané pour vos textes',
+    word_words:'Mots', word_chars:'Caractères', word_nospace:'Sans espaces', word_sentences:'Phrases',
+    diet_title:'Calculateur de calories', diet_sub:'Calculez vos besoins quotidiens avec précision',
+    diet_gender:'Genre', diet_male:'Homme', diet_female:'Femme',
+    diet_age:'Âge', diet_weight:'Poids (kg)', diet_height:'Taille (cm)',
+    diet_activity:'Niveau d\'activité', diet_goal:'Objectif', diet_btn:'Calculer mes besoins quotidiens',
+    diet_calories:'Calories par jour', diet_protein:'Protéines (g)', diet_carb:'Glucides (g)', diet_fat:'Graisses (g)',
+    diet_act1:'Sédentaire (bureau)', diet_act2:'Activité légère (1–3 jours/semaine)',
+    diet_act3:'Activité modérée (3–5 jours/semaine)', diet_act4:'Activité élevée (6–7 jours/semaine)', diet_act5:'Très actif (athlète / travail physique)',
+    diet_goal1:'Perdre du poids', diet_goal2:'Maintenir le poids', diet_goal3:'Prendre du poids',
+    diet_goal4:'Sèche musculaire', diet_goal5:'Tonifier le corps', diet_goal6:'Prise de masse musculaire',
+    diet_free_badge:'🎉 Offre spéciale — 21 premiers jours totalement gratuits!',
+    diet_pro_title:'🔒 Plan alimentaire complet',
+    diet_pro_f1:'Programme de repas détaillé (7 jours)', diet_pro_f2:'Liste d\'alternatives alimentaires',
+    diet_pro_f3:'Fichier imprimable et téléchargeable', diet_pro_f4:'Mise à jour hebdomadaire',
+    diet_trial:'21 jours gratuits • Sans carte bancaire', diet_pro_btn:'Commencer l\'essai gratuit',
+    diet_alert:'Veuillez remplir l\'âge, le poids et la taille',
+    about_title:'À propos de nous', about_sub:'L\'histoire d\'Adawati',
+    about_p1:'"Adawati" est une collection d\'outils en ligne gratuits et simples, conçus pour vous aider à effectuer des calculs et tâches quotidiennes rapidement.',
+    about_p2:'Notre objectif est de fournir des outils précis sur n\'importe quel appareil, tout en protégeant totalement votre vie privée — tous les calculs s\'effectuent dans votre navigateur.',
+    about_p3:'Le site est en développement continu, et nous ajoutons régulièrement de nouveaux outils.',
+    contact_title:'Contactez-nous', contact_sub:'Une suggestion ou un problème? Écrivez-nous',
+    contact_name:'Nom', contact_email:'Adresse e-mail', contact_msg:'Message',
+    contact_btn:'Envoyer le message', contact_error:'Veuillez remplir tous les champs',
+    word_placeholder:'Tapez ou collez votre texte ici...',
+    signup_btn:'S\'inscrire', signup_title:'Créer un compte gratuit', signup_name:'Nom', signup_email:'E-mail',
+    signup_submit:'Créer le compte', signup_welcome:'Bienvenue', signup_logout:'Déconnexion',
+    signup_note:'Facultatif — enregistrez vos paramètres sur tous vos appareils',
+  },
+  es: {
+    nav_home:'Inicio', nav_about:'Sobre nosotros', nav_contact:'Contacto',
+    back:'← Volver al inicio', footer_about:'Sobre nosotros', footer_contact:'Contacto',
+    footer_copy:'© 2026 Adawati — Todas las herramientas son gratuitas y privadas',
+    hero_title:'Tus herramientas diarias en un solo lugar',
+    hero_sub:'Herramientas rápidas y precisas que funcionan en tu navegador — sin registro ni anuncios',
+    badge_count:'8 Herramientas', badge_free:'100% Gratis', badge_noreg:'Sin registro', badge_privacy:'Privacidad total',
+    bmi_card_title:'Calculadora de IMC', bmi_card_desc:'Calcula tu índice de masa corporal',
+    diet_card_title:'Calculadora de calorías', diet_card_desc:'Calcula tus necesidades + plan de dieta',
+    loan_card_title:'Calculadora de cuotas', loan_card_desc:'Calcula las cuotas para cualquier préstamo',
+    age_card_title:'Calculadora de edad', age_card_desc:'Tu edad exacta en años, meses y días',
+    discount_card_title:'Calculadora de descuento', discount_card_desc:'Calcula porcentajes y descuentos al instante',
+    unit_card_title:'Conversor de unidades', unit_card_desc:'Convierte entre unidades de longitud y peso',
+    pass_card_title:'Generador de contraseñas', pass_card_desc:'Contraseñas fuertes con un clic',
+    word_card_title:'Contador de palabras', word_card_desc:'Contador instantáneo para tus textos',
+    start:'Empezar →',
+    bmi_title:'Calculadora de IMC', bmi_sub:'Conoce tu estado de salud en segundos',
+    bmi_weight:'Peso (kg)', bmi_height:'Altura (cm)', bmi_btn:'Calcular IMC',
+    bmi_underweight:'Bajo peso', bmi_normal:'Peso normal ✓', bmi_overweight:'Sobrepeso', bmi_obese:'Obesidad', bmi_invalid:'Por favor ingresa números válidos',
+    age_title:'Calculadora de edad', age_sub:'Tu edad exacta en años, meses y días',
+    age_label:'Fecha de nacimiento', age_btn:'Calcular mi edad',
+    age_years:'Años', age_months:'Meses', age_days:'Días', age_total:'Total de días', age_next:'Días hasta tu cumpleaños', age_alert:'Por favor selecciona tu fecha de nacimiento',
+    loan_title:'Calculadora de cuota mensual', loan_sub:'Calcula las cuotas para cualquier préstamo',
+    loan_amount:'Monto del préstamo', loan_rate:'Tasa de interés anual %', loan_years:'Plazo (años)',
+    loan_monthly:'Cuota mensual', loan_total:'Total pagado', loan_interest:'Total de intereses',
+    discount_title:'Calculadora de descuento', discount_sub:'Calcula porcentajes y descuentos rápidamente',
+    tab_percent:'Porcentaje', tab_discount:'Descuento',
+    percent_label1:'¿Cuánto es', percent_label2:'% del número',
+    discount_label1:'Precio original', discount_label2:'Descuento %',
+    unit_title:'Conversor de unidades', unit_sub:'Convierte entre unidades de longitud y peso',
+    tab_length:'Longitud', tab_weight:'Peso', unit_value:'Valor', unit_from:'De', unit_to:'A',
+    pass_title:'Generador de contraseñas', pass_sub:'Contraseñas fuertes y seguras con un clic',
+    pass_length:'Longitud:', pass_numbers:'Números (0–9)', pass_symbols:'Símbolos (!@#$)', pass_upper:'Letras mayúsculas',
+    pass_btn:'Generar nueva contraseña', pass_copied:'Copiado ✓',
+    word_title:'Contador de palabras y caracteres', word_sub:'Contador instantáneo para tus textos',
+    word_words:'Palabras', word_chars:'Caracteres', word_nospace:'Sin espacios', word_sentences:'Oraciones',
+    diet_title:'Calculadora de calorías', diet_sub:'Calcula tus necesidades diarias con precisión',
+    diet_gender:'Género', diet_male:'Masculino', diet_female:'Femenino',
+    diet_age:'Edad', diet_weight:'Peso (kg)', diet_height:'Altura (cm)',
+    diet_activity:'Nivel de actividad', diet_goal:'Objetivo', diet_btn:'Calcular mis necesidades diarias',
+    diet_calories:'Calorías por día', diet_protein:'Proteínas (g)', diet_carb:'Carbohidratos (g)', diet_fat:'Grasas (g)',
+    diet_act1:'Sedentario (oficina)', diet_act2:'Actividad ligera (1–3 días/semana)',
+    diet_act3:'Actividad moderada (3–5 días/semana)', diet_act4:'Actividad alta (6–7 días/semana)', diet_act5:'Muy activo (atleta / trabajo físico)',
+    diet_goal1:'Perder peso', diet_goal2:'Mantener peso', diet_goal3:'Ganar peso',
+    diet_goal4:'Definición muscular', diet_goal5:'Tonificación corporal', diet_goal6:'Aumento de masa muscular',
+    diet_free_badge:'🎉 ¡Oferta especial — Primeros 21 días completamente gratis!',
+    diet_pro_title:'🔒 Plan de dieta completo',
+    diet_pro_f1:'Horario de comidas detallado (7 días)', diet_pro_f2:'Lista de alternativas alimentarias',
+    diet_pro_f3:'Archivo imprimible y descargable', diet_pro_f4:'Actualización semanal según tu progreso',
+    diet_trial:'21 días gratis • Sin tarjeta de crédito', diet_pro_btn:'Comenzar prueba gratuita',
+    diet_alert:'Por favor completa la edad, peso y altura',
+    about_title:'Sobre nosotros', about_sub:'La historia de Adawati',
+    about_p1:'"Adawati" es una colección de herramientas en línea gratuitas y simples, diseñadas para ayudarte a realizar cálculos y tareas diarias rápidamente.',
+    about_p2:'Nuestro objetivo es proporcionar herramientas precisas en cualquier dispositivo, protegiendo totalmente tu privacidad — todos los cálculos se realizan en tu navegador.',
+    about_p3:'El sitio está en desarrollo continuo, y añadimos nuevas herramientas regularmente.',
+    contact_title:'Contáctenos', contact_sub:'¿Sugerencia o problema? Escríbenos',
+    contact_name:'Nombre', contact_email:'Correo electrónico', contact_msg:'Mensaje',
+    contact_btn:'Enviar mensaje', contact_error:'Por favor completa todos los campos',
+    word_placeholder:'Escribe o pega tu texto aquí...',
+    signup_btn:'Registrarse', signup_title:'Crear cuenta gratis', signup_name:'Nombre', signup_email:'Correo electrónico',
+    signup_submit:'Crear cuenta', signup_welcome:'Bienvenido', signup_logout:'Cerrar sesión',
+    signup_note:'Opcional — guarda tus ajustes en todos tus dispositivos',
+  },
+  de: {
+    nav_home:'Startseite', nav_about:'Über uns', nav_contact:'Kontakt',
+    back:'← Zurück zur Startseite', footer_about:'Über uns', footer_contact:'Kontakt',
+    footer_copy:'© 2026 Adawati — Alle Tools sind kostenlos und privat',
+    hero_title:'Ihre täglichen Tools an einem Ort',
+    hero_sub:'Schnelle und genaue Tools, die direkt in Ihrem Browser funktionieren — ohne Registrierung und Werbung',
+    badge_count:'8 Tools', badge_free:'100% Kostenlos', badge_noreg:'Ohne Registrierung', badge_privacy:'Volle Privatsphäre',
+    bmi_card_title:'BMI-Rechner', bmi_card_desc:'Berechnen Sie Ihren Body-Mass-Index',
+    diet_card_title:'Kalorienrechner', diet_card_desc:'Berechnen Sie Ihren täglichen Bedarf + Ernährungsplan',
+    loan_card_title:'Kreditrechner', loan_card_desc:'Berechnen Sie die Raten für jeden Kredit',
+    age_card_title:'Altersrechner', age_card_desc:'Ihr genaues Alter in Jahren, Monaten und Tagen',
+    discount_card_title:'Rabattrechner', discount_card_desc:'Prozentsätze und Rabatte sofort berechnen',
+    unit_card_title:'Einheitenumrechner', unit_card_desc:'Konvertieren Sie Längen- und Gewichtseinheiten',
+    pass_card_title:'Passwort-Generator', pass_card_desc:'Starke Passwörter mit einem Klick',
+    word_card_title:'Wörterzähler', word_card_desc:'Sofortzähler für Ihre Texte',
+    start:'Starten →',
+    bmi_title:'BMI-Rechner', bmi_sub:'Kennen Sie Ihren Gesundheitsstatus in Sekunden',
+    bmi_weight:'Gewicht (kg)', bmi_height:'Größe (cm)', bmi_btn:'BMI berechnen',
+    bmi_underweight:'Untergewicht', bmi_normal:'Normalgewicht ✓', bmi_overweight:'Übergewicht', bmi_obese:'Fettleibigkeit', bmi_invalid:'Bitte gültige Zahlen eingeben',
+    age_title:'Altersrechner', age_sub:'Ihr genaues Alter in Jahren, Monaten und Tagen',
+    age_label:'Geburtsdatum', age_btn:'Mein Alter berechnen',
+    age_years:'Jahre', age_months:'Monate', age_days:'Tage', age_total:'Gesamttage', age_next:'Tage bis zum Geburtstag', age_alert:'Bitte wählen Sie Ihr Geburtsdatum',
+    loan_title:'Kreditrechner', loan_sub:'Berechnen Sie die Raten für jeden Kredit',
+    loan_amount:'Kreditbetrag', loan_rate:'Jährlicher Zinssatz %', loan_years:'Laufzeit (Jahre)',
+    loan_monthly:'Monatliche Rate', loan_total:'Gesamtzahlung', loan_interest:'Gesamtzinsen',
+    discount_title:'Rabattrechner', discount_sub:'Prozentsätze und Rabatte schnell berechnen',
+    tab_percent:'Prozentsatz', tab_discount:'Rabatt',
+    percent_label1:'Wie viel ist', percent_label2:'% der Zahl',
+    discount_label1:'Originalpreis', discount_label2:'Rabatt %',
+    unit_title:'Einheitenumrechner', unit_sub:'Konvertieren Sie Längen- und Gewichtseinheiten',
+    tab_length:'Länge', tab_weight:'Gewicht', unit_value:'Wert', unit_from:'Von', unit_to:'Nach',
+    pass_title:'Passwort-Generator', pass_sub:'Starke und sichere Passwörter mit einem Klick',
+    pass_length:'Länge:', pass_numbers:'Zahlen (0–9)', pass_symbols:'Symbole (!@#$)', pass_upper:'Großbuchstaben',
+    pass_btn:'Neues Passwort generieren', pass_copied:'Kopiert ✓',
+    word_title:'Wörter- und Zeichenzähler', word_sub:'Sofortzähler für Ihre Texte',
+    word_words:'Wörter', word_chars:'Zeichen', word_nospace:'Ohne Leerzeichen', word_sentences:'Sätze',
+    diet_title:'Kalorienrechner', diet_sub:'Berechnen Sie Ihren täglichen Bedarf',
+    diet_gender:'Geschlecht', diet_male:'Männlich', diet_female:'Weiblich',
+    diet_age:'Alter', diet_weight:'Gewicht (kg)', diet_height:'Größe (cm)',
+    diet_activity:'Aktivitätsniveau', diet_goal:'Ziel', diet_btn:'Meinen täglichen Bedarf berechnen',
+    diet_calories:'Kalorien pro Tag', diet_protein:'Protein (g)', diet_carb:'Kohlenhydrate (g)', diet_fat:'Fett (g)',
+    diet_act1:'Sitzend (Bürojob)', diet_act2:'Leichte Aktivität (1–3 Tage/Woche)',
+    diet_act3:'Mäßige Aktivität (3–5 Tage/Woche)', diet_act4:'Hohe Aktivität (6–7 Tage/Woche)', diet_act5:'Sehr aktiv (Athlet / körperliche Arbeit)',
+    diet_goal1:'Gewicht verlieren', diet_goal2:'Gewicht halten', diet_goal3:'Gewicht zunehmen',
+    diet_goal4:'Körperdefinition', diet_goal5:'Körperstraffung', diet_goal6:'Muskelaufbau',
+    diet_free_badge:'🎉 Sonderangebot — Erste 21 Tage völlig kostenlos!',
+    diet_pro_title:'🔒 Vollständiger Ernährungsplan',
+    diet_pro_f1:'Detaillierter Mahlzeitenplan (7 Tage)', diet_pro_f2:'Liste von Lebensmittelalternativen',
+    diet_pro_f3:'Druckbare und herunterladbare Datei', diet_pro_f4:'Wöchentliche Aktualisierung',
+    diet_trial:'21 Tage kostenlos • Keine Kreditkarte', diet_pro_btn:'Kostenlose Testversion starten',
+    diet_alert:'Bitte Alter, Gewicht und Größe eingeben',
+    about_title:'Über uns', about_sub:'Die Geschichte von Adawati',
+    about_p1:'"Adawati" ist eine Sammlung kostenloser Online-Tools, die entwickelt wurden, um tägliche Berechnungen schnell und unkompliziert zu erledigen.',
+    about_p2:'Unser Ziel ist es, genaue Tools auf jedem Gerät bereitzustellen und dabei Ihre Privatsphäre vollständig zu schützen — alle Berechnungen erfolgen in Ihrem Browser.',
+    about_p3:'Die Website wird kontinuierlich weiterentwickelt, und wir fügen regelmäßig neue Tools hinzu.',
+    contact_title:'Kontaktieren Sie uns', contact_sub:'Vorschlag oder Problem? Schreiben Sie uns',
+    contact_name:'Name', contact_email:'E-Mail-Adresse', contact_msg:'Nachricht',
+    contact_btn:'Nachricht senden', contact_error:'Bitte alle Felder ausfüllen',
+    word_placeholder:'Geben Sie Ihren Text hier ein oder fügen Sie ihn ein...',
+    signup_btn:'Registrieren', signup_title:'Kostenloses Konto erstellen', signup_name:'Name', signup_email:'E-Mail',
+    signup_submit:'Konto erstellen', signup_welcome:'Willkommen', signup_logout:'Abmelden',
+    signup_note:'Optional — Einstellungen auf allen Geräten speichern',
+  },
+  ru: {
+    nav_home:'Главная', nav_about:'О нас', nav_contact:'Контакт',
+    back:'← Назад на главную', footer_about:'О нас', footer_contact:'Контакт',
+    footer_copy:'© 2026 Adawati — Все инструменты бесплатны и конфиденциальны',
+    hero_title:'Ваши ежедневные инструменты в одном месте',
+    hero_sub:'Быстрые и точные инструменты, работающие прямо в вашем браузере — без регистрации и рекламы',
+    badge_count:'8 инструментов', badge_free:'100% бесплатно', badge_noreg:'Без регистрации', badge_privacy:'Полная конфиденциальность',
+    bmi_card_title:'Калькулятор ИМТ', bmi_card_desc:'Вычислите индекс массы тела',
+    diet_card_title:'Калькулятор калорий', diet_card_desc:'Рассчитайте ежедневные потребности + план питания',
+    loan_card_title:'Калькулятор платежей', loan_card_desc:'Рассчитайте платежи по любому кредиту',
+    age_card_title:'Калькулятор возраста', age_card_desc:'Ваш точный возраст в годах, месяцах и днях',
+    discount_card_title:'Калькулятор скидок', discount_card_desc:'Мгновенный расчёт процентов и скидок',
+    unit_card_title:'Конвертер единиц', unit_card_desc:'Конвертируйте единицы длины и веса',
+    pass_card_title:'Генератор паролей', pass_card_desc:'Надёжные пароли одним кликом',
+    word_card_title:'Счётчик слов', word_card_desc:'Мгновенный счётчик для ваших текстов',
+    start:'Начать →',
+    bmi_title:'Калькулятор ИМТ', bmi_sub:'Узнайте своё состояние здоровья за секунды',
+    bmi_weight:'Вес (кг)', bmi_height:'Рост (см)', bmi_btn:'Рассчитать ИМТ',
+    bmi_underweight:'Недостаточный вес', bmi_normal:'Нормальный вес ✓', bmi_overweight:'Избыточный вес', bmi_obese:'Ожирение', bmi_invalid:'Пожалуйста, введите корректные числа',
+    age_title:'Калькулятор возраста', age_sub:'Ваш точный возраст в годах, месяцах и днях',
+    age_label:'Дата рождения', age_btn:'Рассчитать мой возраст',
+    age_years:'Лет', age_months:'Месяцев', age_days:'Дней', age_total:'Всего дней', age_next:'Дней до дня рождения', age_alert:'Пожалуйста, выберите дату рождения',
+    loan_title:'Калькулятор платежей', loan_sub:'Рассчитайте платежи по любому кредиту',
+    loan_amount:'Сумма кредита', loan_rate:'Годовая процентная ставка %', loan_years:'Срок погашения (лет)',
+    loan_monthly:'Ежемесячный платёж', loan_total:'Итого выплачено', loan_interest:'Итого процентов',
+    discount_title:'Калькулятор скидок', discount_sub:'Быстрый расчёт процентов и скидок',
+    tab_percent:'Процент', tab_discount:'Скидка',
+    percent_label1:'Сколько составляет', percent_label2:'% от числа',
+    discount_label1:'Исходная цена', discount_label2:'Скидка %',
+    unit_title:'Конвертер единиц', unit_sub:'Конвертируйте единицы длины и веса',
+    tab_length:'Длина', tab_weight:'Вес', unit_value:'Значение', unit_from:'Из', unit_to:'В',
+    pass_title:'Генератор паролей', pass_sub:'Надёжные и безопасные пароли одним кликом',
+    pass_length:'Длина:', pass_numbers:'Цифры (0–9)', pass_symbols:'Символы (!@#$)', pass_upper:'Заглавные буквы',
+    pass_btn:'Создать новый пароль', pass_copied:'Скопировано ✓',
+    word_title:'Счётчик слов и символов', word_sub:'Мгновенный счётчик для ваших текстов',
+    word_words:'Слов', word_chars:'Символов', word_nospace:'Без пробелов', word_sentences:'Предложений',
+    diet_title:'Калькулятор калорий', diet_sub:'Рассчитайте ежедневные потребности',
+    diet_gender:'Пол', diet_male:'Мужской', diet_female:'Женский',
+    diet_age:'Возраст', diet_weight:'Вес (кг)', diet_height:'Рост (см)',
+    diet_activity:'Уровень активности', diet_goal:'Цель', diet_btn:'Рассчитать мои потребности',
+    diet_calories:'Калорий в день', diet_protein:'Белки (г)', diet_carb:'Углеводы (г)', diet_fat:'Жиры (г)',
+    diet_act1:'Сидячий образ жизни', diet_act2:'Лёгкая активность (1–3 дня/неделю)',
+    diet_act3:'Умеренная активность (3–5 дней/неделю)', diet_act4:'Высокая активность (6–7 дней/неделю)', diet_act5:'Очень активный (спортсмен / физический труд)',
+    diet_goal1:'Похудеть', diet_goal2:'Сохранить вес', diet_goal3:'Набрать вес',
+    diet_goal4:'Сушка тела', diet_goal5:'Тонус тела', diet_goal6:'Набор мышечной массы',
+    diet_free_badge:'🎉 Специальное предложение — первые 21 день бесплатно!',
+    diet_pro_title:'🔒 Полный план питания',
+    diet_pro_f1:'Подробный план питания (7 дней)', diet_pro_f2:'Список альтернативных продуктов',
+    diet_pro_f3:'Файл для печати и скачивания', diet_pro_f4:'Еженедельное обновление',
+    diet_trial:'21 день бесплатно • Без кредитной карты', diet_pro_btn:'Начать бесплатный пробный период',
+    diet_alert:'Пожалуйста, заполните возраст, вес и рост',
+    about_title:'О нас', about_sub:'История Adawati',
+    about_p1:'"Adawati" — это коллекция бесплатных онлайн-инструментов для быстрого выполнения ежедневных вычислений.',
+    about_p2:'Наша цель — предоставить точные инструменты на любом устройстве, полностью защищая вашу конфиденциальность — все вычисления выполняются в вашем браузере.',
+    about_p3:'Сайт постоянно развивается, и мы регулярно добавляем новые инструменты.',
+    contact_title:'Свяжитесь с нами', contact_sub:'Есть предложение или проблема? Напишите нам',
+    contact_name:'Имя', contact_email:'Электронная почта', contact_msg:'Сообщение',
+    contact_btn:'Отправить сообщение', contact_error:'Пожалуйста, заполните все поля',
+    word_placeholder:'Введите или вставьте текст здесь...',
+    signup_btn:'Регистрация', signup_title:'Создать бесплатный аккаунт', signup_name:'Имя', signup_email:'Электронная почта',
+    signup_submit:'Создать аккаунт', signup_welcome:'Добро пожаловать', signup_logout:'Выйти',
+    signup_note:'Необязательно — сохраняйте настройки на всех устройствах',
+  }
+};
+
+const LABELS = {ar:'عر', en:'EN', fr:'FR', es:'ES', de:'DE', ru:'RU'};
+
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  const t = T[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.textContent = t[k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const k = el.getAttribute('data-i18n-ph');
+    if (t[k] !== undefined) el.placeholder = t[k];
+  });
+  const cl = document.getElementById('currentLang');
+  if (cl) cl.textContent = LABELS[lang] || lang.toUpperCase();
+  const menu = document.getElementById('langMenu');
+  if (menu) menu.classList.remove('open');
+  updateSignupBtn();
+}
+
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.lang-switcher')) {
+    const m = document.getElementById('langMenu');
+    if (m) m.classList.remove('open');
+  }
+});
+
+function updateSignupBtn() {
+  const btn = document.getElementById('signupNavBtn');
+  if (!btn) return;
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const user = getUser();
+  if (user) {
+    btn.textContent = '👤 ' + user.name.split(' ')[0];
+    btn.onclick = openSignup;
+  } else {
+    btn.textContent = t.signup_btn || 'Sign Up';
+    btn.onclick = openSignup;
+  }
+}
+
+function getUser() {
+  try { return JSON.parse(localStorage.getItem('adawati_user')); } catch { return null; }
+}
+
+function openSignup() {
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const user = getUser();
+  const existing = document.getElementById('signupModal');
+  if (existing) existing.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'signupModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+
+  if (user) {
+    modal.innerHTML = `
+      <div style="background:#fff;border-radius:16px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.15);text-align:center;">
+        <div style="font-size:48px;margin-bottom:12px;">👤</div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:4px;">${t.signup_welcome}, ${user.name}!</div>
+        <div style="font-size:14px;color:#64748b;margin-bottom:24px;">${user.email}</div>
+        <button onclick="logoutUser()" style="width:100%;padding:12px;background:#ef4444;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:8px;">${t.signup_logout}</button>
+        <button onclick="document.getElementById('signupModal').remove()" style="width:100%;padding:12px;background:#f1f5f9;color:#334155;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">✕</button>
+      </div>`;
+  } else {
+    modal.innerHTML = `
+      <div style="background:#fff;border-radius:16px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.15);" dir="${lang==='ar'?'rtl':'ltr'}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="font-size:19px;font-weight:700;">${t.signup_title}</div>
+          <button onclick="document.getElementById('signupModal').remove()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#94a3b8;">✕</button>
+        </div>
+        <div style="font-size:13px;color:#64748b;margin-bottom:20px;">${t.signup_note}</div>
+        <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">${t.signup_name}</label>
+        <input id="su_name" type="text" placeholder="${t.signup_name}" style="width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:15px;font-family:inherit;margin-bottom:14px;box-sizing:border-box;">
+        <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">${t.signup_email}</label>
+        <input id="su_email" type="email" placeholder="example@email.com" dir="ltr" style="width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:15px;font-family:inherit;margin-bottom:20px;box-sizing:border-box;">
+        <button onclick="submitSignup('${lang}')" style="width:100%;padding:12px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">${t.signup_submit}</button>
+      </div>`;
+  }
+
+  modal.addEventListener('click', function(e) { if (e.target === modal) modal.remove(); });
+  document.body.appendChild(modal);
+  const nameInput = document.getElementById('su_name');
+  if (nameInput) nameInput.focus();
+}
+
+function submitSignup(lang) {
+  const name = (document.getElementById('su_name').value || '').trim();
+  const email = (document.getElementById('su_email').value || '').trim();
+  const t = T[lang] || T.ar;
+  if (!name || !email) return;
+  localStorage.setItem('adawati_user', JSON.stringify({ name, email }));
+  document.getElementById('signupModal').remove();
+  updateSignupBtn();
+}
+
+function logoutUser() {
+  localStorage.removeItem('adawati_user');
+  document.getElementById('signupModal').remove();
+  updateSignupBtn();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  setLang(localStorage.getItem('lang') || 'ar');
+  updateSignupBtn();
+});
