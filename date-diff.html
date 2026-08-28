@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حساب الفرق بين تاريخين — عدد الأيام والأسابيع والأشهر مجاناً</title>
+<meta name="description" content="احسب الفرق بين تاريخين مجاناً. يعطيك عدد الأيام والأسابيع والأشهر والسنوات بين أي تاريخين.">
+<meta name="keywords" content="حساب الفرق بين تاريخين, عدد الأيام بين تاريخين, date difference, فرق التاريخ, حاسبة التاريخ">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/date-diff.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fff7ed;">📆</div>
+    <div class="card-title">حساب الفرق بين تاريخين</div>
+    <div class="card-subtitle">أيام، أسابيع، أشهر وسنوات بين أي تاريخين</div>
+    <div class="divider"></div>
+
+    <div class="row">
+      <div>
+        <label for="dateFrom">التاريخ الأول (من)</label>
+        <input type="date" id="dateFrom" onchange="calculate()">
+      </div>
+      <div>
+        <label for="dateTo">التاريخ الثاني (إلى)</label>
+        <input type="date" id="dateTo" onchange="calculate()">
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+      <button onclick="setPreset('today')" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">من اليوم</button>
+      <button onclick="setPreset('newYear')" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رأس السنة</button>
+      <button onclick="setPreset('ramadan')" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رمضان 2027</button>
+    </div>
+
+    <div id="ddResult" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="totalDaysDisplay"></div>
+        <div class="result-label">يوم إجمالاً</div>
+      </div>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-box">
+          <div class="stat-val" id="yearsDisplay">0</div>
+          <div class="stat-lbl">سنة</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="monthsDisplay">0</div>
+          <div class="stat-lbl">شهر</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="daysDisplay">0</div>
+          <div class="stat-lbl">يوم</div>
+        </div>
+      </div>
+      <div class="stat-grid" style="margin-top:8px;">
+        <div class="stat-box" style="background:#f0f9ff;">
+          <div class="stat-val" id="weeksDisplay" style="color:#0369a1;">0</div>
+          <div class="stat-lbl">أسبوع</div>
+        </div>
+        <div class="stat-box" style="background:#fdf4ff;">
+          <div class="stat-val" id="hoursDisplay" style="color:#7c3aed;">0</div>
+          <div class="stat-lbl">ساعة</div>
+        </div>
+        <div class="stat-box" style="background:#fefce8;">
+          <div class="stat-val" id="workdaysDisplay" style="color:#ca8a04;">0</div>
+          <div class="stat-lbl">يوم عمل (تقريبي)</div>
+        </div>
+      </div>
+      <div id="ddNote" style="margin-top:12px;padding:12px 14px;background:var(--surface-2);border-radius:8px;font-size:14px;line-height:1.8;"></div>
+    </div>
+  </div>
+
+  <!-- Quick date tools -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">⚡ أحداث قادمة</div>
+    <div id="upcomingList" style="margin-top:10px;font-size:14px;line-height:2.2;"></div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب عدد أيام العمل بين تاريخين؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير. في عُمان أيام العمل الأسبوعية عادة 5 أيام (الأحد-الخميس).</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لماذا تختلف نتيجة السنوات والأشهر أحياناً؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📅 حاسبة العمر</a>
+      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌙 محول الهجري</a>
+      <a href="stopwatch.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">⏱️ ساعة الإيقاف</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="privacy.html">الخصوصية</a>
+    </div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const MONTHS_AR = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const DAYS_AR = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+
+function setPreset(type) {
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+  document.getElementById('dateFrom').value = todayStr;
+  if (type === 'today') {
+    // just set from to today, leave to empty or set to next week
+    document.getElementById('dateTo').value = todayStr;
+  } else if (type === 'newYear') {
+    document.getElementById('dateTo').value = (today.getFullYear() + 1) + '-01-01';
+  } else if (type === 'ramadan') {
+    // Ramadan 2027 approx Feb 17 2027
+    document.getElementById('dateTo').value = '2027-02-17';
+  }
+  calculate();
+}
+
+function diffMonths(from, to) {
+  let years = to.getFullYear() - from.getFullYear();
+  let months = to.getMonth() - from.getMonth();
+  let days = to.getDate() - from.getDate();
+  if (days < 0) { months--; }
+  if (months < 0) { months += 12; years--; }
+  // remaining days
+  const tempDate = new Date(from.getFullYear() + years, from.getMonth() + months, from.getDate());
+  const remDays = Math.round((to - tempDate) / (1000 * 60 * 60 * 24));
+  return { years: years, months: months, days: remDays };
+}
+
+function calculate() {
+  const fromStr = document.getElementById('dateFrom').value;
+  const toStr = document.getElementById('dateTo').value;
+  if (!fromStr || !toStr) { document.getElementById('ddResult').style.display = 'none'; return; }
+
+  let from = new Date(fromStr);
+  let to = new Date(toStr);
+  const negative = to < from;
+  if (negative) { let tmp = from; from = to; to = tmp; }
+
+  const totalMs = to - from;
+  const totalDays = Math.round(totalMs / (1000 * 60 * 60 * 24));
+  const totalWeeks = Math.floor(totalDays / 7);
+  const totalHours = totalDays * 24;
+  const workdays = Math.round(totalDays * 5 / 7);
+  const diff = diffMonths(from, to);
+
+  document.getElementById('totalDaysDisplay').textContent = totalDays.toLocaleString('ar-EG');
+  document.getElementById('yearsDisplay').textContent = diff.years;
+  document.getElementById('monthsDisplay').textContent = diff.months;
+  document.getElementById('daysDisplay').textContent = diff.days;
+  document.getElementById('weeksDisplay').textContent = totalWeeks.toLocaleString('ar-EG');
+  document.getElementById('hoursDisplay').textContent = totalHours.toLocaleString('ar-EG');
+  document.getElementById('workdaysDisplay').textContent = workdays.toLocaleString('ar-EG');
+
+  const noteFrom = DAYS_AR[from.getDay()] + '، ' + from.getDate() + ' ' + MONTHS_AR[from.getMonth()] + ' ' + from.getFullYear();
+  const noteTo = DAYS_AR[to.getDay()] + '، ' + to.getDate() + ' ' + MONTHS_AR[to.getMonth()] + ' ' + to.getFullYear();
+  document.getElementById('ddNote').innerHTML =
+    'من: <strong>' + noteFrom + '</strong><br>' +
+    'إلى: <strong>' + noteTo + '</strong>' +
+    (negative ? '<br><span style="color:#dc2626;">⚠️ التاريخ الثاني أقدم من الأول — تم عكس الترتيب</span>' : '');
+
+  document.getElementById('ddResult').style.display = 'block';
+}
+
+function showUpcoming() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const events = [
+    { name: '🎉 رأس السنة الميلادية ' + (year + 1), date: new Date(year + 1, 0, 1) },
+    { name: '🌙 رمضان 2027 (تقريبي)', date: new Date(2027, 1, 17) },
+    { name: '🇴🇲 العيد الوطني العماني', date: new Date(year, 10, 18) },
+  ];
+  const list = document.getElementById('upcomingList');
+  list.innerHTML = '';
+  events.forEach(function(ev) {
+    const diff = Math.round((ev.date - today) / (1000 * 60 * 60 * 24));
+    if (diff >= 0) {
+      const line = document.createElement('div');
+      line.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);';
+      line.innerHTML = '<span>' + ev.name + '</span><span style="font-weight:700;color:var(--primary);">' + diff + ' يوم</span>';
+      list.appendChild(line);
+    }
+  });
+}
+
+// Init
+const today = new Date();
+document.getElementById('dateFrom').value = today.toISOString().split('T')[0];
+const nextWeek = new Date(today);
+nextWeek.setDate(today.getDate() + 30);
+document.getElementById('dateTo').value = nextWeek.toISOString().split('T')[0];
+calculate();
+showUpcoming();
+</script>
+<script src="i18n.js"></script>
+</body></html>
