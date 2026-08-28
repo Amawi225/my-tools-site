@@ -3,157 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أدواتي - مجموعة أدوات مفيدة</title>
+<title>أدواتي — مجموعة أدوات مجانية</title>
 <meta name="description" content="مجموعة أدوات مجانية: حاسبة BMI، محول وحدات، مولد كلمات مرور، حاسبة نسبة وخصم، وحاسبة سعرات وخطة غذائية.">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    min-height: 100vh;
-    margin: 0;
-    padding: 40px 20px;
-  }
-  .wrap {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  header {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 36px;
-  }
-  header h1 {
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-  header p {
-    font-size: 15px;
-    opacity: 0.9;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-  }
-  .tool-card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 24px;
-    text-decoration: none;
-    color: #333;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .tool-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.2);
-  }
-  .tool-icon {
-    font-size: 32px;
-  }
-  .tool-title {
-    font-size: 17px;
-    font-weight: bold;
-    color: #2193b0;
-  }
-  .tool-desc {
-    font-size: 13px;
-    color: #777;
-  }
-  .tool-card.disabled {
-    opacity: 0.55;
-    pointer-events: none;
-    cursor: default;
-  }
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    background: #e0e0e0;
-    color: #666;
-    padding: 3px 8px;
-    border-radius: 6px;
-    width: fit-content;
-    margin-top: 4px;
-  }
-  footer {
-    text-align: center;
-    color: #fff;
-    opacity: 0.8;
-    font-size: 13px;
-    margin-top: 40px;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <h1>🧰 أدواتي</h1>
-    <p>مجموعة أدوات صغيرة ومفيدة، مجانية وسريعة</p>
-  </header>
-
-  <div class="grid">
-    <a href="bmi-calculator.html" class="tool-card">
-      <div class="tool-icon">⚖️</div>
-      <div class="tool-title">حاسبة BMI</div>
-      <div class="tool-desc">احسب مؤشر كتلة جسمك بسرعة</div>
-    </a>
-
-    <a href="diet-plan.html" class="tool-card">
-      <div class="tool-icon">🥗</div>
-      <div class="tool-title">حاسبة السعرات وخطة غذائية</div>
-      <div class="tool-desc">احسب احتياجك اليومي + خطة كاملة</div>
-    </a>
-
-    <a href="unit-converter.html" class="tool-card">
-      <div class="tool-icon">🔄</div>
-      <div class="tool-title">محول وحدات</div>
-      <div class="tool-desc">تحويل بين وحدات الطول والوزن</div>
-    </a>
-
-    <a href="password-generator.html" class="tool-card">
-      <div class="tool-icon">🔑</div>
-      <div class="tool-title">مولد كلمات مرور</div>
-      <div class="tool-desc">كلمات مرور قوية وعشوائية</div>
-    </a>
-
-    <a href="discount-calculator.html" class="tool-card">
-      <div class="tool-icon">💯</div>
-      <div class="tool-title">حاسبة نسبة/خصم</div>
-      <div class="tool-desc">احسب النسب المئوية والخصومات بسهولة</div>
-    </a>
-    <a href="loan-calculator.html" class="tool-card">
-      <div class="tool-icon">🧮</div>
-      <div class="tool-title">حاسبة القسط الشهري</div>
-      <div class="tool-desc">احسب قسط القرض أو التمويل بسهولة</div>
-    </a>
-
-    <a href="age-calculator.html" class="tool-card">
-      <div class="tool-icon">📅</div>
-      <div class="tool-title">حاسبة العمر</div>
-      <div class="tool-desc">عمرك بالتفصيل بالسنة والشهر واليوم</div>
-    </a>
-
-    <a href="word-counter.html" class="tool-card">
-      <div class="tool-icon">🔤</div>
-      <div class="tool-title">عداد كلمات وأحرف</div>
-      <div class="tool-desc">عداد فوري لمقالاتك ونصوصك</div>
-    </a>
-
-  </div>
-
-  <footer>
-    <div style="margin-bottom: 10px;">
-      <a href="about.html" style="color:#fff; opacity:0.9; margin: 0 10px; text-decoration:none; font-size:13px;">من نحن</a>
-      <a href="contact.html" style="color:#fff; opacity:0.9; margin: 0 10px; text-decoration:none; font-size:13px;">تواصل معنا</a>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">أدواتي</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
     </div>
-    © 2026 أدواتي — كل الحقوق محفوظة
-  </footer>
-</div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <h1>أدواتك اليومية في مكان واحد</h1>
+    <p>أدوات دقيقة وسريعة، تعمل مباشرة على متصفحك — بدون تسجيل وبدون إعلانات</p>
+    <div class="hero-badges">
+      <span class="hero-badge">8 أدوات</span>
+      <span class="hero-badge">مجانية 100%</span>
+      <span class="hero-badge">بدون تسجيل</span>
+      <span class="hero-badge">خصوصية تامة</span>
+    </div>
+  </section>
+
+  <div class="tools-section">
+    <div class="tools-grid">
+
+      <a href="bmi-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#eff6ff;">⚖️</div>
+        <div class="tool-card-title">حاسبة BMI</div>
+        <div class="tool-card-desc">احسب مؤشر كتلة جسمك واعرف وضعك الصحي</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="diet-plan.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#f0fdf4;">🥗</div>
+        <div class="tool-card-title">حاسبة السعرات والخطة الغذائية</div>
+        <div class="tool-card-desc">احسب احتياجك اليومي + خطة غذائية كاملة</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="loan-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#faf5ff;">🧮</div>
+        <div class="tool-card-title">حاسبة القسط الشهري</div>
+        <div class="tool-card-desc">احسب قسط أي قرض أو تمويل بسهولة</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="age-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fff7ed;">📅</div>
+        <div class="tool-card-title">حاسبة العمر</div>
+        <div class="tool-card-desc">عمرك بالتفصيل — سنوات وأشهر وأيام</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="discount-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fef2f2;">💯</div>
+        <div class="tool-card-title">حاسبة نسبة وخصم</div>
+        <div class="tool-card-desc">احسب النسب المئوية والخصومات بسرعة</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="unit-converter.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#f0f9ff;">🔄</div>
+        <div class="tool-card-title">محول الوحدات</div>
+        <div class="tool-card-desc">حول بين وحدات الطول والوزن والحرارة</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="password-generator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#f8fafc;">🔑</div>
+        <div class="tool-card-title">مولد كلمات المرور</div>
+        <div class="tool-card-desc">كلمات مرور قوية وآمنة بضغطة واحدة</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+      <a href="word-counter.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fefce8;">🔤</div>
+        <div class="tool-card-title">عداد الكلمات والأحرف</div>
+        <div class="tool-card-desc">عداد فوري لمقالاتك ونصوصك</div>
+        <div class="tool-card-arrow">ابدأ ←</div>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+  </div>
+  <div class="footer-copy">© 2026 أدواتي — كل الأدوات مجانية وخاصة، تعمل على متصفحك مباشرة</div>
+</footer>
 
 </body>
 </html>
