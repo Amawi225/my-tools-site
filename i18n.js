@@ -5,7 +5,7 @@ const T = {
     footer_copy:'© 2026 أدواتي — كل الأدوات مجانية وخاصة',
     hero_title:'أدواتك اليومية في مكان واحد',
     hero_sub:'أدوات دقيقة وسريعة، تعمل مباشرة على متصفحك — بدون تسجيل وبدون إعلانات',
-    badge_count:'8 أدوات', badge_free:'مجانية 100%', badge_noreg:'بدون تسجيل', badge_privacy:'خصوصية تامة',
+    badge_count:'14 أداة', badge_free:'مجانية 100%', badge_noreg:'بدون تسجيل', badge_privacy:'خصوصية تامة',
     bmi_card_title:'حاسبة مؤشر الجسم', bmi_card_desc:'احسب مؤشر كتلة جسمك واعرف وضعك الصحي',
     diet_card_title:'حاسبة السعرات والخطة الغذائية', diet_card_desc:'احسب احتياجك اليومي + خطة غذائية كاملة',
     loan_card_title:'حاسبة القسط الشهري', loan_card_desc:'احسب قسط أي قرض أو تمويل بسهولة',
@@ -56,7 +56,7 @@ const T = {
     about_p3:'الموقع في تطوير مستمر، ونضيف أدوات جديدة بشكل دوري بناءً على احتياجات المستخدمين.',
     contact_title:'تواصل معنا', contact_sub:'عندك اقتراح لأداة جديدة أو واجهت مشكلة؟ راسلنا',
     contact_name:'الاسم', contact_email:'البريد الإلكتروني', contact_msg:'رسالتك',
-    contact_btn:'إرسال الرسالة', contact_error:'الرجاء تعبئة جميع الحقول',
+    contact_btn:'إرسال الرسالة', contact_error:'الرجاء تعبئة جميع الحقول', contact_email_invalid:'البريد الإلكتروني غير صحيح',
     word_placeholder:'اكتب أو الصق نصك هنا...',
     signup_btn:'تسجيل', signup_title:'إنشاء حساب مجاني', signup_name:'الاسم', signup_email:'البريد الإلكتروني',
     signup_submit:'إنشاء الحساب', signup_welcome:'مرحباً', signup_logout:'خروج',
@@ -85,7 +85,7 @@ const T = {
     tz_title:'محول المناطق الزمنية', tz_sub:'اعرف الوقت في أي مدينة حول العالم',
     tz_convert:'حوّل وقتاً محدداً', tz_from:'من منطقة', tz_to:'إلى منطقة',
     rng_title:'مولد أرقام عشوائية', rng_sub:'ولّد أرقاماً عشوائية للقرعات والألعاب',
-    rng_min:'أصغر رقم', rng_max:'أكبر رقم', rng_count:'عدد الأرقام:', rng_btn:'🎲 ولّد مرة أخرى',
+    rng_min:'أصغر رقم', rng_max:'أكبر رقم', rng_count:'عدد الأرقام:', rng_btn:'🎲 ولّد مرة أخرى', rng_history:'السجل',
     sw_title:'ساعة إيقاف ومؤقت', sw_sub:'ساعة توقيت ومؤقت للتمارين والعمل',
     sw_tab:'ساعة إيقاف', timer_tab:'مؤقت', sw_start:'ابدأ', sw_pause:'إيقاف مؤقت',
     sw_lap:'دورة', sw_reset:'إعادة', timer_min:'دقائق', timer_sec:'ثواني', timer_done:'⏰ انتهى الوقت!',
@@ -96,7 +96,7 @@ const T = {
     footer_copy:'© 2026 Adawati — All tools are free and private',
     hero_title:'Your Daily Tools in One Place',
     hero_sub:'Fast and accurate tools that run directly in your browser — no registration, no ads',
-    badge_count:'8 Tools', badge_free:'100% Free', badge_noreg:'No Registration', badge_privacy:'Full Privacy',
+    badge_count:'14 Tools', badge_free:'100% Free', badge_noreg:'No Registration', badge_privacy:'Full Privacy',
     bmi_card_title:'BMI Calculator', bmi_card_desc:'Calculate your Body Mass Index and check your health',
     diet_card_title:'Calorie & Diet Plan Calculator', diet_card_desc:'Calculate your daily needs + get a full diet plan',
     loan_card_title:'Monthly Payment Calculator', loan_card_desc:'Calculate payments for any loan or financing',
@@ -147,7 +147,7 @@ const T = {
     about_p3:'The site is continuously evolving, and we regularly add new tools based on user needs.',
     contact_title:'Contact Us', contact_sub:'Have a suggestion or found a problem? Write to us',
     contact_name:'Name', contact_email:'Email Address', contact_msg:'Message',
-    contact_btn:'Send Message', contact_error:'Please fill in all fields',
+    contact_btn:'Send Message', contact_error:'Please fill in all fields', contact_email_invalid:'Invalid email address',
     word_placeholder:'Type or paste your text here...',
     signup_btn:'Sign Up', signup_title:'Create Free Account', signup_name:'Name', signup_email:'Email',
     signup_submit:'Create Account', signup_welcome:'Welcome', signup_logout:'Sign Out',
@@ -176,7 +176,7 @@ const T = {
     tz_title:'Time Zone Converter', tz_sub:'Find the current time in any city around the world',
     tz_convert:'Convert a specific time', tz_from:'From Zone', tz_to:'To Zone',
     rng_title:'Random Number Generator', rng_sub:'Generate random numbers for draws and games',
-    rng_min:'Min Number', rng_max:'Max Number', rng_count:'Count:', rng_btn:'🎲 Generate Again',
+    rng_min:'Min Number', rng_max:'Max Number', rng_count:'Count:', rng_btn:'🎲 Generate Again', rng_history:'History',
     sw_title:'Stopwatch & Timer', sw_sub:'Professional stopwatch and timer for exercise and work',
     sw_tab:'Stopwatch', timer_tab:'Timer', sw_start:'Start', sw_pause:'Pause',
     sw_lap:'Lap', sw_reset:'Reset', timer_min:'Minutes', timer_sec:'Seconds', timer_done:'⏰ Time\'s up!',
@@ -187,7 +187,7 @@ const T = {
     footer_copy:'© 2026 Adawati — Tous les outils sont gratuits et privés',
     hero_title:'Vos outils quotidiens en un seul endroit',
     hero_sub:'Outils rapides et précis, fonctionnant directement dans votre navigateur — sans inscription ni publicité',
-    badge_count:'8 Outils', badge_free:'100% Gratuit', badge_noreg:'Sans inscription', badge_privacy:'Confidentialité totale',
+    badge_count:'14 Outils', badge_free:'100% Gratuit', badge_noreg:'Sans inscription', badge_privacy:'Confidentialité totale',
     bmi_card_title:'Calculateur d\'IMC', bmi_card_desc:'Calculez votre indice de masse corporelle',
     diet_card_title:'Calculateur de calories', diet_card_desc:'Calculez vos besoins quotidiens + plan alimentaire',
     loan_card_title:'Calculateur de mensualité', loan_card_desc:'Calculez les mensualités pour n\'importe quel prêt',
@@ -238,7 +238,7 @@ const T = {
     about_p3:'Le site est en développement continu, et nous ajoutons régulièrement de nouveaux outils.',
     contact_title:'Contactez-nous', contact_sub:'Une suggestion ou un problème? Écrivez-nous',
     contact_name:'Nom', contact_email:'Adresse e-mail', contact_msg:'Message',
-    contact_btn:'Envoyer le message', contact_error:'Veuillez remplir tous les champs',
+    contact_btn:'Envoyer le message', contact_error:'Veuillez remplir tous les champs', contact_email_invalid:'Adresse e-mail invalide',
     word_placeholder:'Tapez ou collez votre texte ici...',
     signup_btn:'S\'inscrire', signup_title:'Créer un compte gratuit', signup_name:'Nom', signup_email:'E-mail',
     signup_submit:'Créer le compte', signup_welcome:'Bienvenue', signup_logout:'Déconnexion',
@@ -267,7 +267,7 @@ const T = {
     tz_title:'Convertisseur de fuseaux horaires', tz_sub:'Heure actuelle dans le monde',
     tz_convert:'Convertir une heure', tz_from:'Depuis', tz_to:'Vers',
     rng_title:'Générateur de nombres aléatoires', rng_sub:'Pour les tirages et jeux',
-    rng_min:'Min', rng_max:'Max', rng_count:'Quantité:', rng_btn:'🎲 Générer à nouveau',
+    rng_min:'Min', rng_max:'Max', rng_count:'Quantité:', rng_btn:'🎲 Générer à nouveau', rng_history:'Historique',
     sw_title:'Chronomètre et minuteur', sw_sub:'Chronomètre professionnel',
     sw_tab:'Chronomètre', timer_tab:'Minuteur', sw_start:'Démarrer', sw_pause:'Pause',
     sw_lap:'Tour', sw_reset:'Réinitialiser', timer_min:'Minutes', timer_sec:'Secondes', timer_done:'⏰ Temps écoulé!',
@@ -278,7 +278,7 @@ const T = {
     footer_copy:'© 2026 Adawati — Todas las herramientas son gratuitas y privadas',
     hero_title:'Tus herramientas diarias en un solo lugar',
     hero_sub:'Herramientas rápidas y precisas que funcionan en tu navegador — sin registro ni anuncios',
-    badge_count:'8 Herramientas', badge_free:'100% Gratis', badge_noreg:'Sin registro', badge_privacy:'Privacidad total',
+    badge_count:'14 Herramientas', badge_free:'100% Gratis', badge_noreg:'Sin registro', badge_privacy:'Privacidad total',
     bmi_card_title:'Calculadora de IMC', bmi_card_desc:'Calcula tu índice de masa corporal',
     diet_card_title:'Calculadora de calorías', diet_card_desc:'Calcula tus necesidades + plan de dieta',
     loan_card_title:'Calculadora de cuotas', loan_card_desc:'Calcula las cuotas para cualquier préstamo',
@@ -329,7 +329,7 @@ const T = {
     about_p3:'El sitio está en desarrollo continuo, y añadimos nuevas herramientas regularmente.',
     contact_title:'Contáctenos', contact_sub:'¿Sugerencia o problema? Escríbenos',
     contact_name:'Nombre', contact_email:'Correo electrónico', contact_msg:'Mensaje',
-    contact_btn:'Enviar mensaje', contact_error:'Por favor completa todos los campos',
+    contact_btn:'Enviar mensaje', contact_error:'Por favor completa todos los campos', contact_email_invalid:'Correo electrónico inválido',
     word_placeholder:'Escribe o pega tu texto aquí...',
     signup_btn:'Registrarse', signup_title:'Crear cuenta gratis', signup_name:'Nombre', signup_email:'Correo electrónico',
     signup_submit:'Crear cuenta', signup_welcome:'Bienvenido', signup_logout:'Cerrar sesión',
@@ -358,7 +358,7 @@ const T = {
     tz_title:'Conversor de zonas horarias', tz_sub:'Hora actual en el mundo',
     tz_convert:'Convertir una hora', tz_from:'Desde', tz_to:'Hacia',
     rng_title:'Generador aleatorio', rng_sub:'Para sorteos y juegos',
-    rng_min:'Mínimo', rng_max:'Máximo', rng_count:'Cantidad:', rng_btn:'🎲 Generar de nuevo',
+    rng_min:'Mínimo', rng_max:'Máximo', rng_count:'Cantidad:', rng_btn:'🎲 Generar de nuevo', rng_history:'Historial',
     sw_title:'Cronómetro y temporizador', sw_sub:'Cronómetro profesional',
     sw_tab:'Cronómetro', timer_tab:'Temporizador', sw_start:'Iniciar', sw_pause:'Pausar',
     sw_lap:'Vuelta', sw_reset:'Reiniciar', timer_min:'Minutos', timer_sec:'Segundos', timer_done:'⏰ ¡Tiempo terminado!',
@@ -369,7 +369,7 @@ const T = {
     footer_copy:'© 2026 Adawati — Alle Tools sind kostenlos und privat',
     hero_title:'Ihre täglichen Tools an einem Ort',
     hero_sub:'Schnelle und genaue Tools, die direkt in Ihrem Browser funktionieren — ohne Registrierung und Werbung',
-    badge_count:'8 Tools', badge_free:'100% Kostenlos', badge_noreg:'Ohne Registrierung', badge_privacy:'Volle Privatsphäre',
+    badge_count:'14 Tools', badge_free:'100% Kostenlos', badge_noreg:'Ohne Registrierung', badge_privacy:'Volle Privatsphäre',
     bmi_card_title:'BMI-Rechner', bmi_card_desc:'Berechnen Sie Ihren Body-Mass-Index',
     diet_card_title:'Kalorienrechner', diet_card_desc:'Berechnen Sie Ihren täglichen Bedarf + Ernährungsplan',
     loan_card_title:'Kreditrechner', loan_card_desc:'Berechnen Sie die Raten für jeden Kredit',
@@ -420,7 +420,7 @@ const T = {
     about_p3:'Die Website wird kontinuierlich weiterentwickelt, und wir fügen regelmäßig neue Tools hinzu.',
     contact_title:'Kontaktieren Sie uns', contact_sub:'Vorschlag oder Problem? Schreiben Sie uns',
     contact_name:'Name', contact_email:'E-Mail-Adresse', contact_msg:'Nachricht',
-    contact_btn:'Nachricht senden', contact_error:'Bitte alle Felder ausfüllen',
+    contact_btn:'Nachricht senden', contact_error:'Bitte alle Felder ausfüllen', contact_email_invalid:'Ungültige E-Mail-Adresse',
     word_placeholder:'Geben Sie Ihren Text hier ein oder fügen Sie ihn ein...',
     signup_btn:'Registrieren', signup_title:'Kostenloses Konto erstellen', signup_name:'Name', signup_email:'E-Mail',
     signup_submit:'Konto erstellen', signup_welcome:'Willkommen', signup_logout:'Abmelden',
@@ -449,7 +449,7 @@ const T = {
     tz_title:'Zeitzonenrechner', tz_sub:'Aktuelle Zeit weltweit',
     tz_convert:'Bestimmte Zeit umrechnen', tz_from:'Von Zone', tz_to:'Nach Zone',
     rng_title:'Zufallszahlengenerator', rng_sub:'Für Lotterien und Spiele',
-    rng_min:'Minimum', rng_max:'Maximum', rng_count:'Anzahl:', rng_btn:'🎲 Erneut generieren',
+    rng_min:'Minimum', rng_max:'Maximum', rng_count:'Anzahl:', rng_btn:'🎲 Erneut generieren', rng_history:'Verlauf',
     sw_title:'Stoppuhr und Timer', sw_sub:'Professionelle Stoppuhr',
     sw_tab:'Stoppuhr', timer_tab:'Timer', sw_start:'Starten', sw_pause:'Pause',
     sw_lap:'Runde', sw_reset:'Zurücksetzen', timer_min:'Minuten', timer_sec:'Sekunden', timer_done:'⏰ Zeit abgelaufen!',
@@ -460,7 +460,7 @@ const T = {
     footer_copy:'© 2026 Adawati — Все инструменты бесплатны и конфиденциальны',
     hero_title:'Ваши ежедневные инструменты в одном месте',
     hero_sub:'Быстрые и точные инструменты, работающие прямо в вашем браузере — без регистрации и рекламы',
-    badge_count:'8 инструментов', badge_free:'100% бесплатно', badge_noreg:'Без регистрации', badge_privacy:'Полная конфиденциальность',
+    badge_count:'14 инструментов', badge_free:'100% бесплатно', badge_noreg:'Без регистрации', badge_privacy:'Полная конфиденциальность',
     bmi_card_title:'Калькулятор ИМТ', bmi_card_desc:'Вычислите индекс массы тела',
     diet_card_title:'Калькулятор калорий', diet_card_desc:'Рассчитайте ежедневные потребности + план питания',
     loan_card_title:'Калькулятор платежей', loan_card_desc:'Рассчитайте платежи по любому кредиту',
@@ -511,7 +511,7 @@ const T = {
     about_p3:'Сайт постоянно развивается, и мы регулярно добавляем новые инструменты.',
     contact_title:'Свяжитесь с нами', contact_sub:'Есть предложение или проблема? Напишите нам',
     contact_name:'Имя', contact_email:'Электронная почта', contact_msg:'Сообщение',
-    contact_btn:'Отправить сообщение', contact_error:'Пожалуйста, заполните все поля',
+    contact_btn:'Отправить сообщение', contact_error:'Пожалуйста, заполните все поля', contact_email_invalid:'Неверный адрес электронной почты',
     word_placeholder:'Введите или вставьте текст здесь...',
     signup_btn:'Регистрация', signup_title:'Создать бесплатный аккаунт', signup_name:'Имя', signup_email:'Электронная почта',
     signup_submit:'Создать аккаунт', signup_welcome:'Добро пожаловать', signup_logout:'Выйти',
@@ -540,7 +540,7 @@ const T = {
     tz_title:'Конвертер часовых поясов', tz_sub:'Текущее время по всему миру',
     tz_convert:'Конвертировать время', tz_from:'Из зоны', tz_to:'В зону',
     rng_title:'Генератор случайных чисел', rng_sub:'Для розыгрышей и игр',
-    rng_min:'Минимум', rng_max:'Максимум', rng_count:'Количество:', rng_btn:'🎲 Сгенерировать снова',
+    rng_min:'Минимум', rng_max:'Максимум', rng_count:'Количество:', rng_btn:'🎲 Сгенерировать снова', rng_history:'История',
     sw_title:'Секундомер и таймер', sw_sub:'Профессиональный секундомер',
     sw_tab:'Секундомер', timer_tab:'Таймер', sw_start:'Старт', sw_pause:'Пауза',
     sw_lap:'Круг', sw_reset:'Сброс', timer_min:'Минуты', timer_sec:'Секунды', timer_done:'⏰ Время вышло!',
@@ -611,30 +611,64 @@ function openSignup() {
   modal.id = 'signupModal';
   modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
 
+  const box = document.createElement('div');
+  box.style.cssText = 'background:#fff;border-radius:16px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.15);';
+
   if (user) {
-    modal.innerHTML = `
-      <div style="background:#fff;border-radius:16px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.15);text-align:center;">
-        <div style="font-size:48px;margin-bottom:12px;">👤</div>
-        <div style="font-size:20px;font-weight:700;margin-bottom:4px;">${t.signup_welcome}, ${user.name}!</div>
-        <div style="font-size:14px;color:#64748b;margin-bottom:24px;">${user.email}</div>
-        <button onclick="logoutUser()" style="width:100%;padding:12px;background:#ef4444;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:8px;">${t.signup_logout}</button>
-        <button onclick="document.getElementById('signupModal').remove()" style="width:100%;padding:12px;background:#f1f5f9;color:#334155;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">✕</button>
-      </div>`;
+    box.style.textAlign = 'center';
+    const avatar = document.createElement('div');
+    avatar.style.cssText = 'font-size:48px;margin-bottom:12px;';
+    avatar.textContent = '👤';
+    const greeting = document.createElement('div');
+    greeting.style.cssText = 'font-size:20px;font-weight:700;margin-bottom:4px;';
+    greeting.textContent = (t.signup_welcome || 'Welcome') + ', ' + user.name + '!';
+    const emailEl = document.createElement('div');
+    emailEl.style.cssText = 'font-size:14px;color:#64748b;margin-bottom:24px;';
+    emailEl.textContent = user.email;
+    const logoutBtn = document.createElement('button');
+    logoutBtn.style.cssText = 'width:100%;padding:12px;background:#ef4444;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:8px;';
+    logoutBtn.textContent = t.signup_logout || 'Sign Out';
+    logoutBtn.onclick = logoutUser;
+    const closeBtn = document.createElement('button');
+    closeBtn.style.cssText = 'width:100%;padding:12px;background:#f1f5f9;color:#334155;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;';
+    closeBtn.textContent = '✕';
+    closeBtn.onclick = () => document.getElementById('signupModal').remove();
+    box.append(avatar, greeting, emailEl, logoutBtn, closeBtn);
   } else {
-    modal.innerHTML = `
-      <div style="background:#fff;border-radius:16px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.15);" dir="${lang==='ar'?'rtl':'ltr'}">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-          <div style="font-size:19px;font-weight:700;">${t.signup_title}</div>
-          <button onclick="document.getElementById('signupModal').remove()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#94a3b8;">✕</button>
-        </div>
-        <div style="font-size:13px;color:#64748b;margin-bottom:20px;">${t.signup_note}</div>
-        <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">${t.signup_name}</label>
-        <input id="su_name" type="text" placeholder="${t.signup_name}" style="width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:15px;font-family:inherit;margin-bottom:14px;box-sizing:border-box;">
-        <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">${t.signup_email}</label>
-        <input id="su_email" type="email" placeholder="example@email.com" dir="ltr" style="width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:15px;font-family:inherit;margin-bottom:20px;box-sizing:border-box;">
-        <button onclick="submitSignup('${lang}')" style="width:100%;padding:12px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">${t.signup_submit}</button>
-      </div>`;
+    box.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    const header = document.createElement('div');
+    header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;';
+    const title = document.createElement('div');
+    title.style.cssText = 'font-size:19px;font-weight:700;';
+    title.textContent = t.signup_title || 'Create Account';
+    const xBtn = document.createElement('button');
+    xBtn.style.cssText = 'background:none;border:none;font-size:20px;cursor:pointer;color:#94a3b8;';
+    xBtn.textContent = '✕';
+    xBtn.onclick = () => document.getElementById('signupModal').remove();
+    header.append(title, xBtn);
+    const note = document.createElement('div');
+    note.style.cssText = 'font-size:13px;color:#64748b;margin-bottom:20px;';
+    note.textContent = t.signup_note || '';
+    const lbl1 = document.createElement('label');
+    lbl1.style.cssText = 'display:block;font-size:13px;font-weight:700;margin-bottom:6px;';
+    lbl1.textContent = t.signup_name || 'Name';
+    const inp1 = document.createElement('input');
+    inp1.id = 'su_name'; inp1.type = 'text'; inp1.maxLength = 60;
+    inp1.style.cssText = 'width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:15px;font-family:inherit;margin-bottom:14px;box-sizing:border-box;';
+    const lbl2 = document.createElement('label');
+    lbl2.style.cssText = 'display:block;font-size:13px;font-weight:700;margin-bottom:6px;';
+    lbl2.textContent = t.signup_email || 'Email';
+    const inp2 = document.createElement('input');
+    inp2.id = 'su_email'; inp2.type = 'email'; inp2.dir = 'ltr'; inp2.maxLength = 120;
+    inp2.style.cssText = 'width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:15px;font-family:inherit;margin-bottom:20px;box-sizing:border-box;';
+    const submitBtn = document.createElement('button');
+    submitBtn.style.cssText = 'width:100%;padding:12px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;';
+    submitBtn.textContent = t.signup_submit || 'Create Account';
+    submitBtn.onclick = () => submitSignup(lang);
+    box.append(header, note, lbl1, inp1, lbl2, inp2, submitBtn);
   }
+
+  modal.appendChild(box);
 
   modal.addEventListener('click', function(e) { if (e.target === modal) modal.remove(); });
   document.body.appendChild(modal);
@@ -642,14 +676,29 @@ function openSignup() {
   if (nameInput) nameInput.focus();
 }
 
+function showToast(msg, type) {
+  const existing = document.getElementById('adawatiToast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.id = 'adawatiToast';
+  const bg = type === 'error' ? '#ef4444' : '#22c55e';
+  toast.style.cssText = `position:fixed;bottom:28px;${document.documentElement.dir==='rtl'?'right':'left'}:50%;transform:translateX(${document.documentElement.dir==='rtl'?'50%':'-50%'});background:${bg};color:#fff;padding:12px 24px;border-radius:10px;font-size:15px;font-weight:600;z-index:99999;box-shadow:0 4px 16px rgba(0,0,0,0.18);pointer-events:none;`;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.4s'; setTimeout(() => toast.remove(), 400); }, 2800);
+}
+
 function submitSignup(lang) {
   const name = (document.getElementById('su_name').value || '').trim();
   const email = (document.getElementById('su_email').value || '').trim();
   const t = T[lang] || T.ar;
-  if (!name || !email) return;
-  localStorage.setItem('adawati_user', JSON.stringify({ name, email }));
+  if (!name || !email) { showToast(t.contact_error || 'Please fill in all fields', 'error'); return; }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!emailRe.test(email)) { showToast(t.contact_email_invalid || 'Invalid email address', 'error'); return; }
+  localStorage.setItem('adawati_user', JSON.stringify({ name: name.slice(0,60), email: email.slice(0,120) }));
   document.getElementById('signupModal').remove();
   updateSignupBtn();
+  showToast((t.signup_welcome || 'Welcome') + ', ' + name.split(' ')[0] + '!', 'success');
 }
 
 function logoutUser() {
