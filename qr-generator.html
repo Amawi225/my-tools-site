@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -37,7 +37,8 @@
     <div class="card-subtitle" data-i18n="qr_sub">ولّد رمز QR لأي رابط أو نص فوراً</div>
     <div class="divider"></div>
     <label data-i18n="qr_input">الرابط أو النص</label>
-    <textarea id="qrInput" rows="3" data-i18n-ph="qr_placeholder" placeholder="https://example.com أو أي نص..." oninput="generateQR()" style="resize:vertical;"></textarea>
+    <textarea id="qrInput" rows="3" data-i18n-ph="qr_placeholder" placeholder="https://example.com أو أي نص..." oninput="generateQR()" onpaste="setTimeout(generateQR,50)" style="resize:vertical;"></textarea>
+    <button class="btn btn-primary" onclick="generateQR()" data-i18n="qr_generate">توليد الرمز</button>
     <div id="qrWrap" style="display:none;text-align:center;margin-top:24px;">
       <div id="qrDisplay" style="display:inline-block;padding:16px;background:#fff;border-radius:var(--radius);border:2px solid var(--border);box-shadow:var(--shadow-md);"></div>
       <div style="margin-top:16px;">
