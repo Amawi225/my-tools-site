@@ -4,90 +4,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>حاسبة BMI مجانية — احسب مؤشر كتلة الجسم اونلاين</title>
-<meta name="description" content="احسب مؤشر كتلة جسمك BMI مجاناً اونلاين واعرف هل وزنك طبيعي أم لا. حاسبة BMI دقيقة وسريعة بالعربي بدون تسجيل.">
-<meta name="keywords" content="حاسبة BMI, مؤشر كتلة الجسم, حساب الوزن المثالي, BMI calculator, حاسبة الوزن">
+<meta name="description" content="احسب مؤشر كتلة جسمك BMI مجاناً اونلاين واعرف هل وزنك طبيعي أم لا.">
+<meta name="keywords" content="حاسبة BMI, مؤشر كتلة الجسم, BMI calculator">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="حاسبة BMI مجانية — أدواتي">
-<meta property="og:description" content="احسب مؤشر كتلة جسمك BMI مجاناً واعرف هل وزنك طبيعي أم لا.">
-<meta property="og:url" content="https://amawi225.github.io/my-tools-site/bmi-calculator.html">
-<meta property="og:type" content="website">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-brand">أدواتي</a>
-    <div class="nav-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="about.html">من نحن</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </div>
-</nav>
-
-<main>
-  <div class="tool-page">
-    <div class="page-header">
-      <a href="index.html">← العودة للرئيسية</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon" style="background:#eff6ff;">⚖️</div>
-      <div class="card-title">حاسبة مؤشر كتلة الجسم</div>
-      <div class="card-subtitle">اعرف وضعك الصحي في ثانية</div>
-      <div class="divider"></div>
-
-      <label for="weight">الوزن (كيلوغرام)</label>
-      <input type="number" id="weight" placeholder="مثال: 70" inputmode="decimal">
-
-      <label for="height">الطول (سنتيمتر)</label>
-      <input type="number" id="height" placeholder="مثال: 175" inputmode="decimal">
-
-      <button class="btn btn-primary" onclick="calculateBMI()">احسب المؤشر</button>
-
-      <div id="result" class="result-box">
-        <div class="result-value" id="bmiValue"></div>
-        <div class="result-label" id="category"></div>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
       </div>
     </div>
   </div>
-</main>
-
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#eff6ff;">⚖️</div>
+    <div class="card-title" data-i18n="bmi_title">حاسبة مؤشر كتلة الجسم</div>
+    <div class="card-subtitle" data-i18n="bmi_sub">اعرف وضعك الصحي في ثانية</div>
+    <div class="divider"></div>
+    <label for="weight" data-i18n="bmi_weight">الوزن (كيلوغرام)</label>
+    <input type="number" id="weight" data-i18n-ph="bmi_weight" placeholder="مثال: 70" inputmode="decimal">
+    <label for="height" data-i18n="bmi_height">الطول (سنتيمتر)</label>
+    <input type="number" id="height" data-i18n-ph="bmi_height" placeholder="مثال: 175" inputmode="decimal">
+    <button class="btn btn-primary" onclick="calculateBMI()" data-i18n="bmi_btn">احسب المؤشر</button>
+    <div id="result" class="result-box">
+      <div class="result-value" id="bmiValue"></div>
+      <div class="result-label" id="category"></div>
+    </div>
+  </div>
+</div></main>
 <footer class="footer">
   <div class="footer-links">
-    <a href="about.html">من نحن</a>
-    <a href="contact.html">تواصل معنا</a>
+    <a href="about.html" data-i18n="footer_about">من نحن</a>
+    <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
   </div>
-  <div class="footer-copy">© 2026 أدواتي</div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
 </footer>
-
 <script>
 function calculateBMI() {
   const weight = parseFloat(document.getElementById('weight').value);
   const height = parseFloat(document.getElementById('height').value) / 100;
   const resultDiv = document.getElementById('result');
-
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang];
   if (!weight || !height || weight <= 0 || height <= 0) {
     resultDiv.className = 'result-box show danger';
     document.getElementById('bmiValue').textContent = '⚠️';
-    document.getElementById('category').textContent = 'الرجاء إدخال أرقام صحيحة';
+    document.getElementById('category').textContent = t.bmi_invalid;
     return;
   }
-
   const bmi = weight / (height * height);
   let category, cls;
-
-  if (bmi < 18.5)      { category = 'نقص في الوزن';      cls = 'warning'; }
-  else if (bmi < 25)   { category = 'وزن طبيعي ✓';       cls = 'success'; }
-  else if (bmi < 30)   { category = 'زيادة في الوزن';    cls = 'warning'; }
-  else                  { category = 'سمنة';               cls = 'danger';  }
-
+  if (bmi < 18.5)    { category = t.bmi_underweight; cls = 'warning'; }
+  else if (bmi < 25) { category = t.bmi_normal;      cls = 'success'; }
+  else if (bmi < 30) { category = t.bmi_overweight;  cls = 'warning'; }
+  else               { category = t.bmi_obese;       cls = 'danger';  }
   document.getElementById('bmiValue').textContent = bmi.toFixed(1);
   document.getElementById('category').textContent = category;
   resultDiv.className = `result-box show ${cls}`;
 }
 </script>
-
-</body>
-</html>
+<script src="i18n.js"></script>
+</body></html>
