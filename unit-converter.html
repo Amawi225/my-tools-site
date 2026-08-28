@@ -103,8 +103,8 @@ function switchTab(tab) {
 }
 const LEN={m:1,km:1000,cm:0.01,mm:0.001,mi:1609.344,ft:0.3048,in:0.0254};
 const WGT={kg:1,g:0.001,lb:0.453592,oz:0.0283495,t:1000};
-function convertLength(){const v=parseFloat(document.getElementById('len-val').value),f=document.getElementById('len-from').value,t=document.getElementById('len-to').value,box=document.getElementById('len-result');if(isNaN(v)){box.classList.remove('show');return;}document.getElementById('len-out').textContent=+(v*LEN[f]/LEN[t]).toFixed(8);box.classList.add('show');}
-function convertWeight(){const v=parseFloat(document.getElementById('wgt-val').value),f=document.getElementById('wgt-from').value,t=document.getElementById('wgt-to').value,box=document.getElementById('wgt-result');if(isNaN(v)){box.classList.remove('show');return;}document.getElementById('wgt-out').textContent=+(v*WGT[f]/WGT[t]).toFixed(8);box.classList.add('show');}
+function convertLength(){const v=parseFloat(document.getElementById('len-val').value),f=document.getElementById('len-from').value,t=document.getElementById('len-to').value,box=document.getElementById('len-result');if(isNaN(v)){box.classList.remove('show');return;}document.getElementById('len-out').textContent=+(v*LEN[f]/LEN[t]).toFixed(4);box.classList.add('show');}
+function convertWeight(){const v=parseFloat(document.getElementById('wgt-val').value),f=document.getElementById('wgt-from').value,t=document.getElementById('wgt-to').value,box=document.getElementById('wgt-result');if(isNaN(v)){box.classList.remove('show');return;}document.getElementById('wgt-out').textContent=+(v*WGT[f]/WGT[t]).toFixed(4);box.classList.add('show');}
 function convertTemp(){const v=parseFloat(document.getElementById('tmp-val').value),f=document.getElementById('tmp-from').value,t=document.getElementById('tmp-to').value,box=document.getElementById('tmp-result');if(isNaN(v)){box.classList.remove('show');return;}let c=f==='c'?v:f==='f'?(v-32)*5/9:v-273.15;let out=t==='c'?c:t==='f'?c*9/5+32:c+273.15;document.getElementById('tmp-out').textContent=+out.toFixed(4);box.classList.add('show');}
 </script>
 <script src="i18n.js"></script>
