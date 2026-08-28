@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة النسبة المئوية — احسب النسب والخصومات والزيادات مجاناً</title>
+<meta name="description" content="حاسبة النسبة المئوية المجانية. احسب X% من رقم، ما النسبة بين عددين، نسبة الزيادة والنقصان بسهولة.">
+<meta name="keywords" content="حاسبة النسبة المئوية, حساب النسبة, percentage calculator, نسبة مئوية, حاسبة خصم">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/percentage-calculator.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+
+  <!-- Mode 1: X% of Y -->
+  <div class="card">
+    <div class="card-icon" style="background:#fef2f2;">💯</div>
+    <div class="card-title">حاسبة النسبة المئوية</div>
+    <div class="card-subtitle">ثلاثة أنواع من الحسابات في أداة واحدة</div>
+    <div class="divider"></div>
+
+    <div class="tab-nav" style="display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;">
+      <button class="tab active" id="tab1" onclick="setTab(1)">X% من رقم</button>
+      <button class="tab" id="tab2" onclick="setTab(2)">ما النسبة؟</button>
+      <button class="tab" id="tab3" onclick="setTab(3)">نسبة التغيير</button>
+    </div>
+
+    <!-- Tab 1: X% of Y -->
+    <div id="panel1">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+        <div style="flex:1;min-width:100px;">
+          <label>النسبة %</label>
+          <input type="number" id="p1pct" placeholder="مثال: 15" min="0" step="any" oninput="calc1()">
+        </div>
+        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);">من</div>
+        <div style="flex:1;min-width:100px;">
+          <label>الرقم</label>
+          <input type="number" id="p1num" placeholder="مثال: 200" min="0" step="any" oninput="calc1()">
+        </div>
+      </div>
+      <div id="res1" class="result-box" style="display:none;">
+        <div class="result-value" id="res1val"></div>
+        <div class="result-label" id="res1lbl"></div>
+      </div>
+    </div>
+
+    <!-- Tab 2: X is what % of Y -->
+    <div id="panel2" style="display:none;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+        <div style="flex:1;min-width:100px;">
+          <label>الرقم الأول</label>
+          <input type="number" id="p2a" placeholder="مثال: 30" step="any" oninput="calc2()">
+        </div>
+        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);">من</div>
+        <div style="flex:1;min-width:100px;">
+          <label>الرقم الثاني</label>
+          <input type="number" id="p2b" placeholder="مثال: 150" step="any" oninput="calc2()">
+        </div>
+      </div>
+      <div id="res2" class="result-box" style="display:none;">
+        <div class="result-value" id="res2val"></div>
+        <div class="result-label" id="res2lbl"></div>
+      </div>
+    </div>
+
+    <!-- Tab 3: % change from X to Y -->
+    <div id="panel3" style="display:none;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+        <div style="flex:1;min-width:100px;">
+          <label>من القيمة</label>
+          <input type="number" id="p3a" placeholder="مثال: 100" step="any" oninput="calc3()">
+        </div>
+        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);">→</div>
+        <div style="flex:1;min-width:100px;">
+          <label>إلى القيمة</label>
+          <input type="number" id="p3b" placeholder="مثال: 130" step="any" oninput="calc3()">
+        </div>
+      </div>
+      <div id="res3" class="result-box" style="display:none;">
+        <div class="result-value" id="res3val"></div>
+        <div class="result-label" id="res3lbl"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick reference -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">🧮 مرجع سريع — نسب شائعة</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;font-size:13px;text-align:center;">
+      <div onclick="quickFill(10)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>10%</strong><br><span style="color:var(--text-muted);font-size:11px;">عشر</span></div>
+      <div onclick="quickFill(15)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>15%</strong><br><span style="color:var(--text-muted);font-size:11px;">VAT عمان/إمارات×3</span></div>
+      <div onclick="quickFill(15)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>15%</strong><br><span style="color:var(--text-muted);font-size:11px;">VAT السعودية</span></div>
+      <div onclick="quickFill(20)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>20%</strong><br><span style="color:var(--text-muted);font-size:11px;">خمس</span></div>
+      <div onclick="quickFill(25)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>25%</strong><br><span style="color:var(--text-muted);font-size:11px;">ربع</span></div>
+      <div onclick="quickFill(50)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>50%</strong><br><span style="color:var(--text-muted);font-size:11px;">نصف</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب 15% من 200؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">200 × 15 ÷ 100 = 30. أو 200 × 0.15 = 30</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب نسبة زيادة السعر؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نسبة التغيير = ((السعر الجديد - السعر القديم) ÷ السعر القديم) × 100. مثال: من 100 إلى 130 = ((130-100)÷100)×100 = 30% زيادة.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">30 هو كم بالمئة من 150؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">30 ÷ 150 × 100 = 20%</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="discount-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة الخصم</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+      <a href="compound-interest.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📈 الفائدة المركبة</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="privacy.html">الخصوصية</a>
+    </div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+let activeTab = 1;
+function setTab(n) {
+  activeTab = n;
+  [1,2,3].forEach(function(i) {
+    document.getElementById('tab'+i).classList.toggle('active', i===n);
+    document.getElementById('panel'+i).style.display = i===n ? '' : 'none';
+  });
+}
+
+function fmt(n) {
+  if (Number.isInteger(n)) return n.toString();
+  return parseFloat(n.toFixed(6)).toString();
+}
+
+function calc1() {
+  const pct = parseFloat(document.getElementById('p1pct').value);
+  const num = parseFloat(document.getElementById('p1num').value);
+  const res = document.getElementById('res1');
+  if (isNaN(pct) || isNaN(num)) { res.style.display='none'; return; }
+  const result = (num * pct) / 100;
+  document.getElementById('res1val').textContent = fmt(result);
+  document.getElementById('res1lbl').textContent = fmt(pct) + '% من ' + fmt(num) + ' = ' + fmt(result);
+  res.style.display='block'; res.className='result-box show success';
+}
+
+function calc2() {
+  const a = parseFloat(document.getElementById('p2a').value);
+  const b = parseFloat(document.getElementById('p2b').value);
+  const res = document.getElementById('res2');
+  if (isNaN(a) || isNaN(b) || b === 0) { res.style.display='none'; return; }
+  const result = (a / b) * 100;
+  document.getElementById('res2val').textContent = fmt(result) + '%';
+  document.getElementById('res2lbl').textContent = fmt(a) + ' هو ' + fmt(result) + '% من ' + fmt(b);
+  res.style.display='block'; res.className='result-box show success';
+}
+
+function calc3() {
+  const a = parseFloat(document.getElementById('p3a').value);
+  const b = parseFloat(document.getElementById('p3b').value);
+  const res = document.getElementById('res3');
+  if (isNaN(a) || isNaN(b) || a === 0) { res.style.display='none'; return; }
+  const change = ((b - a) / Math.abs(a)) * 100;
+  const isIncrease = change >= 0;
+  document.getElementById('res3val').textContent = (isIncrease ? '+' : '') + fmt(change) + '%';
+  document.getElementById('res3lbl').textContent = isIncrease
+    ? 'زيادة بنسبة ' + fmt(change) + '% (من ' + fmt(a) + ' إلى ' + fmt(b) + ')'
+    : 'انخفاض بنسبة ' + fmt(Math.abs(change)) + '% (من ' + fmt(a) + ' إلى ' + fmt(b) + ')';
+  res.style.display='block';
+  res.className = 'result-box show ' + (isIncrease ? 'success' : 'warning');
+}
+
+function quickFill(pct) {
+  if (activeTab !== 1) setTab(1);
+  document.getElementById('p1pct').value = pct;
+  calc1();
+}
+</script>
+<script src="i18n.js"></script>
+</body></html>
