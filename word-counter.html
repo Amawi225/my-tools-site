@@ -1,63 +1,50 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>عداد الكلمات والأحرف — احسب كلمات نصك مجاناً</title>
-<meta name="description" content="عداد كلمات وأحرف فوري مجاناً اونلاين. احسب عدد الكلمات والأحرف والجمل في أي نص أو مقال بثانية واحدة.">
-<meta name="keywords" content="عداد كلمات, حساب عدد الكلمات, عداد أحرف, word counter, كم كلمة في النص">
+<meta name="description" content="عداد كلمات وأحرف فوري مجاناً اونلاين. احسب عدد الكلمات والأحرف والجمل في أي نص.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="عداد الكلمات والأحرف — أدواتي">
-<meta property="og:description" content="احسب عدد الكلمات والأحرف في نصك مجاناً بثانية واحدة.">
-<meta property="og:url" content="https://amawi225.github.io/my-tools-site/word-counter.html">
-<meta property="og:type" content="website">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-brand">أدواتي</a>
-    <div class="nav-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="about.html">من نحن</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </div>
-</nav>
-
-<main>
-  <div class="tool-page" style="max-width:560px;">
-    <div class="page-header">
-      <a href="index.html">← العودة للرئيسية</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon" style="background:#fefce8;">🔤</div>
-      <div class="card-title">عداد الكلمات والأحرف</div>
-      <div class="card-subtitle">عداد فوري لمقالاتك ونصوصك</div>
-      <div class="divider"></div>
-
-      <textarea id="textInput" placeholder="اكتب أو الصق نصك هنا..." oninput="updateStats()" style="min-height:160px;"></textarea>
-
-      <div class="stat-grid" style="margin-top:16px;">
-        <div class="stat-box"><div class="stat-val" id="wordCount">0</div><div class="stat-lbl">كلمة</div></div>
-        <div class="stat-box"><div class="stat-val" id="charCount">0</div><div class="stat-lbl">حرف</div></div>
-        <div class="stat-box"><div class="stat-val" id="charNoSpace">0</div><div class="stat-lbl">بدون مسافات</div></div>
-        <div class="stat-box"><div class="stat-val" id="sentenceCount">0</div><div class="stat-lbl">جملة</div></div>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
       </div>
     </div>
   </div>
-</main>
-
-<footer class="footer">
-  <div class="footer-links">
-    <a href="about.html">من نحن</a>
-    <a href="contact.html">تواصل معنا</a>
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fefce8;">🔤</div>
+    <div class="card-title" data-i18n="word_title">عداد الكلمات والأحرف</div>
+    <div class="card-subtitle" data-i18n="word_sub">عداد فوري لمقالاتك ونصوصك</div>
+    <div class="divider"></div>
+    <textarea id="textInput" rows="8" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;resize:vertical;background:var(--bg);color:var(--text);" data-i18n-ph="word_placeholder" placeholder="اكتب أو الصق نصك هنا..." oninput="updateStats()"></textarea>
+    <div class="stat-grid" style="margin-top:16px;">
+      <div class="stat-box"><div class="stat-val" id="wordCount">0</div><div class="stat-lbl" data-i18n="word_words">كلمة</div></div>
+      <div class="stat-box"><div class="stat-val" id="charCount">0</div><div class="stat-lbl" data-i18n="word_chars">حرف</div></div>
+      <div class="stat-box"><div class="stat-val" id="charNoSpace">0</div><div class="stat-lbl" data-i18n="word_nospace">بدون مسافات</div></div>
+      <div class="stat-box"><div class="stat-val" id="sentenceCount">0</div><div class="stat-lbl" data-i18n="word_sentences">جملة</div></div>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 أدواتي</div>
+</div></main>
+<footer class="footer">
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
 </footer>
-
 <script>
 function updateStats() {
   const text = document.getElementById('textInput').value;
@@ -67,6 +54,5 @@ function updateStats() {
   document.getElementById('sentenceCount').textContent = text.trim() === '' ? 0 : text.split(/[.!?؟]+/).filter(s => s.trim().length > 0).length;
 }
 </script>
-
-</body>
-</html>
+<script src="i18n.js"></script>
+</body></html>
