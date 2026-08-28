@@ -38,8 +38,8 @@
     <div class="divider"></div>
     <label data-i18n="qr_input">الرابط أو النص</label>
     <textarea id="qrInput" rows="3" data-i18n-ph="qr_placeholder" placeholder="https://example.com أو أي نص..." oninput="generateQR()" onpaste="setTimeout(generateQR,50)" style="resize:vertical;"></textarea>
-    <button class="btn btn-primary" onclick="generateQR()" data-i18n="qr_generate">توليد الرمز</button>
-    <div id="qrStatus" style="display:none;text-align:center;margin-top:16px;font-size:15px;color:var(--text-muted);"></div>
+    <button class="btn btn-primary" id="qrBtn">توليد الرمز</button>
+    <div id="qrStatus" style="display:none;text-align:center;margin-top:16px;font-size:15px;padding:10px;border-radius:8px;background:#fef9c3;color:#92400e;font-weight:600;"></div>
     <div id="qrWrap" style="display:none;text-align:center;margin-top:24px;">
       <div id="qrDisplay" style="display:inline-block;padding:16px;background:#fff;border-radius:var(--radius);border:2px solid var(--border);box-shadow:var(--shadow-md);"></div>
       <div style="margin-top:16px;">
@@ -60,38 +60,53 @@
 </footer>
 <script>
 function generateQR() {
-  const text = document.getElementById('qrInput').value.trim();
-  const wrap = document.getElementById('qrWrap');
-  const empty = document.getElementById('qrEmpty');
-  const display = document.getElementById('qrDisplay');
-  const status = document.getElementById('qrStatus');
-  if (!text) { wrap.style.display = 'none'; empty.style.display = 'block'; return; }
+  var btn    = document.getElementById('qrBtn');
+  var status = document.getElementById('qrStatus');
+  var wrap   = document.getElementById('qrWrap');
+  var empty  = document.getElementById('qrEmpty');
+  var display= document.getElementById('qrDisplay');
+  var input  = document.getElementById('qrInput');
+  var text   = input ? input.value.trim() : '';
 
-  status.textContent = '⏳ جاري التوليد...';
-  status.style.display = 'block';
-  wrap.style.display = 'none';
+  // Immediate visible proof the function ran
+  if (btn) { btn.disabled = true; btn.textContent = '⏳...'; }
 
-  const encoded = encodeURIComponent(text);
-  const urls = [
+  if (!text) {
+    if (status) { status.textContent = '⚠️ اكتب نصاً أو رابطاً أولاً'; status.style.display = 'block'; }
+    if (wrap)  wrap.style.display  = 'none';
+    if (empty) empty.style.display = 'block';
+    setTimeout(function(){ if(btn){btn.disabled=false;btn.textContent='توليد الرمز';} }, 1000);
+    return;
+  }
+
+  if (status) { status.textContent = '⏳ جاري التوليد...'; status.style.display = 'block'; }
+  if (wrap)  wrap.style.display  = 'none';
+  if (empty) empty.style.display = 'none';
+
+  var encoded = encodeURIComponent(text);
+  var urls = [
     'https://chart.googleapis.com/chart?cht=qr&chs=220x220&chl=' + encoded + '&choe=UTF-8',
-    'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=' + encoded
+    'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=' + encoded,
+    'https://quickchart.io/qr?text=' + encoded + '&size=220'
   ];
 
-  let tried = 0;
+  var tried = 0;
   function tryNext() {
     if (tried >= urls.length) {
-      status.textContent = '❌ تعذّر توليد الرمز، تحقق من اتصالك بالإنترنت';
+      if (status) status.textContent = '❌ تعذّر التوليد. تحقق من اتصالك بالإنترنت.';
+      if (btn) { btn.disabled = false; btn.textContent = 'توليد الرمز'; }
       return;
     }
-    const img = new Image();
+    var img = new Image();
     img.onload = function() {
       img.id = 'qrImg';
+      img.width = 220; img.height = 220;
       img.style.borderRadius = '4px';
-      display.innerHTML = '';
-      display.appendChild(img);
-      wrap.style.display = 'block';
-      status.style.display = 'none';
-      empty.style.display = 'none';
+      if (display) { display.innerHTML = ''; display.appendChild(img); }
+      if (wrap) wrap.style.display = 'block';
+      if (status) status.style.display = 'none';
+      if (empty) empty.style.display = 'none';
+      if (btn) { btn.disabled = false; btn.textContent = 'توليد الرمز'; }
     };
     img.onerror = function() { tried++; tryNext(); };
     img.src = urls[tried++];
@@ -100,14 +115,22 @@ function generateQR() {
 }
 
 function downloadQR() {
-  const img = document.getElementById('qrImg');
+  var img = document.getElementById('qrImg');
   if (!img) return;
-  const a = document.createElement('a');
+  var a = document.createElement('a');
   a.download = 'qr-code.png';
   a.href = img.src;
   a.target = '_blank';
   a.click();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('qrBtn');
+  if (btn) btn.addEventListener('click', generateQR);
+  var inp = document.getElementById('qrInput');
+  if (inp) inp.addEventListener('input', generateQR);
+  if (inp) inp.addEventListener('paste', function(){ setTimeout(generateQR, 50); });
+});
 </script>
 <script src="i18n.js"></script>
 </body></html>
