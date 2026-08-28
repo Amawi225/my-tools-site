@@ -61,7 +61,7 @@
 function calcAge() {
   const lang = localStorage.getItem('lang') || 'ar';
   const birthInput = document.getElementById('birthdate').value;
-  if (!birthInput) { alert(T[lang].age_alert); return; }
+  if (!birthInput) { showToast(T[lang].age_alert, 'error'); return; }
   const birth = new Date(birthInput), today = new Date();
   let y = today.getFullYear()-birth.getFullYear(), m = today.getMonth()-birth.getMonth(), d = today.getDate()-birth.getDate();
   if (d < 0) { m--; d += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); }
