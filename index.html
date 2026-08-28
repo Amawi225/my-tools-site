@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -83,6 +83,19 @@
       <button class="cat-tab" data-cat="money" onclick="setCat('money')" data-i18n="cat_money">💰 المال</button>
       <button class="cat-tab" data-cat="productivity" onclick="setCat('productivity')" data-i18n="cat_productivity">⚙️ الإنتاجية</button>
       <button class="cat-tab" data-cat="quick" onclick="setCat('quick')" data-i18n="cat_quick">⚡ سريعة</button>
+      <button class="cat-tab" data-cat="oman" onclick="setCat('oman')" data-i18n="cat_oman">🇴🇲 عمان</button>
+    </div>
+
+    <!-- Favorites section -->
+    <div id="favSection" style="display:none;margin-bottom:24px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;" data-i18n="fav_title">⭐ المفضلة</div>
+      <div class="tools-grid" id="favGrid"></div>
+    </div>
+
+    <!-- Recent section -->
+    <div id="recentSection" style="display:none;margin-bottom:24px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;" data-i18n="recent_title">🕘 استخدمتها مؤخراً</div>
+      <div class="tools-grid" id="recentGrid"></div>
     </div>
 
     <div class="tools-grid" id="toolsGrid">
@@ -170,6 +183,30 @@
         <div class="tool-card-desc" data-i18n="sw_card_desc">ساعة توقيت ومؤقت احترافي للتمارين والعمل</div>
         <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
       </a>
+      <a href="vat-calculator.html" class="tool-card" data-cat="oman" data-search="VAT ضريبة ضريبة القيمة المضافة عمان السعودية الإمارات vat tax gulf">
+        <div class="tool-icon-wrap" style="background:#fefce8;">🧾</div>
+        <div class="tool-card-title" data-i18n="vat_card_title">حاسبة VAT الخليج</div>
+        <div class="tool-card-desc" data-i18n="vat_card_desc">احسب ضريبة القيمة المضافة لعمان والسعودية والإمارات</div>
+        <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
+      </a>
+      <a href="salary-calculator.html" class="tool-card" data-cat="oman" data-search="راتب صافي PASI عمان salary net oman allowance بدل">
+        <div class="tool-icon-wrap" style="background:#f0fdf4;">💼</div>
+        <div class="tool-card-title" data-i18n="sal_card_title">حاسبة الراتب — عمان</div>
+        <div class="tool-card-desc" data-i18n="sal_card_desc">احسب راتبك الصافي مع خصم PASI للمواطنين</div>
+        <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
+      </a>
+      <a href="end-of-service.html" class="tool-card" data-cat="oman" data-search="نهاية الخدمة مكافأة عمان end of service gratuity oman قانون العمل">
+        <div class="tool-icon-wrap" style="background:#f0f9ff;">📋</div>
+        <div class="tool-card-title" data-i18n="eos_card_title">حاسبة نهاية الخدمة</div>
+        <div class="tool-card-desc" data-i18n="eos_card_desc">احسب مكافأة نهاية خدمتك وفق قانون العمل العماني</div>
+        <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
+      </a>
+      <a href="hijri-converter.html" class="tool-card" data-cat="oman" data-search="هجري ميلادي تحويل تاريخ hijri gregorian calendar date convert">
+        <div class="tool-icon-wrap" style="background:#fdf4ff;">🌙</div>
+        <div class="tool-card-title" data-i18n="hijri_card_title">محوّل التاريخ الهجري</div>
+        <div class="tool-card-desc" data-i18n="hijri_card_desc">حوّل بين التقويم الهجري والميلادي بسهولة</div>
+        <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
+      </a>
     </div>
     <div class="search-no-results" id="noResults">
       <div class="no-results-icon">🔍</div>
@@ -207,6 +244,8 @@
         <h4 data-i18n="footer_links_title">روابط</h4>
         <a href="about.html" data-i18n="footer_about">من نحن</a>
         <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
       </div>
     </div>
     <div class="footer-bottom">
