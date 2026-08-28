@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة نسبة وخصم</title>
+<meta name="description" content="احسب نسبة الخصم أو الزيادة على أي سعر بسهولة وسرعة، وعرف السعر النهائي بعد الخصم.">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #2193b0;
+    margin-bottom: 24px;
+  }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+  }
+  .tab.active {
+    background: #2193b0;
+    color: #fff;
+  }
+  .section { display: none; }
+  .section.active { display: block; }
+  label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  input:focus { outline: none; border-color: #2193b0; }
+  #result1, #result2 {
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    background: #d4edda;
+    color: #155724;
+    display: none;
+  }
+  #result1.show, #result2.show { display: block; }
+  .resultValue {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .resultSub {
+    font-size: 13px;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+  a.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #2193b0;
+    text-decoration: none;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>💯 حاسبة نسبة وخصم</h1>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="percent" onclick="switchTab('percent')">نسبة مئوية</div>
+    <div class="tab" data-tab="discount" onclick="switchTab('discount')">خصم</div>
+  </div>
+
+  <div class="section active" id="section-percent">
+    <label for="p1">ما هي</label>
+    <input type="number" id="p1" placeholder="مثال: 25" oninput="calcPercent()">
+    <label for="p2">% من الرقم</label>
+    <input type="number" id="p2" placeholder="مثال: 200" oninput="calcPercent()">
+    <div id="result1">
+      <div class="resultValue" id="percentResult"></div>
+    </div>
+  </div>
+
+  <div class="section" id="section-discount">
+    <label for="d1">السعر الأصلي</label>
+    <input type="number" id="d1" placeholder="مثال: 100" oninput="calcDiscount()">
+    <label for="d2">نسبة الخصم %</label>
+    <input type="number" id="d2" placeholder="مثال: 20" oninput="calcDiscount()">
+    <div id="result2">
+      <div class="resultValue" id="discountResult"></div>
+      <div class="resultSub" id="discountSub"></div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
+</div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(`section-${tab}`).classList.add('active');
+}
+
+function calcPercent() {
+  const p1 = parseFloat(document.getElementById('p1').value);
+  const p2 = parseFloat(document.getElementById('p2').value);
+  const resultDiv = document.getElementById('result1');
+  if (!p1 && p1 !== 0 || !p2 && p2 !== 0) {
+    resultDiv.classList.remove('show');
+    return;
+  }
+  const result = (p1 / 100) * p2;
+  document.getElementById('percentResult').textContent = `${p1}% من ${p2} = ${result.toFixed(2).replace(/\.?0+$/, '')}`;
+  resultDiv.classList.add('show');
+}
+
+function calcDiscount() {
+  const price = parseFloat(document.getElementById('d1').value);
+  const discount = parseFloat(document.getElementById('d2').value);
+  const resultDiv = document.getElementById('result2');
+  if (!price && price !== 0 || !discount && discount !== 0) {
+    resultDiv.classList.remove('show');
+    return;
+  }
+  const saved = (discount / 100) * price;
+  const finalPrice = price - saved;
+  document.getElementById('discountResult').textContent = `${finalPrice.toFixed(2).replace(/\.?0+$/, '')}`;
+  document.getElementById('discountSub').textContent = `السعر بعد الخصم (وفّرت ${saved.toFixed(2).replace(/\.?0+$/, '')})`;
+  resultDiv.classList.add('show');
+}
+</script>
+
+</body>
+</html>

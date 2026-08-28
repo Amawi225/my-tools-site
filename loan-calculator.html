@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة القسط الشهري</title>
+<meta name="description" content="احسب القسط الشهري لأي قرض أو تمويل سيارة بسهولة">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    min-height: 100vh; margin: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fff; border-radius: 16px; padding: 32px 24px;
+    max-width: 400px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  h1 { font-size: 22px; text-align: center; color: #2193b0; margin-bottom: 24px; }
+  label { display: block; font-size: 14px; color: #555; margin-bottom: 6px; margin-top: 16px; }
+  input {
+    width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;
+  }
+  input:focus { outline: none; border-color: #2193b0; }
+  button.calc {
+    width: 100%; margin-top: 22px; padding: 14px; background: #2193b0; color: #fff;
+    border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;
+  }
+  button.calc:hover { background: #1a7b94; }
+  #result { margin-top: 24px; display: none; }
+  #result.show { display: block; }
+  .stat-box {
+    background: #f8f9fa; border-radius: 10px; padding: 16px; text-align: center; margin-bottom: 10px;
+  }
+  .stat-box .big { font-size: 26px; font-weight: bold; color: #2193b0; }
+  .stat-box .label { font-size: 13px; color: #777; margin-top: 2px; }
+  .row2 { display: flex; gap: 10px; }
+  .row2 > div { flex: 1; }
+  a.back { display: block; text-align: center; margin-top: 20px; color: #2193b0; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🧮 حاسبة القسط الشهري</h1>
+
+  <label for="amount">مبلغ القرض</label>
+  <input type="number" id="amount" placeholder="مثال: 10000" oninput="calcLoan()">
+
+  <label for="rate">نسبة الفائدة السنوية %</label>
+  <input type="number" id="rate" placeholder="مثال: 6" oninput="calcLoan()">
+
+  <label for="years">مدة السداد (سنوات)</label>
+  <input type="number" id="years" placeholder="مثال: 5" oninput="calcLoan()">
+
+  <div id="result">
+    <div class="stat-box">
+      <div class="big" id="monthlyPayment"></div>
+      <div class="label">القسط الشهري</div>
+    </div>
+    <div class="row2">
+      <div class="stat-box">
+        <div class="big" id="totalPaid" style="font-size:18px;"></div>
+        <div class="label">إجمالي المدفوع</div>
+      </div>
+      <div class="stat-box">
+        <div class="big" id="totalInterest" style="font-size:18px;"></div>
+        <div class="label">إجمالي الفائدة</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
+</div>
+
+<script>
+function calcLoan() {
+  const amount = parseFloat(document.getElementById('amount').value);
+  const annualRate = parseFloat(document.getElementById('rate').value);
+  const years = parseFloat(document.getElementById('years').value);
+  const resultDiv = document.getElementById('result');
+
+  if (!amount || !years || amount <= 0 || years <= 0) {
+    resultDiv.classList.remove('show');
+    return;
+  }
+
+  const months = years * 12;
+  const monthlyRate = (annualRate || 0) / 100 / 12;
+
+  let monthlyPayment;
+  if (monthlyRate === 0) {
+    monthlyPayment = amount / months;
+  } else {
+    monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+  }
+
+  const totalPaid = monthlyPayment * months;
+  const totalInterest = totalPaid - amount;
+
+  document.getElementById('monthlyPayment').textContent = monthlyPayment.toFixed(2);
+  document.getElementById('totalPaid').textContent = totalPaid.toFixed(2);
+  document.getElementById('totalInterest').textContent = totalInterest.toFixed(2);
+  resultDiv.classList.add('show');
+}
+</script>
+
+</body>
+</html>

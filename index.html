@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أدواتي - مجموعة أدوات مفيدة</title>
+<meta name="description" content="مجموعة أدوات مجانية: حاسبة BMI، محول وحدات، مولد كلمات مرور، حاسبة نسبة وخصم، وحاسبة سعرات وخطة غذائية.">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+  }
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 36px;
+  }
+  header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  header p {
+    font-size: 15px;
+    opacity: 0.9;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .tool-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+  }
+  .tool-icon {
+    font-size: 32px;
+  }
+  .tool-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #2193b0;
+  }
+  .tool-desc {
+    font-size: 13px;
+    color: #777;
+  }
+  .tool-card.disabled {
+    opacity: 0.55;
+    pointer-events: none;
+    cursor: default;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    background: #e0e0e0;
+    color: #666;
+    padding: 3px 8px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-top: 4px;
+  }
+  footer {
+    text-align: center;
+    color: #fff;
+    opacity: 0.8;
+    font-size: 13px;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>🧰 أدواتي</h1>
+    <p>مجموعة أدوات صغيرة ومفيدة، مجانية وسريعة</p>
+  </header>
+
+  <div class="grid">
+    <a href="bmi-calculator.html" class="tool-card">
+      <div class="tool-icon">⚖️</div>
+      <div class="tool-title">حاسبة BMI</div>
+      <div class="tool-desc">احسب مؤشر كتلة جسمك بسرعة</div>
+    </a>
+
+    <a href="diet-plan.html" class="tool-card">
+      <div class="tool-icon">🥗</div>
+      <div class="tool-title">حاسبة السعرات وخطة غذائية</div>
+      <div class="tool-desc">احسب احتياجك اليومي + خطة كاملة</div>
+    </a>
+
+    <a href="unit-converter.html" class="tool-card">
+      <div class="tool-icon">🔄</div>
+      <div class="tool-title">محول وحدات</div>
+      <div class="tool-desc">تحويل بين وحدات الطول والوزن</div>
+    </a>
+
+    <a href="password-generator.html" class="tool-card">
+      <div class="tool-icon">🔑</div>
+      <div class="tool-title">مولد كلمات مرور</div>
+      <div class="tool-desc">كلمات مرور قوية وعشوائية</div>
+    </a>
+
+    <a href="discount-calculator.html" class="tool-card">
+      <div class="tool-icon">💯</div>
+      <div class="tool-title">حاسبة نسبة/خصم</div>
+      <div class="tool-desc">احسب النسب المئوية والخصومات بسهولة</div>
+    </a>
+    <a href="loan-calculator.html" class="tool-card">
+      <div class="tool-icon">🧮</div>
+      <div class="tool-title">حاسبة القسط الشهري</div>
+      <div class="tool-desc">احسب قسط القرض أو التمويل بسهولة</div>
+    </a>
+
+    <a href="age-calculator.html" class="tool-card">
+      <div class="tool-icon">📅</div>
+      <div class="tool-title">حاسبة العمر</div>
+      <div class="tool-desc">عمرك بالتفصيل بالسنة والشهر واليوم</div>
+    </a>
+
+    <a href="word-counter.html" class="tool-card">
+      <div class="tool-icon">🔤</div>
+      <div class="tool-title">عداد كلمات وأحرف</div>
+      <div class="tool-desc">عداد فوري لمقالاتك ونصوصك</div>
+    </a>
+
+  </div>
+
+  <footer>
+    <div style="margin-bottom: 10px;">
+      <a href="about.html" style="color:#fff; opacity:0.9; margin: 0 10px; text-decoration:none; font-size:13px;">من نحن</a>
+      <a href="contact.html" style="color:#fff; opacity:0.9; margin: 0 10px; text-decoration:none; font-size:13px;">تواصل معنا</a>
+    </div>
+    © 2026 أدواتي — كل الحقوق محفوظة
+  </footer>
+</div>
+
+</body>
+</html>
