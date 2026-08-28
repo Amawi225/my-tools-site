@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محول المناطق الزمنية — اعرف الوقت حول العالم</title>
+<meta name="description" content="اعرف الوقت الحالي في أي مدينة حول العالم مجاناً اونلاين.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+<main><div class="tool-page" style="max-width:560px;">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fff7ed;">🕐</div>
+    <div class="card-title" data-i18n="tz_title">محول المناطق الزمنية</div>
+    <div class="card-subtitle" data-i18n="tz_sub">اعرف الوقت في أي مدينة حول العالم</div>
+    <div class="divider"></div>
+    <div id="clockGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;"></div>
+    <div class="divider"></div>
+    <label data-i18n="tz_convert">حوّل وقتاً محدداً</label>
+    <input type="datetime-local" id="inputTime">
+    <label data-i18n="tz_from">من منطقة</label>
+    <select id="tzFrom" onchange="convertTime()"></select>
+    <label data-i18n="tz_to">إلى منطقة</label>
+    <select id="tzTo" onchange="convertTime()"></select>
+    <div id="tzResult" class="result-box success" style="margin-top:16px;">
+      <div class="result-value" id="tzResultVal" style="font-size:28px;"></div>
+      <div class="result-label" id="tzResultLabel"></div>
+    </div>
+  </div>
+</div></main>
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+<script>
+const ZONES = [
+  {name:'Riyadh',tz:'Asia/Riyadh',flag:'🇸🇦'},{name:'Dubai',tz:'Asia/Dubai',flag:'🇦🇪'},
+  {name:'Cairo',tz:'Africa/Cairo',flag:'🇪🇬'},{name:'London',tz:'Europe/London',flag:'🇬🇧'},
+  {name:'New York',tz:'America/New_York',flag:'🇺🇸'},{name:'Los Angeles',tz:'America/Los_Angeles',flag:'🇺🇸'},
+  {name:'Paris',tz:'Europe/Paris',flag:'🇫🇷'},{name:'Berlin',tz:'Europe/Berlin',flag:'🇩🇪'},
+  {name:'Moscow',tz:'Europe/Moscow',flag:'🇷🇺'},{name:'Istanbul',tz:'Europe/Istanbul',flag:'🇹🇷'},
+  {name:'Tokyo',tz:'Asia/Tokyo',flag:'🇯🇵'},{name:'Beijing',tz:'Asia/Shanghai',flag:'🇨🇳'},
+  {name:'Mumbai',tz:'Asia/Kolkata',flag:'🇮🇳'},{name:'Singapore',tz:'Asia/Singapore',flag:'🇸🇬'},
+  {name:'Sydney',tz:'Australia/Sydney',flag:'🇦🇺'},{name:'Toronto',tz:'America/Toronto',flag:'🇨🇦'},
+  {name:'Madrid',tz:'Europe/Madrid',flag:'🇪🇸'},{name:'Amman',tz:'Asia/Amman',flag:'🇯🇴'},
+  {name:'Kuwait',tz:'Asia/Kuwait',flag:'🇰🇼'},{name:'Doha',tz:'Asia/Qatar',flag:'🇶🇦'},
+];
+
+const WORLD_CLOCKS = ['Riyadh','Dubai','London','New York','Tokyo','Sydney'];
+
+function buildClocks() {
+  const grid = document.getElementById('clockGrid');
+  WORLD_CLOCKS.forEach(city => {
+    const z = ZONES.find(x=>x.name===city);
+    if (!z) return;
+    const div = document.createElement('div');
+    div.id = 'clk_'+city.replace(' ','_');
+    div.style.cssText = 'background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;';
+    div.innerHTML = `<div style="font-size:20px;margin-bottom:2px;">${z.flag}</div>
+      <div style="font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;">${city}</div>
+      <div class="clk-time" style="font-size:22px;font-weight:900;color:var(--primary);font-family:monospace;">--:--</div>`;
+    grid.appendChild(div);
+  });
+}
+
+function tickClocks() {
+  const now = new Date();
+  WORLD_CLOCKS.forEach(city => {
+    const z = ZONES.find(x=>x.name===city);
+    if (!z) return;
+    const el = document.querySelector('#clk_'+city.replace(' ','_')+' .clk-time');
+    if (el) el.textContent = now.toLocaleTimeString('en-US', {timeZone:z.tz,hour:'2-digit',minute:'2-digit',hour12:false});
+  });
+}
+
+function populateTzSelects() {
+  const from = document.getElementById('tzFrom'), to = document.getElementById('tzTo');
+  ZONES.forEach((z,i) => {
+    from.innerHTML += `<option value="${z.tz}" ${i===0?'selected':''}>${z.flag} ${z.name}</option>`;
+    to.innerHTML   += `<option value="${z.tz}" ${i===2?'selected':''}>${z.flag} ${z.name}</option>`;
+  });
+}
+
+function convertTime() {
+  const input = document.getElementById('inputTime').value;
+  if (!input) { document.getElementById('tzResult').classList.remove('show'); return; }
+  const from = document.getElementById('tzFrom').value;
+  const to = document.getElementById('tzTo').value;
+  const date = new Date(input);
+  const toStr = date.toLocaleString('en-GB', { timeZone: to, weekday:'short', year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+  document.getElementById('tzResultVal').textContent = date.toLocaleTimeString('en-US', {timeZone:to, hour:'2-digit', minute:'2-digit', hour12:true});
+  document.getElementById('tzResultLabel').textContent = toStr;
+  document.getElementById('tzResult').classList.add('show');
+}
+
+const now = new Date();
+const pad = v => String(v).padStart(2,'0');
+document.getElementById('inputTime').value = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+buildClocks();
+populateTzSelects();
+tickClocks();
+setInterval(tickClocks, 1000);
+</script>
+<script src="i18n.js"></script>
+</body></html>
