@@ -3,66 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عداد الكلمات والأحرف</title>
+<title>عداد الكلمات والأحرف — أدواتي</title>
 <meta name="description" content="عداد كلمات وأحرف فوري لمقالاتك ونصوصك">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    min-height: 100vh; margin: 0;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .card {
-    background: #fff; border-radius: 16px; padding: 32px 24px;
-    max-width: 460px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  h1 { font-size: 22px; text-align: center; color: #2193b0; margin-bottom: 20px; }
-  textarea {
-    width: 100%; min-height: 180px; padding: 14px; border: 2px solid #e0e0e0;
-    border-radius: 8px; font-size: 15px; font-family: inherit; resize: vertical;
-  }
-  textarea:focus { outline: none; border-color: #2193b0; }
-  .stats { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-  .stat-box {
-    flex: 1; min-width: 90px; background: #f8f9fa; border-radius: 10px; padding: 12px 6px; text-align: center;
-  }
-  .stat-box .big { font-size: 20px; font-weight: bold; color: #2193b0; }
-  .stat-box .label { font-size: 11px; color: #777; margin-top: 2px; }
-  a.back { display: block; text-align: center; margin-top: 20px; color: #2193b0; text-decoration: none; font-size: 14px; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h1>🔤 عداد الكلمات والأحرف</h1>
-
-  <textarea id="textInput" placeholder="اكتب أو الصق نصك هنا..." oninput="updateStats()"></textarea>
-
-  <div class="stats">
-    <div class="stat-box"><div class="big" id="wordCount">0</div><div class="label">كلمة</div></div>
-    <div class="stat-box"><div class="big" id="charCount">0</div><div class="label">حرف</div></div>
-    <div class="stat-box"><div class="big" id="charNoSpace">0</div><div class="label">حرف بدون مسافات</div></div>
-    <div class="stat-box"><div class="big" id="sentenceCount">0</div><div class="label">جملة</div></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">أدواتي</a>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
+    </div>
   </div>
+</nav>
 
-  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
-</div>
+<main>
+  <div class="tool-page" style="max-width:560px;">
+    <div class="page-header">
+      <a href="index.html">← العودة للرئيسية</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:#fefce8;">🔤</div>
+      <div class="card-title">عداد الكلمات والأحرف</div>
+      <div class="card-subtitle">عداد فوري لمقالاتك ونصوصك</div>
+      <div class="divider"></div>
+
+      <textarea id="textInput" placeholder="اكتب أو الصق نصك هنا..." oninput="updateStats()" style="min-height:160px;"></textarea>
+
+      <div class="stat-grid" style="margin-top:16px;">
+        <div class="stat-box"><div class="stat-val" id="wordCount">0</div><div class="stat-lbl">كلمة</div></div>
+        <div class="stat-box"><div class="stat-val" id="charCount">0</div><div class="stat-lbl">حرف</div></div>
+        <div class="stat-box"><div class="stat-val" id="charNoSpace">0</div><div class="stat-lbl">بدون مسافات</div></div>
+        <div class="stat-box"><div class="stat-val" id="sentenceCount">0</div><div class="stat-lbl">جملة</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+  </div>
+  <div class="footer-copy">© 2026 أدواتي</div>
+</footer>
 
 <script>
 function updateStats() {
   const text = document.getElementById('textInput').value;
-
-  const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
-  const chars = text.length;
-  const charsNoSpace = text.replace(/\s/g, '').length;
-  const sentences = text.trim() === '' ? [] : text.split(/[.!?؟]+/).filter(s => s.trim().length > 0);
-
-  document.getElementById('wordCount').textContent = words.length;
-  document.getElementById('charCount').textContent = chars;
-  document.getElementById('charNoSpace').textContent = charsNoSpace;
-  document.getElementById('sentenceCount').textContent = sentences.length;
+  document.getElementById('wordCount').textContent = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+  document.getElementById('charCount').textContent = text.length;
+  document.getElementById('charNoSpace').textContent = text.replace(/\s/g, '').length;
+  document.getElementById('sentenceCount').textContent = text.trim() === '' ? 0 : text.split(/[.!?؟]+/).filter(s => s.trim().length > 0).length;
 }
 </script>
 
