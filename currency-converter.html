@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محول العملات — تحويل العملات بأسعار حية مجاناً</title>
+<meta name="description" content="حول بين أكثر من 30 عملة عالمية مجاناً اونلاين بأسعار صرف محدثة.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fefce8;">💱</div>
+    <div class="card-title" data-i18n="currency_title">محول العملات</div>
+    <div class="card-subtitle" data-i18n="currency_sub">أسعار صرف حية من الإنترنت</div>
+    <div class="divider"></div>
+    <label data-i18n="currency_amount">المبلغ</label>
+    <input type="number" id="amount" value="1" oninput="convert()">
+    <div class="row">
+      <div>
+        <label data-i18n="currency_from">من</label>
+        <select id="fromCurr" onchange="convert()"></select>
+      </div>
+      <div style="display:flex;align-items:flex-end;padding-bottom:2px;">
+        <button onclick="swapCurrencies()" style="width:44px;height:44px;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;" title="swap">⇄</button>
+      </div>
+      <div>
+        <label data-i18n="currency_to">إلى</label>
+        <select id="toCurr" onchange="convert()"></select>
+      </div>
+    </div>
+    <div id="result" class="result-box success" style="margin-top:20px;">
+      <div class="result-value" id="resultVal" style="font-size:36px;"></div>
+      <div class="result-label" id="rateLabel"></div>
+    </div>
+    <div id="loading" style="text-align:center;padding:16px;color:var(--text-muted);display:none;" data-i18n="currency_loading">جاري تحميل الأسعار...</div>
+    <div id="offline" style="display:none;margin-top:12px;padding:10px 14px;background:var(--warning-bg);border-radius:var(--radius-sm);font-size:13px;color:var(--warning-text);" data-i18n="currency_offline">تعذّر تحميل الأسعار — تأكد من اتصالك بالإنترنت</div>
+  </div>
+</div></main>
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+<script>
+const CURRENCIES = {
+  USD:'🇺🇸 USD',EUR:'🇪🇺 EUR',GBP:'🇬🇧 GBP',SAR:'🇸🇦 SAR',AED:'🇦🇪 AED',
+  KWD:'🇰🇼 KWD',QAR:'🇶🇦 QAR',BHD:'🇧🇭 BHD',OMR:'🇴🇲 OMR',EGP:'🇪🇬 EGP',
+  JOD:'🇯🇴 JOD',TRY:'🇹🇷 TRY',INR:'🇮🇳 INR',PKR:'🇵🇰 PKR',BDT:'🇧🇩 BDT',
+  MYR:'🇲🇾 MYR',IDR:'🇮🇩 IDR',THB:'🇹🇭 THB',JPY:'🇯🇵 JPY',CNY:'🇨🇳 CNY',
+  KRW:'🇰🇷 KRW',CAD:'🇨🇦 CAD',AUD:'🇦🇺 AUD',CHF:'🇨🇭 CHF',SEK:'🇸🇪 SEK',
+  NOK:'🇳🇴 NOK',DKK:'🇩🇰 DKK',PLN:'🇵🇱 PLN',RUB:'🇷🇺 RUB',BRL:'🇧🇷 BRL',
+  MXN:'🇲🇽 MXN',ZAR:'🇿🇦 ZAR'
+};
+let rates = null;
+
+function populateSelects() {
+  const from = document.getElementById('fromCurr');
+  const to = document.getElementById('toCurr');
+  Object.entries(CURRENCIES).forEach(([code, label]) => {
+    from.innerHTML += `<option value="${code}" ${code==='USD'?'selected':''}>${label}</option>`;
+    to.innerHTML   += `<option value="${code}" ${code==='SAR'?'selected':''}>${label}</option>`;
+  });
+}
+
+async function fetchRates() {
+  document.getElementById('loading').style.display = 'block';
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    const data = await res.json();
+    if (data && data.rates) {
+      rates = data.rates;
+      document.getElementById('loading').style.display = 'none';
+      convert();
+    }
+  } catch(e) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('offline').style.display = 'block';
+    rates = {USD:1,EUR:0.92,GBP:0.79,SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,EGP:48.5,TRY:32.1,INR:83.2,JPY:149,CNY:7.24,CAD:1.36,AUD:1.53,CHF:0.89};
+    convert();
+  }
+}
+
+function convert() {
+  if (!rates) return;
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const from = document.getElementById('fromCurr').value;
+  const to = document.getElementById('toCurr').value;
+  const fromRate = rates[from] || 1;
+  const toRate = rates[to] || 1;
+  const result = (amount / fromRate) * toRate;
+  document.getElementById('resultVal').textContent = result.toFixed(4).replace(/\.?0+$/, '') + ' ' + to;
+  const rate1 = (1 / fromRate) * toRate;
+  document.getElementById('rateLabel').textContent = `1 ${from} = ${rate1.toFixed(4)} ${to}`;
+  document.getElementById('result').classList.add('show');
+}
+
+function swapCurrencies() {
+  const f = document.getElementById('fromCurr'), t = document.getElementById('toCurr');
+  const tmp = f.value; f.value = t.value; t.value = tmp;
+  convert();
+}
+
+populateSelects();
+fetchRates();
+</script>
+<script src="i18n.js"></script>
+</body></html>
