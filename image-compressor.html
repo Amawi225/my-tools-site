@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ضغط الصور مجاناً — تصغير حجم الصورة بدون فقدان الجودة</title>
+<meta name="description" content="ضغط الصور مجاناً اونلاين. قلّل حجم صورتك بنسبة تصل إلى 90% مع الحفاظ على الجودة. يعمل في متصفحك بدون رفع البيانات.">
+<meta name="keywords" content="ضغط الصور, تصغير الصور, compress image, image compressor, تقليل حجم الصورة">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/image-compressor.html">
+<link rel="stylesheet" href="style.css">
+<style>
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 16px;
+}
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.drop-zone-icon { font-size: 40px; margin-bottom: 8px; }
+.drop-zone-text { font-size: 15px; color: var(--text-muted); }
+.drop-zone-sub { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+.img-preview-wrap { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.img-preview-box { flex: 1; min-width: 200px; }
+.img-preview-box img { width: 100%; border-radius: 8px; max-height: 280px; object-fit: contain; background: #f1f5f9; }
+.img-preview-label { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 6px; }
+.quality-slider { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: var(--border); outline: none; }
+.quality-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); cursor: pointer; }
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#f0f9ff;">🖼️</div>
+    <div class="card-title">ضغط وتصغير الصور</div>
+    <div class="card-subtitle">يعمل داخل متصفحك — لا يتم رفع صورك لأي خادم ✅</div>
+    <div class="divider"></div>
+
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('imgInput').click()">
+      <div class="drop-zone-icon">📁</div>
+      <div class="drop-zone-text">اضغط هنا أو اسحب صورتك</div>
+      <div class="drop-zone-sub">JPG، PNG، WebP — حتى 20MB</div>
+    </div>
+    <input type="file" id="imgInput" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="loadImage(this)">
+
+    <div id="controls" style="display:none;">
+      <label style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span>جودة الضغط:</span>
+        <span id="qualityLabel" style="font-weight:700;color:var(--primary);font-size:18px;">80%</span>
+      </label>
+      <input type="range" class="quality-slider" id="qualitySlider" min="5" max="95" value="80" step="5" oninput="onQualityChange(this.value)">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px;">
+        <span>أقصى ضغط</span><span>أعلى جودة</span>
+      </div>
+
+      <div class="stat-grid" style="margin-top:16px;">
+        <div class="stat-box">
+          <div class="stat-val" id="origSize" style="font-size:16px;">—</div>
+          <div class="stat-lbl">الحجم الأصلي</div>
+        </div>
+        <div class="stat-box" style="background:#f0fdf4;">
+          <div class="stat-val" id="compSize" style="font-size:16px;color:#16a34a;">—</div>
+          <div class="stat-lbl">بعد الضغط</div>
+        </div>
+        <div class="stat-box" style="background:#fefce8;">
+          <div class="stat-val" id="savings" style="font-size:16px;color:#ca8a04;">—</div>
+          <div class="stat-lbl">التوفير</div>
+        </div>
+      </div>
+
+      <div class="img-preview-wrap">
+        <div class="img-preview-box">
+          <img id="origPreview" src="" alt="original">
+          <div class="img-preview-label">الصورة الأصلية</div>
+        </div>
+        <div class="img-preview-box">
+          <img id="compPreview" src="" alt="compressed">
+          <div class="img-preview-label" id="compLabel">الصورة المضغوطة</div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="downloadBtn" style="margin-top:16px;width:100%;" onclick="downloadCompressed()">
+        ⬇️ تحميل الصورة المضغوطة
+      </button>
+      <button onclick="document.getElementById('imgInput').click()" style="width:100%;margin-top:8px;padding:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:inherit;font-size:14px;color:var(--text);">
+        🔄 اختر صورة أخرى
+      </button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">🔒 خصوصية تامة</div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;">
+      يعمل هذا الضاغط بالكامل داخل متصفحك باستخدام تقنية Canvas API. لا يتم إرسال صورتك إلى أي خادم — بياناتك لا تغادر جهازك.
+    </p>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يُمكن ضغط PNG بدون خسارة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">PNG يُحوَّل إلى JPEG للضغط (مع خسارة طفيفة). إذا أردت PNG شفافاً بدون خسارة، قلّل الأبعاد بدلاً من الجودة.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الجودة الموصى بها لمواقع الويب؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">70-80% تُعطي توازناً جيداً بين الحجم والجودة. للصور التي تُرفع على وسائل التواصل 60-75% كافية.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لماذا الصورة المضغوطة أحياناً أكبر؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">إذا كانت الصورة الأصلية بجودة منخفضة جداً أو تنسيق PNG، قد لا يُقلّل الضغط حجمها. جرّب تخفيض الجودة أكثر.</p>
+    </details>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="privacy.html">الخصوصية</a>
+    </div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+let originalFile = null;
+let originalDataUrl = null;
+let compressedBlob = null;
+let originalFileName = 'image.jpg';
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+}
+
+function loadImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  originalFile = file;
+  originalFileName = file.name.replace(/\.[^.]+$/, '') + '_compressed.jpg';
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    originalDataUrl = e.target.result;
+    document.getElementById('origPreview').src = originalDataUrl;
+    document.getElementById('origSize').textContent = formatSize(file.size);
+    document.getElementById('controls').style.display = 'block';
+    compress(parseInt(document.getElementById('qualitySlider').value));
+  };
+  reader.readAsDataURL(file);
+}
+
+function compress(quality) {
+  if (!originalDataUrl) return;
+  const img = new Image();
+  img.onload = function() {
+    let w = img.naturalWidth, h = img.naturalHeight;
+    // Scale down if very large (>4000px)
+    const maxDim = 4000;
+    if (w > maxDim || h > maxDim) {
+      const scale = maxDim / Math.max(w, h);
+      w = Math.round(w * scale);
+      h = Math.round(h * scale);
+    }
+    canvas.width = w;
+    canvas.height = h;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(img, 0, 0, w, h);
+    canvas.toBlob(function(blob) {
+      compressedBlob = blob;
+      const url = URL.createObjectURL(blob);
+      document.getElementById('compPreview').src = url;
+      document.getElementById('compSize').textContent = formatSize(blob.size);
+      const saved = originalFile.size - blob.size;
+      const pct = ((saved / originalFile.size) * 100).toFixed(0);
+      document.getElementById('savings').textContent = (saved > 0 ? '−' : '+') + formatSize(Math.abs(saved)) + ' (' + Math.abs(pct) + '%)';
+      document.getElementById('savings').style.color = saved > 0 ? '#ca8a04' : '#dc2626';
+      document.getElementById('compLabel').textContent = 'مضغوطة — جودة ' + quality + '%';
+    }, 'image/jpeg', quality / 100);
+  };
+  img.src = originalDataUrl;
+}
+
+function onQualityChange(val) {
+  document.getElementById('qualityLabel').textContent = val + '%';
+  compress(parseInt(val));
+}
+
+function downloadCompressed() {
+  if (!compressedBlob) return;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(compressedBlob);
+  a.download = originalFileName;
+  a.click();
+}
+
+// Drag and drop
+const dz = document.getElementById('dropZone');
+dz.addEventListener('dragover', function(e) { e.preventDefault(); dz.classList.add('drag-over'); });
+dz.addEventListener('dragleave', function() { dz.classList.remove('drag-over'); });
+dz.addEventListener('drop', function(e) {
+  e.preventDefault();
+  dz.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const dt = new DataTransfer();
+    dt.items.add(file);
+    const inp = document.getElementById('imgInput');
+    inp.files = dt.files;
+    loadImage(inp);
+  }
+});
+</script>
+<script src="i18n.js"></script>
+</body></html>
