@@ -1,163 +1,138 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>حاسبة السعرات الحرارية اليومية — خطة غذائية مجانية اونلاين</title>
-<meta name="description" content="احسب احتياجك اليومي من السعرات الحرارية مجاناً اونلاين. حاسبة السعرات الحرارية مع خطة غذائية كاملة للتخسيس أو زيادة الوزن.">
-<meta name="keywords" content="حاسبة السعرات الحرارية, خطة غذائية, حساب السعرات, تخسيس, رجيم, calories calculator">
+<meta name="description" content="احسب احتياجك اليومي من السعرات الحرارية مجاناً اونلاين. حاسبة السعرات مع خطة غذائية كاملة.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="حاسبة السعرات الحرارية — أدواتي">
-<meta property="og:description" content="احسب احتياجك اليومي من السعرات واحصل على خطة غذائية مخصصة مجاناً.">
-<meta property="og:url" content="https://amawi225.github.io/my-tools-site/diet-plan.html">
-<meta property="og:type" content="website">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-brand">أدواتي</a>
-    <div class="nav-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="about.html">من نحن</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </div>
-</nav>
-
-<main>
-  <div class="tool-page">
-    <div class="page-header">
-      <a href="index.html">← العودة للرئيسية</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon" style="background:#f0fdf4;">🥗</div>
-      <div class="card-title">حاسبة السعرات والخطة الغذائية</div>
-      <div class="card-subtitle">احسب احتياجك اليومي بدقة علمية</div>
-      <div class="divider"></div>
-
-      <label>الجنس</label>
-      <div class="option-toggle">
-        <button class="option-btn active" data-gender="male" onclick="setGender('male')">ذكر</button>
-        <button class="option-btn" data-gender="female" onclick="setGender('female')">أنثى</button>
-      </div>
-
-      <div class="row">
-        <div>
-          <label for="age">العمر</label>
-          <input type="number" id="age" placeholder="25">
-        </div>
-        <div>
-          <label for="weight">الوزن (كغم)</label>
-          <input type="number" id="weight" placeholder="70">
-        </div>
-      </div>
-
-      <label for="height">الطول (سم)</label>
-      <input type="number" id="height" placeholder="175">
-
-      <label for="activity">مستوى النشاط</label>
-      <select id="activity">
-        <option value="1.2">قليل الحركة (مكتبي)</option>
-        <option value="1.375">نشاط خفيف (1–3 أيام رياضة)</option>
-        <option value="1.55" selected>نشاط متوسط (3–5 أيام رياضة)</option>
-        <option value="1.725">نشاط عالي (6–7 أيام رياضة)</option>
-        <option value="1.9">نشاط عالي جداً (رياضي / عمل بدني)</option>
-      </select>
-
-      <label for="goal">الهدف</label>
-      <select id="goal">
-        <option value="lose">نزول وزن</option>
-        <option value="maintain" selected>ثبات الوزن</option>
-        <option value="gain">زيادة وزن</option>
-      </select>
-
-      <button class="btn btn-primary" onclick="calculate()">احسب احتياجي اليومي</button>
-
-      <div id="freeResult" style="display:none; margin-top:20px;">
-        <div class="result-box show success" style="margin-top:0;">
-          <div class="result-value" id="calorieResult"></div>
-          <div class="result-label">سعرة حرارية يومياً</div>
-        </div>
-
-        <div class="stat-grid" style="margin-top:12px;">
-          <div class="stat-box"><div class="stat-val" id="proteinResult"></div><div class="stat-lbl">بروتين (غ)</div></div>
-          <div class="stat-box"><div class="stat-val" id="carbResult"></div><div class="stat-lbl">كارب (غ)</div></div>
-          <div class="stat-box"><div class="stat-val" id="fatResult"></div><div class="stat-lbl">دهون (غ)</div></div>
-        </div>
-
-        <div class="pro-section" style="margin-top:16px;">
-          <div style="background:#dcfce7;color:#166534;font-size:13px;font-weight:700;padding:6px 12px;border-radius:6px;text-align:center;margin-bottom:12px;">
-            🎉 عرض خاص — أول 21 يوم مجاناً تماماً!
-          </div>
-          <div class="pro-title">🔒 الخطة الغذائية الكاملة</div>
-          <ul class="pro-list">
-            <li>جدول وجبات يومي مفصّل (7 أيام)</li>
-            <li>قائمة بدائل الأطعمة حسب ذوقك</li>
-            <li>ملف قابل للطباعة والتنزيل</li>
-            <li>تحديث أسبوعي حسب تقدمك</li>
-          </ul>
-          <div style="text-align:center;margin-bottom:4px;">
-            <span style="font-size:14px;color:#999;text-decoration:line-through;">٩.٩٩ دولار</span>
-            <span style="font-size:13px;font-weight:700;color:#dc2626;margin-right:8px;">خصم 50%</span>
-          </div>
-          <div class="pro-price" style="margin-bottom:4px;">٤.٩٩ دولار</div>
-          <div style="text-align:center;font-size:12px;color:#6b7280;margin-bottom:12px;">21 يوم مجاناً • بدون بطاقة ائتمانية</div>
-          <button class="btn-buy" onclick="buyPlan()">ابدأ تجربتك المجانية الآن</button>
-        </div>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
       </div>
     </div>
   </div>
-</main>
-
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">🥗</div>
+    <div class="card-title" data-i18n="diet_title">حاسبة السعرات والخطة الغذائية</div>
+    <div class="card-subtitle" data-i18n="diet_sub">احسب احتياجك اليومي بدقة علمية</div>
+    <div class="divider"></div>
+    <label data-i18n="diet_gender">الجنس</label>
+    <div class="option-toggle">
+      <button class="option-btn active" data-gender="male" onclick="setGender('male')" data-i18n="diet_male">ذكر</button>
+      <button class="option-btn" data-gender="female" onclick="setGender('female')" data-i18n="diet_female">أنثى</button>
+    </div>
+    <div class="row">
+      <div><label for="age" data-i18n="diet_age">العمر</label><input type="number" id="age" placeholder="25"></div>
+      <div><label for="weight" data-i18n="diet_weight">الوزن (كغم)</label><input type="number" id="weight" placeholder="70"></div>
+    </div>
+    <label for="height" data-i18n="diet_height">الطول (سم)</label>
+    <input type="number" id="height" placeholder="175">
+    <label for="activity" data-i18n="diet_activity">مستوى النشاط</label>
+    <select id="activity">
+      <option value="1.2" data-i18n="diet_act1">قليل الحركة (مكتبي)</option>
+      <option value="1.375" data-i18n="diet_act2">نشاط خفيف (1–3 أيام رياضة)</option>
+      <option value="1.55" selected data-i18n="diet_act3">نشاط متوسط (3–5 أيام رياضة)</option>
+      <option value="1.725" data-i18n="diet_act4">نشاط عالي (6–7 أيام رياضة)</option>
+      <option value="1.9" data-i18n="diet_act5">نشاط عالي جداً (رياضي / عمل بدني)</option>
+    </select>
+    <label for="goal" data-i18n="diet_goal">الهدف</label>
+    <select id="goal">
+      <option value="lose" data-i18n="diet_goal1">نزول وزن</option>
+      <option value="maintain" selected data-i18n="diet_goal2">ثبات الوزن</option>
+      <option value="gain" data-i18n="diet_goal3">زيادة وزن</option>
+      <option value="cut" data-i18n="diet_goal4">تنشيف الجسم</option>
+      <option value="tone" data-i18n="diet_goal5">شد الجسم</option>
+      <option value="muscle" data-i18n="diet_goal6">زيادة كتلة العضلات</option>
+    </select>
+    <button class="btn btn-primary" onclick="calculate()" data-i18n="diet_btn">احسب احتياجي اليومي</button>
+    <div id="freeResult" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="calorieResult"></div>
+        <div class="result-label" data-i18n="diet_calories">سعرة حرارية يومياً</div>
+      </div>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-box"><div class="stat-val" id="proteinResult"></div><div class="stat-lbl" data-i18n="diet_protein">بروتين (غ)</div></div>
+        <div class="stat-box"><div class="stat-val" id="carbResult"></div><div class="stat-lbl" data-i18n="diet_carb">كارب (غ)</div></div>
+        <div class="stat-box"><div class="stat-val" id="fatResult"></div><div class="stat-lbl" data-i18n="diet_fat">دهون (غ)</div></div>
+      </div>
+      <div id="goalTip" style="margin-top:12px;padding:10px 14px;background:#f0fdf4;border-radius:var(--radius);font-size:14px;color:#166534;"></div>
+      <div class="pro-section" style="margin-top:16px;">
+        <div style="background:#dcfce7;color:#166534;font-size:13px;font-weight:700;padding:6px 12px;border-radius:6px;text-align:center;margin-bottom:12px;" data-i18n="diet_free_badge">🎉 عرض خاص — أول 21 يوم مجاناً تماماً!</div>
+        <div class="pro-title" data-i18n="diet_pro_title">🔒 الخطة الغذائية الكاملة</div>
+        <ul class="pro-list">
+          <li data-i18n="diet_pro_f1">جدول وجبات يومي مفصّل (7 أيام)</li>
+          <li data-i18n="diet_pro_f2">قائمة بدائل الأطعمة حسب ذوقك</li>
+          <li data-i18n="diet_pro_f3">ملف قابل للطباعة والتنزيل</li>
+          <li data-i18n="diet_pro_f4">تحديث أسبوعي حسب تقدمك</li>
+        </ul>
+        <div style="text-align:center;margin-bottom:4px;">
+          <span style="font-size:14px;color:#999;text-decoration:line-through;">$9.99</span>
+          <span style="font-size:13px;font-weight:700;color:#dc2626;margin-inline-start:8px;">50% OFF</span>
+        </div>
+        <div class="pro-price" style="margin-bottom:4px;">$4.99</div>
+        <div style="text-align:center;font-size:12px;color:#6b7280;margin-bottom:12px;" data-i18n="diet_trial">21 يوم مجاناً • بدون بطاقة ائتمانية</div>
+        <button class="btn-buy" onclick="buyPlan()" data-i18n="diet_pro_btn">ابدأ تجربتك المجانية الآن</button>
+      </div>
+    </div>
+  </div>
+</div></main>
 <footer class="footer">
-  <div class="footer-links">
-    <a href="about.html">من نحن</a>
-    <a href="contact.html">تواصل معنا</a>
-  </div>
-  <div class="footer-copy">© 2026 أدواتي</div>
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
 </footer>
-
 <script>
 let gender = 'male';
-
 function setGender(g) {
   gender = g;
   document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.option-btn[data-gender="${g}"]`).classList.add('active');
 }
-
 function calculate() {
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang];
   const age = parseFloat(document.getElementById('age').value);
   const weight = parseFloat(document.getElementById('weight').value);
   const height = parseFloat(document.getElementById('height').value);
   const activity = parseFloat(document.getElementById('activity').value);
   const goal = document.getElementById('goal').value;
-
-  if (!age || !weight || !height) { alert('الرجاء تعبئة العمر والوزن والطول'); return; }
-
+  if (!age || !weight || !height) { alert(t.diet_alert); return; }
   let bmr = gender === 'male'
     ? (10 * weight) + (6.25 * height) - (5 * age) + 5
     : (10 * weight) + (6.25 * height) - (5 * age) - 161;
-
   let tdee = bmr * activity;
-  if (goal === 'lose') tdee -= 500;
-  if (goal === 'gain') tdee += 400;
+  let proteinMult = 0.30, carbMult = 0.40, fatMult = 0.30;
+  if (goal === 'lose') { tdee -= 500; }
+  else if (goal === 'gain') { tdee += 400; }
+  else if (goal === 'cut') { tdee -= 400; proteinMult = 0.40; carbMult = 0.30; }
+  else if (goal === 'tone') { tdee -= 200; proteinMult = 0.35; carbMult = 0.35; }
+  else if (goal === 'muscle') { tdee += 300; proteinMult = 0.35; carbMult = 0.45; fatMult = 0.20; }
   tdee = Math.round(tdee);
-
   document.getElementById('calorieResult').textContent = tdee;
-  document.getElementById('proteinResult').textContent = Math.round((tdee * 0.30) / 4);
-  document.getElementById('carbResult').textContent = Math.round((tdee * 0.40) / 4);
-  document.getElementById('fatResult').textContent = Math.round((tdee * 0.30) / 9);
+  document.getElementById('proteinResult').textContent = Math.round((tdee * proteinMult) / 4);
+  document.getElementById('carbResult').textContent = Math.round((tdee * carbMult) / 4);
+  document.getElementById('fatResult').textContent = Math.round((tdee * fatMult) / 9);
+  const tips = {ar:{lose:'هدفك: تقليل الوزن — ركز على البروتين والخضروات',maintain:'هدفك: ثبات الوزن — حافظ على التوازن الغذائي',gain:'هدفك: زيادة الوزن — أضف وجبات دسمة بين الأكلات',cut:'هدفك: تنشيف الجسم — قلل الكربوهيدرات وزد البروتين',tone:'هدفك: شد الجسم — اهتم بالتمارين والبروتين',muscle:'هدفك: بناء العضلات — ارفع الأثقال وزد السعرات'},en:{lose:'Goal: Weight loss — focus on protein and vegetables',maintain:'Goal: Maintain weight — keep nutritional balance',gain:'Goal: Weight gain — add calorie-dense meals between meals',cut:'Goal: Body shredding — reduce carbs and increase protein',tone:'Goal: Body toning — focus on exercise and protein',muscle:'Goal: Muscle building — lift weights and increase calories'}};
+  const tipMap = (tips[lang] || tips.en);
+  document.getElementById('goalTip').textContent = tipMap[goal] || '';
   document.getElementById('freeResult').style.display = 'block';
 }
-
-function buyPlan() {
-  window.open('https://amawi7.gumroad.com/l/lvabsl', '_blank');
-}
+function buyPlan() { window.open('https://amawi7.gumroad.com/l/lvabsl', '_blank'); }
 </script>
-
-</body>
-</html>
+<script src="i18n.js"></script>
+</body></html>
