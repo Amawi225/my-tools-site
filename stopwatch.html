@@ -74,6 +74,7 @@
   </div>
 </footer>
 <script>
+function playBeep(){try{const ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator();const g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sine';o.frequency.setValueAtTime(880,ac.currentTime);g.gain.setValueAtTime(0.4,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);o.start(ac.currentTime);o.stop(ac.currentTime+0.6);}catch(e){}}
 // Stopwatch
 let swRunning=false,swElapsed=0,swStart=0,swInterval=null,swLapCount=0;
 function pad(n,d=2){return String(n).padStart(d,'0');}
@@ -91,7 +92,7 @@ function timerToggle(){
   if(!timerRunning){
     if(timerLeft<=0){timerLeft=parseInt(document.getElementById('timerMin').value||0)*60+parseInt(document.getElementById('timerSec').value||0);if(!timerLeft)return;}
     document.getElementById('timerDone').style.display='none';
-    timerInterval=setInterval(()=>{timerLeft--;document.getElementById('timerDisplay').textContent=fmtTimer(timerLeft);if(timerLeft<=0){clearInterval(timerInterval);timerRunning=false;document.getElementById('timerDone').style.display='block';document.getElementById('timerStartBtn').textContent='ابدأ';try{new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAA').play();}catch(e){}}},1000);
+    timerInterval=setInterval(()=>{timerLeft--;document.getElementById('timerDisplay').textContent=fmtTimer(timerLeft);if(timerLeft<=0){clearInterval(timerInterval);timerRunning=false;document.getElementById('timerDone').style.display='block';document.getElementById('timerStartBtn').textContent='ابدأ';playBeep();}},1000);
     timerRunning=true;document.getElementById('timerStartBtn').textContent='إيقاف';
   } else {clearInterval(timerInterval);timerRunning=false;document.getElementById('timerStartBtn').textContent='استئناف';}
 }
