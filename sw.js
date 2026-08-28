@@ -30,6 +30,10 @@ const STATIC = [
   BASE + '/salary-calculator.html',
   BASE + '/end-of-service.html',
   BASE + '/hijri-converter.html',
+  BASE + '/percentage-calculator.html',
+  BASE + '/compound-interest.html',
+  BASE + '/date-diff.html',
+  BASE + '/image-compressor.html',
 ];
 
 self.addEventListener('install', e => {
