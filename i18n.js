@@ -89,6 +89,11 @@ const T = {
     sw_title:'ساعة إيقاف ومؤقت', sw_sub:'ساعة توقيت ومؤقت للتمارين والعمل',
     sw_tab:'ساعة إيقاف', timer_tab:'مؤقت', sw_start:'ابدأ', sw_pause:'إيقاف مؤقت',
     sw_lap:'دورة', sw_reset:'إعادة', timer_min:'دقائق', timer_sec:'ثواني', timer_done:'⏰ انتهى الوقت!',
+    cat_all:'الكل', cat_health:'💪 الصحة', cat_money:'💰 المال', cat_productivity:'⚙️ الإنتاجية', cat_quick:'⚡ سريعة',
+    search_placeholder:'ابحث عن أداة...', search_no_results:'لم يُعثر على أداة بهذا الاسم',
+    related_title:'أدوات ذات صلة',
+    pwa_title:'ثبّت التطبيق', pwa_sub:'أضف أدواتي للشاشة الرئيسية للوصول السريع بدون إنترنت', pwa_install:'تثبيت', pwa_later:'لاحقاً',
+    dark_on:'🌙', dark_off:'☀️',
   },
   en: {
     nav_home:'Home', nav_about:'About', nav_contact:'Contact',
@@ -180,6 +185,11 @@ const T = {
     sw_title:'Stopwatch & Timer', sw_sub:'Professional stopwatch and timer for exercise and work',
     sw_tab:'Stopwatch', timer_tab:'Timer', sw_start:'Start', sw_pause:'Pause',
     sw_lap:'Lap', sw_reset:'Reset', timer_min:'Minutes', timer_sec:'Seconds', timer_done:'⏰ Time\'s up!',
+    cat_all:'All', cat_health:'💪 Health', cat_money:'💰 Money', cat_productivity:'⚙️ Productivity', cat_quick:'⚡ Quick',
+    search_placeholder:'Search tools...', search_no_results:'No tools found with that name',
+    related_title:'Related Tools',
+    pwa_title:'Install App', pwa_sub:'Add Adawati to your home screen for quick offline access', pwa_install:'Install', pwa_later:'Later',
+    dark_on:'🌙', dark_off:'☀️',
   },
   fr: {
     nav_home:'Accueil', nav_about:'À propos', nav_contact:'Contact',
@@ -271,6 +281,10 @@ const T = {
     sw_title:'Chronomètre et minuteur', sw_sub:'Chronomètre professionnel',
     sw_tab:'Chronomètre', timer_tab:'Minuteur', sw_start:'Démarrer', sw_pause:'Pause',
     sw_lap:'Tour', sw_reset:'Réinitialiser', timer_min:'Minutes', timer_sec:'Secondes', timer_done:'⏰ Temps écoulé!',
+    cat_all:'Tous', cat_health:'💪 Santé', cat_money:'💰 Argent', cat_productivity:'⚙️ Productivité', cat_quick:'⚡ Rapides',
+    search_placeholder:'Rechercher un outil...', search_no_results:'Aucun outil trouvé', related_title:'Outils similaires',
+    pwa_title:'Installer l\'app', pwa_sub:'Ajoutez Adawati à votre écran d\'accueil', pwa_install:'Installer', pwa_later:'Plus tard',
+    dark_on:'🌙', dark_off:'☀️',
   },
   es: {
     nav_home:'Inicio', nav_about:'Sobre nosotros', nav_contact:'Contacto',
@@ -362,6 +376,10 @@ const T = {
     sw_title:'Cronómetro y temporizador', sw_sub:'Cronómetro profesional',
     sw_tab:'Cronómetro', timer_tab:'Temporizador', sw_start:'Iniciar', sw_pause:'Pausar',
     sw_lap:'Vuelta', sw_reset:'Reiniciar', timer_min:'Minutos', timer_sec:'Segundos', timer_done:'⏰ ¡Tiempo terminado!',
+    cat_all:'Todos', cat_health:'💪 Salud', cat_money:'💰 Dinero', cat_productivity:'⚙️ Productividad', cat_quick:'⚡ Rápidas',
+    search_placeholder:'Buscar herramienta...', search_no_results:'No se encontraron herramientas', related_title:'Herramientas relacionadas',
+    pwa_title:'Instalar app', pwa_sub:'Añade Adawati a tu pantalla de inicio', pwa_install:'Instalar', pwa_later:'Después',
+    dark_on:'🌙', dark_off:'☀️',
   },
   de: {
     nav_home:'Startseite', nav_about:'Über uns', nav_contact:'Kontakt',
@@ -453,6 +471,10 @@ const T = {
     sw_title:'Stoppuhr und Timer', sw_sub:'Professionelle Stoppuhr',
     sw_tab:'Stoppuhr', timer_tab:'Timer', sw_start:'Starten', sw_pause:'Pause',
     sw_lap:'Runde', sw_reset:'Zurücksetzen', timer_min:'Minuten', timer_sec:'Sekunden', timer_done:'⏰ Zeit abgelaufen!',
+    cat_all:'Alle', cat_health:'💪 Gesundheit', cat_money:'💰 Geld', cat_productivity:'⚙️ Produktivität', cat_quick:'⚡ Schnell',
+    search_placeholder:'Werkzeug suchen...', search_no_results:'Kein Werkzeug gefunden', related_title:'Ähnliche Werkzeuge',
+    pwa_title:'App installieren', pwa_sub:'Adawati zum Startbildschirm hinzufügen', pwa_install:'Installieren', pwa_later:'Später',
+    dark_on:'🌙', dark_off:'☀️',
   },
   ru: {
     nav_home:'Главная', nav_about:'О нас', nav_contact:'Контакт',
@@ -544,6 +566,10 @@ const T = {
     sw_title:'Секундомер и таймер', sw_sub:'Профессиональный секундомер',
     sw_tab:'Секундомер', timer_tab:'Таймер', sw_start:'Старт', sw_pause:'Пауза',
     sw_lap:'Круг', sw_reset:'Сброс', timer_min:'Минуты', timer_sec:'Секунды', timer_done:'⏰ Время вышло!',
+    cat_all:'Все', cat_health:'💪 Здоровье', cat_money:'💰 Деньги', cat_productivity:'⚙️ Продуктивность', cat_quick:'⚡ Быстрые',
+    search_placeholder:'Поиск инструментов...', search_no_results:'Инструменты не найдены', related_title:'Похожие инструменты',
+    pwa_title:'Установить приложение', pwa_sub:'Добавьте Adawati на главный экран', pwa_install:'Установить', pwa_later:'Позже',
+    dark_on:'🌙', dark_off:'☀️',
   }
 };
 
@@ -720,7 +746,140 @@ function detectDefaultLang() {
   return 'ar';
 }
 
+/* ── Dark Mode ── */
+function initDarkMode() {
+  if (localStorage.getItem('dark') === '1') document.documentElement.classList.add('dark');
+}
+function toggleDark() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('dark', isDark ? '1' : '0');
+  updateDarkBtn();
+}
+function updateDarkBtn() {
+  const btn = document.getElementById('darkToggleBtn');
+  if (!btn) return;
+  const isDark = document.documentElement.classList.contains('dark');
+  btn.textContent = isDark ? '☀️' : '🌙';
+  btn.title = isDark ? 'Light mode' : 'Dark mode';
+}
+function injectDarkToggle() {
+  const nav = document.querySelector('.nav-links');
+  if (!nav || document.getElementById('darkToggleBtn')) return;
+  const btn = document.createElement('button');
+  btn.id = 'darkToggleBtn';
+  btn.className = 'dark-toggle';
+  btn.onclick = toggleDark;
+  const isDark = document.documentElement.classList.contains('dark');
+  btn.textContent = isDark ? '☀️' : '🌙';
+  btn.title = isDark ? 'Light mode' : 'Dark mode';
+  const langSwitcher = nav.querySelector('.lang-switcher');
+  if (langSwitcher) nav.insertBefore(btn, langSwitcher);
+  else nav.appendChild(btn);
+}
+
+/* ── PWA / Service Worker ── */
+let _deferredInstall = null;
+function initPWA() {
+  if (!('serviceWorker' in navigator)) return;
+  const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+  navigator.serviceWorker.register(base + '/sw.js').catch(() => {});
+
+  if (!document.querySelector('link[rel="manifest"]')) {
+    const l = document.createElement('link');
+    l.rel = 'manifest'; l.href = base + '/manifest.json';
+    document.head.appendChild(l);
+  }
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    const m = document.createElement('meta');
+    m.name = 'theme-color'; m.content = '#2563eb';
+    document.head.appendChild(m);
+  }
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    _deferredInstall = e;
+    if (!localStorage.getItem('pwa_dismissed')) showPWABanner();
+  });
+}
+
+function showPWABanner() {
+  if (document.getElementById('pwaBanner')) return;
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const banner = document.createElement('div');
+  banner.id = 'pwaBanner';
+  banner.className = 'pwa-banner';
+  banner.innerHTML = '';
+  const title = document.createElement('div');
+  title.className = 'pwa-banner-title';
+  title.textContent = '⚡ ' + (t.pwa_title || 'Install App');
+  const sub = document.createElement('div');
+  sub.className = 'pwa-banner-sub';
+  sub.textContent = t.pwa_sub || 'Add to your home screen';
+  const btns = document.createElement('div');
+  btns.className = 'pwa-banner-btns';
+  const installBtn = document.createElement('button');
+  installBtn.className = 'pwa-install-btn';
+  installBtn.textContent = t.pwa_install || 'Install';
+  installBtn.onclick = () => { if (_deferredInstall) { _deferredInstall.prompt(); _deferredInstall.userChoice.then(() => { banner.remove(); }); } };
+  const dismissBtn = document.createElement('button');
+  dismissBtn.className = 'pwa-dismiss-btn';
+  dismissBtn.textContent = t.pwa_later || 'Later';
+  dismissBtn.onclick = () => { localStorage.setItem('pwa_dismissed', '1'); banner.remove(); };
+  btns.append(installBtn, dismissBtn);
+  banner.append(title, sub, btns);
+  document.body.appendChild(banner);
+}
+
+/* ── Related Tools ── */
+const RELATED_MAP = {
+  'bmi-calculator':      [['diet-plan','🥗','diet_card_title'],['age-calculator','📅','age_card_title']],
+  'diet-plan':           [['bmi-calculator','⚖️','bmi_card_title'],['unit-converter','🔄','unit_card_title']],
+  'currency-converter':  [['loan-calculator','🧮','loan_card_title'],['tip-calculator','🤝','tip_card_title']],
+  'loan-calculator':     [['currency-converter','💱','currency_card_title'],['discount-calculator','💯','discount_card_title']],
+  'age-calculator':      [['bmi-calculator','⚖️','bmi_card_title'],['diet-plan','🥗','diet_card_title']],
+  'discount-calculator': [['loan-calculator','🧮','loan_card_title'],['tip-calculator','🤝','tip_card_title']],
+  'tip-calculator':      [['currency-converter','💱','currency_card_title'],['discount-calculator','💯','discount_card_title']],
+  'unit-converter':      [['currency-converter','💱','currency_card_title'],['word-counter','🔤','word_card_title']],
+  'password-generator':  [['qr-generator','📱','qr_card_title'],['word-counter','🔤','word_card_title']],
+  'word-counter':        [['password-generator','🔑','pass_card_title'],['qr-generator','📱','qr_card_title']],
+  'qr-generator':        [['password-generator','🔑','pass_card_title'],['word-counter','🔤','word_card_title']],
+  'timezone-converter':  [['stopwatch','⏱️','sw_card_title'],['currency-converter','💱','currency_card_title']],
+  'random-number':       [['stopwatch','⏱️','sw_card_title'],['qr-generator','📱','qr_card_title']],
+  'stopwatch':           [['random-number','🎲','rng_card_title'],['timezone-converter','🕐','tz_card_title']],
+};
+
+function injectRelatedTools() {
+  const page = location.pathname.split('/').pop().replace('.html','');
+  const related = RELATED_MAP[page];
+  if (!related) return;
+  const card = document.querySelector('.card');
+  if (!card) return;
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+  const section = document.createElement('div');
+  section.className = 'related-tools';
+  const heading = document.createElement('h3');
+  heading.textContent = t.related_title || 'Related Tools';
+  const links = document.createElement('div');
+  links.className = 'related-links';
+  related.forEach(([slug, icon, titleKey]) => {
+    const a = document.createElement('a');
+    a.href = base + '/' + slug + '.html';
+    a.className = 'related-link';
+    a.textContent = icon + ' ' + (t[titleKey] || slug);
+    links.appendChild(a);
+  });
+  section.append(heading, links);
+  card.appendChild(section);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  initDarkMode();
   setLang(detectDefaultLang());
   updateSignupBtn();
+  injectDarkToggle();
+  injectRelatedTools();
+  initPWA();
 });
