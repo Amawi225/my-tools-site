@@ -1064,6 +1064,110 @@ function injectStarBtns() {
   });
 }
 
+/* ── Country Detection & Geo-recommended tools ── */
+const COUNTRY_DATA = {
+  'OM': { flag:'🇴🇲', name:'عُمان', nameEn:'Oman',
+    tools:['vat-calculator','salary-calculator','end-of-service','hijri-converter'] },
+  'SA': { flag:'🇸🇦', name:'السعودية', nameEn:'Saudi Arabia',
+    tools:['vat-calculator','loan-calculator','hijri-converter','currency-converter'] },
+  'AE': { flag:'🇦🇪', name:'الإمارات', nameEn:'UAE',
+    tools:['vat-calculator','loan-calculator','currency-converter','hijri-converter'] },
+  'KW': { flag:'🇰🇼', name:'الكويت', nameEn:'Kuwait',
+    tools:['currency-converter','loan-calculator','discount-calculator','percentage-calculator'] },
+  'QA': { flag:'🇶🇦', name:'قطر', nameEn:'Qatar',
+    tools:['currency-converter','loan-calculator','discount-calculator','hijri-converter'] },
+  'BH': { flag:'🇧🇭', name:'البحرين', nameEn:'Bahrain',
+    tools:['vat-calculator','loan-calculator','currency-converter','hijri-converter'] },
+  'JO': { flag:'🇯🇴', name:'الأردن', nameEn:'Jordan',
+    tools:['currency-converter','loan-calculator','age-calculator','hijri-converter'] },
+  'PS': { flag:'🇵🇸', name:'فلسطين', nameEn:'Palestine',
+    tools:['currency-converter','loan-calculator','percentage-calculator','age-calculator'] },
+  'SY': { flag:'🇸🇾', name:'سوريا', nameEn:'Syria',
+    tools:['currency-converter','loan-calculator','percentage-calculator','age-calculator'] },
+  'EG': { flag:'🇪🇬', name:'مصر', nameEn:'Egypt',
+    tools:['currency-converter','loan-calculator','vat-calculator','age-calculator'] },
+  'IQ': { flag:'🇮🇶', name:'العراق', nameEn:'Iraq',
+    tools:['currency-converter','loan-calculator','percentage-calculator','hijri-converter'] },
+  'YE': { flag:'🇾🇪', name:'اليمن', nameEn:'Yemen',
+    tools:['currency-converter','loan-calculator','age-calculator','hijri-converter'] },
+  'MA': { flag:'🇲🇦', name:'المغرب', nameEn:'Morocco',
+    tools:['currency-converter','loan-calculator','percentage-calculator','age-calculator'] },
+  'DZ': { flag:'🇩🇿', name:'الجزائر', nameEn:'Algeria',
+    tools:['currency-converter','loan-calculator','percentage-calculator','age-calculator'] },
+  'TN': { flag:'🇹🇳', name:'تونس', nameEn:'Tunisia',
+    tools:['currency-converter','loan-calculator','percentage-calculator','age-calculator'] },
+  'LB': { flag:'🇱🇧', name:'لبنان', nameEn:'Lebanon',
+    tools:['currency-converter','loan-calculator','percentage-calculator','age-calculator'] },
+};
+
+// Map browser language to country code
+const LANG_COUNTRY = {
+  'ar-om':'OM','ar-sa':'SA','ar-ae':'AE','ar-kw':'KW','ar-qa':'QA','ar-bh':'BH',
+  'ar-jo':'JO','ar-ps':'PS','ar-sy':'SY','ar-eg':'EG','ar-iq':'IQ','ar-ye':'YE',
+  'ar-ma':'MA','ar-dz':'DZ','ar-tn':'TN','ar-lb':'LB',
+};
+
+function detectCountryFromLang() {
+  const lang = (navigator.language || navigator.languages && navigator.languages[0] || '').toLowerCase();
+  return LANG_COUNTRY[lang] || null;
+}
+
+function renderCountrySection(countryCode) {
+  const cd = COUNTRY_DATA[countryCode];
+  if (!cd || !document.getElementById('toolsGrid')) return;
+  const existing = document.getElementById('countrySection');
+  if (existing) existing.remove();
+
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = T[lang] || T.ar;
+  const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+
+  const section = document.createElement('div');
+  section.id = 'countrySection';
+  section.style.cssText = 'margin-bottom:28px;';
+
+  const heading = document.createElement('div');
+  heading.style.cssText = 'font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;';
+  heading.textContent = cd.flag + ' موصى به لـ' + cd.name;
+
+  const grid = document.createElement('div');
+  grid.className = 'tools-grid';
+  grid.id = 'countryGrid';
+
+  cd.tools.forEach(function(id) {
+    const card = buildMiniCard(id, t, base);
+    if (card) grid.appendChild(card);
+  });
+
+  section.append(heading, grid);
+
+  // Insert before favSection (or before toolsGrid if no favSection)
+  const favSection = document.getElementById('favSection');
+  const toolsGrid = document.getElementById('toolsGrid');
+  const parent = toolsGrid.parentNode;
+  const ref = favSection || toolsGrid;
+  parent.insertBefore(section, ref);
+  injectStarBtns();
+}
+
+async function initCountryDetect() {
+  if (!document.getElementById('toolsGrid')) return;
+  let code = localStorage.getItem('adawati_country');
+  if (!code) {
+    code = detectCountryFromLang();
+    if (!code) {
+      // Try free IP API as fallback (no key needed)
+      try {
+        const r = await fetch('https://api.country.is/');
+        const d = await r.json();
+        code = d.country || null;
+      } catch(e) {}
+    }
+    if (code) localStorage.setItem('adawati_country', code);
+  }
+  if (code && COUNTRY_DATA[code]) renderCountrySection(code);
+}
+
 /* ── Track recent on tool pages ── */
 function autoTrackRecent() {
   const page = location.pathname.split('/').pop().replace('.html', '');
@@ -1082,5 +1186,6 @@ document.addEventListener('DOMContentLoaded', function() {
     renderFavSection();
     renderRecentSection();
     injectStarBtns();
+    initCountryDetect();
   }
 });
