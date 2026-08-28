@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مولد رمز QR — ولّد رمز QR مجاناً</title>
+<meta name="description" content="ولّد رمز QR لأي رابط أو نص مجاناً اونلاين بضغطة واحدة.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">📱</div>
+    <div class="card-title" data-i18n="qr_title">مولد رمز QR</div>
+    <div class="card-subtitle" data-i18n="qr_sub">ولّد رمز QR لأي رابط أو نص فوراً</div>
+    <div class="divider"></div>
+    <label data-i18n="qr_input">الرابط أو النص</label>
+    <textarea id="qrInput" rows="3" data-i18n-ph="qr_placeholder" placeholder="https://example.com أو أي نص..." oninput="generateQR()" style="resize:vertical;"></textarea>
+    <div id="qrWrap" style="display:none;text-align:center;margin-top:24px;">
+      <div id="qrDisplay" style="display:inline-block;padding:16px;background:#fff;border-radius:var(--radius);border:2px solid var(--border);box-shadow:var(--shadow-md);"></div>
+      <div style="margin-top:16px;">
+        <button class="btn btn-primary" style="margin-top:0;" onclick="downloadQR()" data-i18n="qr_download">تنزيل الصورة</button>
+      </div>
+    </div>
+    <div id="qrEmpty" style="text-align:center;padding:32px;color:var(--text-muted);">
+      <div style="font-size:64px;margin-bottom:8px;opacity:0.3;">📱</div>
+      <div data-i18n="qr_hint">اكتب أي رابط أو نص لتوليد الرمز</div>
+    </div>
+  </div>
+</div></main>
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+let debounceTimer;
+function generateQR() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    const text = document.getElementById('qrInput').value.trim();
+    const wrap = document.getElementById('qrWrap');
+    const empty = document.getElementById('qrEmpty');
+    const display = document.getElementById('qrDisplay');
+    if (!text) { wrap.style.display = 'none'; empty.style.display = 'block'; return; }
+    display.innerHTML = '';
+    const canvas = document.createElement('canvas');
+    QRCode.toCanvas(canvas, text, { width: 220, margin: 2, color: { dark: '#0f172a', light: '#ffffff' } }, function(err) {
+      if (!err) {
+        display.appendChild(canvas);
+        wrap.style.display = 'block';
+        empty.style.display = 'none';
+      }
+    });
+  }, 300);
+}
+
+function downloadQR() {
+  const canvas = document.querySelector('#qrDisplay canvas');
+  if (!canvas) return;
+  const a = document.createElement('a');
+  a.download = 'qr-code.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+<script src="i18n.js"></script>
+</body></html>
