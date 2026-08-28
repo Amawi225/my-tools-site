@@ -111,7 +111,7 @@ function calculate() {
   const height = parseFloat(document.getElementById('height').value);
   const activity = parseFloat(document.getElementById('activity').value);
   const goal = document.getElementById('goal').value;
-  if (!age || !weight || !height) { alert(t.diet_alert); return; }
+  if (!age || !weight || !height) { showToast(t.diet_alert, 'error'); return; }
   let bmr = gender === 'male'
     ? (10 * weight) + (6.25 * height) - (5 * age) + 5
     : (10 * weight) + (6.25 * height) - (5 * age) - 161;
