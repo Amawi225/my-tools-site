@@ -74,7 +74,7 @@ function buildClocks() {
     const z = ZONES.find(x=>x.name===city);
     if (!z) return;
     const div = document.createElement('div');
-    div.id = 'clk_'+city.replace(' ','_');
+    div.id = 'clk_'+city.replaceAll(' ','_');
     div.style.cssText = 'background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;';
     div.innerHTML = `<div style="font-size:20px;margin-bottom:2px;">${z.flag}</div>
       <div style="font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;">${city}</div>
@@ -88,7 +88,7 @@ function tickClocks() {
   WORLD_CLOCKS.forEach(city => {
     const z = ZONES.find(x=>x.name===city);
     if (!z) return;
-    const el = document.querySelector('#clk_'+city.replace(' ','_')+' .clk-time');
+    const el = document.querySelector('#clk_'+city.replaceAll(' ','_')+' .clk-time');
     if (el) el.textContent = now.toLocaleTimeString('en-US', {timeZone:z.tz,hour:'2-digit',minute:'2-digit',hour12:false});
   });
 }
