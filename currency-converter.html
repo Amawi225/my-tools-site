@@ -76,10 +76,13 @@ let rates = null;
 function populateSelects() {
   const from = document.getElementById('fromCurr');
   const to = document.getElementById('toCurr');
+  let fromHTML = '', toHTML = '';
   Object.entries(CURRENCIES).forEach(([code, label]) => {
-    from.innerHTML += `<option value="${code}" ${code==='USD'?'selected':''}>${label}</option>`;
-    to.innerHTML   += `<option value="${code}" ${code==='SAR'?'selected':''}>${label}</option>`;
+    fromHTML += `<option value="${code}" ${code==='USD'?'selected':''}>${label}</option>`;
+    toHTML   += `<option value="${code}" ${code==='SAR'?'selected':''}>${label}</option>`;
   });
+  from.innerHTML = fromHTML;
+  to.innerHTML   = toHTML;
 }
 
 async function fetchRates() {
