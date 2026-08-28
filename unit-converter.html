@@ -3,149 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>محول الوحدات</title>
+<title>محول الوحدات — أدواتي</title>
 <meta name="description" content="حول بين وحدات الطول والوزن والحرارة والمساحة والسرعة بسهولة تامة ومجاناً.">
-<style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 32px 24px;
-    max-width: 380px;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  h1 {
-    font-size: 22px;
-    text-align: center;
-    color: #2193b0;
-    margin-bottom: 24px;
-  }
-  .tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .tab {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    background: #f0f0f0;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #555;
-    transition: 0.2s;
-  }
-  .tab.active {
-    background: #2193b0;
-    color: #fff;
-  }
-  label {
-    display: block;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 6px;
-    margin-top: 16px;
-  }
-  input, select {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  input:focus, select:focus {
-    outline: none;
-    border-color: #2193b0;
-  }
-  .row {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
-  }
-  .row > div { flex: 1; }
-  #result {
-    margin-top: 24px;
-    padding: 18px;
-    border-radius: 10px;
-    text-align: center;
-    background: #d4edda;
-    color: #155724;
-    display: none;
-  }
-  #result.show { display: block; }
-  #resultValue {
-    font-size: 26px;
-    font-weight: bold;
-  }
-  a.back {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #2193b0;
-    text-decoration: none;
-    font-size: 14px;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h1>🔄 محول الوحدات</h1>
-
-  <div class="tabs">
-    <div class="tab active" data-type="length" onclick="switchType('length')">الطول</div>
-    <div class="tab" data-type="weight" onclick="switchType('weight')">الوزن</div>
-  </div>
-
-  <label for="inputValue">القيمة</label>
-  <input type="number" id="inputValue" placeholder="مثال: 10" oninput="convert()">
-
-  <div class="row">
-    <div>
-      <label for="fromUnit">من</label>
-      <select id="fromUnit" onchange="convert()"></select>
-    </div>
-    <div>
-      <label for="toUnit">إلى</label>
-      <select id="toUnit" onchange="convert()"></select>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">أدواتي</a>
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
     </div>
   </div>
+</nav>
 
-  <div id="result">
-    <div id="resultValue"></div>
+<main>
+  <div class="tool-page">
+    <div class="page-header">
+      <a href="index.html">← العودة للرئيسية</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="background:#f0f9ff;">🔄</div>
+      <div class="card-title">محول الوحدات</div>
+      <div class="card-subtitle">حول بين وحدات الطول والوزن</div>
+      <div class="divider"></div>
+
+      <div class="tabs">
+        <div class="tab active" data-type="length" onclick="switchType('length')">الطول</div>
+        <div class="tab" data-type="weight" onclick="switchType('weight')">الوزن</div>
+      </div>
+
+      <label for="inputValue">القيمة</label>
+      <input type="number" id="inputValue" placeholder="مثال: 10" oninput="convert()">
+
+      <div class="row" style="margin-top:0;">
+        <div>
+          <label for="fromUnit">من</label>
+          <select id="fromUnit" onchange="convert()"></select>
+        </div>
+        <div>
+          <label for="toUnit">إلى</label>
+          <select id="toUnit" onchange="convert()"></select>
+        </div>
+      </div>
+
+      <div id="result" class="result-box success">
+        <div class="result-value" id="resultValue" style="font-size:22px;"></div>
+      </div>
+    </div>
   </div>
+</main>
 
-  <a href="index.html" class="back">⬅ رجوع للصفحة الرئيسية</a>
-</div>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="contact.html">تواصل معنا</a>
+  </div>
+  <div class="footer-copy">© 2026 أدواتي</div>
+</footer>
 
 <script>
 const units = {
-  length: {
-    "متر": 1,
-    "سنتيمتر": 0.01,
-    "كيلومتر": 1000,
-    "ميل": 1609.34,
-    "قدم": 0.3048,
-    "إنش": 0.0254
-  },
-  weight: {
-    "كيلوغرام": 1,
-    "غرام": 0.001,
-    "رطل": 0.453592,
-    "أونصة": 0.0283495
-  }
+  length: { "متر": 1, "سنتيمتر": 0.01, "كيلومتر": 1000, "ميل": 1609.34, "قدم": 0.3048, "إنش": 0.0254 },
+  weight: { "كيلوغرام": 1, "غرام": 0.001, "رطل": 0.453592, "أونصة": 0.0283495 }
 };
 
 let currentType = 'length';
@@ -155,8 +79,7 @@ function populateSelects() {
   const toSel = document.getElementById('toUnit');
   fromSel.innerHTML = '';
   toSel.innerHTML = '';
-  const keys = Object.keys(units[currentType]);
-  keys.forEach((unit, i) => {
+  Object.keys(units[currentType]).forEach((unit, i) => {
     fromSel.innerHTML += `<option value="${unit}" ${i===0?'selected':''}>${unit}</option>`;
     toSel.innerHTML += `<option value="${unit}" ${i===1?'selected':''}>${unit}</option>`;
   });
@@ -174,19 +97,11 @@ function convert() {
   const value = parseFloat(document.getElementById('inputValue').value);
   const from = document.getElementById('fromUnit').value;
   const to = document.getElementById('toUnit').value;
-  const resultDiv = document.getElementById('result');
-
-  if (!value && value !== 0) {
-    resultDiv.classList.remove('show');
-    return;
-  }
-
-  const baseValue = value * units[currentType][from];
-  const converted = baseValue / units[currentType][to];
-
-  document.getElementById('resultValue').textContent =
-    `${value} ${from} = ${converted.toFixed(4).replace(/\.?0+$/, '')} ${to}`;
-  resultDiv.classList.add('show');
+  const box = document.getElementById('result');
+  if (isNaN(value)) { box.classList.remove('show'); return; }
+  const converted = (value * units[currentType][from]) / units[currentType][to];
+  document.getElementById('resultValue').textContent = `${value} ${from} = ${+converted.toFixed(6)} ${to}`;
+  box.classList.add('show');
 }
 
 populateSelects();
