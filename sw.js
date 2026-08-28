@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v3';
+const CACHE = 'adawati-v4';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -24,6 +24,12 @@ const STATIC = [
   BASE + '/stopwatch.html',
   BASE + '/about.html',
   BASE + '/contact.html',
+  BASE + '/privacy.html',
+  BASE + '/terms.html',
+  BASE + '/vat-calculator.html',
+  BASE + '/salary-calculator.html',
+  BASE + '/end-of-service.html',
+  BASE + '/hijri-converter.html',
 ];
 
 self.addEventListener('install', e => {
