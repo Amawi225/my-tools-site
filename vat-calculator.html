@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة ضريبة القيمة المضافة VAT — عمان السعودية الإمارات مجاناً</title>
+<meta name="description" content="احسب ضريبة القيمة المضافة VAT لدول الخليج مجاناً. عمان 5%، السعودية 15%، الإمارات 5%، البحرين 10%.">
+<meta name="keywords" content="حاسبة VAT, ضريبة القيمة المضافة, حاسبة ضريبة عمان, VAT عمان, VAT السعودية, VAT الإمارات">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fefce8;">🧾</div>
+    <div class="card-title">حاسبة ضريبة القيمة المضافة (VAT)</div>
+    <div class="card-subtitle">عمان • السعودية • الإمارات • البحرين</div>
+    <div class="divider"></div>
+
+    <label for="vatCountry">الدولة</label>
+    <select id="vatCountry" onchange="updateRate()">
+      <option value="5" data-currency="ر.ع" data-name="عمان 🇴🇲">عمان — 5%</option>
+      <option value="15" data-currency="ر.س" data-name="السعودية 🇸🇦">السعودية — 15%</option>
+      <option value="5" data-currency="د.إ" data-name="الإمارات 🇦🇪">الإمارات — 5%</option>
+      <option value="10" data-currency="د.ب" data-name="البحرين 🇧🇭">البحرين — 10%</option>
+      <option value="0" data-currency="ر.ق" data-name="قطر 🇶🇦">قطر — 0%</option>
+      <option value="0" data-currency="د.ك" data-name="الكويت 🇰🇼">الكويت — 0%</option>
+    </select>
+
+    <label for="vatMode">نوع الحساب</label>
+    <div class="option-toggle">
+      <button class="option-btn active" id="modeAdd" onclick="setMode('add')">إضافة ضريبة</button>
+      <button class="option-btn" id="modeEx" onclick="setMode('extract')">استخراج ضريبة</button>
+    </div>
+
+    <label for="vatAmount" id="vatAmountLabel">المبلغ قبل الضريبة</label>
+    <input type="number" id="vatAmount" placeholder="0.000" min="0" step="any" oninput="calculate()">
+
+    <div id="vatResult" style="display:none;margin-top:20px;">
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-val" id="rateDisplay">5%</div>
+          <div class="stat-lbl">نسبة الضريبة</div>
+        </div>
+        <div class="stat-box" style="background:#fefce8;">
+          <div class="stat-val" id="taxDisplay" style="color:#ca8a04;">0.000</div>
+          <div class="stat-lbl">قيمة الضريبة</div>
+        </div>
+        <div class="stat-box" style="background:#f0fdf4;">
+          <div class="stat-val" id="totalDisplay" style="color:#16a34a;">0.000</div>
+          <div class="stat-lbl" id="totalLabel">الإجمالي شامل الضريبة</div>
+        </div>
+      </div>
+      <div id="vatBreakdown" style="margin-top:12px;padding:14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:14px;line-height:2;"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">نسب ضريبة القيمة المضافة في الخليج</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:8px;">
+        <thead>
+          <tr style="background:var(--surface-2);">
+            <th style="padding:10px 12px;text-align:right;font-weight:700;">الدولة</th>
+            <th style="padding:10px 12px;text-align:center;font-weight:700;">نسبة VAT</th>
+            <th style="padding:10px 12px;text-align:center;font-weight:700;">تاريخ التطبيق</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid var(--border);">
+            <td style="padding:10px 12px;">🇴🇲 عمان</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#16a34a;">5%</td>
+            <td style="padding:10px 12px;text-align:center;">أبريل 2021</td>
+          </tr>
+          <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
+            <td style="padding:10px 12px;">🇸🇦 السعودية</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#dc2626;">15%</td>
+            <td style="padding:10px 12px;text-align:center;">يوليو 2020</td>
+          </tr>
+          <tr style="border-top:1px solid var(--border);">
+            <td style="padding:10px 12px;">🇦🇪 الإمارات</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#16a34a;">5%</td>
+            <td style="padding:10px 12px;text-align:center;">يناير 2018</td>
+          </tr>
+          <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
+            <td style="padding:10px 12px;">🇧🇭 البحرين</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#d97706;">10%</td>
+            <td style="padding:10px 12px;text-align:center;">يناير 2019</td>
+          </tr>
+          <tr style="border-top:1px solid var(--border);">
+            <td style="padding:10px 12px;">🇶🇦 قطر</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#64748b;">0%</td>
+            <td style="padding:10px 12px;text-align:center;">—</td>
+          </tr>
+          <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
+            <td style="padding:10px 12px;">🇰🇼 الكويت</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#64748b;">0%</td>
+            <td style="padding:10px 12px;text-align:center;">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">⚠️ هذه الأرقام لأغراض معلوماتية — تحقق دائماً من الهيئات الضريبية الرسمية.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة عن VAT</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما هي ضريبة القيمة المضافة (VAT)؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">ضريبة القيمة المضافة هي ضريبة غير مباشرة تُطبَّق على معظم السلع والخدمات. يدفعها المستهلك النهائي، وتجمعها الشركات نيابةً عن الحكومة.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب VAT 5% على مبلغ؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">اضرب المبلغ في 0.05. مثال: 100 ريال × 0.05 = 5 ريال ضريبة. الإجمالي = 105 ريال.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أستخرج VAT من مبلغ شامل؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">قسّم المبلغ الشامل على (1 + نسبة الضريبة). مثال: 105 ÷ 1.05 = 100 ريال (قبل الضريبة). الضريبة = 5 ريال.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مالية مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="salary-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💼 حاسبة الراتب</a>
+      <a href="loan-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
+      <a href="discount-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة الخصم</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">الشروط</a>
+    </div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+let vatMode = 'add';
+
+function setMode(m) {
+  vatMode = m;
+  document.getElementById('modeAdd').classList.toggle('active', m === 'add');
+  document.getElementById('modeEx').classList.toggle('active', m === 'extract');
+  const lbl = document.getElementById('vatAmountLabel');
+  lbl.textContent = m === 'add' ? 'المبلغ قبل الضريبة' : 'المبلغ شامل الضريبة';
+  calculate();
+}
+
+function updateRate() {
+  calculate();
+}
+
+function getCurrency() {
+  const sel = document.getElementById('vatCountry');
+  const opt = sel.options[sel.selectedIndex];
+  return opt.getAttribute('data-currency') || '';
+}
+
+function calculate() {
+  const input = parseFloat(document.getElementById('vatAmount').value);
+  if (isNaN(input) || input < 0) { document.getElementById('vatResult').style.display = 'none'; return; }
+
+  const sel = document.getElementById('vatCountry');
+  const rate = parseFloat(sel.value);
+  const currency = getCurrency();
+  const opt = sel.options[sel.selectedIndex];
+  const countryName = opt.getAttribute('data-name') || '';
+
+  let beforeTax, taxAmount, afterTax;
+
+  if (vatMode === 'add') {
+    beforeTax = input;
+    taxAmount = beforeTax * (rate / 100);
+    afterTax = beforeTax + taxAmount;
+  } else {
+    afterTax = input;
+    beforeTax = afterTax / (1 + rate / 100);
+    taxAmount = afterTax - beforeTax;
+  }
+
+  document.getElementById('rateDisplay').textContent = rate + '%';
+  document.getElementById('taxDisplay').textContent = taxAmount.toFixed(3) + ' ' + currency;
+  document.getElementById('totalDisplay').textContent = afterTax.toFixed(3) + ' ' + currency;
+  document.getElementById('totalLabel').textContent = vatMode === 'add' ? 'الإجمالي شامل الضريبة' : 'الإجمالي شامل الضريبة';
+
+  const breakdown = document.getElementById('vatBreakdown');
+  breakdown.innerHTML =
+    '<strong>' + countryName + '</strong><br>' +
+    'المبلغ قبل الضريبة: <strong>' + beforeTax.toFixed(3) + ' ' + currency + '</strong><br>' +
+    'الضريبة (' + rate + '%): <strong style="color:#ca8a04;">' + taxAmount.toFixed(3) + ' ' + currency + '</strong><br>' +
+    'الإجمالي: <strong style="color:#16a34a;">' + afterTax.toFixed(3) + ' ' + currency + '</strong>';
+
+  document.getElementById('vatResult').style.display = 'block';
+}
+</script>
+<script src="i18n.js"></script>
+</body></html>
