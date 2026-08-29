@@ -84,6 +84,7 @@
       <button class="cat-tab" data-cat="productivity" onclick="setCat('productivity')" data-i18n="cat_productivity">⚙️ الإنتاجية</button>
       <button class="cat-tab" data-cat="quick" onclick="setCat('quick')" data-i18n="cat_quick">⚡ سريعة</button>
       <button class="cat-tab" data-cat="oman" onclick="setCat('oman')" data-i18n="cat_oman">🇴🇲 عمان</button>
+      <button class="cat-tab" data-cat="games" onclick="setCat('games')" data-i18n="cat_games">🎮 ألعاب</button>
     </div>
 
     <!-- Most-used section -->
@@ -262,6 +263,18 @@
         <div class="tool-card-desc" data-i18n="dd_card_desc">احسب عدد الأيام والأسابيع والأشهر بين أي تاريخين</div>
         <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
       </a>
+      <a href="number-guess.html" class="tool-card" data-cat="games" data-search="تخمين رقم لعبة guess number game">
+        <div class="tool-icon-wrap" style="background:#fdf4ff;">🎯</div>
+        <div class="tool-card-title" data-i18n="guess_card_title">لعبة تخمين الرقم</div>
+        <div class="tool-card-desc" data-i18n="guess_card_desc">خمّن الرقم السري في أقل عدد من المحاولات</div>
+        <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
+      </a>
+      <a href="memory-game.html" class="tool-card" data-cat="games" data-search="ذاكرة بطاقات لعبة memory cards game">
+        <div class="tool-icon-wrap" style="background:#fef9c3;">🃏</div>
+        <div class="tool-card-title" data-i18n="memory_card_title">لعبة الذاكرة</div>
+        <div class="tool-card-desc" data-i18n="memory_card_desc">طابق البطاقات واختبر ذاكرتك</div>
+        <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
+      </a>
       <a href="image-compressor.html" class="tool-card" data-cat="productivity" data-search="ضغط صور تصغير صورة image compress photo resize">
         <div class="tool-icon-wrap" style="background:#f0f9ff;">🖼️</div>
         <div class="tool-card-title" data-i18n="ic_card_title">ضغط الصور</div>
@@ -330,7 +343,7 @@ function filterTools() {
   const cards = document.querySelectorAll('#toolsGrid .tool-card');
   let visible = 0;
   cards.forEach(card => {
-    const catMatch = activeCat === 'all' || card.dataset.cat === activeCat;
+    const catMatch = !!q || activeCat === 'all' || card.dataset.cat === activeCat;
     const searchMatch = !q || (card.dataset.search || '').toLowerCase().includes(q) || card.textContent.toLowerCase().includes(q);
     const show = catMatch && searchMatch;
     card.style.display = show ? '' : 'none';
