@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعبة تخمين الرقم — أدواتي</title>
+<meta name="description" content="العب لعبة تخمين الرقم السري. خمّن الرقم المخفي في أقل عدد من المحاولات!">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+<style>
+.guess-box{text-align:center;padding:24px 0;}
+.guess-number-display{font-size:72px;font-weight:900;color:var(--primary);letter-spacing:-3px;line-height:1;min-height:80px;display:flex;align-items:center;justify-content:center;}
+.guess-input-row{display:flex;gap:10px;margin:16px 0;align-items:center;justify-content:center;}
+.guess-input-row input{width:120px;text-align:center;font-size:24px;font-weight:700;padding:10px;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);}
+.guess-input-row input:focus{outline:none;border-color:var(--primary);}
+.guess-hint{font-size:20px;font-weight:700;min-height:30px;transition:color 0.2s;padding:8px 0;}
+.guess-hint.high{color:#ef4444;}
+.guess-hint.low{color:#f59e0b;}
+.guess-hint.win{color:#22c55e;}
+.guess-history{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:30px;margin-top:12px;}
+.guess-history span{padding:4px 10px;border-radius:99px;font-size:13px;font-weight:600;}
+.guess-history span.high{background:#fee2e2;color:#ef4444;}
+.guess-history span.low{background:#fef3c7;color:#d97706;}
+.guess-history span.win{background:#dcfce7;color:#16a34a;}
+.tries-badge{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);border-radius:99px;padding:4px 14px;margin-bottom:4px;}
+.range-row{display:flex;gap:16px;align-items:center;justify-content:center;margin:8px 0 16px;}
+.range-row label{font-size:13px;color:var(--text-muted);}
+.range-row input{width:80px;padding:4px 8px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);font-size:14px;}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fdf4ff;">🎯</div>
+    <div class="card-title" data-i18n="guess_card_title">لعبة تخمين الرقم</div>
+    <div class="card-subtitle" data-i18n="guess_card_desc">خمّن الرقم السري في أقل عدد من المحاولات</div>
+    <div class="divider"></div>
+
+    <div class="range-row">
+      <label id="rangeLbl">من 1 إلى:</label>
+      <input type="number" id="maxRange" value="100" min="10" max="1000" onchange="newGame()">
+      <button class="btn btn-secondary" onclick="newGame()" id="newGameBtn" style="padding:6px 16px;font-size:14px;">🔄 جديدة</button>
+    </div>
+
+    <div class="guess-box">
+      <div class="tries-badge">
+        <span id="triesLbl">المحاولات:</span>
+        <span id="triesCount" style="color:var(--primary);">0</span>
+      </div>
+      <div class="guess-number-display" id="secretDisplay">?</div>
+      <div class="guess-hint" id="hintMsg"></div>
+      <div class="guess-input-row" id="inputRow">
+        <input type="number" id="guessInput" placeholder="؟" min="1" max="100"
+          onkeydown="if(event.key==='Enter')makeGuess()">
+        <button class="btn btn-primary" onclick="makeGuess()" id="guessBtn">تخمين</button>
+      </div>
+      <div class="guess-history" id="guessHistory"></div>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const GT = {
+  ar:{range:'من 1 إلى:',new:'🔄 جديدة',tries:'المحاولات:',guess:'تخمين',high:'كبير! جرّب رقماً أصغر ⬇️',low:'صغير! جرّب رقماً أكبر ⬆️',win:'أحسنت! الرقم هو {n} — خمّنته في {t} محاولة 🎉',ph:'؟'},
+  en:{range:'From 1 to:',new:'🔄 New Game',tries:'Attempts:',guess:'Guess',high:'Too high! Try lower ⬇️',low:'Too low! Try higher ⬆️',win:'Correct! The number was {n} — you got it in {t} tries 🎉',ph:'?'},
+  fr:{range:'De 1 à:',new:'🔄 Nouveau',tries:'Essais:',guess:'Deviner',high:'Trop grand! Essayez moins ⬇️',low:'Trop petit! Essayez plus ⬆️',win:'Bravo! Le nombre était {n} — trouvé en {t} essais 🎉',ph:'?'},
+  es:{range:'De 1 a:',new:'🔄 Nuevo',tries:'Intentos:',guess:'Adivinar',high:'¡Muy alto! Intenta menor ⬇️',low:'¡Muy bajo! Intenta mayor ⬆️',win:'¡Correcto! El número era {n} — lo conseguiste en {t} intentos 🎉',ph:'?'},
+  de:{range:'Von 1 bis:',new:'🔄 Neu',tries:'Versuche:',guess:'Raten',high:'Zu hoch! Kleiner versuchen ⬇️',low:'Zu niedrig! Größer versuchen ⬆️',win:'Richtig! Die Zahl war {n} — in {t} Versuchen 🎉',ph:'?'},
+  ru:{range:'От 1 до:',new:'🔄 Новая',tries:'Попытки:',guess:'Угадать',high:'Слишком большое! Попробуйте меньше ⬇️',low:'Слишком маленькое! Попробуйте больше ⬆️',win:'Правильно! Число было {n} — угадано за {t} попыток 🎉',ph:'?'}
+};
+
+let secret, tries, gameOver, currentLang='ar';
+const MAX_DEFAULT = 100;
+
+function newGame(){
+  const max = parseInt(document.getElementById('maxRange').value)||100;
+  secret = Math.floor(Math.random()*(max-1))+1;
+  tries = 0; gameOver = false;
+  document.getElementById('triesCount').textContent = '0';
+  document.getElementById('secretDisplay').textContent = '?';
+  document.getElementById('secretDisplay').style.color = 'var(--primary)';
+  document.getElementById('hintMsg').textContent = '';
+  document.getElementById('hintMsg').className = 'guess-hint';
+  document.getElementById('guessHistory').innerHTML = '';
+  document.getElementById('guessInput').value = '';
+  document.getElementById('guessInput').max = max;
+  document.getElementById('inputRow').style.display = '';
+  updateGameText();
+}
+
+function makeGuess(){
+  if(gameOver) return;
+  const inp = document.getElementById('guessInput');
+  const g = parseInt(inp.value);
+  if(isNaN(g)||g<1) return;
+  tries++;
+  document.getElementById('triesCount').textContent = tries;
+  const hist = document.getElementById('guessHistory');
+  const t = GT[currentLang]||GT.ar;
+  const span = document.createElement('span');
+  span.textContent = g;
+  if(g === secret){
+    span.className = 'win';
+    hist.prepend(span);
+    document.getElementById('secretDisplay').textContent = secret;
+    document.getElementById('secretDisplay').style.color = '#22c55e';
+    const msg = t.win.replace('{n}',secret).replace('{t}',tries);
+    const hint = document.getElementById('hintMsg');
+    hint.textContent = msg;
+    hint.className = 'guess-hint win';
+    document.getElementById('inputRow').style.display = 'none';
+    gameOver = true;
+  } else if(g > secret){
+    span.className = 'high';
+    hist.prepend(span);
+    const hint = document.getElementById('hintMsg');
+    hint.textContent = t.high;
+    hint.className = 'guess-hint high';
+  } else {
+    span.className = 'low';
+    hist.prepend(span);
+    const hint = document.getElementById('hintMsg');
+    hint.textContent = t.low;
+    hint.className = 'guess-hint low';
+  }
+  inp.value = '';
+  inp.focus();
+}
+
+function updateGameText(){
+  const t = GT[currentLang]||GT.ar;
+  document.getElementById('rangeLbl').textContent = t.range;
+  document.getElementById('newGameBtn').textContent = t.new;
+  document.getElementById('triesLbl').textContent = t.tries;
+  document.getElementById('guessBtn').textContent = t.guess;
+  document.getElementById('guessInput').placeholder = t.ph;
+}
+
+// Hook into i18n.js lang switch
+const _origSetLang = window.setLang;
+document.addEventListener('DOMContentLoaded', ()=>{
+  const origSet = window.setLang;
+  window.setLang = function(lang){
+    origSet && origSet(lang);
+    currentLang = lang;
+    const dir = lang==='ar'?'rtl':'ltr';
+    document.documentElement.dir = dir;
+    updateGameText();
+  };
+  newGame();
+});
+</script>
+<script src="i18n.js"></script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/my-tools-site/sw.js');
+</script>
+</body></html>
