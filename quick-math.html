@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سرعة الحساب — أدواتي</title>
+<meta name="description" content="لعبة الحساب السريع — أجب على 10 أسئلة رياضية قبل انتهاء الوقت!">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+<style>
+.level-steps{display:flex;gap:6px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
+.level-step{width:36px;height:8px;border-radius:99px;background:var(--border);transition:background .3s;}
+.level-step.done{background:#22c55e;} .level-step.active{background:var(--primary);}
+.level-badge{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;}
+.level-pill{padding:5px 16px;border-radius:99px;font-size:13px;font-weight:800;border:2px solid var(--primary);background:var(--primary-light);color:var(--primary);}
+.level-selector{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
+.lvl-btn{padding:5px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface-2);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;}
+.lvl-btn:hover{border-color:var(--primary);} .lvl-btn.current{border-color:var(--primary);background:var(--primary);color:#fff;}
+.lvl-btn.completed{border-color:#22c55e;background:#dcfce7;color:#15803d;}
+
+/* Timer bar */
+.timer-wrap{height:10px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:14px;}
+.timer-bar{height:100%;border-radius:99px;background:#22c55e;transition:width .1s linear,background .3s;}
+.timer-bar.warn{background:#f59e0b;} .timer-bar.danger{background:#ef4444;}
+
+/* Question */
+.qm-question{font-size:42px;font-weight:900;color:var(--primary);text-align:center;min-height:60px;display:flex;align-items:center;justify-content:center;margin:10px 0;}
+.qm-progress{text-align:center;font-size:13px;color:var(--text-muted);font-weight:600;margin-bottom:10px;}
+.qm-input-row{display:flex;gap:10px;justify-content:center;margin:12px 0;}
+.qm-input-row input{width:120px;text-align:center;font-size:24px;font-weight:700;padding:10px;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);}
+.qm-input-row input:focus{outline:none;border-color:var(--primary);}
+.qm-feedback{text-align:center;font-size:18px;font-weight:700;min-height:28px;transition:color .2s;}
+.qm-feedback.right{color:#22c55e;} .qm-feedback.wrong{color:#ef4444;}
+.score-row{display:flex;gap:16px;justify-content:center;margin-bottom:10px;}
+.score-item{text-align:center;}
+.score-val{font-size:26px;font-weight:900;color:var(--primary);}
+.score-lbl{font-size:11px;color:var(--text-muted);font-weight:600;}
+
+/* Overlays */
+.game-overlay{text-align:center;padding:20px;border-radius:var(--radius-lg);margin:8px 0;font-weight:700;}
+.level-complete{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border:2px solid #22c55e;color:#15803d;display:none;}
+.level-complete.show{display:block;}
+.all-done{background:linear-gradient(135deg,#fef9c3,#fde68a);border:2px solid #eab308;color:#854d0e;display:none;}
+.all-done.show{display:block;}
+.overlay-title{font-size:22px;margin-bottom:6px;} .overlay-sub{font-size:14px;font-weight:600;opacity:.8;margin-bottom:14px;}
+.overlay-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+
+/* Leaderboard */
+.lb-wrap{margin-top:20px;border-top:1px solid var(--border);padding-top:16px;}
+.lb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.lb-title{font-size:15px;font-weight:800;}
+.lb-clear{font-size:12px;color:var(--text-muted);background:none;border:none;cursor:pointer;font-family:inherit;}
+.lb-clear:hover{color:#ef4444;}
+.lb-empty{font-size:13px;color:var(--text-muted);text-align:center;padding:10px 0;}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-sm);margin-bottom:6px;background:var(--surface-2);border:1px solid var(--border);}
+.lb-row.gold{background:linear-gradient(135deg,#fef9c3,#fef08a);border-color:#eab308;}
+.lb-row.silver{background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border-color:#94a3b8;}
+.lb-row.bronze{background:linear-gradient(135deg,#fff7ed,#fed7aa);border-color:#f97316;}
+.lb-medal{font-size:20px;flex-shrink:0;} .lb-name{font-weight:700;font-size:14px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lb-score{font-size:12px;font-weight:600;color:var(--primary);flex-shrink:0;text-align:end;}
+.name-entry{margin-top:12px;padding:14px;background:linear-gradient(135deg,#fdf4ff,#ede9fe);border:2px solid var(--primary);border-radius:var(--radius-sm);text-align:center;}
+.name-entry-msg{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--primary);}
+.name-entry-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.name-entry-row input{padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-size:14px;font-family:inherit;width:160px;}
+.name-entry-row input:focus{outline:none;border-color:var(--primary);}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fef3c7;">🔢</div>
+    <div class="card-title" data-i18n="qmath_card_title">سرعة الحساب</div>
+    <div class="card-subtitle" data-i18n="qmath_card_desc">أجب على 10 أسئلة رياضية قبل انتهاء الوقت!</div>
+    <div class="divider"></div>
+
+    <div class="level-steps" id="levelSteps"></div>
+    <div class="level-badge">
+      <span id="levelEmoji">🟢</span>
+      <span class="level-pill" id="levelPill">المستوى 1</span>
+      <span id="levelName" style="font-size:13px;color:var(--text-muted);font-weight:600;"></span>
+    </div>
+    <div class="level-selector" id="levelSelector"></div>
+
+    <div class="timer-wrap"><div class="timer-bar" id="timerBar" style="width:100%"></div></div>
+
+    <div class="score-row">
+      <div class="score-item"><div class="score-val" id="correctCount">0</div><div class="score-lbl" id="correctLbl">صحيح</div></div>
+      <div class="score-item"><div class="score-val" id="wrongCount">0</div><div class="score-lbl" id="wrongLbl">خطأ</div></div>
+      <div class="score-item"><div class="score-val" id="qNumDisplay">1/10</div><div class="score-lbl" id="qNumLbl">السؤال</div></div>
+    </div>
+
+    <div class="qm-question" id="questionDisplay">3 + 4 = ?</div>
+    <div class="qm-feedback" id="feedbackMsg"></div>
+    <div class="qm-input-row" id="inputRow">
+      <input type="number" id="answerInput" placeholder="؟" onkeydown="if(event.key==='Enter')submitAnswer()">
+      <button class="btn btn-primary" onclick="submitAnswer()" id="submitBtn">←</button>
+    </div>
+
+    <!-- Level complete -->
+    <div class="game-overlay level-complete" id="levelCompleteBox">
+      <div class="overlay-title" id="lcTitle">🎉 أحسنت!</div>
+      <div class="overlay-sub" id="lcSub"></div>
+      <div class="overlay-btns">
+        <button class="btn btn-primary" onclick="nextLevel()" id="nextLevelBtn">المستوى التالي ←</button>
+        <button class="btn btn-secondary" onclick="restartAll()" id="restartBtn">⏮ من البداية</button>
+      </div>
+    </div>
+
+    <!-- All done -->
+    <div class="game-overlay all-done" id="allDoneBox">
+      <div class="overlay-title">🏆 أنت عبقري!</div>
+      <div class="overlay-sub" id="allDoneSub"></div>
+      <div class="overlay-btns">
+        <button class="btn btn-primary" onclick="restartAll()" id="playAgainBtn">🔄 العب مجدداً</button>
+      </div>
+    </div>
+
+    <!-- Name entry -->
+    <div class="name-entry" id="nameEntry" style="display:none;">
+      <div class="name-entry-msg" id="nameEntryMsg">🏆 دخلت إلى أفضل 3! اكتب اسمك:</div>
+      <div class="name-entry-row">
+        <input type="text" id="nameInput" maxlength="20" placeholder="اسمك"
+          onkeydown="if(event.key==='Enter')saveScore()">
+        <button class="btn btn-primary" onclick="saveScore()" id="saveBtn">💾 حفظ</button>
+      </div>
+    </div>
+
+    <div class="lb-wrap">
+      <div class="lb-header">
+        <span class="lb-title" id="lbTitle">🏆 أفضل 3 لاعبين</span>
+        <button class="lb-clear" onclick="clearLb()" id="clearBtn">🗑 مسح</button>
+      </div>
+      <div id="lbRows"></div>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const QM_LEVELS = [
+  {ops:['+'],              range:10, timePerQ:15, emoji:'🟢'},
+  {ops:['+','-'],          range:20, timePerQ:12, emoji:'🟡'},
+  {ops:['+','-','×'],      range:12, timePerQ:10, emoji:'🟠'},
+  {ops:['+','-','×','÷'],  range:20, timePerQ:8,  emoji:'🔴'},
+  {ops:['+','-','×','÷'],  range:50, timePerQ:6,  emoji:'🟣'},
+  {ops:['+','-','×','÷'],  range:100,timePerQ:5,  emoji:'💀'},
+];
+const QUESTIONS_PER_LEVEL = 10;
+const MEDALS=['🥇','🥈','🥉'], MEDAL_CLS=['gold','silver','bronze'];
+const STORAGE_KEY='adawati_qmath_lb';
+const QT={
+  ar:{correctLbl:'صحيح',wrongLbl:'خطأ',qNumLbl:'السؤال',submitBtn:'←',
+    levelLbl:'المستوى',levelNames:['مبتدئ','سهل','متوسط','صعب','خبير','عبقري'],
+    lcTitle:'🎉 أحسنت!',lcSub:'المستوى {l}: {c}/{q} إجابات صحيحة',
+    nextLevel:'المستوى التالي ←',restart:'⏮ من البداية',
+    allDone:'🏆 أنت عبقري!',allDoneSub:'أكملت جميع المستويات الستة!',playAgain:'🔄 العب مجدداً',
+    right:'✅ صحيح!',wrong:'❌ الجواب: {a}',timeUp:'⏰ انتهى الوقت! الجواب: {a}',
+    lbTitle:'🏆 أفضل 3 لاعبين',lbEmpty:'لا توجد نتائج — كن أول المتنافسين!',
+    lbNew:'🏆 دخلت إلى أفضل 3! اكتب اسمك:',lbSave:'💾 حفظ',lbPh:'اسمك',
+    lbScore:'مستوى {l} · {c}/{q} صح',lbClear:'🗑 مسح'},
+  en:{correctLbl:'Correct',wrongLbl:'Wrong',qNumLbl:'Question',submitBtn:'→',
+    levelLbl:'Level',levelNames:['Beginner','Easy','Medium','Hard','Expert','Genius'],
+    lcTitle:'🎉 Level Complete!',lcSub:'Level {l}: {c}/{q} correct answers',
+    nextLevel:'Next Level →',restart:'⏮ Restart',
+    allDone:'🏆 You\'re a Genius!',allDoneSub:'All 6 levels completed!',playAgain:'🔄 Play Again',
+    right:'✅ Correct!',wrong:'❌ Answer: {a}',timeUp:'⏰ Time\'s up! Answer: {a}',
+    lbTitle:'🏆 Top 3 Players',lbEmpty:'No scores yet — be the first!',
+    lbNew:'🏆 You made Top 3! Enter your name:',lbSave:'💾 Save',lbPh:'Your name',
+    lbScore:'Level {l} · {c}/{q} correct',lbClear:'🗑 Clear'},
+  fr:{correctLbl:'Correct',wrongLbl:'Faux',qNumLbl:'Question',submitBtn:'→',
+    levelLbl:'Niveau',levelNames:['Débutant','Facile','Moyen','Difficile','Expert','Génie'],
+    lcTitle:'🎉 Niveau Terminé!',lcSub:'Niveau {l}: {c}/{q} bonnes réponses',
+    nextLevel:'Niveau suivant →',restart:'⏮ Recommencer',
+    allDone:'🏆 Vous êtes un Génie!',allDoneSub:'6 niveaux complétés!',playAgain:'🔄 Rejouer',
+    right:'✅ Correct!',wrong:'❌ Réponse: {a}',timeUp:'⏰ Temps écoulé! Réponse: {a}',
+    lbTitle:'🏆 Top 3 Joueurs',lbEmpty:'Pas de scores!',
+    lbNew:'🏆 Top 3! Entrez votre nom:',lbSave:'💾 Sauver',lbPh:'Votre nom',
+    lbScore:'Niv. {l} · {c}/{q} corrects',lbClear:'🗑 Effacer'},
+  es:{correctLbl:'Correcto',wrongLbl:'Incorrecto',qNumLbl:'Pregunta',submitBtn:'→',
+    levelLbl:'Nivel',levelNames:['Principiante','Fácil','Medio','Difícil','Experto','Genio'],
+    lcTitle:'🎉 ¡Nivel Completado!',lcSub:'Nivel {l}: {c}/{q} respuestas correctas',
+    nextLevel:'Siguiente nivel →',restart:'⏮ Reiniciar',
+    allDone:'🏆 ¡Eres un Genio!',allDoneSub:'¡6 niveles completados!',playAgain:'🔄 Jugar de nuevo',
+    right:'✅ ¡Correcto!',wrong:'❌ Respuesta: {a}',timeUp:'⏰ ¡Tiempo! Respuesta: {a}',
+    lbTitle:'🏆 Top 3 Jugadores',lbEmpty:'¡Sin puntuaciones!',
+    lbNew:'🏆 ¡Top 3! Escribe tu nombre:',lbSave:'💾 Guardar',lbPh:'Tu nombre',
+    lbScore:'Niv. {l} · {c}/{q} correctas',lbClear:'🗑 Borrar'},
+  de:{correctLbl:'Richtig',wrongLbl:'Falsch',qNumLbl:'Frage',submitBtn:'→',
+    levelLbl:'Level',levelNames:['Anfänger','Leicht','Mittel','Schwer','Experte','Genie'],
+    lcTitle:'🎉 Level Geschafft!',lcSub:'Level {l}: {c}/{q} richtige Antworten',
+    nextLevel:'Nächstes Level →',restart:'⏮ Neustart',
+    allDone:'🏆 Du bist ein Genie!',allDoneSub:'Alle 6 Level geschafft!',playAgain:'🔄 Nochmal',
+    right:'✅ Richtig!',wrong:'❌ Antwort: {a}',timeUp:'⏰ Zeit! Antwort: {a}',
+    lbTitle:'🏆 Top 3 Spieler',lbEmpty:'Keine Einträge!',
+    lbNew:'🏆 Top 3! Gib deinen Namen ein:',lbSave:'💾 Speichern',lbPh:'Dein Name',
+    lbScore:'Lv. {l} · {c}/{q} richtig',lbClear:'🗑 Löschen'},
+  ru:{correctLbl:'Правильно',wrongLbl:'Неверно',qNumLbl:'Вопрос',submitBtn:'→',
+    levelLbl:'Уровень',levelNames:['Новичок','Легко','Средний','Сложно','Эксперт','Гений'],
+    lcTitle:'🎉 Уровень пройден!',lcSub:'Уровень {l}: {c}/{q} правильных',
+    nextLevel:'Следующий →',restart:'⏮ Сначала',
+    allDone:'🏆 Вы Гений!',allDoneSub:'Все 6 уровней пройдены!',playAgain:'🔄 Снова',
+    right:'✅ Правильно!',wrong:'❌ Ответ: {a}',timeUp:'⏰ Время! Ответ: {a}',
+    lbTitle:'🏆 Топ 3 игрока',lbEmpty:'Нет результатов!',
+    lbNew:'🏆 Топ 3! Введите имя:',lbSave:'💾 Сохранить',lbPh:'Ваше имя',
+    lbScore:'Ур. {l} · {c}/{q} верно',lbClear:'🗑 Очистить'},
+};
+
+let currentLang='ar', currentLevel=0, completedLevels=[];
+let questionNum=0, correct=0, wrong=0, answer=0, timerInterval=null, timeLeft=0, pendingScore=null;
+
+function tr(k){return(QT[currentLang]||QT.en)[k]||k;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function rnd(max){return Math.floor(Math.random()*max)+1;}
+function getLb(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[];}catch{return[];}}
+function saveLb(lb){localStorage.setItem(STORAGE_KEY,JSON.stringify(lb));}
+function qualifies(level,c){const lb=getLb();if(lb.length<3)return true;const l=lb[lb.length-1];return level>l.level||(level===l.level&&c>l.correct);}
+function addEntry(name,level,c){
+  const lb=getLb();lb.push({name:name.trim()||'?',level,correct:c});
+  lb.sort((a,b)=>b.level-a.level||(a.level===b.level?b.correct-a.correct:0));
+  lb.splice(3);saveLb(lb);
+}
+function renderLb(){
+  const lb=getLb(),t=QT[currentLang]||QT.en;
+  document.getElementById('lbTitle').textContent=t.lbTitle;
+  document.getElementById('clearBtn').textContent=t.lbClear;
+  const rows=document.getElementById('lbRows');
+  if(!lb.length){rows.innerHTML=`<div class="lb-empty">${t.lbEmpty}</div>`;return;}
+  rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${esc(e.name)}</span><span class="lb-score">${t.lbScore.replace('{l}',e.level).replace('{c}',e.correct).replace('{q}',QUESTIONS_PER_LEVEL)}</span></div>`).join('');
+}
+function clearLb(){localStorage.removeItem(STORAGE_KEY);renderLb();}
+
+function generateQuestion(){
+  const lv=QM_LEVELS[currentLevel];
+  const op=lv.ops[Math.floor(Math.random()*lv.ops.length)];
+  let a,b,ans,display;
+  if(op==='+'){a=rnd(lv.range);b=rnd(lv.range);ans=a+b;display=`${a} + ${b} = ?`;}
+  else if(op==='-'){a=rnd(lv.range)+rnd(lv.range);b=rnd(a)||1;ans=a-b;display=`${a} − ${b} = ?`;}
+  else if(op==='×'){a=rnd(Math.min(lv.range,12));b=rnd(Math.min(lv.range,12));ans=a*b;display=`${a} × ${b} = ?`;}
+  else{b=rnd(Math.min(lv.range,12));a=b*rnd(Math.min(lv.range,12));ans=a/b;display=`${a} ÷ ${b} = ?`;}
+  return{display,ans};
+}
+
+function renderLevelUI(){
+  const t=QT[currentLang]||QT.en,lv=QM_LEVELS[currentLevel];
+  document.getElementById('levelSteps').innerHTML=QM_LEVELS.map((_,i)=>`<div class="level-step ${i<currentLevel?'done':i===currentLevel?'active':''}"></div>`).join('');
+  document.getElementById('levelEmoji').textContent=lv.emoji;
+  document.getElementById('levelPill').textContent=`${t.levelLbl} ${currentLevel+1}`;
+  document.getElementById('levelName').textContent=t.levelNames[currentLevel]||'';
+  document.getElementById('levelSelector').innerHTML=QM_LEVELS.map((l,i)=>`<button class="lvl-btn ${i===currentLevel?'current':completedLevels.includes(i)?'completed':''}" onclick="jumpToLevel(${i})">${l.emoji} ${i+1}</button>`).join('');
+  document.getElementById('correctLbl').textContent=t.correctLbl;
+  document.getElementById('wrongLbl').textContent=t.wrongLbl;
+  document.getElementById('qNumLbl').textContent=t.qNumLbl;
+  document.getElementById('submitBtn').textContent=t.submitBtn;
+}
+
+function startLevel(lvIdx){
+  currentLevel=Math.min(lvIdx,QM_LEVELS.length-1);
+  questionNum=0;correct=0;wrong=0;pendingScore=null;
+  clearTimeout(timerInterval);
+  document.getElementById('levelCompleteBox').classList.remove('show');
+  document.getElementById('allDoneBox').classList.remove('show');
+  document.getElementById('nameEntry').style.display='none';
+  document.getElementById('inputRow').style.display='';
+  document.getElementById('feedbackMsg').textContent='';
+  renderLevelUI();renderLb();
+  nextQuestion();
+}
+
+function nextQuestion(){
+  if(questionNum>=QUESTIONS_PER_LEVEL){onLevelComplete();return;}
+  const q=generateQuestion();answer=q.ans;
+  document.getElementById('questionDisplay').textContent=q.display;
+  document.getElementById('answerInput').value='';
+  setTimeout(()=>document.getElementById('answerInput').focus(),50);
+  updateScoreUI();
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  const maxTime=QM_LEVELS[currentLevel].timePerQ;
+  timeLeft=maxTime;
+  const bar=document.getElementById('timerBar');
+  bar.style.width='100%';bar.className='timer-bar';
+  timerInterval=setInterval(()=>{
+    timeLeft-=0.1;
+    const pct=Math.max(0,(timeLeft/maxTime)*100);
+    bar.style.width=pct+'%';
+    bar.className='timer-bar'+(pct<=25?' danger':pct<=50?' warn':'');
+    if(timeLeft<=0){clearInterval(timerInterval);onTimeUp();}
+  },100);
+}
+
+function onTimeUp(){
+  wrong++;
+  questionNum++;
+  updateScoreUI();
+  const t=QT[currentLang]||QT.en;
+  const fb=document.getElementById('feedbackMsg');
+  fb.textContent=t.timeUp.replace('{a}',answer);fb.className='qm-feedback wrong';
+  setTimeout(nextQuestion,900);
+}
+
+function submitAnswer(){
+  const val=parseInt(document.getElementById('answerInput').value);
+  if(isNaN(val))return;
+  clearInterval(timerInterval);
+  const t=QT[currentLang]||QT.en;
+  const fb=document.getElementById('feedbackMsg');
+  if(val===answer){correct++;fb.textContent=t.right;fb.className='qm-feedback right';}
+  else{wrong++;fb.textContent=t.wrong.replace('{a}',answer);fb.className='qm-feedback wrong';}
+  questionNum++;
+  updateScoreUI();
+  setTimeout(nextQuestion,700);
+}
+
+function updateScoreUI(){
+  document.getElementById('correctCount').textContent=correct;
+  document.getElementById('wrongCount').textContent=wrong;
+  document.getElementById('qNumDisplay').textContent=`${Math.min(questionNum+1,QUESTIONS_PER_LEVEL)}/${QUESTIONS_PER_LEVEL}`;
+}
+
+function onLevelComplete(){
+  if(!completedLevels.includes(currentLevel))completedLevels.push(currentLevel);
+  clearInterval(timerInterval);
+  document.getElementById('inputRow').style.display='none';
+  document.getElementById('timerBar').style.width='0';
+  const t=QT[currentLang]||QT.en;
+  const isLast=currentLevel===QM_LEVELS.length-1;
+  if(isLast){
+    const box=document.getElementById('allDoneBox');
+    box.querySelector('.overlay-title').textContent=t.allDone;
+    document.getElementById('allDoneSub').textContent=t.allDoneSub;
+    document.getElementById('playAgainBtn').textContent=t.playAgain;
+    box.classList.add('show');
+  }else{
+    const box=document.getElementById('levelCompleteBox');
+    document.getElementById('lcTitle').textContent=t.lcTitle;
+    document.getElementById('lcSub').textContent=t.lcSub.replace('{l}',currentLevel+1).replace('{c}',correct).replace('{q}',QUESTIONS_PER_LEVEL);
+    document.getElementById('nextLevelBtn').textContent=t.nextLevel;
+    document.getElementById('restartBtn').textContent=t.restart;
+    box.classList.add('show');
+  }
+  if(qualifies(currentLevel+1,correct)){
+    pendingScore={level:currentLevel+1,correct};
+    document.getElementById('nameEntryMsg').textContent=t.lbNew;
+    document.getElementById('nameInput').placeholder=t.lbPh;
+    document.getElementById('saveBtn').textContent=t.lbSave;
+    document.getElementById('nameEntry').style.display='';
+    setTimeout(()=>document.getElementById('nameInput').focus(),100);
+  }
+  if(typeof showHomePrompt==='function')showHomePrompt();
+  renderLevelUI();
+}
+
+function saveScore(){
+  if(!pendingScore)return;
+  const name=document.getElementById('nameInput').value.trim();
+  addEntry(name||'?',pendingScore.level,pendingScore.correct);
+  pendingScore=null;document.getElementById('nameEntry').style.display='none';document.getElementById('nameInput').value='';
+  renderLb();
+}
+function nextLevel(){if(currentLevel<QM_LEVELS.length-1)startLevel(currentLevel+1);}
+function restartAll(){completedLevels=[];startLevel(0);}
+function jumpToLevel(i){startLevel(i);}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
+  startLevel(0);
+});
+</script>
+<script src="i18n.js"></script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
+</body></html>
