@@ -55,8 +55,8 @@
       <div class="result-value" id="resultVal" style="font-size:36px;"></div>
       <div class="result-label" id="rateLabel"></div>
     </div>
-    <div id="loading" style="text-align:center;padding:16px;color:var(--text-muted);display:none;" data-i18n="currency_loading">جاري تحميل الأسعار...</div>
-    <div id="offline" style="display:none;margin-top:12px;padding:10px 14px;background:var(--warning-bg);border-radius:var(--radius-sm);font-size:13px;color:var(--warning-text);" data-i18n="currency_offline">تعذّر تحميل الأسعار — تأكد من اتصالك بالإنترنت</div>
+    <div id="loading" style="text-align:center;padding:16px;color:var(--text-muted);display:none;">⏳ جاري تحميل أسعار اليوم...</div>
+    <div id="rateStatus" style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:8px;min-height:18px;"></div>
   </div>
 </div></main>
 <footer class="footer" style="padding:28px;">
@@ -76,6 +76,23 @@ const CURRENCIES = {
   MXN:'🇲🇽 MXN',ZAR:'🇿🇦 ZAR'
 };
 let rates = null;
+const RATES_CACHE_KEY = 'adawati_rates_v2';
+const RATES_CACHE_TTL = 4 * 60 * 60 * 1000; // 4 hours
+
+function loadCachedRates() {
+  try {
+    const c = JSON.parse(localStorage.getItem(RATES_CACHE_KEY));
+    if (c && c.r && c.ts && (Date.now() - c.ts < RATES_CACHE_TTL)) return c;
+  } catch(e) {}
+  return null;
+}
+function saveCache(r) {
+  try { localStorage.setItem(RATES_CACHE_KEY, JSON.stringify({r, ts: Date.now()})); } catch(e) {}
+}
+function setStatus(msg) {
+  const el = document.getElementById('rateStatus');
+  if (el) el.textContent = msg;
+}
 
 function populateSelects() {
   const from = document.getElementById('fromCurr');
@@ -97,36 +114,60 @@ const FALLBACK_RATES = {
 };
 
 async function tryFetch(url, parseRates) {
-  const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
-  const data = await res.json();
-  const r = parseRates(data);
-  if (r && r.EUR) { r.USD = r.USD || 1; return r; }
-  return null;
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 5000);
+  try {
+    const res = await fetch(url, {signal: ctrl.signal});
+    clearTimeout(t);
+    const data = await res.json();
+    const r = parseRates(data);
+    if (r && r.EUR) { r.USD = r.USD || 1; return r; }
+    return null;
+  } catch(e) { clearTimeout(t); return null; }
 }
 
 async function fetchRates() {
+  // 1. Use cache immediately if fresh
+  const cached = loadCachedRates();
+  if (cached) {
+    rates = cached.r;
+    const mins = Math.round((Date.now() - cached.ts) / 60000);
+    setStatus(mins < 60 ? `✅ أسعار محدّثة (منذ ${mins} دقيقة)` : `✅ آخر تحديث: ${Math.round(mins/60)} ساعة`);
+    convert();
+    // Refresh in background without blocking UI
+    tryLiveFetch();
+    return;
+  }
+  // 2. No cache — fetch live
   document.getElementById('loading').style.display = 'block';
+  const ok = await tryLiveFetch();
+  document.getElementById('loading').style.display = 'none';
+  if (!ok) {
+    // 3. All APIs failed — use static fallback silently
+    rates = FALLBACK_RATES;
+    setStatus('⚠️ أسعار تقريبية (لا يوجد اتصال) — يمكن استخدام الأداة');
+    convert();
+  }
+}
+
+async function tryLiveFetch() {
   const attempts = [
     () => tryFetch('https://open.er-api.com/v6/latest/USD', d => d.rates),
-    () => tryFetch('https://api.frankfurter.app/latest?from=USD', d => { const r = Object.assign({USD:1}, d.rates); return r; }),
+    () => tryFetch('https://api.frankfurter.app/latest?from=USD', d => Object.assign({USD:1}, d.rates)),
     () => tryFetch('https://api.exchangerate-api.com/v4/latest/USD', d => d.rates),
   ];
   for (const attempt of attempts) {
-    try {
-      const r = await attempt();
-      if (r) {
-        rates = r;
-        document.getElementById('loading').style.display = 'none';
-        convert();
-        return;
-      }
-    } catch(e) {}
+    const r = await attempt();
+    if (r) {
+      rates = r;
+      saveCache(r);
+      setStatus('✅ أسعار حية محدّثة الآن');
+      document.getElementById('loading').style.display = 'none';
+      convert();
+      return true;
+    }
   }
-  // All APIs failed — use approximate offline rates
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('offline').style.display = 'block';
-  rates = FALLBACK_RATES;
-  convert();
+  return false;
 }
 
 function convert() {
