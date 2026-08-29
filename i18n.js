@@ -708,6 +708,11 @@ function setLang(lang) {
   const menu = document.getElementById('langMenu');
   if (menu) menu.classList.remove('open');
   updateSignupBtn();
+  // Re-render country section cards with the new language
+  const cc = localStorage.getItem('adawati_country');
+  if (cc && typeof COUNTRY_DATA !== 'undefined' && COUNTRY_DATA[cc] && document.getElementById('countrySection')) {
+    renderCountrySection(cc);
+  }
 }
 
 function toggleLangMenu() {
