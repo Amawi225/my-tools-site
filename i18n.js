@@ -105,7 +105,7 @@ const T = {
     fav_title:'⭐ المفضلة', recent_title:'🕘 استخدمتها مؤخراً',
     badge_count:'22 أداة',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'أدوات مرتبطة:', popular_title:'الأكثر استخدامًا',
+    related_tools:'أدوات مرتبطة:', popular_title:'الأكثر استخدامًا', country_recommended:'موصى به لـ',
     eos_title:'حاسبة نهاية الخدمة — سلطنة عُمان 🇴🇲',
     eos_sub:'وفق أحكام قانون العمل العماني',
     eos_start:'تاريخ بداية العمل', eos_end:'تاريخ انتهاء العمل',
@@ -220,7 +220,7 @@ const T = {
     fav_title:'⭐ Favorites', recent_title:'🕘 Recently Used',
     badge_count:'22 Tools',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Related Tools:', popular_title:'Most Used',
+    related_tools:'Related Tools:', popular_title:'Most Used', country_recommended:'Recommended for',
     eos_title:'End of Service Calculator — Oman 🇴🇲',
     eos_sub:'As per Oman Labor Law',
     eos_start:'Start Date', eos_end:'End Date',
@@ -334,7 +334,7 @@ const T = {
     fav_title:'⭐ Favoris', recent_title:'🕘 Récemment utilisés',
     badge_count:'22 Outils',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Outils associés:', popular_title:'Les plus utilisés',
+    related_tools:'Outils associés:', popular_title:'Les plus utilisés', country_recommended:'Recommandé pour',
     eos_title:'Calculateur de fin de service — Oman 🇴🇲',
     eos_sub:'Selon le droit du travail omanais',
     eos_start:'Date de début', eos_end:'Date de fin',
@@ -448,7 +448,7 @@ const T = {
     fav_title:'⭐ Favoritos', recent_title:'🕘 Usados recientemente',
     badge_count:'22 Herramientas',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Herramientas relacionadas:', popular_title:'Más usados',
+    related_tools:'Herramientas relacionadas:', popular_title:'Más usados', country_recommended:'Recomendado para',
     eos_title:'Calculadora de fin de servicio — Omán 🇴🇲',
     eos_sub:'Según la Ley Laboral de Omán',
     eos_start:'Fecha de inicio', eos_end:'Fecha de fin',
@@ -562,7 +562,7 @@ const T = {
     fav_title:'⭐ Favoriten', recent_title:'🕘 Zuletzt verwendet',
     badge_count:'22 Tools',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Verwandte Tools:', popular_title:'Am häufigsten genutzt',
+    related_tools:'Verwandte Tools:', popular_title:'Am häufigsten genutzt', country_recommended:'Empfohlen für',
     eos_title:'Abfindungsrechner — Oman 🇴🇲',
     eos_sub:'Gemäß dem omanischen Arbeitsrecht',
     eos_start:'Startdatum', eos_end:'Enddatum',
@@ -676,7 +676,7 @@ const T = {
     fav_title:'⭐ Избранное', recent_title:'🕘 Недавно использованные',
     badge_count:'22 инструмента',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Связанные инструменты:', popular_title:'Самые популярные',
+    related_tools:'Связанные инструменты:', popular_title:'Самые популярные', country_recommended:'Рекомендуется для',
     eos_title:'Калькулятор выходного пособия — Оман 🇴🇲',
     eos_sub:'В соответствии с трудовым законодательством Омана',
     eos_start:'Дата начала', eos_end:'Дата окончания',
@@ -1181,7 +1181,8 @@ function renderCountrySection(countryCode) {
 
   const heading = document.createElement('div');
   heading.style.cssText = 'font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;';
-  heading.textContent = cd.flag + ' موصى به لـ' + cd.name;
+  const countryName = lang === 'ar' ? cd.name : cd.nameEn;
+  heading.textContent = cd.flag + ' ' + (t.country_recommended || 'Recommended for') + ' ' + countryName;
 
   const grid = document.createElement('div');
   grid.className = 'tools-grid';
