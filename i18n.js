@@ -1647,6 +1647,9 @@ function renderCountrySection(countryCode) {
 
 async function initCountryDetect() {
   if (!document.getElementById('toolsGrid')) return;
+  // URL override for testing — ?country=jo (not saved to localStorage)
+  const _urlCode = (new URLSearchParams(location.search).get('country') || '').toUpperCase();
+  if (_urlCode && COUNTRY_DATA[_urlCode]) { renderCountrySection(_urlCode); return; }
   let code = localStorage.getItem('adawati_country');
   if (!code) {
     code = detectCountryFromLang();
