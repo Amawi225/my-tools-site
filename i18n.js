@@ -1644,9 +1644,11 @@ function renderCountrySection(countryCode) {
   parent.insertBefore(section, ref);
   injectStarBtns();
 
-  // Hide the Oman category tab for non-Oman users — it only filters Oman-specific tools
+  // Hide Oman tab + Oman tool cards for non-Oman users
   const omanTab = document.querySelector('.cat-tab[data-cat="oman"]');
   if (omanTab) omanTab.style.display = countryCode === 'OM' ? '' : 'none';
+  window._hideOmanTools = (countryCode !== 'OM');
+  if (typeof filterTools === 'function') filterTools();
 }
 
 async function initCountryDetect() {
