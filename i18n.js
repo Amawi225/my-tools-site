@@ -707,6 +707,11 @@ function setLang(lang) {
   if (cl) cl.textContent = LABELS[lang] || lang.toUpperCase();
   const menu = document.getElementById('langMenu');
   if (menu) menu.classList.remove('open');
+  // Brand name: Arabic script for AR, Latin for all others
+  const brandName = lang === 'ar' ? 'أدواتي' : 'Adawati';
+  document.querySelectorAll('.nav-brand, .footer-brand').forEach(function(el) {
+    el.textContent = brandName;
+  });
   updateSignupBtn();
   // Re-render country section cards with the new language
   const cc = localStorage.getItem('adawati_country');
