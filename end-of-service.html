@@ -6,9 +6,9 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حاسبة نهاية الخدمة | Free Oman End of Service Calculator</title>
-<meta name="description" content="Free end of service gratuity calculator for Oman labor law. حاسبة مكافأة نهاية الخدمة مجاناً وفق قانون العمل العُماني.">
-<meta name="keywords" content="حاسبة نهاية الخدمة عمان, مكافأة نهاية الخدمة, قانون العمل العماني, end of service Oman, نهاية الخدمة">
+<title>حاسبة نهاية الخدمة عمان 2024 | Oman End of Service Gratuity Calculator</title>
+<meta name="description" content="حاسبة مكافأة نهاية الخدمة في سلطنة عمان 2024 — وفق قانون العمل المحدّث (راتب شهر لكل سنة). للعمانيين والوافدين. Free Oman end of service gratuity calculator per updated labor law.">
+<meta name="keywords" content="حاسبة نهاية الخدمة عمان 2024, مكافأة نهاية الخدمة, قانون العمل العماني, end of service Oman, gratuity calculator Oman, نهاية الخدمة عمان">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati2027.github.io/my-tools-site/end-of-service.html">
 <link rel="stylesheet" href="style.css">
@@ -37,12 +37,22 @@
   <div class="card">
     <div class="card-icon" style="background:#f0f9ff;">📋</div>
     <div class="card-title" data-i18n="eos_title">حاسبة نهاية الخدمة — سلطنة عُمان 🇴🇲</div>
-    <div class="card-subtitle" data-i18n="eos_sub">وفق أحكام قانون العمل العماني</div>
+    <div class="card-subtitle">وفق قانون العمل العُماني المحدّث 2024 — راتب شهر لكل سنة خدمة</div>
     <div class="divider"></div>
+
+    <label>الجنسية</label>
+    <div class="option-toggle" style="margin-bottom:16px;">
+      <button class="option-btn active" id="natEosExpat" onclick="setNat('expat')">وافد / غير عماني</button>
+      <button class="option-btn" id="natEosOmani" onclick="setNat('omani')">عماني</button>
+    </div>
+
+    <div id="omaniNote" style="display:none;padding:12px 16px;background:#fef9c3;border:1px solid #eab308;border-radius:8px;font-size:13px;line-height:1.7;margin-bottom:14px;">
+      💡 <strong>للمواطنين العمانيين:</strong> تغطية نهاية الخدمة تتم عبر برنامج الادخار في صندوق الحماية الاجتماعية SPF. يساهم صاحب العمل بنسبة في حساب ادخارك الشخصي. الحساب أدناه استرشادي استناداً إلى قانون العمل — للمبلغ الرسمي راجع صندوق الحماية الاجتماعية مباشرة.
+    </div>
 
     <div class="row">
       <div>
-        <label for="startDate" data-i18n="eos_start">تاريخ بداية العمل</label>
+        <label for="startDate">تاريخ بداية العمل</label>
         <input type="date" id="startDate" onchange="calculate()">
       </div>
       <div>
@@ -77,7 +87,7 @@
         </div>
         <div class="stat-box">
           <div class="stat-val" id="dailyDisplay">0.000</div>
-          <div class="stat-lbl" data-i18n="eos_daily_lbl">الراتب اليومي (ر.ع)</div>
+          <div class="stat-lbl">سنوات الخدمة (دقيق)</div>
         </div>
       </div>
       <div id="eosBreakdown" style="margin-top:12px;padding:14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:14px;line-height:2.2;"></div>
@@ -85,52 +95,60 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📖 جدول مكافأة نهاية الخدمة — قانون العمل العماني</div>
+    <div class="card-title" style="font-size:15px;">📖 مكافأة نهاية الخدمة — قانون العمل العُماني المحدّث</div>
+    <div style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:10px;">
+      <p><strong>وفق المادة 61 من قانون العمل العُماني (المحدّث):</strong><br>
+      العامل غير المشمول بقانون الحماية الاجتماعية يستحق مكافأة <strong style="color:#16a34a;">لا تقل عن راتب شهر أساسي كامل عن كل سنة خدمة</strong>، مع احتساب كسور السنة بنسبة مدتها.</p>
+    </div>
     <div style="overflow-x:auto;margin-top:10px;">
       <table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead>
           <tr style="background:var(--surface-2);">
             <th style="padding:10px 12px;text-align:right;font-weight:700;">فترة الخدمة</th>
-            <th style="padding:10px 12px;text-align:center;font-weight:700;">الاستحقاق لكل سنة</th>
+            <th style="padding:10px 12px;text-align:center;font-weight:700;">النظام الجديد (الحد الأدنى)</th>
+            <th style="padding:10px 12px;text-align:center;font-weight:700;">النظام القديم (للمقارنة)</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-top:1px solid var(--border);color:#dc2626;">
+          <tr style="border-top:1px solid var(--border);">
             <td style="padding:10px 12px;">أقل من سنة</td>
-            <td style="padding:10px 12px;text-align:center;">لا يستحق</td>
+            <td style="padding:10px 12px;text-align:center;color:#16a34a;font-weight:700;">بالتناسب (كسور السنة)</td>
+            <td style="padding:10px 12px;text-align:center;color:#dc2626;">لا يستحق</td>
           </tr>
           <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
-            <td style="padding:10px 12px;">من 1 إلى 3 سنوات</td>
-            <td style="padding:10px 12px;text-align:center;font-weight:700;">15 يوماً من الراتب اليومي</td>
+            <td style="padding:10px 12px;">من 1 إلى 5 سنوات</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#16a34a;">راتب شهر / سنة</td>
+            <td style="padding:10px 12px;text-align:center;">15–20 يوم / سنة</td>
           </tr>
           <tr style="border-top:1px solid var(--border);">
-            <td style="padding:10px 12px;">من 3 إلى 5 سنوات</td>
-            <td style="padding:10px 12px;text-align:center;font-weight:700;">20 يوماً من الراتب اليومي</td>
-          </tr>
-          <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
             <td style="padding:10px 12px;">أكثر من 5 سنوات</td>
-            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#16a34a;">30 يوماً من الراتب اليومي</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#16a34a;">راتب شهر / سنة (الحد الأدنى)</td>
+            <td style="padding:10px 12px;text-align:center;">30 يوم / سنة ≈ 1.15 شهر</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">الراتب اليومي = الراتب الأساسي ÷ 26 يوماً عمل في الشهر (وفق قانون العمل).</p>
-    <p style="font-size:12px;color:var(--text-muted);">⚠️ هذه الأرقام استرشادية — استشر محامياً أو وزارة العمل للحسابات الرسمية.</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">💡 ملاحظة: للخدمة فوق 5 سنوات، النظام القديم (30 يوم ÷ 26 = 1.15 شهر/سنة) قد يكون أعلى من الحد الأدنى الجديد. تحقق من عقدك الفردي.</p>
+    <p style="font-size:12px;color:var(--text-muted);">⚠️ هذه الأرقام استرشادية — للحسابات الرسمية راجع وزارة العمل أو محامياً مختصاً | آخر تحديث: أغسطس 2026</p>
   </div>
 
   <div class="card" style="margin-top:16px;">
     <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تختلف المكافأة إذا كانت الاستقالة بدلاً من الفصل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">في القانون العماني، الموظف المستقيل يستحق كامل المكافأة بعد إتمام سنة خدمة على الأقل. في حالات الفصل التعسفي، قد تكون هناك تعويضات إضافية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين النظام الجديد والقديم؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">النظام القديم: 15 يوماً للسنوات 1–3، و20 يوماً للسنوات 3–5، و30 يوماً بعد 5 سنوات (من الراتب اليومي = أساسي÷26). النظام الجديد (المادة 61): الحد الأدنى هو راتب شهر كامل لكل سنة مع احتساب كسور السنة. يُطبَّق الأعلى بحسب عقد العمل والنظام المعمول به لدى الجهة.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تستحق المكافأة إذا عملت أقل من سنة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">وفق قانون العمل العُماني المحدّث (المادة 61)، تُحتسب كسور السنة بنسبة مدتها. يعني العامل الذي أتمّ 6 أشهر يستحق 0.5 من الراتب الشهري. القانون القديم كان يشترط سنة كاملة للاستحقاق.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يحق للوافد نهاية الخدمة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، قانون العمل العماني ينطبق على العمانيين والوافدين على حد سواء. العامل الوافد يستحق مكافأة نهاية خدمة بنفس الشروط.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم. قانون العمل العُماني ينطبق على العمانيين والوافدين. العامل الوافد يستحق مكافأة نهاية الخدمة وفق الأحكام المشار إليها، ولديه أيضاً برنامج ادخار عبر صندوق الحماية الاجتماعية يساهم فيه صاحب العمل.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تُحسب البدلات في المكافأة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يُحسب الراتب الأساسي فقط في معظم الحالات وفق قانون العمل. بعض الشركات تضع شروطاً أفضل في عقود العمل.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">وفق قانون العمل، تُحسب المكافأة على أساس الراتب الأساسي فقط. بعض الشركات تُدرج البدلات في العقد الفردي وتعتمدها في الحساب — ارجع إلى عقدك للتأكد.</p>
     </details>
   </div>
 
@@ -158,6 +176,15 @@
 
 <script>
 let terminationReason = 'resignation';
+let eosNationality = 'expat';
+
+function setNat(n) {
+  eosNationality = n;
+  document.getElementById('natEosExpat').classList.toggle('active', n === 'expat');
+  document.getElementById('natEosOmani').classList.toggle('active', n === 'omani');
+  document.getElementById('omaniNote').style.display = n === 'omani' ? 'block' : 'none';
+  calculate();
+}
 
 function setReason(r) {
   terminationReason = r;
@@ -181,74 +208,58 @@ function calculate() {
   const end = new Date(endStr);
   if (end <= start) { document.getElementById('eosResult').style.display = 'none'; return; }
 
-  // Calculate total months of service
+  // Total months of service
   let totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-  const dayDiff = end.getDate() - start.getDate();
-  if (dayDiff < 0) totalMonths--;
+  if (end.getDate() < start.getDate()) totalMonths--;
+  if (totalMonths < 0) totalMonths = 0;
 
   const totalYears = totalMonths / 12;
   const fullYears = Math.floor(totalMonths / 12);
   const remainMonths = totalMonths % 12;
 
-  if (totalYears < 1) {
-    document.getElementById('eosBreakdown').innerHTML =
-      '<span style="color:#dc2626;">⚠️ مدة الخدمة أقل من سنة — لا يستحق مكافأة نهاية خدمة وفق قانون العمل العماني.</span>';
-    document.getElementById('eosResult').style.display = 'block';
-    document.getElementById('gratuityDisplay').textContent = '0.000 ر.ع';
-    document.getElementById('yearsDisplay').textContent = fullYears;
-    document.getElementById('monthsDisplay').textContent = remainMonths;
-    document.getElementById('dailyDisplay').textContent = (basicSalary / 26).toFixed(3);
-    return;
-  }
+  // ── New Law (Article 61, updated Labor Law) ──────────────────────────────
+  // Minimum: 1 basic monthly salary per year, partial years proportionally
+  const newLawGratuity = basicSalary * (totalMonths / 12);
 
-  // Daily wage = basic / 26 working days
+  // ── Old Law reference (for comparison, especially for 5+ year workers) ───
   const dailyWage = basicSalary / 26;
-
-  // Progressive calculation based on Oman Labor Law
-  // Period 1: first 3 years (1-3) → 15 days/year
-  // Period 2: years 3-5 → 20 days/year
-  // Period 3: years 5+ → 30 days/year
-  let gratuity = 0;
-  let breakdownLines = [];
-  let daysLabel = '';
-
   const p1 = Math.min(totalYears, 3);
   const p2 = totalYears > 3 ? Math.min(totalYears - 3, 2) : 0;
   const p3 = totalYears > 5 ? totalYears - 5 : 0;
+  const oldLawGratuity = (p1 * 15 + p2 * 20 + p3 * 30) * dailyWage;
 
-  if (p1 > 0) {
-    const amt = p1 * 15 * dailyWage;
-    gratuity += amt;
-    breakdownLines.push('سنة 1–3 (' + p1.toFixed(2) + ' سنة × 15 يوم): <strong>' + amt.toFixed(3) + ' ر.ع</strong>');
-  }
-  if (p2 > 0) {
-    const amt = p2 * 20 * dailyWage;
-    gratuity += amt;
-    breakdownLines.push('سنة 3–5 (' + p2.toFixed(2) + ' سنة × 20 يوم): <strong>' + amt.toFixed(3) + ' ر.ع</strong>');
-  }
-  if (p3 > 0) {
-    const amt = p3 * 30 * dailyWage;
-    gratuity += amt;
-    breakdownLines.push('بعد 5 سنوات (' + p3.toFixed(2) + ' سنة × 30 يوم): <strong>' + amt.toFixed(3) + ' ر.ع</strong>');
-  }
+  // Primary calculation = new law (minimum guaranteed)
+  const gratuity = newLawGratuity;
 
   const reasonNote = terminationReason === 'termination'
-    ? '<br><span style="color:#2563eb;">ملاحظة: في حالة الفصل التعسفي قد تستحق تعويضات إضافية — استشر محامياً.</span>'
+    ? '<br><span style="color:#2563eb;">ملاحظة: في حالة الفصل التعسفي قد تستحق تعويضات إضافية — استشر محامياً مختصاً.</span>'
+    : '';
+
+  const oldLawNote = totalMonths >= 12
+    ? '<br><span style="color:var(--text-muted);font-size:13px;">مرجع: وفق النظام القديم (15/20/30 يوم) ≈ <strong>' + oldLawGratuity.toFixed(3) + ' ر.ع</strong>' + (oldLawGratuity > newLawGratuity ? ' — قد يكون عقدك أعلى، تحقق منه.' : '') + '</span>'
+    : '';
+
+  const omaniNote2 = eosNationality === 'omani'
+    ? '<br><span style="color:#ca8a04;font-size:13px;">⚠️ للعمانيين: هذا تقدير استرشادي — المبلغ الفعلي يُحدده برنامج الادخار في صندوق الحماية الاجتماعية SPF.</span>'
     : '';
 
   document.getElementById('gratuityDisplay').textContent = gratuity.toFixed(3) + ' ر.ع';
   document.getElementById('yearsDisplay').textContent = fullYears;
   document.getElementById('monthsDisplay').textContent = remainMonths;
-  document.getElementById('dailyDisplay').textContent = dailyWage.toFixed(3);
+  document.getElementById('dailyDisplay').textContent = (totalMonths / 12).toFixed(2);
+
+  const mainLine = totalMonths < 12
+    ? 'مدة الخدمة: <strong>' + totalMonths + ' شهر</strong> (أقل من سنة — يُحسب بالتناسب)<br>'
+    : 'مدة الخدمة: <strong>' + fullYears + ' سنة و' + remainMonths + ' شهر</strong><br>';
+
   document.getElementById('eosBreakdown').innerHTML =
-    'الراتب اليومي (الأساسي ÷ 26): <strong>' + dailyWage.toFixed(3) + ' ر.ع</strong><br>' +
-    breakdownLines.join('<br>') +
-    '<br>إجمالي المكافأة: <strong style="color:#16a34a;">' + gratuity.toFixed(3) + ' ر.ع</strong>' +
-    reasonNote;
+    mainLine +
+    'الحساب: الراتب الأساسي × (' + totalMonths + ' شهر ÷ 12) = <strong style="color:#16a34a;">' + gratuity.toFixed(3) + ' ر.ع</strong>' +
+    oldLawNote + omaniNote2 + reasonNote;
+
   document.getElementById('eosResult').style.display = 'block';
 }
 
-// Default end date to today
 document.getElementById('endDate').valueAsDate = new Date();
 </script>
 <script src="i18n.js"></script>
