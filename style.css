@@ -141,6 +141,7 @@ body {
 
 /* Signup button */
 .signup-nav-btn {
+  display: inline-block !important;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: #fff;
   border: none;
