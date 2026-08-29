@@ -105,7 +105,7 @@ const T = {
     fav_title:'⭐ المفضلة', recent_title:'🕘 استخدمتها مؤخراً',
     badge_count:'22 أداة',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'أدوات مرتبطة:',
+    related_tools:'أدوات مرتبطة:', popular_title:'الأكثر استخدامًا',
     eos_title:'حاسبة نهاية الخدمة — سلطنة عُمان 🇴🇲',
     eos_sub:'وفق أحكام قانون العمل العماني',
     eos_start:'تاريخ بداية العمل', eos_end:'تاريخ انتهاء العمل',
@@ -220,7 +220,7 @@ const T = {
     fav_title:'⭐ Favorites', recent_title:'🕘 Recently Used',
     badge_count:'22 Tools',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Related Tools:',
+    related_tools:'Related Tools:', popular_title:'Most Used',
     eos_title:'End of Service Calculator — Oman 🇴🇲',
     eos_sub:'As per Oman Labor Law',
     eos_start:'Start Date', eos_end:'End Date',
@@ -334,7 +334,7 @@ const T = {
     fav_title:'⭐ Favoris', recent_title:'🕘 Récemment utilisés',
     badge_count:'22 Outils',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Outils associés:',
+    related_tools:'Outils associés:', popular_title:'Les plus utilisés',
     eos_title:'Calculateur de fin de service — Oman 🇴🇲',
     eos_sub:'Selon le droit du travail omanais',
     eos_start:'Date de début', eos_end:'Date de fin',
@@ -448,7 +448,7 @@ const T = {
     fav_title:'⭐ Favoritos', recent_title:'🕘 Usados recientemente',
     badge_count:'22 Herramientas',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Herramientas relacionadas:',
+    related_tools:'Herramientas relacionadas:', popular_title:'Más usados',
     eos_title:'Calculadora de fin de servicio — Omán 🇴🇲',
     eos_sub:'Según la Ley Laboral de Omán',
     eos_start:'Fecha de inicio', eos_end:'Fecha de fin',
@@ -562,7 +562,7 @@ const T = {
     fav_title:'⭐ Favoriten', recent_title:'🕘 Zuletzt verwendet',
     badge_count:'22 Tools',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Verwandte Tools:',
+    related_tools:'Verwandte Tools:', popular_title:'Am häufigsten genutzt',
     eos_title:'Abfindungsrechner — Oman 🇴🇲',
     eos_sub:'Gemäß dem omanischen Arbeitsrecht',
     eos_start:'Startdatum', eos_end:'Enddatum',
@@ -676,7 +676,7 @@ const T = {
     fav_title:'⭐ Избранное', recent_title:'🕘 Недавно использованные',
     badge_count:'22 инструмента',
     dark_on:'🌙', dark_off:'☀️',
-    related_tools:'Связанные инструменты:',
+    related_tools:'Связанные инструменты:', popular_title:'Самые популярные',
     eos_title:'Калькулятор выходного пособия — Оман 🇴🇲',
     eos_sub:'В соответствии с трудовым законодательством Омана',
     eos_start:'Дата начала', eos_end:'Дата окончания',
@@ -1058,9 +1058,9 @@ function buildMiniCard(id, t, base) {
   a.style.position = 'relative';
   a.innerHTML =
     '<div class="tool-icon-wrap" style="background:' + meta.bg + ';">' + meta.icon + '</div>' +
-    '<div class="tool-card-title">' + (t[meta.titleKey] || id) + '</div>' +
-    '<div class="tool-card-desc">' + (t[meta.descKey] || '') + '</div>' +
-    '<div class="tool-card-arrow">' + (t.start || '→') + '</div>';
+    '<div class="tool-card-title" data-i18n="' + meta.titleKey + '">' + (t[meta.titleKey] || id) + '</div>' +
+    '<div class="tool-card-desc" data-i18n="' + meta.descKey + '">' + (t[meta.descKey] || '') + '</div>' +
+    '<div class="tool-card-arrow" data-i18n="start">' + (t.start || '→') + '</div>';
   return a;
 }
 
