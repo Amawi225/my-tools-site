@@ -76,6 +76,7 @@
       <span class="fc-fmt supported">📊 Excel (.xlsx .xls)</span>
       <span class="fc-fmt supported">📋 CSV</span>
       <span class="fc-fmt supported">📄 TXT</span>
+      <span class="fc-fmt supported">📕 PDF</span>
     </div>
 
     <div class="fc-drop" id="dropZone"
@@ -83,10 +84,10 @@
       ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
       <div class="fc-drop-icon">📂</div>
       <div class="fc-drop-text" id="dropText">انقر هنا أو اسحب الملف</div>
-      <div class="fc-drop-sub" id="dropSub">Word · Excel · CSV · TXT — حتى 20MB</div>
+      <div class="fc-drop-sub" id="dropSub">Word · Excel · CSV · TXT · PDF — حتى 20MB</div>
     </div>
     <input type="file" id="fileInput" style="display:none"
-      accept=".docx,.xlsx,.xls,.csv,.txt"
+      accept=".docx,.xlsx,.xls,.csv,.txt,.pdf"
       onchange="handleFile(this.files[0])">
 
     <div id="fileInfo" style="display:none" class="fc-file-badge">
@@ -148,12 +149,12 @@
 
 <script>
 const FCT = {
-  ar:{title:'محوّل الملفات',sub:'حوّل Word وExcel وCSV في متصفحك — بدون رفع ملفات',drop:'انقر هنا أو اسحب الملف',dropsub:'Word · Excel · CSV · TXT — حتى 20MB',processing:'جاري المعالجة...',reset:'✕',dlCsv:'⬇️ تحميل CSV',copyTbl:'📋 نسخ',dlHtml:'⬇️ تحميل HTML',dlTxt:'⬇️ تحميل TXT',copyWrd:'📋 نسخ النص',copyTxt:'📋 نسخ',privacy:'ملفك لا يغادر متصفحك أبداً — المعالجة تتم محلياً بالكامل',copied:'تم النسخ!',errType:'نوع الملف غير مدعوم. استخدم: .docx .xlsx .xls .csv .txt',errSize:'حجم الملف كبير جداً (الحد 20MB)',errRead:'فشل في قراءة الملف. تأكد من أن الملف غير تالف.'},
-  en:{title:'File Converter',sub:'Convert Word, Excel & CSV in your browser — no uploads',drop:'Click here or drag your file',dropsub:'Word · Excel · CSV · TXT — up to 20MB',processing:'Processing...',reset:'✕',dlCsv:'⬇️ Download CSV',copyTbl:'📋 Copy',dlHtml:'⬇️ Download HTML',dlTxt:'⬇️ Download TXT',copyWrd:'📋 Copy Text',copyTxt:'📋 Copy',privacy:'Your file never leaves your browser — all processing is local',copied:'Copied!',errType:'File type not supported. Use: .docx .xlsx .xls .csv .txt',errSize:'File too large (max 20MB)',errRead:'Failed to read file. Make sure the file is not corrupted.'},
-  fr:{title:'Convertisseur de fichiers',sub:'Convertissez Word, Excel et CSV dans votre navigateur',drop:'Cliquez ici ou glissez votre fichier',dropsub:'Word · Excel · CSV · TXT — jusqu\'à 20MB',processing:'Traitement en cours...',reset:'✕',dlCsv:'⬇️ Télécharger CSV',copyTbl:'📋 Copier',dlHtml:'⬇️ Télécharger HTML',dlTxt:'⬇️ Télécharger TXT',copyWrd:'📋 Copier le texte',copyTxt:'📋 Copier',privacy:'Votre fichier ne quitte jamais votre navigateur',copied:'Copié!',errType:'Type de fichier non pris en charge. Utilisez: .docx .xlsx .xls .csv .txt',errSize:'Fichier trop volumineux (max 20MB)',errRead:'Échec de la lecture du fichier.'},
-  es:{title:'Conversor de archivos',sub:'Convierte Word, Excel y CSV en tu navegador',drop:'Haz clic aquí o arrastra tu archivo',dropsub:'Word · Excel · CSV · TXT — hasta 20MB',processing:'Procesando...',reset:'✕',dlCsv:'⬇️ Descargar CSV',copyTbl:'📋 Copiar',dlHtml:'⬇️ Descargar HTML',dlTxt:'⬇️ Descargar TXT',copyWrd:'📋 Copiar texto',copyTxt:'📋 Copiar',privacy:'Tu archivo nunca sale de tu navegador',copied:'¡Copiado!',errType:'Tipo de archivo no soportado. Usa: .docx .xlsx .xls .csv .txt',errSize:'Archivo demasiado grande (máx 20MB)',errRead:'Error al leer el archivo.'},
-  de:{title:'Datei-Konverter',sub:'Word, Excel und CSV im Browser konvertieren',drop:'Hier klicken oder Datei hierher ziehen',dropsub:'Word · Excel · CSV · TXT — bis zu 20MB',processing:'Verarbeitung...',reset:'✕',dlCsv:'⬇️ CSV herunterladen',copyTbl:'📋 Kopieren',dlHtml:'⬇️ HTML herunterladen',dlTxt:'⬇️ TXT herunterladen',copyWrd:'📋 Text kopieren',copyTxt:'📋 Kopieren',privacy:'Ihre Datei verlässt nie Ihren Browser',copied:'Kopiert!',errType:'Dateityp nicht unterstützt. Verwenden Sie: .docx .xlsx .xls .csv .txt',errSize:'Datei zu groß (max 20MB)',errRead:'Datei konnte nicht gelesen werden.'},
-  ru:{title:'Конвертер файлов',sub:'Конвертируйте Word, Excel и CSV в браузере',drop:'Нажмите здесь или перетащите файл',dropsub:'Word · Excel · CSV · TXT — до 20MB',processing:'Обработка...',reset:'✕',dlCsv:'⬇️ Скачать CSV',copyTbl:'📋 Копировать',dlHtml:'⬇️ Скачать HTML',dlTxt:'⬇️ Скачать TXT',copyWrd:'📋 Копировать текст',copyTxt:'📋 Копировать',privacy:'Ваш файл никогда не покидает браузер',copied:'Скопировано!',errType:'Тип файла не поддерживается. Используйте: .docx .xlsx .xls .csv .txt',errSize:'Файл слишком большой (макс 20MB)',errRead:'Не удалось прочитать файл.'}
+  ar:{title:'محوّل الملفات',sub:'حوّل Word وExcel وCSV في متصفحك — بدون رفع ملفات',drop:'انقر هنا أو اسحب الملف',dropsub:'Word · Excel · CSV · TXT · PDF — حتى 20MB',processing:'جاري المعالجة...',reset:'✕',dlCsv:'⬇️ تحميل CSV',copyTbl:'📋 نسخ',dlHtml:'⬇️ تحميل HTML',dlTxt:'⬇️ تحميل TXT',copyWrd:'📋 نسخ النص',copyTxt:'📋 نسخ',privacy:'ملفك لا يغادر متصفحك أبداً — المعالجة تتم محلياً بالكامل',copied:'تم النسخ!',errType:'نوع الملف غير مدعوم. استخدم: .docx .xlsx .xls .csv .txt',errSize:'حجم الملف كبير جداً (الحد 20MB)',errRead:'فشل في قراءة الملف. تأكد من أن الملف غير تالف.'},
+  en:{title:'File Converter',sub:'Convert Word, Excel & CSV in your browser — no uploads',drop:'Click here or drag your file',dropsub:'Word · Excel · CSV · TXT · PDF — up to 20MB',processing:'Processing...',reset:'✕',dlCsv:'⬇️ Download CSV',copyTbl:'📋 Copy',dlHtml:'⬇️ Download HTML',dlTxt:'⬇️ Download TXT',copyWrd:'📋 Copy Text',copyTxt:'📋 Copy',privacy:'Your file never leaves your browser — all processing is local',copied:'Copied!',errType:'File type not supported. Use: .docx .xlsx .xls .csv .txt',errSize:'File too large (max 20MB)',errRead:'Failed to read file. Make sure the file is not corrupted.'},
+  fr:{title:'Convertisseur de fichiers',sub:'Convertissez Word, Excel et CSV dans votre navigateur',drop:'Cliquez ici ou glissez votre fichier',dropsub:'Word · Excel · CSV · TXT · PDF — jusqu\'à 20MB',processing:'Traitement en cours...',reset:'✕',dlCsv:'⬇️ Télécharger CSV',copyTbl:'📋 Copier',dlHtml:'⬇️ Télécharger HTML',dlTxt:'⬇️ Télécharger TXT',copyWrd:'📋 Copier le texte',copyTxt:'📋 Copier',privacy:'Votre fichier ne quitte jamais votre navigateur',copied:'Copié!',errType:'Type de fichier non pris en charge. Utilisez: .docx .xlsx .xls .csv .txt',errSize:'Fichier trop volumineux (max 20MB)',errRead:'Échec de la lecture du fichier.'},
+  es:{title:'Conversor de archivos',sub:'Convierte Word, Excel y CSV en tu navegador',drop:'Haz clic aquí o arrastra tu archivo',dropsub:'Word · Excel · CSV · TXT · PDF — hasta 20MB',processing:'Procesando...',reset:'✕',dlCsv:'⬇️ Descargar CSV',copyTbl:'📋 Copiar',dlHtml:'⬇️ Descargar HTML',dlTxt:'⬇️ Descargar TXT',copyWrd:'📋 Copiar texto',copyTxt:'📋 Copiar',privacy:'Tu archivo nunca sale de tu navegador',copied:'¡Copiado!',errType:'Tipo de archivo no soportado. Usa: .docx .xlsx .xls .csv .txt',errSize:'Archivo demasiado grande (máx 20MB)',errRead:'Error al leer el archivo.'},
+  de:{title:'Datei-Konverter',sub:'Word, Excel und CSV im Browser konvertieren',drop:'Hier klicken oder Datei hierher ziehen',dropsub:'Word · Excel · CSV · TXT · PDF — bis zu 20MB',processing:'Verarbeitung...',reset:'✕',dlCsv:'⬇️ CSV herunterladen',copyTbl:'📋 Kopieren',dlHtml:'⬇️ HTML herunterladen',dlTxt:'⬇️ TXT herunterladen',copyWrd:'📋 Text kopieren',copyTxt:'📋 Kopieren',privacy:'Ihre Datei verlässt nie Ihren Browser',copied:'Kopiert!',errType:'Dateityp nicht unterstützt. Verwenden Sie: .docx .xlsx .xls .csv .txt',errSize:'Datei zu groß (max 20MB)',errRead:'Datei konnte nicht gelesen werden.'},
+  ru:{title:'Конвертер файлов',sub:'Конвертируйте Word, Excel и CSV в браузере',drop:'Нажмите здесь или перетащите файл',dropsub:'Word · Excel · CSV · TXT · PDF — до 20MB',processing:'Обработка...',reset:'✕',dlCsv:'⬇️ Скачать CSV',copyTbl:'📋 Копировать',dlHtml:'⬇️ Скачать HTML',dlTxt:'⬇️ Скачать TXT',copyWrd:'📋 Копировать текст',copyTxt:'📋 Копировать',privacy:'Ваш файл никогда не покидает браузер',copied:'Скопировано!',errType:'Тип файла не поддерживается. Используйте: .docx .xlsx .xls .csv .txt',errSize:'Файл слишком большой (макс 20MB)',errRead:'Не удалось прочитать файл.'}
 };
 
 let currentLang = 'ar';
@@ -195,7 +196,7 @@ function handleFile(file) {
   const MAX = 20 * 1024 * 1024;
   if (file.size > MAX) { showError(t('errSize')); return; }
   const ext = file.name.split('.').pop().toLowerCase();
-  const allowed = ['docx','xlsx','xls','csv','txt'];
+  const allowed = ['docx','xlsx','xls','csv','txt','pdf'];
   if (!allowed.includes(ext)) { showError(t('errType')); return; }
 
   currentFile = file;
@@ -208,10 +209,39 @@ function handleFile(file) {
   else if (ext === 'xlsx' || ext === 'xls') processExcel(file);
   else if (ext === 'csv') processCSV(file);
   else if (ext === 'txt') processTxt(file);
+  else if (ext === 'pdf') processPDF(file);
+}
+
+/* ---- PDF ---- */
+function processPDF(file) {
+  loadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js', ()=>{
+    const workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
+    const reader = new FileReader();
+    reader.onload = async e => {
+      try {
+        const pdf = await pdfjsLib.getDocument({data: e.target.result}).promise;
+        let fullText = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const tc = await page.getTextContent();
+          const pageText = tc.items.map(item => item.str).join(' ');
+          fullText += `--- Page ${i} ---\n${pageText}\n\n`;
+        }
+        wordText = fullText;
+        document.getElementById('txtPreview').textContent = fullText || '(no text found)';
+        document.getElementById('txtResult').style.display='';
+        document.getElementById('resultArea').style.display='';
+        showStatus(false);
+      } catch(err){ showError(t('errRead')); showStatus(false); }
+    };
+    reader.onerror=()=>{ showError(t('errRead')); showStatus(false); };
+    reader.readAsArrayBuffer(file);
+  }, ()=>{ showError(t('errRead')); showStatus(false); });
 }
 
 function showFileInfo(file, ext) {
-  const icons = {docx:'📝',xlsx:'📊',xls:'📊',csv:'📋',txt:'📄'};
+  const icons = {docx:'📝',xlsx:'📊',xls:'📊',csv:'📋',txt:'📄',pdf:'📕'};
   document.getElementById('fileIcon').textContent = icons[ext]||'📄';
   document.getElementById('fileName').textContent = file.name;
   document.getElementById('fileSize').textContent = formatSize(file.size);
