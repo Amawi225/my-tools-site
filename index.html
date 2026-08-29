@@ -339,15 +339,17 @@ function filterTools() {
   const noRes = document.getElementById('noResults');
   if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
   const isAll = activeCat === 'all' && !q;
-  // Show popular, country, and recent sections only on "all" tab with no search
+  const isOman = activeCat === 'oman' && !q;
+  // Popular section only on "all" tab
   const pop = document.getElementById('popularSection');
   if (pop) pop.style.display = isAll ? '' : 'none';
+  // Country/recent/favs show on "all" AND "oman" tabs
   const country = document.getElementById('countrySection');
-  if (country) country.style.display = isAll ? '' : 'none';
+  if (country) country.style.display = (isAll || isOman) ? '' : 'none';
   const recent = document.getElementById('recentSection');
-  if (recent) recent.style.display = isAll ? '' : 'none';
+  if (recent) recent.style.display = (isAll || isOman) ? '' : 'none';
   const favs = document.getElementById('favSection');
-  if (favs) favs.style.display = isAll ? '' : 'none';
+  if (favs) favs.style.display = (isAll || isOman) ? '' : 'none';
 }
 </script>
 <script src="i18n.js"></script>
