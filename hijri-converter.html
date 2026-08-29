@@ -46,18 +46,18 @@
 
   <div class="card">
     <div class="card-icon" style="background:#fdf4ff;">🌙</div>
-    <div class="card-title">محوّل التاريخ الهجري والميلادي</div>
-    <div class="card-subtitle">تحويل فوري ودقيق في كلا الاتجاهين</div>
+    <div class="card-title" data-i18n="hijri_card_title">محوّل التاريخ الهجري والميلادي</div>
+    <div class="card-subtitle" data-i18n="hij_sub">تحويل فوري ودقيق في كلا الاتجاهين</div>
     <div class="divider"></div>
 
     <div class="option-toggle">
-      <button class="option-btn active" id="modeGH" onclick="setConvMode('g2h')">🗓️ ميلادي ← هجري</button>
-      <button class="option-btn" id="modeHG" onclick="setConvMode('h2g')">🌙 هجري ← ميلادي</button>
+      <button class="option-btn active" id="modeGH" onclick="setConvMode('g2h')" data-i18n="hij_mode_gh">🗓️ ميلادي ← هجري</button>
+      <button class="option-btn" id="modeHG" onclick="setConvMode('h2g')" data-i18n="hij_mode_hg">🌙 هجري ← ميلادي</button>
     </div>
 
     <!-- Gregorian to Hijri -->
     <div id="gregSection">
-      <label for="gregDate">اختر التاريخ الميلادي</label>
+      <label for="gregDate" data-i18n="hij_greg_date_lbl">اختر التاريخ الميلادي</label>
       <input type="date" id="gregDate" onchange="convertGtoH()">
       <div id="ghResult" style="display:none;" class="hijri-result-box" style="background:var(--surface-2);">
         <div class="hijri-date-display" id="ghDateDisplay"></div>
@@ -69,15 +69,15 @@
     <div id="hijriSection" style="display:none;">
       <div class="row">
         <div>
-          <label for="hijriDay">اليوم</label>
+          <label for="hijriDay" data-i18n="hij_day_lbl">اليوم</label>
           <input type="number" id="hijriDay" min="1" max="30" placeholder="1-30" oninput="convertHtoG()">
         </div>
         <div>
-          <label for="hijriYear">السنة الهجرية</label>
+          <label for="hijriYear" data-i18n="hij_year_lbl">السنة الهجرية</label>
           <input type="number" id="hijriYear" min="1300" max="1600" placeholder="مثال: 1446" oninput="convertHtoG()">
         </div>
       </div>
-      <label>الشهر الهجري</label>
+      <label data-i18n="hij_month_lbl">الشهر الهجري</label>
       <div class="month-grid" id="monthGrid"></div>
       <div id="hgResult" style="display:none;margin-top:16px;" class="hijri-result-box">
         <div class="hijri-date-display" id="hgDateDisplay"></div>
@@ -88,13 +88,13 @@
 
   <!-- Today's date panel -->
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📅 التاريخ الهجري لليوم</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="hij_today_title">📅 التاريخ الهجري لليوم</div>
     <div id="todayHijri" style="font-size:20px;font-weight:700;margin-top:10px;text-align:center;"></div>
     <div id="todayGreg" style="font-size:14px;color:var(--text-muted);text-align:center;margin-top:4px;"></div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">🌙 الأشهر الهجرية</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="hij_months_title">🌙 الأشهر الهجرية</div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:10px;font-size:13px;">
       <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">1 — محرّم</div>
       <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">2 — صفر</div>
@@ -112,7 +112,7 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين التقويم الهجري والميلادي؟</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">التقويم الهجري قمري (يعتمد على دورة القمر) ويتكون من 354-355 يوماً في السنة. التقويم الميلادي شمسي ويتكون من 365-366 يوماً. لهذا تتقدم السنة الهجرية بحوالي 11 يوماً كل سنة ميلادية.</p>
@@ -128,7 +128,7 @@
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong data-i18n="related_tools">أدوات مرتبطة:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
       <a href="age-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📅 حاسبة العمر</a>
       <a href="end-of-service.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📋 نهاية الخدمة</a>
@@ -256,7 +256,6 @@ function showTodayHijri() {
     WEEK_DAYS_AR[now.getDay()] + ' — ' + now.getDate() + ' ' + GREGORIAN_MONTHS_AR[now.getMonth()] + ' ' + now.getFullYear() + ' م';
 }
 
-// Init
 document.getElementById('gregDate').valueAsDate = new Date();
 convertGtoH();
 buildMonthGrid();
