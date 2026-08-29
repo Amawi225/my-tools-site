@@ -85,7 +85,7 @@
     <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب عمري بالهجري؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">السنة الهجرية = عدد أيام العمر ÷ 354.37 (متوسط السنة الهجرية). الحاسبة تحسب هذا تلقائياً عند إدخال تاريخ ميلادك.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نحوّل تاريخ ميلادك إلى التقويم الهجري، ثم نحسب الفرق بين تاريخ الميلاد الهجري وتاريخ اليوم الهجري بطريقة السنوات والأشهر والأيام — وليس بقسمة عدد الأيام على متوسط السنة الهجرية.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما برجي إذا وُلدت في أغسطس؟</summary>
@@ -184,7 +184,14 @@ function calcAge() {
   // Hijri birthdate
   const hBirth = toHijri(birth.getDate(), birth.getMonth() + 1, birth.getFullYear());
   const hToday = toHijri(today.getDate(), today.getMonth() + 1, today.getFullYear());
-  const hijriAge = Math.floor(totalDays / 354.37);
+
+  // Proper Hijri age: calendar subtraction (not day-count approximation)
+  let hY = hToday.year - hBirth.year;
+  let hM = hToday.month - hBirth.month;
+  let hD = hToday.day - hBirth.day;
+  if (hD < 0) { hM--; hD += 30; }
+  if (hM < 0) { hY--; hM += 12; }
+  const hijriAgeStr = hY + ' سنة ' + hM + ' شهر ' + hD + ' يوم';
 
   // Day of week born
   const bornDay = DAYS_AR[birth.getDay()];
@@ -210,7 +217,7 @@ function calcAge() {
   const infos = [
     { label: 'برجك الفلكي', value: zodiac },
     { label: 'يوم الميلاد', value: bornDay },
-    { label: 'عمرك بالهجري', value: hijriAge + ' سنة هجرية' },
+    { label: 'عمرك بالهجري', value: hijriAgeStr + ' هجري' },
     { label: 'عيد ميلادك القادم', value: nextBdayStr },
   ];
   infos.forEach(function(info) {
