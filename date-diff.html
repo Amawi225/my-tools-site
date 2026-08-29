@@ -20,7 +20,7 @@
     <a href="index.html" data-i18n="nav_home">الرئيسية</a>
     <a href="about.html" data-i18n="nav_about">من نحن</a>
     <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
-    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn">تسجيل</button>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -100,23 +100,23 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" id="dd-faq-title">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب عدد أيام العمل بين تاريخين؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير. في عُمان أيام العمل الأسبوعية عادة 5 أيام (الأحد-الخميس).</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q1">كيف أحسب عدد أيام العمل بين تاريخين؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a1">أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لماذا تختلف نتيجة السنوات والأشهر أحياناً؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q2">لماذا تختلف نتيجة السنوات والأشهر أحياناً؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a2">الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong data-i18n="related_tools">أدوات مرتبطة:</strong>
+    <strong id="dd-related-title">أدوات مرتبطة:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📅 حاسبة العمر</a>
-      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌙 محول الهجري</a>
-      <a href="stopwatch.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">⏱️ ساعة الإيقاف</a>
+      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel1">📅 حاسبة العمر</a>
+      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel2">🌙 محول الهجري</a>
+      <a href="stopwatch.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel3">⏱️ ساعة الإيقاف</a>
     </div>
   </div>
 </div></main>
@@ -133,8 +133,121 @@
 </footer>
 
 <script>
-const MONTHS_AR = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-const DAYS_AR = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+var DD_T={
+  ar:{
+    faq_title:'❓ أسئلة شائعة',
+    faq_q1:'كيف أحسب عدد أيام العمل بين تاريخين؟',
+    faq_a1:'أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير.',
+    faq_q2:'لماذا تختلف نتيجة السنوات والأشهر أحياناً؟',
+    faq_a2:'الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر.',
+    related:'أدوات مرتبطة:',rel1:'📅 حاسبة العمر',rel2:'🌙 محول الهجري',rel3:'⏱️ ساعة الإيقاف',
+    note_from:'من: ',note_to:'إلى: ',note_swap:'⚠️ التاريخ الثاني أقدم من الأول — تم عكس الترتيب',
+    days_lbl:' يوم',
+    ev_ny:function(y){return '🎉 رأس السنة الميلادية '+y;},
+    ev_ramadan:'🌙 رمضان 2027 (تقريبي)',
+    ev_oman:'🇴🇲 العيد الوطني العماني',
+    months:['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],
+    days:['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت']
+  },
+  en:{
+    faq_title:'❓ FAQ',
+    faq_q1:'How do I calculate working days between two dates?',
+    faq_a1:'Approximate working days = total days × (5/7). The number shown is an estimate.',
+    faq_q2:'Why does the years/months result sometimes differ?',
+    faq_a2:'Months have different numbers of days (28-31). The calculation uses the real calendar, not a fixed 30-day month average.',
+    related:'Related tools:',rel1:'📅 Age Calculator',rel2:'🌙 Hijri Converter',rel3:'⏱️ Stopwatch',
+    note_from:'From: ',note_to:'To: ',note_swap:'⚠️ The second date is earlier — order was reversed',
+    days_lbl:' days',
+    ev_ny:function(y){return '🎉 New Year '+y;},
+    ev_ramadan:'🌙 Ramadan 2027 (approx.)',
+    ev_oman:'🇴🇲 Oman National Day',
+    months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+    days:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+  },
+  fr:{
+    faq_title:'❓ Questions fréquentes',
+    faq_q1:'Comment calculer les jours ouvrables entre deux dates?',
+    faq_a1:'Jours ouvrables approximatifs = jours totaux × (5/7). Le chiffre affiché est une estimation.',
+    faq_q2:'Pourquoi le résultat en années/mois diffère-t-il parfois?',
+    faq_a2:'Les mois ont des nombres de jours différents (28-31). Le calcul utilise le calendrier réel.',
+    related:'Outils connexes:',rel1:'📅 Calculateur d\'âge',rel2:'🌙 Convertisseur hégirien',rel3:'⏱️ Chronomètre',
+    note_from:'Du: ',note_to:'Au: ',note_swap:'⚠️ La deuxième date est antérieure — l\'ordre a été inversé',
+    days_lbl:' jours',
+    ev_ny:function(y){return '🎉 Nouvel An '+y;},
+    ev_ramadan:'🌙 Ramadan 2027 (approx.)',
+    ev_oman:'🇴🇲 Fête nationale d\'Oman',
+    months:['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+    days:['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi']
+  },
+  es:{
+    faq_title:'❓ Preguntas frecuentes',
+    faq_q1:'¿Cómo calculo los días laborables entre dos fechas?',
+    faq_a1:'Días laborables aproximados = días totales × (5/7). El número mostrado es una estimación.',
+    faq_q2:'¿Por qué el resultado en años/meses a veces difiere?',
+    faq_a2:'Los meses tienen diferentes números de días (28-31). El cálculo usa el calendario real.',
+    related:'Herramientas relacionadas:',rel1:'📅 Calculadora de edad',rel2:'🌙 Conversor Hijri',rel3:'⏱️ Cronómetro',
+    note_from:'Desde: ',note_to:'Hasta: ',note_swap:'⚠️ La segunda fecha es anterior — el orden fue invertido',
+    days_lbl:' días',
+    ev_ny:function(y){return '🎉 Año Nuevo '+y;},
+    ev_ramadan:'🌙 Ramadán 2027 (aprox.)',
+    ev_oman:'🇴🇲 Día Nacional de Omán',
+    months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+    days:['domingo','lunes','martes','miércoles','jueves','viernes','sábado']
+  },
+  de:{
+    faq_title:'❓ Häufige Fragen',
+    faq_q1:'Wie berechne ich Werktage zwischen zwei Daten?',
+    faq_a1:'Ungefähre Werktage = Gesamttage × (5/7). Die angezeigte Zahl ist eine Schätzung.',
+    faq_q2:'Warum unterscheidet sich das Ergebnis in Jahren/Monaten manchmal?',
+    faq_a2:'Monate haben unterschiedliche Tageszahlen (28-31). Die Berechnung verwendet den echten Kalender.',
+    related:'Verwandte Tools:',rel1:'📅 Altersrechner',rel2:'🌙 Hijri-Umrechner',rel3:'⏱️ Stoppuhr',
+    note_from:'Von: ',note_to:'Bis: ',note_swap:'⚠️ Das zweite Datum ist früher — die Reihenfolge wurde umgekehrt',
+    days_lbl:' Tage',
+    ev_ny:function(y){return '🎉 Neujahr '+y;},
+    ev_ramadan:'🌙 Ramadan 2027 (ca.)',
+    ev_oman:'🇴🇲 Nationalfeiertag Oman',
+    months:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+    days:['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag']
+  },
+  ru:{
+    faq_title:'❓ Часто задаваемые вопросы',
+    faq_q1:'Как рассчитать рабочие дни между двумя датами?',
+    faq_a1:'Приблизительные рабочие дни = общие дни × (5/7). Показанное число является оценкой.',
+    faq_q2:'Почему результат в годах/месяцах иногда отличается?',
+    faq_a2:'В месяцах разное количество дней (28-31). Расчёт использует реальный календарь, а не среднее в 30 дней.',
+    related:'Связанные инструменты:',rel1:'📅 Калькулятор возраста',rel2:'🌙 Конвертер хиджры',rel3:'⏱️ Секундомер',
+    note_from:'С: ',note_to:'По: ',note_swap:'⚠️ Вторая дата раньше — порядок был изменён',
+    days_lbl:' дней',
+    ev_ny:function(y){return '🎉 Новый год '+y;},
+    ev_ramadan:'🌙 Рамадан 2027 (прибл.)',
+    ev_oman:'🇴🇲 Национальный день Омана',
+    months:['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+    days:['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота']
+  }
+};
+function DDT(){return DD_T[localStorage.getItem('lang')||'ar'];}
+function updateDDContent(){
+  var t=DDT();
+  document.getElementById('dd-faq-title').textContent=t.faq_title;
+  document.getElementById('dd-faq-q1').textContent=t.faq_q1;
+  document.getElementById('dd-faq-a1').textContent=t.faq_a1;
+  document.getElementById('dd-faq-q2').textContent=t.faq_q2;
+  document.getElementById('dd-faq-a2').textContent=t.faq_a2;
+  document.getElementById('dd-related-title').textContent=t.related;
+  document.getElementById('dd-rel1').textContent=t.rel1;
+  document.getElementById('dd-rel2').textContent=t.rel2;
+  document.getElementById('dd-rel3').textContent=t.rel3;
+  var lang=localStorage.getItem('lang')||'ar';
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+}
+window.setLang=function(lang){
+  localStorage.setItem('lang',lang);
+  updateDDContent();
+  if(typeof initI18n==='function')initI18n(lang);
+  calculate();
+  showUpcoming();
+};
 
 function setPreset(type) {
   const today = new Date();
@@ -178,50 +291,53 @@ function calculate() {
   const workdays = Math.round(totalDays * 5 / 7);
   const diff = diffMonths(from, to);
 
-  document.getElementById('totalDaysDisplay').textContent = totalDays.toLocaleString('ar-EG');
+  var t=DDT();
+  document.getElementById('totalDaysDisplay').textContent = totalDays.toLocaleString();
   document.getElementById('yearsDisplay').textContent = diff.years;
   document.getElementById('monthsDisplay').textContent = diff.months;
   document.getElementById('daysDisplay').textContent = diff.days;
-  document.getElementById('weeksDisplay').textContent = totalWeeks.toLocaleString('ar-EG');
-  document.getElementById('hoursDisplay').textContent = totalHours.toLocaleString('ar-EG');
-  document.getElementById('workdaysDisplay').textContent = workdays.toLocaleString('ar-EG');
+  document.getElementById('weeksDisplay').textContent = totalWeeks.toLocaleString();
+  document.getElementById('hoursDisplay').textContent = totalHours.toLocaleString();
+  document.getElementById('workdaysDisplay').textContent = workdays.toLocaleString();
 
-  const noteFrom = DAYS_AR[from.getDay()] + '، ' + from.getDate() + ' ' + MONTHS_AR[from.getMonth()] + ' ' + from.getFullYear();
-  const noteTo = DAYS_AR[to.getDay()] + '، ' + to.getDate() + ' ' + MONTHS_AR[to.getMonth()] + ' ' + to.getFullYear();
+  var noteFrom = t.days[from.getDay()] + ', ' + from.getDate() + ' ' + t.months[from.getMonth()] + ' ' + from.getFullYear();
+  var noteTo = t.days[to.getDay()] + ', ' + to.getDate() + ' ' + t.months[to.getMonth()] + ' ' + to.getFullYear();
   document.getElementById('ddNote').innerHTML =
-    'من: <strong>' + noteFrom + '</strong><br>' +
-    'إلى: <strong>' + noteTo + '</strong>' +
-    (negative ? '<br><span style="color:#dc2626;">⚠️ التاريخ الثاني أقدم من الأول — تم عكس الترتيب</span>' : '');
+    t.note_from + '<strong>' + noteFrom + '</strong><br>' +
+    t.note_to + '<strong>' + noteTo + '</strong>' +
+    (negative ? '<br><span style="color:#dc2626;">' + t.note_swap + '</span>' : '');
 
   document.getElementById('ddResult').style.display = 'block';
 }
 
 function showUpcoming() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const events = [
-    { name: '🎉 رأس السنة الميلادية ' + (year + 1), date: new Date(year + 1, 0, 1) },
-    { name: '🌙 رمضان 2027 (تقريبي)', date: new Date(2027, 1, 17) },
-    { name: '🇴🇲 العيد الوطني العماني', date: new Date(year, 10, 18) },
+  var t=DDT();
+  var today = new Date();
+  var year = today.getFullYear();
+  var events = [
+    { name: t.ev_ny(year + 1), date: new Date(year + 1, 0, 1) },
+    { name: t.ev_ramadan, date: new Date(2027, 1, 17) },
+    { name: t.ev_oman, date: new Date(year, 10, 18) },
   ];
-  const list = document.getElementById('upcomingList');
+  var list = document.getElementById('upcomingList');
   list.innerHTML = '';
   events.forEach(function(ev) {
-    const diff = Math.round((ev.date - today) / (1000 * 60 * 60 * 24));
+    var diff = Math.round((ev.date - today) / (1000 * 60 * 60 * 24));
     if (diff >= 0) {
-      const line = document.createElement('div');
+      var line = document.createElement('div');
       line.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);';
-      line.innerHTML = '<span>' + ev.name + '</span><span style="font-weight:700;color:var(--primary);">' + diff + ' يوم</span>';
+      line.innerHTML = '<span>' + ev.name + '</span><span style="font-weight:700;color:var(--primary);">' + diff + t.days_lbl + '</span>';
       list.appendChild(line);
     }
   });
 }
 
-const today = new Date();
+var today = new Date();
 document.getElementById('dateFrom').value = today.toISOString().split('T')[0];
-const nextWeek = new Date(today);
+var nextWeek = new Date(today);
 nextWeek.setDate(today.getDate() + 30);
 document.getElementById('dateTo').value = nextWeek.toISOString().split('T')[0];
+updateDDContent();
 calculate();
 showUpcoming();
 </script>
