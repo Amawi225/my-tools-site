@@ -97,7 +97,7 @@
       <h1 data-i18n="hero_title">أدواتك اليومية في مكان واحد</h1>
       <p data-i18n="hero_sub">أدوات دقيقة وسريعة، تعمل مباشرة على متصفحك — بدون تسجيل وبدون إعلانات</p>
       <div class="hero-badges">
-        <span class="hero-badge">⚡ <span data-i18n="badge_count">22 أداة</span></span>
+        <span class="hero-badge">⚡ <span id="toolCountBadge">25</span>&nbsp;<span data-i18n="badge_count_lbl">أداة</span></span>
         <span class="hero-badge">✅ <span data-i18n="badge_free">مجانية 100%</span></span>
         <span class="hero-badge">🔒 <span data-i18n="badge_privacy">خصوصية تامة</span></span>
         <span class="hero-badge">🌍 <span data-i18n="badge_langs">6 لغات</span></span>
@@ -106,7 +106,7 @@
   </section>
 
   <div class="stats-row">
-    <div class="stat-item"><div class="stat-item-val">22</div><div class="stat-item-lbl" data-i18n="stat_tools">أداة مجانية</div></div>
+    <div class="stat-item"><div class="stat-item-val" id="toolCountStat">25</div><div class="stat-item-lbl" data-i18n="stat_tools">أداة مجانية</div></div>
     <div class="stat-item"><div class="stat-item-val">6</div><div class="stat-item-lbl" data-i18n="stat_langs">لغات مدعومة</div></div>
     <div class="stat-item"><div class="stat-item-val">100%</div><div class="stat-item-lbl" data-i18n="stat_private">خاص وآمن</div></div>
     <div class="stat-item"><div class="stat-item-val">24/7</div><div class="stat-item-lbl" data-i18n="stat_available">متاح دائماً</div></div>
@@ -403,6 +403,14 @@ function filterTools() {
   });
   const noRes = document.getElementById('noResults');
   if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+  function updateToolCount() {
+    const n = document.querySelectorAll('#toolsGrid .tool-card').length;
+    const s = document.getElementById('toolCountStat');
+    const b = document.getElementById('toolCountBadge');
+    if (s) s.textContent = n;
+    if (b) b.textContent = n;
+  }
+  document.addEventListener('DOMContentLoaded', updateToolCount);
   const isAll = activeCat === 'all' && !q;
   const isOman = activeCat === 'oman' && !q;
   // Popular section only on "all" tab
