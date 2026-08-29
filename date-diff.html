@@ -36,72 +36,71 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fff7ed;">📆</div>
-    <div class="card-title">حساب الفرق بين تاريخين</div>
-    <div class="card-subtitle">أيام، أسابيع، أشهر وسنوات بين أي تاريخين</div>
+    <div class="card-title" data-i18n="dd_card_title">حساب الفرق بين تاريخين</div>
+    <div class="card-subtitle" data-i18n="dd_sub">أيام، أسابيع، أشهر وسنوات بين أي تاريخين</div>
     <div class="divider"></div>
 
     <div class="row">
       <div>
-        <label for="dateFrom">التاريخ الأول (من)</label>
+        <label for="dateFrom" data-i18n="dd_from_lbl">التاريخ الأول (من)</label>
         <input type="date" id="dateFrom" onchange="calculate()">
       </div>
       <div>
-        <label for="dateTo">التاريخ الثاني (إلى)</label>
+        <label for="dateTo" data-i18n="dd_to_lbl">التاريخ الثاني (إلى)</label>
         <input type="date" id="dateTo" onchange="calculate()">
       </div>
     </div>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
-      <button onclick="setPreset('today')" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">من اليوم</button>
-      <button onclick="setPreset('newYear')" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رأس السنة</button>
-      <button onclick="setPreset('ramadan')" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رمضان 2027</button>
+      <button onclick="setPreset('today')" data-i18n="dd_preset_today" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">من اليوم</button>
+      <button onclick="setPreset('newYear')" data-i18n="dd_preset_ny" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رأس السنة</button>
+      <button onclick="setPreset('ramadan')" data-i18n="dd_preset_ramadan" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رمضان 2027</button>
     </div>
 
     <div id="ddResult" style="display:none;margin-top:20px;">
       <div class="result-box show success" style="margin-top:0;">
         <div class="result-value" id="totalDaysDisplay"></div>
-        <div class="result-label">يوم إجمالاً</div>
+        <div class="result-label" data-i18n="dd_result_lbl">يوم إجمالاً</div>
       </div>
       <div class="stat-grid" style="margin-top:12px;">
         <div class="stat-box">
           <div class="stat-val" id="yearsDisplay">0</div>
-          <div class="stat-lbl">سنة</div>
+          <div class="stat-lbl" data-i18n="dd_years_lbl">سنة</div>
         </div>
         <div class="stat-box">
           <div class="stat-val" id="monthsDisplay">0</div>
-          <div class="stat-lbl">شهر</div>
+          <div class="stat-lbl" data-i18n="dd_months_lbl">شهر</div>
         </div>
         <div class="stat-box">
           <div class="stat-val" id="daysDisplay">0</div>
-          <div class="stat-lbl">يوم</div>
+          <div class="stat-lbl" data-i18n="dd_days_lbl">يوم</div>
         </div>
       </div>
       <div class="stat-grid" style="margin-top:8px;">
         <div class="stat-box" style="background:#f0f9ff;">
           <div class="stat-val" id="weeksDisplay" style="color:#0369a1;">0</div>
-          <div class="stat-lbl">أسبوع</div>
+          <div class="stat-lbl" data-i18n="dd_weeks_lbl">أسبوع</div>
         </div>
         <div class="stat-box" style="background:#fdf4ff;">
           <div class="stat-val" id="hoursDisplay" style="color:#7c3aed;">0</div>
-          <div class="stat-lbl">ساعة</div>
+          <div class="stat-lbl" data-i18n="dd_hours_lbl">ساعة</div>
         </div>
         <div class="stat-box" style="background:#fefce8;">
           <div class="stat-val" id="workdaysDisplay" style="color:#ca8a04;">0</div>
-          <div class="stat-lbl">يوم عمل (تقريبي)</div>
+          <div class="stat-lbl" data-i18n="dd_workdays_lbl">يوم عمل (تقريبي)</div>
         </div>
       </div>
       <div id="ddNote" style="margin-top:12px;padding:12px 14px;background:var(--surface-2);border-radius:8px;font-size:14px;line-height:1.8;"></div>
     </div>
   </div>
 
-  <!-- Quick date tools -->
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">⚡ أحداث قادمة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="dd_upcoming_title">⚡ أحداث قادمة</div>
     <div id="upcomingList" style="margin-top:10px;font-size:14px;line-height:2.2;"></div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب عدد أيام العمل بين تاريخين؟</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير. في عُمان أيام العمل الأسبوعية عادة 5 أيام (الأحد-الخميس).</p>
@@ -113,7 +112,7 @@
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong data-i18n="related_tools">أدوات مرتبطة:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
       <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📅 حاسبة العمر</a>
       <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌙 محول الهجري</a>
@@ -142,12 +141,10 @@ function setPreset(type) {
   const todayStr = today.toISOString().split('T')[0];
   document.getElementById('dateFrom').value = todayStr;
   if (type === 'today') {
-    // just set from to today, leave to empty or set to next week
     document.getElementById('dateTo').value = todayStr;
   } else if (type === 'newYear') {
     document.getElementById('dateTo').value = (today.getFullYear() + 1) + '-01-01';
   } else if (type === 'ramadan') {
-    // Ramadan 2027 approx Feb 17 2027
     document.getElementById('dateTo').value = '2027-02-17';
   }
   calculate();
@@ -159,7 +156,6 @@ function diffMonths(from, to) {
   let days = to.getDate() - from.getDate();
   if (days < 0) { months--; }
   if (months < 0) { months += 12; years--; }
-  // remaining days
   const tempDate = new Date(from.getFullYear() + years, from.getMonth() + months, from.getDate());
   const remDays = Math.round((to - tempDate) / (1000 * 60 * 60 * 24));
   return { years: years, months: months, days: remDays };
@@ -221,7 +217,6 @@ function showUpcoming() {
   });
 }
 
-// Init
 const today = new Date();
 document.getElementById('dateFrom').value = today.toISOString().split('T')[0];
 const nextWeek = new Date(today);
