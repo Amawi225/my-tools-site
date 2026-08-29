@@ -60,46 +60,48 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0f9ff;">🖼️</div>
-    <div class="card-title">ضغط وتصغير الصور</div>
-    <div class="card-subtitle">يعمل داخل متصفحك — لا يتم رفع صورك لأي خادم ✅</div>
+    <div class="card-title" data-i18n="ic_title">ضغط وتصغير الصور</div>
+    <div class="card-subtitle" data-i18n="ic_sub">يعمل داخل متصفحك — لا يتم رفع صورك لأي خادم ✅</div>
     <div class="divider"></div>
 
     <div class="drop-zone" id="dropZone" onclick="document.getElementById('imgInput').click()">
       <div class="drop-zone-icon">📁</div>
-      <div class="drop-zone-text">اضغط هنا أو اسحب صورتك</div>
-      <div class="drop-zone-sub">JPG، PNG، WebP — حتى 20MB</div>
+      <div class="drop-zone-text" data-i18n="ic_drop_text">اضغط هنا أو اسحب صورتك</div>
+      <div class="drop-zone-sub" data-i18n="ic_drop_sub">JPG، PNG، WebP — حتى 20MB</div>
     </div>
     <input type="file" id="imgInput" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="loadImage(this)">
 
     <div id="controls" style="display:none;">
       <label style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <span>جودة الضغط:</span>
+        <span data-i18n="ic_quality_lbl">جودة الضغط:</span>
         <span id="qualityLabel" style="font-weight:700;color:var(--primary);font-size:18px;">80%</span>
       </label>
       <input type="range" class="quality-slider" id="qualitySlider" min="5" max="95" value="80" step="5" oninput="onQualityChange(this.value)">
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px;">
-        <span>أقصى ضغط</span><span>أعلى جودة</span>
+        <span data-i18n="ic_max_compress">أقصى ضغط</span><span data-i18n="ic_max_quality">أعلى جودة</span>
       </div>
 
       <div class="stat-grid" style="margin-top:16px;">
         <div class="stat-box">
           <div class="stat-val" id="origSize" style="font-size:16px;">—</div>
-          <div class="stat-lbl">الحجم الأصلي</div>
+          <div class="stat-lbl" data-i18n="ic_orig_size_lbl">الحجم الأصلي</div>
         </div>
         <div class="stat-box" style="background:#f0fdf4;">
           <div class="stat-val" id="compSize" style="font-size:16px;color:#16a34a;">—</div>
-          <div class="stat-lbl">بعد الضغط</div>
+          <div class="stat-lbl" data-i18n="ic_comp_size_lbl">بعد الضغط</div>
         </div>
         <div class="stat-box" style="background:#fefce8;">
           <div class="stat-val" id="savings" style="font-size:16px;color:#ca8a04;">—</div>
-          <div class="stat-lbl">التوفير</div>
+          <div class="stat-lbl" data-i18n="ic_savings_lbl">التوفير</div>
         </div>
       </div>
+
+      <div id="smallImgHint" style="display:none;margin-top:10px;padding:10px 14px;background:#fef9c3;border-radius:8px;font-size:13px;color:#854d0e;" data-i18n="ic_small_img">الصورة صغيرة جداً — جرّب تخفيض الجودة أكثر للحصول على توفير أعلى</div>
 
       <div class="img-preview-wrap">
         <div class="img-preview-box">
           <img id="origPreview" src="" alt="original">
-          <div class="img-preview-label">الصورة الأصلية</div>
+          <div class="img-preview-label" data-i18n="ic_orig_img">الصورة الأصلية</div>
         </div>
         <div class="img-preview-box">
           <img id="compPreview" src="" alt="compressed">
@@ -107,24 +109,24 @@
         </div>
       </div>
 
-      <button class="btn btn-primary" id="downloadBtn" style="margin-top:16px;width:100%;" onclick="downloadCompressed()">
+      <button class="btn btn-primary" id="downloadBtn" style="margin-top:16px;width:100%;" onclick="downloadCompressed()" data-i18n="ic_download_btn">
         ⬇️ تحميل الصورة المضغوطة
       </button>
-      <button onclick="document.getElementById('imgInput').click()" style="width:100%;margin-top:8px;padding:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:inherit;font-size:14px;color:var(--text);">
+      <button onclick="document.getElementById('imgInput').click()" style="width:100%;margin-top:8px;padding:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:inherit;font-size:14px;color:var(--text);" data-i18n="ic_another_btn">
         🔄 اختر صورة أخرى
       </button>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">🔒 خصوصية تامة</div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;">
+    <div class="card-title" style="font-size:15px;" data-i18n="ic_privacy_title">🔒 خصوصية تامة</div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;" data-i18n="ic_privacy_text">
       يعمل هذا الضاغط بالكامل داخل متصفحك باستخدام تقنية Canvas API. لا يتم إرسال صورتك إلى أي خادم — بياناتك لا تغادر جهازك.
     </p>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يُمكن ضغط PNG بدون خسارة؟</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">PNG يُحوَّل إلى JPEG للضغط (مع خسارة طفيفة). إذا أردت PNG شفافاً بدون خسارة، قلّل الأبعاد بدلاً من الجودة.</p>
@@ -207,7 +209,12 @@ function compress(quality) {
       const pct = ((saved / originalFile.size) * 100).toFixed(0);
       document.getElementById('savings').textContent = (saved > 0 ? '−' : '+') + formatSize(Math.abs(saved)) + ' (' + Math.abs(pct) + '%)';
       document.getElementById('savings').style.color = saved > 0 ? '#ca8a04' : '#dc2626';
-      document.getElementById('compLabel').textContent = 'مضغوطة — جودة ' + quality + '%';
+      const lang = localStorage.getItem('lang') || 'ar';
+      const tObj = (typeof T !== 'undefined' && T[lang]) ? T[lang] : T.ar;
+      document.getElementById('compLabel').textContent = (tObj.ic_comp_img || 'مضغوطة') + ' — ' + (tObj.ic_quality_short || 'جودة') + ' ' + quality + '%';
+      // Show hint for images where compression is minimal
+      const hint = document.getElementById('smallImgHint');
+      if (hint) hint.style.display = (originalFile.size < 50000 || Math.abs(pct) < 5) ? 'block' : 'none';
     }, 'image/jpeg', quality / 100);
   };
   img.src = originalDataUrl;
