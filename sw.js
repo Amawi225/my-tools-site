@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v15';
+const CACHE = 'adawati-v16';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -39,6 +39,8 @@ const STATIC = [
   BASE + '/file-converter.html',
   BASE + '/quick-math.html',
   BASE + '/reaction-test.html',
+  BASE + '/car-game.html',
+  BASE + '/jump-game.html',
 ];
 
 self.addEventListener('install', e => {
