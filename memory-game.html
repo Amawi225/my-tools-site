@@ -7,11 +7,11 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>لعبة الذاكرة — أدواتي</title>
-<meta name="description" content="العب لعبة الذاكرة — طابق البطاقات وتحدَّ نفسك باقل عدد من الحركات!">
+<meta name="description" content="العب لعبة الذاكرة — طابق البطاقات وتحدَّ نفسك بأقل عدد من الحركات!">
 <meta name="robots" content="index, follow">
 <link rel="stylesheet" href="style.css">
 <style>
-.mem-stats{display:flex;gap:16px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
+.mem-stats{display:flex;gap:12px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
 .mem-stat{background:var(--surface-2);border:1px solid var(--border);border-radius:99px;padding:6px 18px;font-size:14px;font-weight:600;}
 .mem-stat span{color:var(--primary);font-size:17px;font-weight:800;}
 .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto;}
@@ -22,8 +22,30 @@
 .mem-back{background:linear-gradient(135deg,var(--primary),var(--accent));font-size:28px;}
 .mem-face{background:var(--surface-2);border:2px solid var(--border-focus);transform:rotateY(180deg);font-size:36px;}
 .mem-card.matched .mem-face{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-color:#22c55e;}
-.mem-win{text-align:center;padding:20px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:var(--radius-lg);border:2px solid #22c55e;font-size:18px;font-weight:700;color:#15803d;display:none;}
+.mem-win{text-align:center;padding:16px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:var(--radius-lg);border:2px solid #22c55e;font-size:17px;font-weight:700;color:#15803d;display:none;margin-bottom:12px;}
 .mem-win.show{display:block;}
+
+/* Leaderboard */
+.lb-wrap{margin-top:20px;border-top:1px solid var(--border);padding-top:16px;}
+.lb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.lb-title{font-size:15px;font-weight:800;color:var(--text);}
+.lb-clear{font-size:12px;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:2px 6px;font-family:inherit;}
+.lb-clear:hover{color:#ef4444;}
+.lb-empty{font-size:13px;color:var(--text-muted);text-align:center;padding:12px 0;}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-sm);margin-bottom:6px;background:var(--surface-2);border:1px solid var(--border);}
+.lb-row.gold{background:linear-gradient(135deg,#fef9c3,#fef08a);border-color:#eab308;}
+.lb-row.silver{background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border-color:#94a3b8;}
+.lb-row.bronze{background:linear-gradient(135deg,#fff7ed,#fed7aa);border-color:#f97316;}
+.lb-medal{font-size:20px;flex-shrink:0;}
+.lb-name{font-weight:700;font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lb-score{font-size:13px;font-weight:600;color:var(--primary);flex-shrink:0;}
+
+/* Name entry */
+.name-entry{margin-top:12px;margin-bottom:4px;padding:14px;background:linear-gradient(135deg,#fdf4ff,#ede9fe);border:2px solid var(--primary);border-radius:var(--radius-sm);text-align:center;}
+.name-entry-msg{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--primary);}
+.name-entry-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.name-entry-row input{padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-size:14px;font-family:inherit;width:160px;}
+.name-entry-row input:focus{outline:none;border-color:var(--primary);}
 </style>
 </head>
 <body>
@@ -59,8 +81,28 @@
       <button class="btn btn-secondary" onclick="initGame()" id="memNewBtn" style="padding:6px 18px;font-size:14px;">🔄 جديدة</button>
     </div>
 
-    <div class="mem-win" id="winMsg">🎉 رائع! أكملت اللعبة في <span id="finalMoves"></span> حركة!</div>
+    <div class="mem-win" id="winMsg"></div>
+
+    <!-- Name entry -->
+    <div class="name-entry" id="nameEntry" style="display:none;">
+      <div class="name-entry-msg" id="nameEntryMsg">🏆 دخلت إلى أفضل 3! اكتب اسمك:</div>
+      <div class="name-entry-row">
+        <input type="text" id="nameInput" maxlength="20" placeholder="اسمك"
+          onkeydown="if(event.key==='Enter')saveScore()">
+        <button class="btn btn-primary" onclick="saveScore()" id="saveBtn">💾 حفظ</button>
+      </div>
+    </div>
+
     <div class="mem-grid" id="memGrid"></div>
+
+    <!-- Leaderboard -->
+    <div class="lb-wrap">
+      <div class="lb-header">
+        <span class="lb-title" id="lbTitle">🏆 أفضل 3 لاعبين</span>
+        <button class="lb-clear" onclick="clearLb()" id="clearBtn">🗑 مسح</button>
+      </div>
+      <div id="lbRows"></div>
+    </div>
   </div>
 </div></main>
 
@@ -73,32 +115,92 @@
 
 <script>
 const MT = {
-  ar:{moves:'حركات:',pairs:'أزواج:',newgame:'🔄 جديدة',win:'🎉 رائع! أكملت اللعبة في {m} حركة!'},
-  en:{moves:'Moves:',pairs:'Pairs:',newgame:'🔄 New Game',win:'🎉 Amazing! You finished in {m} moves!'},
-  fr:{moves:'Coups:',pairs:'Paires:',newgame:'🔄 Nouveau',win:'🎉 Bravo! Terminé en {m} coups!'},
-  es:{moves:'Movimientos:',pairs:'Parejas:',newgame:'🔄 Nuevo',win:'🎉 ¡Increíble! Terminaste en {m} movimientos!'},
-  de:{moves:'Züge:',pairs:'Paare:',newgame:'🔄 Neu',win:'🎉 Super! In {m} Zügen fertig!'},
-  ru:{moves:'Ходы:',pairs:'Пары:',newgame:'🔄 Новая',win:'🎉 Отлично! Завершено за {m} ходов!'}
+  ar:{moves:'حركات:',pairs:'أزواج:',newgame:'🔄 جديدة',
+      win:'🎉 رائع! أكملت اللعبة في {m} حركة!',
+      lbTitle:'🏆 أفضل 3 لاعبين',lbEmpty:'لا توجد نتائج بعد — كن أول المتنافسين!',
+      lbNew:'🏆 دخلت إلى أفضل 3! اكتب اسمك:',lbSave:'💾 حفظ',lbPh:'اسمك',
+      lbScore:'{s} حركة',lbClear:'🗑 مسح'},
+  en:{moves:'Moves:',pairs:'Pairs:',newgame:'🔄 New Game',
+      win:'🎉 Amazing! You finished in {m} moves!',
+      lbTitle:'🏆 Top 3 Players',lbEmpty:'No scores yet — be the first!',
+      lbNew:'🏆 You made the Top 3! Enter your name:',lbSave:'💾 Save',lbPh:'Your name',
+      lbScore:'{s} moves',lbClear:'🗑 Clear'},
+  fr:{moves:'Coups:',pairs:'Paires:',newgame:'🔄 Nouveau',
+      win:'🎉 Bravo! Terminé en {m} coups!',
+      lbTitle:'🏆 Top 3 Joueurs',lbEmpty:'Pas encore de scores — soyez le premier!',
+      lbNew:'🏆 Vous êtes dans le Top 3! Entrez votre nom:',lbSave:'💾 Sauver',lbPh:'Votre nom',
+      lbScore:'{s} coups',lbClear:'🗑 Effacer'},
+  es:{moves:'Movimientos:',pairs:'Parejas:',newgame:'🔄 Nuevo',
+      win:'🎉 ¡Increíble! Terminaste en {m} movimientos!',
+      lbTitle:'🏆 Top 3 Jugadores',lbEmpty:'Sin puntuaciones aún — ¡sé el primero!',
+      lbNew:'🏆 ¡Estás en el Top 3! Escribe tu nombre:',lbSave:'💾 Guardar',lbPh:'Tu nombre',
+      lbScore:'{s} movimientos',lbClear:'🗑 Borrar'},
+  de:{moves:'Züge:',pairs:'Paare:',newgame:'🔄 Neu',
+      win:'🎉 Super! In {m} Zügen fertig!',
+      lbTitle:'🏆 Top 3 Spieler',lbEmpty:'Noch keine Einträge — sei der Erste!',
+      lbNew:'🏆 Du bist in den Top 3! Gib deinen Namen ein:',lbSave:'💾 Speichern',lbPh:'Dein Name',
+      lbScore:'{s} Züge',lbClear:'🗑 Löschen'},
+  ru:{moves:'Ходы:',pairs:'Пары:',newgame:'🔄 Новая',
+      win:'🎉 Отлично! Завершено за {m} ходов!',
+      lbTitle:'🏆 Топ 3 игрока',lbEmpty:'Нет результатов — будьте первым!',
+      lbNew:'🏆 Вы в Топ 3! Введите ваше имя:',lbSave:'💾 Сохранить',lbPh:'Ваше имя',
+      lbScore:'{s} ходов',lbClear:'🗑 Очистить'}
 };
 
+const STORAGE_KEY = 'adawati_memory_lb';
+const MEDALS = ['🥇','🥈','🥉'];
+const MEDAL_CLS = ['gold','silver','bronze'];
 const EMOJIS = ['🦁','🐯','🦊','🐼','🐨','🦄','🐸','🐧'];
-let flipped=[], matched=0, moves=0, locked=false, currentLang='ar';
+let flipped=[], matched=0, moves=0, locked=false, currentLang='ar', pendingScore=null;
 
+function tr(k){ return (MT[currentLang]||MT.ar)[k]||k; }
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ── Leaderboard ── */
+function getLb(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]; }catch{ return []; } }
+function saveLb(lb){ localStorage.setItem(STORAGE_KEY, JSON.stringify(lb)); }
+
+function qualifies(score){
+  const lb=getLb();
+  return lb.length<3 || score<lb[lb.length-1].score;
+}
+function addEntry(name,score){
+  const lb=getLb();
+  lb.push({name:name.trim()||'?',score});
+  lb.sort((a,b)=>a.score-b.score);
+  lb.splice(3);
+  saveLb(lb);
+}
+function renderLb(){
+  const lb=getLb();
+  const t=MT[currentLang]||MT.ar;
+  const rows=document.getElementById('lbRows');
+  if(!lb.length){ rows.innerHTML=`<div class="lb-empty">${t.lbEmpty}</div>`; return; }
+  rows.innerHTML=lb.map((e,i)=>`
+    <div class="lb-row ${MEDAL_CLS[i]||''}">
+      <span class="lb-medal">${MEDALS[i]||''}</span>
+      <span class="lb-name">${escHtml(e.name)}</span>
+      <span class="lb-score">${t.lbScore.replace('{s}',e.score)}</span>
+    </div>`).join('');
+}
+function clearLb(){ localStorage.removeItem(STORAGE_KEY); renderLb(); }
+
+/* ── Game ── */
 function shuffle(arr){return arr.sort(()=>Math.random()-0.5);}
 
 function initGame(){
-  moves=0; matched=0; flipped=[]; locked=false;
+  moves=0; matched=0; flipped=[]; locked=false; pendingScore=null;
   document.getElementById('movesCount').textContent='0';
   document.getElementById('pairsCount').textContent='0';
   document.getElementById('winMsg').classList.remove('show');
-  const cards = shuffle([...EMOJIS,...EMOJIS]);
-  const grid = document.getElementById('memGrid');
+  document.getElementById('nameEntry').style.display='none';
+  const cards=shuffle([...EMOJIS,...EMOJIS]);
+  const grid=document.getElementById('memGrid');
   grid.innerHTML='';
-  cards.forEach((emoji,i)=>{
-    const card = document.createElement('div');
+  cards.forEach((emoji)=>{
+    const card=document.createElement('div');
     card.className='mem-card';
     card.dataset.emoji=emoji;
-    card.dataset.idx=i;
     card.innerHTML=`<div class="mem-back">🎴</div><div class="mem-face">${emoji}</div>`;
     card.addEventListener('click',()=>flipCard(card));
     grid.appendChild(card);
@@ -119,13 +221,7 @@ function flipCard(card){
       matched++;
       document.getElementById('pairsCount').textContent=matched;
       flipped=[]; locked=false;
-      if(matched===8){
-        const t=MT[currentLang]||MT.ar;
-        const wm=document.getElementById('winMsg');
-        wm.textContent=t.win.replace('{m}',moves);
-        wm.classList.add('show');
-        document.getElementById('finalMoves').textContent=moves;
-      }
+      if(matched===8) onWin(moves);
     } else {
       setTimeout(()=>{
         a.classList.remove('flipped'); b.classList.remove('flipped');
@@ -135,6 +231,31 @@ function flipCard(card){
   }
 }
 
+function onWin(score){
+  const t=MT[currentLang]||MT.ar;
+  const wm=document.getElementById('winMsg');
+  wm.textContent=t.win.replace('{m}',score);
+  wm.classList.add('show');
+  if(qualifies(score)){
+    pendingScore=score;
+    document.getElementById('nameEntryMsg').textContent=t.lbNew;
+    document.getElementById('nameInput').placeholder=t.lbPh;
+    document.getElementById('saveBtn').textContent=t.lbSave;
+    document.getElementById('nameEntry').style.display='';
+    setTimeout(()=>document.getElementById('nameInput').focus(),100);
+  }
+}
+
+function saveScore(){
+  if(pendingScore===null) return;
+  const name=document.getElementById('nameInput').value.trim();
+  addEntry(name||'?',pendingScore);
+  pendingScore=null;
+  document.getElementById('nameEntry').style.display='none';
+  document.getElementById('nameInput').value='';
+  renderLb();
+}
+
 function updateStatText(){
   const t=MT[currentLang]||MT.ar;
   const ms=document.getElementById('movesStatEl');
@@ -142,9 +263,11 @@ function updateStatText(){
   ms.innerHTML=`${t.moves} <span id="movesCount">${moves}</span>`;
   ps.innerHTML=`${t.pairs} <span id="pairsCount">${matched}</span>/8`;
   document.getElementById('memNewBtn').textContent=t.newgame;
+  document.getElementById('lbTitle').textContent=t.lbTitle;
+  document.getElementById('clearBtn').textContent=t.lbClear;
+  renderLb();
 }
 
-const _origSetLang2 = window.setLang;
 document.addEventListener('DOMContentLoaded',()=>{
   const origSet=window.setLang;
   window.setLang=function(lang){
@@ -152,12 +275,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     currentLang=lang;
     document.documentElement.dir=lang==='ar'?'rtl':'ltr';
     updateStatText();
+    if(pendingScore!==null){
+      const t=MT[lang]||MT.ar;
+      document.getElementById('nameEntryMsg').textContent=t.lbNew;
+      document.getElementById('nameInput').placeholder=t.lbPh;
+      document.getElementById('saveBtn').textContent=t.lbSave;
+    }
   };
   initGame();
 });
 </script>
 <script src="i18n.js"></script>
-<script>
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/my-tools-site/sw.js');
-</script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
 </body></html>
