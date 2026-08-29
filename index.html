@@ -95,7 +95,7 @@
     <div class="hero-content">
       <div class="hero-label">⚡ <span data-i18n="hero_label">أدوات مجانية وسريعة للاستخدام اليومي</span></div>
       <h1 data-i18n="hero_title">أدواتك اليومية في مكان واحد</h1>
-      <p data-i18n="hero_sub">أدوات دقيقة وسريعة، تعمل مباشرة على متصفحك — بدون تسجيل وبدون إعلانات</p>
+      <p data-i18n="hero_sub">أدوات دقيقة وسريعة، تعمل مباشرة على متصفحك — بدون تسجيل إجباري</p>
       <div class="hero-badges">
         <span class="hero-badge">⚡ <span id="toolCountBadge">29</span>&nbsp;<span data-i18n="badge_count_lbl">أداة</span></span>
         <span class="hero-badge">✅ <span data-i18n="badge_free">مجانية 100%</span></span>
@@ -377,7 +377,7 @@
     <div class="footer-top">
       <div class="footer-brand-block">
         <a href="index.html" class="footer-brand">أدواتي</a>
-        <p data-i18n="footer_desc">مجموعة أدوات إلكترونية مجانية تعمل مباشرة في متصفحك. بدون تسجيل، بدون إعلانات، خصوصيتك محفوظة.</p>
+        <p data-i18n="footer_desc">مجموعة أدوات إلكترونية مجانية تعمل مباشرة في متصفحك. بدون تسجيل، مجاني 100%، خصوصيتك محفوظة.</p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_tools_title">الأدوات</h4>
@@ -453,9 +453,15 @@ function filterTools() {
   const country = document.getElementById('countrySection');
   if (country) country.style.display = (isAll || isOman) ? '' : 'none';
   const recent = document.getElementById('recentSection');
-  if (recent) recent.style.display = (isAll || isOman) ? '' : 'none';
+  if (recent) {
+    const hasRecent = document.querySelectorAll('#recentGrid .tool-card').length > 0;
+    recent.style.display = (isAll || isOman) && hasRecent ? '' : 'none';
+  }
   const favs = document.getElementById('favSection');
-  if (favs) favs.style.display = (isAll || isOman) ? '' : 'none';
+  if (favs) {
+    const hasFavs = document.querySelectorAll('#favGrid .tool-card').length > 0;
+    favs.style.display = (isAll || isOman) && hasFavs ? '' : 'none';
+  }
 }
 </script>
 <script src="i18n.js"></script>
