@@ -74,7 +74,7 @@
 
       </div>
 
-      <canvas id="gameCanvas" width="300" height="480"></canvas>
+      <canvas id="gameCanvas" width="450" height="720"></canvas>
 
       <div class="touch-row" id="touchRow">
         <button class="touch-btn" id="leftBtn">◀</button>
@@ -112,8 +112,8 @@
 <script>
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const W = 300, H = 480;
-const ROAD_X = 40, ROAD_W = 220;
+const W = 450, H = 720;
+const ROAD_X = 60, ROAD_W = 330;
 const LANE_W = ROAD_W / 3;
 const LANES = [ROAD_X + LANE_W*0.5, ROAD_X + LANE_W*1.5, ROAD_X + LANE_W*2.5];
 const STORAGE_KEY = 'adawati_car_lb';
@@ -183,7 +183,7 @@ let score = 0, level = 0, rafId = null;
 let roadY = 0, spawnTimer = 0;
 let pendingScore = null;
 
-const player = {lane:1, x:LANES[1], y:H-90, w:30, h:50, targetLane:1};
+const player = {lane:1, x:LANES[1], y:H-135, w:45, h:75, targetLane:1};
 const ENEMY_CARS = ['🚗','🚙','🚕','🚌','🏎️'];
 let enemies = [];
 
@@ -217,29 +217,29 @@ function drawRoad(){
   ctx.beginPath();ctx.moveTo(ROAD_X+ROAD_W/2,(roadY%70)-70);ctx.lineTo(ROAD_X+ROAD_W/2,H);ctx.stroke();
   ctx.setLineDash([]);
   // Trees on sides
-  const treePosY = [50,150,280,400];
+  const treePosY = [75,225,420,600];
   treePosY.forEach(ty=>{
     const y2 = (ty+roadY*0.3)%H;
-    ctx.font='22px serif'; ctx.fillText('🌳', 4, y2); ctx.fillText('🌳', W-28, y2);
+    ctx.font='33px serif'; ctx.fillText('🌳', 6, y2); ctx.fillText('🌳', W-42, y2);
   });
 }
 
 function drawCar(emoji, x, y, scale=1){
-  ctx.font=`${Math.round(36*scale)}px serif`;
+  ctx.font=`${Math.round(54*scale)}px serif`;
   ctx.textAlign='center'; ctx.textBaseline='middle';
   ctx.fillText(emoji, x, y);
 }
 
 function drawOverlay(title, sub, btnTxt){
   ctx.fillStyle='rgba(0,0,0,0.72)'; ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='#fff'; ctx.font='bold 26px system-ui,sans-serif';
+  ctx.fillStyle='#fff'; ctx.font='bold 38px system-ui,sans-serif';
   ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.fillText(title, W/2, H/2-60);
-  ctx.font='18px system-ui,sans-serif'; ctx.fillStyle='#d1fae5';
-  ctx.fillText(sub, W/2, H/2-20);
-  ctx.fillStyle='#3b82f6'; ctx.beginPath();ctx.roundRect(W/2-70,H/2+20,140,44,8);ctx.fill();
-  ctx.fillStyle='#fff'; ctx.font='bold 16px system-ui,sans-serif';
-  ctx.fillText(btnTxt, W/2, H/2+42);
+  ctx.fillText(title, W/2, H/2-90);
+  ctx.font='26px system-ui,sans-serif'; ctx.fillStyle='#d1fae5';
+  ctx.fillText(sub, W/2, H/2-30);
+  ctx.fillStyle='#3b82f6'; ctx.beginPath();ctx.roundRect(W/2-105,H/2+30,210,66,12);ctx.fill();
+  ctx.fillStyle='#fff'; ctx.font='bold 24px system-ui,sans-serif';
+  ctx.fillText(btnTxt, W/2, H/2+63);
 }
 
 function gameLoop(){
@@ -257,15 +257,15 @@ function gameLoop(){
     const occupied = enemies.filter(e=>e.y>-120).map(e=>e.lane);
     let lane;
     for(let i=0;i<10;i++){ lane=Math.floor(Math.random()*3); if(!occupied.includes(lane)) break; }
-    enemies.push({lane, x:LANES[lane], y:-60, emoji:ENEMY_CARS[Math.floor(Math.random()*ENEMY_CARS.length)], speed:cfg.speed+Math.random()*1.5});
+    enemies.push({lane, x:LANES[lane], y:-90, emoji:ENEMY_CARS[Math.floor(Math.random()*ENEMY_CARS.length)], speed:cfg.speed+Math.random()*1.5});
   }
 
   enemies.forEach(e=>{ e.y+=e.speed; });
-  enemies = enemies.filter(e=>e.y<H+80);
+  enemies = enemies.filter(e=>e.y<H+120);
 
   // Collision
   for(const e of enemies){
-    if(Math.abs(e.x-player.x)<22 && Math.abs(e.y-player.y)<42){ onGameOver(); return; }
+    if(Math.abs(e.x-player.x)<33 && Math.abs(e.y-player.y)<63){ onGameOver(); return; }
   }
 
   score++;
@@ -287,7 +287,7 @@ function gameLoop(){
 
 function startGame(){
   state='playing'; score=0; level=0; roadY=0; spawnTimer=0; enemies=[];
-  player.lane=1; player.x=LANES[1]; player.targetLane=1;
+  player.lane=1; player.x=LANES[1]; player.y=H-135; player.targetLane=1;
   document.getElementById('startBtn').style.display='none';
   document.getElementById('nameEntry').style.display='none';
   cancelAnimationFrame(rafId);
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 function drawInitOverlay(){
   drawRoad();
-  drawCar('🚙',LANES[1],H-90);
+  drawCar('🚙',LANES[1],H-135);
   drawOverlay(tr('game_title'),tr('dodge'),tr('start'));
   setupClickRestart();
 }
