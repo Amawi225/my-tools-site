@@ -62,8 +62,8 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fef3c7;">🚗</div>
-    <div class="card-title" id="gameTitle">لعبة السيارات</div>
-    <div class="card-subtitle" id="gameSub">تجنب السيارات الأخرى وحقق أعلى نقطة!</div>
+    <div class="card-title" data-i18n="car_card_title">لعبة السيارات</div>
+    <div class="card-subtitle" data-i18n="car_card_desc">تجنب السيارات الأخرى وحقق أعلى نقطة!</div>
     <div class="divider"></div>
 
     <div class="game-wrap">
@@ -71,6 +71,7 @@
         <div class="hud-item"><div class="hud-val" id="scoreDisplay">0</div><div class="hud-lbl" id="scoreLbl">نقاط</div></div>
         <div class="hud-item"><div class="hud-val" id="levelDisplay">1</div><div class="hud-lbl" id="levelLbl">المستوى</div></div>
         <div class="hud-item"><div class="hud-val" id="bestDisplay">0</div><div class="hud-lbl" id="bestLbl">أفضل</div></div>
+
       </div>
 
       <canvas id="gameCanvas" width="300" height="480"></canvas>
@@ -80,7 +81,7 @@
         <button class="touch-btn" id="rightBtn">▶</button>
       </div>
 
-      <button class="btn btn-primary game-start-btn" id="startBtn" onclick="startGame()">▶ ابدأ اللعبة</button>
+      <button class="btn btn-primary game-start-btn" id="startBtn" onclick="startGame()">▶ ابدأ</button>
     </div>
 
     <div class="name-entry" id="nameEntry" style="display:none;">
@@ -119,9 +120,61 @@ const STORAGE_KEY = 'adawati_car_lb';
 const MEDALS = ['🥇','🥈','🥉'], MEDAL_CLS = ['gold','silver','bronze'];
 
 const LEVEL_THRESHOLDS = [0, 500, 1500, 3000, 5500, 9000];
+const CT = {
+  ar:{points:'نقاط',level:'المستوى',best:'أفضل',start:'▶ ابدأ',
+      top3:'🏆 أفضل 3 سائقين',clear:'🗑 مسح',no_scores:'لا توجد نتائج بعد!',
+      top3_enter:'🏆 دخلت أفضل 3! اكتب اسمك:',your_name:'اسمك',save:'💾 حفظ',
+      game_title:'لعبة السيارات!',dodge:'تجنب السيارات!',
+      game_over:'انتهت اللعبة!',your_score:'نقاطك:',play_again:'▶ العب مجدداً'},
+  en:{points:'Points',level:'Level',best:'Best',start:'▶ Start',
+      top3:'🏆 Top 3 Drivers',clear:'🗑 Clear',no_scores:'No scores yet!',
+      top3_enter:'🏆 Top 3! Enter your name:',your_name:'Your name',save:'💾 Save',
+      game_title:'Car Race!',dodge:'Dodge the cars!',
+      game_over:'Game Over!',your_score:'Score:',play_again:'▶ Play Again'},
+  fr:{points:'Points',level:'Niveau',best:'Meilleur',start:'▶ Démarrer',
+      top3:'🏆 Top 3 Pilotes',clear:'🗑 Effacer',no_scores:'Aucun score!',
+      top3_enter:'🏆 Top 3! Votre prénom:',your_name:'Votre prénom',save:'💾 Sauver',
+      game_title:'Course Auto!',dodge:'Évitez les voitures!',
+      game_over:'Jeu Terminé!',your_score:'Score:',play_again:'▶ Rejouer'},
+  es:{points:'Puntos',level:'Nivel',best:'Mejor',start:'▶ Iniciar',
+      top3:'🏆 Top 3 Conductores',clear:'🗑 Borrar',no_scores:'¡Sin puntuaciones!',
+      top3_enter:'🏆 Top 3! Tu nombre:',your_name:'Tu nombre',save:'💾 Guardar',
+      game_title:'¡Carrera!',dodge:'¡Esquiva los coches!',
+      game_over:'¡Juego Terminado!',your_score:'Puntos:',play_again:'▶ De nuevo'},
+  de:{points:'Punkte',level:'Level',best:'Beste',start:'▶ Starten',
+      top3:'🏆 Top 3 Fahrer',clear:'🗑 Löschen',no_scores:'Noch keine Punkte!',
+      top3_enter:'🏆 Top 3! Dein Name:',your_name:'Dein Name',save:'💾 Speichern',
+      game_title:'Autorennen!',dodge:'Weiche den Autos aus!',
+      game_over:'Spiel vorbei!',your_score:'Punkte:',play_again:'▶ Nochmal'},
+  ru:{points:'Очки',level:'Уровень',best:'Лучший',start:'▶ Начать',
+      top3:'🏆 Топ 3 Водителей',clear:'🗑 Очистить',no_scores:'Нет результатов!',
+      top3_enter:'🏆 Топ 3! Введите имя:',your_name:'Ваше имя',save:'💾 Сохранить',
+      game_title:'Автогонка!',dodge:'Уворачивайся!',
+      game_over:'Игра окончена!',your_score:'Очки:',play_again:'▶ Ещё раз'},
+};
+function tr(k){return(CT[currentLang]||CT.ar)[k]||CT.ar[k]||k;}
+function updateText(){
+  document.getElementById('scoreLbl').textContent=tr('points');
+  document.getElementById('levelLbl').textContent=tr('level');
+  document.getElementById('bestLbl').textContent=tr('best');
+  document.getElementById('startBtn').textContent=tr('start');
+  document.getElementById('saveBtn').textContent=tr('save');
+  document.getElementById('nameInput').placeholder=tr('your_name');
+  renderLb();
+}
+function resizeCanvas(){
+  const w=Math.min(W,canvas.parentElement.offsetWidth||W);
+  canvas.style.width=w+'px';
+  canvas.style.height=Math.round(w*H/W)+'px';
+}
+
 const LEVEL_NAMES = {
   ar:['مبتدئ','سائق','محترف','سريع','خبير','أسطورة'],
   en:['Rookie','Driver','Pro','Speed','Expert','Legend'],
+  fr:['Débutant','Conducteur','Pro','Rapide','Expert','Légende'],
+  es:['Principiante','Conductor','Pro','Rápido','Experto','Leyenda'],
+  de:['Anfänger','Fahrer','Profi','Schnell','Experte','Legende'],
+  ru:['Новичок','Водитель','Про','Быстрый','Эксперт','Легенда'],
 };
 
 let currentLang = 'ar';
@@ -245,17 +298,12 @@ function onGameOver(){
   state='over';
   setBest(score);
   cancelAnimationFrame(rafId);
-  const t = currentLang==='en'?'Game Over!':'انتهت اللعبة!';
-  const s = (currentLang==='en'?'Score: ':'نقاطك: ')+score;
-  const b = currentLang==='en'?'▶ Play Again':'▶ العب مجدداً';
   drawRoad();
   drawCar('💥',player.x,player.y);
-  setTimeout(()=>{ drawOverlay(t,s,b); setupClickRestart(); }, 300);
-
-  // Leaderboard
+  setTimeout(()=>{ drawOverlay(tr('game_over'),tr('your_score')+' '+score,tr('play_again')); setupClickRestart(); }, 300);
   if(qualifies(score)){
     pendingScore=score;
-    document.getElementById('nameEntryMsg').textContent= currentLang==='en'?'🏆 Top 3! Enter your name:':'🏆 دخلت أفضل 3! اكتب اسمك:';
+    document.getElementById('nameEntryMsg').textContent=tr('top3_enter');
     document.getElementById('nameEntry').style.display='';
     setTimeout(()=>document.getElementById('nameInput').focus(),100);
   }
@@ -301,32 +349,35 @@ function saveScore(){
 }
 function renderLb(){
   const lb=getLb();
-  document.getElementById('lbTitle').textContent= currentLang==='en'?'🏆 Top 3 Drivers':'🏆 أفضل 3 سائقين';
-  document.getElementById('clearBtn').textContent= currentLang==='en'?'🗑 Clear':'🗑 مسح';
+  document.getElementById('lbTitle').textContent=tr('top3');
+  document.getElementById('clearBtn').textContent=tr('clear');
   const rows=document.getElementById('lbRows');
-  if(!lb.length){rows.innerHTML=`<div class="lb-empty">${currentLang==='en'?'No scores yet!':'لا توجد نتائج بعد!'}</div>`;return;}
+  if(!lb.length){rows.innerHTML=`<div class="lb-empty">${tr('no_scores')}</div>`;return;}
   rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${e.name}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
 }
 
-// Initial draw
-(function initDraw(){
-  drawRoad();
-  drawCar('🚙',LANES[1],H-90);
-  drawOverlay(
-    currentLang==='en'?'Car Race!':'لعبة السيارات!',
-    currentLang==='en'?'Dodge the cars!':'تجنب السيارات!',
-    currentLang==='en'?'▶ Start':'▶ ابدأ'
-  );
-  setupClickRestart();
-})();
-
 document.addEventListener('DOMContentLoaded',()=>{
+  resizeCanvas();
+  window.addEventListener('resize',resizeCanvas);
   const origSet=window.setLang;
-  window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLb();};
-  renderLb();
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+    updateText();
+    if(state==='idle') drawInitOverlay();
+  };
+  updateText();
+  drawInitOverlay();
   document.getElementById('startBtn').style.display='block';
   canvas.onclick=null;
 });
+function drawInitOverlay(){
+  drawRoad();
+  drawCar('🚙',LANES[1],H-90);
+  drawOverlay(tr('game_title'),tr('dodge'),tr('start'));
+  setupClickRestart();
+}
 </script>
 <script src="i18n.js"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
