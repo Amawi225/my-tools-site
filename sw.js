@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v5';
+const CACHE = 'adawati-v6';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -52,11 +52,9 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Network-first for the live currency API
-  if (url.hostname === 'open.er-api.com') {
-    e.respondWith(
-      fetch(e.request).catch(() => new Response(JSON.stringify({ result: 'error' }), { headers: { 'Content-Type': 'application/json' } }))
-    );
+  // Network-first for live currency APIs
+  if (url.hostname === 'open.er-api.com' || url.hostname === 'api.frankfurter.app' || url.hostname === 'api.exchangerate-api.com' || url.hostname === 'api.country.is') {
+    e.respondWith(fetch(e.request).catch(() => new Response('{}', { headers: { 'Content-Type': 'application/json' } })));
     return;
   }
   // Network-first for CDN resources
