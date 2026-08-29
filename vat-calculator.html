@@ -36,11 +36,11 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fefce8;">🧾</div>
-    <div class="card-title">حاسبة ضريبة القيمة المضافة (VAT)</div>
-    <div class="card-subtitle">عمان • السعودية • الإمارات • البحرين</div>
+    <div class="card-title" data-i18n="vat_card_title">حاسبة ضريبة القيمة المضافة (VAT)</div>
+    <div class="card-subtitle" data-i18n="vat_sub">عمان • السعودية • الإمارات • البحرين</div>
     <div class="divider"></div>
 
-    <label for="vatCountry">الدولة</label>
+    <label for="vatCountry" data-i18n="vat_country_lbl">الدولة</label>
     <select id="vatCountry" onchange="updateRate()">
       <option value="5" data-currency="ر.ع" data-name="عمان 🇴🇲">عمان — 5%</option>
       <option value="15" data-currency="ر.س" data-name="السعودية 🇸🇦">السعودية — 15%</option>
@@ -50,10 +50,10 @@
       <option value="0" data-currency="د.ك" data-name="الكويت 🇰🇼">الكويت — 0%</option>
     </select>
 
-    <label for="vatMode">نوع الحساب</label>
+    <label for="vatMode" data-i18n="vat_mode_lbl">نوع الحساب</label>
     <div class="option-toggle">
-      <button class="option-btn active" id="modeAdd" onclick="setMode('add')">إضافة ضريبة</button>
-      <button class="option-btn" id="modeEx" onclick="setMode('extract')">استخراج ضريبة</button>
+      <button class="option-btn active" id="modeAdd" onclick="setMode('add')" data-i18n="vat_add_mode">إضافة ضريبة</button>
+      <button class="option-btn" id="modeEx" onclick="setMode('extract')" data-i18n="vat_extract_mode">استخراج ضريبة</button>
     </div>
 
     <label for="vatAmount" id="vatAmountLabel">المبلغ قبل الضريبة</label>
@@ -63,15 +63,15 @@
       <div class="stat-grid">
         <div class="stat-box">
           <div class="stat-val" id="rateDisplay">5%</div>
-          <div class="stat-lbl">نسبة الضريبة</div>
+          <div class="stat-lbl" data-i18n="vat_rate_lbl">نسبة الضريبة</div>
         </div>
         <div class="stat-box" style="background:#fefce8;">
           <div class="stat-val" id="taxDisplay" style="color:#ca8a04;">0.000</div>
-          <div class="stat-lbl">قيمة الضريبة</div>
+          <div class="stat-lbl" data-i18n="vat_tax_lbl">قيمة الضريبة</div>
         </div>
         <div class="stat-box" style="background:#f0fdf4;">
           <div class="stat-val" id="totalDisplay" style="color:#16a34a;">0.000</div>
-          <div class="stat-lbl" id="totalLabel">الإجمالي شامل الضريبة</div>
+          <div class="stat-lbl" id="totalLabel" data-i18n="vat_total_lbl">الإجمالي شامل الضريبة</div>
         </div>
       </div>
       <div id="vatBreakdown" style="margin-top:12px;padding:14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:14px;line-height:2;"></div>
@@ -79,7 +79,7 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">نسب ضريبة القيمة المضافة في الخليج</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="vat_table_title">نسب ضريبة القيمة المضافة في الخليج</div>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:8px;">
         <thead>
@@ -127,7 +127,7 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة عن VAT</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة عن VAT</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما هي ضريبة القيمة المضافة (VAT)؟</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">ضريبة القيمة المضافة هي ضريبة غير مباشرة تُطبَّق على معظم السلع والخدمات. يدفعها المستهلك النهائي، وتجمعها الشركات نيابةً عن الحكومة.</p>
@@ -143,7 +143,7 @@
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مالية مرتبطة:</strong>
+    <strong data-i18n="related_tools">أدوات مالية مرتبطة:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
       <a href="salary-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💼 حاسبة الراتب</a>
       <a href="loan-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
@@ -171,8 +171,10 @@ function setMode(m) {
   vatMode = m;
   document.getElementById('modeAdd').classList.toggle('active', m === 'add');
   document.getElementById('modeEx').classList.toggle('active', m === 'extract');
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
   const lbl = document.getElementById('vatAmountLabel');
-  lbl.textContent = m === 'add' ? 'المبلغ قبل الضريبة' : 'المبلغ شامل الضريبة';
+  lbl.textContent = m === 'add' ? (t.vat_amount_before || 'المبلغ قبل الضريبة') : (t.vat_amount_after || 'المبلغ شامل الضريبة');
   calculate();
 }
 
@@ -208,17 +210,24 @@ function calculate() {
     taxAmount = afterTax - beforeTax;
   }
 
+  const lang = localStorage.getItem('lang') || 'ar';
+  const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
+
   document.getElementById('rateDisplay').textContent = rate + '%';
   document.getElementById('taxDisplay').textContent = taxAmount.toFixed(3) + ' ' + currency;
   document.getElementById('totalDisplay').textContent = afterTax.toFixed(3) + ' ' + currency;
-  document.getElementById('totalLabel').textContent = vatMode === 'add' ? 'الإجمالي شامل الضريبة' : 'الإجمالي شامل الضريبة';
+  document.getElementById('totalLabel').textContent = t.vat_total_lbl || 'الإجمالي شامل الضريبة';
+
+  const beforeLbl = t.vat_amount_before || 'المبلغ قبل الضريبة';
+  const taxLbl = t.vat_tax_lbl || 'الضريبة';
+  const totalLbl = t.vat_total_lbl || 'الإجمالي';
 
   const breakdown = document.getElementById('vatBreakdown');
   breakdown.innerHTML =
     '<strong>' + countryName + '</strong><br>' +
-    'المبلغ قبل الضريبة: <strong>' + beforeTax.toFixed(3) + ' ' + currency + '</strong><br>' +
-    'الضريبة (' + rate + '%): <strong style="color:#ca8a04;">' + taxAmount.toFixed(3) + ' ' + currency + '</strong><br>' +
-    'الإجمالي: <strong style="color:#16a34a;">' + afterTax.toFixed(3) + ' ' + currency + '</strong>';
+    beforeLbl + ': <strong>' + beforeTax.toFixed(3) + ' ' + currency + '</strong><br>' +
+    taxLbl + ' (' + rate + '%): <strong style="color:#ca8a04;">' + taxAmount.toFixed(3) + ' ' + currency + '</strong><br>' +
+    totalLbl + ': <strong style="color:#16a34a;">' + afterTax.toFixed(3) + ' ' + currency + '</strong>';
 
   document.getElementById('vatResult').style.display = 'block';
 }
