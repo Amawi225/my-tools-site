@@ -235,12 +235,12 @@ const CONVERSIONS = {
   xlsx: [{to:'csv',icon:'📋',label:'CSV'},{to:'pdf',icon:'📕',label:'PDF'},{to:'txt',icon:'📄',label:'TXT'}],
   xls:  [{to:'csv',icon:'📋',label:'CSV'},{to:'pdf',icon:'📕',label:'PDF'},{to:'txt',icon:'📄',label:'TXT'}],
   csv:  [{to:'xlsx',icon:'📊',label:'Excel'},{to:'pdf',icon:'📕',label:'PDF'},{to:'txt',icon:'📄',label:'TXT'}],
-  pdf:  [{to:'txt',icon:'📄',label:'TXT'}],
-  txt:  [{to:'pdf',icon:'📕',label:'PDF'}],
-  jpg:  [{to:'pdf',icon:'📕',label:'PDF'}],
-  jpeg: [{to:'pdf',icon:'📕',label:'PDF'}],
-  png:  [{to:'pdf',icon:'📕',label:'PDF'}],
-  webp: [{to:'pdf',icon:'📕',label:'PDF'}],
+  pdf:  [{to:'txt',icon:'📄',label:'TXT'},{to:'jpg',icon:'🖼️',label:'JPG'},{to:'png',icon:'🖼️',label:'PNG'}],
+  txt:  [{to:'pdf',icon:'📕',label:'PDF'},{to:'html',icon:'🌐',label:'HTML'}],
+  jpg:  [{to:'png',icon:'🖼️',label:'PNG'},{to:'webp',icon:'🖼️',label:'WEBP'},{to:'pdf',icon:'📕',label:'PDF'}],
+  jpeg: [{to:'png',icon:'🖼️',label:'PNG'},{to:'webp',icon:'🖼️',label:'WEBP'},{to:'pdf',icon:'📕',label:'PDF'}],
+  png:  [{to:'jpg',icon:'🖼️',label:'JPG'},{to:'webp',icon:'🖼️',label:'WEBP'},{to:'pdf',icon:'📕',label:'PDF'}],
+  webp: [{to:'jpg',icon:'🖼️',label:'JPG'},{to:'png',icon:'🖼️',label:'PNG'},{to:'pdf',icon:'📕',label:'PDF'}],
 };
 
 let lang='ar', currentFile=null, currentExt='', targetFmt='', wordHtml='', xlsxWb=null, csvText='', pdfText='';
@@ -338,6 +338,9 @@ async function startConvert(){
     else if(key==='pdf-txt')     await pdfToTxt();
     else if(key==='txt-pdf')     await txtToPdf();
     else if(['jpg-pdf','jpeg-pdf','png-pdf','webp-pdf'].includes(key)) await imgToPdf();
+    else if(['jpg-png','jpg-webp','jpeg-png','jpeg-webp','png-jpg','png-webp','webp-jpg','webp-png'].includes(key)) await imgToImg(targetFmt);
+    else if(key==='pdf-jpg'||key==='pdf-png') await pdfToImg(targetFmt);
+    else if(key==='txt-html') await txtToHtml();
     else { showErr(t('errConvert')); setStatus(false); }
   } catch(err){ showErr(t('errConvert')); setStatus(false); console.error(err); }
 }
@@ -606,6 +609,64 @@ async function imgToPdf(){
   setProgress(95);
   const pdfUrl=URL.createObjectURL(doc.output('blob'));
   showResult(`<iframe src="${pdfUrl}" style="width:100%;height:400px;border:none;"></iframe>`,[makeBtn(t('download')+' PDF','btn btn-primary',()=>doc.save(baseName()+'.pdf'))]);
+}
+
+/* ─── Image → Image ─── */
+async function imgToImg(fmt) {
+  setProgress(40);
+  const url = URL.createObjectURL(currentFile);
+  const img = new Image();
+  await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = url; });
+  URL.revokeObjectURL(url);
+  setProgress(70);
+  const canvas = document.createElement('canvas');
+  canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+  canvas.getContext('2d').drawImage(img, 0, 0);
+  const mime = fmt === 'jpg' ? 'image/jpeg' : fmt === 'webp' ? 'image/webp' : 'image/png';
+  const blob = await new Promise(r => canvas.toBlob(r, mime, 0.92));
+  setProgress(95);
+  const dlUrl = URL.createObjectURL(blob);
+  const preview = `<div style="text-align:center;padding:16px;"><img src="${dlUrl}" style="max-width:100%;max-height:360px;border-radius:8px;box-shadow:0 2px 12px #0001;"></div>`;
+  const ext = fmt === 'jpg' ? 'jpg' : fmt;
+  const dlBtn = makeBtn(t('download') + ' ' + ext.toUpperCase(), 'btn btn-primary', () => dlBlob(blob, baseName() + '.' + ext));
+  showResult(preview, [dlBtn]);
+}
+
+/* ─── PDF → Image (first page) ─── */
+async function pdfToImg(fmt) {
+  setProgress(20);
+  await loadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js');
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  const ab = await currentFile.arrayBuffer();
+  setProgress(40);
+  const pdf = await pdfjsLib.getDocument({data: ab}).promise;
+  const page = await pdf.getPage(1);
+  const vp = page.getViewport({scale: 2});
+  const canvas = document.createElement('canvas');
+  canvas.width = vp.width; canvas.height = vp.height;
+  await page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
+  setProgress(80);
+  const mime = fmt === 'jpg' ? 'image/jpeg' : 'image/png';
+  const blob = await new Promise(r => canvas.toBlob(r, mime, 0.92));
+  setProgress(95);
+  const dlUrl = URL.createObjectURL(blob);
+  const pages = pdf.numPages;
+  const note = pages > 1 ? `<p style="font-size:12px;color:#999;margin-top:8px;">Page 1 of ${pages}</p>` : '';
+  const preview = `<div style="text-align:center;padding:16px;"><img src="${dlUrl}" style="max-width:100%;max-height:360px;border-radius:8px;box-shadow:0 2px 12px #0001;">${note}</div>`;
+  const dlBtn = makeBtn(t('download') + ' ' + fmt.toUpperCase(), 'btn btn-primary', () => dlBlob(blob, baseName() + '_p1.' + fmt));
+  showResult(preview, [dlBtn]);
+}
+
+/* ─── TXT → HTML ─── */
+async function txtToHtml() {
+  setProgress(50);
+  const text = await currentFile.text();
+  const escaped = escHtml(text);
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:sans-serif;max-width:800px;margin:40px auto;padding:0 20px;line-height:1.8;white-space:pre-wrap;}</style></head><body>${escaped}</body></html>`;
+  setProgress(90);
+  const preview = `<div class="fc-result-text">${escaped.substring(0, 2000)}${text.length > 2000 ? '\n...' : ''}</div>`;
+  const dlBtn = makeBtn(t('download') + ' HTML', 'btn btn-primary', () => dlBlob(new Blob([html], {type: 'text/html;charset=utf-8'}), baseName() + '.html'));
+  showResult(preview, [dlBtn]);
 }
 
 /* ─── Helpers ─── */
