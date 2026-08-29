@@ -195,7 +195,7 @@ const CUR_T = {
     title:'محول العملات',sub:'أسعار صرف حية — محدّثة كل 4 ساعات',
     amt:'المبلغ',from:'من',to:'إلى',refresh:'تحديث',
     loading:'جاري تحميل الأسعار...',
-    live:'أسعار حية',cached:'أسعار محفوظة',fallback:'أسعار تقريبية (غير متصل)',
+    live:'أسعار حية',cached:'أسعار محفوظة',fallback:'أسعار تقريبية (غير متصل)',fallback_cached:'⚠️ تعذّر تحديث الأسعار — آخر حفظ:',
     ago_min:'دقيقة',ago_hr:'ساعة',just_now:'الآن',updated:'آخر تحديث:',
     src_label:'المصدر:',
     table_title:'تحويلات شائعة',th_curr:'العملة',th_rate:'السعر لـ 1 وحدة',th_amt:'المبلغ المحوّل',
@@ -216,7 +216,7 @@ const CUR_T = {
     title:'Currency Converter',sub:'Live exchange rates — updated every 4 hours',
     amt:'Amount',from:'From',to:'To',refresh:'Refresh',
     loading:'Loading exchange rates...',
-    live:'Live rates',cached:'Cached rates',fallback:'Approximate rates (offline)',
+    live:'Live rates',cached:'Cached rates',fallback:'Approximate rates (offline)',fallback_cached:'⚠️ Could not refresh rates — last saved:',
     ago_min:'min ago',ago_hr:'hr ago',just_now:'just now',updated:'Updated',
     src_label:'Source:',
     table_title:'Popular conversions',th_curr:'Currency',th_rate:'Rate (per 1 unit)',th_amt:'Converted amount',
@@ -237,7 +237,7 @@ const CUR_T = {
     title:'Convertisseur de devises',sub:'Taux de change en direct — mis à jour toutes les 4 heures',
     amt:'Montant',from:'De',to:'À',refresh:'Actualiser',
     loading:'Chargement des taux...',
-    live:'Taux en direct',cached:'Taux en cache',fallback:'Taux approximatifs (hors ligne)',
+    live:'Taux en direct',cached:'Taux en cache',fallback:'Taux approximatifs (hors ligne)',fallback_cached:'⚠️ Impossible de mettre à jour — dernier enregistrement:',
     ago_min:'min',ago_hr:'h',just_now:'maintenant',updated:'Mis à jour:',src_label:'Source:',
     table_title:'Conversions populaires',th_curr:'Devise',th_rate:'Taux (pour 1 unité)',th_amt:'Montant converti',
     info_title:'📌 Comment fonctionne le convertisseur?',
@@ -257,7 +257,7 @@ const CUR_T = {
     title:'Convertidor de Divisas',sub:'Tipos de cambio en vivo — actualizados cada 4 horas',
     amt:'Cantidad',from:'De',to:'A',refresh:'Actualizar',
     loading:'Cargando tasas...',
-    live:'Tasas en vivo',cached:'Tasas en caché',fallback:'Tasas aproximadas (sin conexión)',
+    live:'Tasas en vivo',cached:'Tasas en caché',fallback:'Tasas aproximadas (sin conexión)',fallback_cached:'⚠️ No se pudo actualizar — último guardado:',
     ago_min:'min',ago_hr:'h',just_now:'ahora mismo',updated:'Actualizado:',src_label:'Fuente:',
     table_title:'Conversiones populares',th_curr:'Divisa',th_rate:'Tasa (por 1 unidad)',th_amt:'Cantidad convertida',
     info_title:'📌 ¿Cómo funciona el convertidor?',
@@ -277,7 +277,7 @@ const CUR_T = {
     title:'Währungsrechner',sub:'Live-Wechselkurse — alle 4 Stunden aktualisiert',
     amt:'Betrag',from:'Von',to:'Nach',refresh:'Aktualisieren',
     loading:'Wechselkurse werden geladen...',
-    live:'Live-Kurse',cached:'Gespeicherte Kurse',fallback:'Ungefähre Kurse (offline)',
+    live:'Live-Kurse',cached:'Gespeicherte Kurse',fallback:'Ungefähre Kurse (offline)',fallback_cached:'⚠️ Aktualisierung fehlgeschlagen — zuletzt gespeichert:',
     ago_min:'Min.',ago_hr:'Std.',just_now:'gerade eben',updated:'Aktualisiert:',src_label:'Quelle:',
     table_title:'Beliebte Umrechnungen',th_curr:'Währung',th_rate:'Kurs (pro 1 Einheit)',th_amt:'Umgerechneter Betrag',
     info_title:'📌 Wie funktioniert der Währungsrechner?',
@@ -297,7 +297,7 @@ const CUR_T = {
     title:'Конвертер валют',sub:'Живые курсы — обновляются каждые 4 часа',
     amt:'Сумма',from:'Из',to:'В',refresh:'Обновить',
     loading:'Загрузка курсов...',
-    live:'Живые курсы',cached:'Кэшированные курсы',fallback:'Приблизительные курсы (офлайн)',
+    live:'Живые курсы',cached:'Кэшированные курсы',fallback:'Приблизительные курсы (офлайн)',fallback_cached:'⚠️ Не удалось обновить — последнее сохранение:',
     ago_min:'мин',ago_hr:'ч',just_now:'только что',updated:'Обновлено:',src_label:'Источник:',
     table_title:'Популярные конверсии',th_curr:'Валюта',th_rate:'Курс (за 1 ед.)',th_amt:'Сконвертированная сумма',
     info_title:'📌 Как работает конвертер валют?',
@@ -442,14 +442,14 @@ function buildRateTable() {
 /* ── API fetching ── */
 async function tryFetch(url, parse) {
   const ctrl = new AbortController();
-  const tmr = setTimeout(() => ctrl.abort(), 8000);
+  const tmr = setTimeout(() => ctrl.abort(), 5000);
   try {
     const res  = await fetch(url, {signal: ctrl.signal});
     clearTimeout(tmr);
     if (!res.ok) return null;
     const data = await res.json();
     const r    = parse(data);
-    if (r && r.USD && r.EUR && r.SAR) return r;
+    if (r && r.USD && r.EUR && Object.keys(r).length >= 10) return r;
     return null;
   } catch(e) { clearTimeout(tmr); return null; }
 }
@@ -465,17 +465,23 @@ const APIS = [
 ];
 
 async function tryLiveFetch() {
-  for (const [src, fn] of APIS) {
-    const r = await fn();
-    if (r) {
-      rates = r; rateSource = src; rateTs = Date.now();
-      saveCache(r, src);
-      setStatus('ok', D().live + ' · ' + src + ' · ' + ageText(rateTs));
-      convert();
-      return true;
-    }
+  // Run all APIs in parallel — take the first one that succeeds
+  try {
+    const {r, src} = await Promise.any(
+      APIS.map(async ([src, fn]) => {
+        const r = await fn();
+        if (!r) throw new Error('no data');
+        return {r, src};
+      })
+    );
+    rates = r; rateSource = src; rateTs = Date.now();
+    saveCache(r, src);
+    setStatus('ok', D().live + ' · ' + src + ' · ' + ageText(rateTs));
+    convert();
+    return true;
+  } catch(e) {
+    return false;
   }
-  return false;
 }
 
 async function fetchRates() {
@@ -490,6 +496,17 @@ async function fetchRates() {
   setStatus('warn', D().loading);
   const ok = await tryLiveFetch();
   if (!ok) {
+    // Check for any stale cache (even expired)
+    try {
+      const stale = JSON.parse(localStorage.getItem(CACHE_KEY));
+      if (stale && stale.r) {
+        rates = stale.r; rateSource = stale.src || ''; rateTs = stale.ts;
+        const d = new Date(rateTs).toLocaleDateString();
+        setStatus('warn', D().fallback_cached + ' ' + d);
+        convert();
+        return;
+      }
+    } catch(e) {}
     rates = FALLBACK; rateSource = 'offline'; rateTs = 0;
     setStatus('warn', D().fallback);
     convert();
