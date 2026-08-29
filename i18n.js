@@ -93,7 +93,7 @@ const T = {
     search_placeholder:'ابحث عن أداة...', search_no_results:'لم يُعثر على أداة بهذا الاسم',
     related_title:'أدوات ذات صلة',
     pwa_title:'ثبّت التطبيق', pwa_sub:'أضف أدواتي للشاشة الرئيسية للوصول السريع بدون إنترنت', pwa_install:'تثبيت', pwa_later:'لاحقاً',
-    cat_oman:'🇴🇲 عمان', cat_games:'🎮 ألعاب',
+    cat_oman:'🌍 عمان', cat_games:'🎮 ألعاب',
     guess_card_title:'لعبة تخمين الرقم', guess_card_desc:'خمّن الرقم السري في أقل عدد من المحاولات',
     memory_card_title:'لعبة الذاكرة', memory_card_desc:'طابق البطاقات واختبر ذاكرتك',
     qmath_card_title:'تحدي الأذكياء — الحساب السريع', qmath_card_desc:'100 مستوى — من مبتدئ إلى أسطورة! هل أنت ذكي؟',
@@ -271,7 +271,7 @@ const T = {
     search_placeholder:'Search tools...', search_no_results:'No tools found with that name',
     related_title:'Related Tools',
     pwa_title:'Install App', pwa_sub:'Add Adawati to your home screen for quick offline access', pwa_install:'Install', pwa_later:'Later',
-    cat_oman:'🇴🇲 Oman', cat_games:'🎮 Games',
+    cat_oman:'🌍 Oman', cat_games:'🎮 Games',
     guess_card_title:'Number Guessing Game', guess_card_desc:'Guess the secret number in as few tries as possible',
     memory_card_title:'Memory Game', memory_card_desc:'Match the cards and test your memory',
     qmath_card_title:'Smart Challenge — Quick Math', qmath_card_desc:'100 levels from Beginner to Legend! Are you smart?',
@@ -448,7 +448,7 @@ const T = {
     cat_all:'Tous', cat_health:'💪 Santé', cat_money:'💰 Argent', cat_productivity:'⚙️ Productivité', cat_quick:'⚡ Rapides',
     search_placeholder:'Rechercher un outil...', search_no_results:'Aucun outil trouvé', related_title:'Outils similaires',
     pwa_title:'Installer l\'app', pwa_sub:'Ajoutez Adawati à votre écran d\'accueil', pwa_install:'Installer', pwa_later:'Plus tard',
-    cat_oman:'🇴🇲 Oman', cat_games:'🎮 Jeux',
+    cat_oman:'🌍 Oman', cat_games:'🎮 Jeux',
     guess_card_title:'Jeu de devinette de nombre', guess_card_desc:'Devinez le nombre secret en un minimum d\'essais',
     memory_card_title:'Jeu de mémoire', memory_card_desc:'Associez les cartes et testez votre mémoire',
     qmath_card_title:'Défi des Génies — Maths', qmath_card_desc:'100 niveaux de Débutant à Légendaire!',
@@ -618,7 +618,7 @@ const T = {
     cat_all:'Todos', cat_health:'💪 Salud', cat_money:'💰 Dinero', cat_productivity:'⚙️ Productividad', cat_quick:'⚡ Rápidas',
     search_placeholder:'Buscar herramienta...', search_no_results:'No se encontraron herramientas', related_title:'Herramientas relacionadas',
     pwa_title:'Instalar app', pwa_sub:'Añade Adawati a tu pantalla de inicio', pwa_install:'Instalar', pwa_later:'Después',
-    cat_oman:'🇴🇲 Omán', cat_games:'🎮 Juegos',
+    cat_oman:'🌍 Omán', cat_games:'🎮 Juegos',
     guess_card_title:'Juego de adivinar número', guess_card_desc:'Adivina el número secreto en el menor número de intentos',
     memory_card_title:'Juego de memoria', memory_card_desc:'Empareja las cartas y pon a prueba tu memoria',
     qmath_card_title:'Desafío de Genios — Matemáticas', qmath_card_desc:'¡100 niveles de Principiante a Leyenda!',
@@ -788,7 +788,7 @@ const T = {
     cat_all:'Alle', cat_health:'💪 Gesundheit', cat_money:'💰 Geld', cat_productivity:'⚙️ Produktivität', cat_quick:'⚡ Schnell',
     search_placeholder:'Werkzeug suchen...', search_no_results:'Kein Werkzeug gefunden', related_title:'Ähnliche Werkzeuge',
     pwa_title:'App installieren', pwa_sub:'Adawati zum Startbildschirm hinzufügen', pwa_install:'Installieren', pwa_later:'Später',
-    cat_oman:'🇴🇲 Oman', cat_games:'🎮 Spiele',
+    cat_oman:'🌍 Oman', cat_games:'🎮 Spiele',
     guess_card_title:'Zahlen-Ratespiel', guess_card_desc:'Errate die geheime Zahl in so wenig Versuchen wie möglich',
     memory_card_title:'Gedächtnisspiel', memory_card_desc:'Paare die Karten und teste dein Gedächtnis',
     qmath_card_title:'Genie-Herausforderung — Mathe', qmath_card_desc:'100 Level von Anfänger bis Legende!',
@@ -958,7 +958,7 @@ const T = {
     cat_all:'Все', cat_health:'💪 Здоровье', cat_money:'💰 Деньги', cat_productivity:'⚙️ Продуктивность', cat_quick:'⚡ Быстрые',
     search_placeholder:'Поиск инструментов...', search_no_results:'Инструменты не найдены', related_title:'Похожие инструменты',
     pwa_title:'Установить приложение', pwa_sub:'Добавьте Adawati на главный экран', pwa_install:'Установить', pwa_later:'Позже',
-    cat_oman:'🇴🇲 Оман', cat_games:'🎮 Игры',
+    cat_oman:'🌍 Оман', cat_games:'🎮 Игры',
     guess_card_title:'Игра «Угадай число»', guess_card_desc:'Угадайте секретное число за наименьшее количество попыток',
     memory_card_title:'Игра на память', memory_card_desc:'Совмещайте карточки и проверьте свою память',
     qmath_card_title:'Вызов гениев — Математика', qmath_card_desc:'100 уровней от Новичка до Легенды!',
@@ -1623,7 +1623,7 @@ function renderCountrySection(countryCode) {
   const heading = document.createElement('div');
   heading.style.cssText = 'font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;';
   const countryName = lang === 'ar' ? cd.name : cd.nameEn;
-  heading.textContent = cd.flag + ' ' + (t.country_recommended || 'Recommended for') + ' ' + countryName;
+  heading.textContent = '📍 ' + (t.country_recommended || 'Recommended for') + ' ' + countryName;
 
   const grid = document.createElement('div');
   grid.className = 'tools-grid';
