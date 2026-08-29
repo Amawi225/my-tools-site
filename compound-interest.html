@@ -44,59 +44,59 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">📈</div>
-    <div class="card-title">حاسبة الفائدة المركبة</div>
-    <div class="card-subtitle">احسب نمو استثمارك أو قرضك مع الفائدة المتراكمة</div>
+    <div class="card-title" data-i18n="ci_card_title">حاسبة الفائدة المركبة</div>
+    <div class="card-subtitle" data-i18n="ci_sub">احسب نمو استثمارك أو قرضك مع الفائدة المتراكمة</div>
     <div class="divider"></div>
 
     <div class="row">
       <div>
-        <label for="principal">رأس المال (المبلغ الأساسي)</label>
+        <label for="principal" data-i18n="ci_principal">رأس المال (المبلغ الأساسي)</label>
         <input type="number" id="principal" placeholder="مثال: 10000" min="0" step="any" oninput="calculate()">
       </div>
       <div>
-        <label for="rate">معدل الفائدة السنوي %</label>
+        <label for="rate" data-i18n="ci_rate">معدل الفائدة السنوي %</label>
         <input type="number" id="rate" placeholder="مثال: 5" min="0" step="any" oninput="calculate()">
       </div>
     </div>
 
     <div class="row">
       <div>
-        <label for="years">المدة (بالسنوات)</label>
+        <label for="years" data-i18n="ci_years">المدة (بالسنوات)</label>
         <input type="number" id="years" placeholder="مثال: 10" min="1" max="50" step="1" oninput="calculate()">
       </div>
       <div>
-        <label for="freq">تكرار الاحتساب</label>
+        <label for="freq" data-i18n="ci_freq">تكرار الاحتساب</label>
         <select id="freq" onchange="calculate()">
-          <option value="1">سنوياً</option>
-          <option value="4">ربع سنوي</option>
-          <option value="12" selected>شهرياً</option>
-          <option value="365">يومياً</option>
+          <option value="1" data-i18n="ci_annually">سنوياً</option>
+          <option value="4" data-i18n="ci_quarterly">ربع سنوي</option>
+          <option value="12" selected data-i18n="ci_monthly_f">شهرياً</option>
+          <option value="365" data-i18n="ci_daily">يومياً</option>
         </select>
       </div>
     </div>
 
     <div>
-      <label for="monthly">إضافة شهرية اختيارية (ر.ع)</label>
+      <label for="monthly" data-i18n="ci_monthly">إضافة شهرية اختيارية (ر.ع)</label>
       <input type="number" id="monthly" placeholder="0 (اختياري)" min="0" step="any" value="0" oninput="calculate()">
     </div>
 
     <div id="ciResult" style="display:none;margin-top:20px;">
       <div class="result-box show success" style="margin-top:0;">
         <div class="result-value" id="finalAmount"></div>
-        <div class="result-label">المبلغ النهائي</div>
+        <div class="result-label" data-i18n="ci_result_lbl">المبلغ النهائي</div>
       </div>
       <div class="stat-grid" style="margin-top:12px;">
         <div class="stat-box">
           <div class="stat-val" id="principalDisplay">0</div>
-          <div class="stat-lbl">رأس المال الأصلي</div>
+          <div class="stat-lbl" data-i18n="ci_capital_lbl">رأس المال الأصلي</div>
         </div>
         <div class="stat-box" style="background:#f0fdf4;">
           <div class="stat-val" id="interestEarned" style="color:#16a34a;">0</div>
-          <div class="stat-lbl">إجمالي الفائدة</div>
+          <div class="stat-lbl" data-i18n="ci_interest_lbl">إجمالي الفائدة</div>
         </div>
         <div class="stat-box" style="background:#eff6ff;">
           <div class="stat-val" id="totalContrib" style="color:#2563eb;">0</div>
-          <div class="stat-lbl">إجمالي الإضافات</div>
+          <div class="stat-lbl" data-i18n="ci_additions_lbl">إجمالي الإضافات</div>
         </div>
       </div>
       <div id="growthBar" style="margin-top:16px;">
@@ -118,14 +118,14 @@
   </div>
 
   <div id="tableCard" class="card" style="margin-top:16px;display:none;">
-    <div class="card-title" style="font-size:15px;">📊 جدول النمو السنوي</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="ci_table_title">📊 جدول النمو السنوي</div>
     <div style="overflow-x:auto;">
       <table class="ci-table" id="ciTable">
         <thead><tr>
-          <th>السنة</th>
-          <th>المبلغ</th>
-          <th>الفائدة المضافة</th>
-          <th>إجمالي الفائدة</th>
+          <th data-i18n="ci_th_year">السنة</th>
+          <th data-i18n="ci_th_amount">المبلغ</th>
+          <th data-i18n="ci_th_int_added">الفائدة المضافة</th>
+          <th data-i18n="ci_th_total_int">إجمالي الفائدة</th>
         </tr></thead>
         <tbody id="ciTableBody"></tbody>
       </table>
@@ -133,7 +133,7 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الفائدة البسيطة والمركبة؟</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الفائدة البسيطة تُحسب على رأس المال الأصلي فقط. الفائدة المركبة تُحسب على رأس المال + الفائدة المتراكمة، فتنمو بشكل أسرع مع الوقت.</p>
@@ -149,7 +149,7 @@
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong data-i18n="related_tools">أدوات مرتبطة:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
       <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
       <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
@@ -194,20 +194,10 @@ function calculate() {
 
   for (let year = 1; year <= Math.min(t, 30); year++) {
     const startBalance = balance;
-    // Apply monthly contributions and compound interest month by month
     for (let m = 0; m < 12; m++) {
       balance = balance * (1 + rate / n) + monthly;
-      if (n < 12) {
-        // for frequencies less than monthly, do simple monthly add then compound at freq
-      }
     }
-    const monthlyCompound = (monthly > 0)
-      ? monthly * 12 * (year <= t ? 1 : 0)
-      : 0;
-
-    // Simpler approach: calculate year by year
     const yearEnd = P * Math.pow(1 + rate/n, n * year);
-    // Plus contributions: FV of annuity (monthly)
     const rMonthly = rate / 12;
     const nMonths = year * 12;
     const fvContribs = monthly > 0
@@ -216,7 +206,6 @@ function calculate() {
     const total = yearEnd + fvContribs;
     const yearInterest = total - P - monthly * nMonths;
     cumulativeInterest = yearInterest;
-    const addedThisYear = total - (year === 1 ? P : prevTotal);
     var prevTotal = year === 1 ? P : prevTotal;
 
     const tr = document.createElement('tr');
@@ -229,7 +218,6 @@ function calculate() {
     prevYearTotal = total;
   }
 
-  // Final calculation
   const finalPrincipal = P * Math.pow(1 + rate/n, n * t);
   const rM = rate / 12;
   const nM = t * 12;
@@ -243,7 +231,6 @@ function calculate() {
   document.getElementById('interestEarned').textContent = interestEarned.toFixed(2);
   document.getElementById('totalContrib').textContent = totalContrib.toFixed(2);
 
-  // Progress bar
   const barP = (P / final) * 100;
   const barC = (totalContrib / final) * 100;
   const barI = (interestEarned / final) * 100;
