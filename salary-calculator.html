@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -37,10 +37,10 @@
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">💼</div>
     <div class="card-title" data-i18n="sal_card_title">حاسبة الراتب — سلطنة عُمان 🇴🇲</div>
-    <div class="card-subtitle">احسب راتبك الصافي وفق نظام صندوق الحماية الاجتماعية SPF — 2024</div>
+    <div class="card-subtitle" id="salCardSub">احسب راتبك الصافي وفق نظام صندوق الحماية الاجتماعية SPF — 2024</div>
     <div class="divider"></div>
 
-    <label>الجنسية</label>
+    <label id="salNatLbl">الجنسية</label>
     <div class="option-toggle">
       <button class="option-btn active" id="natOmani" onclick="setNat('omani')">عماني (خصم SPF 8%)</button>
       <button class="option-btn" id="natExpat" onclick="setNat('expat')">وافد (بدون خصم SPF)</button>
@@ -92,8 +92,8 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📌 صندوق الحماية الاجتماعية SPF — عُمان 2024</div>
-    <div style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;">
+    <div class="card-title" style="font-size:15px;" id="spfInfoTitle">📌 صندوق الحماية الاجتماعية SPF — عُمان 2024</div>
+    <div id="spfInfoBody" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;">
       <p>صندوق الحماية الاجتماعية (SPF) هو المنظومة الجديدة التي تجمع فروع التأمين الاجتماعي في سلطنة عُمان.</p>
       <p><strong>حصة الموظف العماني (إجمالي 8%):</strong></p>
       <ul style="padding-inline-start:18px;margin-top:4px;">
@@ -109,31 +109,33 @@
         <li>يُحسب الخصم على الراتب الأساسي فقط (بدون البدلات)</li>
       </ul>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">⚠️ النتائج استرشادية — للحسابات الرسمية راجع صندوق الحماية الاجتماعية SPF | آخر تحديث: أغسطس 2026</p>
+    <p id="spfDisclaimer" style="font-size:12px;color:var(--text-muted);margin-top:10px;">⚠️ النتائج استرشادية — للحسابات الرسمية راجع صندوق الحماية الاجتماعية SPF | آخر تحديث: أغسطس 2026</p>
   </div>
 
   <div class="card" style="margin-top:16px;">
     <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
-    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الراتب الأساسي والإجمالي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها).</p>
-    </details>
-    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يُخصم SPF من البدلات؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. يُطبَّق خصم الـ8% على الراتب الأساسي فقط، وليس على بدلات السكن أو النقل أو غيرها.</p>
-    </details>
-    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الحد الأدنى للراتب في عمان؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأدنى للراتب للمواطن العماني هو 325 ريال عماني شهرياً (وفق المرسوم الأخير). تحقق من وزارة العمل للتحديثات الرسمية.</p>
-    </details>
+    <div id="faqItems">
+      <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+        <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الراتب الأساسي والإجمالي؟</summary>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها).</p>
+      </details>
+      <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+        <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يُخصم SPF من البدلات؟</summary>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. يُطبَّق خصم الـ8% على الراتب الأساسي فقط، وليس على بدلات السكن أو النقل أو غيرها.</p>
+      </details>
+      <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+        <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الحد الأدنى للراتب في عمان؟</summary>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأدنى للراتب للمواطن العماني هو 325 ريال عماني شهرياً (وفق المرسوم الأخير). تحقق من وزارة العمل للتحديثات الرسمية.</p>
+      </details>
+    </div>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
     <strong data-i18n="related_tools">أدوات مرتبطة:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="end-of-service.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📋 حاسبة نهاية الخدمة</a>
-      <a href="vat-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
-      <a href="loan-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
+      <a id="relEOS" href="end-of-service.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📋 حاسبة نهاية الخدمة</a>
+      <a id="relVAT" href="vat-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+      <a id="relLoan" href="loan-calculator.html" class="btn" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
     </div>
   </div>
 </div></main>
@@ -152,14 +154,87 @@
 
 <script>
 let nationality = 'omani';
+let salLang = 'ar';
 
-const SPF_RATE = 0.08; // 8% employee share (7.5% pension + 0.5% employment security)
+const SPF_RATE = 0.08;
+
+const SAL_T = {
+  ar: {
+    sub: 'احسب راتبك الصافي وفق نظام صندوق الحماية الاجتماعية SPF — 2024',
+    nat_lbl: 'الجنسية',
+    omani_btn: 'عماني (خصم SPF 8%)',
+    expat_btn: 'وافد (بدون خصم SPF)',
+    spf_deduct: 'خصم SPF (8%)',
+    spf_na: 'خصم SPF (لا ينطبق)',
+    info_title: '📌 صندوق الحماية الاجتماعية SPF — عُمان 2024',
+    info_body: '<p>صندوق الحماية الاجتماعية (SPF) هو المنظومة الجديدة التي تجمع فروع التأمين الاجتماعي في سلطنة عُمان.</p><p><strong>حصة الموظف العماني (إجمالي 8%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>7.5% — فرع كبار السن والعجز والوفاة</li><li>0.5% — فرع الأمان الوظيفي</li></ul><p style="margin-top:8px;"><strong>حصة جهة العمل (إجمالي 14.5%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>لا تُخصم من راتب الموظف — تُدفع من قِبل صاحب العمل</li></ul><ul style="padding-inline-start:18px;margin-top:8px;"><li>يُطبَّق على العمانيين فقط — الوافدون لديهم نظام ادخار منفصل</li><li>يُحسب الخصم على الراتب الأساسي فقط (بدون البدلات)</li></ul>',
+    disclaimer: '⚠️ النتائج استرشادية — للحسابات الرسمية راجع صندوق الحماية الاجتماعية SPF | آخر تحديث: أغسطس 2026',
+    faq: [
+      {q:'ما الفرق بين الراتب الأساسي والإجمالي؟', a:'الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها).'},
+      {q:'هل يُخصم SPF من البدلات؟', a:'لا. يُطبَّق خصم الـ8% على الراتب الأساسي فقط، وليس على بدلات السكن أو النقل أو غيرها.'},
+      {q:'ما الحد الأدنى للراتب في عمان؟', a:'الحد الأدنى للراتب للمواطن العماني هو 325 ريال عماني شهرياً (وفق المرسوم الأخير). تحقق من وزارة العمل للتحديثات الرسمية.'}
+    ],
+    rel_eos:'📋 حاسبة نهاية الخدمة', rel_vat:'🧾 حاسبة VAT', rel_loan:'🧮 حاسبة القسط',
+    lbl_basic:'الراتب الأساسي', lbl_housing:'بدل السكن', lbl_transport:'بدل النقل', lbl_other:'بدلات أخرى',
+    lbl_gross:'الإجمالي قبل الخصم', lbl_spf_from:'خصم SPF (8% من الأساسي)', lbl_net:'الراتب الصافي',
+    curr:'ر.ع'
+  },
+  en: {
+    sub: 'Calculate your net salary under Oman\'s Social Protection Fund (SPF) — 2024',
+    nat_lbl: 'Nationality',
+    omani_btn: 'Omani (SPF 8% deduction)',
+    expat_btn: 'Expat (no SPF deduction)',
+    spf_deduct: 'SPF deduction (8%)',
+    spf_na: 'SPF (N/A)',
+    info_title: '📌 Social Protection Fund (SPF) — Oman 2024',
+    info_body: '<p>The Social Protection Fund (SPF) is Oman\'s unified social insurance system covering all protection branches.</p><p><strong>Employee contribution (total 8%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>7.5% — Old age, disability & death branch</li><li>0.5% — Employment security branch</li></ul><p style="margin-top:8px;"><strong>Employer contribution (total 14.5%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>Not deducted from salary — paid by the employer</li></ul><ul style="padding-inline-start:18px;margin-top:8px;"><li>Applies to Omani nationals only — expatriates have a separate savings scheme</li><li>Deduction is on basic salary only (allowances excluded)</li></ul>',
+    disclaimer: '⚠️ Results are indicative — for official figures visit the SPF website | Last updated: August 2026',
+    faq: [
+      {q:'What is the difference between basic and gross salary?', a:'Basic salary is the fixed amount in your employment contract. Gross = Basic + all allowances (housing, transport, etc.).'},
+      {q:'Is SPF deducted from allowances?', a:'No. The 8% applies to basic salary only — not housing, transport or other allowances.'},
+      {q:'What is the minimum wage in Oman?', a:'The minimum wage for Omani nationals is 325 OMR/month (latest decree). Check the Ministry of Labour for official updates.'}
+    ],
+    rel_eos:'📋 End of Service Calculator', rel_vat:'🧾 VAT Calculator', rel_loan:'🧮 Loan Calculator',
+    lbl_basic:'Basic salary', lbl_housing:'Housing allowance', lbl_transport:'Transport allowance', lbl_other:'Other allowances',
+    lbl_gross:'Gross salary', lbl_spf_from:'SPF deduction (8% of basic)', lbl_net:'Net salary',
+    curr:'OMR'
+  }
+};
+
+function getSAL() { return SAL_T[salLang] || SAL_T.en; }
+
+function updateSalaryText() {
+  const t = getSAL();
+  const el = function(id){ return document.getElementById(id); };
+  const set = function(id, txt){ if(el(id)) el(id).textContent = txt; };
+  const setH = function(id, html){ if(el(id)) el(id).innerHTML = html; };
+
+  set('salCardSub', t.sub);
+  set('salNatLbl', t.nat_lbl);
+  el('natOmani').textContent = t.omani_btn;
+  el('natExpat').textContent = t.expat_btn;
+  el('spfLabel').textContent = nationality === 'omani' ? t.spf_deduct : t.spf_na;
+  set('spfInfoTitle', t.info_title);
+  setH('spfInfoBody', t.info_body);
+  set('spfDisclaimer', t.disclaimer);
+  setH('faqItems', t.faq.map(function(f, i) {
+    return '<details style="margin-top:' + (i===0?'12':'8') + 'px;border:1px solid var(--border);border-radius:8px;padding:12px;">' +
+      '<summary style="font-weight:700;cursor:pointer;font-size:14px;">' + f.q + '</summary>' +
+      '<p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">' + f.a + '</p></details>';
+  }).join(''));
+  set('relEOS', t.rel_eos);
+  set('relVAT', t.rel_vat);
+  set('relLoan', t.rel_loan);
+
+  if (document.getElementById('salResult').style.display !== 'none') calculate();
+}
 
 function setNat(n) {
   nationality = n;
   document.getElementById('natOmani').classList.toggle('active', n === 'omani');
   document.getElementById('natExpat').classList.toggle('active', n === 'expat');
-  document.getElementById('spfLabel').textContent = n === 'omani' ? 'خصم SPF (8%)' : 'خصم SPF (لا ينطبق)';
+  const t = getSAL();
+  document.getElementById('spfLabel').textContent = n === 'omani' ? t.spf_deduct : t.spf_na;
   calculate();
 }
 
@@ -174,30 +249,43 @@ function calculate() {
     return;
   }
 
+  const t = getSAL();
   const gross = basic + housing + transport + other;
   const spfDeduction = nationality === 'omani' ? basic * SPF_RATE : 0;
   const net = gross - spfDeduction;
   const annual = net * 12;
+  const c = t.curr;
 
-  document.getElementById('netSalaryDisplay').textContent = net.toFixed(3) + ' ر.ع';
+  document.getElementById('netSalaryDisplay').textContent = net.toFixed(3) + ' ' + c;
   document.getElementById('grossDisplay').textContent = gross.toFixed(3);
   document.getElementById('pasiDisplay').textContent = spfDeduction.toFixed(3);
   document.getElementById('annualDisplay').textContent = annual.toFixed(3);
 
-  const bd = document.getElementById('salBreakdown');
-  bd.innerHTML =
-    'الراتب الأساسي: <strong>' + basic.toFixed(3) + ' ر.ع</strong><br>' +
-    (housing > 0 ? 'بدل السكن: <strong>' + housing.toFixed(3) + ' ر.ع</strong><br>' : '') +
-    (transport > 0 ? 'بدل النقل: <strong>' + transport.toFixed(3) + ' ر.ع</strong><br>' : '') +
-    (other > 0 ? 'بدلات أخرى: <strong>' + other.toFixed(3) + ' ر.ع</strong><br>' : '') +
-    'الإجمالي قبل الخصم: <strong>' + gross.toFixed(3) + ' ر.ع</strong><br>' +
+  document.getElementById('salBreakdown').innerHTML =
+    t.lbl_basic + ': <strong>' + basic.toFixed(3) + ' ' + c + '</strong><br>' +
+    (housing > 0 ? t.lbl_housing + ': <strong>' + housing.toFixed(3) + ' ' + c + '</strong><br>' : '') +
+    (transport > 0 ? t.lbl_transport + ': <strong>' + transport.toFixed(3) + ' ' + c + '</strong><br>' : '') +
+    (other > 0 ? t.lbl_other + ': <strong>' + other.toFixed(3) + ' ' + c + '</strong><br>' : '') +
+    t.lbl_gross + ': <strong>' + gross.toFixed(3) + ' ' + c + '</strong><br>' +
     (nationality === 'omani'
-      ? 'خصم SPF (8% من الأساسي): <strong style="color:#dc2626;">−' + spfDeduction.toFixed(3) + ' ر.ع</strong><br>'
+      ? t.lbl_spf_from + ': <strong style="color:#dc2626;">−' + spfDeduction.toFixed(3) + ' ' + c + '</strong><br>'
       : '') +
-    'الراتب الصافي: <strong style="color:#16a34a;">' + net.toFixed(3) + ' ر.ع</strong>';
+    t.lbl_net + ': <strong style="color:#16a34a;">' + net.toFixed(3) + ' ' + c + '</strong>';
 
   document.getElementById('salResult').style.display = 'block';
 }
+
+var _origSalSetLang;
+document.addEventListener('DOMContentLoaded', function() {
+  _origSalSetLang = window.setLang;
+  window.setLang = function(lang) {
+    if (_origSalSetLang) _origSalSetLang(lang);
+    salLang = lang;
+    updateSalaryText();
+  };
+  salLang = localStorage.getItem('lang') || 'ar';
+  updateSalaryText();
+});
 </script>
 <script src="i18n.js"></script>
 </body></html>
