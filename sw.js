@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v23';
+const CACHE = 'adawati-v24';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -77,9 +77,10 @@ self.addEventListener('fetch', e => {
     );
     return;
   }
-  // Network-first for HTML pages — always fresh, cache as offline fallback
+  // Network-first for HTML + i18n.js + style.css — always fresh, cache as offline fallback
   const isHTML = url.pathname.endsWith('.html') || url.pathname.endsWith('/');
-  if (isHTML) {
+  const isCore = url.pathname.endsWith('/i18n.js') || url.pathname.endsWith('/style.css');
+  if (isHTML || isCore) {
     e.respondWith(
       fetch(e.request).then(resp => {
         if (resp.status === 200) {
