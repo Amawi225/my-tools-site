@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعبة السيارات — تجنب الحوادث | أدواتي</title>
+<meta name="description" content="لعبة سيارات مجانية للأطفال والكبار! قد سيارتك وتجنب الاصطدام. بدون تسجيل، بدون تحميل، مجانية 100%.">
+<meta name="keywords" content="لعبة سيارات, العاب سيارات, لعبة مجانية للأطفال, car game, kids game free, games without ads, العاب بدون اعلانات">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+<style>
+.game-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;}
+#gameCanvas{border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);display:block;max-width:100%;}
+.hud{display:flex;gap:20px;justify-content:center;font-size:15px;font-weight:800;flex-wrap:wrap;}
+.hud-item{text-align:center;}
+.hud-val{font-size:26px;font-weight:900;color:var(--primary);}
+.hud-lbl{font-size:11px;color:var(--text-muted);}
+.touch-row{display:flex;gap:24px;justify-content:center;margin-top:6px;}
+.touch-btn{width:72px;height:72px;border-radius:50%;border:3px solid var(--primary);background:var(--primary-light);
+  font-size:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-family:inherit;color:var(--primary);font-weight:900;transition:transform .1s,background .1s;user-select:none;-webkit-user-select:none;}
+.touch-btn:active{transform:scale(.9);background:var(--primary);color:#fff;}
+.game-start-btn{margin:8px auto;display:block;}
+.lb-wrap{margin-top:20px;border-top:1px solid var(--border);padding-top:16px;width:100%;}
+.lb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.lb-title{font-size:15px;font-weight:800;}
+.lb-clear{font-size:12px;color:var(--text-muted);background:none;border:none;cursor:pointer;font-family:inherit;}
+.lb-clear:hover{color:#ef4444;}
+.lb-empty{font-size:13px;color:var(--text-muted);text-align:center;padding:10px 0;}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-sm);margin-bottom:6px;background:var(--surface-2);border:1px solid var(--border);}
+.lb-row.gold{background:linear-gradient(135deg,#fef9c3,#fef08a);border-color:#eab308;}
+.lb-row.silver{background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border-color:#94a3b8;}
+.lb-row.bronze{background:linear-gradient(135deg,#fff7ed,#fed7aa);border-color:#f97316;}
+.lb-medal{font-size:20px;flex-shrink:0;} .lb-name{font-weight:700;font-size:14px;flex:1;} .lb-score{font-size:12px;font-weight:600;color:var(--primary);}
+.name-entry{margin-top:12px;padding:14px;background:linear-gradient(135deg,#fdf4ff,#ede9fe);border:2px solid var(--primary);border-radius:var(--radius-sm);text-align:center;}
+.name-entry-msg{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--primary);}
+.name-entry-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.name-entry-row input{padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-size:14px;font-family:inherit;width:160px;}
+.name-entry-row input:focus{outline:none;border-color:var(--primary);}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fef3c7;">🚗</div>
+    <div class="card-title" id="gameTitle">لعبة السيارات</div>
+    <div class="card-subtitle" id="gameSub">تجنب السيارات الأخرى وحقق أعلى نقطة!</div>
+    <div class="divider"></div>
+
+    <div class="game-wrap">
+      <div class="hud">
+        <div class="hud-item"><div class="hud-val" id="scoreDisplay">0</div><div class="hud-lbl" id="scoreLbl">نقاط</div></div>
+        <div class="hud-item"><div class="hud-val" id="levelDisplay">1</div><div class="hud-lbl" id="levelLbl">المستوى</div></div>
+        <div class="hud-item"><div class="hud-val" id="bestDisplay">0</div><div class="hud-lbl" id="bestLbl">أفضل</div></div>
+      </div>
+
+      <canvas id="gameCanvas" width="300" height="480"></canvas>
+
+      <div class="touch-row" id="touchRow">
+        <button class="touch-btn" id="leftBtn">◀</button>
+        <button class="touch-btn" id="rightBtn">▶</button>
+      </div>
+
+      <button class="btn btn-primary game-start-btn" id="startBtn" onclick="startGame()">▶ ابدأ اللعبة</button>
+    </div>
+
+    <div class="name-entry" id="nameEntry" style="display:none;">
+      <div class="name-entry-msg" id="nameEntryMsg">🏆 دخلت أفضل 3! اكتب اسمك:</div>
+      <div class="name-entry-row">
+        <input type="text" id="nameInput" maxlength="20" placeholder="اسمك" onkeydown="if(event.key==='Enter')saveScore()">
+        <button class="btn btn-primary" onclick="saveScore()" id="saveBtn">💾 حفظ</button>
+      </div>
+    </div>
+
+    <div class="lb-wrap">
+      <div class="lb-header">
+        <span class="lb-title" id="lbTitle">🏆 أفضل 3 سائقين</span>
+        <button class="lb-clear" onclick="clearLb()" id="clearBtn">🗑 مسح</button>
+      </div>
+      <div id="lbRows"></div>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const W = 300, H = 480;
+const ROAD_X = 40, ROAD_W = 220;
+const LANE_W = ROAD_W / 3;
+const LANES = [ROAD_X + LANE_W*0.5, ROAD_X + LANE_W*1.5, ROAD_X + LANE_W*2.5];
+const STORAGE_KEY = 'adawati_car_lb';
+const MEDALS = ['🥇','🥈','🥉'], MEDAL_CLS = ['gold','silver','bronze'];
+
+const LEVEL_THRESHOLDS = [0, 500, 1500, 3000, 5500, 9000];
+const LEVEL_NAMES = {
+  ar:['مبتدئ','سائق','محترف','سريع','خبير','أسطورة'],
+  en:['Rookie','Driver','Pro','Speed','Expert','Legend'],
+};
+
+let currentLang = 'ar';
+let state = 'idle'; // idle | playing | over
+let score = 0, level = 0, rafId = null;
+let roadY = 0, spawnTimer = 0;
+let pendingScore = null;
+
+const player = {lane:1, x:LANES[1], y:H-90, w:30, h:50, targetLane:1};
+const ENEMY_CARS = ['🚗','🚙','🚕','🚌','🏎️'];
+let enemies = [];
+
+function getLevelConfig(lvl){
+  const speed = [2.5, 3.5, 4.5, 5.5, 7, 9][Math.min(lvl,5)];
+  const spawnRate = [90, 70, 55, 42, 32, 22][Math.min(lvl,5)];
+  return {speed, spawnRate};
+}
+function getLevel(sc){ for(let i=LEVEL_THRESHOLDS.length-1;i>=0;i--) if(sc>=LEVEL_THRESHOLDS[i]) return i; return 0; }
+function getBest(){ return parseInt(localStorage.getItem('adawati_car_best')||'0'); }
+function setBest(s){ if(s>getBest()) localStorage.setItem('adawati_car_best',s); }
+
+function drawRoad(){
+  // Grass
+  ctx.fillStyle='#4ade80'; ctx.fillRect(0,0,W,H);
+  // Road
+  ctx.fillStyle='#374151'; ctx.fillRect(ROAD_X,0,ROAD_W,H);
+  // Road edges
+  ctx.strokeStyle='#fff'; ctx.lineWidth=4;
+  ctx.beginPath();ctx.moveTo(ROAD_X,0);ctx.lineTo(ROAD_X,H);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(ROAD_X+ROAD_W,0);ctx.lineTo(ROAD_X+ROAD_W,H);ctx.stroke();
+  // Lane markings
+  ctx.strokeStyle='#9ca3af'; ctx.lineWidth=2; ctx.setLineDash([30,20]);
+  for(let lane=1;lane<3;lane++){
+    const x=ROAD_X+LANE_W*lane;
+    ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  // Center lines scrolling
+  ctx.strokeStyle='#fbbf24'; ctx.lineWidth=3; ctx.setLineDash([40,30]);
+  ctx.beginPath();ctx.moveTo(ROAD_X+ROAD_W/2,(roadY%70)-70);ctx.lineTo(ROAD_X+ROAD_W/2,H);ctx.stroke();
+  ctx.setLineDash([]);
+  // Trees on sides
+  const treePosY = [50,150,280,400];
+  treePosY.forEach(ty=>{
+    const y2 = (ty+roadY*0.3)%H;
+    ctx.font='22px serif'; ctx.fillText('🌳', 4, y2); ctx.fillText('🌳', W-28, y2);
+  });
+}
+
+function drawCar(emoji, x, y, scale=1){
+  ctx.font=`${Math.round(36*scale)}px serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(emoji, x, y);
+}
+
+function drawOverlay(title, sub, btnTxt){
+  ctx.fillStyle='rgba(0,0,0,0.72)'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#fff'; ctx.font='bold 26px system-ui,sans-serif';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(title, W/2, H/2-60);
+  ctx.font='18px system-ui,sans-serif'; ctx.fillStyle='#d1fae5';
+  ctx.fillText(sub, W/2, H/2-20);
+  ctx.fillStyle='#3b82f6'; ctx.beginPath();ctx.roundRect(W/2-70,H/2+20,140,44,8);ctx.fill();
+  ctx.fillStyle='#fff'; ctx.font='bold 16px system-ui,sans-serif';
+  ctx.fillText(btnTxt, W/2, H/2+42);
+}
+
+function gameLoop(){
+  if(state!=='playing') return;
+  const cfg = getLevelConfig(level);
+
+  // Update
+  roadY += cfg.speed;
+  player.x += (LANES[player.targetLane] - player.x) * 0.2;
+
+  spawnTimer++;
+  if(spawnTimer >= cfg.spawnRate){
+    spawnTimer = 0;
+    // Avoid spawning in the same lane as existing close enemies
+    const occupied = enemies.filter(e=>e.y>-120).map(e=>e.lane);
+    let lane;
+    for(let i=0;i<10;i++){ lane=Math.floor(Math.random()*3); if(!occupied.includes(lane)) break; }
+    enemies.push({lane, x:LANES[lane], y:-60, emoji:ENEMY_CARS[Math.floor(Math.random()*ENEMY_CARS.length)], speed:cfg.speed+Math.random()*1.5});
+  }
+
+  enemies.forEach(e=>{ e.y+=e.speed; });
+  enemies = enemies.filter(e=>e.y<H+80);
+
+  // Collision
+  for(const e of enemies){
+    if(Math.abs(e.x-player.x)<22 && Math.abs(e.y-player.y)<42){ onGameOver(); return; }
+  }
+
+  score++;
+  const newLevel = getLevel(score);
+  if(newLevel !== level){ level = newLevel; }
+
+  // Draw
+  drawRoad();
+  enemies.forEach(e=>drawCar(e.emoji,e.x,e.y));
+  drawCar('🚙',player.x,player.y);
+
+  // HUD
+  document.getElementById('scoreDisplay').textContent=score;
+  document.getElementById('levelDisplay').textContent=level+1;
+  document.getElementById('bestDisplay').textContent=getBest();
+
+  rafId = requestAnimationFrame(gameLoop);
+}
+
+function startGame(){
+  state='playing'; score=0; level=0; roadY=0; spawnTimer=0; enemies=[];
+  player.lane=1; player.x=LANES[1]; player.targetLane=1;
+  document.getElementById('startBtn').style.display='none';
+  document.getElementById('nameEntry').style.display='none';
+  cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(gameLoop);
+}
+
+function onGameOver(){
+  state='over';
+  setBest(score);
+  cancelAnimationFrame(rafId);
+  const t = currentLang==='en'?'Game Over!':'انتهت اللعبة!';
+  const s = (currentLang==='en'?'Score: ':'نقاطك: ')+score;
+  const b = currentLang==='en'?'▶ Play Again':'▶ العب مجدداً';
+  drawRoad();
+  drawCar('💥',player.x,player.y);
+  setTimeout(()=>{ drawOverlay(t,s,b); setupClickRestart(); }, 300);
+
+  // Leaderboard
+  if(qualifies(score)){
+    pendingScore=score;
+    document.getElementById('nameEntryMsg').textContent= currentLang==='en'?'🏆 Top 3! Enter your name:':'🏆 دخلت أفضل 3! اكتب اسمك:';
+    document.getElementById('nameEntry').style.display='';
+    setTimeout(()=>document.getElementById('nameInput').focus(),100);
+  }
+  if(typeof showHomePrompt==='function') showHomePrompt();
+}
+
+function setupClickRestart(){
+  canvas.onclick = ()=>{ canvas.onclick=null; startGame(); };
+}
+
+// Touch & keyboard controls
+document.getElementById('leftBtn').addEventListener('pointerdown',()=>{ if(player.targetLane>0) player.targetLane--; });
+document.getElementById('rightBtn').addEventListener('pointerdown',()=>{ if(player.targetLane<2) player.targetLane++; });
+document.addEventListener('keydown',e=>{
+  if(state==='over'){startGame();return;}
+  if(e.key==='ArrowLeft'||e.key==='a') { if(player.targetLane>0) player.targetLane--; }
+  if(e.key==='ArrowRight'||e.key==='d') { if(player.targetLane<2) player.targetLane++; }
+  if(e.key===' '||e.key==='Enter') { if(state==='idle') startGame(); }
+});
+
+// Swipe on canvas
+let touchStartX=0;
+canvas.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;e.preventDefault();},{passive:false});
+canvas.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-touchStartX;
+  if(state==='over'){startGame();return;}
+  if(dx<-30&&player.targetLane>0) player.targetLane--;
+  else if(dx>30&&player.targetLane<2) player.targetLane++;
+  e.preventDefault();
+},{passive:false});
+
+// Leaderboard
+function getLb(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[];}catch{return[];}}
+function saveLb(lb){localStorage.setItem(STORAGE_KEY,JSON.stringify(lb));}
+function qualifies(sc){const lb=getLb();return lb.length<3||sc>lb[lb.length-1].score;}
+function addEntry(name,sc){const lb=getLb();lb.push({name:name.trim()||'?',score:sc});lb.sort((a,b)=>b.score-a.score);lb.splice(3);saveLb(lb);}
+function clearLb(){localStorage.removeItem(STORAGE_KEY);renderLb();}
+function saveScore(){
+  if(!pendingScore)return;
+  addEntry(document.getElementById('nameInput').value.trim(),pendingScore);
+  pendingScore=null; document.getElementById('nameEntry').style.display='none'; document.getElementById('nameInput').value='';
+  renderLb();
+}
+function renderLb(){
+  const lb=getLb();
+  document.getElementById('lbTitle').textContent= currentLang==='en'?'🏆 Top 3 Drivers':'🏆 أفضل 3 سائقين';
+  document.getElementById('clearBtn').textContent= currentLang==='en'?'🗑 Clear':'🗑 مسح';
+  const rows=document.getElementById('lbRows');
+  if(!lb.length){rows.innerHTML=`<div class="lb-empty">${currentLang==='en'?'No scores yet!':'لا توجد نتائج بعد!'}</div>`;return;}
+  rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${e.name}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
+}
+
+// Initial draw
+(function initDraw(){
+  drawRoad();
+  drawCar('🚙',LANES[1],H-90);
+  drawOverlay(
+    currentLang==='en'?'Car Race!':'لعبة السيارات!',
+    currentLang==='en'?'Dodge the cars!':'تجنب السيارات!',
+    currentLang==='en'?'▶ Start':'▶ ابدأ'
+  );
+  setupClickRestart();
+})();
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLb();};
+  renderLb();
+  document.getElementById('startBtn').style.display='block';
+  canvas.onclick=null;
+});
+</script>
+<script src="i18n.js"></script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
+</body></html>
