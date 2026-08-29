@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محوّل الملفات — Word Excel CSV مجاناً | أدواتي</title>
+<meta name="description" content="حوّل ملفات Word وExcel وCSV مجاناً في متصفحك. بدون رفع الملفات، بدون خادم، بدون تسجيل.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+<style>
+.fc-drop{border:2.5px dashed var(--border);border-radius:var(--radius);padding:48px 20px;text-align:center;cursor:pointer;transition:all 0.2s;margin-bottom:16px;background:var(--surface);}
+.fc-drop:hover,.fc-drop.drag-over{border-color:var(--primary);background:var(--primary-light);}
+.fc-drop-icon{font-size:48px;margin-bottom:12px;}
+.fc-drop-text{font-size:16px;font-weight:600;color:var(--text);}
+.fc-drop-sub{font-size:13px;color:var(--text-muted);margin-top:6px;}
+.fc-file-badge{display:flex;align-items:center;gap:12px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:16px;}
+.fc-file-icon{font-size:28px;}
+.fc-file-name{font-weight:700;font-size:14px;word-break:break-all;}
+.fc-file-size{font-size:12px;color:var(--text-muted);}
+.fc-formats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.fc-fmt{padding:6px 14px;border-radius:99px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);color:var(--text-muted);}
+.fc-fmt.supported{background:var(--primary-light);border-color:var(--primary);color:var(--primary);}
+.fc-result{margin-top:16px;}
+.fc-table-wrap{overflow-x:auto;max-height:380px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-sm);}
+.fc-table{width:100%;border-collapse:collapse;font-size:13px;}
+.fc-table th{background:var(--primary);color:#fff;padding:8px 12px;text-align:start;position:sticky;top:0;white-space:nowrap;}
+.fc-table td{padding:7px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+.fc-table tr:nth-child(even) td{background:var(--surface-2);}
+.fc-word-preview{max-height:400px;overflow-y:auto;padding:16px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-size:14px;line-height:1.8;text-align:start;}
+.fc-word-preview h1,.fc-word-preview h2,.fc-word-preview h3{margin:.5em 0 .25em;font-weight:700;}
+.fc-word-preview p{margin:.25em 0;}
+.fc-word-preview table{border-collapse:collapse;width:100%;}
+.fc-word-preview td,.fc-word-preview th{border:1px solid var(--border);padding:4px 8px;}
+.fc-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.fc-privacy{display:flex;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:#15803d;font-weight:600;margin-top:16px;}
+.fc-spinner{display:inline-block;width:18px;height:18px;border:2.5px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:fc-spin .7s linear infinite;vertical-align:middle;}
+@keyframes fc-spin{to{transform:rotate(360deg);}}
+.fc-error{color:#ef4444;font-size:14px;font-weight:600;padding:12px;background:#fee2e2;border-radius:var(--radius-sm);border:1px solid #fca5a5;}
+.fc-sheet-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.fc-sheet-tab{padding:4px 12px;border-radius:6px;font-size:13px;cursor:pointer;border:1px solid var(--border);background:var(--surface-2);}
+.fc-sheet-tab.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">📂</div>
+    <div class="card-title" id="fcTitle">محوّل الملفات</div>
+    <div class="card-subtitle" id="fcSub">حوّل Word وExcel وCSV في متصفحك — بدون رفع ملفات</div>
+    <div class="divider"></div>
+
+    <div class="fc-formats">
+      <span class="fc-fmt supported">📝 Word (.docx)</span>
+      <span class="fc-fmt supported">📊 Excel (.xlsx .xls)</span>
+      <span class="fc-fmt supported">📋 CSV</span>
+      <span class="fc-fmt supported">📄 TXT</span>
+    </div>
+
+    <div class="fc-drop" id="dropZone"
+      onclick="document.getElementById('fileInput').click()"
+      ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+      <div class="fc-drop-icon">📂</div>
+      <div class="fc-drop-text" id="dropText">انقر هنا أو اسحب الملف</div>
+      <div class="fc-drop-sub" id="dropSub">Word · Excel · CSV · TXT — حتى 20MB</div>
+    </div>
+    <input type="file" id="fileInput" style="display:none"
+      accept=".docx,.xlsx,.xls,.csv,.txt"
+      onchange="handleFile(this.files[0])">
+
+    <div id="fileInfo" style="display:none" class="fc-file-badge">
+      <span class="fc-file-icon" id="fileIcon">📄</span>
+      <div>
+        <div class="fc-file-name" id="fileName"></div>
+        <div class="fc-file-size" id="fileSize"></div>
+      </div>
+      <button onclick="resetTool()" class="btn btn-secondary" style="margin-inline-start:auto;padding:4px 12px;font-size:13px;" id="resetBtn">✕</button>
+    </div>
+
+    <div id="statusMsg" style="display:none;padding:12px;font-size:14px;color:var(--text-muted);">
+      <span class="fc-spinner"></span> <span id="statusText">جاري المعالجة...</span>
+    </div>
+
+    <div id="errorMsg" class="fc-error" style="display:none;"></div>
+
+    <div id="resultArea" style="display:none" class="fc-result">
+      <!-- Excel/CSV sheet tabs -->
+      <div id="sheetTabs" class="fc-sheet-tabs" style="display:none"></div>
+      <!-- Table (Excel/CSV) -->
+      <div id="excelResult" style="display:none">
+        <div class="fc-table-wrap"><table class="fc-table" id="dataTable"><thead></thead><tbody></tbody></table></div>
+        <div class="fc-btns">
+          <button class="btn btn-primary" onclick="downloadCSV()" id="dlCsvBtn">⬇️ تحميل CSV</button>
+          <button class="btn btn-secondary" onclick="copyTableText()" id="copyTblBtn">📋 نسخ</button>
+        </div>
+      </div>
+      <!-- Word result -->
+      <div id="wordResult" style="display:none">
+        <div class="fc-word-preview" id="wordPreview" dir="auto"></div>
+        <div class="fc-btns">
+          <button class="btn btn-primary" onclick="downloadHTML()" id="dlHtmlBtn">⬇️ تحميل HTML</button>
+          <button class="btn btn-secondary" onclick="downloadTxt()" id="dlTxtBtn">⬇️ تحميل TXT</button>
+          <button class="btn btn-secondary" onclick="copyWordText()" id="copyWrdBtn">📋 نسخ النص</button>
+        </div>
+      </div>
+      <!-- TXT result -->
+      <div id="txtResult" style="display:none">
+        <div class="fc-word-preview" id="txtPreview" dir="auto" style="white-space:pre-wrap;font-family:monospace;"></div>
+        <div class="fc-btns">
+          <button class="btn btn-secondary" onclick="copyTxtText()" id="copyTxtBtn">📋 نسخ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fc-privacy">
+      🔒 <span id="privacyText">ملفك لا يغادر متصفحك أبداً — المعالجة تتم محلياً بالكامل</span>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const FCT = {
+  ar:{title:'محوّل الملفات',sub:'حوّل Word وExcel وCSV في متصفحك — بدون رفع ملفات',drop:'انقر هنا أو اسحب الملف',dropsub:'Word · Excel · CSV · TXT — حتى 20MB',processing:'جاري المعالجة...',reset:'✕',dlCsv:'⬇️ تحميل CSV',copyTbl:'📋 نسخ',dlHtml:'⬇️ تحميل HTML',dlTxt:'⬇️ تحميل TXT',copyWrd:'📋 نسخ النص',copyTxt:'📋 نسخ',privacy:'ملفك لا يغادر متصفحك أبداً — المعالجة تتم محلياً بالكامل',copied:'تم النسخ!',errType:'نوع الملف غير مدعوم. استخدم: .docx .xlsx .xls .csv .txt',errSize:'حجم الملف كبير جداً (الحد 20MB)',errRead:'فشل في قراءة الملف. تأكد من أن الملف غير تالف.'},
+  en:{title:'File Converter',sub:'Convert Word, Excel & CSV in your browser — no uploads',drop:'Click here or drag your file',dropsub:'Word · Excel · CSV · TXT — up to 20MB',processing:'Processing...',reset:'✕',dlCsv:'⬇️ Download CSV',copyTbl:'📋 Copy',dlHtml:'⬇️ Download HTML',dlTxt:'⬇️ Download TXT',copyWrd:'📋 Copy Text',copyTxt:'📋 Copy',privacy:'Your file never leaves your browser — all processing is local',copied:'Copied!',errType:'File type not supported. Use: .docx .xlsx .xls .csv .txt',errSize:'File too large (max 20MB)',errRead:'Failed to read file. Make sure the file is not corrupted.'},
+  fr:{title:'Convertisseur de fichiers',sub:'Convertissez Word, Excel et CSV dans votre navigateur',drop:'Cliquez ici ou glissez votre fichier',dropsub:'Word · Excel · CSV · TXT — jusqu\'à 20MB',processing:'Traitement en cours...',reset:'✕',dlCsv:'⬇️ Télécharger CSV',copyTbl:'📋 Copier',dlHtml:'⬇️ Télécharger HTML',dlTxt:'⬇️ Télécharger TXT',copyWrd:'📋 Copier le texte',copyTxt:'📋 Copier',privacy:'Votre fichier ne quitte jamais votre navigateur',copied:'Copié!',errType:'Type de fichier non pris en charge. Utilisez: .docx .xlsx .xls .csv .txt',errSize:'Fichier trop volumineux (max 20MB)',errRead:'Échec de la lecture du fichier.'},
+  es:{title:'Conversor de archivos',sub:'Convierte Word, Excel y CSV en tu navegador',drop:'Haz clic aquí o arrastra tu archivo',dropsub:'Word · Excel · CSV · TXT — hasta 20MB',processing:'Procesando...',reset:'✕',dlCsv:'⬇️ Descargar CSV',copyTbl:'📋 Copiar',dlHtml:'⬇️ Descargar HTML',dlTxt:'⬇️ Descargar TXT',copyWrd:'📋 Copiar texto',copyTxt:'📋 Copiar',privacy:'Tu archivo nunca sale de tu navegador',copied:'¡Copiado!',errType:'Tipo de archivo no soportado. Usa: .docx .xlsx .xls .csv .txt',errSize:'Archivo demasiado grande (máx 20MB)',errRead:'Error al leer el archivo.'},
+  de:{title:'Datei-Konverter',sub:'Word, Excel und CSV im Browser konvertieren',drop:'Hier klicken oder Datei hierher ziehen',dropsub:'Word · Excel · CSV · TXT — bis zu 20MB',processing:'Verarbeitung...',reset:'✕',dlCsv:'⬇️ CSV herunterladen',copyTbl:'📋 Kopieren',dlHtml:'⬇️ HTML herunterladen',dlTxt:'⬇️ TXT herunterladen',copyWrd:'📋 Text kopieren',copyTxt:'📋 Kopieren',privacy:'Ihre Datei verlässt nie Ihren Browser',copied:'Kopiert!',errType:'Dateityp nicht unterstützt. Verwenden Sie: .docx .xlsx .xls .csv .txt',errSize:'Datei zu groß (max 20MB)',errRead:'Datei konnte nicht gelesen werden.'},
+  ru:{title:'Конвертер файлов',sub:'Конвертируйте Word, Excel и CSV в браузере',drop:'Нажмите здесь или перетащите файл',dropsub:'Word · Excel · CSV · TXT — до 20MB',processing:'Обработка...',reset:'✕',dlCsv:'⬇️ Скачать CSV',copyTbl:'📋 Копировать',dlHtml:'⬇️ Скачать HTML',dlTxt:'⬇️ Скачать TXT',copyWrd:'📋 Копировать текст',copyTxt:'📋 Копировать',privacy:'Ваш файл никогда не покидает браузер',copied:'Скопировано!',errType:'Тип файла не поддерживается. Используйте: .docx .xlsx .xls .csv .txt',errSize:'Файл слишком большой (макс 20MB)',errRead:'Не удалось прочитать файл.'}
+};
+
+let currentLang = 'ar';
+let currentFile = null;
+let xlsxData = null;
+let wordHtml = '';
+let wordText = '';
+let currentSheet = 0;
+
+function t(key) { return (FCT[currentLang]||FCT.ar)[key]||key; }
+
+function updateUI() {
+  document.getElementById('fcTitle').textContent = t('title');
+  document.getElementById('fcSub').textContent = t('sub');
+  document.getElementById('dropText').textContent = t('drop');
+  document.getElementById('dropSub').textContent = t('dropsub');
+  document.getElementById('privacyText').textContent = t('privacy');
+  document.getElementById('resetBtn').textContent = t('reset');
+  document.getElementById('statusText').textContent = t('processing');
+  document.getElementById('dlCsvBtn').textContent = t('dlCsv');
+  document.getElementById('copyTblBtn').textContent = t('copyTbl');
+  document.getElementById('dlHtmlBtn').textContent = t('dlHtml');
+  document.getElementById('dlTxtBtn').textContent = t('dlTxt');
+  document.getElementById('copyWrdBtn').textContent = t('copyWrd');
+  document.getElementById('copyTxtBtn').textContent = t('copyTxt');
+}
+
+function handleDragOver(e) { e.preventDefault(); document.getElementById('dropZone').classList.add('drag-over'); }
+function handleDragLeave(e) { document.getElementById('dropZone').classList.remove('drag-over'); }
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('dropZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) handleFile(file);
+}
+
+function handleFile(file) {
+  if (!file) return;
+  const MAX = 20 * 1024 * 1024;
+  if (file.size > MAX) { showError(t('errSize')); return; }
+  const ext = file.name.split('.').pop().toLowerCase();
+  const allowed = ['docx','xlsx','xls','csv','txt'];
+  if (!allowed.includes(ext)) { showError(t('errType')); return; }
+
+  currentFile = file;
+  hideError();
+  showFileInfo(file, ext);
+  resetResult();
+  showStatus(true);
+
+  if (ext === 'docx') processDocx(file);
+  else if (ext === 'xlsx' || ext === 'xls') processExcel(file);
+  else if (ext === 'csv') processCSV(file);
+  else if (ext === 'txt') processTxt(file);
+}
+
+function showFileInfo(file, ext) {
+  const icons = {docx:'📝',xlsx:'📊',xls:'📊',csv:'📋',txt:'📄'};
+  document.getElementById('fileIcon').textContent = icons[ext]||'📄';
+  document.getElementById('fileName').textContent = file.name;
+  document.getElementById('fileSize').textContent = formatSize(file.size);
+  document.getElementById('fileInfo').style.display = 'flex';
+}
+
+function formatSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1024*1024) return (b/1024).toFixed(1) + ' KB';
+  return (b/(1024*1024)).toFixed(1) + ' MB';
+}
+
+function showStatus(v) { document.getElementById('statusMsg').style.display = v ? '' : 'none'; }
+function showError(msg) { const e=document.getElementById('errorMsg'); e.textContent=msg; e.style.display=''; showStatus(false); }
+function hideError() { document.getElementById('errorMsg').style.display='none'; }
+function resetResult() {
+  document.getElementById('resultArea').style.display='none';
+  document.getElementById('excelResult').style.display='none';
+  document.getElementById('wordResult').style.display='none';
+  document.getElementById('txtResult').style.display='none';
+  document.getElementById('sheetTabs').style.display='none';
+  document.getElementById('sheetTabs').innerHTML='';
+}
+
+function resetTool() {
+  currentFile=null; xlsxData=null; wordHtml=''; wordText=''; currentSheet=0;
+  document.getElementById('fileInfo').style.display='none';
+  document.getElementById('fileInput').value='';
+  hideError();
+  showStatus(false);
+  resetResult();
+}
+
+/* ---- DOCX ---- */
+function processDocx(file) {
+  loadScript('https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js', ()=>{
+    const reader = new FileReader();
+    reader.onload = e => {
+      const ab = e.target.result;
+      mammoth.convertToHtml({arrayBuffer: ab}).then(res => {
+        wordHtml = res.value;
+        wordText = res.value.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+        document.getElementById('wordPreview').innerHTML = wordHtml || '<p style="color:var(--text-muted)">—</p>';
+        document.getElementById('wordResult').style.display='';
+        document.getElementById('resultArea').style.display='';
+        showStatus(false);
+      }).catch(()=>{ showError(t('errRead')); showStatus(false); });
+    };
+    reader.onerror = ()=>{ showError(t('errRead')); showStatus(false); };
+    reader.readAsArrayBuffer(file);
+  }, ()=>{ showError(t('errRead')); showStatus(false); });
+}
+
+/* ---- EXCEL ---- */
+function processExcel(file) {
+  loadScript('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js', ()=>{
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const wb = XLSX.read(e.target.result, {type:'array'});
+        xlsxData = wb;
+        currentSheet = 0;
+        renderSheetTabs(wb);
+        renderSheet(wb, wb.SheetNames[0]);
+        document.getElementById('excelResult').style.display='';
+        document.getElementById('resultArea').style.display='';
+        showStatus(false);
+      } catch(err){ showError(t('errRead')); showStatus(false); }
+    };
+    reader.onerror = ()=>{ showError(t('errRead')); showStatus(false); };
+    reader.readAsArrayBuffer(file);
+  }, ()=>{ showError(t('errRead')); showStatus(false); });
+}
+
+function renderSheetTabs(wb) {
+  const tabs = document.getElementById('sheetTabs');
+  tabs.innerHTML = '';
+  if (wb.SheetNames.length <= 1) { tabs.style.display='none'; return; }
+  tabs.style.display='flex';
+  wb.SheetNames.forEach((name,i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'fc-sheet-tab' + (i===0?' active':'');
+    btn.textContent = name;
+    btn.onclick = ()=>{
+      currentSheet=i;
+      document.querySelectorAll('.fc-sheet-tab').forEach((b,j)=>b.classList.toggle('active',j===i));
+      renderSheet(wb,name);
+    };
+    tabs.appendChild(btn);
+  });
+}
+
+function renderSheet(wb, sheetName) {
+  const ws = wb.Sheets[sheetName];
+  const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+  const thead = document.querySelector('#dataTable thead');
+  const tbody = document.querySelector('#dataTable tbody');
+  thead.innerHTML=''; tbody.innerHTML='';
+  if (!data.length) return;
+  const headerRow = document.createElement('tr');
+  (data[0]||[]).forEach(cell=>{
+    const th=document.createElement('th'); th.textContent=cell; headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  data.slice(1).forEach(row=>{
+    const tr=document.createElement('tr');
+    row.forEach(cell=>{ const td=document.createElement('td'); td.textContent=cell; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+}
+
+/* ---- CSV ---- */
+function processCSV(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const text = e.target.result;
+      const rows = text.split(/\r?\n/).filter(r=>r.trim()).map(r=>parseCSVRow(r));
+      const thead = document.querySelector('#dataTable thead');
+      const tbody = document.querySelector('#dataTable tbody');
+      thead.innerHTML=''; tbody.innerHTML='';
+      if (!rows.length){ showError(t('errRead')); showStatus(false); return; }
+      const headerRow=document.createElement('tr');
+      rows[0].forEach(cell=>{ const th=document.createElement('th'); th.textContent=cell; headerRow.appendChild(th); });
+      thead.appendChild(headerRow);
+      rows.slice(1).forEach(row=>{
+        const tr=document.createElement('tr');
+        row.forEach(cell=>{ const td=document.createElement('td'); td.textContent=cell; tr.appendChild(td); });
+        tbody.appendChild(tr);
+      });
+      xlsxData = {_csv: text, _name: file.name.replace(/\.csv$/i,'')};
+      document.getElementById('excelResult').style.display='';
+      document.getElementById('resultArea').style.display='';
+      showStatus(false);
+    } catch(err){ showError(t('errRead')); showStatus(false); }
+  };
+  reader.onerror=()=>{ showError(t('errRead')); showStatus(false); };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function parseCSVRow(row) {
+  const result=[]; let cur=''; let inQ=false;
+  for(let i=0;i<row.length;i++){
+    const c=row[i];
+    if(c==='"'){ inQ=!inQ; continue; }
+    if(c===','&&!inQ){ result.push(cur); cur=''; continue; }
+    cur+=c;
+  }
+  result.push(cur);
+  return result;
+}
+
+/* ---- TXT ---- */
+function processTxt(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('txtPreview').textContent = e.target.result;
+    document.getElementById('txtResult').style.display='';
+    document.getElementById('resultArea').style.display='';
+    showStatus(false);
+  };
+  reader.onerror=()=>{ showError(t('errRead')); showStatus(false); };
+  reader.readAsText(file,'UTF-8');
+}
+
+/* ---- Downloads ---- */
+function downloadCSV() {
+  let csv='';
+  if (xlsxData && xlsxData._csv) {
+    csv = xlsxData._csv;
+  } else if (xlsxData) {
+    const ws = xlsxData.Sheets[xlsxData.SheetNames[currentSheet]];
+    csv = XLSX.utils.sheet_to_csv(ws);
+  }
+  if (!csv) return;
+  const name = (currentFile ? currentFile.name.replace(/\.[^.]+$/,'') : 'export') + '.csv';
+  downloadBlob(new Blob(['﻿'+csv,],{type:'text/csv;charset=utf-8'}), name);
+}
+
+function downloadHTML() {
+  if (!wordHtml) return;
+  const full = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:sans-serif;max-width:800px;margin:40px auto;padding:0 20px;line-height:1.7;}table{border-collapse:collapse;width:100%;}td,th{border:1px solid #ccc;padding:4px 8px;}</style></head><body>${wordHtml}</body></html>`;
+  const name = (currentFile ? currentFile.name.replace(/\.docx$/i,'') : 'document') + '.html';
+  downloadBlob(new Blob([full],{type:'text/html;charset=utf-8'}), name);
+}
+
+function downloadTxt() {
+  if (!wordText) return;
+  const name = (currentFile ? currentFile.name.replace(/\.docx$/i,'') : 'document') + '.txt';
+  downloadBlob(new Blob([wordText],{type:'text/plain;charset=utf-8'}), name);
+}
+
+function downloadBlob(blob, name) {
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=name;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig = document.activeElement.textContent;
+    document.activeElement.textContent = t('copied');
+    setTimeout(()=>{ if(document.activeElement) document.activeElement.textContent=orig; },1500);
+  });
+}
+function copyTableText() {
+  const rows=[...document.querySelectorAll('#dataTable tr')];
+  const text=rows.map(r=>[...r.querySelectorAll('th,td')].map(c=>c.textContent).join('\t')).join('\n');
+  navigator.clipboard.writeText(text);
+  const btn=document.getElementById('copyTblBtn');
+  const orig=btn.textContent; btn.textContent=t('copied');
+  setTimeout(()=>btn.textContent=orig,1500);
+}
+function copyWordText() {
+  navigator.clipboard.writeText(wordText);
+  const btn=document.getElementById('copyWrdBtn');
+  const orig=btn.textContent; btn.textContent=t('copied');
+  setTimeout(()=>btn.textContent=orig,1500);
+}
+function copyTxtText() {
+  const text=document.getElementById('txtPreview').textContent;
+  navigator.clipboard.writeText(text);
+  const btn=document.getElementById('copyTxtBtn');
+  const orig=btn.textContent; btn.textContent=t('copied');
+  setTimeout(()=>btn.textContent=orig,1500);
+}
+
+/* ---- Script loader ---- */
+function loadScript(src, onload, onerror) {
+  if (document.querySelector(`script[src="${src}"]`)) { onload(); return; }
+  const s=document.createElement('script');
+  s.src=src; s.onload=onload; s.onerror=onerror||onload;
+  document.head.appendChild(s);
+}
+
+/* ---- i18n hook ---- */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const origSet = window.setLang;
+  window.setLang = function(lang) {
+    origSet && origSet(lang);
+    currentLang = lang;
+    document.documentElement.dir = lang==='ar'?'rtl':'ltr';
+    updateUI();
+  };
+  updateUI();
+});
+</script>
+<script src="i18n.js"></script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/my-tools-site/sw.js');
+</script>
+</body></html>
