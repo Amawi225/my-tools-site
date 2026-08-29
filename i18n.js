@@ -1554,6 +1554,69 @@ function autoTrackRecent() {
   if (TOOL_META[page] && page !== 'index') trackRecent(page);
 }
 
+/* ── Universal "Return to Home" floating prompt ── */
+var _homePromptShown = false;
+var _homePromptTimer = null;
+
+function showHomePrompt() {
+  if (_homePromptShown) return;
+  // Don't show on the homepage itself
+  var page = location.pathname.split('/').pop();
+  if (!page || page === '' || page === 'index.html') return;
+  _homePromptShown = true;
+  if (_homePromptTimer) { clearTimeout(_homePromptTimer); _homePromptTimer = null; }
+
+  var lang = localStorage.getItem('lang') || 'ar';
+  var msgs = {
+    ar: '🏠 العودة للصفحة الرئيسية',
+    en: '🏠 Back to Home',
+    fr: '🏠 Retour à l\'accueil',
+    es: '🏠 Volver al inicio',
+    de: '🏠 Zur Startseite',
+    ru: '🏠 На главную'
+  };
+  var msg = msgs[lang] || msgs.en;
+  var base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+
+  // Inject CSS once
+  if (!document.getElementById('hp-style')) {
+    var s = document.createElement('style');
+    s.id = 'hp-style';
+    s.textContent = [
+      '.hp-prompt{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);',
+      'background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border-radius:99px;',
+      'padding:12px 20px 12px 16px;display:flex;align-items:center;gap:10px;',
+      'box-shadow:0 4px 24px rgba(37,99,235,0.35);z-index:9999;font-weight:700;',
+      'font-size:14px;white-space:nowrap;font-family:inherit;',
+      'animation:hp-up 0.35s cubic-bezier(.4,0,.2,1);}',
+      '@keyframes hp-up{from{transform:translateX(-50%) translateY(80px);opacity:0}',
+      'to{transform:translateX(-50%) translateY(0);opacity:1}}',
+      '.hp-prompt a{color:#fff;text-decoration:none;flex:1;}',
+      '.hp-dismiss{background:rgba(255,255,255,0.2);border:none;color:#fff;',
+      'border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:13px;',
+      'display:flex;align-items:center;justify-content:center;flex-shrink:0;',
+      'font-family:inherit;line-height:1;}'
+    ].join('');
+    document.head.appendChild(s);
+  }
+
+  var prompt = document.createElement('div');
+  prompt.className = 'hp-prompt';
+  prompt.innerHTML = '<a href="' + base + '/index.html">' + msg + '</a>' +
+    '<button class="hp-dismiss" onclick="this.parentNode.remove()" title="Dismiss">✕</button>';
+  document.body.appendChild(prompt);
+
+  // Auto-dismiss after 10 seconds
+  setTimeout(function() { if (prompt.parentNode) prompt.remove(); }, 10000);
+}
+
+function initHomePrompt() {
+  var page = location.pathname.split('/').pop();
+  if (!page || page === '' || page === 'index.html') return;
+  // Show after 15 seconds of being on a tool page
+  _homePromptTimer = setTimeout(showHomePrompt, 15000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
   setLang(detectDefaultLang());
@@ -1562,6 +1625,7 @@ document.addEventListener('DOMContentLoaded', function() {
   injectRelatedTools();
   initPWA();
   autoTrackRecent();
+  initHomePrompt();
   if (document.getElementById('toolsGrid')) {
     renderFavSection();
     renderRecentSection();
