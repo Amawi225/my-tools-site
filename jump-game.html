@@ -58,27 +58,27 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">🦸</div>
-    <div class="card-title">لعبة القفز — منصات</div>
-    <div class="card-subtitle">اقفز بين المنصات واجمع النجوم ⭐ — يمكنك القفز مرتين!</div>
+    <div class="card-title" data-i18n="jump_card_title">لعبة القفز — منصات</div>
+    <div class="card-subtitle" data-i18n="jump_card_desc">اقفز بين المنصات واجمع النجوم مثل ماريو!</div>
     <div class="divider"></div>
 
     <div class="game-wrap">
       <div class="hud">
         <div class="hud-item"><div class="hud-val" id="scoreDisplay">0</div><div class="hud-lbl" id="scoreLbl">نقاط</div></div>
-        <div class="hud-item"><div class="hud-val" id="starsDisplay">0</div><div class="hud-lbl">⭐ نجوم</div></div>
+        <div class="hud-item"><div class="hud-val" id="starsDisplay">0</div><div class="hud-lbl" id="starsLbl">⭐ نجوم</div></div>
         <div class="hud-item"><div class="hud-val" id="bestDisplay">0</div><div class="hud-lbl" id="bestLbl">أفضل</div></div>
       </div>
 
       <canvas id="gameCanvas" width="380" height="320"></canvas>
 
-      <button class="touch-jump-btn" id="jumpBtn">⬆ اقفز!</button>
+      <button class="touch-jump-btn" id="jumpBtn">⬆</button>
     </div>
 
     <div class="name-entry" id="nameEntry" style="display:none;">
       <div class="name-entry-msg" id="nameEntryMsg">🏆 دخلت أفضل 3! اكتب اسمك:</div>
       <div class="name-entry-row">
         <input type="text" id="nameInput" maxlength="20" placeholder="اسمك" onkeydown="if(event.key==='Enter')saveScore()">
-        <button class="btn btn-primary" onclick="saveScore()" id="saveBtn">💾 حفظ</button>
+        <button class="btn btn-primary" onclick="saveScore()" id="saveBtn">💾</button>
       </div>
     </div>
 
@@ -106,6 +106,55 @@ const W = 380, H = 320;
 const GRAVITY = 0.55, JUMP_V = -12.5;
 const STORAGE_KEY = 'adawati_jump_lb';
 const MEDALS=['🥇','🥈','🥉'], MEDAL_CLS=['gold','silver','bronze'];
+
+const JT = {
+  ar:{points:'نقاط',stars:'⭐ نجوم',best:'أفضل',jump:'⬆ اقفز!',
+      top3:'🏆 أفضل 3 لاعبين',clear:'🗑 مسح',no_scores:'لا توجد نتائج بعد!',
+      top3_enter:'🏆 دخلت أفضل 3! اكتب اسمك:',your_name:'اسمك',save:'💾 حفظ',
+      game_title:'لعبة القفز!',press_start:'اضغط قفز أو مسّ الشاشة للبدء',start:'▶ ابدأ',
+      game_over:'انتهت اللعبة!',score_lbl:'نقاط',play_again:'▶ مجدداً'},
+  en:{points:'Points',stars:'⭐ Stars',best:'Best',jump:'⬆ Jump!',
+      top3:'🏆 Top 3 Jumpers',clear:'🗑 Clear',no_scores:'No scores yet!',
+      top3_enter:'🏆 Top 3! Enter your name:',your_name:'Your name',save:'💾 Save',
+      game_title:'Jump Game!',press_start:'Press SPACE or tap to start',start:'▶ Start',
+      game_over:'Game Over!',score_lbl:'Score',play_again:'▶ Again'},
+  fr:{points:'Points',stars:'⭐ Étoiles',best:'Meilleur',jump:'⬆ Sauter!',
+      top3:'🏆 Top 3 Sauteurs',clear:'🗑 Effacer',no_scores:'Aucun score!',
+      top3_enter:'🏆 Top 3! Votre prénom:',your_name:'Votre prénom',save:'💾 Sauver',
+      game_title:'Jeu de Saut!',press_start:'Appuyez ESPACE ou touchez',start:'▶ Démarrer',
+      game_over:'Jeu Terminé!',score_lbl:'Score',play_again:'▶ Rejouer'},
+  es:{points:'Puntos',stars:'⭐ Estrellas',best:'Mejor',jump:'⬆ Saltar!',
+      top3:'🏆 Top 3 Saltadores',clear:'🗑 Borrar',no_scores:'¡Sin puntuaciones!',
+      top3_enter:'🏆 Top 3! Tu nombre:',your_name:'Tu nombre',save:'💾 Guardar',
+      game_title:'¡Juego de Salto!',press_start:'Pulsa ESPACIO o toca',start:'▶ Iniciar',
+      game_over:'¡Juego Terminado!',score_lbl:'Puntos',play_again:'▶ De nuevo'},
+  de:{points:'Punkte',stars:'⭐ Sterne',best:'Beste',jump:'⬆ Springen!',
+      top3:'🏆 Top 3 Springer',clear:'🗑 Löschen',no_scores:'Noch keine Punkte!',
+      top3_enter:'🏆 Top 3! Dein Name:',your_name:'Dein Name',save:'💾 Speichern',
+      game_title:'Sprungspiel!',press_start:'LEERTASTE oder Tippen',start:'▶ Starten',
+      game_over:'Spiel vorbei!',score_lbl:'Punkte',play_again:'▶ Nochmal'},
+  ru:{points:'Очки',stars:'⭐ Звёзды',best:'Лучший',jump:'⬆ Прыгать!',
+      top3:'🏆 Топ 3 Прыгунов',clear:'🗑 Очистить',no_scores:'Нет результатов!',
+      top3_enter:'🏆 Топ 3! Введите имя:',your_name:'Ваше имя',save:'💾 Сохранить',
+      game_title:'Игра-прыжок!',press_start:'Пробел или коснитесь экрана',start:'▶ Старт',
+      game_over:'Игра окончена!',score_lbl:'Очки',play_again:'▶ Ещё раз'},
+};
+function tr(k){return(JT[currentLang]||JT.ar)[k]||JT.ar[k]||k;}
+function updateText(){
+  document.getElementById('scoreLbl').textContent=tr('points');
+  document.getElementById('starsLbl').textContent=tr('stars');
+  document.getElementById('bestLbl').textContent=tr('best');
+  document.getElementById('jumpBtn').textContent=tr('jump');
+  document.getElementById('saveBtn').textContent=tr('save');
+  document.getElementById('nameInput').placeholder=tr('your_name');
+  renderLb();
+}
+function resizeCanvas(){
+  const w=Math.min(W,canvas.parentElement.offsetWidth||W);
+  canvas.style.width=w+'px';
+  canvas.style.height=Math.round(w*H/W)+'px';
+}
+
 let currentLang = 'ar';
 let state = 'idle', rafId = null;
 let score = 0, stars = 0, camX = 0, speed = 3, spawnX = W+100;
@@ -281,15 +330,18 @@ function startGame(){
 function onGameOver(){
   state='over';
   cancelAnimationFrame(rafId);
-  const best=getBest();
   const sc=score+stars*5;
+  const best=getBest();
   if(sc>best) localStorage.setItem('adawati_jump_best',sc);
   draw();
-  const t=currentLang==='en'?'Game Over!':'انتهت اللعبة!';
-  const sub=`${currentLang==='en'?'Score':'نقاط'}: ${score}  ⭐${stars}`;
-  const btn=currentLang==='en'?'▶ Again':'▶ مجدداً';
-  setTimeout(()=>{drawOverlay(t,sub,btn);canvas.onclick=()=>{canvas.onclick=null;startGame();};},200);
-  if(qualifies(sc)){pendingScore=sc;document.getElementById('nameEntry').style.display='';setTimeout(()=>document.getElementById('nameInput').focus(),100);}
+  const sub=`${tr('score_lbl')}: ${score}  ⭐${stars}`;
+  setTimeout(()=>{drawOverlay(tr('game_over'),sub,tr('play_again'));canvas.onclick=()=>{canvas.onclick=null;startGame();};},200);
+  if(qualifies(sc)){
+    pendingScore=sc;
+    document.getElementById('nameEntryMsg').textContent=tr('top3_enter');
+    document.getElementById('nameEntry').style.display='';
+    setTimeout(()=>document.getElementById('nameInput').focus(),100);
+  }
   if(typeof showHomePrompt==='function')showHomePrompt();
 }
 
@@ -302,10 +354,10 @@ function clearLb(){localStorage.removeItem(STORAGE_KEY);renderLb();}
 function saveScore(){if(!pendingScore)return;addEntry(document.getElementById('nameInput').value.trim(),pendingScore);pendingScore=null;document.getElementById('nameEntry').style.display='none';document.getElementById('nameInput').value='';renderLb();}
 function renderLb(){
   const lb=getLb();
-  document.getElementById('lbTitle').textContent=currentLang==='en'?'🏆 Top 3 Jumpers':'🏆 أفضل 3 لاعبين';
-  document.getElementById('clearBtn').textContent=currentLang==='en'?'🗑 Clear':'🗑 مسح';
+  document.getElementById('lbTitle').textContent=tr('top3');
+  document.getElementById('clearBtn').textContent=tr('clear');
   const rows=document.getElementById('lbRows');
-  if(!lb.length){rows.innerHTML=`<div class="lb-empty">${currentLang==='en'?'No scores yet!':'لا توجد نتائج بعد!'}</div>`;return;}
+  if(!lb.length){rows.innerHTML=`<div class="lb-empty">${tr('no_scores')}</div>`;return;}
   rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${e.name}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
 }
 
@@ -321,18 +373,25 @@ document.addEventListener('keydown',e=>{
 });
 
 document.addEventListener('DOMContentLoaded',()=>{
+  resizeCanvas();
+  window.addEventListener('resize',resizeCanvas);
   const origSet=window.setLang;
-  window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLb();};
-  renderLb();
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+    updateText();
+    if(state==='idle') drawInitOverlay();
+  };
+  updateText();
+  drawInitOverlay();
+});
+function drawInitOverlay(){
   drawSky();
   ctx.font='34px serif';ctx.textAlign='center';ctx.textBaseline='bottom';
   ctx.fillText('🦸',player.x+player.w/2,player.y+player.h);
-  drawOverlay(
-    currentLang==='en'?'Jump Game!':'لعبة القفز!',
-    currentLang==='en'?'Press SPACE or tap to start':'اضغط قفز أو مسّ الشاشة للبدء',
-    currentLang==='en'?'▶ Start':'▶ ابدأ'
-  );
-});
+  drawOverlay(tr('game_title'),tr('press_start'),tr('start'));
+}
 </script>
 <script src="i18n.js"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
