@@ -221,7 +221,7 @@ function flipCard(card){
       matched++;
       document.getElementById('pairsCount').textContent=matched;
       flipped=[]; locked=false;
-      if(matched===8) onWin(moves);
+      if(matched===8){ onWin(moves); if(typeof showHomePrompt==='function') showHomePrompt(); }
     } else {
       setTimeout(()=>{
         a.classList.remove('flipped'); b.classList.remove('flipped');
