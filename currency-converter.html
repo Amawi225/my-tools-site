@@ -1,23 +1,68 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>محول العملات | Free Currency Converter — Live Rates</title>
-<meta name="description" content="Free currency converter with live exchange rates. محول العملات بأسعار حية مجاناً — حول بين أكثر من 30 عملة عالمية.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محول العملات | Currency Converter — Live Exchange Rates | أدواتي</title>
+<meta name="description" content="Free currency converter with live exchange rates updated every 4 hours. Convert USD, EUR, GBP, SAR, AED, OMR, EGP and 25+ more currencies. Works offline too. محول العملات بأسعار حية مجاناً.">
+<meta name="keywords" content="currency converter, exchange rate, محول العملات, سعر الصرف, dollar to riyal, دولار ريال, euro to pound, تحويل عملات">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati2027.github.io/my-tools-site/currency-converter.html">
 <link rel="stylesheet" href="style.css">
+<style>
+.cur-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+.cur-row > div{flex:1;min-width:120px;}
+.swap-btn{width:46px;height:46px;border:2px solid var(--border);border-radius:var(--radius-sm);
+  background:var(--surface-2);cursor:pointer;font-size:20px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;transition:background .15s;}
+.swap-btn:hover{background:var(--primary-light);}
+.result-main{font-size:40px;font-weight:900;color:var(--primary);line-height:1.1;word-break:break-all;}
+.result-rate{font-size:14px;color:var(--text-muted);margin-top:6px;}
+.rate-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:12px;color:var(--text-muted);margin-top:8px;flex-wrap:wrap;}
+.refresh-btn{background:none;border:1.5px solid var(--border);border-radius:99px;
+  padding:5px 14px;cursor:pointer;font-size:12px;color:var(--primary);
+  font-family:inherit;transition:background .15s;}
+.refresh-btn:hover{background:var(--primary-light);}
+.refresh-btn:disabled{opacity:.5;cursor:default;}
+.status-row{display:flex;align-items:center;gap:6px;}
+.status-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.dot-green{background:#22c55e;} .dot-yellow{background:#eab308;} .dot-red{background:#ef4444;}
+.quick-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px;}
+.quick-btn{padding:5px 13px;border:1.5px solid var(--border);border-radius:99px;
+  background:var(--surface-2);cursor:pointer;font-size:13px;font-weight:600;
+  font-family:inherit;color:var(--text);transition:all .15s;}
+.quick-btn:hover,.quick-btn.active{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
+.rate-table{width:100%;border-collapse:collapse;font-size:13px;}
+.rate-table th{text-align:start;font-weight:700;color:var(--text-muted);font-size:11px;
+  text-transform:uppercase;letter-spacing:.04em;padding:6px 4px;border-bottom:2px solid var(--border);}
+.rate-table td{padding:9px 4px;border-bottom:1px solid var(--border);}
+.rate-table tr:last-child td{border:none;}
+.rate-table td:not(:first-child){text-align:end;}
+.rate-table th:not(:first-child){text-align:end;}
+.info-box{margin-top:20px;padding:18px 20px;background:var(--surface-2);
+  border-radius:var(--radius-sm);border:1px solid var(--border);}
+.info-box h3{font-size:15px;font-weight:800;margin:0 0 10px;}
+.info-box p{font-size:13px;color:var(--text-muted);line-height:1.7;margin:0 0 6px;}
+.info-box p:last-child{margin:0;}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0;}
+.faq-item:last-child{border:none;padding-bottom:0;}
+.faq-q{font-weight:700;font-size:14px;cursor:pointer;display:flex;
+  justify-content:space-between;align-items:center;gap:8px;user-select:none;}
+.faq-a{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:8px;display:none;}
+.faq-item.open .faq-a{display:block;}
+.faq-arrow{transition:transform .2s;font-size:12px;flex-shrink:0;}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+</style>
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
     <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
     <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
@@ -29,140 +74,403 @@
     </div>
   </div>
 </div></nav>
+
 <main><div class="tool-page">
   <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fefce8;">💱</div>
-    <div class="card-title" data-i18n="currency_title">محول العملات</div>
-    <div class="card-subtitle" data-i18n="currency_sub">أسعار صرف حية من الإنترنت</div>
+    <div class="card-title" id="curTitle">محول العملات</div>
+    <div class="card-subtitle" id="curSub">أسعار صرف حية — محدّثة كل 4 ساعات</div>
     <div class="divider"></div>
-    <label data-i18n="currency_amount">المبلغ</label>
-    <input type="number" id="amount" value="1" oninput="convert()">
-    <div class="row">
+
+    <label id="amtLbl">المبلغ</label>
+    <input type="number" id="amount" value="1" min="0" oninput="convert()" style="font-size:20px;font-weight:700;">
+
+    <div class="cur-row" style="margin-top:12px;">
       <div>
-        <label data-i18n="currency_from">من</label>
-        <select id="fromCurr" onchange="convert()"></select>
+        <label id="fromLbl">من</label>
+        <select id="fromCurr" onchange="onFromChange()"></select>
       </div>
-      <div style="display:flex;align-items:flex-end;padding-bottom:2px;">
-        <button onclick="swapCurrencies()" style="width:44px;height:44px;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;" title="swap">⇄</button>
+      <div style="display:flex;align-items:flex-end;padding-bottom:2px;flex:0;">
+        <button class="swap-btn" onclick="swapCurrencies()" title="Swap">⇄</button>
       </div>
       <div>
-        <label data-i18n="currency_to">إلى</label>
+        <label id="toLbl">إلى</label>
         <select id="toCurr" onchange="convert()"></select>
       </div>
     </div>
-    <div id="result" class="result-box success" style="margin-top:20px;">
-      <div class="result-value" id="resultVal" style="font-size:36px;"></div>
-      <div class="result-label" id="rateLabel"></div>
+
+    <!-- Quick "convert to" shortcuts -->
+    <div class="quick-row" id="quickRow"></div>
+
+    <!-- Result -->
+    <div class="result-box success" id="resultBox">
+      <div class="result-main" id="resultVal">—</div>
+      <div class="result-rate" id="rateLabel"></div>
     </div>
-    <div id="loading" style="text-align:center;padding:16px;color:var(--text-muted);display:none;">⏳ جاري تحميل أسعار اليوم...</div>
-    <div id="rateStatus" style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:8px;min-height:18px;"></div>
+
+    <!-- Status bar -->
+    <div class="rate-meta">
+      <div class="status-row">
+        <div class="status-dot dot-yellow" id="statusDot"></div>
+        <span id="statusText">جاري التحميل...</span>
+      </div>
+      <button class="refresh-btn" id="refreshBtn" onclick="forceRefresh()">
+        🔄 <span id="refreshLbl">تحديث</span>
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Rate table -->
+    <div id="tableWrap" style="display:none;">
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;" id="tableTitle">تحويلات شائعة</div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th id="thCurr">العملة</th>
+            <th id="thRate">السعر (1 وحدة)</th>
+            <th id="thAmt">المبلغ المحوّل</th>
+          </tr>
+        </thead>
+        <tbody id="rateBody"></tbody>
+      </table>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="info-box">
+      <h3 id="infoTitle">📌 كيف يعمل محول العملات؟</h3>
+      <p id="infoP1">يجلب هذا المحول أسعار الصرف الحية من مصادر موثوقة وتُحدَّث كل 4 ساعات. آخر سعر تم تحميله يُحفظ في متصفحك تلقائياً للاستخدام دون إنترنت.</p>
+      <p id="infoP2">الدولار الأمريكي (USD) هو العملة المرجعية، وتُحسب منه جميع أسعار التحويل الأخرى.</p>
+      <p id="infoP3">الأسعار المعروضة هي أسعار الصرف الوسطية الحقيقية — دون أي هامش أو رسوم بنكية.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div style="margin-top:20px;">
+      <div style="font-size:15px;font-weight:800;margin-bottom:12px;" id="faqTitle">❓ أسئلة شائعة</div>
+      <div id="faqItems"></div>
+    </div>
+
   </div>
 </div></main>
+
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
-    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-links">
+      <a href="about.html" data-i18n="footer_about">من نحن</a>
+      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+    </div>
     <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
   </div>
 </footer>
+
 <script>
+/* ── Currency data ── */
 const CURRENCIES = {
-  USD:'🇺🇸 USD',EUR:'🇪🇺 EUR',GBP:'🇬🇧 GBP',SAR:'🇸🇦 SAR',AED:'🇦🇪 AED',
-  KWD:'🇰🇼 KWD',QAR:'🇶🇦 QAR',BHD:'🇧🇭 BHD',OMR:'🇴🇲 OMR',EGP:'🇪🇬 EGP',
-  JOD:'🇯🇴 JOD',TRY:'🇹🇷 TRY',INR:'🇮🇳 INR',PKR:'🇵🇰 PKR',BDT:'🇧🇩 BDT',
-  MYR:'🇲🇾 MYR',IDR:'🇮🇩 IDR',THB:'🇹🇭 THB',JPY:'🇯🇵 JPY',CNY:'🇨🇳 CNY',
-  KRW:'🇰🇷 KRW',CAD:'🇨🇦 CAD',AUD:'🇦🇺 AUD',CHF:'🇨🇭 CHF',SEK:'🇸🇪 SEK',
-  NOK:'🇳🇴 NOK',DKK:'🇩🇰 DKK',PLN:'🇵🇱 PLN',RUB:'🇷🇺 RUB',BRL:'🇧🇷 BRL',
-  MXN:'🇲🇽 MXN',ZAR:'🇿🇦 ZAR'
+  USD:'US Dollar',EUR:'Euro',GBP:'British Pound',SAR:'Saudi Riyal',AED:'UAE Dirham',
+  KWD:'Kuwaiti Dinar',QAR:'Qatari Riyal',BHD:'Bahraini Dinar',OMR:'Omani Rial',
+  EGP:'Egyptian Pound',JOD:'Jordanian Dinar',TRY:'Turkish Lira',INR:'Indian Rupee',
+  PKR:'Pakistani Rupee',BDT:'Bangladeshi Taka',MYR:'Malaysian Ringgit',
+  IDR:'Indonesian Rupiah',THB:'Thai Baht',JPY:'Japanese Yen',CNY:'Chinese Yuan',
+  KRW:'South Korean Won',CAD:'Canadian Dollar',AUD:'Australian Dollar',
+  CHF:'Swiss Franc',SEK:'Swedish Krona',NOK:'Norwegian Krone',DKK:'Danish Krone',
+  PLN:'Polish Zloty',RUB:'Russian Ruble',BRL:'Brazilian Real',
+  MXN:'Mexican Peso',ZAR:'South African Rand'
 };
-let rates = null;
-const RATES_CACHE_KEY = 'adawati_rates_v2';
-const RATES_CACHE_TTL = 4 * 60 * 60 * 1000; // 4 hours
 
-function loadCachedRates() {
-  try {
-    const c = JSON.parse(localStorage.getItem(RATES_CACHE_KEY));
-    if (c && c.r && c.ts && (Date.now() - c.ts < RATES_CACHE_TTL)) return c;
-  } catch(e) {}
-  return null;
-}
-function saveCache(r) {
-  try { localStorage.setItem(RATES_CACHE_KEY, JSON.stringify({r, ts: Date.now()})); } catch(e) {}
-}
-function setStatus(msg) {
-  const el = document.getElementById('rateStatus');
-  if (el) el.textContent = msg;
-}
+const QUICK = ['USD','EUR','GBP','SAR','AED','OMR','EGP','JPY','CNY','INR'];
+const TABLE_CODES = ['USD','EUR','GBP','SAR','AED','KWD','EGP','INR','JPY','CNY','TRY','CAD','AUD'];
 
-function populateSelects() {
-  const from = document.getElementById('fromCurr');
-  const to = document.getElementById('toCurr');
-  let fromHTML = '', toHTML = '';
-  Object.entries(CURRENCIES).forEach(([code, label]) => {
-    fromHTML += `<option value="${code}" ${code==='USD'?'selected':''}>${label}</option>`;
-    toHTML   += `<option value="${code}" ${code==='SAR'?'selected':''}>${label}</option>`;
-  });
-  from.innerHTML = fromHTML;
-  to.innerHTML   = toHTML;
-}
-
-const FALLBACK_RATES = {
+const FALLBACK = {
   USD:1,EUR:0.92,GBP:0.79,SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,BHD:0.377,
   OMR:0.385,EGP:48.5,JOD:0.71,TRY:32.1,INR:83.2,PKR:278,BDT:110,MYR:4.7,
   IDR:15700,THB:35.6,JPY:149,CNY:7.24,KRW:1320,CAD:1.36,AUD:1.53,CHF:0.89,
   SEK:10.4,NOK:10.6,DKK:6.88,PLN:4.0,RUB:90,BRL:4.96,MXN:17.1,ZAR:18.7
 };
 
-async function tryFetch(url, parseRates) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 5000);
+/* ── Translations ── */
+const CUR_T = {
+  ar:{
+    title:'محول العملات',sub:'أسعار صرف حية — محدّثة كل 4 ساعات',
+    amt:'المبلغ',from:'من',to:'إلى',refresh:'تحديث',
+    loading:'جاري تحميل الأسعار...',
+    live:'أسعار حية',cached:'أسعار محفوظة',fallback:'أسعار تقريبية (غير متصل)',
+    ago_min:'دقيقة',ago_hr:'ساعة',just_now:'الآن',updated:'آخر تحديث:',
+    src_label:'المصدر:',
+    table_title:'تحويلات شائعة',th_curr:'العملة',th_rate:'السعر لـ 1 وحدة',th_amt:'المبلغ المحوّل',
+    info_title:'📌 كيف يعمل محول العملات؟',
+    info_p1:'يجلب هذا المحول أسعار الصرف الحية من مصادر موثوقة وتُحدَّث كل 4 ساعات. آخر سعر تم تحميله يُحفظ في متصفحك تلقائياً للاستخدام دون إنترنت.',
+    info_p2:'الدولار الأمريكي (USD) هو العملة المرجعية، وتُحسب منه جميع أسعار التحويل الأخرى.',
+    info_p3:'الأسعار المعروضة هي أسعار الصرف الوسطية الحقيقية — دون أي هامش أو رسوم بنكية.',
+    faq_title:'❓ أسئلة شائعة',
+    faq:[
+      {q:'هل الأسعار دقيقة وحية؟',a:'الأسعار تُجلب من API مباشرة وتُحدَّث كل 4 ساعات. قد تختلف قليلاً عن أسعار البنوك بسبب هامش الصرف الذي تضيفه البنوك.'},
+      {q:'ماذا يحدث إذا لم يكن هناك إنترنت؟',a:'يستخدم المحول آخر أسعار تم تحميلها ومحفوظة في متصفحك. إذا لم تكن موجودة، تُستخدم أسعار تقريبية فقط كمرجع عام.'},
+      {q:'لماذا يختلف السعر هنا عن سعر البنك؟',a:'البنوك تضيف هامش ربح على سعر الصرف الرسمي. السعر هنا هو سعر الصرف الوسطي الحقيقي بدون أي هامش إضافي.'},
+      {q:'كم عدد العملات المدعومة؟',a:'32 عملة عالمية تشمل الدولار، الريالات الخليجية، اليورو، الجنيه، الروبية، الين، اليوان وغيرها.'},
+      {q:'هل يمكنني الاعتماد عليه للعمليات المالية؟',a:'للأغراض الاستعلامية والتقريبية نعم. للعمليات المالية الرسمية راجع دائماً سعر البنك أو منصة الصرافة المعتمدة.'},
+    ]
+  },
+  en:{
+    title:'Currency Converter',sub:'Live exchange rates — updated every 4 hours',
+    amt:'Amount',from:'From',to:'To',refresh:'Refresh',
+    loading:'Loading exchange rates...',
+    live:'Live rates',cached:'Cached rates',fallback:'Approximate rates (offline)',
+    ago_min:'min ago',ago_hr:'hr ago',just_now:'just now',updated:'Updated',
+    src_label:'Source:',
+    table_title:'Popular conversions',th_curr:'Currency',th_rate:'Rate (per 1 unit)',th_amt:'Converted amount',
+    info_title:'📌 How does the currency converter work?',
+    info_p1:'This converter fetches live exchange rates from trusted sources, updated every 4 hours. The last loaded rates are saved in your browser automatically for offline use.',
+    info_p2:'The US Dollar (USD) is used as the base currency, and all other conversion rates are calculated from it.',
+    info_p3:'The rates shown are real mid-market exchange rates — with no bank markup or hidden fees.',
+    faq_title:'❓ FAQ',
+    faq:[
+      {q:'Are the rates accurate and live?',a:'Rates are fetched directly from an API and updated every 4 hours. They may differ slightly from bank rates due to the exchange markup banks add.'},
+      {q:'What happens if there\'s no internet?',a:'The converter uses the last downloaded rates saved in your browser. If none exist, approximate fallback rates are used for general reference only.'},
+      {q:'Why does the rate differ from my bank\'s rate?',a:'Banks add a profit margin on top of the mid-market rate. The rate shown here is the real mid-market rate without any markup.'},
+      {q:'How many currencies are supported?',a:'32 major world currencies including Dollar, Gulf Riyals, Euro, Pound, Rupee, Yen, Yuan and more.'},
+      {q:'Can I use it for real financial transactions?',a:'For reference and estimation purposes, yes. For official financial operations, always check with your bank or licensed exchange provider.'},
+    ]
+  },
+  fr:{
+    title:'Convertisseur de devises',sub:'Taux de change en direct — mis à jour toutes les 4 heures',
+    amt:'Montant',from:'De',to:'À',refresh:'Actualiser',
+    loading:'Chargement des taux...',
+    live:'Taux en direct',cached:'Taux en cache',fallback:'Taux approximatifs (hors ligne)',
+    ago_min:'min',ago_hr:'h',just_now:'maintenant',updated:'Mis à jour:',src_label:'Source:',
+    table_title:'Conversions populaires',th_curr:'Devise',th_rate:'Taux (pour 1 unité)',th_amt:'Montant converti',
+    info_title:'📌 Comment fonctionne le convertisseur?',
+    info_p1:'Ce convertisseur récupère les taux de change en direct depuis des sources fiables, mis à jour toutes les 4 heures. Les derniers taux sont sauvegardés dans votre navigateur pour une utilisation hors ligne.',
+    info_p2:'Le Dollar américain (USD) est utilisé comme devise de référence pour tous les calculs.',
+    info_p3:'Les taux affichés sont les taux médians réels — sans marge ni frais bancaires.',
+    faq_title:'❓ Questions fréquentes',
+    faq:[
+      {q:'Les taux sont-ils précis et en direct?',a:'Les taux sont récupérés directement depuis une API et mis à jour toutes les 4 heures. Ils peuvent légèrement différer des taux bancaires.'},
+      {q:'Que se passe-t-il sans internet?',a:'Le convertisseur utilise les derniers taux téléchargés et sauvegardés dans votre navigateur.'},
+      {q:'Pourquoi le taux diffère-t-il de ma banque?',a:'Les banques ajoutent une marge bénéficiaire. Le taux affiché ici est le taux médian réel sans marge.'},
+      {q:'Combien de devises sont supportées?',a:'32 devises mondiales majeures incluant Dollar, Riyals du Golfe, Euro, Livre, Roupie, Yen, Yuan et plus.'},
+      {q:'Puis-je l\'utiliser pour des transactions financières?',a:'Pour référence et estimation oui. Pour les opérations officielles, consultez toujours votre banque.'},
+    ]
+  },
+  es:{
+    title:'Convertidor de Divisas',sub:'Tipos de cambio en vivo — actualizados cada 4 horas',
+    amt:'Cantidad',from:'De',to:'A',refresh:'Actualizar',
+    loading:'Cargando tasas...',
+    live:'Tasas en vivo',cached:'Tasas en caché',fallback:'Tasas aproximadas (sin conexión)',
+    ago_min:'min',ago_hr:'h',just_now:'ahora mismo',updated:'Actualizado:',src_label:'Fuente:',
+    table_title:'Conversiones populares',th_curr:'Divisa',th_rate:'Tasa (por 1 unidad)',th_amt:'Cantidad convertida',
+    info_title:'📌 ¿Cómo funciona el convertidor?',
+    info_p1:'Este convertidor obtiene tipos de cambio en vivo de fuentes confiables, actualizados cada 4 horas. Las últimas tasas se guardan en tu navegador para uso sin conexión.',
+    info_p2:'El Dólar estadounidense (USD) se usa como moneda base para todos los cálculos.',
+    info_p3:'Las tasas mostradas son tasas medias de mercado reales — sin márgenes ni comisiones bancarias.',
+    faq_title:'❓ Preguntas frecuentes',
+    faq:[
+      {q:'¿Son precisas las tasas?',a:'Las tasas se obtienen directamente de una API y se actualizan cada 4 horas.'},
+      {q:'¿Qué pasa sin internet?',a:'El convertidor usa las últimas tasas descargadas guardadas en tu navegador.'},
+      {q:'¿Por qué difiere del banco?',a:'Los bancos añaden un margen de beneficio. La tasa aquí es la tasa media real sin margen.'},
+      {q:'¿Cuántas divisas están soportadas?',a:'32 monedas mundiales principales.'},
+      {q:'¿Puedo usarlo para transacciones?',a:'Para referencia sí. Para operaciones oficiales consulta siempre tu banco.'},
+    ]
+  },
+  de:{
+    title:'Währungsrechner',sub:'Live-Wechselkurse — alle 4 Stunden aktualisiert',
+    amt:'Betrag',from:'Von',to:'Nach',refresh:'Aktualisieren',
+    loading:'Wechselkurse werden geladen...',
+    live:'Live-Kurse',cached:'Gespeicherte Kurse',fallback:'Ungefähre Kurse (offline)',
+    ago_min:'Min.',ago_hr:'Std.',just_now:'gerade eben',updated:'Aktualisiert:',src_label:'Quelle:',
+    table_title:'Beliebte Umrechnungen',th_curr:'Währung',th_rate:'Kurs (pro 1 Einheit)',th_amt:'Umgerechneter Betrag',
+    info_title:'📌 Wie funktioniert der Währungsrechner?',
+    info_p1:'Dieser Rechner ruft Live-Wechselkurse aus vertrauenswürdigen Quellen ab, alle 4 Stunden aktualisiert. Die zuletzt geladenen Kurse werden in Ihrem Browser gespeichert.',
+    info_p2:'Der US-Dollar (USD) wird als Basiswährung für alle Berechnungen verwendet.',
+    info_p3:'Die angezeigten Kurse sind echte Mittelkurse — ohne Bankaufschlag.',
+    faq_title:'❓ Häufige Fragen',
+    faq:[
+      {q:'Sind die Kurse genau?',a:'Kurse werden direkt von einer API abgerufen und alle 4 Stunden aktualisiert.'},
+      {q:'Was passiert ohne Internet?',a:'Der Rechner verwendet die zuletzt heruntergeladenen und gespeicherten Kurse.'},
+      {q:'Warum unterscheidet sich der Kurs von meiner Bank?',a:'Banken fügen einen Gewinnaufschlag hinzu. Der hier angezeigte Kurs ist der echte Mittelkurs.'},
+      {q:'Wie viele Währungen werden unterstützt?',a:'32 wichtige Weltwährungen.'},
+      {q:'Kann ich es für Finanztransaktionen nutzen?',a:'Zur Referenz ja. Für offizielle Transaktionen immer Ihre Bank konsultieren.'},
+    ]
+  },
+  ru:{
+    title:'Конвертер валют',sub:'Живые курсы — обновляются каждые 4 часа',
+    amt:'Сумма',from:'Из',to:'В',refresh:'Обновить',
+    loading:'Загрузка курсов...',
+    live:'Живые курсы',cached:'Кэшированные курсы',fallback:'Приблизительные курсы (офлайн)',
+    ago_min:'мин',ago_hr:'ч',just_now:'только что',updated:'Обновлено:',src_label:'Источник:',
+    table_title:'Популярные конверсии',th_curr:'Валюта',th_rate:'Курс (за 1 ед.)',th_amt:'Сконвертированная сумма',
+    info_title:'📌 Как работает конвертер валют?',
+    info_p1:'Этот конвертер получает живые курсы обмена из надёжных источников, обновляемые каждые 4 часа. Последние загруженные курсы сохраняются в вашем браузере для работы офлайн.',
+    info_p2:'Доллар США (USD) используется как базовая валюта для всех расчётов.',
+    info_p3:'Показанные курсы — реальные среднерыночные курсы без банковской наценки.',
+    faq_title:'❓ Частые вопросы',
+    faq:[
+      {q:'Курсы точные и живые?',a:'Курсы получаются напрямую из API и обновляются каждые 4 часа.'},
+      {q:'Что происходит без интернета?',a:'Конвертер использует последние загруженные курсы, сохранённые в браузере.'},
+      {q:'Почему курс отличается от банковского?',a:'Банки добавляют маржу к среднерыночному курсу. Здесь показан реальный курс без наценки.'},
+      {q:'Сколько валют поддерживается?',a:'32 основные мировые валюты.'},
+      {q:'Можно использовать для финансовых операций?',a:'Для справки — да. Для официальных операций всегда уточняйте в банке.'},
+    ]
+  }
+};
+
+/* ── State ── */
+const CACHE_KEY = 'adawati_rates_v3';
+const CACHE_TTL = 4 * 60 * 60 * 1000;
+let rates = null, rateSource = '', rateTs = 0, curLang = 'ar';
+
+function D() { return CUR_T[curLang] || CUR_T.en; }
+
+/* ── Cache ── */
+function loadCache() {
   try {
-    const res = await fetch(url, {signal: ctrl.signal});
-    clearTimeout(t);
-    const data = await res.json();
-    const r = parseRates(data);
-    if (r && r.EUR) { r.USD = r.USD || 1; return r; }
-    return null;
-  } catch(e) { clearTimeout(t); return null; }
+    const c = JSON.parse(localStorage.getItem(CACHE_KEY));
+    if (c && c.r && c.ts && (Date.now() - c.ts < CACHE_TTL)) return c;
+  } catch(e) {}
+  return null;
+}
+function saveCache(r, src) {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify({r, ts:Date.now(), src})); } catch(e) {}
 }
 
-async function fetchRates() {
-  // 1. Use cache immediately if fresh
-  const cached = loadCachedRates();
-  if (cached) {
-    rates = cached.r;
-    const mins = Math.round((Date.now() - cached.ts) / 60000);
-    setStatus(mins < 60 ? `✅ أسعار محدّثة (منذ ${mins} دقيقة)` : `✅ آخر تحديث: ${Math.round(mins/60)} ساعة`);
-    convert();
-    // Refresh in background without blocking UI
-    tryLiveFetch();
-    return;
-  }
-  // 2. No cache — fetch live
-  document.getElementById('loading').style.display = 'block';
-  const ok = await tryLiveFetch();
-  document.getElementById('loading').style.display = 'none';
-  if (!ok) {
-    // 3. All APIs failed — use static fallback silently
-    rates = FALLBACK_RATES;
-    setStatus('⚠️ أسعار تقريبية (لا يوجد اتصال) — يمكن استخدام الأداة');
-    convert();
-  }
+/* ── Status UI ── */
+function setStatus(type, text) {
+  document.getElementById('statusDot').className = 'status-dot ' +
+    (type==='ok'?'dot-green':type==='warn'?'dot-yellow':'dot-red');
+  document.getElementById('statusText').textContent = text;
 }
+function ageText(ts) {
+  const d = D(), mins = Math.round((Date.now()-ts)/60000);
+  if (mins < 2) return d.just_now;
+  if (mins < 60) return d.updated + ' ' + mins + ' ' + d.ago_min;
+  return d.updated + ' ' + Math.round(mins/60) + ' ' + d.ago_hr;
+}
+
+/* ── Selects ── */
+function populateSelects() {
+  const from = document.getElementById('fromCurr');
+  const to   = document.getElementById('toCurr');
+  let fH='', tH='';
+  Object.entries(CURRENCIES).forEach(([code, name]) => {
+    const opt = `<option value="${code}">${code} — ${name}</option>`;
+    fH += opt; tH += opt;
+  });
+  from.innerHTML = fH; to.innerHTML = tH;
+  from.value = 'USD'; to.value = 'SAR';
+}
+
+function buildQuickRow() {
+  const wrap = document.getElementById('quickRow');
+  wrap.innerHTML = '';
+  QUICK.forEach(code => {
+    const btn = document.createElement('button');
+    btn.className = 'quick-btn' + (code==='SAR'?' active':'');
+    btn.textContent = code;
+    btn.onclick = () => {
+      document.getElementById('toCurr').value = code;
+      wrap.querySelectorAll('.quick-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      convert();
+    };
+    wrap.appendChild(btn);
+  });
+}
+
+function onFromChange() {
+  convert();
+  buildRateTable();
+}
+
+/* ── Number formatting ── */
+function fmtRate(v) {
+  if (!v) return '—';
+  if (v >= 10000) return Math.round(v).toLocaleString();
+  if (v >= 100)   return v.toFixed(2);
+  if (v >= 1)     return v.toFixed(4);
+  return v.toFixed(6);
+}
+function fmtNum(v) {
+  if (!v && v!==0) return '—';
+  if (v >= 10000) return v.toLocaleString(undefined,{maximumFractionDigits:0});
+  if (v >= 100)   return v.toLocaleString(undefined,{maximumFractionDigits:2});
+  if (v >= 1)     return v.toFixed(4);
+  return v.toFixed(6);
+}
+
+/* ── Conversion ── */
+function convert() {
+  if (!rates) return;
+  const amount  = parseFloat(document.getElementById('amount').value) || 0;
+  const from    = document.getElementById('fromCurr').value;
+  const to      = document.getElementById('toCurr').value;
+  const usdFrom = rates[from] || 1;
+  const usdTo   = rates[to]   || 1;
+  const result  = (amount / usdFrom) * usdTo;
+  const rate1   = (1 / usdFrom) * usdTo;
+  document.getElementById('resultVal').textContent = fmtNum(result) + ' ' + to;
+  document.getElementById('rateLabel').textContent = `1 ${from} = ${fmtRate(rate1)} ${to}`;
+  buildRateTable();
+}
+
+function swapCurrencies() {
+  const f = document.getElementById('fromCurr');
+  const t = document.getElementById('toCurr');
+  [f.value, t.value] = [t.value, f.value];
+  convert();
+}
+
+/* ── Rate table ── */
+function buildRateTable() {
+  if (!rates) return;
+  const from   = document.getElementById('fromCurr').value;
+  const amount = parseFloat(document.getElementById('amount').value) || 1;
+  const usdFrom = rates[from] || 1;
+  const tbody  = document.getElementById('rateBody');
+  tbody.innerHTML = '';
+  TABLE_CODES.filter(c => c !== from).forEach(code => {
+    const r = rates[code]; if (!r) return;
+    const rate1 = (1/usdFrom)*r;
+    const converted = (amount/usdFrom)*r;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><strong>${code}</strong> <span style="color:var(--text-muted);font-size:11px;">${CURRENCIES[code]||''}</span></td><td>${fmtRate(rate1)}</td><td><strong>${fmtNum(converted)}</strong></td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('tableWrap').style.display = '';
+}
+
+/* ── API fetching ── */
+async function tryFetch(url, parse) {
+  const ctrl = new AbortController();
+  const tmr = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const res  = await fetch(url, {signal: ctrl.signal});
+    clearTimeout(tmr);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const r    = parse(data);
+    if (r && r.USD && r.EUR && r.SAR) return r;
+    return null;
+  } catch(e) { clearTimeout(tmr); return null; }
+}
+
+const APIS = [
+  ['open.er-api.com',
+    () => tryFetch('https://open.er-api.com/v6/latest/USD', d => d.rates)],
+  ['frankfurter.app',
+    () => tryFetch('https://api.frankfurter.app/latest?from=USD',
+      d => d.rates ? Object.assign({USD:1}, d.rates) : null)],
+  ['exchangerate-api.com',
+    () => tryFetch('https://api.exchangerate-api.com/v4/latest/USD', d => d.rates)],
+];
 
 async function tryLiveFetch() {
-  const attempts = [
-    () => tryFetch('https://open.er-api.com/v6/latest/USD', d => d.rates),
-    () => tryFetch('https://api.frankfurter.app/latest?from=USD', d => Object.assign({USD:1}, d.rates)),
-    () => tryFetch('https://api.exchangerate-api.com/v4/latest/USD', d => d.rates),
-  ];
-  for (const attempt of attempts) {
-    const r = await attempt();
+  for (const [src, fn] of APIS) {
+    const r = await fn();
     if (r) {
-      rates = r;
-      saveCache(r);
-      setStatus('✅ أسعار حية محدّثة الآن');
-      document.getElementById('loading').style.display = 'none';
+      rates = r; rateSource = src; rateTs = Date.now();
+      saveCache(r, src);
+      setStatus('ok', D().live + ' · ' + src + ' · ' + ageText(rateTs));
       convert();
       return true;
     }
@@ -170,28 +478,92 @@ async function tryLiveFetch() {
   return false;
 }
 
-function convert() {
-  if (!rates) return;
-  const amount = parseFloat(document.getElementById('amount').value) || 0;
-  const from = document.getElementById('fromCurr').value;
-  const to = document.getElementById('toCurr').value;
-  const fromRate = rates[from] || 1;
-  const toRate = rates[to] || 1;
-  const result = (amount / fromRate) * toRate;
-  document.getElementById('resultVal').textContent = result.toFixed(4).replace(/\.?0+$/, '') + ' ' + to;
-  const rate1 = (1 / fromRate) * toRate;
-  document.getElementById('rateLabel').textContent = `1 ${from} = ${rate1.toFixed(4)} ${to}`;
-  document.getElementById('result').classList.add('show');
+async function fetchRates() {
+  const cached = loadCache();
+  if (cached) {
+    rates = cached.r; rateSource = cached.src || ''; rateTs = cached.ts;
+    setStatus('ok', D().cached + ' · ' + rateSource + ' · ' + ageText(rateTs));
+    convert();
+    tryLiveFetch(); // silent background refresh
+    return;
+  }
+  setStatus('warn', D().loading);
+  const ok = await tryLiveFetch();
+  if (!ok) {
+    rates = FALLBACK; rateSource = 'offline'; rateTs = 0;
+    setStatus('warn', D().fallback);
+    convert();
+  }
 }
 
-function swapCurrencies() {
-  const f = document.getElementById('fromCurr'), t = document.getElementById('toCurr');
-  const tmp = f.value; f.value = t.value; t.value = tmp;
-  convert();
+async function forceRefresh() {
+  const btn = document.getElementById('refreshBtn');
+  btn.disabled = true;
+  setStatus('warn', D().loading);
+  localStorage.removeItem(CACHE_KEY);
+  const ok = await tryLiveFetch();
+  if (!ok) {
+    rates = rates || FALLBACK;
+    setStatus('warn', D().fallback);
+    convert();
+  }
+  btn.disabled = false;
 }
 
-populateSelects();
-fetchRates();
+/* ── FAQ ── */
+function buildFAQ() {
+  const items = D().faq || [];
+  const wrap  = document.getElementById('faqItems');
+  wrap.innerHTML = '';
+  items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'faq-item';
+    div.innerHTML = `<div class="faq-q">${item.q}<span class="faq-arrow">▾</span></div><div class="faq-a">${item.a}</div>`;
+    div.querySelector('.faq-q').onclick = () => div.classList.toggle('open');
+    wrap.appendChild(div);
+  });
+}
+
+/* ── Text update ── */
+function updateText() {
+  const d = D();
+  document.getElementById('curTitle').textContent   = d.title;
+  document.getElementById('curSub').textContent     = d.sub;
+  document.getElementById('amtLbl').textContent     = d.amt;
+  document.getElementById('fromLbl').textContent    = d.from;
+  document.getElementById('toLbl').textContent      = d.to;
+  document.getElementById('refreshLbl').textContent = d.refresh;
+  document.getElementById('tableTitle').textContent = d.table_title;
+  document.getElementById('thCurr').textContent     = d.th_curr;
+  document.getElementById('thRate').textContent     = d.th_rate;
+  document.getElementById('thAmt').textContent      = d.th_amt;
+  document.getElementById('infoTitle').textContent  = d.info_title;
+  document.getElementById('infoP1').textContent     = d.info_p1;
+  document.getElementById('infoP2').textContent     = d.info_p2;
+  document.getElementById('infoP3').textContent     = d.info_p3;
+  document.getElementById('faqTitle').textContent   = d.faq_title;
+  buildFAQ();
+  if (rateTs) setStatus('ok', d.live + ' · ' + rateSource + ' · ' + ageText(rateTs));
+  else if (rates === FALLBACK) setStatus('warn', d.fallback);
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+  var _orig = window.setLang;
+  window.setLang = function(lang) {
+    if (_orig) _orig(lang);
+    curLang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    updateText();
+  };
+  curLang = localStorage.getItem('lang') || 'ar';
+  populateSelects();
+  buildQuickRow();
+  updateText();
+  fetchRates();
+});
 </script>
 <script src="i18n.js?v=26"></script>
-</body></html>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
+</body>
+</html>
