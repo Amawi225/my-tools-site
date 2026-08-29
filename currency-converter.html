@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -89,18 +89,32 @@ function populateSelects() {
   to.innerHTML   = toHTML;
 }
 
+const FALLBACK_RATES = {
+  USD:1,EUR:0.92,GBP:0.79,SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,BHD:0.377,
+  OMR:0.385,EGP:48.5,JOD:0.71,TRY:32.1,INR:83.2,PKR:278,BDT:110,MYR:4.7,
+  IDR:15700,THB:35.6,JPY:149,CNY:7.24,KRW:1320,CAD:1.36,AUD:1.53,CHF:0.89,
+  SEK:10.4,NOK:10.6,DKK:6.88,PLN:4.0,RUB:90,BRL:4.96,MXN:17.1,ZAR:18.7
+};
+
+async function tryFetch(url, parseRates) {
+  const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
+  const data = await res.json();
+  const r = parseRates(data);
+  if (r && r.EUR) { r.USD = r.USD || 1; return r; }
+  return null;
+}
+
 async function fetchRates() {
   document.getElementById('loading').style.display = 'block';
-  const apis = [
-    'https://open.er-api.com/v6/latest/USD',
-    'https://api.exchangerate-api.com/v4/latest/USD'
+  const attempts = [
+    () => tryFetch('https://open.er-api.com/v6/latest/USD', d => d.rates),
+    () => tryFetch('https://api.frankfurter.app/latest?from=USD', d => { const r = Object.assign({USD:1}, d.rates); return r; }),
+    () => tryFetch('https://api.exchangerate-api.com/v4/latest/USD', d => d.rates),
   ];
-  for (const url of apis) {
+  for (const attempt of attempts) {
     try {
-      const res = await fetch(url);
-      const data = await res.json();
-      const r = data.rates || data.conversion_rates;
-      if (r && r.EUR) {
+      const r = await attempt();
+      if (r) {
         rates = r;
         document.getElementById('loading').style.display = 'none';
         convert();
@@ -108,10 +122,10 @@ async function fetchRates() {
       }
     } catch(e) {}
   }
-  // Both APIs failed — use approximate fallback rates silently
+  // All APIs failed — use approximate offline rates
   document.getElementById('loading').style.display = 'none';
   document.getElementById('offline').style.display = 'block';
-  rates = {USD:1,EUR:0.92,GBP:0.79,SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,OMR:0.385,JOD:0.71,EGP:48.5,TRY:32.1,INR:83.2,JPY:149,CNY:7.24,CAD:1.36,AUD:1.53,CHF:0.89};
+  rates = FALLBACK_RATES;
   convert();
 }
 
