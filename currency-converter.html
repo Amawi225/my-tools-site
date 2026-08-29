@@ -449,7 +449,7 @@ async function tryFetch(url, parse) {
     if (!res.ok) return null;
     const data = await res.json();
     const r    = parse(data);
-    if (r && r.USD && r.EUR && Object.keys(r).length >= 10) return r;
+    if (r && r.EUR && Object.keys(r).length >= 10) { if (!r.USD) r.USD = 1; return r; }
     return null;
   } catch(e) { clearTimeout(tmr); return null; }
 }
