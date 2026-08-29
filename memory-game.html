@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعبة الذاكرة — أدواتي</title>
+<meta name="description" content="العب لعبة الذاكرة — طابق البطاقات وتحدَّ نفسك باقل عدد من الحركات!">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
+<style>
+.mem-stats{display:flex;gap:16px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
+.mem-stat{background:var(--surface-2);border:1px solid var(--border);border-radius:99px;padding:6px 18px;font-size:14px;font-weight:600;}
+.mem-stat span{color:var(--primary);font-size:17px;font-weight:800;}
+.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto;}
+.mem-card{aspect-ratio:1;border-radius:var(--radius-sm);cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform 0.35s cubic-bezier(.4,0,.2,1);user-select:none;}
+.mem-card.flipped,.mem-card.matched{transform:rotateY(180deg);}
+.mem-card.matched{cursor:default;}
+.mem-face,.mem-back{position:absolute;inset:0;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.mem-back{background:linear-gradient(135deg,var(--primary),var(--accent));font-size:28px;}
+.mem-face{background:var(--surface-2);border:2px solid var(--border-focus);transform:rotateY(180deg);font-size:36px;}
+.mem-card.matched .mem-face{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-color:#22c55e;}
+.mem-win{text-align:center;padding:20px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:var(--radius-lg);border:2px solid #22c55e;font-size:18px;font-weight:700;color:#15803d;display:none;}
+.mem-win.show{display:block;}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand">أدواتي</a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="about.html" data-i18n="nav_about">من نحن</a>
+    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
+        <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
+        <a onclick="setLang('de')">🇩🇪 Deutsch</a><a onclick="setLang('ru')">🇷🇺 Русский</a>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="card">
+    <div class="card-icon" style="background:#fef9c3;">🃏</div>
+    <div class="card-title" data-i18n="memory_card_title">لعبة الذاكرة</div>
+    <div class="card-subtitle" data-i18n="memory_card_desc">طابق البطاقات واختبر ذاكرتك</div>
+    <div class="divider"></div>
+
+    <div class="mem-stats">
+      <div class="mem-stat" id="movesStatEl">حركات: <span id="movesCount">0</span></div>
+      <div class="mem-stat" id="pairsStatEl">أزواج: <span id="pairsCount">0</span>/8</div>
+      <button class="btn btn-secondary" onclick="initGame()" id="memNewBtn" style="padding:6px 18px;font-size:14px;">🔄 جديدة</button>
+    </div>
+
+    <div class="mem-win" id="winMsg">🎉 رائع! أكملت اللعبة في <span id="finalMoves"></span> حركة!</div>
+    <div class="mem-grid" id="memGrid"></div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const MT = {
+  ar:{moves:'حركات:',pairs:'أزواج:',newgame:'🔄 جديدة',win:'🎉 رائع! أكملت اللعبة في {m} حركة!'},
+  en:{moves:'Moves:',pairs:'Pairs:',newgame:'🔄 New Game',win:'🎉 Amazing! You finished in {m} moves!'},
+  fr:{moves:'Coups:',pairs:'Paires:',newgame:'🔄 Nouveau',win:'🎉 Bravo! Terminé en {m} coups!'},
+  es:{moves:'Movimientos:',pairs:'Parejas:',newgame:'🔄 Nuevo',win:'🎉 ¡Increíble! Terminaste en {m} movimientos!'},
+  de:{moves:'Züge:',pairs:'Paare:',newgame:'🔄 Neu',win:'🎉 Super! In {m} Zügen fertig!'},
+  ru:{moves:'Ходы:',pairs:'Пары:',newgame:'🔄 Новая',win:'🎉 Отлично! Завершено за {m} ходов!'}
+};
+
+const EMOJIS = ['🦁','🐯','🦊','🐼','🐨','🦄','🐸','🐧'];
+let flipped=[], matched=0, moves=0, locked=false, currentLang='ar';
+
+function shuffle(arr){return arr.sort(()=>Math.random()-0.5);}
+
+function initGame(){
+  moves=0; matched=0; flipped=[]; locked=false;
+  document.getElementById('movesCount').textContent='0';
+  document.getElementById('pairsCount').textContent='0';
+  document.getElementById('winMsg').classList.remove('show');
+  const cards = shuffle([...EMOJIS,...EMOJIS]);
+  const grid = document.getElementById('memGrid');
+  grid.innerHTML='';
+  cards.forEach((emoji,i)=>{
+    const card = document.createElement('div');
+    card.className='mem-card';
+    card.dataset.emoji=emoji;
+    card.dataset.idx=i;
+    card.innerHTML=`<div class="mem-back">🎴</div><div class="mem-face">${emoji}</div>`;
+    card.addEventListener('click',()=>flipCard(card));
+    grid.appendChild(card);
+  });
+  updateStatText();
+}
+
+function flipCard(card){
+  if(locked||card.classList.contains('flipped')||card.classList.contains('matched')) return;
+  card.classList.add('flipped');
+  flipped.push(card);
+  if(flipped.length===2){
+    locked=true; moves++;
+    document.getElementById('movesCount').textContent=moves;
+    const [a,b]=flipped;
+    if(a.dataset.emoji===b.dataset.emoji){
+      a.classList.add('matched'); b.classList.add('matched');
+      matched++;
+      document.getElementById('pairsCount').textContent=matched;
+      flipped=[]; locked=false;
+      if(matched===8){
+        const t=MT[currentLang]||MT.ar;
+        const wm=document.getElementById('winMsg');
+        wm.textContent=t.win.replace('{m}',moves);
+        wm.classList.add('show');
+        document.getElementById('finalMoves').textContent=moves;
+      }
+    } else {
+      setTimeout(()=>{
+        a.classList.remove('flipped'); b.classList.remove('flipped');
+        flipped=[]; locked=false;
+      },900);
+    }
+  }
+}
+
+function updateStatText(){
+  const t=MT[currentLang]||MT.ar;
+  const ms=document.getElementById('movesStatEl');
+  const ps=document.getElementById('pairsStatEl');
+  ms.innerHTML=`${t.moves} <span id="movesCount">${moves}</span>`;
+  ps.innerHTML=`${t.pairs} <span id="pairsCount">${matched}</span>/8`;
+  document.getElementById('memNewBtn').textContent=t.newgame;
+}
+
+const _origSetLang2 = window.setLang;
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+    updateStatText();
+  };
+  initGame();
+});
+</script>
+<script src="i18n.js"></script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/my-tools-site/sw.js');
+</script>
+</body></html>
