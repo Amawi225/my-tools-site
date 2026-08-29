@@ -440,7 +440,8 @@ function filterTools() {
   cards.forEach(card => {
     const catMatch = !!q || activeCat === 'all' || card.dataset.cat === activeCat;
     const searchMatch = !q || (card.dataset.search || '').toLowerCase().includes(q) || card.textContent.toLowerCase().includes(q);
-    const show = catMatch && searchMatch;
+    const omanHidden = window._hideOmanTools && card.dataset.cat === 'oman';
+    const show = catMatch && searchMatch && !omanHidden;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
