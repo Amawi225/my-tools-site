@@ -1643,6 +1643,10 @@ function renderCountrySection(countryCode) {
   const ref = favSection || toolsGrid;
   parent.insertBefore(section, ref);
   injectStarBtns();
+
+  // Hide the Oman category tab for non-Oman users — it only filters Oman-specific tools
+  const omanTab = document.querySelector('.cat-tab[data-cat="oman"]');
+  if (omanTab) omanTab.style.display = countryCode === 'OM' ? '' : 'none';
 }
 
 async function initCountryDetect() {
