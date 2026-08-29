@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v19';
+const CACHE = 'adawati-v20';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -77,7 +77,21 @@ self.addEventListener('fetch', e => {
     );
     return;
   }
-  // Cache-first for everything else (static assets)
+  // Network-first for HTML pages — always fresh, cache as offline fallback
+  const isHTML = url.pathname.endsWith('.html') || url.pathname.endsWith('/');
+  if (isHTML) {
+    e.respondWith(
+      fetch(e.request).then(resp => {
+        if (resp.status === 200) {
+          const clone = resp.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return resp;
+      }).catch(() => caches.match(e.request))
+    );
+    return;
+  }
+  // Cache-first for static assets (CSS, JS, images, fonts)
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request).then(resp => {
       if (resp.status === 200) {
