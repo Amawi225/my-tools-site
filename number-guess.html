@@ -257,6 +257,7 @@ function makeGuess(){
     document.getElementById('inputRow').style.display = 'none';
     gameOver = true;
     onWin(tries);
+    if(typeof showHomePrompt==='function') showHomePrompt();
   } else if(g > secret){
     span.className='high'; hist.prepend(span);
     const hint=document.getElementById('hintMsg');
