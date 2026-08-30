@@ -67,8 +67,8 @@
       <option value="15" data-currency="ر.س" data-name="السعودية 🇸🇦">السعودية — 15%</option>
       <option value="5" data-currency="د.إ" data-name="الإمارات 🇦🇪">الإمارات — 5%</option>
       <option value="10" data-currency="د.ب" data-name="البحرين 🇧🇭">البحرين — 10%</option>
-      <option value="0" data-currency="ر.ق" data-name="قطر 🇶🇦">قطر — 0%</option>
-      <option value="0" data-currency="د.ك" data-name="الكويت 🇰🇼">الكويت — 0%</option>
+      <option value="0" data-currency="ر.ق" data-name="قطر 🇶🇦">قطر — غير مطبقة</option>
+      <option value="0" data-currency="د.ك" data-name="الكويت 🇰🇼">الكويت — غير مطبقة</option>
     </select>
 
     <label for="vatMode" data-i18n="vat_mode_lbl">نوع الحساب</label>
@@ -133,12 +133,12 @@
           </tr>
           <tr style="border-top:1px solid var(--border);">
             <td style="padding:10px 12px;">🇶🇦 قطر</td>
-            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#64748b;">0%</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#64748b;">غير مطبقة *</td>
             <td style="padding:10px 12px;text-align:center;">—</td>
           </tr>
           <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
             <td style="padding:10px 12px;">🇰🇼 الكويت</td>
-            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#64748b;">0%</td>
+            <td style="padding:10px 12px;text-align:center;font-weight:700;color:#64748b;">غير مطبقة *</td>
             <td style="padding:10px 12px;text-align:center;">—</td>
           </tr>
         </tbody>
@@ -187,7 +187,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">الأرقام بوحدة العملة المحلية لكل دولة. قطر والكويت: 0% حالياً.</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">الأرقام بوحدة العملة المحلية لكل دولة. * قطر والكويت لم تُطبّقا ضريبة القيمة المضافة حتى الآن.</p>
   </div>
 
   <div class="card" style="margin-top:16px;">
@@ -313,6 +313,9 @@ function calculate() {
     taxLbl + ' (' + rate + '%): <strong style="color:#ca8a04;">' + taxAmount.toFixed(3) + ' ' + currency + '</strong><br>' +
     totalLbl + ': <strong style="color:#16a34a;">' + afterTax.toFixed(3) + ' ' + currency + '</strong>';
 
+  if (rate === 0) {
+    breakdown.innerHTML += '<br><em style="font-size:12px;color:#64748b;">⚠️ لم تُطبَّق ضريبة القيمة المضافة في هذه الدولة حتى الآن.</em>';
+  }
   document.getElementById('vatResult').style.display = 'block';
 }
 
