@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/image-compressor.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ضاغط الصور — بدون رفع","url":"https://adawati2027.github.io/my-tools-site/image-compressor.html","description":"ضغط الصور مجاناً داخل المتصفح. لا يتم رفع صورك لأي خادم. يدعم JPG وPNG وWebP. ضغط يصل لـ90%.","applicationCategory":"MultimediaApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل صوري آمنة عند الضغط؟","acceptedAnswer":{"@type":"Answer","text":"نعم، الضغط يتم داخل متصفحك بالكامل ولا يتم رفع أي صورة إلى خادم. ملفاتك لا تغادر جهازك."}},{"@type":"Question","name":"ما صيغ الصور المدعومة؟","acceptedAnswer":{"@type":"Answer","text":"يدعم الضاغط صيغ JPG/JPEG وPNG وWebP. يمكنك أيضاً تحويل الصورة إلى صيغة مختلفة أثناء الضغط."}},{"@type":"Question","name":"كم يمكن تقليل حجم الصورة؟","acceptedAnswer":{"@type":"Answer","text":"يمكن تقليل الحجم من 10% إلى 90% حسب الصورة ومستوى الجودة المختار. معظم الصور يمكن ضغطها 50-70% مع الحفاظ على جودة مقبولة للويب."}},{"@type":"Question","name":"هل الضغط يقلل جودة الصورة؟","acceptedAnswer":{"@type":"Answer","text":"الضغط بنسبة عالية يقلل الجودة قليلاً. للاستخدام على الويب، جودة 75-85% مثالية وتوفر توازناً ممتازاً بين الحجم والجودة."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ضاغط الصور — بدون رفع","url":"https://adawati2027.github.io/my-tools-site/image-compressor.html","description":"ضغط الصور مجاناً داخل المتصفح. لا يتم رفع صورك لأي خادم. يدعم JPG وPNG وWebP. ضغط يصل لـ90%.","applicationCategory":"MultimediaApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل تُرسل الصور إلى أي خادم؟","acceptedAnswer":{"@type":"Answer","text":"لا. جميع عمليات الضغط تتم داخل المتصفح مباشرة. ملفاتك لا تغادر جهازك أبداً ولا تُرفع إلى أي خادم."}},{"@type":"Question","name":"ما الصيغ المدعومة؟","acceptedAnswer":{"@type":"Answer","text":"يدعم المضغاط صيغ JPG/JPEG وPNG وWebP. يحوّل الصور الأخرى إلى JPEG تلقائياً."}},{"@type":"Question","name":"كم يمكن أن تصل نسبة الضغط؟","acceptedAnswer":{"@type":"Answer","text":"تتراوح نسبة الضغط عادةً بين 40% و80% بحسب الصورة وجودة الضغط المختارة. صور JPG ذات الجودة العالية الأصلية تستجيب أفضل للضغط."}},{"@type":"Question","name":"هل يؤثر الضغط على جودة الصورة؟","acceptedAnswer":{"@type":"Answer","text":"يستخدم المضغاط خوارزمية ضغط مرئي (Lossy) تُحسّن حجم الملف مع الحفاظ على جودة مقبولة بصرياً. كلما زادت نسبة الضغط انخفضت الجودة قليلاً."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 <style>
@@ -136,16 +136,20 @@
   <div class="card" style="margin-top:16px;">
     <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" data-i18n="ic_faq1_q">هل يُمكن ضغط PNG بدون خسارة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" data-i18n="ic_faq1_a">PNG يُحوَّل إلى JPEG للضغط (مع خسارة طفيفة). إذا أردت PNG شفافاً بدون خسارة، قلّل الأبعاد بدلاً من الجودة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تُرسل الصور إلى أي خادم؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. جميع عمليات الضغط تتم داخل المتصفح مباشرة. ملفاتك لا تغادر جهازك أبداً ولا تُرفع إلى أي خادم.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" data-i18n="ic_faq2_q">ما الجودة الموصى بها لمواقع الويب؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" data-i18n="ic_faq2_a">70-80% تُعطي توازناً جيداً بين الحجم والجودة. للصور التي تُرفع على وسائل التواصل 60-75% كافية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الصيغ المدعومة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يدعم المضغاط صيغ JPG/JPEG وPNG وWebP. يحوّل الصور الأخرى إلى JPEG تلقائياً.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" data-i18n="ic_faq3_q">لماذا الصورة المضغوطة أحياناً أكبر؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" data-i18n="ic_faq3_a">إذا كانت الصورة الأصلية بجودة منخفضة جداً أو تنسيق PNG، قد لا يُقلّل الضغط حجمها. جرّب تخفيض الجودة أكثر.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم يمكن أن تصل نسبة الضغط؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تتراوح نسبة الضغط عادةً بين 40% و80% بحسب الصورة وجودة الضغط المختارة. صور JPG ذات الجودة العالية الأصلية تستجيب أفضل للضغط.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يؤثر الضغط على جودة الصورة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يستخدم المضغاط خوارزمية ضغط مرئي (Lossy) تُحسّن حجم الملف مع الحفاظ على جودة مقبولة بصرياً. كلما زادت نسبة الضغط انخفضت الجودة قليلاً.</p>
     </details>
   </div>
 </div></main>
