@@ -113,7 +113,7 @@
     <div class="rate-meta">
       <div class="status-row">
         <div class="status-dot dot-yellow" id="statusDot"></div>
-        <span id="statusText">جاري التحميل...</span>
+        <span id="statusText"></span>
       </div>
       <button class="refresh-btn" id="refreshBtn" onclick="forceRefresh()">
         🔄 <span id="refreshLbl">تحديث</span>
@@ -195,7 +195,7 @@ const CUR_T = {
     title:'محول العملات',sub:'أسعار صرف حية — محدّثة كل 4 ساعات',
     amt:'المبلغ',from:'من',to:'إلى',refresh:'تحديث',
     loading:'جاري تحميل الأسعار...',
-    live:'أسعار حية',cached:'أسعار محفوظة',fallback:'أسعار تقريبية (غير متصل)',fallback_cached:'⚠️ تعذّر تحديث الأسعار — آخر حفظ:',
+    live:'أسعار حية',cached:'أسعار محفوظة',fallback:'⚠️ تعذر تحديث الأسعار — يُعرض آخر سعر محفوظ',fallback_cached:'⚠️ تعذّر تحديث الأسعار — آخر حفظ:',
     ago_min:'دقيقة',ago_hr:'ساعة',just_now:'الآن',updated:'آخر تحديث:',
     src_label:'المصدر:',
     table_title:'تحويلات شائعة',th_curr:'العملة',th_rate:'السعر لـ 1 وحدة',th_amt:'المبلغ المحوّل',
@@ -216,7 +216,7 @@ const CUR_T = {
     title:'Currency Converter',sub:'Live exchange rates — updated every 4 hours',
     amt:'Amount',from:'From',to:'To',refresh:'Refresh',
     loading:'Loading exchange rates...',
-    live:'Live rates',cached:'Cached rates',fallback:'Approximate rates (offline)',fallback_cached:'⚠️ Could not refresh rates — last saved:',
+    live:'Live rates',cached:'Cached rates',fallback:'⚠️ Could not update rates — showing last saved rates',fallback_cached:'⚠️ Could not refresh rates — last saved:',
     ago_min:'min ago',ago_hr:'hr ago',just_now:'just now',updated:'Updated',
     src_label:'Source:',
     table_title:'Popular conversions',th_curr:'Currency',th_rate:'Rate (per 1 unit)',th_amt:'Converted amount',
