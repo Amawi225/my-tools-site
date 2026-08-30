@@ -1441,7 +1441,7 @@ function renderFavSection() {
     const card = buildMiniCard(id, t, base);
     if (card) favGrid.appendChild(card);
   });
-  favSection.style.display = '';
+  favSection.style.display = favGrid.querySelector('.tool-card') ? '' : 'none';
   injectStarBtns();
 }
 
@@ -1459,7 +1459,7 @@ function renderRecentSection() {
     const card = buildMiniCard(id, t, base);
     if (card) recentGrid.appendChild(card);
   });
-  recentSection.style.display = '';
+  recentSection.style.display = recentGrid.querySelector('.tool-card') ? '' : 'none';
 }
 
 function injectStarBtns() {
