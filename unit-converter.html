@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/unit-converter.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"محول الوحدات","url":"https://adawati2027.github.io/my-tools-site/unit-converter.html","description":"تحويل فوري بين وحدات الطول (متر/قدم/بوصة)، الوزن (كيلو/رطل)، الحرارة (مئوي/فهرنهايت/كلفن)، المساحة والحجم.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"محول الوحدات","url":"https://adawati2027.github.io/my-tools-site/unit-converter.html","description":"تحويل فوري بين وحدات الطول (متر/قدم/بوصة)، الوزن (كيلو/رطل)، الحرارة (مئوي/فهرنهايت/كلفن).","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"كم بوصة في القدم؟","acceptedAnswer":{"@type":"Answer","text":"القدم الواحدة = 12 بوصة. المتر = 3.281 قدم = 39.37 بوصة."}},{"@type":"Question","name":"كيف أحوّل درجات مئوية إلى فهرنهايت؟","acceptedAnswer":{"@type":"Answer","text":"°F = (°C × 9/5) + 32. مثال: 30°C = (30 × 1.8) + 32 = 86°F."}},{"@type":"Question","name":"كم كيلوغرام في الرطل؟","acceptedAnswer":{"@type":"Answer","text":"1 رطل = 0.4536 كيلوغرام. 1 كيلوغرام = 2.205 رطل."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -44,6 +44,7 @@
     <div class="card-title" data-i18n="unit_title">محول الوحدات</div>
     <div class="card-subtitle" data-i18n="unit_sub">حول بين وحدات الطول والوزن</div>
     <div class="divider"></div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">يدعم ثلاثة أنواع من التحويل: الطول (متر، كيلومتر، قدم، بوصة، ميل)، الوزن (كيلوغرام، رطل، غرام، طن)، والحرارة (مئوية، فهرنهايت، كلفن). التحويل فوري بمجرد الإدخال.</p>
     <div class="tabs">
       <div class="tab active" data-tab="length" onclick="switchTab('length')" data-i18n="tab_length">الطول</div>
       <div class="tab" data-tab="weight" onclick="switchTab('weight')" data-i18n="tab_weight">الوزن</div>
@@ -99,6 +100,31 @@
           </select></div>
       </div>
       <div id="tmp-result" class="result-box success"><div class="result-value" id="tmp-out"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم بوصة في القدم؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">القدم = 12 بوصة. المتر = 3.281 قدم = 39.37 بوصة. الكيلومتر = 0.621 ميل.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحوّل درجات مئوية إلى فهرنهايت؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">°F = (°C × 9÷5) + 32. مثال: 30°C = (30 × 1.8) + 32 = 86°F. وللعكس: °C = (°F − 32) × 5÷9.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم كيلوغرام في الرطل؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 رطل = 0.4536 كيلوغرام. 1 كيلوغرام = 2.205 رطل. 1 طن = 1000 كيلوغرام = 2,205 رطل.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="currency-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💱 محول العملات</a>
+      <a href="bmi-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">⚖️ حاسبة BMI</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
     </div>
   </div>
 </div></main>
