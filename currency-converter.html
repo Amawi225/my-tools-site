@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -117,6 +117,8 @@
       <div class="result-rate" id="rateLabel"></div>
     </div>
 
+    <div id="midmarketNote" style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:6px;"></div>
+
     <!-- Status bar -->
     <div class="rate-meta">
       <div class="status-row">
@@ -204,7 +206,8 @@ const CUR_T = {
     intro:'محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها OMR، USD، EUR، GBP، SAR، AED، EGP، INR وغيرها. السعر المعروض هو سعر الصرف الوسطي الحقيقي بدون هامش بنكي.',
     amt:'المبلغ',from:'من',to:'إلى',refresh:'تحديث',
     loading:'جاري تحميل الأسعار...',
-    live:'أسعار حية',cached:'أسعار محفوظة',fallback:'⚠️ تعذر تحديث الأسعار — يُعرض آخر سعر محفوظ',fallback_cached:'⚠️ تعذّر تحديث الأسعار — آخر حفظ:',
+    live:'أسعار حية',cached:'أسعار مخزّنة',fallback:'⚠️ تعذر الاتصال — أسعار تقريبية للمرجع فقط',fallback_cached:'⚠️ تعذّر الاتصال — آخر تحديث:',
+    midmarket:'⚠️ سعر وسطي — سعر البنك أو الصرافة قد يختلف',
     ago_min:'دقيقة',ago_hr:'ساعة',just_now:'الآن',updated:'آخر تحديث:',
     src_label:'المصدر:',
     table_title:'تحويلات شائعة',th_curr:'العملة',th_rate:'السعر لـ 1 وحدة',th_amt:'المبلغ المحوّل',
@@ -226,7 +229,8 @@ const CUR_T = {
     intro:'Free currency converter with live exchange rates updated every 4 hours. Supports 32 major currencies including OMR, USD, EUR, GBP, SAR, AED, EGP, INR and more. All rates are real mid-market rates — no bank markup, no hidden fees.',
     amt:'Amount',from:'From',to:'To',refresh:'Refresh',
     loading:'Loading exchange rates...',
-    live:'Live rates',cached:'Cached rates',fallback:'⚠️ Could not update rates — showing last saved rates',fallback_cached:'⚠️ Could not refresh rates — last saved:',
+    live:'Live rates',cached:'Cached rates',fallback:'⚠️ No connection — approximate reference rates only',fallback_cached:'⚠️ Could not connect — last updated:',
+    midmarket:'⚠️ Mid-market rate — actual bank/exchange rates may vary',
     ago_min:'min ago',ago_hr:'hr ago',just_now:'just now',updated:'Updated',
     src_label:'Source:',
     table_title:'Popular conversions',th_curr:'Currency',th_rate:'Rate (per 1 unit)',th_amt:'Converted amount',
@@ -247,7 +251,8 @@ const CUR_T = {
     title:'Convertisseur de devises',sub:'Taux de change en direct — mis à jour toutes les 4 heures',
     amt:'Montant',from:'De',to:'À',refresh:'Actualiser',
     loading:'Chargement des taux...',
-    live:'Taux en direct',cached:'Taux en cache',fallback:'Taux approximatifs (hors ligne)',fallback_cached:'⚠️ Impossible de mettre à jour — dernier enregistrement:',
+    live:'Taux en direct',cached:'Taux en cache',fallback:'⚠️ Pas de connexion — taux approximatifs uniquement',fallback_cached:'⚠️ Impossible de se connecter — dernière mise à jour:',
+    midmarket:'⚠️ Taux médian — le taux bancaire peut différer',
     ago_min:'min',ago_hr:'h',just_now:'maintenant',updated:'Mis à jour:',src_label:'Source:',
     table_title:'Conversions populaires',th_curr:'Devise',th_rate:'Taux (pour 1 unité)',th_amt:'Montant converti',
     info_title:'📌 Comment fonctionne le convertisseur?',
@@ -267,7 +272,8 @@ const CUR_T = {
     title:'Convertidor de Divisas',sub:'Tipos de cambio en vivo — actualizados cada 4 horas',
     amt:'Cantidad',from:'De',to:'A',refresh:'Actualizar',
     loading:'Cargando tasas...',
-    live:'Tasas en vivo',cached:'Tasas en caché',fallback:'Tasas aproximadas (sin conexión)',fallback_cached:'⚠️ No se pudo actualizar — último guardado:',
+    live:'Tasas en vivo',cached:'Tasas en caché',fallback:'⚠️ Sin conexión — tasas de referencia aproximadas',fallback_cached:'⚠️ Sin conexión — última actualización:',
+    midmarket:'⚠️ Tasa de mercado — la tasa bancaria puede variar',
     ago_min:'min',ago_hr:'h',just_now:'ahora mismo',updated:'Actualizado:',src_label:'Fuente:',
     table_title:'Conversiones populares',th_curr:'Divisa',th_rate:'Tasa (por 1 unidad)',th_amt:'Cantidad convertida',
     info_title:'📌 ¿Cómo funciona el convertidor?',
@@ -287,7 +293,8 @@ const CUR_T = {
     title:'Währungsrechner',sub:'Live-Wechselkurse — alle 4 Stunden aktualisiert',
     amt:'Betrag',from:'Von',to:'Nach',refresh:'Aktualisieren',
     loading:'Wechselkurse werden geladen...',
-    live:'Live-Kurse',cached:'Gespeicherte Kurse',fallback:'Ungefähre Kurse (offline)',fallback_cached:'⚠️ Aktualisierung fehlgeschlagen — zuletzt gespeichert:',
+    live:'Live-Kurse',cached:'Gespeicherte Kurse',fallback:'⚠️ Keine Verbindung — ungefähre Referenzkurse',fallback_cached:'⚠️ Keine Verbindung — zuletzt aktualisiert:',
+    midmarket:'⚠️ Mittelkurs — Bankkurse können abweichen',
     ago_min:'Min.',ago_hr:'Std.',just_now:'gerade eben',updated:'Aktualisiert:',src_label:'Quelle:',
     table_title:'Beliebte Umrechnungen',th_curr:'Währung',th_rate:'Kurs (pro 1 Einheit)',th_amt:'Umgerechneter Betrag',
     info_title:'📌 Wie funktioniert der Währungsrechner?',
@@ -307,7 +314,8 @@ const CUR_T = {
     title:'Конвертер валют',sub:'Живые курсы — обновляются каждые 4 часа',
     amt:'Сумма',from:'Из',to:'В',refresh:'Обновить',
     loading:'Загрузка курсов...',
-    live:'Живые курсы',cached:'Кэшированные курсы',fallback:'Приблизительные курсы (офлайн)',fallback_cached:'⚠️ Не удалось обновить — последнее сохранение:',
+    live:'Живые курсы',cached:'Кэшированные курсы',fallback:'⚠️ Нет соединения — приблизительные справочные курсы',fallback_cached:'⚠️ Нет соединения — последнее обновление:',
+    midmarket:'⚠️ Среднерыночный курс — банковские курсы могут отличаться',
     ago_min:'мин',ago_hr:'ч',just_now:'только что',updated:'Обновлено:',src_label:'Источник:',
     table_title:'Популярные конверсии',th_curr:'Валюта',th_rate:'Курс (за 1 ед.)',th_amt:'Сконвертированная сумма',
     info_title:'📌 Как работает конвертер валют?',
@@ -328,7 +336,7 @@ const CUR_T = {
 /* ── State ── */
 const CACHE_KEY = 'adawati_rates_v3';
 const CACHE_TTL = 4 * 60 * 60 * 1000;
-let rates = null, rateSource = '', rateTs = 0, curLang = 'ar';
+let rates = null, rateSource = '', rateTs = 0, curLang = 'ar', rateState = 'loading';
 
 function D() { return CUR_T[curLang] || CUR_T.en; }
 
@@ -484,7 +492,7 @@ async function tryLiveFetch() {
         return {r, src};
       })
     );
-    rates = r; rateSource = src; rateTs = Date.now();
+    rates = r; rateSource = src; rateTs = Date.now(); rateState = 'live';
     saveCache(r, src);
     setStatus('ok', D().live + ' · ' + src + ' · ' + ageText(rateTs));
     convert();
@@ -495,13 +503,15 @@ async function tryLiveFetch() {
 }
 
 async function fetchRates() {
-  if (!rates) { rates = FALLBACK; rateSource = 'offline'; rateTs = 0; convert(); }
+  if (!rates) { rates = FALLBACK; rateSource = 'offline'; rateTs = 0; rateState = 'fallback'; convert(); }
   const cached = loadCache();
   if (cached) {
-    rates = cached.r; rateSource = cached.src || ''; rateTs = cached.ts;
-    setStatus('ok', D().cached + ' · ' + rateSource + ' · ' + ageText(rateTs));
+    rates = cached.r; rateSource = cached.src || ''; rateTs = cached.ts; rateState = 'cached';
+    setStatus('warn', D().cached + ' · ' + ageText(rateTs));
     convert();
-    tryLiveFetch(); // silent background refresh
+    tryLiveFetch().then(ok => {
+      if (!ok) { rateState = 'stale'; setStatus('warn', D().fallback_cached + ' ' + new Date(rateTs).toLocaleDateString()); }
+    });
     return;
   }
   setStatus('warn', D().loading);
@@ -511,14 +521,14 @@ async function fetchRates() {
     try {
       const stale = JSON.parse(localStorage.getItem(CACHE_KEY));
       if (stale && stale.r) {
-        rates = stale.r; rateSource = stale.src || ''; rateTs = stale.ts;
+        rates = stale.r; rateSource = stale.src || ''; rateTs = stale.ts; rateState = 'stale';
         const d = new Date(rateTs).toLocaleDateString();
         setStatus('warn', D().fallback_cached + ' ' + d);
         convert();
         return;
       }
     } catch(e) {}
-    rates = FALLBACK; rateSource = 'offline'; rateTs = 0;
+    rates = FALLBACK; rateSource = 'offline'; rateTs = 0; rateState = 'fallback';
     setStatus('warn', D().fallback);
     convert();
   }
@@ -531,7 +541,7 @@ async function forceRefresh() {
   localStorage.removeItem(CACHE_KEY);
   const ok = await tryLiveFetch();
   if (!ok) {
-    rates = rates || FALLBACK;
+    rates = rates || FALLBACK; rateState = 'fallback';
     setStatus('warn', D().fallback);
     convert();
   }
@@ -571,9 +581,12 @@ function updateText() {
   document.getElementById('infoP2').textContent     = d.info_p2;
   document.getElementById('infoP3').textContent     = d.info_p3;
   document.getElementById('faqTitle').textContent   = d.faq_title;
+  if (d.midmarket) document.getElementById('midmarketNote').textContent = d.midmarket;
   buildFAQ();
-  if (rateTs) setStatus('ok', d.live + ' · ' + rateSource + ' · ' + ageText(rateTs));
-  else if (rates === FALLBACK) setStatus('warn', d.fallback);
+  if (rateState === 'live') setStatus('ok', d.live + ' · ' + rateSource + ' · ' + ageText(rateTs));
+  else if (rateState === 'cached') setStatus('warn', d.cached + ' · ' + ageText(rateTs));
+  else if (rateState === 'stale') setStatus('warn', d.fallback_cached + ' ' + new Date(rateTs).toLocaleDateString());
+  else setStatus('warn', d.fallback);
 }
 
 /* ── Init ── */
