@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/qr-generator.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"مولد رمز QR","url":"https://adawati2027.github.io/my-tools-site/qr-generator.html","description":"أنشئ رمز QR لأي رابط أو نص أو بيانات في ثانية. القابل للتحميل PNG بدقة عالية. مجاني تماماً.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"مولد رمز QR","url":"https://adawati2027.github.io/my-tools-site/qr-generator.html","description":"أنشئ رمز QR لأي رابط أو نص أو بيانات في ثانية. قابل للتحميل PNG بدقة عالية. مجاني تماماً.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل رمز QR يصلح للطباعة؟","acceptedAnswer":{"@type":"Answer","text":"نعم، الصورة المُولَّدة 220×220 بكسل مناسبة للطباعة الرقمية والعروض التقديمية."}},{"@type":"Question","name":"هل أحتاج إنترنت لمسح رمز QR؟","acceptedAnswer":{"@type":"Answer","text":"مسح الرمز لا يحتاج إنترنت. لكن إن كان الرمز يحتوي على رابط ويب، ستحتاج اتصالاً لفتح الرابط."}},{"@type":"Question","name":"كم معلومة يستوعب رمز QR واحد؟","acceptedAnswer":{"@type":"Answer","text":"الحد الأقصى حوالي 4,296 حرفاً أبجدياً. كلما قل النص، كان الرمز أوضح وأسهل مسحاً بالكاميرا."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -44,6 +44,7 @@
     <div class="card-title" data-i18n="qr_title">مولد رمز QR</div>
     <div class="card-subtitle" data-i18n="qr_sub">ولّد رمز QR لأي رابط أو نص فوراً</div>
     <div class="divider"></div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أنشئ رمز QR لأي رابط أو نص في ثانية. الرمز قابل للتحميل بصيغة PNG بجودة عالية. مناسب لروابط المواقع والواتساب والبريد الإلكتروني وبطاقات الأعمال.</p>
     <label data-i18n="qr_input">الرابط أو النص</label>
     <textarea id="qrInput" rows="3" data-i18n-ph="qr_placeholder" placeholder="https://example.com أو أي نص..." oninput="generateQR()" onpaste="setTimeout(generateQR,50)" style="resize:vertical;"></textarea>
     <button class="btn btn-primary" id="qrBtn">توليد الرمز</button>
@@ -57,6 +58,31 @@
     <div id="qrEmpty" style="text-align:center;padding:32px;color:var(--text-muted);">
       <div style="font-size:64px;margin-bottom:8px;opacity:0.3;">📱</div>
       <div data-i18n="qr_hint">اكتب أي رابط أو نص لتوليد الرمز</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل رمز QR يصلح للطباعة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، الصورة المُولَّدة 220×220 بكسل مناسبة للعروض الرقمية والطباعة الصغيرة. لطباعة بوستر كبير يُنصح بأدوات SVG.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل أحتاج إنترنت لمسح رمز QR؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">مسح الرمز بالكاميرا لا يحتاج إنترنت. لكن إن كان الرمز يحتوي على رابط ويب، ستحتاج اتصالاً لفتح الرابط.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم معلومة يستوعب رمز QR واحد؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأقصى نحو 4,296 حرفاً أبجدياً. كلما قل النص كان الرمز أوضح وأسهل مسحاً بالكاميرا.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔤 عداد الكلمات</a>
+      <a href="image-compressor.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🖼️ ضاغط الصور</a>
+      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 محوّل الملفات</a>
     </div>
   </div>
 </div></main>
