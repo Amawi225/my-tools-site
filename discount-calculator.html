@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/discount-calculator.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة الخصم","url":"https://adawati2027.github.io/my-tools-site/discount-calculator.html","description":"احسب السعر بعد الخصم أو نسبة الخصم أو السعر الأصلي من السعر المخفض. ثلاثة أوضاع حساب.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"حاسبة الخصم","url":"https://adawati2027.github.io/my-tools-site/discount-calculator.html","description":"احسب السعر بعد الخصم أو نسبة الخصم أو السعر الأصلي من السعر المخفض. ثلاثة أوضاع حساب.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"كيف أحسب سعر بعد خصم 20%؟","acceptedAnswer":{"@type":"Answer","text":"اضرب السعر الأصلي في (1 - 0.20). مثال: 500 × 0.80 = 400. أو استخدم خانة الخصم في الأداة مباشرة."}},{"@type":"Question","name":"كيف أعرف نسبة الخصم من سعرين؟","acceptedAnswer":{"@type":"Answer","text":"نسبة الخصم = ((السعر الأصلي - السعر المخفض) ÷ السعر الأصلي) × 100. مثال: من 200 إلى 150 = ((200-150)÷200)×100 = 25%."}},{"@type":"Question","name":"هل الخصم يُحسب قبل أم بعد الضريبة؟","acceptedAnswer":{"@type":"Answer","text":"في الغالب يُحسب الخصم على السعر قبل ضريبة القيمة المضافة (VAT). بعد تطبيق الخصم تُضاف الضريبة على السعر الجديد."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -43,6 +43,7 @@
     <div class="card-title" data-i18n="discount_title">حاسبة نسبة وخصم</div>
     <div class="card-subtitle" data-i18n="discount_sub">احسب النسب المئوية والخصومات بسرعة</div>
     <div class="divider"></div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أداة مجانية تدعم وضعين: حساب نسبة مئوية من رقم، أو حساب السعر بعد خصم معين. مفيدة للتسوق وعروض المبيعات ومقارنة الأسعار في السوبرماركت والمتاجر الإلكترونية.</p>
     <div class="tabs">
       <div class="tab active" data-tab="percent" onclick="switchTab('percent')" data-i18n="tab_percent">نسبة مئوية</div>
       <div class="tab" data-tab="discount" onclick="switchTab('discount')" data-i18n="tab_discount">خصم</div>
@@ -60,6 +61,31 @@
       <label for="d2" data-i18n="discount_label2">نسبة الخصم %</label>
       <input type="number" id="d2" placeholder="20" oninput="calcDiscount()">
       <div id="result2" class="result-box success"><div class="result-value" id="discountResult"></div><div class="result-label" id="discountSub"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب سعر بعد خصم 20%؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">اضرب السعر الأصلي في (1 - 0.20). مثال: 500 × 0.80 = 400. أو أدخل السعر ونسبة الخصم في خانة "خصم" أعلاه.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أعرف نسبة الخصم من سعرين؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نسبة الخصم = ((السعر الأصلي − السعر المخفض) ÷ السعر الأصلي) × 100. مثال: من 200 إلى 150 = ((50÷200)×100) = 25%.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الخصم يُحسب قبل أم بعد الضريبة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">في الغالب يُطبَّق الخصم على السعر قبل VAT، ثم تُحسب الضريبة على السعر الجديد بعد الخصم.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+      <a href="tip-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🤝 حاسبة الإكرامية</a>
     </div>
   </div>
 </div></main>
