@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -11,6 +11,13 @@
 <meta name="keywords" content="حاسبة VAT, ضريبة القيمة المضافة, حاسبة ضريبة عمان, VAT عمان, VAT السعودية, VAT الإمارات">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html">
+<meta property="og:title" content="حاسبة VAT الخليج — عمان 5%، السعودية 15%، الإمارات 5%">
+<meta property="og:description" content="حاسبة ضريبة القيمة المضافة VAT مجاناً. إضافة أو استخراج الضريبة — عمان، السعودية، الإمارات، البحرين.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati2027.github.io/my-tools-site/vat-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"حاسبة VAT — دول الخليج","url":"https://adawati2027.github.io/my-tools-site/vat-calculator.html","description":"حاسبة ضريبة القيمة المضافة VAT لدول الخليج. تدعم عمان (5%)، السعودية (15%)، الإمارات (5%)، البحرين (10%).","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"OMR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما هي ضريبة القيمة المضافة (VAT)؟","acceptedAnswer":{"@type":"Answer","text":"ضريبة القيمة المضافة هي ضريبة غير مباشرة تُطبَّق على معظم السلع والخدمات. يدفعها المستهلك النهائي وتجمعها الشركات نيابةً عن الحكومة."}},{"@type":"Question","name":"كيف أحسب VAT 5% على مبلغ؟","acceptedAnswer":{"@type":"Answer","text":"اضرب المبلغ في 0.05. مثال: 100 ريال × 0.05 = 5 ريال ضريبة. الإجمالي = 105 ريال."}},{"@type":"Question","name":"كيف أستخرج VAT من مبلغ شامل الضريبة؟","acceptedAnswer":{"@type":"Answer","text":"قسّم المبلغ الشامل على (1 + نسبة الضريبة). مثال: 105 ÷ 1.05 = 100 ريال (قبل الضريبة). الضريبة = 5 ريال."}},{"@type":"Question","name":"ما السلع المعفاة من VAT في عمان؟","acceptedAnswer":{"@type":"Answer","text":"تشمل الإعفاءات: المواد الغذائية الأساسية، والخدمات التعليمية، والخدمات الصحية، وإيجار المساكن السكنية، والخدمات المالية."}}]}]}
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,6 +46,7 @@
     <div class="card-title" data-i18n="vat_card_title">حاسبة ضريبة القيمة المضافة (VAT)</div>
     <div class="card-subtitle" data-i18n="vat_sub">عمان • السعودية • الإمارات • البحرين</div>
     <div class="divider"></div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">ضريبة القيمة المضافة (VAT) مطبَّقة في معظم دول الخليج العربي. عُمان طبّقتها بنسبة <strong>5%</strong> منذ أبريل 2021، وتُضاف على معظم السلع والخدمات. هذه الحاسبة تدعم 6 دول خليجية وتتيح إضافة الضريبة أو استخراجها من المبلغ الشامل.</p>
 
     <label for="vatCountry" data-i18n="vat_country_lbl">الدولة</label>
     <select id="vatCountry" onchange="updateRate()">
