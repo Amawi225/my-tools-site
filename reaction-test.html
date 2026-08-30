@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -462,9 +462,18 @@ function jumpToLevel(i){startLevel(i);}
 document.addEventListener('DOMContentLoaded',()=>{
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
+  // Clear pending timers when tab hides to avoid ghost clicks/misses
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden&&(state==='waiting'||state==='green'||state==='red')){
+      clearTimeout(waitTimer);clearTimeout(greenTimer);waitTimer=null;greenTimer=null;
+      // treat as a missed round so player knows they left
+      if(state==='green'){onMiss();}
+      else{state='idle';setBtn('waiting','⏳',tr('wait'));}
+    }
+  });
   startLevel(0);
 });
 </script>
-<script src="i18n.js?v=27"></script>
+<script src="i18n.js?v=28"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
 </body></html>
