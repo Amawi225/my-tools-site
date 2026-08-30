@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -218,7 +218,7 @@ function update(){
        player.x+player.w-4 > px &&
        player.x+4 < px+p.w &&
        player.y+player.h >= p.y &&
-       player.y+player.h <= p.y+player.h+player.vy+2){
+       player.y+player.h <= p.y+p.h+player.vy+2){
       player.y = p.y - player.h;
       player.vy = 0;
       player.onGround = true;
@@ -319,6 +319,17 @@ function gameLoop(){
   rafId=requestAnimationFrame(gameLoop);
 }
 
+function pauseGame(){
+  if(state!=='playing') return;
+  state='paused';
+  cancelAnimationFrame(rafId);
+}
+function resumeGame(){
+  if(state!=='paused') return;
+  state='playing';
+  rafId=requestAnimationFrame(gameLoop);
+}
+
 function startGame(){
   state='playing';resetGame();
   cancelAnimationFrame(rafId);
@@ -335,7 +346,9 @@ function onGameOver(){
   if(sc>best) localStorage.setItem('adawati_jump_best',sc);
   draw();
   const sub=`${tr('score_lbl')}: ${score}  ⭐${stars}`;
-  setTimeout(()=>{drawOverlay(tr('game_over'),sub,tr('play_again'));canvas.onclick=()=>{canvas.onclick=null;startGame();};},200);
+  setTimeout(()=>{
+    drawOverlay(tr('game_over'),sub,tr('play_again'));
+  },200);
   if(qualifies(sc)){
     pendingScore=sc;
     document.getElementById('nameEntryMsg').textContent=tr('top3_enter');
@@ -362,13 +375,13 @@ function renderLb(){
 }
 
 // Controls
-document.getElementById('jumpBtn').addEventListener('pointerdown',e=>{e.preventDefault();if(state==='idle'||state==='over')startGame();else jump();});
-canvas.addEventListener('touchstart',e=>{e.preventDefault();if(state==='idle'||state==='over')startGame();else jump();},{passive:false});
-canvas.addEventListener('click',()=>{if(state==='idle')startGame();});
+document.getElementById('jumpBtn').addEventListener('pointerdown',e=>{e.preventDefault();if(state==='idle'||state==='over'||state==='paused')startGame();else jump();});
+canvas.addEventListener('touchstart',e=>{e.preventDefault();if(state==='idle'||state==='over')startGame();else if(state==='playing')jump();},{passive:false});
+canvas.addEventListener('click',()=>{if(state==='idle'||state==='over')startGame();});
 document.addEventListener('keydown',e=>{
   if(e.key===' '||e.key==='ArrowUp'||e.key==='w'){
     e.preventDefault();
-    if(state==='idle'||state==='over')startGame();else jump();
+    if(state==='idle'||state==='over'||state==='paused')startGame();else if(state==='playing')jump();
   }
 });
 
@@ -383,6 +396,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     updateText();
     if(state==='idle') drawInitOverlay();
   };
+  // Pause on tab hide
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden) pauseGame();
+    else resumeGame();
+  });
   updateText();
   drawInitOverlay();
 });
@@ -393,6 +411,6 @@ function drawInitOverlay(){
   drawOverlay(tr('game_title'),tr('press_start'),tr('start'));
 }
 </script>
-<script src="i18n.js?v=27"></script>
+<script src="i18n.js?v=28"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
 </body></html>
