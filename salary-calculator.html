@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/salary-calculator.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"حاسبة الراتب — سلطنة عُمان","url":"https://adawati2027.github.io/my-tools-site/salary-calculator.html","description":"حاسبة الراتب الصافي في عُمان وفق صندوق الحماية الاجتماعية SPF. خصم 8% للعمانيين.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"OMR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما الفرق بين الراتب الأساسي والإجمالي؟","acceptedAnswer":{"@type":"Answer","text":"الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها)."}},{"@type":"Question","name":"هل يُخصم SPF من البدلات؟","acceptedAnswer":{"@type":"Answer","text":"يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد SPF مع سقف 3,000 ر.ع للفرع الأساسي."}},{"@type":"Question","name":"ما الحد الأدنى للراتب في عمان؟","acceptedAnswer":{"@type":"Answer","text":"وفق المرسوم الرسمي الأخير، الحد الأدنى للمواطن العماني 325 ريال عماني شهرياً."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"حاسبة الراتب — سلطنة عُمان","url":"https://adawati2027.github.io/my-tools-site/salary-calculator.html","description":"حاسبة الراتب الصافي في عُمان وفق صندوق الحماية الاجتماعية SPF. خصم 8% للعمانيين.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"OMR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما الفرق بين الراتب الأساسي والإجمالي؟","acceptedAnswer":{"@type":"Answer","text":"الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها)."}},{"@type":"Question","name":"هل يُخصم SPF من البدلات؟","acceptedAnswer":{"@type":"Answer","text":"يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد SPF مع سقف 3,000 ر.ع للفرع الأساسي. هذه الحاسبة تستخدم الراتب الأساسي كمدخل مبسط للحساب الاسترشادي."}},{"@type":"Question","name":"ما الحد الأدنى للراتب في عمان؟","acceptedAnswer":{"@type":"Answer","text":"وفق المرسوم الرسمي الأخير، الحد الأدنى للمواطن العماني 325 ريال عماني شهرياً."}},{"@type":"Question","name":"كيف أحسب خصم SPF يدوياً؟","acceptedAnswer":{"@type":"Answer","text":"الخصم = الراتب الأساسي × 8%. مثال: إذا كان الأساسي 500 ر.ع → الخصم = 40 ر.ع. الراتب الصافي = (الأساسي + البدلات) − 40. إذا كان الأساسي أعلى من 3,000 ر.ع يُحسب الخصم على 3,000 فقط."}},{"@type":"Question","name":"هل يُطبَّق خصم SPF على الوافدين؟","acceptedAnswer":{"@type":"Answer","text":"لا، خصم الـ8% لا يُطبَّق على الموظفين الوافدين. الوافدون لديهم نظام ادخار منفصل تُسهم فيه جهة العمل. راتب الوافد الصافي = الإجمالي بدون أي خصم SPF."}},{"@type":"Question","name":"ماذا يُغطي صندوق الحماية الاجتماعية SPF؟","acceptedAnswer":{"@type":"Answer","text":"يُغطي SPF أربعة فروع: (1) التقاعد والعجز والوفاة (7.5% من الموظف + 11.5% من صاحب العمل)، (2) الأمان الوظيفي/البطالة (0.5% + 1%)، (3) الادخار والاستثمار، (4) التأمين الصحي."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -99,6 +99,19 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">📊 مثال حسابي — كيف يُحسب الراتب الصافي في عُمان؟</div>
+    <div style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-top:8px;">
+      <p>موظف عماني: راتب أساسي <strong>450 ر.ع</strong> + بدل سكن <strong>100 ر.ع</strong> + بدل نقل <strong>50 ر.ع</strong></p>
+      <div style="background:var(--surface-2);border-radius:8px;padding:14px;margin:10px 0;font-size:13px;line-height:2.4;">
+        الراتب الإجمالي = 450 + 100 + 50 = <strong>600 ر.ع</strong><br>
+        خصم SPF = 450 × 8% = <strong style="color:#dc2626;">− 36 ر.ع</strong><br>
+        <strong style="color:#16a34a;font-size:15px;">الراتب الصافي = 564 ر.ع / شهر</strong>
+      </div>
+      <p style="font-size:13px;margin-top:4px;"><strong>ملاحظة:</strong> خصم الـ8% يُطبَّق على الراتب الأساسي فقط (لا على البدلات). لو كان الموظف وافداً: لا يوجد خصم → الصافي = 600 ر.ع.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
     <div class="card-title" style="font-size:15px;" id="spfInfoTitle">📌 صندوق الحماية الاجتماعية SPF — سلطنة عُمان</div>
     <div id="spfInfoBody" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;">
       <p>صندوق الحماية الاجتماعية (SPF) هو المنظومة الجديدة التي تجمع فروع التأمين الاجتماعي في سلطنة عُمان.</p>
@@ -133,6 +146,18 @@
       <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
         <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الحد الأدنى للراتب في عمان؟</summary>
         <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأدنى للراتب للمواطن العماني هو 325 ريال عماني شهرياً (وفق المرسوم الأخير). تحقق من وزارة العمل للتحديثات الرسمية.</p>
+      </details>
+      <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+        <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب خصم SPF يدوياً؟</summary>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الخصم = الراتب الأساسي × 8%. مثال: إذا كان الأساسي 500 ر.ع → الخصم = 40 ر.ع. الراتب الصافي = (الأساسي + البدلات) − 40. إذا كان الأساسي أعلى من 3,000 ر.ع يُحسب الخصم على 3,000 فقط للفرع الأساسي.</p>
+      </details>
+      <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+        <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يُطبَّق خصم SPF على الوافدين؟</summary>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا، خصم الـ8% لا يُطبَّق على الموظفين الوافدين (غير العمانيين). الوافدون لديهم نظام ادخار منفصل تُسهم فيه جهة العمل. لذلك راتب الوافد الصافي = الإجمالي بدون أي خصم.</p>
+      </details>
+      <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+        <summary style="font-weight:700;cursor:pointer;font-size:14px;">ماذا يُغطي صندوق الحماية الاجتماعية SPF؟</summary>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يُغطي SPF أربعة فروع رئيسية: (1) التقاعد والعجز والوفاة — 7.5% من الموظف + 11.5% من صاحب العمل، (2) الأمان الوظيفي ضد البطالة — 0.5% + 1%، (3) الادخار والاستثمار، (4) التأمين الصحي.</p>
       </details>
     </div>
   </div>
@@ -178,8 +203,11 @@ const SAL_T = {
     disclaimer: '⚠️ النتائج استرشادية — للحسابات الرسمية راجع spf.gov.om | آخر تحديث: أغسطس 2026',
     faq: [
       {q:'ما الفرق بين الراتب الأساسي والإجمالي؟', a:'الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها).'},
-      {q:'هل يُخصم SPF من البدلات؟', a:'يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد صندوق الحماية الاجتماعية، مع سقف 3,000 ر.ع للفرع الأساسي. تستخدم هذه الحاسبة الراتب الأساسي كمدخل مبسط للحساب الاسترشادي — وقد تختلف النتيجة الفعلية بحسب الأجر المؤمن عليه. راجع spf.gov.om أو جهة عملك.'},
-      {q:'ما الحد الأدنى للراتب في عمان؟', a:'وفق المرسوم الرسمي الأخير، الحد الأدنى للمواطن العماني 325 ريال عماني شهرياً. هذا الرقم قابل للتغيير — تحقق دائماً من الموقع الرسمي لوزارة العمل للقيمة المعمول بها.'}
+      {q:'هل يُخصم SPF من البدلات؟', a:'يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد SPF (سقف 3,000 ر.ع للفرع الأساسي). هذه الحاسبة تستخدم الراتب الأساسي كمدخل مبسط — وقد تختلف النتيجة الفعلية. راجع spf.gov.om.'},
+      {q:'ما الحد الأدنى للراتب في عمان؟', a:'وفق المرسوم الرسمي الأخير، الحد الأدنى للمواطن العماني 325 ريال عماني شهرياً. تحقق دائماً من الموقع الرسمي لوزارة العمل للقيمة المعمول بها.'},
+      {q:'كيف أحسب خصم SPF يدوياً؟', a:'الخصم = الراتب الأساسي × 8%. مثال: أساسي 500 ر.ع → الخصم = 40 ر.ع. الصافي = (الأساسي + البدلات) − 40. إذا كان الأساسي فوق 3,000 ر.ع يُحسب الخصم على 3,000 فقط.'},
+      {q:'هل يُطبَّق خصم SPF على الوافدين؟', a:'لا، خصم الـ8% لا يُطبَّق على الوافدين. الوافدون لديهم نظام ادخار منفصل تُسهم فيه جهة العمل. راتب الوافد الصافي = الإجمالي بدون أي خصم SPF.'},
+      {q:'ماذا يُغطي صندوق الحماية الاجتماعية SPF؟', a:'يُغطي SPF أربعة فروع: (1) التقاعد والعجز والوفاة (7.5% موظف + 11.5% صاحب عمل)، (2) الأمان الوظيفي/البطالة (0.5% + 1%)، (3) الادخار والاستثمار، (4) التأمين الصحي.'}
     ],
     rel_eos:'📋 حاسبة نهاية الخدمة', rel_vat:'🧾 حاسبة VAT', rel_loan:'🧮 حاسبة القسط',
     lbl_basic:'الراتب الأساسي', lbl_housing:'بدل السكن', lbl_transport:'بدل النقل', lbl_other:'بدلات أخرى',
@@ -199,7 +227,10 @@ const SAL_T = {
     faq: [
       {q:'What is the difference between basic and gross salary?', a:'Basic salary is the fixed amount in your employment contract. Gross = Basic + all allowances (housing, transport, etc.).'},
       {q:'Is SPF deducted from allowances?', a:'The 8% is calculated on the insurable wage per SPF regulations, with a ceiling of OMR 3,000 for the main branch. This calculator uses basic salary as a simplified input — actual deductions may vary. Visit spf.gov.om for official confirmation.'},
-      {q:'What is the minimum wage in Oman?', a:'Per the latest official decree, the minimum wage for Omani nationals is 325 OMR/month. This figure may change — always verify on the official Ministry of Labour website.'}
+      {q:'What is the minimum wage in Oman?', a:'Per the latest official decree, the minimum wage for Omani nationals is 325 OMR/month. This figure may change — always verify on the official Ministry of Labour website.'},
+      {q:'How do I calculate the SPF deduction manually?', a:'Deduction = Basic Salary × 8%. Example: basic OMR 500 → deduction = OMR 40. Net = (Basic + Allowances) − 40. If basic exceeds OMR 3,000, the deduction is capped at OMR 3,000 for the main branch.'},
+      {q:'Does the SPF deduction apply to expatriates?', a:'No, the 8% SPF deduction does not apply to expatriate employees. Expatriates have a separate employer-funded savings scheme. An expatriate\'s net salary equals the gross salary with no SPF deduction.'},
+      {q:'What does SPF cover?', a:'SPF covers four branches: (1) Old age, disability and death — 7.5% employee + 11.5% employer; (2) Employment security/unemployment — 0.5% + 1%; (3) Savings and investment; (4) Health insurance.'}
     ],
     rel_eos:'📋 End of Service Calculator', rel_vat:'🧾 VAT Calculator', rel_loan:'🧮 Loan Calculator',
     lbl_basic:'Basic salary', lbl_housing:'Housing allowance', lbl_transport:'Transport allowance', lbl_other:'Other allowances',
