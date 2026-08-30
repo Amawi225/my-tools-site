@@ -92,7 +92,7 @@
     <div id="salResult" style="display:none;margin-top:20px;">
       <div class="result-box show success" style="margin-top:0;">
         <div class="result-value" id="netSalaryDisplay"></div>
-        <div class="result-label" data-i18n="sal_net_lbl">الراتب الصافي (ر.ع)</div>
+        <div class="result-label" id="netSalLabel">الراتب الصافي التقديري (ر.ع)</div>
       </div>
       <div class="stat-grid" style="margin-top:12px;">
         <div class="stat-box">
@@ -264,6 +264,7 @@ const SAL_T = {
     rel_eos:'📋 حاسبة نهاية الخدمة', rel_vat:'🧾 حاسبة VAT', rel_loan:'🧮 حاسبة القسط',
     lbl_basic:'الراتب الأساسي', lbl_housing:'بدل السكن', lbl_transport:'بدل النقل', lbl_other:'بدلات أخرى',
     lbl_gross:'الإجمالي قبل الخصم', lbl_spf_from:'خصم SPF (8% من الأساسي)', lbl_net:'الراتب الصافي',
+    lbl_net_est:'الراتب الصافي التقديري (ر.ع)',
     curr:'ر.ع'
   },
   en: {
@@ -289,6 +290,7 @@ const SAL_T = {
     rel_eos:'📋 End of Service Calculator', rel_vat:'🧾 VAT Calculator', rel_loan:'🧮 Loan Calculator',
     lbl_basic:'Basic salary', lbl_housing:'Housing allowance', lbl_transport:'Transport allowance', lbl_other:'Other allowances',
     lbl_gross:'Gross salary', lbl_spf_from:'SPF deduction (8% of basic)', lbl_net:'Net salary',
+    lbl_net_est:'Estimated Net Salary (OMR)',
     curr:'OMR'
   }
 };
@@ -309,6 +311,7 @@ function updateSalaryText() {
   set('spfInfoTitle', t.info_title);
   setH('spfInfoBody', t.info_body);
   set('spfDisclaimer', t.disclaimer);
+  set('netSalLabel', t.lbl_net_est || 'الراتب الصافي التقديري (ر.ع)');
   setH('faqItems', t.faq.map(function(f, i) {
     return '<details style="margin-top:' + (i===0?'12':'8') + 'px;border:1px solid var(--border);border-radius:8px;padding:12px;">' +
       '<summary style="font-weight:700;cursor:pointer;font-size:14px;">' + f.q + '</summary>' +
