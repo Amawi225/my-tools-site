@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/timezone-converter.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"محول المناطق الزمنية","url":"https://adawati2027.github.io/my-tools-site/timezone-converter.html","description":"اعرف الوقت الحالي في أكثر من 400 مدينة حول العالم. تحويل فوري بين المناطق الزمنية مع حساب الفارق.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"محول المناطق الزمنية","url":"https://adawati2027.github.io/my-tools-site/timezone-converter.html","description":"اعرف الوقت الحالي في 6 مدن كبرى مباشرة أو حوّل أي وقت بين أي منطقتين زمنيتين من قائمة 20 مدينة عالمية.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما فارق التوقيت بين عمان ولندن؟","acceptedAnswer":{"@type":"Answer","text":"في التوقيت الصيفي +3 ساعات، وفي التوقيت الشتوي +4 ساعات. عُمان لا تُطبّق التوقيت الصيفي."}},{"@type":"Question","name":"كم الفارق بين الرياض ونيويورك؟","acceptedAnswer":{"@type":"Answer","text":"الرياض (UTC+3) متقدمة على نيويورك بـ 8 ساعات في الشتاء و7 ساعات في الصيف."}},{"@type":"Question","name":"ما الفرق بين GMT وUTC؟","acceptedAnswer":{"@type":"Answer","text":"من الناحية العملية متطابقان. GMT تاريخي، وUTC هو المعيار العلمي المستخدم في أنظمة الكمبيوتر والإنترنت."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -44,6 +44,7 @@
     <div class="card-title" data-i18n="tz_title">محول المناطق الزمنية</div>
     <div class="card-subtitle" data-i18n="tz_sub">اعرف الوقت في أي مدينة حول العالم</div>
     <div class="divider"></div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">اعرف الوقت الحالي في 6 مدن كبرى مباشرة (الرياض، دبي، لندن، نيويورك، طوكيو، سيدني) أو حوّل أي وقت بين أي منطقتين زمنيتين من قائمة تضم 20 مدينة عالمية.</p>
     <div id="clockGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;"></div>
     <div class="divider"></div>
     <label data-i18n="tz_convert">حوّل وقتاً محدداً</label>
@@ -55,6 +56,31 @@
     <div id="tzResult" class="result-box success" style="margin-top:16px;">
       <div class="result-value" id="tzResultVal" style="font-size:28px;"></div>
       <div class="result-label" id="tzResultLabel"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما فارق التوقيت بين عمان ولندن؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">في الصيف (BST) +3 ساعات، وفي الشتاء (GMT) +4 ساعات. عُمان لا تُطبّق التوقيت الصيفي وتبقى على UTC+4 دائماً.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم الفارق بين الرياض ونيويورك؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الرياض (UTC+3) متقدمة على نيويورك بـ 8 ساعات في الشتاء (EST) و7 ساعات في الصيف (EDT).</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين GMT وUTC؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">من الناحية العملية متطابقان. GMT تاريخي بريطاني، وUTC هو المعيار العلمي الدولي المستخدم في أنظمة الكمبيوتر والإنترنت.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات مرتبطة:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="date-diff.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📆 فرق التاريخ</a>
+      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌙 محول الهجري</a>
+      <a href="currency-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💱 محول العملات</a>
     </div>
   </div>
 </div></main>
