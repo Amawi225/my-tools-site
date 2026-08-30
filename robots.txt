@@ -2,3 +2,16 @@ User-agent: *
 Allow: /
 
 Sitemap: https://adawati2027.github.io/my-tools-site/sitemap.xml
+
+# AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
