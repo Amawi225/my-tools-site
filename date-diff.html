@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/date-diff.html">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة الفرق بين تاريخين","url":"https://adawati2027.github.io/my-tools-site/date-diff.html","description":"احسب الفرق الدقيق بين أي تاريخين بالأيام والأسابيع والأشهر والسنوات. مفيد لحساب الأعمار والمواعيد وإجازات العمل.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"حاسبة الفرق بين تاريخين","url":"https://adawati2027.github.io/my-tools-site/date-diff.html","description":"احسب الفرق الدقيق بين أي تاريخين بالأيام والأسابيع والأشهر والسنوات. مفيد لحساب الأعمار والمواعيد وإجازات العمل.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"كيف أحسب عدد أيام العمل بين تاريخين؟","acceptedAnswer":{"@type":"Answer","text":"أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير بناءً على أسبوع مكوّن من 5 أيام عمل."}},{"@type":"Question","name":"لماذا تختلف نتيجة السنوات والأشهر أحياناً؟","acceptedAnswer":{"@type":"Answer","text":"الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر."}},{"@type":"Question","name":"هل تحسب الأداة يومي الجمعة والسبت ضمن أيام العمل؟","acceptedAnswer":{"@type":"Answer","text":"لا، الحسابة تعتمد على 5 أيام عمل في الأسبوع (الاثنين إلى الجمعة وفق المعيار الدولي، أو الأحد إلى الخميس في دول الخليج). الرقم المعروض تقريبي."}},{"@type":"Question","name":"كم يوماً تبقى على رمضان؟","acceptedAnswer":{"@type":"Answer","text":"استخدم زر \'حتى رمضان 2027\' الموجود في الأداة لحساب عدد الأيام المتبقية حتى رمضان القادم تلقائياً."}}]}]}
 </script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -46,6 +46,7 @@
     <div class="card-title" data-i18n="dd_card_title">حساب الفرق بين تاريخين</div>
     <div class="card-subtitle" data-i18n="dd_sub">أيام، أسابيع، أشهر وسنوات بين أي تاريخين</div>
     <div class="divider"></div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أداة مجانية لحساب الفرق الدقيق بين أي تاريخين بالأيام والأسابيع والأشهر والسنوات وأيام العمل التقريبية. مفيدة لحساب مدة العقود وإجازات العمل وعدد الأيام المتبقية حتى حدث قادم.</p>
 
     <div class="row">
       <div>
@@ -115,6 +116,14 @@
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q2">لماذا تختلف نتيجة السنوات والأشهر أحياناً؟</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a2">الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تحسب الأداة يومي الجمعة والسبت ضمن أيام العمل؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا، تكرارية الحساب تعتمد على 5 أيام عمل في الأسبوع. الرقم المعروض تقريبي ولا يأخذ بعين الاعتبار الإجازات الرسمية.</p>
+    </details>
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم يوماً تبقى على رمضان؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">اضغط زر "حتى رمضان 2027" في الأداة وستظهر النتيجة فوراً بالأيام والأشهر المتبقية.</p>
     </details>
   </div>
 
