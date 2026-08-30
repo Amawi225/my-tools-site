@@ -106,7 +106,7 @@
       </ul>
       <ul style="padding-inline-start:18px;margin-top:8px;">
         <li>يُطبَّق على العمانيين فقط — الوافدون لديهم نظام ادخار منفصل</li>
-        <li>يُحسب الخصم على الأجر الخاضع للاشتراك وفق لوائح الصندوق — راجع عقد عملك أو <a href="https://www.spf.gov.om" target="_blank" rel="noopener" style="color:var(--primary);">spf.gov.om</a> للتأكيد</li>
+        <li>يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد SPF (سقف 3,000 ر.ع للفرع الأساسي) — هذه الحاسبة تستخدم الراتب الأساسي كمدخل مبسط للحساب الاسترشادي</li>
       </ul>
     </div>
     <p id="spfDisclaimer" style="font-size:12px;color:var(--text-muted);margin-top:10px;">⚠️ النتائج استرشادية — للحسابات الرسمية راجع <a href="https://www.spf.gov.om" target="_blank" rel="noopener" style="color:var(--primary);">spf.gov.om</a> | آخر تحديث: أغسطس 2026</p>
@@ -167,11 +167,11 @@ const SAL_T = {
     spf_deduct: 'خصم SPF (8%)',
     spf_na: 'خصم SPF (لا ينطبق)',
     info_title: '📌 نظام الحماية الاجتماعية في سلطنة عُمان',
-    info_body: '<p>صندوق الحماية الاجتماعية (SPF) هو المنظومة الجديدة التي تجمع فروع التأمين الاجتماعي في سلطنة عُمان.</p><p><strong>حصة الموظف العماني (إجمالي 8%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>7.5% — فرع كبار السن والعجز والوفاة</li><li>0.5% — فرع الأمان الوظيفي</li></ul><p style="margin-top:8px;"><strong>حصة جهة العمل (إجمالي 14.5%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>لا تُخصم من راتب الموظف — تُدفع من قِبل صاحب العمل</li></ul><ul style="padding-inline-start:18px;margin-top:8px;"><li>يُطبَّق على العمانيين فقط — الوافدون لديهم نظام ادخار منفصل</li><li>يُحسب الخصم على الأجر الخاضع للاشتراك وفق لوائح الصندوق — يرجع إلى عقد العمل والجهة الرسمية للتحقق</li></ul>',
+    info_body: '<p>صندوق الحماية الاجتماعية (SPF) هو المنظومة الجديدة التي تجمع فروع التأمين الاجتماعي في سلطنة عُمان.</p><p><strong>حصة الموظف العماني (إجمالي 8%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>7.5% — فرع كبار السن والعجز والوفاة</li><li>0.5% — فرع الأمان الوظيفي</li></ul><p style="margin-top:8px;"><strong>حصة جهة العمل (إجمالي 14.5%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>لا تُخصم من راتب الموظف — تُدفع من قِبل صاحب العمل</li></ul><ul style="padding-inline-start:18px;margin-top:8px;"><li>يُطبَّق على العمانيين فقط — الوافدون لديهم نظام ادخار منفصل</li><li>يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد SPF (سقف 3,000 ر.ع للفرع الأساسي) — هذه الحاسبة تستخدم الراتب الأساسي كمدخل مبسط للحساب الاسترشادي</li></ul>',
     disclaimer: '⚠️ النتائج استرشادية — للحسابات الرسمية راجع spf.gov.om | آخر تحديث: أغسطس 2026',
     faq: [
       {q:'ما الفرق بين الراتب الأساسي والإجمالي؟', a:'الراتب الأساسي هو المبلغ الثابت المحدد في عقد العمل. الإجمالي = الأساسي + جميع البدلات (السكن، النقل، وغيرها).'},
-      {q:'هل يُخصم SPF من البدلات؟', a:'وفق لوائح الصندوق، يُحسب الاشتراك على الأجر الخاضع للاشتراك المحدد في نظام SPF — وهو في الغالب الراتب الأساسي دون البدلات. راجع عقدك وتواصل مع spf.gov.om للتأكيد الرسمي.'},
+      {q:'هل يُخصم SPF من البدلات؟', a:'يُحسب الخصم وفق الأجر الخاضع للاشتراك حسب قواعد صندوق الحماية الاجتماعية، مع سقف 3,000 ر.ع للفرع الأساسي. تستخدم هذه الحاسبة الراتب الأساسي كمدخل مبسط للحساب الاسترشادي — وقد تختلف النتيجة الفعلية بحسب الأجر المؤمن عليه. راجع spf.gov.om أو جهة عملك.'},
       {q:'ما الحد الأدنى للراتب في عمان؟', a:'وفق المرسوم الرسمي الأخير، الحد الأدنى للمواطن العماني 325 ريال عماني شهرياً. هذا الرقم قابل للتغيير — تحقق دائماً من الموقع الرسمي لوزارة العمل للقيمة المعمول بها.'}
     ],
     rel_eos:'📋 حاسبة نهاية الخدمة', rel_vat:'🧾 حاسبة VAT', rel_loan:'🧮 حاسبة القسط',
@@ -187,11 +187,11 @@ const SAL_T = {
     spf_deduct: 'SPF deduction (8%)',
     spf_na: 'SPF (N/A)',
     info_title: '📌 Social Protection Fund (SPF) — Sultanate of Oman',
-    info_body: '<p>The Social Protection Fund (SPF) is Oman\'s unified social insurance system covering all protection branches.</p><p><strong>Employee contribution (total 8%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>7.5% — Old age, disability & death branch</li><li>0.5% — Employment security branch</li></ul><p style="margin-top:8px;"><strong>Employer contribution (total 14.5%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>Not deducted from salary — paid by the employer</li></ul><ul style="padding-inline-start:18px;margin-top:8px;"><li>Applies to Omani nationals only — expatriates have a separate savings scheme</li><li>Deduction is calculated on the insurable wage as defined by SPF regulations — refer to your contract and SPF for official confirmation</li></ul>',
+    info_body: '<p>The Social Protection Fund (SPF) is Oman\'s unified social insurance system covering all protection branches.</p><p><strong>Employee contribution (total 8%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>7.5% — Old age, disability & death branch</li><li>0.5% — Employment security branch</li></ul><p style="margin-top:8px;"><strong>Employer contribution (total 14.5%):</strong></p><ul style="padding-inline-start:18px;margin-top:4px;"><li>Not deducted from salary — paid by the employer</li></ul><ul style="padding-inline-start:18px;margin-top:8px;"><li>Applies to Omani nationals only — expatriates have a separate savings scheme</li><li>Deduction is per the insurable wage under SPF rules (ceiling OMR 3,000 for the main branch) — this calculator uses basic salary as a simplified input for indicative results</li></ul>',
     disclaimer: '⚠️ Results are indicative — for official figures visit the SPF website | Last updated: August 2026',
     faq: [
       {q:'What is the difference between basic and gross salary?', a:'Basic salary is the fixed amount in your employment contract. Gross = Basic + all allowances (housing, transport, etc.).'},
-      {q:'Is SPF deducted from allowances?', a:'No. The 8% applies to basic salary only — not housing, transport or other allowances.'},
+      {q:'Is SPF deducted from allowances?', a:'The 8% is calculated on the insurable wage per SPF regulations, with a ceiling of OMR 3,000 for the main branch. This calculator uses basic salary as a simplified input — actual deductions may vary. Visit spf.gov.om for official confirmation.'},
       {q:'What is the minimum wage in Oman?', a:'Per the latest official decree, the minimum wage for Omani nationals is 325 OMR/month. This figure may change — always verify on the official Ministry of Labour website.'}
     ],
     rel_eos:'📋 End of Service Calculator', rel_vat:'🧾 VAT Calculator', rel_loan:'🧮 Loan Calculator',
