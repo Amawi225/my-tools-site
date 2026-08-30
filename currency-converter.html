@@ -89,6 +89,7 @@
     <div class="card-title" id="curTitle">محول العملات</div>
     <div class="card-subtitle" id="curSub">أسعار صرف حية — محدّثة كل 4 ساعات</div>
     <div class="divider"></div>
+    <p id="curIntro" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها الريال العماني (OMR)، الدولار (USD)، اليورو (EUR)، الجنيه الإسترليني (GBP)، الريال السعودي (SAR)، الدرهم الإماراتي (AED)، الجنيه المصري (EGP) وغيرها. السعر المعروض هو سعر الصرف الوسطي الحقيقي بدون هامش بنكي.</p>
 
     <label id="amtLbl">المبلغ</label>
     <input type="number" id="amount" value="1" min="0" oninput="convert()" style="font-size:20px;font-weight:700;">
@@ -200,6 +201,7 @@ const FALLBACK = {
 const CUR_T = {
   ar:{
     title:'محول العملات',sub:'أسعار صرف حية — محدّثة كل 4 ساعات',
+    intro:'محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها OMR، USD، EUR، GBP، SAR، AED، EGP، INR وغيرها. السعر المعروض هو سعر الصرف الوسطي الحقيقي بدون هامش بنكي.',
     amt:'المبلغ',from:'من',to:'إلى',refresh:'تحديث',
     loading:'جاري تحميل الأسعار...',
     live:'أسعار حية',cached:'أسعار محفوظة',fallback:'⚠️ تعذر تحديث الأسعار — يُعرض آخر سعر محفوظ',fallback_cached:'⚠️ تعذّر تحديث الأسعار — آخر حفظ:',
@@ -221,6 +223,7 @@ const CUR_T = {
   },
   en:{
     title:'Currency Converter',sub:'Live exchange rates — updated every 4 hours',
+    intro:'Free currency converter with live exchange rates updated every 4 hours. Supports 32 major currencies including OMR, USD, EUR, GBP, SAR, AED, EGP, INR and more. All rates are real mid-market rates — no bank markup, no hidden fees.',
     amt:'Amount',from:'From',to:'To',refresh:'Refresh',
     loading:'Loading exchange rates...',
     live:'Live rates',cached:'Cached rates',fallback:'⚠️ Could not update rates — showing last saved rates',fallback_cached:'⚠️ Could not refresh rates — last saved:',
@@ -554,6 +557,7 @@ function updateText() {
   const d = D();
   document.getElementById('curTitle').textContent   = d.title;
   document.getElementById('curSub').textContent     = d.sub;
+  if (d.intro) document.getElementById('curIntro').textContent = d.intro;
   document.getElementById('amtLbl').textContent     = d.amt;
   document.getElementById('fromLbl').textContent    = d.from;
   document.getElementById('toLbl').textContent      = d.to;
