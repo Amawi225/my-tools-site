@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -485,6 +485,7 @@ async function tryLiveFetch() {
 }
 
 async function fetchRates() {
+  if (!rates) { rates = FALLBACK; rateSource = 'offline'; rateTs = 0; convert(); }
   const cached = loadCache();
   if (cached) {
     rates = cached.r; rateSource = cached.src || ''; rateTs = cached.ts;
