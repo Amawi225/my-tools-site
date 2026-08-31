@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">`n<base href="https://adawati2027.github.io/my-tools-site/">
@@ -478,13 +478,8 @@ function filterTools() {
     const hasRecent = document.querySelectorAll('#recentGrid .tool-card').length > 0;
     recent.style.display = (isAll || isOman) && hasRecent ? '' : 'none';
   }
-  const favs = document.getElementById('favSection');
-  if (favs) {
-    let storedFavs = [];
-    try { storedFavs = JSON.parse(localStorage.getItem('adawati_favs') || '[]'); } catch(e) {}
-    const hasFavCards = document.querySelectorAll('#favGrid .tool-card').length > 0;
-    favs.style.display = (isAll || isOman) && storedFavs.length > 0 && hasFavCards ? '' : 'none';
-  }
+  const favSec = document.getElementById('favSection');
+  if (favSec && !(isAll || isOman)) favSec.style.display = 'none';
 }
 
 // ── Global Country Experience ──────────────────────────────
