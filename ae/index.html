@@ -334,8 +334,8 @@ function filterTools() {
   if (country) { const hasCards = document.querySelectorAll('#countryGrid .tool-card').length > 0; country.style.display = isAll && hasCards ? '' : 'none'; }
   const recent = document.getElementById('recentSection');
   if (recent) { const hasRecent = document.querySelectorAll('#recentGrid .tool-card').length > 0; recent.style.display = isAll && hasRecent ? '' : 'none'; }
-  const favs = document.getElementById('favSection');
-  if (favs) { let storedFavs = []; try { storedFavs = JSON.parse(localStorage.getItem('adawati_favs') || '[]'); } catch(e) {} const hasFavCards = document.querySelectorAll('#favGrid .tool-card').length > 0; favs.style.display = isAll && storedFavs.length > 0 && hasFavCards ? '' : 'none'; }
+  const favSec = document.getElementById('favSection');
+  if (favSec && !isAll) favSec.style.display = 'none';
 }
 document.addEventListener('DOMContentLoaded', filterTools);
 function toggleLangMenu(){var m=document.getElementById('langMenu');m.style.display=m.style.display==='block'?'none':'block';}
