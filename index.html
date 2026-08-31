@@ -175,6 +175,12 @@
       <div class="tools-grid" id="recentGrid"></div>
     </div>
 
+    <!-- Country recommendation section -->
+    <div id="countrySection" style="display:none;margin-bottom:28px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;" id="countrySectionLabel"></div>
+      <div class="tools-grid" id="countryGrid"></div>
+    </div>
+
     <div class="tools-grid" id="toolsGrid">
       <a href="bmi-calculator.html" class="tool-card" data-cat="health" data-search="bmi حاسبة مؤشر الجسم weight height">
         <div class="tool-icon-wrap" style="background:#eff6ff;">⚖️</div>
@@ -438,7 +444,10 @@ function filterTools() {
   const pop = document.getElementById('popularSection');
   if (pop) pop.style.display = isAll ? '' : 'none';
   const country = document.getElementById('countrySection');
-  if (country) country.style.display = (isAll || isOman) ? '' : 'none';
+  if (country) {
+    const hasCards = document.querySelectorAll('#countryGrid .tool-card').length > 0;
+    country.style.display = (isAll || isOman) && hasCards ? '' : 'none';
+  }
   const recent = document.getElementById('recentSection');
   if (recent) {
     const hasRecent = document.querySelectorAll('#recentGrid .tool-card').length > 0;
@@ -450,7 +459,141 @@ function filterTools() {
     favs.style.display = (isAll || isOman) && hasFavs ? '' : 'none';
   }
 }
+
+// ── Global Country Experience ──────────────────────────────
+(function(){
+  function detectCountry(){
+    try{
+      var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if(tz==='Asia/Muscat')return 'OM';
+      if(/Asia\/(Dubai|Abu_Dhabi)/.test(tz))return 'AE';
+      if(/Asia\/(Riyadh|Bahrain|Kuwait)/.test(tz))return 'SA';
+      if(tz==='Asia/Amman')return 'JO';
+      if(tz==='Africa/Cairo')return 'EG';
+      if(tz==='Asia/Baghdad')return 'IQ';
+      if(tz.indexOf('America/')===0)return 'US';
+      if(tz==='Europe/London')return 'GB';
+      if(tz.indexOf('Europe/')===0)return 'EU';
+    }catch(e){}
+    return null;
+  }
+  var CD={
+    OM:{label:{ar:'🇴🇲 موصى به لعُمان',en:'🇴🇲 Recommended for Oman',fr:'🇴🇲 Recommandé pour Oman',es:'🇴🇲 Recomendado para Omán',de:'🇴🇲 Empfohlen für Oman',ru:'🇴🇲 Рекомендуется для Омана'},
+      tools:[
+        {href:'vat-calculator.html',icon:'🧾',bg:'#fefce8',i18n:'vat_card_title',fb:'حاسبة VAT',desc:{ar:'احسب VAT 5% لعُمان والإمارات',en:'5% VAT for Oman & UAE',fr:'TVA 5% pour Oman et EAU',es:'IVA 5% para Omán y EAU',de:'5% MwSt. für Oman & VAE',ru:'НДС 5% для Омана и ОАЭ'}},
+        {href:'salary-calculator.html',icon:'💼',bg:'#f0fdf4',i18n:'sal_card_title',fb:'حاسبة الراتب',desc:{ar:'راتبك الصافي مع خصم PASI',en:'Net salary with PASI deduction',fr:'Salaire net avec déduction PASI',es:'Salario neto con deducción PASI',de:'Nettogehalt mit PASI-Abzug',ru:'Чистая зарплата с вычетом PASI'}},
+        {href:'end-of-service.html',icon:'📋',bg:'#f0f9ff',i18n:'eos_card_title',fb:'نهاية الخدمة',desc:{ar:'مكافأة نهاية الخدمة — قانون عُمان',en:'End of service gratuity — Oman law',fr:'Indemnité de fin de service — loi omanaise',es:'Gratificación por fin de servicio — ley omaní',de:'Abfindung — omanisches Recht',ru:'Выходное пособие — закон Омана'}},
+        {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'حوّل بين الهجري والميلادي',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien ↔ grégorien',es:'Conversor hijri ↔ gregoriano',de:'Hijri ↔ Gregorianisch',ru:'Хиджри ↔ Григорианский'}},
+        {href:'date-diff.html',icon:'📆',bg:'#fff7ed',i18n:'dd_card_title',fb:'فرق التواريخ',desc:{ar:'احسب الفرق بين تاريخين',en:'Days between two dates',fr:'Jours entre deux dates',es:'Días entre dos fechas',de:'Tage zwischen zwei Daten',ru:'Дни между двумя датами'}}
+      ]},
+    AE:{label:{ar:'🇦🇪 موصى به للإمارات',en:'🇦🇪 Recommended for UAE',fr:'🇦🇪 Recommandé pour les EAU',es:'🇦🇪 Recomendado para EAU',de:'🇦🇪 Empfohlen für VAE',ru:'🇦🇪 Рекомендуется для ОАЭ'},
+      tools:[
+        {href:'vat-calculator.html',icon:'🧾',bg:'#fefce8',i18n:'vat_card_title',fb:'حاسبة VAT',desc:{ar:'احسب VAT 5% للإمارات وعُمان',en:'5% VAT for UAE & Oman',fr:'TVA 5% pour les EAU et Oman',es:'IVA 5% para EAU y Omán',de:'5% MwSt. für VAE & Oman',ru:'НДС 5% для ОАЭ и Омана'}},
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول AED إلى أي عملة',en:'Convert AED to any currency',fr:'Convertir AED en toute devise',es:'Convertir AED a cualquier moneda',de:'AED in jede Währung umrechnen',ru:'Конвертировать AED в любую валюту'}},
+        {href:'compound-interest.html',icon:'📈',bg:'#f0fdf4',i18n:'ci_card_title',fb:'الفائدة المركبة',desc:{ar:'احسب نمو استثمارك',en:'Investment growth calculator',fr:'Calculateur de croissance d\'investissement',es:'Calculadora de crecimiento de inversión',de:'Investitionswachstumsrechner',ru:'Калькулятор роста инвестиций'}},
+        {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien ↔ grégorien',es:'Conversor hijri ↔ gregoriano',de:'Hijri ↔ Gregorianisch',ru:'Хиджри ↔ Григорианский'}},
+        {href:'timezone-converter.html',icon:'🕐',bg:'#fff7ed',i18n:'tz_card_title',fb:'المناطق الزمنية',desc:{ar:'الوقت في مدن العالم',en:'World time zones',fr:'Fuseaux horaires mondiaux',es:'Zonas horarias mundiales',de:'Weltzeitzone',ru:'Мировые часовые пояса'}}
+      ]},
+    SA:{label:{ar:'🇸🇦 موصى به للسعودية',en:'🇸🇦 Recommended for Saudi Arabia',fr:'🇸🇦 Recommandé pour l\'Arabie saoudite',es:'🇸🇦 Recomendado para Arabia Saudita',de:'🇸🇦 Empfohlen für Saudi-Arabien',ru:'🇸🇦 Рекомендуется для КСА'},
+      tools:[
+        {href:'vat-calculator.html',icon:'🧾',bg:'#fefce8',i18n:'vat_card_title',fb:'حاسبة VAT',desc:{ar:'احسب VAT 15% للسعودية',en:'15% VAT for Saudi Arabia',fr:'TVA 15% pour l\'Arabie saoudite',es:'IVA 15% para Arabia Saudita',de:'15% MwSt. für Saudi-Arabien',ru:'НДС 15% для Саудовской Аравии'}},
+        {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
+        {href:'salary-calculator.html',icon:'💼',bg:'#f0fdf4',i18n:'sal_card_title',fb:'حاسبة الراتب',desc:{ar:'حاسبة الراتب الصافي',en:'Net salary calculator',fr:'Calculateur de salaire net',es:'Calculadora de salario neto',de:'Nettogehaltsrechner',ru:'Калькулятор чистой зарплаты'}},
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول SAR إلى أي عملة',en:'Convert SAR to any currency',fr:'Convertir SAR en toute devise',es:'Convertir SAR a cualquier moneda',de:'SAR umrechnen',ru:'Конвертировать SAR'}},
+        {href:'compound-interest.html',icon:'📈',bg:'#f0fdf4',i18n:'ci_card_title',fb:'الفائدة المركبة',desc:{ar:'احسب نمو استثمارك',en:'Investment growth calculator',fr:'Calcul d\'intérêts composés',es:'Interés compuesto',de:'Zinseszinsrechner',ru:'Сложный процент'}}
+      ]},
+    JO:{label:{ar:'🇯🇴 موصى به للأردن',en:'🇯🇴 Recommended for Jordan',fr:'🇯🇴 Recommandé pour la Jordanie',es:'🇯🇴 Recomendado para Jordania',de:'🇯🇴 Empfohlen für Jordanien',ru:'🇯🇴 Рекомендуется для Иордании'},
+      tools:[
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول JOD إلى أي عملة',en:'Convert JOD to any currency',fr:'Convertir JOD',es:'Convertir JOD',de:'JOD umrechnen',ru:'Конвертировать JOD'}},
+        {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор кредита'}},
+        {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
+        {href:'percentage-calculator.html',icon:'💯',bg:'#fef2f2',i18n:'pct_card_title',fb:'حاسبة النسبة',desc:{ar:'احسب النسب والخصومات',en:'Percentages & discounts',fr:'Pourcentages et remises',es:'Porcentajes y descuentos',de:'Prozentsätze & Rabatte',ru:'Проценты и скидки'}},
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}}
+      ]},
+    EG:{label:{ar:'🇪🇬 موصى به لمصر',en:'🇪🇬 Recommended for Egypt',fr:'🇪🇬 Recommandé pour l\'Égypte',es:'🇪🇬 Recomendado para Egipto',de:'🇪🇬 Empfohlen für Ägypten',ru:'🇪🇬 Рекомендуется для Египта'},
+      tools:[
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول EGP إلى أي عملة',en:'Convert EGP to any currency',fr:'Convertir EGP',es:'Convertir EGP',de:'EGP umrechnen',ru:'Конвертировать EGP'}},
+        {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор кредита'}},
+        {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}},
+        {href:'percentage-calculator.html',icon:'💯',bg:'#fef2f2',i18n:'pct_card_title',fb:'حاسبة النسبة',desc:{ar:'احسب النسب والخصومات',en:'Percentages & discounts',fr:'Pourcentages et remises',es:'Porcentajes y descuentos',de:'Prozentsätze & Rabatte',ru:'Проценты и скидки'}}
+      ]},
+    IQ:{label:{ar:'🇮🇶 موصى به للعراق',en:'🇮🇶 Recommended for Iraq',fr:'🇮🇶 Recommandé pour l\'Irak',es:'🇮🇶 Recomendado para Irak',de:'🇮🇶 Empfohlen für Irak',ru:'🇮🇶 Рекомендуется для Ирака'},
+      tools:[
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول IQD إلى أي عملة',en:'Convert IQD to any currency',fr:'Convertir IQD',es:'Convertir IQD',de:'IQD umrechnen',ru:'Конвертировать IQD'}},
+        {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
+        {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор кредита'}},
+        {href:'percentage-calculator.html',icon:'💯',bg:'#fef2f2',i18n:'pct_card_title',fb:'حاسبة النسبة',desc:{ar:'احسب النسب والخصومات',en:'Percentages & discounts',fr:'Pourcentages et remises',es:'Porcentajes y descuentos',de:'Prozentsätze & Rabatte',ru:'Проценты и скидки'}},
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}}
+      ]},
+    US:{label:{ar:'🇺🇸 موصى به للولايات المتحدة',en:'🇺🇸 Recommended for USA',fr:'🇺🇸 Recommandé pour les États-Unis',es:'🇺🇸 Recomendado para EE.UU.',de:'🇺🇸 Empfohlen für die USA',ru:'🇺🇸 Рекомендуется для США'},
+      tools:[
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'BMI Calculator',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index calculator',fr:'Calculateur d\'IMC',es:'Calculadora de IMC',de:'BMI-Rechner',ru:'Калькулятор ИМТ'}},
+        {href:'tip-calculator.html',icon:'🤝',bg:'#fdf4ff',i18n:'tip_card_title',fb:'Tip Calculator',desc:{ar:'إكرامية وقسمة الفاتورة',en:'Tip & bill splitter',fr:'Pourboire et partage de note',es:'Propina y división de cuenta',de:'Trinkgeld & Rechnungsteiler',ru:'Чаевые и разделение счёта'}},
+        {href:'timezone-converter.html',icon:'🕐',bg:'#fff7ed',i18n:'tz_card_title',fb:'Time Zones',desc:{ar:'الوقت حول العالم',en:'World time zones',fr:'Fuseaux horaires mondiaux',es:'Zonas horarias mundiales',de:'Weltzeitzone',ru:'Мировые часовые пояса'}},
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'Currency Converter',desc:{ar:'حول USD إلى أي عملة',en:'Convert USD to any currency',fr:'Convertir USD',es:'Convertir USD',de:'USD umrechnen',ru:'Конвертировать USD'}},
+        {href:'compound-interest.html',icon:'📈',bg:'#f0fdf4',i18n:'ci_card_title',fb:'Compound Interest',desc:{ar:'احسب نمو استثمارك',en:'Investment growth calculator',fr:'Calcul d\'intérêts composés',es:'Interés compuesto',de:'Zinseszinsrechner',ru:'Сложный процент'}}
+      ]},
+    GB:{label:{ar:'🇬🇧 موصى به للمملكة المتحدة',en:'🇬🇧 Recommended for UK',fr:'🇬🇧 Recommandé pour le Royaume-Uni',es:'🇬🇧 Recomendado para el Reino Unido',de:'🇬🇧 Empfohlen für Großbritannien',ru:'🇬🇧 Рекомендуется для Великобритании'},
+      tools:[
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'BMI Calculator',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index calculator',fr:'Calculateur d\'IMC',es:'Calculadora de IMC',de:'BMI-Rechner',ru:'Калькулятор ИМТ'}},
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'Currency Converter',desc:{ar:'حول GBP إلى أي عملة',en:'Convert GBP to any currency',fr:'Convertir GBP',es:'Convertir GBP',de:'GBP umrechnen',ru:'Конвертировать GBP'}},
+        {href:'tip-calculator.html',icon:'🤝',bg:'#fdf4ff',i18n:'tip_card_title',fb:'Tip Calculator',desc:{ar:'إكرامية وقسمة الفاتورة',en:'Tip & bill splitter',fr:'Pourboire et partage de note',es:'Propina y división de cuenta',de:'Trinkgeld & Rechnungsteiler',ru:'Чаевые и разделение счёта'}},
+        {href:'timezone-converter.html',icon:'🕐',bg:'#fff7ed',i18n:'tz_card_title',fb:'Time Zones',desc:{ar:'الوقت حول العالم',en:'World time zones',fr:'Fuseaux horaires',es:'Zonas horarias',de:'Weltzeitzone',ru:'Часовые пояса'}},
+        {href:'compound-interest.html',icon:'📈',bg:'#f0fdf4',i18n:'ci_card_title',fb:'Compound Interest',desc:{ar:'احسب نمو استثمارك',en:'Investment growth calculator',fr:'Calcul d\'intérêts composés',es:'Interés compuesto',de:'Zinseszinsrechner',ru:'Сложный процент'}}
+      ]},
+    EU:{label:{ar:'🌍 موصى به لأوروبا',en:'🌍 Recommended for Europe',fr:'🌍 Recommandé pour l\'Europe',es:'🌍 Recomendado para Europa',de:'🌍 Empfohlen für Europa',ru:'🌍 Рекомендуется для Европы'},
+      tools:[
+        {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'Currency Converter',desc:{ar:'حول EUR إلى أي عملة',en:'Convert EUR to any currency',fr:'Convertir EUR',es:'Convertir EUR',de:'EUR umrechnen',ru:'Конвертировать EUR'}},
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'BMI Calculator',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index calculator',fr:'Calculateur d\'IMC',es:'Calculadora de IMC',de:'BMI-Rechner',ru:'Калькулятор ИМТ'}},
+        {href:'compound-interest.html',icon:'📈',bg:'#f0fdf4',i18n:'ci_card_title',fb:'Compound Interest',desc:{ar:'احسب نمو استثمارك',en:'Investment growth calculator',fr:'Calcul d\'intérêts composés',es:'Interés compuesto',de:'Zinseszinsrechner',ru:'Сложный процент'}},
+        {href:'timezone-converter.html',icon:'🕐',bg:'#fff7ed',i18n:'tz_card_title',fb:'Time Zones',desc:{ar:'الوقت حول العالم',en:'World time zones',fr:'Fuseaux horaires',es:'Zonas horarias',de:'Weltzeitzone',ru:'Часовые пояса'}},
+        {href:'tip-calculator.html',icon:'🤝',bg:'#fdf4ff',i18n:'tip_card_title',fb:'Tip Calculator',desc:{ar:'إكرامية وقسمة الفاتورة',en:'Tip & bill splitter',fr:'Pourboire et partage',es:'Propina y división',de:'Trinkgeld & Teiler',ru:'Чаевые и счёт'}}
+      ]}
+  };
+
+  function renderCountrySection(){
+    var code=detectCountry();
+    var data=code&&CD[code];
+    var section=document.getElementById('countrySection');
+    if(!section)return;
+    if(!data){section.style.display='none';return;}
+    var lang=localStorage.getItem('lang')||'ar';
+    var labelEl=document.getElementById('countrySectionLabel');
+    if(labelEl)labelEl.textContent=data.label[lang]||data.label['ar'];
+    var grid=document.getElementById('countryGrid');
+    if(!grid)return;
+    grid.innerHTML='';
+    var startEl=document.querySelector('[data-i18n="start"]');
+    var startTxt=startEl?startEl.textContent.trim():'ابدأ ←';
+    data.tools.forEach(function(t){
+      var desc=t.desc[lang]||t.desc['ar'];
+      var title=t.fb;
+      var ex=document.querySelector('[data-i18n="'+t.i18n+'"]');
+      if(ex&&ex.textContent.trim())title=ex.textContent.trim();
+      var a=document.createElement('a');
+      a.href=t.href;
+      a.className='tool-card';
+      a.innerHTML='<div class="tool-icon-wrap" style="background:'+t.bg+';">'+t.icon+'</div>'+
+        '<div class="tool-card-title">'+title+'</div>'+
+        '<div class="tool-card-desc">'+desc+'</div>'+
+        '<div class="tool-card-arrow">'+startTxt+'</div>';
+      grid.appendChild(a);
+    });
+    section.style.display='';
+  }
+  window._renderCountrySection=renderCountrySection;
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(renderCountrySection,40);});
+})();
 </script>
 <script src="i18n.js?v=27"></script>
+<script>
+(function(){
+  var _orig=window.setLang;
+  window.setLang=function(lang){
+    if(_orig)_orig.call(this,lang);
+    setTimeout(function(){if(window._renderCountrySection)window._renderCountrySection();},40);
+  };
+})();
 </body>
 </html>
