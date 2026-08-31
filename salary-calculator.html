@@ -27,7 +27,7 @@
 {"@type":"Question","name":"كيف أحسب خصم SPF يدوياً؟","acceptedAnswer":{"@type":"Answer","text":"الخصم = الراتب الأساسي × 8%. مثال: إذا كان الأساسي 500 ر.ع → الخصم = 40 ر.ع. الراتب الصافي = (الأساسي + البدلات) − 40. إذا كان الأساسي أعلى من 3,000 ر.ع يُحسب الخصم على 3,000 فقط."}},
 {"@type":"Question","name":"هل يُطبَّق خصم SPF على الوافدين؟","acceptedAnswer":{"@type":"Answer","text":"لا، خصم الـ8% لا يُطبَّق على الموظفين الوافدين. الوافدون لديهم نظام ادخار منفصل تُسهم فيه جهة العمل. راتب الوافد الصافي = الإجمالي بدون أي خصم SPF."}},
 {"@type":"Question","name":"ماذا يُغطي صندوق الحماية الاجتماعية SPF؟","acceptedAnswer":{"@type":"Answer","text":"يُغطي SPF أربعة فروع: (1) التقاعد والعجز والوفاة (7.5% من الموظف + 11.5% من صاحب العمل)، (2) الأمان الوظيفي/البطالة (0.5% + 1%)، (3) الادخار والاستثمار، (4) التأمين الصحي."}},
-{"@type":"Question","name":"هل يوجد ضريبة دخل على الرواتب في عمان؟","acceptedAnswer":{"@type":"Answer","text":"لا، سلطنة عُمان لا تفرض ضريبة دخل على رواتب الأفراد، سواء للعمانيين أو الوافدين. ما يُخصم من راتب الموظف العماني هو فقط اشتراك SPF (8%)."}},
+{"@type":"Question","name":"هل يوجد ضريبة دخل على الرواتب في عمان؟","acceptedAnswer":{"@type":"Answer","text":"حتى عام 2026 لا تُطبَّق ضريبة دخل على رواتب الأفراد في عُمان. غير أن قانون ضريبة دخل الأفراد صدر عام 2025 وسيبدأ تطبيقه اعتباراً من 2028 وفق الشروط والحدود المحددة. حالياً، الخصم الوحيد من راتب الموظف العماني هو اشتراك SPF (8%)."}},
 {"@type":"Question","name":"ما الفرق بين PASI وSPF في عمان؟","acceptedAnswer":{"@type":"Answer","text":"PASI (الهيئة العامة للتأمينات الاجتماعية) هو الاسم القديم للجهة المشرفة على التأمين الاجتماعي في عُمان. تم دمجها ضمن صندوق الحماية الاجتماعية (SPF) الذي يجمع الآن جميع فروع الحماية الاجتماعية."}}
 ]}]}
 </script>
@@ -40,7 +40,6 @@
     <a href="index.html" data-i18n="nav_home">الرئيسية</a>
     <a href="about.html" data-i18n="nav_about">من نحن</a>
     <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
-    <button class="signup-nav-btn" onclick="openSignup()" id="signupNavBtn" data-i18n="signup_btn">تسجيل</button>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -59,7 +58,7 @@
     <div class="card-title" data-i18n="sal_card_title">حاسبة الراتب — سلطنة عُمان 🇴🇲</div>
     <div class="card-subtitle" id="salCardSub">احسب راتبك الصافي وفق نظام الحماية الاجتماعية في سلطنة عُمان</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">احسب راتبك الصافي في سلطنة عُمان فوراً — أدخل الراتب الأساسي والبدلات وستُحسب اشتراكات صندوق الحماية الاجتماعية (SPF) تلقائياً. لا ضريبة دخل في عُمان: الخصم الوحيد للعماني هو 8% SPF.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">احسب راتبك الصافي في سلطنة عُمان فوراً — أدخل الراتب الأساسي والبدلات وستُحسب اشتراكات صندوق الحماية الاجتماعية (SPF) تلقائياً. حالياً في 2026 لا تُطبَّق ضريبة دخل على الرواتب (قانون PIT صدر 2025 ويبدأ تطبيقه 2028) — الخصم الوحيد للعماني هو 8% SPF.</p>
 
     <label id="salNatLbl">الجنسية</label>
     <div class="option-toggle">
@@ -121,7 +120,7 @@
         خصم SPF = 450 × 8% = <strong style="color:#dc2626;">− 36 ر.ع</strong><br>
         <strong style="color:#16a34a;font-size:15px;">الراتب الصافي = 564 ر.ع / شهر</strong>
       </div>
-      <p style="font-size:13px;margin-top:4px;"><strong>ملاحظة:</strong> خصم الـ8% يُطبَّق على الراتب الأساسي فقط (لا على البدلات). لو كان الموظف وافداً: لا يوجد خصم → الصافي = 600 ر.ع.</p>
+      <p style="font-size:13px;margin-top:4px;"><strong>ملاحظة (استرشادية):</strong> الخصم يُحسب وفق الأجر الخاضع للاشتراك حسب قواعد SPF — هذه الحاسبة تستخدم الراتب الأساسي كمدخل مبسط. الوافد: لا يوجد خصم → الصافي = 600 ر.ع.</p>
     </div>
   </div>
 
@@ -203,7 +202,7 @@
       </details>
       <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
         <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يوجد ضريبة دخل على الرواتب في عمان؟</summary>
-        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا، سلطنة عُمان لا تفرض ضريبة دخل على رواتب الأفراد، سواء للعمانيين أو الوافدين. الخصم الوحيد من راتب الموظف العماني هو اشتراك صندوق الحماية الاجتماعية (SPF) بنسبة 8%.</p>
+        <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">حتى عام 2026، لا تُطبَّق ضريبة دخل على رواتب الأفراد في عُمان. غير أن قانون ضريبة دخل الأفراد صدر عام 2025 وسيبدأ تطبيقه اعتباراً من 2028 وفق الشروط والحدود المحددة. حالياً، الخصم الوحيد من راتب الموظف العماني هو اشتراك صندوق الحماية الاجتماعية (SPF) بنسبة 8%.</p>
       </details>
       <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
         <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين PASI وSPF في عمان؟</summary>
@@ -258,7 +257,7 @@ const SAL_T = {
       {q:'كيف أحسب خصم SPF يدوياً؟', a:'الخصم = الراتب الأساسي × 8%. مثال: أساسي 500 ر.ع → الخصم = 40 ر.ع. الصافي = (الأساسي + البدلات) − 40. إذا كان الأساسي فوق 3,000 ر.ع يُحسب الخصم على 3,000 فقط.'},
       {q:'هل يُطبَّق خصم SPF على الوافدين؟', a:'لا، خصم الـ8% لا يُطبَّق على الوافدين. الوافدون لديهم نظام ادخار منفصل تُسهم فيه جهة العمل. راتب الوافد الصافي = الإجمالي بدون أي خصم SPF.'},
       {q:'ماذا يُغطي صندوق الحماية الاجتماعية SPF؟', a:'يُغطي SPF أربعة فروع: (1) التقاعد والعجز والوفاة (7.5% موظف + 11.5% صاحب عمل)، (2) الأمان الوظيفي/البطالة (0.5% + 1%)، (3) الادخار والاستثمار، (4) التأمين الصحي.'},
-      {q:'هل يوجد ضريبة دخل على الرواتب في عمان؟', a:'لا، سلطنة عُمان لا تفرض ضريبة دخل على رواتب الأفراد، سواء للعمانيين أو الوافدين. الخصم الوحيد من راتب الموظف العماني هو اشتراك صندوق الحماية الاجتماعية (SPF) بنسبة 8%.'},
+      {q:'هل يوجد ضريبة دخل على الرواتب في عمان؟', a:'حتى عام 2026، لا تُطبَّق ضريبة دخل على رواتب الأفراد في عُمان. غير أن قانون ضريبة دخل الأفراد صدر عام 2025 وسيبدأ تطبيقه اعتباراً من 2028 وفق الشروط والحدود المحددة. حالياً، الخصم الوحيد من راتب الموظف العماني هو اشتراك صندوق الحماية الاجتماعية (SPF) بنسبة 8%.'},
       {q:'ما الفرق بين PASI وSPF في عمان؟', a:'PASI (الهيئة العامة للتأمينات الاجتماعية) هو الاسم القديم للجهة المشرفة على التأمين الاجتماعي. تم دمجها ضمن صندوق الحماية الاجتماعية (SPF) الجديد الذي يجمع الآن جميع فروع الحماية الاجتماعية في عُمان.'}
     ],
     rel_eos:'📋 حاسبة نهاية الخدمة', rel_vat:'🧾 حاسبة VAT', rel_loan:'🧮 حاسبة القسط',
@@ -284,7 +283,7 @@ const SAL_T = {
       {q:'How do I calculate the SPF deduction manually?', a:'Deduction = Basic Salary × 8%. Example: basic OMR 500 → deduction = OMR 40. Net = (Basic + Allowances) − 40. If basic exceeds OMR 3,000, the deduction is capped at OMR 3,000 for the main branch.'},
       {q:'Does the SPF deduction apply to expatriates?', a:'No, the 8% SPF deduction does not apply to expatriate employees. Expatriates have a separate employer-funded savings scheme. An expatriate\'s net salary equals the gross salary with no SPF deduction.'},
       {q:'What does SPF cover?', a:'SPF covers four branches: (1) Old age, disability and death — 7.5% employee + 11.5% employer; (2) Employment security/unemployment — 0.5% + 1%; (3) Savings and investment; (4) Health insurance.'},
-      {q:'Is there income tax on salaries in Oman?', a:'No, Oman does not impose personal income tax on salaries for either Omani nationals or expatriates. The only mandatory deduction from an Omani employee\'s salary is the SPF contribution of 8%.'},
+      {q:'Is there income tax on salaries in Oman?', a:'As of 2026, Oman does not impose personal income tax on salaries. However, a Personal Income Tax law was enacted in 2025 and is scheduled to take effect from 2028, subject to the thresholds and conditions to be determined. Currently, the only mandatory deduction from an Omani employee\'s salary is the SPF contribution of 8%.'},
       {q:'What is the difference between PASI and SPF in Oman?', a:'PASI (Public Authority for Social Insurance) was the former name of Oman\'s social insurance authority. It has been consolidated into the Social Protection Fund (SPF), which now covers all social protection branches under one unified system.'}
     ],
     rel_eos:'📋 End of Service Calculator', rel_vat:'🧾 VAT Calculator', rel_loan:'🧮 Loan Calculator',
