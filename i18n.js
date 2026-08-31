@@ -1437,10 +1437,12 @@ function renderFavSection() {
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
   favGrid.innerHTML = '';
   if (favs.length === 0) { favSection.style.display = 'none'; return; }
+  const validFavs = [];
   favs.forEach(function(id) {
     const card = buildMiniCard(id, t, base);
-    if (card) favGrid.appendChild(card);
+    if (card) { favGrid.appendChild(card); validFavs.push(id); }
   });
+  if (validFavs.length !== favs.length) saveFavs(validFavs);
   favSection.style.display = favGrid.querySelector('.tool-card') ? '' : 'none';
   injectStarBtns();
 }
