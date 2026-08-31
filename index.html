@@ -497,13 +497,8 @@ function filterTools() {
     const hasRecent = document.querySelectorAll('#recentGrid .tool-card').length > 0;
     recent.style.display = isAll && hasRecent ? '' : 'none';
   }
-  const favs = document.getElementById('favSection');
-  if (favs) {
-    let storedFavs = [];
-    try { storedFavs = JSON.parse(localStorage.getItem('adawati_favs') || '[]'); } catch(e) {}
-    const hasFavCards = document.querySelectorAll('#favGrid .tool-card').length > 0;
-    favs.style.display = isAll && storedFavs.length > 0 && hasFavCards ? '' : 'none';
-  }
+  const favSec = document.getElementById('favSection');
+  if (favSec && !isAll) favSec.style.display = 'none';
 }
 
 // Country/Lang menu toggles
