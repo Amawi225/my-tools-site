@@ -24,8 +24,8 @@
 {"@type":"Question","name":"كم سعر الدولار مقابل الريال العماني اليوم؟","acceptedAnswer":{"@type":"Answer","text":"الريال العُماني مرتبط بالدولار الأمريكي بسعر ثابت رسمي: 1 ريال عُماني = 2.6008 دولار أمريكي (أو 1 USD = 0.3845 OMR). هذا السعر ثابت منذ 1986 بقرار من البنك المركزي العُماني ولا يتغير."}},
 {"@type":"Question","name":"هل الريال العُماني مرتبط بالدولار الأمريكي؟","acceptedAnswer":{"@type":"Answer","text":"نعم. الريال العُماني (OMR) مرتبط بالدولار الأمريكي (USD) بسعر صرف ثابت منذ عام 1986: 1 OMR = 2.6008 USD. هذا الربط يمنح الاستقرار ويجعل OMR من أقوى العملات الخليجية."}},
 {"@type":"Question","name":"هل أسعار الصرف المعروضة حية؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تُجلب الأسعار تلقائياً كل 4 ساعات من ExchangeRate-API. عند عدم الاتصال يعرض المحول آخر أسعار محفوظة أو أسعار احتياطية تقريبية — يُبيَّن ذلك بوضوح في شريط الحالة."}},
-{"@type":"Question","name":"ما هو سعر الصرف الوسطي (Mid-Market Rate)؟","acceptedAnswer":{"@type":"Answer","text":"سعر الصرف الوسطي هو منتصف الفارق بين سعر الشراء وسعر البيع في السوق المالي. هو المرجع الحقيقي لقيمة العملة دون أي هامش بنكي. البنوك والصرافات تضيف هامش ربح على هذا السعر."}},
-{"@type":"Question","name":"لماذا يختلف سعر التحويل في البنك عن هذا المحول؟","acceptedAnswer":{"@type":"Answer","text":"البنوك والصرافات تضيف هامش ربح (Spread) على سعر الصرف الوسطي الحقيقي. هذا المحول يعرض سعر الصرف الوسطي بدون هامش — لذا قد يختلف سعر البنك بنسبة 1-4% عن السعر المعروض."}},
+{"@type":"Question","name":"ما هو سعر الصرف الوسطي (Mid-Market Rate)؟","acceptedAnswer":{"@type":"Answer","text":"سعر الصرف الوسطي هو منتصف الفارق بين سعر الشراء وسعر البيع في السوق المالي. هو السعر المرجعي لقيمة العملة في الأسواق المالية، دون أي هامش بنكي. البنوك والصرافات تضيف هامش ربح على هذا السعر."}},
+{"@type":"Question","name":"لماذا يختلف سعر التحويل في البنك عن هذا المحول؟","acceptedAnswer":{"@type":"Answer","text":"البنوك والصرافات تضيف هامش ربح (Spread) على سعر الصرف الوسطي المرجعي. هذا المحول يعرض سعر الصرف الوسطي بدون هامش — قد يختلف سعر البنك عن السعر المعروض."}},
 {"@type":"Question","name":"كم سعر الريال السعودي مقابل الريال العُماني؟","acceptedAnswer":{"@type":"Answer","text":"تقريباً: 1 ريال عُماني (OMR) ≈ 9.75 ريال سعودي (SAR). أو 1 SAR ≈ 0.103 OMR. الأسعار الدقيقة تتغير يومياً — استخدم المحول أعلاه للسعر الفوري."}},
 {"@type":"Question","name":"كم سعر الدرهم الإماراتي مقابل الريال العُماني؟","acceptedAnswer":{"@type":"Answer","text":"تقريباً: 1 ريال عُماني (OMR) ≈ 9.55 درهم إماراتي (AED). أو 1 AED ≈ 0.105 OMR. استخدم المحول للسعر الفوري المحدّث."}},
 {"@type":"Question","name":"ما هي العملات المدعومة؟","acceptedAnswer":{"@type":"Answer","text":"يدعم المحول 32 عملة عالمية: USD، EUR، GBP، SAR، AED، KWD، QAR، BHD، OMR، EGP، JOD، INR، PKR، BDT، MYR، IDR، THB، JPY، CNY، KRW، CAD، AUD، CHF، SEK، NOK، DKK، PLN، RUB، BRL، MXN، ZAR وغيرها."}}
@@ -101,7 +101,7 @@
     <div class="card-title" id="curTitle">محول العملات</div>
     <div class="card-subtitle" id="curSub">أسعار صرف حية — محدّثة كل 4 ساعات</div>
     <div class="divider"></div>
-    <p id="curIntro" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها الريال العماني (OMR)، الدولار (USD)، اليورو (EUR)، الجنيه الإسترليني (GBP)، الريال السعودي (SAR)، الدرهم الإماراتي (AED)، الجنيه المصري (EGP) وغيرها. السعر المعروض هو سعر الصرف الوسطي الحقيقي بدون هامش بنكي.</p>
+    <p id="curIntro" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها الريال العماني (OMR)، الدولار (USD)، اليورو (EUR)، الجنيه الإسترليني (GBP)، الريال السعودي (SAR)، الدرهم الإماراتي (AED)، الجنيه المصري (EGP) وغيرها. السعر المعروض هو سعر الصرف الوسطي المرجعي بدون هامش بنكي.</p>
 
     <label id="amtLbl">المبلغ</label>
     <input type="number" id="amount" value="1" min="0" oninput="convert()" style="font-size:20px;font-weight:700;">
@@ -165,7 +165,7 @@
       <h3 id="infoTitle">📌 كيف يعمل محول العملات؟</h3>
       <p id="infoP1">يجلب هذا المحول أسعار الصرف الحية من ExchangeRate-API (open.er-api.com) وتُحدَّث كل 4 ساعات. آخر سعر تم تحميله يُحفظ في متصفحك تلقائياً للاستخدام دون إنترنت.</p>
       <p id="infoP2">الدولار الأمريكي (USD) هو العملة المرجعية، وتُحسب منه جميع أسعار التحويل الأخرى.</p>
-      <p id="infoP3">الأسعار المعروضة هي أسعار الصرف الوسطية الحقيقية — دون أي هامش أو رسوم بنكية.</p>
+      <p id="infoP3">الأسعار المعروضة هي أسعار الصرف الوسطية المرجعية — دون أي هامش أو رسوم بنكية.</p>
     </div>
 
     <!-- FAQ -->
@@ -256,7 +256,7 @@
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين سعر الصرف الوسطي وسعر البنك؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">سعر الصرف الوسطي (Mid-Market Rate) هو السعر الحقيقي للعملة في الأسواق المالية — بدون أي هامش ربح. البنوك والصرافات تُضيف هامشاً (Spread) قد يصل إلى 1-4% أو أكثر، لذا يختلف سعرها عما يعرضه هذا المحول.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">سعر الصرف الوسطي (Mid-Market Rate) هو السعر المرجعي للعملة في الأسواق المالية — بدون أي هامش ربح. البنوك والصرافات تُضيف هامشاً (Spread) على هذا السعر، لذا يختلف سعرها عما يعرضه هذا المحول.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم سعر الريال السعودي والدرهم الإماراتي مقابل الريال العُماني؟</summary>
@@ -316,7 +316,7 @@ const FALLBACK = {
 const CUR_T = {
   ar:{
     title:'محول العملات',sub:'أسعار صرف حية — محدّثة كل 4 ساعات',
-    intro:'محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها OMR، USD، EUR، GBP، SAR، AED، EGP، INR وغيرها. السعر المعروض هو سعر الصرف الوسطي الحقيقي بدون هامش بنكي.',
+    intro:'محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها OMR، USD، EUR، GBP، SAR، AED، EGP، INR وغيرها. السعر المعروض هو سعر الصرف الوسطي المرجعي بدون هامش بنكي.',
     amt:'المبلغ',from:'من',to:'إلى',refresh:'تحديث',
     loading:'جاري تحميل الأسعار...',
     live:'أسعار حية',cached:'أسعار مخزّنة',fallback:'⚠️ تعذر الاتصال — أسعار تقريبية للمرجع فقط',fallback_cached:'⚠️ تعذّر الاتصال — آخر تحديث:',
@@ -327,19 +327,19 @@ const CUR_T = {
     info_title:'📌 كيف يعمل محول العملات؟',
     info_p1:'يجلب هذا المحول أسعار الصرف الحية من ExchangeRate-API (open.er-api.com) وتُحدَّث كل 4 ساعات. آخر سعر تم تحميله يُحفظ في متصفحك تلقائياً للاستخدام دون إنترنت.',
     info_p2:'الدولار الأمريكي (USD) هو العملة المرجعية، وتُحسب منه جميع أسعار التحويل الأخرى.',
-    info_p3:'الأسعار المعروضة هي أسعار الصرف الوسطية الحقيقية — دون أي هامش أو رسوم بنكية.',
+    info_p3:'الأسعار المعروضة هي أسعار الصرف الوسطية المرجعية — دون أي هامش أو رسوم بنكية.',
     faq_title:'❓ أسئلة شائعة',
     faq:[
       {q:'هل الأسعار دقيقة وحية؟',a:'الأسعار تُجلب من API مباشرة وتُحدَّث كل 4 ساعات. قد تختلف قليلاً عن أسعار البنوك بسبب هامش الصرف الذي تضيفه البنوك.'},
       {q:'ماذا يحدث إذا لم يكن هناك إنترنت؟',a:'يستخدم المحول آخر أسعار تم تحميلها ومحفوظة في متصفحك. إذا لم تكن موجودة، تُستخدم أسعار تقريبية فقط كمرجع عام.'},
-      {q:'لماذا يختلف السعر هنا عن سعر البنك؟',a:'البنوك تضيف هامش ربح على سعر الصرف الرسمي. السعر هنا هو سعر الصرف الوسطي الحقيقي بدون أي هامش إضافي.'},
+      {q:'لماذا يختلف السعر هنا عن سعر البنك؟',a:'البنوك تضيف هامش ربح على سعر الصرف الرسمي. السعر هنا هو سعر الصرف الوسطي المرجعي بدون أي هامش إضافي.'},
       {q:'كم عدد العملات المدعومة؟',a:'32 عملة عالمية تشمل الدولار، الريالات الخليجية، اليورو، الجنيه، الروبية، الين، اليوان وغيرها.'},
       {q:'هل يمكنني الاعتماد عليه للعمليات المالية؟',a:'للأغراض الاستعلامية والتقريبية نعم. للعمليات المالية الرسمية راجع دائماً سعر البنك أو منصة الصرافة المعتمدة.'},
     ]
   },
   en:{
     title:'Currency Converter',sub:'Live exchange rates — updated every 4 hours',
-    intro:'Free currency converter with live exchange rates updated every 4 hours. Supports 32 major currencies including OMR, USD, EUR, GBP, SAR, AED, EGP, INR and more. All rates are real mid-market rates — no bank markup, no hidden fees.',
+    intro:'Free currency converter with live exchange rates updated every 4 hours. Supports 32 major currencies including OMR, USD, EUR, GBP, SAR, AED, EGP, INR and more. All rates are mid-market reference rates — no bank markup, no hidden fees.',
     amt:'Amount',from:'From',to:'To',refresh:'Refresh',
     loading:'Loading exchange rates...',
     live:'Live rates',cached:'Cached rates',fallback:'⚠️ No connection — approximate reference rates only',fallback_cached:'⚠️ Could not connect — last updated:',
@@ -350,12 +350,12 @@ const CUR_T = {
     info_title:'📌 How does the currency converter work?',
     info_p1:'This converter fetches live exchange rates from ExchangeRate-API (open.er-api.com), updated every 4 hours. The last loaded rates are saved in your browser automatically for offline use.',
     info_p2:'The US Dollar (USD) is used as the base currency, and all other conversion rates are calculated from it.',
-    info_p3:'The rates shown are real mid-market exchange rates — with no bank markup or hidden fees.',
+    info_p3:'The rates shown are mid-market reference exchange rates — with no bank markup or hidden fees.',
     faq_title:'❓ FAQ',
     faq:[
       {q:'Are the rates accurate and live?',a:'Rates are fetched directly from an API and updated every 4 hours. They may differ slightly from bank rates due to the exchange markup banks add.'},
       {q:'What happens if there\'s no internet?',a:'The converter uses the last downloaded rates saved in your browser. If none exist, approximate fallback rates are used for general reference only.'},
-      {q:'Why does the rate differ from my bank\'s rate?',a:'Banks add a profit margin on top of the mid-market rate. The rate shown here is the real mid-market rate without any markup.'},
+      {q:'Why does the rate differ from my bank\'s rate?',a:'Banks add a profit margin on top of the mid-market rate. The rate shown here is the mid-market reference rate without any markup.'},
       {q:'How many currencies are supported?',a:'32 major world currencies including Dollar, Gulf Riyals, Euro, Pound, Rupee, Yen, Yuan and more.'},
       {q:'Can I use it for real financial transactions?',a:'For reference and estimation purposes, yes. For official financial operations, always check with your bank or licensed exchange provider.'},
     ]
