@@ -7,13 +7,13 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أدواتي | Adawati — Free Online Tools: Calculator, Converter, Compressor</title>
+<title>أدواتي | Adawati — Free Online Tools</title>
 <meta name="description" content="29 free online tools in Arabic & English. BMI calculator, currency converter, image compressor, file converter (Word/Excel/CSV), VAT calculator, salary calculator, QR generator and more. No signup. أدوات مجانية بدون تسجيل.">
 <meta name="keywords" content="free online tools, BMI calculator, image compressor, currency converter, file converter, VAT calculator, QR code generator, password generator, compound interest calculator, حاسبة BMI, محول عملات, ضغط صور, أدوات مجانية, حاسبة الراتب عمان, محول الملفات">
 <meta name="robots" content="index, follow">
 <meta name="author" content="أدواتي — Adawati">
 <link rel="canonical" href="https://adawati2027.github.io/my-tools-site/">
-<meta property="og:title" content="أدواتي | Adawati — 29 Free Online Tools">
+<meta property="og:title" content="أدواتي | Adawati — Free Online Tools">
 <meta property="og:description" content="29 free tools: BMI calculator, image compressor, file converter, VAT calculator, currency converter, QR generator and more. No signup required.">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/">
 <meta property="og:type" content="website">
@@ -33,7 +33,7 @@
       "@id": "https://adawati2027.github.io/my-tools-site/#website",
       "name": "أدواتي — Adawati",
       "url": "https://adawati2027.github.io/my-tools-site/",
-      "description": "29 free online tools: calculators, converters, compressors, games. No signup required.",
+      "description": "Free online tools: calculators, converters, compressors, games. No signup required.",
       "inLanguage": ["ar","en","fr","es","de","ru"],
       "potentialAction": {
         "@type": "SearchAction",
@@ -98,7 +98,7 @@
       <div class="hero-badges">
         <span class="hero-badge">⚡ <span id="toolCountBadge">29</span>&nbsp;<span data-i18n="badge_count_lbl">أداة</span></span>
         <span class="hero-badge">✅ <span data-i18n="badge_free">مجانية 100%</span></span>
-        <span class="hero-badge">🔒 <span data-i18n="badge_privacy">معالجة محلية</span></span>
+        <span class="hero-badge">🔒 معالجة محلية لمعظم الأدوات</span>
         <span class="hero-badge">🌍 <span data-i18n="badge_langs">6 لغات</span></span>
       </div>
     </div>
@@ -107,7 +107,7 @@
   <div class="stats-row">
     <div class="stat-item"><div class="stat-item-val" id="toolCountStat">29</div><div class="stat-item-lbl" data-i18n="stat_tools">أداة مجانية</div></div>
     <div class="stat-item"><div class="stat-item-val">6</div><div class="stat-item-lbl" data-i18n="stat_langs">لغات مدعومة</div></div>
-    <div class="stat-item"><div class="stat-item-val">100%</div><div class="stat-item-lbl" data-i18n="stat_private">معالجة محلية</div></div>
+    <div class="stat-item"><div class="stat-item-val">🔒</div><div class="stat-item-lbl">معظم الأدوات محلية</div></div>
     <div class="stat-item"><div class="stat-item-val">24/7</div><div class="stat-item-lbl" data-i18n="stat_available">متاح دائماً</div></div>
   </div>
 
@@ -357,7 +357,7 @@
         <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
       </a>
     </div>
-    <div class="search-no-results" id="noResults">
+    <div class="search-no-results" id="noResults" style="display:none;">
       <div class="no-results-icon">🔍</div>
       <div data-i18n="search_no_results">لم يُعثر على أداة بهذا الاسم</div>
     </div>
@@ -398,7 +398,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي — كل الأدوات مجانية وخاصة</div>
+      <div class="footer-copy">© 2026 أدواتي — أدوات مجانية وخصوصيتك محفوظة</div>
       <div class="footer-langs">
         <span>🇸🇦 عربي</span><span>🇬🇧 EN</span><span>🇫🇷 FR</span><span>🇪🇸 ES</span><span>🇩🇪 DE</span><span>🇷🇺 RU</span>
       </div>
@@ -419,7 +419,7 @@ function updateToolCount() {
   if (b) b.textContent = n;
   if (gs) gs.textContent = g;
 }
-document.addEventListener('DOMContentLoaded', updateToolCount);
+document.addEventListener('DOMContentLoaded', function(){ updateToolCount(); filterTools(); });
 function setCat(cat) {
   activeCat = cat;
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
@@ -438,7 +438,7 @@ function filterTools() {
     if (show) visible++;
   });
   const noRes = document.getElementById('noResults');
-  if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+  if (noRes) noRes.style.display = (q && visible === 0) ? 'block' : 'none';
   const isAll = activeCat === 'all' && !q;
   const isOman = activeCat === 'oman' && !q;
   const pop = document.getElementById('popularSection');
