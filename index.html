@@ -465,8 +465,10 @@ function filterTools() {
   }
   const favs = document.getElementById('favSection');
   if (favs) {
-    const hasFavs = document.querySelectorAll('#favGrid .tool-card').length > 0;
-    favs.style.display = (isAll || isOman) && hasFavs ? '' : 'none';
+    let storedFavs = [];
+    try { storedFavs = JSON.parse(localStorage.getItem('adawati_favs') || '[]'); } catch(e) {}
+    const hasFavCards = document.querySelectorAll('#favGrid .tool-card').length > 0;
+    favs.style.display = (isAll || isOman) && storedFavs.length > 0 && hasFavCards ? '' : 'none';
   }
 }
 
