@@ -130,6 +130,7 @@
       <button class="cat-tab" data-cat="quick" onclick="setCat('quick')" data-i18n="cat_quick">⚡ سريعة</button>
       <button class="cat-tab" data-cat="oman" onclick="setCat('oman')" data-i18n="cat_oman">🌍 عمان</button>
       <button class="cat-tab" data-cat="games" onclick="setCat('games')" data-i18n="cat_games">🎮 ألعاب</button>
+      <button class="cat-tab" data-cat="education" onclick="setCat('education')" data-i18n="cat_education">🧒 تعليم</button>
     </div>
 
     <!-- Most-used section -->
@@ -338,7 +339,7 @@
         <div class="tool-card-desc" data-i18n="jump_card_desc">اقفز بين المنصات واجمع النجوم مثل ماريو!</div>
         <div class="tool-card-arrow" data-i18n="start">ابدأ ←</div>
       </a>
-      <a href="kids-learn.html" class="tool-card" data-cat="games" data-search="تعليم اطفال ارقام الوان حيوانات لعبة تعليمية kids learning numbers colors animals educational game for children 2 3 4 5 6 years بدون اعلانات">
+      <a href="kids-learn.html" class="tool-card" data-cat="education" data-search="تعليم اطفال ارقام الوان حيوانات لعبة تعليمية kids learning numbers colors animals educational game for children 2 3 4 5 6 years بدون اعلانات">
         <div class="tool-icon-wrap" style="background:#fef9c3;">🧒</div>
         <div class="tool-card-title" data-i18n="kids_card_title">تعلّم مع الأطفال</div>
         <div class="tool-card-desc" data-i18n="kids_card_desc">أرقام، ألوان، حيوانات — للأطفال من ٢ إلى ٦ سنوات</div>
@@ -365,7 +366,7 @@
     <div class="footer-top">
       <div class="footer-brand-block">
         <a href="index.html" class="footer-brand">أدواتي</a>
-        <p data-i18n="footer_desc">مجموعة أدوات إلكترونية مجانية تعمل مباشرة في متصفحك. بدون تسجيل، مجاني 100%، خصوصيتك محفوظة.</p>
+        <p data-i18n="footer_desc">معظم الأدوات تعمل محلياً في متصفحك، وبعض الأدوات تستخدم خدمات خارجية لتوفير البيانات. مجاني 100%، بدون تسجيل.</p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_tools_title">الأدوات</h4>
@@ -519,23 +520,20 @@ function filterTools() {
         {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول JOD إلى أي عملة',en:'Convert JOD to any currency',fr:'Convertir JOD',es:'Convertir JOD',de:'JOD umrechnen',ru:'Конвертировать JOD'}},
         {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор кредита'}},
         {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
-        {href:'percentage-calculator.html',icon:'💯',bg:'#fef2f2',i18n:'pct_card_title',fb:'حاسبة النسبة',desc:{ar:'احسب النسب والخصومات',en:'Percentages & discounts',fr:'Pourcentages et remises',es:'Porcentajes y descuentos',de:'Prozentsätze & Rabatte',ru:'Проценты и скидки'}},
-        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}}
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы تела'}}
       ]},
     EG:{label:{ar:'🇪🇬 موصى به لمصر',en:'🇪🇬 Recommended for Egypt',fr:'🇪🇬 Recommandé pour l\'Égypte',es:'🇪🇬 Recomendado para Egipto',de:'🇪🇬 Empfohlen für Ägypten',ru:'🇪🇬 Рекомендуется для Египта'},
       tools:[
         {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول EGP إلى أي عملة',en:'Convert EGP to any currency',fr:'Convertir EGP',es:'Convertir EGP',de:'EGP umrechnen',ru:'Конвертировать EGP'}},
         {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор кредита'}},
         {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
-        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}},
-        {href:'percentage-calculator.html',icon:'💯',bg:'#fef2f2',i18n:'pct_card_title',fb:'حاسبة النسبة',desc:{ar:'احسب النسب والخصومات',en:'Percentages & discounts',fr:'Pourcentages et remises',es:'Porcentajes y descuentos',de:'Prozentsätze & Rabatte',ru:'Проценты и скидки'}}
+        {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}}
       ]},
     IQ:{label:{ar:'🇮🇶 موصى به للعراق',en:'🇮🇶 Recommended for Iraq',fr:'🇮🇶 Recommandé pour l\'Irak',es:'🇮🇶 Recomendado para Irak',de:'🇮🇶 Empfohlen für Irak',ru:'🇮🇶 Рекомендуется для Ирака'},
       tools:[
         {href:'currency-converter.html',icon:'💱',bg:'#fefce8',i18n:'currency_card_title',fb:'محول العملات',desc:{ar:'حول IQD إلى أي عملة',en:'Convert IQD to any currency',fr:'Convertir IQD',es:'Convertir IQD',de:'IQD umrechnen',ru:'Конвертировать IQD'}},
         {href:'hijri-converter.html',icon:'🌙',bg:'#fdf4ff',i18n:'hijri_card_title',fb:'محول الهجري',desc:{ar:'محول التاريخ الهجري',en:'Hijri ↔ Gregorian converter',fr:'Convertisseur hégirien',es:'Conversor hijri',de:'Hijri-Umrechner',ru:'Конвертер хиджры'}},
-        {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор кредита'}},
-        {href:'percentage-calculator.html',icon:'💯',bg:'#fef2f2',i18n:'pct_card_title',fb:'حاسبة النسبة',desc:{ar:'احسب النسب والخصومات',en:'Percentages & discounts',fr:'Pourcentages et remises',es:'Porcentajes y descuentos',de:'Prozentsätze & Rabatte',ru:'Проценты и скидки'}},
+        {href:'loan-calculator.html',icon:'🧮',bg:'#faf5ff',i18n:'loan_card_title',fb:'حاسبة القسط',desc:{ar:'احسب قسط أي قرض',en:'Loan payment calculator',fr:'Calculateur de prêt',es:'Calculadora de préstamo',de:'Kreditrechner',ru:'Калькулятор كредита'}},
         {href:'bmi-calculator.html',icon:'⚖️',bg:'#eff6ff',i18n:'bmi_card_title',fb:'حاسبة BMI',desc:{ar:'مؤشر كتلة الجسم',en:'Body Mass Index',fr:'Indice de masse corporelle',es:'Índice de masa corporal',de:'Body-Mass-Index',ru:'Индекс массы тела'}}
       ]},
     US:{label:{ar:'🇺🇸 موصى به للولايات المتحدة',en:'🇺🇸 Recommended for USA',fr:'🇺🇸 Recommandé pour les États-Unis',es:'🇺🇸 Recomendado para EE.UU.',de:'🇺🇸 Empfohlen für die USA',ru:'🇺🇸 Рекомендуется для США'},
