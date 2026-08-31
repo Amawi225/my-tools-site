@@ -26,7 +26,7 @@
 {"@type":"Question","name":"كيف أخفض إجمالي الفائدة المدفوعة على القرض؟","acceptedAnswer":{"@type":"Answer","text":"ثلاث طرق: (1) تقليل مدة القرض — كلما قصرت المدة انخفضت الفائدة الإجمالية. (2) السداد المبكر — دفع مبالغ إضافية على الأصل يُقلل الفائدة المستقبلية. (3) الحصول على معدل فائدة أقل بمقارنة العروض البنكية."}},
 {"@type":"Question","name":"هل تشمل الحاسبة رسوم التأمين والإدارة؟","acceptedAnswer":{"@type":"Answer","text":"لا، الحاسبة تحسب القسط الأساسي فقط. البنوك قد تضيف رسوم تأمين على الحياة ورسوم إدارية وعمولة فتح الملف. للقسط الفعلي الكامل راجع البنك مباشرة."}},
 {"@type":"Question","name":"ما المقصود بجدول السداد (Amortization Schedule)؟","acceptedAnswer":{"@type":"Answer","text":"جدول السداد يُظهر تفصيلاً شهرياً لكيفية توزيع كل قسط بين سداد أصل القرض وسداد الفائدة مع تتبع المبلغ المتبقي بعد كل دفعة."}},
-{"@type":"Question","name":"ما نسبة القسط المناسبة من الدخل الشهري؟","acceptedAnswer":{"@type":"Answer","text":"ينصح المستشارون الماليون بألا يتجاوز إجمالي أقساط القروض 35-40% من الدخل الشهري الصافي للحفاظ على الاستقرار المالي ومواجهة الطوارئ."}},
+{"@type":"Question","name":"ما نسبة القسط المناسبة من الدخل الشهري؟","acceptedAnswer":{"@type":"Answer","text":"قد تختلف نسبة الاستقطاع المقبولة حسب البنك وظروف المقترض — لا توجد نسبة موحدة ملزمة. راجع الجهة الممولة لمعرفة الحد المسموح به في حالتك."}},
 {"@type":"Question","name":"هل السداد المبكر للقرض يُوفّر فائدة؟","acceptedAnswer":{"@type":"Answer","text":"نعم. كل دفعة إضافية على أصل القرض تُقلل المبلغ المتبقي مما يُخفض الفائدة المحسوبة في الأشهر القادمة. حتى مبالغ صغيرة إضافية في السنوات الأولى توفر فائدة أكبر بكثير من نفس المبلغ في السنوات الأخيرة."}},
 {"@type":"Question","name":"ما الفرق بين التمويل الإسلامي والقرض التقليدي؟","acceptedAnswer":{"@type":"Answer","text":"في التمويل الإسلامي (المرابحة أو الإجارة) لا توجد فائدة تقنياً — البنك يشتري الأصل ويبيعه بربح معلوم مسبقاً. في القرض التقليدي تُدفع فائدة على المبلغ المتبقي. الحاسبة تعمل لكلا النظامين إذا أدخلت المعدل السنوي المكافئ."}}
 ]}]}
@@ -225,7 +225,7 @@
           <span id="faq-q5">ما نسبة القسط المناسبة من الدخل الشهري؟</span>
           <span class="faq-arrow">▼</span>
         </button>
-        <div class="faq-a" id="faq-a5">قاعدة إرشادية عامة: ينصح كثير من المستشارين الماليين بألا يتجاوز إجمالي أقساط القروض 35-40% من الدخل الشهري الصافي للحفاظ على استقرار مالٍ كافٍ لمواجهة النفقات الأساسية والطوارئ. هذه ليست قاعدة موحدة — تختلف نسب البنوك والظروف الفردية.</div>
+        <div class="faq-a" id="faq-a5">قد تختلف نسبة الاستقطاع المقبولة حسب البنك وظروف المقترض — لا توجد نسبة موحدة ملزمة. للحفاظ على الاستقرار المالي، احرص على أن يبقى إجمالي أقساطك أقل من دخلك الصافي بما يكفي لتغطية نفقاتك الأساسية والطوارئ. راجع الجهة الممولة لمعرفة الحد المسموح به في حالتك.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
@@ -295,7 +295,7 @@ var LOAN_T = {
       {q:'كيف أخفض إجمالي الفائدة المدفوعة؟',a:'ثلاث طرق: (1) تقليل مدة القرض. (2) السداد المبكر — دفع مبالغ إضافية على الأصل. (3) الحصول على معدل فائدة أقل بمقارنة العروض البنكية.'},
       {q:'هل تشمل الحاسبة رسوم التأمين والإدارة؟',a:'لا، الحاسبة تحسب القسط الأساسي فقط. البنوك قد تضيف رسوم تأمين ورسوم إدارية وعمولة فتح الملف. للحصول على القسط الفعلي، راجع البنك مباشرة.'},
       {q:'ما المقصود بجدول السداد؟',a:'جدول السداد يُظهر تفصيلاً شهرياً لكيفية توزيع كل قسط بين سداد أصل القرض وسداد الفائدة، مع تتبع المبلغ المتبقي بعد كل دفعة.'},
-      {q:'ما نسبة القسط المناسبة من الدخل الشهري؟',a:'قاعدة إرشادية عامة: ألا يتجاوز إجمالي الأقساط 35-40% من الدخل الشهري الصافي. هذه ليست قاعدة موحدة — تختلف نسب البنوك والظروف الفردية.'},
+      {q:'ما نسبة القسط المناسبة من الدخل الشهري؟',a:'قد تختلف نسبة الاستقطاع المقبولة حسب البنك وظروف المقترض — لا توجد نسبة موحدة ملزمة. راجع الجهة الممولة لمعرفة الحد المسموح به في حالتك.'},
       {q:'هل السداد المبكر للقرض يُوفّر فائدة؟',a:'نعم. كل دفعة إضافية على الأصل تُقلل الرصيد المتبقي وبالتالي الفائدة في الأشهر التالية. مبلغ إضافي في السنوات الأولى يوفر أكثر من نفس المبلغ لاحقاً. تحقق من وجود غرامة سداد مبكر في عقدك.'},
       {q:'ما الفرق بين التمويل الإسلامي والقرض التقليدي؟',a:'في التمويل الإسلامي (مرابحة/إجارة) البنك يشتري الأصل ويبيعه بربح معلوم مسبقاً. في القرض التقليدي تُدفع فائدة على المبلغ المتبقي. الحاسبة تعمل للنظامين إذا أدخلت المعدل السنوي المكافئ.'}
     ],
@@ -321,7 +321,7 @@ var LOAN_T = {
       {q:'How can I reduce total interest paid?',a:'Three ways: (1) Shorten the loan term. (2) Make extra principal payments. (3) Get a lower interest rate by comparing bank offers.'},
       {q:'Does the calculator include insurance and admin fees?',a:'No, it calculates the base payment only. Banks may add life insurance premiums, administrative fees, and origination charges. Contact your bank for the full payment amount.'},
       {q:'What is an amortization schedule?',a:'An amortization schedule shows month-by-month how each payment is split between principal and interest, and tracks the remaining balance after each payment.'},
-      {q:'What is a healthy debt-to-income ratio?',a:'A general guideline: keep total monthly loan payments below 35-40% of net monthly income. This is not a universal rule — bank requirements and individual circumstances vary.'},
+      {q:'What is a healthy debt-to-income ratio?',a:'Acceptable debt-to-income ratios vary by bank and individual circumstances — there is no universal rule. Consult your lender to find out the limit that applies to your situation.'},
       {q:'Does early repayment save interest?',a:'Yes. Every extra payment on the principal reduces the remaining balance and therefore the interest calculated in future months. Extra payments early in the loan term save significantly more than the same amount paid later. Check your contract for any early repayment penalty.'},
       {q:'What is the difference between Islamic finance and a conventional loan?',a:'In Islamic finance (Murabaha/Ijara), the bank buys the asset and sells it at a pre-agreed profit margin — technically no interest. In a conventional loan, interest accrues on the remaining balance. This calculator works for both if you enter the equivalent annual rate.'}
     ],
@@ -347,7 +347,7 @@ var LOAN_T = {
       {q:'Comment réduire le total des intérêts payés?',a:'Trois façons: (1) Raccourcir la durée. (2) Rembourser par anticipation. (3) Obtenir un taux plus bas en comparant les offres bancaires.'},
       {q:'Le calculateur inclut-il les frais d\'assurance?',a:'Non, il calcule uniquement la mensualité de base. Les banques peuvent ajouter des frais d\'assurance et de dossier. Consultez votre banque pour le montant total.'},
       {q:'Qu\'est-ce qu\'un tableau d\'amortissement?',a:'Un tableau d\'amortissement montre mois par mois comment chaque paiement est réparti entre capital et intérêts, et suit le solde restant après chaque paiement.'},
-      {q:'Quel est le ratio dette/revenu recommandé?',a:'Règle indicative générale: maintenir les remboursements en dessous de 35-40% du revenu net mensuel. Ce n\'est pas une règle universelle.'},
+      {q:'Quel est le ratio dette/revenu recommandé?',a:'Les taux d\'endettement acceptables varient selon la banque et la situation de l\'emprunteur — il n\'existe pas de règle universelle. Consultez votre prêteur pour connaître la limite applicable à votre situation.'},
       {q:'Le remboursement anticipé permet-il d\'économiser des intérêts?',a:'Oui. Chaque paiement supplémentaire sur le capital réduit le solde restant et donc les intérêts futurs. Vérifiez les pénalités de remboursement anticipé dans votre contrat.'},
       {q:'Quelle est la différence entre la finance islamique et un prêt conventionnel?',a:'En finance islamique (Murabaha/Ijara), la banque achète l\'actif et le revend à un profit convenu. Dans un prêt conventionnel, des intérêts sont facturés sur le solde restant. Ce calculateur fonctionne pour les deux si vous entrez le taux annuel équivalent.'}
     ],
@@ -373,7 +373,7 @@ var LOAN_T = {
       {q:'¿Cómo puedo reducir el total de intereses pagados?',a:'Tres formas: (1) Reducir el plazo. (2) Hacer pagos anticipados. (3) Conseguir una tasa más baja comparando ofertas bancarias.'},
       {q:'¿La calculadora incluye seguros y comisiones?',a:'No, calcula solo la cuota base. Los bancos pueden agregar seguros de vida, comisiones de apertura y otros cargos. Consulta tu banco para el monto total.'},
       {q:'¿Qué es una tabla de amortización?',a:'Una tabla de amortización muestra mes a mes cómo se divide cada cuota entre capital e intereses, y rastrea el saldo pendiente después de cada pago.'},
-      {q:'¿Qué porcentaje del ingreso debe destinarse a cuotas?',a:'Pauta general: mantener las cuotas totales por debajo del 35-40% del ingreso neto mensual. No es una regla universal.'},
+      {q:'¿Qué porcentaje del ingreso debe destinarse a cuotas?',a:'Los ratios de endeudamiento aceptables varían según el banco y las circunstancias del prestatario — no existe una regla universal. Consulte a su prestamista para conocer el límite aplicable a su situación.'},
       {q:'¿El pago anticipado ahorra intereses?',a:'Sí. Cada pago adicional al capital reduce el saldo y los intereses futuros. Los pagos anticipados al inicio del préstamo ahorran más que al final. Verifique las penalidades en su contrato.'},
       {q:'¿Cuál es la diferencia entre la financiación islámica y el préstamo convencional?',a:'En la financiación islámica (Murabaha/Ijara), el banco compra el activo y lo vende con un margen acordado. En el préstamo convencional se cobran intereses sobre el saldo. Esta calculadora funciona para ambos con la tasa anual equivalente.'}
     ],
@@ -399,7 +399,7 @@ var LOAN_T = {
       {q:'Wie kann ich die Gesamtzinsen reduzieren?',a:'Drei Wege: (1) Laufzeit verkürzen. (2) Sondertilgungen leisten. (3) Niedrigeren Zinssatz durch Bankvergleich erhalten.'},
       {q:'Enthält der Rechner Versicherungs- und Verwaltungsgebühren?',a:'Nein, er berechnet nur die Grundrate. Banken können Versicherungsprämien, Bearbeitungsgebühren und weitere Kosten hinzufügen. Wenden Sie sich für den Gesamtbetrag an Ihre Bank.'},
       {q:'Was ist ein Tilgungsplan?',a:'Ein Tilgungsplan zeigt monatlich, wie jede Rate zwischen Tilgung und Zinsen aufgeteilt wird, und verfolgt die Restschuld nach jeder Zahlung.'},
-      {q:'Welcher Anteil des Einkommens sollte für Kreditraten verwendet werden?',a:'Allgemeine Richtlinie: Gesamtschuldenrate unter 35-40% des monatlichen Nettoeinkommens halten. Dies ist keine universelle Regel.'},
+      {q:'Welcher Anteil des Einkommens sollte für Kreditraten verwendet werden?',a:'Akzeptable Schuldenquoten variieren je nach Bank und individuellen Umständen — es gibt keine universelle Regel. Fragen Sie Ihren Kreditgeber nach der für Ihre Situation geltenden Grenze.'},
       {q:'Spart eine vorzeitige Rückzahlung Zinsen?',a:'Ja. Jede zusätzliche Tilgungszahlung reduziert den Restbetrag und damit künftige Zinsen. Frühe Zusatzzahlungen sparen mehr als späte. Prüfen Sie Vorfälligkeitsentschädigungen in Ihrem Vertrag.'},
       {q:'Was ist der Unterschied zwischen islamischer Finanzierung und einem konventionellen Kredit?',a:'Bei islamischer Finanzierung (Murabaha/Ijara) kauft die Bank den Vermögenswert und verkauft ihn mit einer vereinbarten Gewinnspanne. Bei konventionellen Krediten werden Zinsen auf den Restbetrag berechnet. Der Rechner funktioniert für beide mit dem äquivalenten Jahreszinssatz.'}
     ],
@@ -425,7 +425,7 @@ var LOAN_T = {
       {q:'Как уменьшить общую сумму выплаченных процентов?',a:'Три способа: (1) Сократить срок кредита. (2) Делать досрочные погашения. (3) Получить более низкую ставку, сравнивая банковские предложения.'},
       {q:'Включает ли калькулятор страховку и комиссии?',a:'Нет, он рассчитывает только базовый платёж. Банки могут добавлять страховые премии, комиссию за оформление и другие сборы. Обратитесь в банк для получения полной суммы.'},
       {q:'Что такое график платежей?',a:'График платежей показывает помесячно, как каждый платёж распределяется между основным долгом и процентами, и отслеживает остаток долга после каждого платежа.'},
-      {q:'Какой процент дохода следует выделять на кредиты?',a:'Общее правило: совокупные платежи по кредитам не должны превышать 35-40% чистого ежемесячного дохода. Это не универсальная норма.'},
+      {q:'Какой процент дохода следует выделять на кредиты?',a:'Допустимые соотношения долга к доходу варьируются в зависимости от банка и обстоятельств заёмщика — универсального правила не существует. Уточните лимит, применимый к вашей ситуации, у кредитора.'},
       {q:'Позволяет ли досрочное погашение сэкономить на процентах?',a:'Да. Каждый дополнительный платёж по основному долгу снижает остаток и будущие проценты. Проверьте штрафы за досрочное погашение в договоре.'},
       {q:'В чём разница между исламским финансированием и обычным кредитом?',a:'В исламском финансировании (Мурабаха/Иджара) банк покупает актив и продаёт его с заранее оговорённой прибылью. В обычном кредите начисляются проценты на остаток. Калькулятор работает для обоих вариантов при вводе эквивалентной годовой ставки.'}
     ],
