@@ -273,7 +273,7 @@ function setMode(m) {
   vatMode = m;
   document.getElementById('modeAdd').classList.toggle('active', m === 'add');
   document.getElementById('modeEx').classList.toggle('active', m === 'extract');
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
   const lbl = document.getElementById('vatAmountLabel');
   lbl.textContent = m === 'add' ? (t.vat_amount_before || 'المبلغ قبل الضريبة') : (t.vat_amount_after || 'المبلغ شامل الضريبة');
@@ -312,7 +312,7 @@ function calculate() {
     taxAmount = afterTax - beforeTax;
   }
 
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
 
   document.getElementById('rateDisplay').textContent = rate + '%';
