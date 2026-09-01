@@ -431,6 +431,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     updateModeLabels();
     if(currentMode==='quiz') renderQuiz(); else renderLearn();
   };
+  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateModeLabels();if(currentMode==='quiz')renderQuiz();else renderLearn();};
   // Stop speech when user leaves the tab
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden&&window.speechSynthesis) speechSynthesis.cancel();
