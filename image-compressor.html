@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
@@ -319,7 +319,7 @@ function compress(quality) {
       const pct = ((saved / originalFile.size) * 100).toFixed(0);
       document.getElementById('savings').textContent = (saved > 0 ? '−' : '+') + formatSize(Math.abs(saved)) + ' (' + Math.abs(pct) + '%)';
       document.getElementById('savings').style.color = saved > 0 ? '#ca8a04' : '#dc2626';
-      const lang = localStorage.getItem('lang') || 'ar';
+      const lang = localStorage.getItem('lang') || 'en';
       const tObj = (typeof T !== 'undefined' && T[lang]) ? T[lang] : T.ar;
       document.getElementById('compLabel').textContent = (tObj.ic_comp_img || 'مضغوطة') + ' — ' + (tObj.ic_quality_short || 'جودة') + ' ' + quality + '%';
       // Show hint for images where compression is minimal
