@@ -280,7 +280,7 @@ function setMode(m) {
   vatMode = m;
   document.getElementById('modeAdd').classList.toggle('active', m === 'add');
   document.getElementById('modeEx').classList.toggle('active', m === 'extract');
-  const lang = localStorage.getItem('lang') || 'en';
+  const lang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
   const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
   const lbl = document.getElementById('vatAmountLabel');
   lbl.textContent = m === 'add' ? (t.vat_amount_before || 'Amount before tax') : (t.vat_amount_after || 'Amount including tax');
@@ -353,9 +353,9 @@ var VAT_UI={
   ru:{th_country:'Страна',th_date:'Дата введения',disclaimer:'⚠️ Эти данные носят информационный характер — всегда проверяйте в официальных налоговых органах.',faq_title:'❓ Вопросы о НДС',faq_q1:'Что такое НДС?',faq_a1:'НДС — косвенный налог на большинство товаров и услуг, уплачиваемый конечным потребителем.',faq_q2:'Как рассчитать НДС 5%?',faq_a2:'Умножьте сумму на 0,05. Пример: 100 × 0,05 = 5 налога. Итого = 105.',faq_q3:'Как извлечь НДС из суммы с НДС?',faq_a3:'Разделите общую сумму на (1 + ставка). Пример: 105 ÷ 1,05 = 100 (до налога). НДС = 5.',faq_q4:'Какие товары освобождены от НДС в Омане?',faq_a4:'От НДС освобождены: основные продукты питания, медицинские услуги, образование, аренда жилья и финансовые услуги.',faq_q5:'Почему в Саудовской Аравии НДС 15%?',faq_a5:'В июле 2020 года Саудовская Аравия повысила НДС с 5% до 15% из-за COVID-19 и падения нефтяных цен. Оман и ОАЭ сохраняют 5%.',faq_q6:'Когда нужно регистрироваться по НДС в Омане?',faq_a6:'Регистрация обязательна при годовом обороте свыше 38 500 OMR. Добровольная регистрация от 19 250 OMR.',faq_q7:'Когда в Омане был введён НДС?',faq_a7:'Оман ввёл НДС по ставке 5% в апреле 2021 года, став пятой страной GCC, внедрившей налог на добавленную стоимость.',faq_q8:'Облагаются ли экспортные товары НДС в Омане?',faq_a8:'Нет. Экспорт из Омана облагается по нулевой ставке (0% НДС). Экспортёры не взимают НДС с иностранных покупателей, но могут вернуть уплаченный входящий НДС.',related:'Связанные финансовые инструменты:',rel1:'💼 Калькулятор зарплаты',rel2:'🧮 Кредитный калькулятор',rel3:'💯 Калькулятор скидок'}
 };
 function updateVATContent(){
-  var t=VAT_UI[localStorage.getItem('lang')||'en'];
-  var lang=localStorage.getItem('lang')||'en';
-  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  var lang=document.documentElement.lang||localStorage.getItem('lang')||'en';
+  if(!VAT_UI[lang])lang='en';
+  var t=VAT_UI[lang];
   document.getElementById('vat-th-country').textContent=t.th_country;
   document.getElementById('vat-th-date').textContent=t.th_date;
   document.getElementById('vat-disclaimer').textContent=t.disclaimer;

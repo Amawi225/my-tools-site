@@ -473,7 +473,7 @@ const CUR_T = {
 /* ── State ── */
 const CACHE_KEY = 'adawati_rates_v3';
 const CACHE_TTL = 4 * 60 * 60 * 1000;
-let rates = null, rateSource = '', rateTs = 0, curLang = 'ar', rateState = 'loading';
+let rates = null, rateSource = '', rateTs = 0, curLang = 'en', rateState = 'loading';
 
 function D() { return CUR_T[curLang] || CUR_T.en; }
 
@@ -735,7 +735,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     updateText();
   };
-  curLang = localStorage.getItem('lang') || 'en';
+  curLang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
+  if (!CUR_T[curLang]) curLang = 'en';
   populateSelects();
   buildQuickRow();
   updateText();
