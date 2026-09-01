@@ -364,13 +364,7 @@ function updateDDContent(){
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
 }
-window.setLang=function(lang){
-  localStorage.setItem('lang',lang);
-  updateDDContent();
-  if(typeof initI18n==='function')initI18n(lang);
-  calculate();
-  showUpcoming();
-};
+window.onLangChange=function(lang){updateDDContent();calculate();showUpcoming();};
 
 function setPreset(type) {
   const today = new Date();
@@ -464,5 +458,5 @@ updateDDContent();
 calculate();
 showUpcoming();
 </script>
-<script src="i18n.js?v=29"></script>
+<script src="i18n.js?v=30"></script>
 </body></html>
