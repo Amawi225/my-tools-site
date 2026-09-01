@@ -70,7 +70,7 @@
     <div class="card-title" data-i18n="pct_card_title">Percentage & Discount</div>
     <div class="card-subtitle" data-i18n="pct_sub">Three types of calculations in one tool</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Three types of percentage calculations in one tool: find X% of a number (e.g. 20% of 500), find what percentage one number is of another, and calculate percentage increase or decrease. Useful for discounts, VAT, statistics and financial comparisons.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;" data-i18n="pct_intro">Three types of percentage calculations in one tool: find X% of a number (e.g. 20% of 500), find what percentage one number is of another, and calculate percentage increase or decrease. Useful for discounts, VAT, statistics and financial comparisons.</p>
 
     <div class="tab-nav" style="display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;">
       <button class="tab active" id="tab1" onclick="setTab(1)" data-i18n="pct_tab1">X% of a number</button>
@@ -85,7 +85,7 @@
           <label data-i18n="pct_pct">Percentage %</label>
           <input type="number" id="p1pct" placeholder="e.g. 15" min="0" step="any" oninput="calc1()">
         </div>
-        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);">of</div>
+        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);" data-i18n="pct_of">of</div>
         <div style="flex:1;min-width:100px;">
           <label data-i18n="pct_num">Number</label>
           <input type="number" id="p1num" placeholder="e.g. 200" min="0" step="any" oninput="calc1()">
@@ -104,7 +104,7 @@
           <label data-i18n="pct_first">First number</label>
           <input type="number" id="p2a" placeholder="e.g. 30" step="any" oninput="calc2()">
         </div>
-        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);">of</div>
+        <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);" data-i18n="pct_of">of</div>
         <div style="flex:1;min-width:100px;">
           <label data-i18n="pct_second">Second number</label>
           <input type="number" id="p2b" placeholder="e.g. 150" step="any" oninput="calc2()">
@@ -139,41 +139,14 @@
   <!-- Quick reference -->
   <div class="card" style="margin-top:16px;">
     <div class="card-title" style="font-size:15px;" data-i18n="pct_quick_ref_title">🧮 Quick Reference — Common Rates</div>
-    <div style="overflow-x:auto;margin-top:12px;">
-      <table style="width:100%;border-collapse:collapse;font-size:13px;">
-        <thead>
-          <tr style="background:var(--primary);color:#fff;">
-            <th style="padding:9px 12px;text-align:start;">Calculation type</th>
-            <th style="padding:9px 12px;text-align:start;">Formula</th>
-            <th style="padding:9px 12px;text-align:start;">Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">X% of a number</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">Number × percentage ÷ 100</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">20% of 500 = <strong>100</strong></td>
-          </tr>
-          <tr style="background:var(--surface-2);">
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">X is what % of Y?</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">(X ÷ Y) × 100</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">30 of 150 = <strong>20%</strong></td>
-          </tr>
-          <tr>
-            <td style="padding:8px 12px;font-weight:700;">% Change</td>
-            <td style="padding:8px 12px;font-family:monospace;">((New − Old) ÷ Old) × 100</td>
-            <td style="padding:8px 12px;color:var(--text-muted);">from 100 to 130 = <strong>+30%</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div style="overflow-x:auto;margin-top:12px;" data-i18n-html="pct_ref_table_html"><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:var(--primary);color:#fff;"><th style="padding:9px 12px;text-align:start;">Calculation type</th><th style="padding:9px 12px;text-align:start;">Formula</th><th style="padding:9px 12px;text-align:start;">Example</th></tr></thead><tbody><tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">X% of a number</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">Number × percentage ÷ 100</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">20% of 500 = <strong>100</strong></td></tr><tr style="background:var(--surface-2);"><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">X is what % of Y?</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">(X ÷ Y) × 100</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">30 of 150 = <strong>20%</strong></td></tr><tr><td style="padding:8px 12px;font-weight:700;">% Change</td><td style="padding:8px 12px;font-family:monospace;">((New − Old) ÷ Old) × 100</td><td style="padding:8px 12px;color:var(--text-muted);">from 100 to 130 = <strong>+30%</strong></td></tr></tbody></table></div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;font-size:13px;text-align:center;">
-      <div onclick="quickFill(5)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>5%</strong><br><span style="color:var(--text-muted);font-size:11px;">VAT Oman/UAE</span></div>
-      <div onclick="quickFill(10)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>10%</strong><br><span style="color:var(--text-muted);font-size:11px;">One tenth</span></div>
-      <div onclick="quickFill(15)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>15%</strong><br><span style="color:var(--text-muted);font-size:11px;">VAT Saudi Arabia</span></div>
-      <div onclick="quickFill(20)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>20%</strong><br><span style="color:var(--text-muted);font-size:11px;">One fifth</span></div>
-      <div onclick="quickFill(25)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>25%</strong><br><span style="color:var(--text-muted);font-size:11px;">One quarter</span></div>
-      <div onclick="quickFill(50)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>50%</strong><br><span style="color:var(--text-muted);font-size:11px;">Half</span></div>
+      <div onclick="quickFill(5)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>5%</strong><br><span style="color:var(--text-muted);font-size:11px;" data-i18n="pct_vat5_lbl">VAT Oman/UAE</span></div>
+      <div onclick="quickFill(10)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>10%</strong><br><span style="color:var(--text-muted);font-size:11px;" data-i18n="pct_tenth_lbl">One tenth</span></div>
+      <div onclick="quickFill(15)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>15%</strong><br><span style="color:var(--text-muted);font-size:11px;" data-i18n="pct_vat15_lbl">VAT Saudi Arabia</span></div>
+      <div onclick="quickFill(20)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>20%</strong><br><span style="color:var(--text-muted);font-size:11px;" data-i18n="pct_fifth_lbl">One fifth</span></div>
+      <div onclick="quickFill(25)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>25%</strong><br><span style="color:var(--text-muted);font-size:11px;" data-i18n="pct_quarter_lbl">One quarter</span></div>
+      <div onclick="quickFill(50)" style="padding:10px;background:var(--surface-2);border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--surface-2)'"><strong>50%</strong><br><span style="color:var(--text-muted);font-size:11px;" data-i18n="pct_half_lbl">Half</span></div>
     </div>
   </div>
 
@@ -231,15 +204,6 @@
     </ul>
   </div>
 
-  <div style="margin-top:16px;text-align:center;">
-    <strong data-i18n="related_tools">Related Tools:</strong>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 VAT Calculator</a>
-      <a href="compound-interest.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📈 Compound Interest</a>
-      <a href="tip-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🤝 Tip Calculator</a>
-      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 Loan Calculator</a>
-    </div>
-  </div>
 </div></main>
 
 <footer class="footer" style="padding:28px;">
@@ -320,5 +284,5 @@ function quickFill(pct) {
   calc1();
 }
 </script>
-<script src="i18n.js?v=28"></script>
+<script src="i18n.js?v=29"></script>
 </body></html>
