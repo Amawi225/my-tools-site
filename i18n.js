@@ -1086,7 +1086,7 @@ function setLang(lang) {
   });
   updateSignupBtn();
   // Re-render country section cards with the new language
-  const cc = localStorage.getItem('adawati_country');
+  const cc = sessionStorage.getItem('adawati_country');
   if (cc && typeof COUNTRY_DATA !== 'undefined' && COUNTRY_DATA[cc] && document.getElementById('countrySection')) {
     renderCountrySection(cc);
   }
@@ -1927,8 +1927,8 @@ function renderCountrySection(countryCode) {
   const existing = document.getElementById('countrySection');
   if (existing) existing.remove();
 
-  const lang = localStorage.getItem('lang') || 'en';
-  const t = T[lang] || T.ar;
+  const lang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
+  const t = T[lang] || T.en;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
 
   const section = document.createElement('div');
@@ -1968,10 +1968,18 @@ function renderCountrySection(countryCode) {
 
 async function initCountryDetect() {
   if (!document.getElementById('toolsGrid')) return;
-  // URL override for testing — ?country=jo (not saved to localStorage)
+  // URL override for testing — ?country=jo (not saved to sessionStorage)
   const _urlCode = (new URLSearchParams(location.search).get('country') || '').toUpperCase();
   if (_urlCode && COUNTRY_DATA[_urlCode]) { renderCountrySection(_urlCode); return; }
-  let code = localStorage.getItem('adawati_country');
+  // Country-specific pages override country from URL path (/om/ → OM, /ae/ → AE …)
+  var _urlCountryMap = {om:'OM',ae:'AE',sa:'SA',us:'US',uk:'GB',jo:'JO'};
+  var _pathParts = location.pathname.split('/').filter(function(s){return s.length>0;});
+  for (var _pi = 0; _pi < _pathParts.length; _pi++) {
+    var _mapped = _urlCountryMap[_pathParts[_pi]];
+    if (_mapped && COUNTRY_DATA[_mapped]) { renderCountrySection(_mapped); return; }
+  }
+  // Use sessionStorage so country detection is fresh each browser session
+  let code = sessionStorage.getItem('adawati_country');
   if (!code) {
     code = detectCountryFromLang();
     if (!code) {
@@ -1982,7 +1990,7 @@ async function initCountryDetect() {
         code = d.country || null;
       } catch(e) {}
     }
-    if (code) localStorage.setItem('adawati_country', code);
+    if (code) sessionStorage.setItem('adawati_country', code);
   }
   if (code && COUNTRY_DATA[code]) renderCountrySection(code);
 }
