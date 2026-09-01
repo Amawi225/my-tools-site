@@ -31,7 +31,7 @@
 ]},
 {"@type":"FAQPage","mainEntity":[
   {"@type":"Question","name":"ما فارق التوقيت بين عمان ولندن؟","acceptedAnswer":{"@type":"Answer","text":"في الصيف (BST) +3 ساعات، وفي الشتاء (GMT) +4 ساعات. عُمان تبقى على UTC+4 دائماً."}},
-  {"@type":"Question","name":"كم الفارق بين الرياض ونيويورك؟","acceptedAnswer":{"@type":"Answer","text":"الرياض (UTC+3) متقدمة على نيويورك بـ 8 ساعات في الشتاء (EST) و7 ساعات في الصيف (EDT)."}},
+  {"@type":"Question","name":"كم الفارق بين الرياض ونيويورك؟","acceptedAnswer":{"@type":"Answer","text":"Riyadh (UTC+3) is 8 hours ahead of New York in winter (EST) and 7 hours ahead in summer (EDT)."}},
   {"@type":"Question","name":"ما الفرق بين GMT وUTC؟","acceptedAnswer":{"@type":"Answer","text":"من الناحية العملية متطابقان. GMT تاريخي بريطاني. UTC المعيار العلمي الدولي لأنظمة الكمبيوتر."}},
   {"@type":"Question","name":"لماذا تتغير فوارق التوقيت في الصيف؟","acceptedAnswer":{"@type":"Answer","text":"بسبب التوقيت الصيفي (DST). دول كالولايات المتحدة وأوروبا تُقدِّم ساعتها صيفاً. دول الخليج لا تُطبّق DST."}},
   {"@type":"Question","name":"ما دول الخليج التي تُطبّق التوقيت الصيفي؟","acceptedAnswer":{"@type":"Answer","text":"لا دول خليجية تُطبّق التوقيت الصيفي. عُمان UTC+4، الإمارات والسعودية UTC+3، الكويت UTC+3 — ثابتة طوال العام."}},
@@ -45,13 +45,13 @@
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand">أدواتي</a>
+  <a href="index.html" class="nav-brand">Adawati</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
-      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
       <div class="lang-menu" id="langMenu">
         <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
         <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
@@ -61,20 +61,20 @@
   </div>
 </div></nav>
 <main><div class="tool-page" style="max-width:560px;">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fff7ed;">🕐</div>
-    <div class="card-title" data-i18n="tz_title">محول المناطق الزمنية</div>
-    <div class="card-subtitle" data-i18n="tz_sub">اعرف الوقت في أي مدينة حول العالم</div>
+    <div class="card-title" data-i18n="tz_title">Time Zone Converter</div>
+    <div class="card-subtitle" data-i18n="tz_sub">Find the time in any city around the world</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">اعرف الوقت الحالي في 6 مدن كبرى مباشرة (الرياض، دبي، لندن، نيويورك، طوكيو، سيدني) أو حوّل أي وقت بين أي منطقتين زمنيتين من قائمة تضم 20 مدينة عالمية.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">See the current time live in 6 major cities (Riyadh, Dubai, London, New York, Tokyo, Sydney) or convert any time between any two zones from a list of 20 world cities.</p>
     <div id="clockGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;"></div>
     <div class="divider"></div>
-    <label data-i18n="tz_convert">حوّل وقتاً محدداً</label>
+    <label data-i18n="tz_convert">Convert a specific time</label>
     <input type="datetime-local" id="inputTime">
-    <label data-i18n="tz_from">من منطقة</label>
+    <label data-i18n="tz_from">From zone</label>
     <select id="tzFrom" onchange="convertTime()"></select>
-    <label data-i18n="tz_to">إلى منطقة</label>
+    <label data-i18n="tz_to">To zone</label>
     <select id="tzTo" onchange="convertTime()"></select>
     <div id="tzResult" class="result-box success" style="margin-top:16px;">
       <div class="result-value" id="tzResultVal" style="font-size:28px;"></div>
@@ -83,71 +83,71 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">🌍 فوارق التوقيت بين المدن الرئيسية</div>
+    <div class="card-title" style="font-size:15px;">🌍 Time Differences Between Major Cities</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--surface-2);">
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">المدينة</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">City</th>
             <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">الفارق مع الرياض</th>
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">ملاحظة</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">Offset from Riyadh</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Note</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">مسقط (عُمان)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+4</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">+1</td><td style="padding:8px 10px;border:1px solid var(--border);">ثابت طوال العام</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">دبي</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+4</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">+1</td><td style="padding:8px 10px;border:1px solid var(--border);">ثابت طوال العام</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">الرياض</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+3</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">—</td><td style="padding:8px 10px;border:1px solid var(--border);">ثابت طوال العام</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">لندن</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+0/+1</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">−3 أو −2</td><td style="padding:8px 10px;border:1px solid var(--border);">يُطبّق التوقيت الصيفي</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">نيويورك</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC−5/−4</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">−8 أو −7</td><td style="padding:8px 10px;border:1px solid var(--border);">يُطبّق التوقيت الصيفي</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">طوكيو</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+9</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">+6</td><td style="padding:8px 10px;border:1px solid var(--border);">ثابت طوال العام</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Muscat (Oman)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+4</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">+1</td><td style="padding:8px 10px;border:1px solid var(--border);">Fixed all year</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Dubai</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+4</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">+1</td><td style="padding:8px 10px;border:1px solid var(--border);">Fixed all year</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Riyadh</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+3</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">—</td><td style="padding:8px 10px;border:1px solid var(--border);">Fixed all year</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">London</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+0/+1</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">−3 or −2</td><td style="padding:8px 10px;border:1px solid var(--border);">Observes daylight saving</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">New York</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC−5/−4</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">−8 or −7</td><td style="padding:8px 10px;border:1px solid var(--border);">Observes daylight saving</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Tokyo</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">UTC+9</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">+6</td><td style="padding:8px 10px;border:1px solid var(--border);">Fixed all year</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما فارق التوقيت بين عمان ولندن؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">في الصيف (BST) +3 ساعات، وفي الشتاء (GMT) +4 ساعات. عُمان لا تُطبّق التوقيت الصيفي وتبقى على UTC+4 دائماً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the time difference between Oman and London?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">In summer (BST) +3 hours, in winter (GMT) +4 hours. Oman does not observe daylight saving and stays at UTC+4 all year.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم الفارق بين الرياض ونيويورك؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الرياض (UTC+3) متقدمة على نيويورك بـ 8 ساعات في الشتاء (EST) و7 ساعات في الصيف (EDT).</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between Riyadh and New York?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Riyadh (UTC+3) is 8 hours ahead of New York in winter (EST) and 7 hours ahead in summer (EDT).</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين GMT وUTC؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">من الناحية العملية متطابقان. GMT تاريخي بريطاني، وUTC هو المعيار العلمي الدولي المستخدم في أنظمة الكمبيوتر والإنترنت.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between GMT and UTC?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">In practice they are identical. GMT is historically British. UTC is the international scientific standard used in computer systems and the internet.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لماذا تتغير فوارق التوقيت في الصيف؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">بسبب التوقيت الصيفي (DST). دول كالولايات المتحدة وأوروبا وأستراليا تُقدِّم ساعتها في الصيف لاستغلال ضوء النهار. دول الخليج لا تُطبّق DST وتبقى ثابتة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Why do time differences change in summer?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Because of daylight saving time (DST). Countries like the US, Europe and Australia set their clocks forward in summer to use daylight longer. Gulf countries do not apply DST and remain fixed.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما دول الخليج التي تُطبّق التوقيت الصيفي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا توجد دولة خليجية تُطبّق التوقيت الصيفي. عُمان UTC+4، الإمارات والسعودية والقطر والكويت UTC+3 — جميعها ثابتة طوال العام.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Which Gulf countries observe daylight saving time?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">No Gulf country observes daylight saving time. Oman is UTC+4; UAE, Saudi Arabia, Qatar and Kuwait are UTC+3 — all fixed throughout the year.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما أفضل وقت للاجتماع بين دبي ولندن؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الفارق 3-4 ساعات. أفضل وقت تقاطع: 9-11 صباحاً لندن = 12-2 ظهراً دبي. تجنب مواعيد بعد الظهر في لندن التي تتحول إلى مساء في دبي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the best meeting time between Dubai and London?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The difference is 3–4 hours. Best overlap: 9–11 am London = 12–2 pm Dubai. Avoid afternoon slots in London which become evening in Dubai.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أعرف منطقتي الزمنية تلقائياً؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">المتصفح يكتشف منطقتك تلقائياً عبر Intl.DateTimeFormat. يمكن التحقق منها في إعدادات جهازك تحت «التاريخ والوقت» أو «Date & Time».</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I find my time zone automatically?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The browser detects your time zone automatically via Intl.DateTimeFormat. You can verify it in your device settings under "Date &amp; Time".</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين UTC+4 وUTC+4:30؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">بعض المناطق الزمنية لها أجزاء ساعة. إيران UTC+3:30، الهند UTC+5:30، أفغانستان UTC+4:30. عُمان UTC+4 بالتمام بدون كسر.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between UTC+4 and UTC+4:30?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Some time zones have fractional hours. Iran is UTC+3:30, India UTC+5:30, Afghanistan UTC+4:30. Oman is exactly UTC+4 with no fraction.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="date-diff.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📆 فرق التاريخ</a>
-      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌙 محول الهجري</a>
-      <a href="currency-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💱 محول العملات</a>
+      <a href="date-diff.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📆 Date Difference</a>
+      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌙 Hijri Converter</a>
+      <a href="currency-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💱 Currency Converter</a>
     </div>
   </div>
 
@@ -167,8 +167,8 @@
 </div></main>
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
-    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 <script>
