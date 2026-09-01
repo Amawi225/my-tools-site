@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -47,9 +47,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
@@ -63,62 +63,62 @@
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fff7ed;">📆</div>
-    <div class="card-title" data-i18n="dd_card_title">حساب الفرق بين تاريخين</div>
-    <div class="card-subtitle" data-i18n="dd_sub">أيام، أسابيع، أشهر وسنوات بين أي تاريخين</div>
+    <div class="card-title" data-i18n="dd_card_title">Date Difference Calculator</div>
+    <div class="card-subtitle" data-i18n="dd_sub">Days, weeks, months and years between any two dates</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أداة مجانية لحساب الفرق الدقيق بين أي تاريخين بالأيام والأسابيع والأشهر والسنوات وأيام العمل التقريبية. مفيدة لحساب مدة العقود وإجازات العمل وعدد الأيام المتبقية حتى حدث قادم.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Free tool to calculate the exact difference between any two dates in days, weeks, months, years and approximate working days. Useful for calculating contract durations, leave periods and days remaining until an upcoming event.</p>
 
     <div class="row">
       <div>
-        <label for="dateFrom" data-i18n="dd_from_lbl">التاريخ الأول (من)</label>
+        <label for="dateFrom" data-i18n="dd_from_lbl">First Date (From)</label>
         <input type="date" id="dateFrom" onchange="calculate()">
       </div>
       <div>
-        <label for="dateTo" data-i18n="dd_to_lbl">التاريخ الثاني (إلى)</label>
+        <label for="dateTo" data-i18n="dd_to_lbl">Second Date (To)</label>
         <input type="date" id="dateTo" onchange="calculate()">
       </div>
     </div>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
-      <button onclick="setPreset('today')" data-i18n="dd_preset_today" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">من اليوم</button>
-      <button onclick="setPreset('newYear')" data-i18n="dd_preset_ny" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رأس السنة</button>
-      <button onclick="setPreset('ramadan')" data-i18n="dd_preset_ramadan" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">حتى رمضان 2027</button>
+      <button onclick="setPreset('today')" data-i18n="dd_preset_today" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">From Today</button>
+      <button onclick="setPreset('newYear')" data-i18n="dd_preset_ny" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">Until New Year</button>
+      <button onclick="setPreset('ramadan')" data-i18n="dd_preset_ramadan" style="font-size:12px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text);">Until Ramadan 2027</button>
     </div>
 
     <div id="ddResult" style="display:none;margin-top:20px;">
       <div class="result-box show success" style="margin-top:0;">
         <div class="result-value" id="totalDaysDisplay"></div>
-        <div class="result-label" data-i18n="dd_result_lbl">يوم إجمالاً</div>
+        <div class="result-label" data-i18n="dd_result_lbl">total days</div>
       </div>
       <div class="stat-grid" style="margin-top:12px;">
         <div class="stat-box">
           <div class="stat-val" id="yearsDisplay">0</div>
-          <div class="stat-lbl" data-i18n="dd_years_lbl">سنة</div>
+          <div class="stat-lbl" data-i18n="dd_years_lbl">year(s)</div>
         </div>
         <div class="stat-box">
           <div class="stat-val" id="monthsDisplay">0</div>
-          <div class="stat-lbl" data-i18n="dd_months_lbl">شهر</div>
+          <div class="stat-lbl" data-i18n="dd_months_lbl">month(s)</div>
         </div>
         <div class="stat-box">
           <div class="stat-val" id="daysDisplay">0</div>
-          <div class="stat-lbl" data-i18n="dd_days_lbl">يوم</div>
+          <div class="stat-lbl" data-i18n="dd_days_lbl">day(s)</div>
         </div>
       </div>
       <div class="stat-grid" style="margin-top:8px;">
         <div class="stat-box" style="background:#f0f9ff;">
           <div class="stat-val" id="weeksDisplay" style="color:#0369a1;">0</div>
-          <div class="stat-lbl" data-i18n="dd_weeks_lbl">أسبوع</div>
+          <div class="stat-lbl" data-i18n="dd_weeks_lbl">week(s)</div>
         </div>
         <div class="stat-box" style="background:#fdf4ff;">
           <div class="stat-val" id="hoursDisplay" style="color:#7c3aed;">0</div>
-          <div class="stat-lbl" data-i18n="dd_hours_lbl">ساعة</div>
+          <div class="stat-lbl" data-i18n="dd_hours_lbl">hour(s)</div>
         </div>
         <div class="stat-box" style="background:#fefce8;">
           <div class="stat-val" id="workdaysDisplay" style="color:#ca8a04;">0</div>
-          <div class="stat-lbl" data-i18n="dd_workdays_lbl">يوم عمل (تقريبي)</div>
+          <div class="stat-lbl" data-i18n="dd_workdays_lbl">working days (est.)</div>
         </div>
       </div>
       <div id="ddNote" style="margin-top:12px;padding:12px 14px;background:var(--surface-2);border-radius:8px;font-size:14px;line-height:1.8;"></div>
@@ -126,58 +126,58 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="dd_upcoming_title">⚡ أحداث قادمة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="dd_upcoming_title">⚡ Upcoming Events</div>
     <div id="upcomingList" style="margin-top:10px;font-size:14px;line-height:2.2;"></div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📋 مدد زمنية شائعة للمرجع</div>
+    <div class="card-title" style="font-size:15px;">📋 Common Time Periods — Reference</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--primary);color:#fff;">
-            <th style="padding:9px 12px;text-align:start;">المدة</th>
-            <th style="padding:9px 12px;text-align:center;">أيام</th>
-            <th style="padding:9px 12px;text-align:center;">أسابيع</th>
-            <th style="padding:9px 12px;text-align:start;">ملاحظة</th>
+            <th style="padding:9px 12px;text-align:start;">Period</th>
+            <th style="padding:9px 12px;text-align:center;">Days</th>
+            <th style="padding:9px 12px;text-align:center;">Weeks</th>
+            <th style="padding:9px 12px;text-align:start;">Note</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">أسبوع</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">1 Week</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">7</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">1</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);">—</td>
           </tr>
           <tr style="background:var(--surface-2);">
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">شهر (متوسط)</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">Month (avg)</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">30.44</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">≈4.3</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">يتراوح 28-31</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">Ranges 28-31</td>
           </tr>
           <tr>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">ربع سنة</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">Quarter year</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">91</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">13</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">3 أشهر</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">3 months</td>
           </tr>
           <tr style="background:var(--surface-2);">
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">نصف سنة</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">Half year</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">182</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">26</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">6 أشهر</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">6 months</td>
           </tr>
           <tr>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">سنة كاملة</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">Full year</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">365</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">52</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">366 في السنة الكبيسة</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);">366 in a leap year</td>
           </tr>
           <tr style="background:var(--surface-2);">
-            <td style="padding:8px 12px;font-weight:700;">إجازة الحمل (عُمان)</td>
+            <td style="padding:8px 12px;font-weight:700;">Maternity leave (Oman)</td>
             <td style="padding:8px 12px;text-align:center;">98</td>
             <td style="padding:8px 12px;text-align:center;">14</td>
-            <td style="padding:8px 12px;">وفق قانون العمل العُماني</td>
+            <td style="padding:8px 12px;">Per Omani Labor Law</td>
           </tr>
         </tbody>
       </table>
@@ -185,47 +185,47 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" id="dd-faq-title">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" id="dd-faq-title">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q1">كيف أحسب عدد أيام العمل بين تاريخين؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a1">أيام العمل التقريبية = إجمالي الأيام × (5/7). الرقم المعروض في الأداة هو تقدير بناءً على أسبوع عمل من 5 أيام، ولا يشمل العطل الرسمية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q1">How do I calculate working days between two dates?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a1">Approximate working days = total days × (5/7). The number shown is an estimate based on a 5-day work week and does not include public holidays.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q2">لماذا تختلف نتيجة السنوات والأشهر أحياناً؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a2">الأشهر لا تتساوى في عدد أيامها (28-31 يوماً). الحساب يعتمد على التقويم الحقيقي لا متوسط 30 يوماً للشهر، لذا قد تبدو النتائج مختلفة عن الحساب اليدوي البسيط.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="dd-faq-q2">Why does the years/months result sometimes differ?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="dd-faq-a2">Months have different numbers of days (28-31). The calculation uses the real calendar, not a fixed 30-day monthly average, so results may differ from simple manual calculation.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تحسب الأداة يومي الجمعة والسبت ضمن أيام العمل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا، تكرارية الحساب تعتمد على 5 أيام عمل في الأسبوع. الرقم المعروض تقريبي ولا يأخذ بعين الاعتبار الإجازات الرسمية أو العطل الرسمية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the tool count Friday and Saturday as working days?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">No, the calculation assumes a 5-day work week. The figure shown is approximate and does not account for official public holidays.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم يوماً تبقى على رمضان؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">اضغط زر "حتى رمضان 2027" في الأداة وستظهر النتيجة فوراً بالأيام والأشهر المتبقية. رمضان 2027 متوقع في فبراير 2027 (الموعد الفلكي التقريبي).</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many days are left until Ramadan?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Press the "Until Ramadan 2027" button and the result will appear immediately in days and months remaining. Ramadan 2027 is expected in February 2027 (approximate astronomical date).</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب مدة عقد العمل بالأيام والأشهر؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أدخل تاريخ بدء العقد في حقل "من" وتاريخ الانتهاء في حقل "إلى". ستظهر المدة الكاملة بالأيام والأشهر والسنوات وأيام العمل التقريبية تلقائياً دون الحاجة لأي حساب يدوي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I calculate an employment contract duration in days and months?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Enter the contract start date in the "From" field and the end date in the "To" field. The full duration in days, months, years and approximate working days will appear automatically without any manual calculation.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الأداة مناسبة لحساب أيام الإجازة السنوية؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، يمكن استخدامها لحساب عدد الأيام بين تاريخ بدء الإجازة وانتهائها. ويمكن أيضاً استخدامها لحساب المدة المنقضية من تاريخ تعيينك حتى اليوم لمعرفة رصيد إجازتك السنوي التراكمي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is the tool suitable for calculating annual leave days?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, it can be used to calculate the number of days between a leave start and end date. It can also be used to calculate elapsed time from your appointment date to today to determine accumulated annual leave balance.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين هذه الأداة وحاسبة العمر؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">حاسبة الفرق بين تاريخين تقيس المسافة بين أي تاريخين مختارين حراً. حاسبة العمر متخصصة في حساب العمر من تاريخ الميلاد حتى اليوم مع إضافة التقويم الهجري والتفاصيل الإضافية كعدد أيام الميلاد.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between this tool and the Age Calculator?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The date difference calculator measures the gap between any two freely chosen dates. The Age Calculator specialises in calculating age from birthdate to today with additional details like the Hijri calendar and days until birthday.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يمكن استخدام الأداة لمتابعة أسابيع الحمل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يمكن استخدامها لحساب عدد الأيام/الأسابيع من تاريخ بدء آخر دورة شهرية. لكن للمتابعة الطبية الدقيقة لأسابيع الحمل يُنصح دائماً باستشارة طبيب متخصص الذي يعتمد على الفحص الإيكو وليس حساباً رياضياً فقط.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can the tool be used to track pregnancy weeks?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">It can be used to calculate the number of days/weeks from the first day of the last period. However, for accurate medical pregnancy tracking, always consult a specialist doctor who uses ultrasound, not just arithmetic.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong id="dd-related-title">أدوات مرتبطة:</strong>
+    <strong id="dd-related-title">Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel1">📅 حاسبة العمر</a>
-      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel2">🌙 محول الهجري</a>
-      <a href="stopwatch.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel3">⏱️ ساعة الإيقاف</a>
+      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel1">📅 Age Calculator</a>
+      <a href="hijri-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel2">🌙 Hijri Converter</a>
+      <a href="stopwatch.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="dd-rel3">⏱️ Stopwatch</a>
     </div>
   </div>
 
@@ -247,11 +247,11 @@
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="footer-links">
-      <a href="about.html" data-i18n="footer_about">من نحن</a>
-      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
-      <a href="privacy.html">الخصوصية</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy</a>
     </div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 
