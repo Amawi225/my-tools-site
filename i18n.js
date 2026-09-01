@@ -1053,6 +1053,10 @@ function setLang(lang) {
     const k = el.getAttribute('data-i18n-ph');
     if (t[k] !== undefined) el.placeholder = t[k];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
   const cl = document.getElementById('currentLang');
   if (cl) cl.textContent = LABELS[lang] || lang.toUpperCase();
   const menu = document.getElementById('langMenu');
@@ -1068,6 +1072,16 @@ function setLang(lang) {
   if (cc && typeof COUNTRY_DATA !== 'undefined' && COUNTRY_DATA[cc] && document.getElementById('countrySection')) {
     renderCountrySection(cc);
   }
+  // Update <title> and meta description per page
+  const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+  if (PAGE_META[page]) {
+    const pm = PAGE_META[page];
+    if (pm.title && pm.title[lang]) document.title = pm.title[lang];
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && pm.desc && pm.desc[lang]) metaDesc.setAttribute('content', pm.desc[lang]);
+  }
+  // Render FAQ section if page has one in PAGE_FAQ
+  renderFAQ(lang);
 }
 
 function toggleLangMenu() {
@@ -1207,17 +1221,277 @@ function logoutUser() {
   updateSignupBtn();
 }
 
+/* ── PAGE_META: dynamic <title> + meta description per language ── */
+const PAGE_META = {
+  'percentage-calculator': {
+    title: {
+      en:'Free Percentage Calculator — Discount, VAT & Ratio | Adawati',
+      ar:'حاسبة النسبة المئوية المجانية — خصم، ضريبة ونسبة | أدواتي',
+      fr:'Calculateur de pourcentage gratuit — Remise, TVA & ratio | Adawati',
+      es:'Calculadora de porcentaje gratis — Descuento, IVA y ratio | Adawati',
+      de:'Kostenloser Prozentrechner — Rabatt, MwSt & Verhältnis | Adawati',
+      ru:'Бесплатный калькулятор процентов — скидка, НДС и отношение | Adawati'
+    },
+    desc: {
+      en:'Free online percentage calculator: find X% of any number, calculate percentage increase or decrease, and percentage ratio. Instant results, no signup.',
+      ar:'حاسبة نسبة مئوية مجانية: احسب X% من أي رقم، نسبة الزيادة أو النقص، والنسبة بين رقمين. نتائج فورية بدون تسجيل.',
+      fr:'Calculateur de pourcentage gratuit en ligne : trouvez X% d\'un nombre, calculez l\'augmentation ou la diminution en pourcentage. Résultats instantanés.',
+      es:'Calculadora de porcentaje gratuita en línea: encuentra X% de cualquier número, calcula aumento o disminución porcentual. Resultados instantáneos.',
+      de:'Kostenloser Online-Prozentrechner: X% einer Zahl berechnen, prozentuale Zu- oder Abnahme ermitteln. Sofortige Ergebnisse, keine Anmeldung.',
+      ru:'Бесплатный онлайн-калькулятор процентов: вычислите X% от числа, процентный рост или снижение. Мгновенные результаты без регистрации.'
+    }
+  },
+  'loan-calculator': {
+    title: {
+      en:'Free Loan & Monthly Payment Calculator | Adawati',
+      ar:'حاسبة القسط الشهري والقرض المجانية | أدواتي',
+      fr:'Calculateur de prêt et mensualités gratuit | Adawati',
+      es:'Calculadora de préstamo y cuota mensual gratuita | Adawati',
+      de:'Kostenloser Kredit- und Ratenrechner | Adawati',
+      ru:'Бесплатный калькулятор кредита и ежемесячных платежей | Adawati'
+    },
+    desc: {
+      en:'Calculate monthly loan payments, total interest and repayment schedule for any loan amount, interest rate and duration. Free, instant, no signup.',
+      ar:'احسب القسط الشهري للقرض، إجمالي الفائدة وجدول السداد لأي مبلغ ومدة. مجاني وفوري بدون تسجيل.',
+      fr:'Calculez vos mensualités de prêt, le coût total des intérêts et le calendrier de remboursement. Gratuit, instantané, sans inscription.',
+      es:'Calcula cuotas mensuales de préstamo, intereses totales y cronograma de pago. Gratis, instantáneo, sin registro.',
+      de:'Berechnen Sie monatliche Kreditraten, Gesamtzinsen und Rückzahlungsplan. Kostenlos, sofort, ohne Anmeldung.',
+      ru:'Рассчитайте ежемесячные платежи по кредиту, общую сумму процентов и график погашения. Бесплатно, мгновенно, без регистрации.'
+    }
+  },
+  'vat-calculator': {
+    title: {
+      en:'Free VAT Calculator — Oman, Saudi Arabia, UAE & Gulf | Adawati',
+      ar:'حاسبة ضريبة VAT المجانية — عمان، السعودية، الإمارات والخليج | أدواتي',
+      fr:'Calculateur de TVA gratuit — Oman, Arabie Saoudite, EAU | Adawati',
+      es:'Calculadora de IVA gratuita — Omán, Arabia Saudita, EAU | Adawati',
+      de:'Kostenloser MwSt-Rechner — Oman, Saudi-Arabien, VAE | Adawati',
+      ru:'Бесплатный калькулятор НДС — Оман, Саудовская Аравия, ОАЭ | Adawati'
+    },
+    desc: {
+      en:'Calculate VAT for Oman (5%), Saudi Arabia (15%), UAE (5%) and Bahrain (10%). Add or extract VAT instantly. Free tool, no signup required.',
+      ar:'احسب ضريبة القيمة المضافة لعمان (5%)، السعودية (15%)، الإمارات (5%) والبحرين (10%). أضف أو استخرج الضريبة فوراً.',
+      fr:'Calculez la TVA pour Oman (5%), Arabie Saoudite (15%), EAU (5%) et Bahreïn (10%). Ajoutez ou extrayez la TVA instantanément.',
+      es:'Calcula el IVA para Omán (5%), Arabia Saudita (15%), EAU (5%) y Baréin (10%). Añade o extrae el IVA al instante.',
+      de:'Berechnen Sie die MwSt für Oman (5%), Saudi-Arabien (15%), VAE (5%) und Bahrain (10%). Sofort hinzufügen oder extrahieren.',
+      ru:'Рассчитайте НДС для Омана (5%), Саудовской Аравии (15%), ОАЭ (5%) и Бахрейна (10%). Добавьте или извлеките НДС мгновенно.'
+    }
+  },
+  'bmi-calculator': {
+    title: {
+      en:'Free BMI Calculator — Body Mass Index Online | Adawati',
+      ar:'حاسبة مؤشر كتلة الجسم BMI المجانية | أدواتي',
+      fr:'Calculateur d\'IMC gratuit en ligne | Adawati',
+      es:'Calculadora de IMC gratuita en línea | Adawati',
+      de:'Kostenloser BMI-Rechner online | Adawati',
+      ru:'Бесплатный онлайн-калькулятор ИМТ | Adawati'
+    },
+    desc: {
+      en:'Calculate your Body Mass Index (BMI) instantly. Enter your height and weight to get your BMI and health status classification. Free, no signup.',
+      ar:'احسب مؤشر كتلة جسمك (BMI) فوراً. أدخل طولك ووزنك للحصول على المؤشر وتصنيف وضعك الصحي. مجاني بدون تسجيل.',
+      fr:'Calculez votre indice de masse corporelle (IMC) instantanément. Entrez votre taille et votre poids pour connaître votre IMC.',
+      es:'Calcula tu índice de masa corporal (IMC) al instante. Introduce tu altura y peso para obtener tu IMC y clasificación de salud.',
+      de:'Berechnen Sie Ihren Body-Mass-Index (BMI) sofort. Geben Sie Größe und Gewicht ein, um BMI und Gesundheitsstatus zu erhalten.',
+      ru:'Рассчитайте свой индекс массы тела (ИМТ) мгновенно. Введите рост и вес, чтобы получить ИМТ и оценку состояния здоровья.'
+    }
+  },
+  'currency-converter': {
+    title: {
+      en:'Free Currency Converter — Live Exchange Rates | Adawati',
+      ar:'محول العملات المجاني — أسعار صرف حية | أدواتي',
+      fr:'Convertisseur de devises gratuit — Taux de change en direct | Adawati',
+      es:'Conversor de divisas gratuito — Tasas de cambio en vivo | Adawati',
+      de:'Kostenloser Währungsrechner — Live-Wechselkurse | Adawati',
+      ru:'Бесплатный конвертер валют — Актуальные курсы обмена | Adawati'
+    },
+    desc: {
+      en:'Convert between 30+ world currencies with live exchange rates. Free currency converter — USD, EUR, GBP, SAR, AED, OMR and more. No signup required.',
+      ar:'حول بين أكثر من 30 عملة عالمية بأسعار صرف حية. محول عملات مجاني — دولار، يورو، جنيه، ريال سعودي، درهم، ريال عماني والمزيد.',
+      fr:'Convertissez entre plus de 30 devises mondiales avec des taux en direct. Convertisseur de devises gratuit — USD, EUR, GBP, SAR, AED, OMR.',
+      es:'Convierte entre más de 30 divisas mundiales con tasas de cambio en vivo. Conversor de divisas gratis — USD, EUR, GBP, SAR, AED, OMR.',
+      de:'Rechnen Sie zwischen 30+ Weltwährungen mit Live-Kursen um. Kostenloser Währungsrechner — USD, EUR, GBP, SAR, AED, OMR und mehr.',
+      ru:'Конвертируйте между 30+ мировыми валютами по актуальным курсам. Бесплатный конвертер — USD, EUR, GBP, SAR, AED, OMR и другие.'
+    }
+  },
+  'salary-calculator': {
+    title: {
+      en:'Free Salary Calculator Oman — Net Pay with PASI | Adawati',
+      ar:'حاسبة الراتب عمان المجانية — الراتب الصافي مع PASI | أدواتي',
+      fr:'Calculateur de salaire Oman gratuit — Salaire net avec PASI | Adawati',
+      es:'Calculadora de salario Omán gratis — Salario neto con PASI | Adawati',
+      de:'Kostenloser Gehaltsrechner Oman — Nettogehalt mit PASI | Adawati',
+      ru:'Бесплатный калькулятор зарплаты Оман — Чистая зарплата с PASI | Adawati'
+    },
+    desc: {
+      en:'Calculate your net salary in Oman including PASI deduction (7% for Omanis). Add basic salary, housing and transport allowances. Free, instant results.',
+      ar:'احسب راتبك الصافي في عمان مع خصم PASI (7% للمواطنين). أضف الراتب الأساسي وبدلات السكن والنقل. مجاني ونتائج فورية.',
+      fr:'Calculez votre salaire net à Oman avec déduction PASI (7% pour les Omanais). Ajoutez salaire de base, logement et transport.',
+      es:'Calcula tu salario neto en Omán con deducción PASI (7% para omaníes). Añade salario básico, vivienda y transporte.',
+      de:'Berechnen Sie Ihr Nettogehalt in Oman mit PASI-Abzug (7% für Omaner). Fügen Sie Grundgehalt, Wohn- und Transportzulage hinzu.',
+      ru:'Рассчитайте чистую зарплату в Омане с вычетом PASI (7% для оманцев). Добавьте базовую зарплату, жилищные и транспортные надбавки.'
+    }
+  },
+  'end-of-service': {
+    title: {
+      en:'End of Service Calculator Oman — Gratuity under Omani Labor Law | Adawati',
+      ar:'حاسبة نهاية الخدمة عمان — المكافأة وفق قانون العمل العماني | أدواتي',
+      fr:'Calculateur d\'indemnité de fin de service Oman | Adawati',
+      es:'Calculadora de indemnización por fin de servicio Omán | Adawati',
+      de:'Abfindungsrechner Oman — Abfindung nach omanischem Arbeitsrecht | Adawati',
+      ru:'Калькулятор выходного пособия Оман — по трудовому законодательству | Adawati'
+    },
+    desc: {
+      en:'Calculate end-of-service gratuity for Oman under the Omani Labor Law. Enter start date, end date, salary and reason for termination. Free, accurate.',
+      ar:'احسب مكافأة نهاية الخدمة في عمان وفق قانون العمل العماني. أدخل تاريخ البداية والنهاية والراتب وسبب انتهاء الخدمة.',
+      fr:'Calculez l\'indemnité de fin de service pour Oman selon le droit du travail omanais.',
+      es:'Calcula la indemnización por fin de servicio en Omán según el derecho laboral omaní.',
+      de:'Berechnen Sie die Abfindung für Oman gemäß omanischem Arbeitsrecht.',
+      ru:'Рассчитайте выходное пособие в Омане по omanskому трудовому законодательству.'
+    }
+  },
+  'age-calculator': {
+    title: {
+      en:'Free Age Calculator — Exact Age in Years, Months & Days | Adawati',
+      ar:'حاسبة العمر المجانية — عمرك بالتفصيل بالسنوات والأشهر والأيام | أدواتي',
+      fr:'Calculateur d\'âge gratuit — Âge exact en années, mois et jours | Adawati',
+      es:'Calculadora de edad gratis — Edad exacta en años, meses y días | Adawati',
+      de:'Kostenloser Altersrechner — Genaues Alter in Jahren, Monaten & Tagen | Adawati',
+      ru:'Бесплатный калькулятор возраста — точный возраст в годах, месяцах и днях | Adawati'
+    },
+    desc: {
+      en:'Calculate your exact age in years, months and days. Find days until your next birthday. Free online age calculator, no signup required.',
+      ar:'احسب عمرك بالتفصيل — سنوات وأشهر وأيام. اعرف عدد الأيام حتى عيد ميلادك القادم. حاسبة عمر مجانية بدون تسجيل.',
+      fr:'Calculez votre âge exact en années, mois et jours. Trouvez le nombre de jours jusqu\'à votre prochain anniversaire.',
+      es:'Calcula tu edad exacta en años, meses y días. Encuentra los días hasta tu próximo cumpleaños.',
+      de:'Berechnen Sie Ihr genaues Alter in Jahren, Monaten und Tagen. Erfahren Sie, wie viele Tage bis zu Ihrem nächsten Geburtstag.',
+      ru:'Рассчитайте свой точный возраст в годах, месяцах и днях. Узнайте количество дней до следующего дня рождения.'
+    }
+  }
+};
+
+/* ── PAGE_FAQ: per-page FAQ in all 6 languages ── */
+const PAGE_FAQ = {
+  'percentage-calculator': {
+    en: [
+      {q:'How do I calculate 20% of 500?', a:'Multiply the number by the percentage then divide by 100: 500 × 20 ÷ 100 = 100. Or simply 500 × 0.20 = 100. Use the first tab in the calculator above for instant results.'},
+      {q:'How do I calculate percentage price increase?', a:'% Change = ((New price − Old price) ÷ Old price) × 100. Example: 100 to 130 = ((130−100)÷100)×100 = 30% increase. Use the "% change" tab in the calculator.'},
+      {q:'What percentage is 30 of 150?', a:'Divide the first number by the second then multiply by 100: 30 ÷ 150 × 100 = 20%. Use the "What percentage?" tab.'},
+      {q:'How do I calculate a price after a 30% discount?', a:'Multiply the original price by (1 − discount rate). Example: 200 with 30% discount = 200 × 0.70 = 140. Or use Tab 1: enter 30 as percentage and 200 as the number to get the discount amount (60), then subtract from the original.'},
+      {q:'How do I calculate 5% VAT on a price?', a:'Multiply the price by 0.05 to get the tax amount. Example: 100 × 0.05 = 5 tax, total = 105. Oman and UAE: VAT 5%. Saudi Arabia: VAT 15%.'},
+      {q:'What is the difference between percentage and percentage point?', a:'A percentage point (pp) is the absolute difference between two percentages. Example: rising from 10% to 15% is +5 percentage points, but a 50% increase (since 5 ÷ 10 × 100 = 50%). This confusion is common in financial reporting.'},
+      {q:'How do I calculate profit or loss percentage?', a:'% Profit/Loss = ((Sell price − Buy price) ÷ Buy price) × 100. Example: bought at 200, sold at 250 = ((250−200)÷200)×100 = 25% profit. Use the "% change" tab.'},
+      {q:'How do I calculate 15% of my monthly salary?', a:'Multiply the salary by 0.15. Example: salary 1000 × 0.15 = 150. In Tab 1: enter 15 as the percentage and your salary as the number.'}
+    ],
+    ar: [
+      {q:'كيف أحسب 20% من 500؟', a:'اضرب العدد في النسبة المئوية ثم اقسم على 100: 500 × 20 ÷ 100 = 100. أو ببساطة 500 × 0.20 = 100. استخدم التبويب الأول في الحاسبة للنتيجة الفورية.'},
+      {q:'كيف أحسب نسبة الزيادة في السعر؟', a:'نسبة التغيير = ((السعر الجديد − السعر القديم) ÷ السعر القديم) × 100. مثال: من 100 إلى 130 = ((130−100)÷100)×100 = 30% زيادة. استخدم تبويب «نسبة التغيير» في الحاسبة.'},
+      {q:'ما نسبة 30 من 150؟', a:'اقسم الرقم الأول على الثاني ثم اضرب في 100: 30 ÷ 150 × 100 = 20%. استخدم تبويب «ما النسبة؟».'},
+      {q:'كيف أحسب السعر بعد خصم 30%؟', a:'اضرب السعر الأصلي في (1 − نسبة الخصم). مثال: 200 بخصم 30% = 200 × 0.70 = 140. أو استخدم التبويب الأول: أدخل 30 كنسبة و200 كرقم للحصول على الخصم (60) ثم اطرحه من الأصلي.'},
+      {q:'كيف أحسب ضريبة القيمة المضافة 5% على سعر؟', a:'اضرب السعر في 0.05 للحصول على قيمة الضريبة. مثال: 100 × 0.05 = 5 ضريبة، والإجمالي = 105. عمان والإمارات: VAT 5%. السعودية: VAT 15%.'},
+      {q:'ما الفرق بين النسبة المئوية والنقطة المئوية؟', a:'النقطة المئوية هي الفرق المطلق بين نسبتين. مثال: الارتفاع من 10% إلى 15% هو +5 نقاط مئوية، لكن نسبة الزيادة هي 50% (لأن 5 ÷ 10 × 100 = 50%). هذا الخلط شائع في التقارير المالية.'},
+      {q:'كيف أحسب نسبة الربح أو الخسارة؟', a:'نسبة الربح/الخسارة = ((سعر البيع − سعر الشراء) ÷ سعر الشراء) × 100. مثال: اشتريت بـ 200 وبعت بـ 250 = ((250−200)÷200)×100 = 25% ربح. استخدم تبويب «نسبة التغيير».'},
+      {q:'كيف أحسب 15% من راتبي الشهري؟', a:'اضرب الراتب في 0.15. مثال: راتب 1000 × 0.15 = 150. في التبويب الأول: أدخل 15 كنسبة وراتبك كرقم.'}
+    ],
+    fr: [
+      {q:'Comment calculer 20% de 500?', a:'Multipliez le nombre par le pourcentage puis divisez par 100 : 500 × 20 ÷ 100 = 100. Ou simplement 500 × 0,20 = 100. Utilisez le premier onglet de la calculatrice.'},
+      {q:'Comment calculer une augmentation de prix en pourcentage?', a:'% Variation = ((Nouveau prix − Ancien prix) ÷ Ancien prix) × 100. Exemple : de 100 à 130 = 30% d\'augmentation. Utilisez l\'onglet «% de variation».'},
+      {q:'Quel pourcentage représente 30 sur 150?', a:'Divisez le premier nombre par le second puis multipliez par 100 : 30 ÷ 150 × 100 = 20%.'},
+      {q:'Comment calculer un prix après une remise de 30%?', a:'Multipliez le prix original par (1 − taux de remise). Exemple : 200 avec 30% de remise = 200 × 0,70 = 140.'},
+      {q:'Comment calculer une TVA de 5% sur un prix?', a:'Multipliez le prix par 0,05 pour obtenir le montant de la taxe. Exemple : 100 × 0,05 = 5 de taxe, total = 105.'},
+      {q:'Quelle est la différence entre pourcentage et point de pourcentage?', a:'Un point de pourcentage (pp) est la différence absolue entre deux pourcentages. Exemple : passer de 10% à 15% représente +5 points de pourcentage, mais une augmentation de 50%.'},
+      {q:'Comment calculer un pourcentage de profit ou de perte?', a:'% Profit/Perte = ((Prix de vente − Prix d\'achat) ÷ Prix d\'achat) × 100.'},
+      {q:'Comment calculer 15% de mon salaire mensuel?', a:'Multipliez le salaire par 0,15. Exemple : salaire 1000 × 0,15 = 150.'}
+    ],
+    es: [
+      {q:'¿Cómo calculo el 20% de 500?', a:'Multiplica el número por el porcentaje y divide entre 100: 500 × 20 ÷ 100 = 100. O simplemente 500 × 0,20 = 100.'},
+      {q:'¿Cómo calculo el aumento porcentual de un precio?', a:'% Cambio = ((Precio nuevo − Precio anterior) ÷ Precio anterior) × 100. Ejemplo: de 100 a 130 = 30% de aumento.'},
+      {q:'¿Qué porcentaje representa 30 de 150?', a:'Divide el primer número entre el segundo y multiplica por 100: 30 ÷ 150 × 100 = 20%.'},
+      {q:'¿Cómo calculo un precio después de un descuento del 30%?', a:'Multiplica el precio original por (1 − tasa de descuento). Ejemplo: 200 con 30% descuento = 200 × 0,70 = 140.'},
+      {q:'¿Cómo calculo el IVA del 5% sobre un precio?', a:'Multiplica el precio por 0,05 para obtener el monto del impuesto. Ejemplo: 100 × 0,05 = 5 de impuesto, total = 105.'},
+      {q:'¿Cuál es la diferencia entre porcentaje y punto porcentual?', a:'Un punto porcentual (pp) es la diferencia absoluta entre dos porcentajes. Subir del 10% al 15% son +5 puntos porcentuales, pero un aumento del 50%.'},
+      {q:'¿Cómo calculo el porcentaje de ganancia o pérdida?', a:'% Ganancia/Pérdida = ((Precio de venta − Precio de compra) ÷ Precio de compra) × 100.'},
+      {q:'¿Cómo calculo el 15% de mi salario mensual?', a:'Multiplica el salario por 0,15. Ejemplo: salario 1000 × 0,15 = 150.'}
+    ],
+    de: [
+      {q:'Wie berechne ich 20% von 500?', a:'Multiplizieren Sie die Zahl mit dem Prozentsatz und dividieren Sie durch 100: 500 × 20 ÷ 100 = 100. Oder einfach 500 × 0,20 = 100.'},
+      {q:'Wie berechne ich einen prozentualen Preisanstieg?', a:'% Änderung = ((Neuer Preis − Alter Preis) ÷ Alter Preis) × 100. Beispiel: von 100 auf 130 = 30% Anstieg.'},
+      {q:'Wie viel Prozent sind 30 von 150?', a:'Teilen Sie die erste Zahl durch die zweite und multiplizieren Sie mit 100: 30 ÷ 150 × 100 = 20%.'},
+      {q:'Wie berechne ich einen Preis nach einem 30% Rabatt?', a:'Multiplizieren Sie den Originalpreis mit (1 − Rabattrate). Beispiel: 200 mit 30% Rabatt = 200 × 0,70 = 140.'},
+      {q:'Wie berechne ich 5% MwSt auf einen Preis?', a:'Multiplizieren Sie den Preis mit 0,05, um den Steuerbetrag zu erhalten. Beispiel: 100 × 0,05 = 5 Steuer, Gesamt = 105.'},
+      {q:'Was ist der Unterschied zwischen Prozent und Prozentpunkt?', a:'Ein Prozentpunkt (pp) ist die absolute Differenz zwischen zwei Prozentwerten. Von 10% auf 15% = +5 Prozentpunkte, aber 50% Anstieg.'},
+      {q:'Wie berechne ich den Gewinn- oder Verlustsatz?', a:'% Gewinn/Verlust = ((Verkaufspreis − Kaufpreis) ÷ Kaufpreis) × 100.'},
+      {q:'Wie berechne ich 15% meines monatlichen Gehalts?', a:'Multiplizieren Sie das Gehalt mit 0,15. Beispiel: Gehalt 1000 × 0,15 = 150.'}
+    ],
+    ru: [
+      {q:'Как вычислить 20% от 500?', a:'Умножьте число на процент и разделите на 100: 500 × 20 ÷ 100 = 100. Или просто 500 × 0,20 = 100.'},
+      {q:'Как рассчитать процентный рост цены?', a:'% Изменения = ((Новая цена − Старая цена) ÷ Старая цена) × 100. Пример: от 100 до 130 = 30% рост.'},
+      {q:'Каков процент 30 от 150?', a:'Разделите первое число на второе и умножьте на 100: 30 ÷ 150 × 100 = 20%.'},
+      {q:'Как рассчитать цену после скидки 30%?', a:'Умножьте исходную цену на (1 − ставка скидки). Пример: 200 со скидкой 30% = 200 × 0,70 = 140.'},
+      {q:'Как рассчитать НДС 5% на цену?', a:'Умножьте цену на 0,05, чтобы получить сумму налога. Пример: 100 × 0,05 = 5 налог, итого = 105.'},
+      {q:'В чём разница между процентом и процентным пунктом?', a:'Процентный пункт (пп) — это абсолютная разница между двумя процентами. Рост с 10% до 15% = +5 процентных пунктов, но увеличение на 50%.'},
+      {q:'Как рассчитать процент прибыли или убытка?', a:'% Прибыли/Убытка = ((Цена продажи − Цена покупки) ÷ Цена покупки) × 100.'},
+      {q:'Как рассчитать 15% от моей ежемесячной зарплаты?', a:'Умножьте зарплату на 0,15. Пример: зарплата 1000 × 0,15 = 150.'}
+    ]
+  }
+};
+
+/* ── Also add T entries for SEO article content (data-i18n-html) ── */
+T.en.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10px;">Percentage Calculator — How It Works</h2><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">This free percentage calculator handles three of the most common percentage problems in one tool — no signup, no ads interrupting results, and everything runs instantly in your browser.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">What percentage of a number (X% of Y)</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Use this mode to find a percentage of any number. Common uses: calculate a 20% discount on a price, find 5% VAT (Oman/UAE) or 15% VAT (Saudi Arabia) on a purchase, or split a tip. Formula: <strong>result = number × percentage ÷ 100</strong>. Example: 15% of 80 = 12.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">What percentage is X of Y</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Answers questions like "30 is what percent of 200?" Formula: <strong>(X ÷ Y) × 100</strong>. Useful for test scores, survey results, and sales ratios. Example: you scored 45 out of 60 — that\'s 75%.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Percentage increase or decrease</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Calculate how much something changed as a percentage. Formula: <strong>((new − old) ÷ old) × 100</strong>. Positive = increase, negative = decrease.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Common percentage shortcuts</h3><ul style="font-size:14px;color:var(--text-muted);line-height:2;padding-inline-start:18px;margin:0;"><li>10% of any number: move the decimal one place left (10% of 350 = 35)</li><li>5% = half of 10% (5% of 350 = 17.5)</li><li>25% = divide by 4 (25% of 200 = 50)</li><li>50% = divide by 2 (50% of 90 = 45)</li></ul>';
+T.ar.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10px;">حاسبة النسبة المئوية — كيف تعمل؟</h2><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">تتعامل حاسبة النسبة المئوية المجانية هذه مع ثلاثة من أكثر مسائل النسبة شيوعاً في أداة واحدة — بدون تسجيل، بدون إعلانات تقاطع النتائج، وكل شيء يعمل فورياً في متصفحك.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">ما النسبة المئوية من رقم (X% من Y)</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">استخدم هذا الوضع لإيجاد نسبة من أي رقم. استخدامات شائعة: حساب خصم 20% على سعر، إيجاد ضريبة VAT 5% (عمان/الإمارات) أو 15% (السعودية). الصيغة: <strong>النتيجة = الرقم × النسبة ÷ 100</strong>. مثال: 15% من 80 = 12.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">ما النسبة التي يمثلها X من Y</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">تجيب على أسئلة مثل «30 هو كم بالمئة من 200؟» الصيغة: <strong>(X ÷ Y) × 100</strong>. مفيد لنتائج الاختبارات ونسب المبيعات. مثال: حصلت على 45 من 60 — هذا يساوي 75%.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">الزيادة أو النقص كنسبة مئوية</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">احسب مقدار تغير شيء ما كنسبة مئوية. الصيغة: <strong>((الجديد − القديم) ÷ القديم) × 100</strong>. موجب = زيادة، سالب = نقص.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">اختصارات النسبة المئوية الشائعة</h3><ul style="font-size:14px;color:var(--text-muted);line-height:2;padding-inline-start:18px;margin:0;"><li>10% من أي رقم: انقل الفاصلة مكاناً واحداً لليسار (10% من 350 = 35)</li><li>5% = نصف 10% (5% من 350 = 17.5)</li><li>25% = اقسم على 4 (25% من 200 = 50)</li><li>50% = اقسم على 2 (50% من 90 = 45)</li></ul>';
+T.fr.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10px;">Calculateur de pourcentage — Comment ça marche</h2><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Ce calculateur de pourcentage gratuit gère trois des problèmes de pourcentage les plus courants en un seul outil — sans inscription, sans publicités, et tout fonctionne instantanément dans votre navigateur.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Quel pourcentage d\'un nombre (X% de Y)</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Utilisez ce mode pour trouver un pourcentage de n\'importe quel nombre. Formule : <strong>résultat = nombre × pourcentage ÷ 100</strong>. Exemple : 15% de 80 = 12.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Quel pourcentage X représente-t-il de Y</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Répond à des questions comme «30 représente quel % de 200?» Formule : <strong>(X ÷ Y) × 100</strong>.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Augmentation ou diminution en pourcentage</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Formule : <strong>((nouveau − ancien) ÷ ancien) × 100</strong>. Positif = augmentation, négatif = diminution.</p>';
+T.es.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10px;">Calculadora de porcentaje — Cómo funciona</h2><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Esta calculadora de porcentaje gratuita resuelve tres de los problemas de porcentaje más comunes en una sola herramienta — sin registro, sin anuncios, y todo funciona instantáneamente en tu navegador.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Qué porcentaje de un número (X% de Y)</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Fórmula: <strong>resultado = número × porcentaje ÷ 100</strong>. Ejemplo: 15% de 80 = 12.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Qué porcentaje es X de Y</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Responde preguntas como «¿30 es qué porcentaje de 200?» Fórmula: <strong>(X ÷ Y) × 100</strong>.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Aumento o disminución porcentual</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Fórmula: <strong>((nuevo − anterior) ÷ anterior) × 100</strong>. Positivo = aumento, negativo = disminución.</p>';
+T.de.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10px;">Prozentrechner — So funktioniert er</h2><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Dieser kostenlose Prozentrechner löst drei der häufigsten Prozentprobleme in einem Tool — ohne Anmeldung, ohne unterbrechende Werbung, und alles läuft sofort in Ihrem Browser.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Prozentteil einer Zahl (X% von Y)</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Formel: <strong>Ergebnis = Zahl × Prozent ÷ 100</strong>. Beispiel: 15% von 80 = 12.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Wie viel Prozent ist X von Y</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Beantwortet Fragen wie «30 ist wie viel % von 200?» Formel: <strong>(X ÷ Y) × 100</strong>.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Prozentualer Anstieg oder Rückgang</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Formel: <strong>((Neu − Alt) ÷ Alt) × 100</strong>. Positiv = Anstieg, negativ = Rückgang.</p>';
+T.ru.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10px;">Калькулятор процентов — Как это работает</h2><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Этот бесплатный калькулятор процентов решает три наиболее распространённые задачи на проценты в одном инструменте — без регистрации, без рекламы, всё работает мгновенно в вашем браузере.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Процент от числа (X% от Y)</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Формула: <strong>результат = число × процент ÷ 100</strong>. Пример: 15% от 80 = 12.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Какой процент X составляет от Y</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Отвечает на вопросы вроде «30 — это сколько процентов от 200?» Формула: <strong>(X ÷ Y) × 100</strong>.</p><h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Процентный рост или снижение</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Формула: <strong>((новое − старое) ÷ старое) × 100</strong>. Положительное = рост, отрицательное = снижение.</p>';
+
+/* ── renderFAQ: inject FAQ from PAGE_FAQ for current page ── */
+function renderFAQ(lang) {
+  const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+  const faqData = PAGE_FAQ[page];
+  if (!faqData) return;
+  const t = T[lang] || T.en;
+  const faqCard = document.getElementById('faqCard');
+  if (!faqCard) return;
+  const items = faqData[lang] || faqData.en;
+  if (!items || !items.length) return;
+  // Clear existing details elements and rebuild
+  faqCard.querySelectorAll('details').forEach(function(d) { d.remove(); });
+  // Ensure title exists
+  let titleEl = faqCard.querySelector('[data-i18n="faq_title"]');
+  if (!titleEl) {
+    titleEl = document.createElement('div');
+    titleEl.className = 'card-title';
+    titleEl.style.fontSize = '15px';
+    titleEl.setAttribute('data-i18n', 'faq_title');
+    titleEl.textContent = t.faq_title || '❓ FAQ';
+    faqCard.insertBefore(titleEl, faqCard.firstChild);
+  } else {
+    titleEl.textContent = t.faq_title || '❓ FAQ';
+  }
+  items.forEach(function(item, i) {
+    const details = document.createElement('details');
+    details.style.cssText = 'margin-top:' + (i === 0 ? '12' : '8') + 'px;border:1px solid var(--border);border-radius:8px;padding:12px;';
+    const summary = document.createElement('summary');
+    summary.style.cssText = 'font-weight:700;cursor:pointer;font-size:14px;';
+    summary.textContent = item.q;
+    const p = document.createElement('p');
+    p.style.cssText = 'margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;';
+    p.textContent = item.a;
+    details.append(summary, p);
+    faqCard.appendChild(details);
+  });
+}
+
 function detectDefaultLang() {
   const saved = localStorage.getItem('lang');
   if (saved && T[saved]) return saved;
-  const browser = (navigator.language || navigator.userLanguage || 'ar').toLowerCase();
+  const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
   if (browser.startsWith('ar')) return 'ar';
   if (browser.startsWith('fr')) return 'fr';
   if (browser.startsWith('es')) return 'es';
   if (browser.startsWith('de')) return 'de';
   if (browser.startsWith('ru')) return 'ru';
   if (browser.startsWith('en')) return 'en';
-  return 'ar';
+  return 'en';
 }
 
 /* ── Dark Mode ── */
