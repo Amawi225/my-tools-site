@@ -1514,21 +1514,21 @@ function _getPageSlug() {
 function detectDefaultLang() {
   var urlLangs = ['ar', 'fr', 'es', 'de', 'ru'];
   var pathParts = location.pathname.split('/').filter(function(s) { return s.length > 0; });
+  // 1. Explicit language code in URL path — /ar/tool/, /fr/tool/ etc.
   for (var i = 0; i < pathParts.length; i++) {
     if (urlLangs.indexOf(pathParts[i]) !== -1) {
       try { localStorage.setItem('lang', pathParts[i]); } catch(e) {}
       return pathParts[i];
     }
   }
-  const saved = localStorage.getItem('lang');
-  if (saved && T[saved]) return saved;
-  const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-  if (browser.startsWith('ar')) return 'ar';
-  if (browser.startsWith('fr')) return 'fr';
-  if (browser.startsWith('es')) return 'es';
-  if (browser.startsWith('de')) return 'de';
-  if (browser.startsWith('ru')) return 'ru';
-  if (browser.startsWith('en')) return 'en';
+  // 2. Country-specific pages — /om/ → ar, /sa/ → ar, /ae/ /us/ /uk/ → en
+  var cmap = {om:'ar', sa:'ar', jo:'ar', ae:'en', us:'en', uk:'en'};
+  for (var j = 0; j < pathParts.length; j++) {
+    if (cmap[pathParts[j]] !== undefined) return cmap[pathParts[j]];
+  }
+  // 3. Root pages (no language in URL): always English.
+  //    Arabic/French/Spanish users should use /ar/ /fr/ /es/ subdirectories.
+  //    This prevents localStorage contamination from country page visits.
   return 'en';
 }
 
