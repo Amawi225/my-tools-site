@@ -21,14 +21,14 @@
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand">أدواتي</a>
+  <a href="index.html" class="nav-brand">Adawati</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     
     <div class="lang-switcher">
-      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
       <div class="lang-menu" id="langMenu">
         <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
         <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
@@ -38,71 +38,71 @@
   </div>
 </div></nav>
 <main><div class="tool-page" style="max-width:720px;">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#eff6ff;">🔒</div>
-    <div class="card-title">سياسة الخصوصية</div>
-    <div class="card-subtitle">آخر تحديث: أغسطس 2026</div>
+    <div class="card-title">Privacy Policy</div>
+    <div class="card-subtitle">Last updated: August 2026</div>
     <div class="divider"></div>
     <div class="privacy-content">
       <div class="highlight">
-        ✅ الخلاصة: معظم أدوات الموقع تعالج البيانات داخل متصفحك مباشرة — وزنك، راتبك، حساباتك لا تغادر جهازك. بعض الأدوات التي تحتاج خدمات خارجية (كأسعار العملات) موضّحة أدناه.
+        ✅ Summary: Most site tools process data directly in your browser — your weight, salary and calculations never leave your device. Any tools that use external services (such as currency rates) are described below.
       </div>
 
-      <h2>1. البيانات التي نجمعها</h2>
-      <p>لا يجمع موقع أدواتي بيانات شخصية مباشرة من خلال الأدوات. جميع الحسابات (BMI، السعرات، القروض، العمر، الراتب، وغيرها) تتم داخل متصفحك ولا يغادر أي رقم أو معلومة جهازك.</p>
-      <p>الاستثناء الوحيد هو <strong>نموذج التواصل</strong>: عند إرسال رسالة عبر صفحة "تواصل معنا"، يتم جمع الاسم وعنوان البريد الإلكتروني ومحتوى الرسالة وإرسالها عبر خدمة خارجية للوصول إلينا.</p>
+      <h2>1. Data We Collect</h2>
+      <p>Adawati does not collect personal data directly through its tools. All calculations (BMI, calories, loans, age, salary and others) run inside your browser and no number or information leaves your device.</p>
+      <p>The only exception is the <strong>contact form</strong>: when you send a message via the "Contact Us" page, your name, email address and message content are collected and sent via an external service to reach us.</p>
 
-      <h2>2. التخزين المحلي (localStorage)</h2>
-      <p>يستخدم الموقع التخزين المحلي في متصفحك لحفظ:</p>
+      <h2>2. Local Storage (localStorage)</h2>
+      <p>The site uses local storage in your browser to save:</p>
       <ul>
-        <li>تفضيل اللغة (عربي، إنجليزي، إلخ)</li>
-        <li>وضع الليل/النهار (الثيم الداكن)</li>
-        <li>الأدوات المفضلة لديك</li>
-        <li>الأدوات المستخدمة مؤخراً</li>
+        <li>Language preference (Arabic, English, etc.)</li>
+        <li>Light/dark mode preference</li>
+        <li>Your favourite tools</li>
+        <li>Recently used tools</li>
       </ul>
-      <p>هذه البيانات تبقى على جهازك فقط ولا يتم إرسالها إلينا.</p>
+      <p>This data stays on your device only and is never sent to us.</p>
 
       <h2>3. Google Analytics</h2>
-      <p>نستخدم Google Analytics لفهم كيفية استخدام الزوار للموقع. يجمع هذا بشكل مجهول:</p>
+      <p>We use Google Analytics to understand how visitors use the site. It collects anonymously:</p>
       <ul>
-        <li>عدد الزيارات وصفحات الأدوات المستخدمة</li>
-        <li>الدولة والمتصفح ونوع الجهاز</li>
-        <li>مدة الجلسة</li>
+        <li>Number of visits and tool pages used</li>
+        <li>Country, browser and device type</li>
+        <li>Session duration</li>
       </ul>
-      <p>لا يتم جمع أي بيانات تعريفية شخصية. يمكنك تعطيل هذا عبر إضافة "Google Analytics Opt-out" على متصفحك.</p>
+      <p>No personally identifiable data is collected. You can disable this via the "Google Analytics Opt-out" browser extension.</p>
 
-      <h2>4. الإعلانات</h2>
-      <p>لا يعرض الموقع حالياً أي إعلانات. إذا قررنا إضافة إعلانات في المستقبل، سيتم تحديث هذه السياسة ويتم إخبار المستخدمين.</p>
+      <h2>4. Advertising</h2>
+      <p>The site currently shows no advertisements. If we decide to add ads in the future, this policy will be updated and users will be informed.</p>
 
-      <h2>5. خدمات خارجية</h2>
-      <p>تستخدم بعض الأدوات خدمات خارجية:</p>
+      <h2>5. External Services</h2>
+      <p>Some tools use external services:</p>
       <ul>
-        <li><strong>محول العملات:</strong> يجلب أسعار الصرف من open.er-api.com و exchangerate-api.com</li>
-        <li><strong>مولد رمز QR:</strong> يستخدم Google Charts API أو api.qrserver.com لتوليد الصورة</li>
+        <li><strong>Currency Converter:</strong> fetches exchange rates from open.er-api.com and exchangerate-api.com</li>
+        <li><strong>QR Code Generator:</strong> uses Google Charts API or api.qrserver.com to generate the image</li>
       </ul>
-      <p>هذه الخدمات تخضع لسياسات الخصوصية الخاصة بها.</p>
+      <p>These services are subject to their own privacy policies.</p>
 
-      <h2>6. الأطفال</h2>
-      <p>يحتوي الموقع على ألعاب تعليمية مصممة للأطفال (من سن 2 إلى 6 سنوات) بإشراف أولياء الأمور. لا يتم جمع أي بيانات شخصية من الأطفال — جميع هذه الألعاب تعمل داخل المتصفح بالكامل ولا تتصل بأي خادم.</p>
+      <h2>6. Children</h2>
+      <p>The site contains educational games designed for children (ages 2–6) with parental supervision. No personal data is collected from children — all these games run entirely in the browser and connect to no server.</p>
 
-      <h2>7. تغييرات على السياسة</h2>
-      <p>قد نحدّث هذه السياسة من وقت لآخر. سيتم تحديث التاريخ أعلاه عند أي تغيير جوهري.</p>
+      <h2>7. Policy Changes</h2>
+      <p>We may update this policy from time to time. The date above will be updated whenever a significant change is made.</p>
 
-      <h2>8. التواصل</h2>
-      <p>لأي استفسارات حول الخصوصية، تواصل معنا عبر <a href="contact.html">صفحة التواصل</a>.</p>
+      <h2>8. Contact</h2>
+      <p>For any privacy queries, contact us via the <a href="contact.html">Contact page</a>.</p>
     </div>
   </div>
 </div></main>
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="footer-links">
-      <a href="about.html" data-i18n="footer_about">من نحن</a>
-      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
-      <a href="privacy.html">سياسة الخصوصية</a>
-      <a href="terms.html">الشروط والأحكام</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
     </div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 <script src="i18n.js?v=27"></script>
