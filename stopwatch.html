@@ -33,13 +33,13 @@
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand">أدواتي</a>
+  <a href="index.html" class="nav-brand">Adawati</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
-      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
       <div class="lang-menu" id="langMenu">
         <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
         <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
@@ -49,15 +49,15 @@
   </div>
 </div></nav>
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#eff6ff;">⏱️</div>
-    <div class="card-title" data-i18n="sw_title">ساعة إيقاف ومؤقت</div>
-    <div class="card-subtitle" data-i18n="sw_sub">ساعة توقيت ومؤقت للتمارين والعمل</div>
+    <div class="card-title" data-i18n="sw_title">Stopwatch &amp; Timer</div>
+    <div class="card-subtitle" data-i18n="sw_sub">Timing tool for workouts and work</div>
     <div class="divider"></div>
     <div class="tabs">
-      <div class="tab active" data-tab="sw" onclick="switchMode('sw')" data-i18n="sw_tab">ساعة إيقاف</div>
-      <div class="tab" data-tab="timer" onclick="switchMode('timer')" data-i18n="timer_tab">مؤقت</div>
+      <div class="tab active" data-tab="sw" onclick="switchMode('sw')" data-i18n="sw_tab">Stopwatch</div>
+      <div class="tab" data-tab="timer" onclick="switchMode('timer')" data-i18n="timer_tab">Timer</div>
     </div>
 
     <!-- Stopwatch -->
@@ -66,9 +66,9 @@
         <div id="swDisplay" style="font-size:64px;font-weight:900;font-family:monospace;color:var(--primary);letter-spacing:2px;line-height:1;">00:00.00</div>
       </div>
       <div style="display:flex;gap:10px;margin-top:8px;">
-        <button id="swStartBtn" class="btn btn-primary" style="margin-top:0;" onclick="swToggle()" data-i18n="sw_start">ابدأ</button>
-        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="swLap()" data-i18n="sw_lap">دورة</button>
-        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="swReset()" data-i18n="sw_reset">إعادة</button>
+        <button id="swStartBtn" class="btn btn-primary" style="margin-top:0;" onclick="swToggle()" data-i18n="sw_start">Start</button>
+        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="swLap()" data-i18n="sw_lap">Lap</button>
+        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="swReset()" data-i18n="sw_reset">Reset</button>
       </div>
       <div id="swLaps" style="margin-top:14px;max-height:140px;overflow-y:auto;font-size:13px;"></div>
     </div>
@@ -79,33 +79,33 @@
         <div id="timerDisplay" style="font-size:64px;font-weight:900;font-family:monospace;color:var(--primary);letter-spacing:2px;line-height:1;">00:00</div>
       </div>
       <div class="row" style="margin-top:8px;">
-        <div><label data-i18n="timer_min">دقائق</label><input type="number" id="timerMin" value="5" min="0" max="99"></div>
-        <div><label data-i18n="timer_sec">ثواني</label><input type="number" id="timerSec" value="0" min="0" max="59"></div>
+        <div><label data-i18n="timer_min">Minutes</label><input type="number" id="timerMin" value="5" min="0" max="99"></div>
+        <div><label data-i18n="timer_sec">Seconds</label><input type="number" id="timerSec" value="0" min="0" max="59"></div>
       </div>
       <div style="display:flex;gap:10px;margin-top:12px;">
-        <button id="timerStartBtn" class="btn btn-primary" style="margin-top:0;" onclick="timerToggle()" data-i18n="sw_start">ابدأ</button>
-        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="timerReset()" data-i18n="sw_reset">إعادة</button>
+        <button id="timerStartBtn" class="btn btn-primary" style="margin-top:0;" onclick="timerToggle()" data-i18n="sw_start">Start</button>
+        <button class="btn btn-secondary" style="margin-top:0;flex:0 0 auto;width:auto;padding:0 20px;" onclick="timerReset()" data-i18n="sw_reset">Reset</button>
       </div>
-      <div id="timerDone" style="display:none;text-align:center;margin-top:12px;padding:12px;background:var(--success-bg);border-radius:var(--radius-sm);color:var(--success-text);font-weight:700;" data-i18n="timer_done">⏰ انتهى الوقت!</div>
+      <div id="timerDone" style="display:none;text-align:center;margin-top:12px;padding:12px;background:var(--success-bg);border-radius:var(--radius-sm);color:var(--success-text);font-weight:700;" data-i18n="timer_done">⏰ Time&apos;s up!</div>
     </div>
   </div>
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل ساعة الإيقاف دقيقة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، تستخدم الساعة <code>Date.now()</code> مع تحديث كل 10 ميلي ثانية، مما يوفر دقة تصل إلى جزء من المئة من الثانية مناسبة للاستخدام اليومي والرياضي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is the stopwatch accurate?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — the stopwatch uses <code>Date.now()</code> with updates every 10 milliseconds, providing centisecond accuracy suitable for everyday and sports use.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يمكن تسجيل أوقات الجولات؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، في وضع ساعة الإيقاف اضغط "دورة" أثناء العدّ لتسجيل وقت الجولة الحالية مع الاستمرار في التوقيت. يمكن تسجيل عدة جولات متتالية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can I record lap times?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — in stopwatch mode, press "Lap" while running to record the current lap time while the main clock keeps going. Multiple consecutive laps can be recorded.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف يعمل المؤقت العكسي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">حدِّد عدد الدقائق والثواني ثم اضغط "ابدأ". يعدّ المؤقت تنازلياً حتى يصل للصفر ويصدر صوت تنبيه عند الانتهاء.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How does the countdown timer work?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Set the number of minutes and seconds then press "Start". The timer counts down to zero and plays an alert sound when it finishes.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يعمل بدون إنترنت؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، ساعة الإيقاف والمؤقت يعملان بالكامل في المتصفح ولا يحتاجان إلى اتصال بالإنترنت.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does it work offline?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — the stopwatch and timer run entirely in the browser and need no internet connection.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the stopwatch work in the background?</summary>
@@ -124,8 +124,8 @@
 </div></main>
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
-    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 <script>
