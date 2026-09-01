@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -84,7 +84,7 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -97,27 +97,27 @@
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fefce8;">💱</div>
-    <div class="card-title" id="curTitle">محول العملات</div>
-    <div class="card-subtitle" id="curSub">أسعار صرف حية — محدّثة كل 4 ساعات</div>
+    <div class="card-title" id="curTitle">Currency Converter</div>
+    <div class="card-subtitle" id="curSub">Live exchange rates — updated every 4 hours</div>
     <div class="divider"></div>
-    <p id="curIntro" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">محول عملات مجاني بأسعار صرف حية تُحدَّث كل 4 ساعات. يدعم 32 عملة عالمية منها الريال العماني (OMR)، الدولار (USD)، اليورو (EUR)، الجنيه الإسترليني (GBP)، الريال السعودي (SAR)، الدرهم الإماراتي (AED)، الجنيه المصري (EGP) وغيرها. السعر المعروض هو سعر الصرف الوسطي المرجعي بدون هامش بنكي.</p>
+    <p id="curIntro" style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Free currency converter with live exchange rates updated every 4 hours. Supports 32 major currencies including OMR, USD, EUR, GBP, SAR, AED, EGP, INR and more. Rates shown are mid-market reference rates — no bank markup.</p>
 
-    <label id="amtLbl">المبلغ</label>
+    <label id="amtLbl">Amount</label>
     <input type="number" id="amount" value="1" min="0" oninput="convert()" style="font-size:20px;font-weight:700;">
 
     <div class="cur-row" style="margin-top:12px;">
       <div>
-        <label id="fromLbl">من</label>
+        <label id="fromLbl">From</label>
         <select id="fromCurr" onchange="onFromChange()"></select>
       </div>
       <div style="display:flex;align-items:flex-end;padding-bottom:2px;flex:0;">
         <button class="swap-btn" onclick="swapCurrencies()" title="Swap">⇄</button>
       </div>
       <div>
-        <label id="toLbl">إلى</label>
+        <label id="toLbl">To</label>
         <select id="toCurr" onchange="convert()"></select>
       </div>
     </div>
@@ -148,13 +148,13 @@
 
     <!-- Rate table -->
     <div id="tableWrap">
-      <div style="font-size:13px;font-weight:700;margin-bottom:10px;" id="tableTitle">تحويلات شائعة</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;" id="tableTitle">Popular conversions</div>
       <table class="rate-table">
         <thead>
           <tr>
-            <th id="thCurr">العملة</th>
-            <th id="thRate">السعر (1 وحدة)</th>
-            <th id="thAmt">المبلغ المحوّل</th>
+            <th id="thCurr">Currency</th>
+            <th id="thRate">Rate (per 1 unit)</th>
+            <th id="thAmt">Converted amount</th>
           </tr>
         </thead>
         <tbody id="rateBody"><tr><td><strong>EUR</strong> <span style="color:var(--text-muted);font-size:11px;">Euro</span></td><td>0.920000</td><td><strong>0.9200</strong></td></tr><tr><td><strong>GBP</strong> <span style="color:var(--text-muted);font-size:11px;">Pound Sterling</span></td><td>0.790000</td><td><strong>0.7900</strong></td></tr><tr><td><strong>SAR</strong> <span style="color:var(--text-muted);font-size:11px;">Saudi Riyal</span></td><td>3.7500</td><td><strong>3.75</strong></td></tr><tr><td><strong>AED</strong> <span style="color:var(--text-muted);font-size:11px;">UAE Dirham</span></td><td>3.6700</td><td><strong>3.67</strong></td></tr><tr><td><strong>KWD</strong> <span style="color:var(--text-muted);font-size:11px;">Kuwaiti Dinar</span></td><td>0.307000</td><td><strong>0.3070</strong></td></tr><tr><td><strong>EGP</strong> <span style="color:var(--text-muted);font-size:11px;">Egyptian Pound</span></td><td>48.5000</td><td><strong>48.50</strong></td></tr><tr><td><strong>INR</strong> <span style="color:var(--text-muted);font-size:11px;">Indian Rupee</span></td><td>83.2000</td><td><strong>83.20</strong></td></tr><tr><td><strong>JPY</strong> <span style="color:var(--text-muted);font-size:11px;">Japanese Yen</span></td><td>149.0000</td><td><strong>149.00</strong></td></tr><tr><td><strong>CNY</strong> <span style="color:var(--text-muted);font-size:11px;">Chinese Yuan</span></td><td>7.2400</td><td><strong>7.24</strong></td></tr><tr><td><strong>TRY</strong> <span style="color:var(--text-muted);font-size:11px;">Turkish Lira</span></td><td>32.1000</td><td><strong>32.10</strong></td></tr><tr><td><strong>CAD</strong> <span style="color:var(--text-muted);font-size:11px;">Canadian Dollar</span></td><td>1.3600</td><td><strong>1.36</strong></td></tr><tr><td><strong>AUD</strong> <span style="color:var(--text-muted);font-size:11px;">Australian Dollar</span></td><td>1.5300</td><td><strong>1.53</strong></td></tr></tbody>
@@ -164,121 +164,121 @@
 
     <!-- Info -->
     <div class="info-box">
-      <h3 id="infoTitle">📌 كيف يعمل محول العملات؟</h3>
-      <p id="infoP1">يجلب هذا المحول أسعار الصرف الحية من ExchangeRate-API (open.er-api.com) وتُحدَّث كل 4 ساعات. آخر سعر تم تحميله يُحفظ في متصفحك تلقائياً للاستخدام دون إنترنت.</p>
-      <p id="infoP2">الدولار الأمريكي (USD) هو العملة المرجعية، وتُحسب منه جميع أسعار التحويل الأخرى.</p>
-      <p id="infoP3">الأسعار المعروضة هي أسعار الصرف الوسطية المرجعية — دون أي هامش أو رسوم بنكية.</p>
+      <h3 id="infoTitle">📌 How does the currency converter work?</h3>
+      <p id="infoP1">This converter fetches live exchange rates from ExchangeRate-API (open.er-api.com), updated every 4 hours. The last loaded rates are saved in your browser automatically for offline use.</p>
+      <p id="infoP2">The US Dollar (USD) is used as the base currency, and all other conversion rates are calculated from it.</p>
+      <p id="infoP3">The rates shown are mid-market reference exchange rates — with no bank markup or hidden fees.</p>
     </div>
 
     <!-- FAQ -->
     <div style="margin-top:20px;">
-      <div style="font-size:15px;font-weight:800;margin-bottom:12px;" id="faqTitle">❓ أسئلة شائعة</div>
+      <div style="font-size:15px;font-weight:800;margin-bottom:12px;" id="faqTitle">❓ FAQ</div>
       <div id="faqItems"></div>
     </div>
 
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📊 أسعار صرف الريال العُماني — جدول مرجعي</div>
-    <p style="font-size:13px;color:var(--text-muted);margin:6px 0 10px;">أسعار تقريبية استرشادية — <strong>1 ريال عُماني (OMR)</strong> يعادل:</p>
+    <div class="card-title" style="font-size:15px;">📊 Omani Rial Exchange Rates — Reference Table</div>
+    <p style="font-size:13px;color:var(--text-muted);margin:6px 0 10px;">Approximate reference rates — <strong>1 Omani Rial (OMR)</strong> equals:</p>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:center;">
         <thead>
           <tr style="background:var(--surface-2);font-weight:700;">
-            <th style="padding:9px 8px;border:1px solid var(--border);text-align:right;">العملة</th>
-            <th style="padding:9px 8px;border:1px solid var(--border);">الدولة</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);text-align:right;">Currency</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);">Country</th>
             <th style="padding:9px 8px;border:1px solid var(--border);">1 OMR =</th>
-            <th style="padding:9px 8px;border:1px solid var(--border);">1 وحدة = OMR</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);">1 unit = OMR</th>
           </tr>
         </thead>
         <tbody>
           <tr style="background:#f0fdf4;">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇺🇸 USD</td>
-            <td style="padding:8px;border:1px solid var(--border);">دولار أمريكي</td>
+            <td style="padding:8px;border:1px solid var(--border);">US Dollar</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;color:#16a34a;">2.6008 *</td>
             <td style="padding:8px;border:1px solid var(--border);">0.3845</td>
           </tr>
           <tr>
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇪🇺 EUR</td>
-            <td style="padding:8px;border:1px solid var(--border);">يورو</td>
+            <td style="padding:8px;border:1px solid var(--border);">Euro</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 2.39</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 0.418</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇬🇧 GBP</td>
-            <td style="padding:8px;border:1px solid var(--border);">جنيه إسترليني</td>
+            <td style="padding:8px;border:1px solid var(--border);">British Pound</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 2.06</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 0.486</td>
           </tr>
           <tr>
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇸🇦 SAR</td>
-            <td style="padding:8px;border:1px solid var(--border);">ريال سعودي</td>
+            <td style="padding:8px;border:1px solid var(--border);">Saudi Riyal</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 9.75</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 0.103</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇦🇪 AED</td>
-            <td style="padding:8px;border:1px solid var(--border);">درهم إماراتي</td>
+            <td style="padding:8px;border:1px solid var(--border);">UAE Dirham</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 9.55</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 0.105</td>
           </tr>
           <tr>
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇰🇼 KWD</td>
-            <td style="padding:8px;border:1px solid var(--border);">دينار كويتي</td>
+            <td style="padding:8px;border:1px solid var(--border);">Kuwaiti Dinar</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 0.799</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 1.252</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇪🇬 EGP</td>
-            <td style="padding:8px;border:1px solid var(--border);">جنيه مصري</td>
+            <td style="padding:8px;border:1px solid var(--border);">Egyptian Pound</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 126</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 0.0079</td>
           </tr>
           <tr>
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">🇮🇳 INR</td>
-            <td style="padding:8px;border:1px solid var(--border);">روبية هندية</td>
+            <td style="padding:8px;border:1px solid var(--border);">Indian Rupee</td>
             <td style="padding:8px;border:1px solid var(--border);font-weight:700;">≈ 216</td>
             <td style="padding:8px;border:1px solid var(--border);">≈ 0.0046</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">* سعر ثابت رسمي — الريال العُماني مرتبط بالدولار الأمريكي منذ 1986. باقي الأسعار تقريبية وتتغير يومياً — استخدم المحول أعلاه للسعر الفوري.</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">* Official fixed rate — the Omani Rial has been pegged to the US Dollar since 1986. All other rates are approximate and change daily — use the converter above for the current rate.</p>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة — محول العملات</div>
+    <div class="card-title" style="font-size:15px;">❓ FAQ — Currency Converter</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم سعر الدولار مقابل الريال العماني اليوم؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الريال العُماني مرتبط بالدولار الأمريكي بسعر ثابت رسمي: <strong>1 ريال عُماني = 2.6008 دولار</strong> (أو 1 USD = 0.3845 OMR). هذا السعر ثابت منذ 1986 بقرار من البنك المركزي العُماني ولا يتغير.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is today's USD to OMR exchange rate?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The Omani Rial is pegged to the US Dollar at a fixed official rate: <strong>1 OMR = 2.6008 USD</strong> (or 1 USD = 0.3845 OMR). This rate has been fixed since 1986 by the Central Bank of Oman and does not change.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الريال العُماني مرتبط بالدولار الأمريكي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم. الريال العُماني (OMR) مرتبط بالدولار الأمريكي (USD) بسعر صرف ثابت منذ عام 1986: <strong>1 OMR = 2.6008 USD</strong>. هذا الربط يمنح استقراراً نادراً ويجعل OMR من أقوى العملات في منطقة الخليج.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is the Omani Rial pegged to the US Dollar?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes. The Omani Rial (OMR) has been pegged to the US Dollar (USD) at a fixed rate since 1986: <strong>1 OMR = 2.6008 USD</strong>. This peg provides exceptional stability and makes OMR one of the strongest currencies in the Gulf region.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين سعر الصرف الوسطي وسعر البنك؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">سعر الصرف الوسطي (Mid-Market Rate) هو السعر المرجعي للعملة في الأسواق المالية — بدون أي هامش ربح. البنوك والصرافات تُضيف هامشاً (Spread) على هذا السعر، لذا يختلف سعرها عما يعرضه هذا المحول.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between mid-market rate and bank rate?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The mid-market rate is the reference rate for a currency in financial markets — with no profit margin. Banks and exchange offices add a spread on top of this rate, which is why their rate differs from what this converter shows.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم سعر الريال السعودي والدرهم الإماراتي مقابل الريال العُماني؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تقريباً: 1 OMR ≈ <strong>9.75 SAR</strong> (ريال سعودي) و1 OMR ≈ <strong>9.55 AED</strong> (درهم إماراتي). لاحظ أن كلاً من SAR وAED مرتبطان بالدولار الأمريكي بأسعار شبه ثابتة، لذا تكون تحويلاتها مع OMR مستقرة نسبياً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the SAR and AED rate against OMR?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Approximately: 1 OMR ≈ <strong>9.75 SAR</strong> (Saudi Riyal) and 1 OMR ≈ <strong>9.55 AED</strong> (UAE Dirham). Both SAR and AED are pegged to the US Dollar at near-fixed rates, so their conversions with OMR are relatively stable.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يعمل المحول بدون إنترنت؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم جزئياً. عند فقدان الاتصال يستخدم المحول آخر الأسعار المحفوظة تلقائياً في متصفحك (من آخر تحديث ناجح). إذا لم تكن هناك أسعار محفوظة تُستخدم أسعار احتياطية تقريبية للمرجع فقط. يُعرض شريط الحالة أسفل النتيجة نوع البيانات المعروضة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the converter work offline?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, partially. When the connection is lost, the converter uses the last rates automatically saved in your browser (from the last successful update). If no saved rates exist, approximate fallback rates are used for reference only. The status bar below the result shows which data type is being displayed.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مالية مرتبطة:</strong>
+    <strong>Related Financial Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="salary-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💼 حاسبة الراتب</a>
-      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
-      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
-      <a href="end-of-service.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📋 نهاية الخدمة عمان</a>
-      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">% حاسبة النسبة</a>
-      <a href="om/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇴🇲 أدوات عُمان</a>
+      <a href="salary-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💼 Salary Calculator</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 VAT Calculator</a>
+      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 Loan Calculator</a>
+      <a href="end-of-service.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📋 End of Service Oman</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">% Percentage Calculator</a>
+      <a href="om/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇴🇲 Oman Tools</a>
     </div>
   </div>
 
@@ -300,10 +300,10 @@
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="footer-links">
-      <a href="about.html" data-i18n="footer_about">من نحن</a>
-      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
     </div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 
