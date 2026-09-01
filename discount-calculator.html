@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -44,9 +44,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -58,44 +58,44 @@
   </div>
 </div></nav>
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fef2f2;">💯</div>
-    <div class="card-title" data-i18n="discount_title">حاسبة نسبة وخصم</div>
-    <div class="card-subtitle" data-i18n="discount_sub">احسب النسب المئوية والخصومات بسرعة</div>
+    <div class="card-title" data-i18n="discount_title">Percentage & Discount Calculator</div>
+    <div class="card-subtitle" data-i18n="discount_sub">Calculate percentages and discounts instantly</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أداة مجانية تدعم وضعين: حساب نسبة مئوية من رقم، أو حساب السعر بعد خصم معين. مفيدة للتسوق وعروض المبيعات ومقارنة الأسعار في السوبرماركت والمتاجر الإلكترونية.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Free tool supporting two modes: calculate a percentage of a number, or calculate the price after a given discount. Useful for shopping, sales offers and comparing prices in supermarkets and online stores.</p>
     <div class="tabs">
-      <div class="tab active" data-tab="percent" onclick="switchTab('percent')" data-i18n="tab_percent">نسبة مئوية</div>
-      <div class="tab" data-tab="discount" onclick="switchTab('discount')" data-i18n="tab_discount">خصم</div>
+      <div class="tab active" data-tab="percent" onclick="switchTab('percent')" data-i18n="tab_percent">Percentage</div>
+      <div class="tab" data-tab="discount" onclick="switchTab('discount')" data-i18n="tab_discount">Discount</div>
     </div>
     <div class="section active" id="section-percent">
-      <label for="p1" data-i18n="percent_label1">ما هي</label>
+      <label for="p1" data-i18n="percent_label1">What is</label>
       <input type="number" id="p1" placeholder="25" oninput="calcPercent()">
-      <label for="p2" data-i18n="percent_label2">% من الرقم</label>
+      <label for="p2" data-i18n="percent_label2">% of the number</label>
       <input type="number" id="p2" placeholder="200" oninput="calcPercent()">
       <div id="result1" class="result-box success"><div class="result-value" id="percentResult"></div></div>
     </div>
     <div class="section" id="section-discount">
-      <label for="d1" data-i18n="discount_label1">السعر الأصلي</label>
+      <label for="d1" data-i18n="discount_label1">Original price</label>
       <input type="number" id="d1" placeholder="100" oninput="calcDiscount()">
-      <label for="d2" data-i18n="discount_label2">نسبة الخصم %</label>
+      <label for="d2" data-i18n="discount_label2">Discount %</label>
       <input type="number" id="d2" placeholder="20" oninput="calcDiscount()">
       <div id="result2" class="result-box success"><div class="result-value" id="discountResult"></div><div class="result-label" id="discountSub"></div></div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">🏷️ جدول مرجعي — السعر بعد الخصم</div>
+    <div class="card-title" style="font-size:15px;">🏷️ Reference Table — Price After Discount</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--surface-2);">
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">نسبة الخصم</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">على 100</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">على 500</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">على 1,000</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">على 2,000</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Discount %</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">On 100</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">On 500</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">On 1,000</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">On 2,000</th>
           </tr>
         </thead>
         <tbody>
@@ -111,53 +111,53 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب سعر بعد خصم 20%؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">اضرب السعر الأصلي في (1 − 0.20). مثال: 500 × 0.80 = 400. أو أدخل السعر ونسبة الخصم في خانة «خصم» أعلاه.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I calculate the price after a 20% discount?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Multiply the original price by (1 − 0.20). Example: 500 × 0.80 = 400. Or enter the price and discount % in the Discount tab above.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أعرف نسبة الخصم من سعرين؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نسبة الخصم = ((السعر الأصلي − السعر المخفض) ÷ السعر الأصلي) × 100. مثال: من 200 إلى 150 = ((50÷200)×100) = 25%.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I find the discount percentage from two prices?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Discount % = ((Original price − Discounted price) ÷ Original price) × 100. Example: from 200 to 150 = ((50÷200)×100) = 25%.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الخصم يُحسب قبل أم بعد الضريبة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يُطبَّق الخصم عادةً على السعر قبل VAT، ثم تُحسب الضريبة على السعر الجديد بعد الخصم.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is the discount applied before or after VAT?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The discount is typically applied to the price before VAT, then the tax is calculated on the new discounted price.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب خصم «اشترِ 3 وادفع 2»؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يعادل خصماً فعلياً 33.3% على الوحدة الثالثة، أو خصم 11.1% تقريباً على إجمالي الطلب. الحساب: تدفع ثمن وحدتين وتحصل على ثلاث.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">"Buy 3 Pay 2" — what is the effective discount?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">It equals an effective 33.3% discount on the third unit, or approximately 11.1% off the total order. You pay for 2 units and receive 3.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الخصم والكاش باك؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الخصم يخفّض السعر فوراً عند الشراء. الكاش باك يُعيد جزءاً من المبلغ لاحقاً على محفظتك أو بطاقتك. الخصم المباشر أوفر في اللحظة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between a discount and cashback?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">A discount reduces the price immediately at purchase. Cashback returns a portion of the amount later to your wallet or card. A direct discount is better value in the moment.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب السعر الأصلي من السعر المخفض؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">السعر الأصلي = السعر المخفض ÷ (1 − نسبة الخصم÷100). مثال: سعر بعد خصم 20% = 400 ريال → السعر الأصلي = 400 ÷ 0.80 = 500 ريال.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I calculate the original price from the discounted price?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Original price = Discounted price ÷ (1 − Discount%÷100). Example: price after 20% discount = 400 → Original price = 400 ÷ 0.80 = 500.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يمكن تطبيق خصمين متتاليين؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، لكن الخصمان لا يُجمعان مباشرة. خصم 20% ثم 10% يساوي خصماً فعلياً 28% وليس 30%: 100 × 0.80 × 0.90 = 72.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can two consecutive discounts be applied?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, but they are not simply added together. 20% then 10% = an effective 28%, not 30%: 100 × 0.80 × 0.90 = 72.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أقارن عروض خصم متعددة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">احسب السعر النهائي لكل عرض بالأداة وقارن سعر الوحدة الواحدة. الخصم الأعلى نسبة ليس دائماً الأوفر إذا كان السعر الأصلي أغلى.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I compare multiple discount offers?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Calculate the final price for each offer with the tool and compare the unit price. The highest percentage discount is not always the best value if the original price is higher.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
-      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
-      <a href="tip-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🤝 حاسبة الإكرامية</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 Percentage Calculator</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 VAT Calculator</a>
+      <a href="tip-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🤝 Tip Calculator</a>
     </div>
   </div>
 </div></main>
 <footer class="footer">
-  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 Adawati</div>
 </footer>
 <script>
 function switchTab(tab) {
