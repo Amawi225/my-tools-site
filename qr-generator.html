@@ -45,13 +45,13 @@
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand">أدواتي</a>
+  <a href="index.html" class="nav-brand">Adawati</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
-      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
       <div class="lang-menu" id="langMenu">
         <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
         <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
@@ -61,92 +61,92 @@
   </div>
 </div></nav>
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">📱</div>
-    <div class="card-title" data-i18n="qr_title">مولد رمز QR</div>
-    <div class="card-subtitle" data-i18n="qr_sub">ولّد رمز QR لأي رابط أو نص فوراً</div>
+    <div class="card-title" data-i18n="qr_title">QR Code Generator</div>
+    <div class="card-subtitle" data-i18n="qr_sub">Generate a QR code for any link or text instantly</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أنشئ رمز QR لأي رابط أو نص في ثانية. الرمز قابل للتحميل بصيغة PNG بجودة عالية. مناسب لروابط المواقع والواتساب والبريد الإلكتروني وبطاقات الأعمال.</p>
-    <label data-i18n="qr_input">الرابط أو النص</label>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Generate a QR code for any link or text in seconds. Download as high-quality PNG. Perfect for website links, WhatsApp numbers, email addresses and business cards.</p>
+    <label data-i18n="qr_input">Link or text</label>
     <textarea id="qrInput" rows="3" data-i18n-ph="qr_placeholder" placeholder="https://example.com أو أي نص..." oninput="generateQR()" onpaste="setTimeout(generateQR,50)" style="resize:vertical;"></textarea>
-    <button class="btn btn-primary" id="qrBtn">توليد الرمز</button>
+    <button class="btn btn-primary" id="qrBtn">Generate code</button>
     <div id="qrStatus" style="display:none;text-align:center;margin-top:16px;font-size:15px;padding:10px;border-radius:8px;background:#fef9c3;color:#92400e;font-weight:600;"></div>
     <div id="qrWrap" style="display:none;text-align:center;margin-top:24px;">
       <div id="qrDisplay" style="display:inline-block;padding:16px;background:#fff;border-radius:var(--radius);border:2px solid var(--border);box-shadow:var(--shadow-md);"></div>
       <div style="margin-top:16px;">
-        <button class="btn btn-primary" style="margin-top:0;" onclick="downloadQR()" data-i18n="qr_download">تنزيل الصورة</button>
+        <button class="btn btn-primary" style="margin-top:0;" onclick="downloadQR()" data-i18n="qr_download">Download image</button>
       </div>
     </div>
     <div id="qrEmpty" style="text-align:center;padding:32px;color:var(--text-muted);">
       <div style="font-size:64px;margin-bottom:8px;opacity:0.3;">📱</div>
-      <div data-i18n="qr_hint">اكتب أي رابط أو نص لتوليد الرمز</div>
+      <div data-i18n="qr_hint">Enter any link or text to generate the code</div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📱 استخدامات رمز QR واقتراح المحتوى</div>
+    <div class="card-title" style="font-size:15px;">📱 QR Code Uses and Content Suggestions</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--surface-2);">
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">الاستخدام</th>
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">المحتوى المقترح</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Use case</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Suggested content</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">بطاقة أعمال</td><td style="padding:8px 10px;border:1px solid var(--border);">رابط LinkedIn أو الموقع الشخصي</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">واتساب مباشر</td><td style="padding:8px 10px;border:1px solid var(--border);">wa.me/+9685XXXXXXX</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">قائمة مطعم</td><td style="padding:8px 10px;border:1px solid var(--border);">رابط PDF أو صفحة الويب للقائمة</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">واي فاي للضيوف</td><td style="padding:8px 10px;border:1px solid var(--border);">WIFI:T:WPA;S:اسم;P:كلمةالمرور;;</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">منشور أو إعلان</td><td style="padding:8px 10px;border:1px solid var(--border);">رابط صفحة التفاصيل أو النموذج</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Business card</td><td style="padding:8px 10px;border:1px solid var(--border);">LinkedIn profile or personal website link</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">WhatsApp direct</td><td style="padding:8px 10px;border:1px solid var(--border);">wa.me/+9685XXXXXXX</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Restaurant menu</td><td style="padding:8px 10px;border:1px solid var(--border);">PDF link or web page for the menu</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Guest WiFi</td><td style="padding:8px 10px;border:1px solid var(--border);">WIFI:T:WPA;S:YourNetwork;P:YourPassword;;</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Post or advertisement</td><td style="padding:8px 10px;border:1px solid var(--border);">Link to details page or form</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل رمز QR يصلح للطباعة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، الصورة المُولَّدة 220×220 بكسل مناسبة للعروض الرقمية والطباعة الصغيرة. لطباعة بوستر كبير يُنصح بأدوات SVG للحفاظ على الجودة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is the QR code suitable for printing?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — the generated image is 220×220 pixels, suitable for digital displays and small print. For large poster printing, SVG tools are recommended for better quality.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل أحتاج إنترنت لمسح رمز QR؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">مسح الرمز بالكاميرا لا يحتاج إنترنت. لكن إن كان الرمز يحتوي على رابط ويب ستحتاج اتصالاً لفتح الرابط.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Do I need internet to scan a QR code?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Scanning the code with your camera does not need internet. But if the code contains a web link, you will need a connection to open it.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم معلومة يستوعب رمز QR واحد؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأقصى نحو 4,296 حرفاً أبجدياً. كلما قل النص كان الرمز أوضح وأسهل مسحاً بالكاميرا — يُنصح بالروابط القصيرة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How much information can one QR code hold?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The maximum is approximately 4,296 alphanumeric characters. Less text means a clearer code that is easier to scan — short links are recommended.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل رمز QR يمكن أن تنتهي صلاحيته؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">رمز QR الثابت لا ينتهي. لكن إن كان مرتبطاً برابط ويب انتهى أو تغيّر، لن يعمل الرابط. الرمز نفسه يبقى صالحاً دائماً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can a QR code expire?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">A static QR code never expires. But if it links to a web URL that expires or changes, the link will stop working. The code itself remains valid forever.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أربط رمز QR ببطاقة أعمال؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أنشئ رمز QR يحتوي على رابط صفحة LinkedIn أو موقعك أو رقم واتساب بصيغة wa.me/+9685XXXXXXX ثم احفظه واطبعه على بطاقتك.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I link a QR code to a business card?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Create a QR code with your LinkedIn page link, website or WhatsApp number in wa.me/+9685XXXXXXX format, then save and print it on your business card.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين رمز QR ورمز الباركود؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الباركود أحادي البُعد ويحمل ~20 رقماً فقط. رمز QR ثنائي البُعد ويحمل آلاف الأحرف. QR أسرع مسحاً ويعمل حتى عند التلف الجزئي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between a QR code and a barcode?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">A barcode is one-dimensional and holds only ~20 digits. A QR code is two-dimensional and holds thousands of characters. QR codes scan faster and work even when partially damaged.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يمكن إضافة شعار داخل رمز QR؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">هذه الأداة تولّد رموز بدون شعار. لإضافة شعار جرّب QR Code Monkey أو Canva — لكن الشعار يشغل جزءاً من الرمز وقد يقلل قدرة المسح.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can I add a logo inside a QR code?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">This tool generates codes without a logo. To add a logo, try QR Code Monkey or Canva — but a logo occupies part of the code and may reduce scan reliability.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما أفضل حجم لطباعة رمز QR؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأدنى للطباعة الواضحة 2×2 سنتيمتر. للملصقات والبوسترات يُنصح بـ 3-5 سنتيمتر لضمان سهولة المسح بجميع أنواع الكاميرات.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the best size for printing a QR code?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The minimum for clear printing is 2×2 cm. For posters and stickers, 3–5 cm is recommended to ensure easy scanning with all types of cameras.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔤 عداد الكلمات</a>
-      <a href="image-compressor.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🖼️ ضاغط الصور</a>
-      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 محوّل الملفات</a>
+      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔤 Word Counter</a>
+      <a href="image-compressor.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🖼️ Image Compressor</a>
+      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 File Converter</a>
     </div>
   </div>
 
@@ -166,8 +166,8 @@
 </div></main>
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
-    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 <script>
