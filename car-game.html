@@ -391,6 +391,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     updateText();
     if(state==='idle') drawInitOverlay();
   };
+  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();if(state==='idle')drawInitOverlay();};
   // Pause/resume on tab visibility
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden) pauseGame();
