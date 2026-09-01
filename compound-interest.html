@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -56,9 +56,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
@@ -72,68 +72,68 @@
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">📈</div>
-    <div class="card-title" data-i18n="ci_card_title">حاسبة الفائدة المركبة</div>
-    <div class="card-subtitle" data-i18n="ci_sub">احسب نمو استثمارك أو قرضك مع الفائدة المتراكمة</div>
+    <div class="card-title" data-i18n="ci_card_title">Compound Interest Calculator</div>
+    <div class="card-subtitle" data-i18n="ci_sub">Calculate how your investment or loan grows with compound interest</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">الفائدة المركبة هي مبدأ "الفائدة تكسب فائدة" — أي أن أرباح استثمارك تُضاف لرأس المال وتولّد بدورها أرباحاً جديدة. هذا التأثير التراكمي يجعل الفرق بين الادخار المبكر والمتأخر ضخماً جداً على المدى البعيد. أدخل مبلغك والفائدة والمدة لترى قوة التراكم.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Compound interest is the principle of "interest earning interest" — your investment earnings are added to the principal and in turn generate new earnings. This cumulative effect makes the difference between early and late saving enormous over the long term. Enter your amount, interest rate and duration to see the power of compounding.</p>
 
     <div class="row">
       <div>
-        <label for="principal" data-i18n="ci_principal">رأس المال (المبلغ الأساسي)</label>
-        <input type="number" id="principal" placeholder="مثال: 10000" min="0" step="any" oninput="calculate()">
+        <label for="principal" data-i18n="ci_principal">Principal (starting amount)</label>
+        <input type="number" id="principal" placeholder="e.g. 10000" min="0" step="any" oninput="calculate()">
       </div>
       <div>
-        <label for="rate" data-i18n="ci_rate">معدل الفائدة السنوي %</label>
-        <input type="number" id="rate" placeholder="مثال: 5" min="0" step="any" oninput="calculate()">
+        <label for="rate" data-i18n="ci_rate">Annual interest rate %</label>
+        <input type="number" id="rate" placeholder="e.g. 5" min="0" step="any" oninput="calculate()">
       </div>
     </div>
 
     <div class="row">
       <div>
-        <label for="years" data-i18n="ci_years">المدة (بالسنوات)</label>
-        <input type="number" id="years" placeholder="مثال: 10" min="1" max="50" step="1" oninput="calculate()">
+        <label for="years" data-i18n="ci_years">Duration (years)</label>
+        <input type="number" id="years" placeholder="e.g. 10" min="1" max="50" step="1" oninput="calculate()">
       </div>
       <div>
-        <label for="freq" data-i18n="ci_freq">تكرار الاحتساب</label>
+        <label for="freq" data-i18n="ci_freq">Compounding frequency</label>
         <select id="freq" onchange="calculate()">
-          <option value="1" data-i18n="ci_annually">سنوياً</option>
-          <option value="4" data-i18n="ci_quarterly">ربع سنوي</option>
-          <option value="12" selected data-i18n="ci_monthly_f">شهرياً</option>
-          <option value="365" data-i18n="ci_daily">يومياً</option>
+          <option value="1" data-i18n="ci_annually">Annually</option>
+          <option value="4" data-i18n="ci_quarterly">Quarterly</option>
+          <option value="12" selected data-i18n="ci_monthly_f">Monthly</option>
+          <option value="365" data-i18n="ci_daily">Daily</option>
         </select>
       </div>
     </div>
 
     <div>
-      <label for="monthly" data-i18n="ci_monthly">إضافة شهرية اختيارية (ر.ع)</label>
-      <input type="number" id="monthly" placeholder="0 (اختياري)" min="0" step="any" value="0" oninput="calculate()">
+      <label for="monthly" data-i18n="ci_monthly">Optional monthly contribution</label>
+      <input type="number" id="monthly" placeholder="0 (optional)" min="0" step="any" value="0" oninput="calculate()">
     </div>
 
     <div id="ciResult" style="display:none;margin-top:20px;">
       <div class="result-box show success" style="margin-top:0;">
         <div class="result-value" id="finalAmount"></div>
-        <div class="result-label" data-i18n="ci_result_lbl">المبلغ النهائي</div>
+        <div class="result-label" data-i18n="ci_result_lbl">Final amount</div>
       </div>
       <div class="stat-grid" style="margin-top:12px;">
         <div class="stat-box">
           <div class="stat-val" id="principalDisplay">0</div>
-          <div class="stat-lbl" data-i18n="ci_capital_lbl">رأس المال الأصلي</div>
+          <div class="stat-lbl" data-i18n="ci_capital_lbl">Original principal</div>
         </div>
         <div class="stat-box" style="background:#f0fdf4;">
           <div class="stat-val" id="interestEarned" style="color:#16a34a;">0</div>
-          <div class="stat-lbl" data-i18n="ci_interest_lbl">إجمالي الفائدة</div>
+          <div class="stat-lbl" data-i18n="ci_interest_lbl">Total interest</div>
         </div>
         <div class="stat-box" style="background:#eff6ff;">
           <div class="stat-val" id="totalContrib" style="color:#2563eb;">0</div>
-          <div class="stat-lbl" data-i18n="ci_additions_lbl">إجمالي الإضافات</div>
+          <div class="stat-lbl" data-i18n="ci_additions_lbl">Total contributions</div>
         </div>
       </div>
       <div id="growthBar" style="margin-top:16px;">
         <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px;">
-          <span>رأس المال</span><span>الفائدة</span>
+          <span>Principal</span><span>Interest</span>
         </div>
         <div style="display:flex;height:12px;border-radius:6px;overflow:hidden;">
           <div id="barPrincipal" style="background:#2563eb;transition:width 0.4s;"></div>
@@ -141,23 +141,23 @@
           <div id="barInterest" style="background:#16a34a;transition:width 0.4s;"></div>
         </div>
         <div style="display:flex;gap:16px;margin-top:6px;font-size:11px;color:var(--text-muted);">
-          <span><span style="display:inline-block;width:10px;height:10px;background:#2563eb;border-radius:2px;margin-left:4px;"></span>رأس المال</span>
-          <span><span style="display:inline-block;width:10px;height:10px;background:#7c3aed;border-radius:2px;margin-left:4px;"></span>إضافات</span>
-          <span><span style="display:inline-block;width:10px;height:10px;background:#16a34a;border-radius:2px;margin-left:4px;"></span>فائدة</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#2563eb;border-radius:2px;margin-left:4px;"></span>Principal</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#7c3aed;border-radius:2px;margin-left:4px;"></span>Contributions</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#16a34a;border-radius:2px;margin-left:4px;"></span>Interest</span>
         </div>
       </div>
     </div>
   </div>
 
   <div id="tableCard" class="card" style="margin-top:16px;display:none;">
-    <div class="card-title" style="font-size:15px;" data-i18n="ci_table_title">📊 جدول النمو السنوي</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="ci_table_title">📊 Annual Growth Table</div>
     <div style="overflow-x:auto;">
       <table class="ci-table" id="ciTable">
         <thead><tr>
-          <th data-i18n="ci_th_year">السنة</th>
-          <th data-i18n="ci_th_amount">المبلغ</th>
-          <th data-i18n="ci_th_int_added">الفائدة المضافة</th>
-          <th data-i18n="ci_th_total_int">إجمالي الفائدة</th>
+          <th data-i18n="ci_th_year">Year</th>
+          <th data-i18n="ci_th_amount">Amount</th>
+          <th data-i18n="ci_th_int_added">Interest added</th>
+          <th data-i18n="ci_th_total_int">Total interest</th>
         </tr></thead>
         <tbody id="ciTableBody"></tbody>
       </table>
@@ -165,50 +165,50 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📊 مقارنة: فائدة بسيطة مقابل مركبة — 10,000 ريال</div>
+    <div class="card-title" style="font-size:15px;">📊 Comparison: Simple vs Compound Interest — 10,000</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--primary);color:#fff;">
-            <th style="padding:9px 12px;text-align:start;">معدل الفائدة</th>
-            <th style="padding:9px 12px;text-align:center;">المدة</th>
-            <th style="padding:9px 12px;text-align:center;">فائدة بسيطة</th>
-            <th style="padding:9px 12px;text-align:center;">فائدة مركبة (شهري)</th>
-            <th style="padding:9px 12px;text-align:center;">الفرق</th>
+            <th style="padding:9px 12px;text-align:start;">Interest rate</th>
+            <th style="padding:9px 12px;text-align:center;">Duration</th>
+            <th style="padding:9px 12px;text-align:center;">Simple interest</th>
+            <th style="padding:9px 12px;text-align:center;">Compound (monthly)</th>
+            <th style="padding:9px 12px;text-align:center;">Difference</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">5%</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">5 سنوات</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">5 years</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">12,500</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;font-weight:700;">12,834</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;">+334</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">5%</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">10 سنوات</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">10 years</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">15,000</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;font-weight:700;">16,470</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;">+1,470</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">5%</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">20 سنة</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">20 years</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">20,000</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;font-weight:700;">27,126</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;">+7,126</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">10%</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">10 سنوات</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">10 years</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;">20,000</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;font-weight:700;">27,070</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);text-align:center;color:#16a34a;">+7,070</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;font-weight:700;">10%</td>
-            <td style="padding:8px 12px;text-align:center;">20 سنة</td>
+            <td style="padding:8px 12px;text-align:center;">20 years</td>
             <td style="padding:8px 12px;text-align:center;">30,000</td>
             <td style="padding:8px 12px;text-align:center;color:#16a34a;font-weight:700;">73,281</td>
             <td style="padding:8px 12px;text-align:center;color:#16a34a;font-weight:700;">+43,281</td>
@@ -216,47 +216,47 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">* الأرقام تقريبية، رأس المال 10,000 ريال، احتساب شهري للفائدة المركبة.</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">* Approximate figures, principal 10,000, monthly compound interest calculation.</p>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الفائدة البسيطة والمركبة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الفائدة البسيطة تُحسب على رأس المال الأصلي فقط. الفائدة المركبة تُحسب على رأس المال + الفائدة المتراكمة، فتنمو بشكل أسرع مع الوقت. راجع الجدول أعلاه للمقارنة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between simple and compound interest?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Simple interest is calculated on the original principal only. Compound interest is calculated on the principal + accumulated interest, so it grows faster over time. See the comparison table above.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما قاعدة 72؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">قاعدة 72 تُعطيك تقديراً لمضاعفة استثمارك: اقسم 72 على نسبة الفائدة السنوية. مثال: بفائدة 6%، يتضاعف المبلغ في ≈12 سنة (72÷6). وبفائدة 9%، يتضاعف في ≈8 سنوات.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the Rule of 72?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The Rule of 72 gives you an estimate for doubling your investment: divide 72 by the annual interest rate. Example: at 6%, your money doubles in ≈12 years (72÷6). At 9%, it doubles in ≈8 years.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل هذه الأداة مناسبة للقروض؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، يمكن استخدامها لحساب إجمالي المبلغ المسدَّد على قرض بفائدة مركبة. لحساب القسط الشهري الثابت، استخدم <a href="loan-calculator.html">حاسبة القسط</a>.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is this tool suitable for loans?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, it can be used to calculate the total amount repaid on a loan with compound interest. For calculating fixed monthly instalments, use the <a href="loan-calculator.html">Loan Calculator</a>.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كلما زادت تكرارية التراكم، زاد العائد؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم. التراكم الشهري يعطي عائداً أعلى من السنوي، والتراكم اليومي أعلى من الشهري. لكن الفرق يصبح ضئيلاً بعد التكرار الأسبوعي — الأثر الأكبر يأتي من نسبة الفائدة والمدة الزمنية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does higher compounding frequency give a higher return?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes. Monthly compounding gives a higher return than annual, and daily compounding higher than monthly. However, the difference becomes negligible beyond weekly — the biggest impact comes from the interest rate and duration.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما صيغة حساب الفائدة المركبة رياضياً؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الصيغة: A = P × (1 + r/n)^(n×t) حيث: A = المبلغ النهائي، P = رأس المال، r = معدل الفائدة السنوي (كعدد عشري)، n = تكرار الاحتساب سنوياً، t = عدد السنوات.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the mathematical formula for compound interest?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Formula: A = P × (1 + r/n)^(n×t) where: A = final amount, P = principal, r = annual interest rate (as a decimal), n = compounding frequency per year, t = number of years.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما تأثير الادخار الشهري على نمو الاستثمار؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الإضافة الشهرية الصغيرة لها تأثير هائل على المدى البعيد. مثال: إضافة 100 ريال شهرياً لمدة 20 سنة بفائدة 7% = مجموع إضافات 24,000 ريال، لكن المبلغ الفعلي قد يتجاوز 52,000 ريال بفضل الفائدة المتراكمة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the effect of monthly saving on investment growth?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Small monthly contributions have an enormous long-term impact. Example: adding 100 monthly for 20 years at 7% = total contributions of 24,000, but the actual amount can exceed 52,000 thanks to accumulated interest.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يمكن مقارنة عروض الودائع البنكية بالحاسبة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، أدخل رأس المال ونسبة العائد والمدة لكل عرض بنكي لمقارنة النتائج. تأكد من توافق تكرار الاحتساب مع ما يحدده البنك (شهري/سنوي/ربع سنوي).</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can the calculator be used to compare bank deposit offers?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, enter the principal, interest rate and duration for each bank offer to compare results. Make sure the compounding frequency matches what the bank specifies (monthly/annual/quarterly).</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong data-i18n="related_tools">أدوات مرتبطة:</strong>
+    <strong data-i18n="related_tools">Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط</a>
-      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
-      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 Loan Calculator</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 Percentage Calculator</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 VAT Calculator</a>
     </div>
   </div>
 
@@ -273,11 +273,11 @@
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="footer-links">
-      <a href="about.html" data-i18n="footer_about">من نحن</a>
-      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
-      <a href="privacy.html">الخصوصية</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy</a>
     </div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 
