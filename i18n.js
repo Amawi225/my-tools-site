@@ -1084,7 +1084,7 @@ document.addEventListener('click', function(e) {
 function updateSignupBtn() {
   const btn = document.getElementById('signupNavBtn');
   if (!btn) return;
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const user = getUser();
   if (user) {
@@ -1101,7 +1101,7 @@ function getUser() {
 }
 
 function openSignup() {
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const user = getUser();
   const existing = document.getElementById('signupModal');
@@ -1278,7 +1278,7 @@ function initPWA() {
 
 function showPWABanner() {
   if (document.getElementById('pwaBanner')) return;
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const banner = document.createElement('div');
   banner.id = 'pwaBanner';
@@ -1333,7 +1333,7 @@ function injectRelatedTools() {
   if (!related) return;
   const card = document.querySelector('.card');
   if (!card) return;
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
   const section = document.createElement('div');
@@ -1432,7 +1432,7 @@ function renderFavSection() {
   const favGrid = document.getElementById('favGrid');
   if (!favSection || !favGrid) return;
   const favs = getFavs();
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
   favGrid.innerHTML = '';
@@ -1452,7 +1452,7 @@ function renderRecentSection() {
   const recentGrid = document.getElementById('recentGrid');
   if (!recentSection || !recentGrid) return;
   const recent = getRecent();
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
   recentGrid.innerHTML = '';
@@ -1614,7 +1614,7 @@ function renderCountrySection(countryCode) {
   const existing = document.getElementById('countrySection');
   if (existing) existing.remove();
 
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang] || T.ar;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
 
@@ -1692,7 +1692,7 @@ function showHomePrompt() {
   _homePromptShown = true;
   if (_homePromptTimer) { clearTimeout(_homePromptTimer); _homePromptTimer = null; }
 
-  var lang = localStorage.getItem('lang') || 'ar';
+  var lang = localStorage.getItem('lang') || 'en';
   var msgs = {
     ar: '🏠 العودة للصفحة الرئيسية',
     en: '🏠 Back to Home',
