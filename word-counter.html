@@ -45,13 +45,13 @@
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand">أدواتي</a>
+  <a href="index.html" class="nav-brand">Adawati</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
-      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
       <div class="lang-menu" id="langMenu">
         <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
         <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
@@ -61,87 +61,87 @@
   </div>
 </div></nav>
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fefce8;">🔤</div>
-    <div class="card-title" data-i18n="word_title">عداد الكلمات والأحرف</div>
-    <div class="card-subtitle" data-i18n="word_sub">عداد فوري لمقالاتك ونصوصك</div>
+    <div class="card-title" data-i18n="word_title">Word &amp; Character Counter</div>
+    <div class="card-subtitle" data-i18n="word_sub">Instant counter for your articles and texts</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">الصق نصك وستظهر إحصاءات الكلمات والأحرف والجمل في الحال. مفيد للكتّاب والطلاب والمدونين الذين يحتاجون تتبع حد كلمات مقال أو رسالة أو بحث.</p>
-    <textarea id="textInput" rows="8" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;resize:vertical;background:var(--bg);color:var(--text);" data-i18n-ph="word_placeholder" placeholder="اكتب أو الصق نصك هنا..." oninput="updateStats()"></textarea>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Paste your text and word, character and sentence statistics appear instantly. Useful for writers, students and bloggers who need to track word limits for articles, messages or research papers.</p>
+    <textarea id="textInput" rows="8" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;resize:vertical;background:var(--bg);color:var(--text);" data-i18n-ph="word_placeholder" placeholder="Type or paste your text here..." oninput="updateStats()"></textarea>
     <div class="stat-grid" style="margin-top:16px;">
-      <div class="stat-box"><div class="stat-val" id="wordCount">0</div><div class="stat-lbl" data-i18n="word_words">كلمة</div></div>
-      <div class="stat-box"><div class="stat-val" id="charCount">0</div><div class="stat-lbl" data-i18n="word_chars">حرف</div></div>
-      <div class="stat-box"><div class="stat-val" id="charNoSpace">0</div><div class="stat-lbl" data-i18n="word_nospace">بدون مسافات</div></div>
-      <div class="stat-box"><div class="stat-val" id="sentenceCount">0</div><div class="stat-lbl" data-i18n="word_sentences">جملة</div></div>
+      <div class="stat-box"><div class="stat-val" id="wordCount">0</div><div class="stat-lbl" data-i18n="word_words">Words</div></div>
+      <div class="stat-box"><div class="stat-val" id="charCount">0</div><div class="stat-lbl" data-i18n="word_chars">Characters</div></div>
+      <div class="stat-box"><div class="stat-val" id="charNoSpace">0</div><div class="stat-lbl" data-i18n="word_nospace">No spaces</div></div>
+      <div class="stat-box"><div class="stat-val" id="sentenceCount">0</div><div class="stat-lbl" data-i18n="word_sentences">Sentences</div></div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📊 حدود الكلمات والأحرف للمنصات الشائعة</div>
+    <div class="card-title" style="font-size:15px;">📊 Word &amp; Character Limits for Popular Platforms</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--surface-2);">
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">المنصة / التنسيق</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">الحد الأقصى</th>
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">ملاحظة</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Platform / Format</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">Max limit</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Note</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Twitter / X</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">280 حرفاً</td><td style="padding:8px 10px;border:1px solid var(--border);">الروابط تُحسب 23 حرفاً</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Instagram Caption</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">2,200 حرف</td><td style="padding:8px 10px;border:1px solid var(--border);">يُعرض منه 125 حرفاً قبل «المزيد»</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">LinkedIn Post</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">3,000 حرف</td><td style="padding:8px 10px;border:1px solid var(--border);">يُعرض منه 210 قبل «قراءة المزيد»</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">SMS (عربي)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">70 حرفاً/رسالة</td><td style="padding:8px 10px;border:1px solid var(--border);">ما زاد يُقسَّم لرسائل متعددة</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">مقالة SEO</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">1,200–2,500 كلمة</td><td style="padding:8px 10px;border:1px solid var(--border);">الجودة أهم من الطول</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">صفحة A4 (خط 12)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">400–500 كلمة</td><td style="padding:8px 10px;border:1px solid var(--border);">يختلف بحسب تباعد الأسطر والهوامش</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Twitter / X</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">280 characters</td><td style="padding:8px 10px;border:1px solid var(--border);">Links count as 23 characters</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Instagram Caption</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">2,200 characters</td><td style="padding:8px 10px;border:1px solid var(--border);">First 125 shown before "more"</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">LinkedIn Post</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">3,000 characters</td><td style="padding:8px 10px;border:1px solid var(--border);">First 210 shown before "read more"</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">SMS (Arabic)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">70 characters/message</td><td style="padding:8px 10px;border:1px solid var(--border);">Excess is split into multiple messages</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">SEO article</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">1,200–2,500 words</td><td style="padding:8px 10px;border:1px solid var(--border);">Quality matters more than length</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">A4 page (12pt font)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">400–500 words</td><td style="padding:8px 10px;border:1px solid var(--border);">Varies by line spacing and margins</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم كلمة في صفحة A4 واحدة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">صفحة A4 بخط 12pt وهوامش قياسية تحتوي على 400-500 كلمة تقريباً. تنسيقات التباعد المزدوج أو الهوامش الكبيرة تقلل العدد.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many words fit on one A4 page?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">An A4 page at 12pt font with standard margins holds approximately 400–500 words. Double spacing or wide margins reduce that number.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم دقيقة لقراءة 1000 كلمة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">القارئ المتوسط يقرأ 200-250 كلمة في الدقيقة. 1000 كلمة ≈ 4-5 دقائق قراءة. النصوص التقنية قد تأخذ أطول.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many minutes to read 1000 words?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The average reader reads 200–250 words per minute. 1,000 words takes about 4–5 minutes. Technical texts may take longer.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يعمل مع النصوص العربية؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، الأداة تدعم العربية والإنجليزية والنصوص المختلطة. الكلمات تُحسب بالمسافات بغض النظر عن اللغة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does it work with Arabic text?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — the tool supports Arabic, English and mixed text. Words are counted by spaces regardless of language.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم كلمة يجب أن تحتوي مقالة SEO؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">مقالات SEO الناجحة عادةً 1,200-2,500 كلمة. المقالات الأطول تحتل مراتب أفضل في كثير من الحالات، لكن الجودة والإجابة الوافية أهم من الكمية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many words should an SEO article contain?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Successful SEO articles are typically 1,200–2,500 words. Longer articles rank better in many cases, but quality and comprehensive answers matter more than quantity.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما حد الأحرف في المنصات الاجتماعية؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Twitter/X: 280 حرفاً. Instagram caption: 2,200 حرف. LinkedIn post: 3,000 حرف. WhatsApp status: 700 حرف.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What are character limits on social platforms?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Twitter/X: 280 characters. Instagram caption: 2,200 characters. LinkedIn post: 3,000 characters. WhatsApp status: 700 characters.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم حرفاً في رسالة SMS واحدة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">160 حرفاً لاتينياً أو 70 حرفاً عربياً في رسالة واحدة. ما زاد يُقسَّم لرسائل متعددة وقد يُحاسَب عليها منفصلة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many characters in one SMS message?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">160 Latin characters or 70 Arabic characters per SMS. Anything over that is split into multiple messages and may be charged separately.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الأرقام تُحسب كلمات في الأداة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، أي تسلسل من الرموز المحاطة بمسافات يُحسب كلمة واحدة. الرقم «2024» يُحسب كلمة واحدة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Do numbers count as words in the tool?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — any sequence of characters surrounded by spaces counts as one word. The number "2024" counts as one word.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الكلمات والرموز في الكتابة الأكاديمية؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">معظم الجامعات تحسب الكلمات لا الأحرف. بعضها يستثني قوائم المراجع أو الجداول من عدد الكلمات. تحقق دائماً من تعليمات مؤسستك.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between words and symbols in academic writing?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Most universities count words, not characters. Some exclude reference lists or tables from the word count. Always check your institution's guidelines.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 محوّل الملفات</a>
-      <a href="password-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔑 مولد المرور</a>
-      <a href="qr-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📱 مولد QR</a>
+      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 File Converter</a>
+      <a href="password-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔑 Password Generator</a>
+      <a href="qr-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📱 QR Generator</a>
     </div>
   </div>
 
@@ -160,8 +160,8 @@
   </div>
 </div></main>
 <footer class="footer">
-  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 Adawati</div>
 </footer>
 <script>
 function updateStats() {
