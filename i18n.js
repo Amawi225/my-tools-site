@@ -1091,7 +1091,7 @@ function setLang(lang) {
     renderCountrySection(cc);
   }
   // Update <title> and meta description per page
-  const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+  const page = _getPageSlug();
   if (PAGE_META[page]) {
     const pm = PAGE_META[page];
     if (pm.title && pm.title[lang]) document.title = pm.title[lang];
@@ -1469,7 +1469,7 @@ T.ru.pct_seo_html = '<h2 style="font-size:17px;font-weight:700;margin-bottom:10p
 
 /* ── renderFAQ: inject FAQ from PAGE_FAQ for current page ── */
 function renderFAQ(lang) {
-  const page = location.pathname.split('/').pop().replace('.html', '') || 'index';
+  const page = _getPageSlug();
   const faqData = PAGE_FAQ[page];
   if (!faqData) return;
   const t = T[lang] || T.en;
@@ -1505,7 +1505,21 @@ function renderFAQ(lang) {
   });
 }
 
+function _getPageSlug() {
+  var parts = location.pathname.split('/').filter(function(s) { return s.length > 0; });
+  var last = parts[parts.length - 1] || '';
+  return last.replace('.html', '') || (parts[parts.length - 2] || 'index');
+}
+
 function detectDefaultLang() {
+  var urlLangs = ['ar', 'fr', 'es', 'de', 'ru'];
+  var pathParts = location.pathname.split('/').filter(function(s) { return s.length > 0; });
+  for (var i = 0; i < pathParts.length; i++) {
+    if (urlLangs.indexOf(pathParts[i]) !== -1) {
+      try { localStorage.setItem('lang', pathParts[i]); } catch(e) {}
+      return pathParts[i];
+    }
+  }
   const saved = localStorage.getItem('lang');
   if (saved && T[saved]) return saved;
   const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
@@ -1627,7 +1641,7 @@ const RELATED_MAP = {
 };
 
 function injectRelatedTools() {
-  const page = location.pathname.split('/').pop().replace('.html','');
+  const page = _getPageSlug();
   const related = RELATED_MAP[page];
   if (!related) return;
   const card = document.querySelector('.card');
@@ -1975,7 +1989,7 @@ async function initCountryDetect() {
 
 /* ── Track recent on tool pages ── */
 function autoTrackRecent() {
-  const page = location.pathname.split('/').pop().replace('.html', '');
+  const page = _getPageSlug();
   if (TOOL_META[page] && page !== 'index') trackRecent(page);
 }
 
@@ -1986,8 +2000,8 @@ var _homePromptTimer = null;
 function showHomePrompt() {
   if (_homePromptShown) return;
   // Don't show on the homepage itself
-  var page = location.pathname.split('/').pop();
-  if (!page || page === '' || page === 'index.html') return;
+  var page = _getPageSlug();
+  if (!TOOL_META[page]) return;
   _homePromptShown = true;
   if (_homePromptTimer) { clearTimeout(_homePromptTimer); _homePromptTimer = null; }
 
@@ -2036,8 +2050,8 @@ function showHomePrompt() {
 }
 
 function initHomePrompt() {
-  var page = location.pathname.split('/').pop();
-  if (!page || page === '' || page === 'index.html') return;
+  var page = _getPageSlug();
+  if (!TOOL_META[page]) return;
   // Show after 15 seconds of being on a tool page
   _homePromptTimer = setTimeout(showHomePrompt, 15000);
 }
