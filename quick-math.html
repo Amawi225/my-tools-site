@@ -684,6 +684,7 @@ function restartAll(){clearProgress();startLevel(0);}
 document.addEventListener('DOMContentLoaded',()=>{
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
+  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
   // Pause timer when tab is hidden, resume when visible
   document.addEventListener('visibilitychange',()=>{
     if(!timerInterval) return;
