@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -63,9 +63,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -78,165 +78,165 @@
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0f9ff;">🖼️</div>
-    <div class="card-title" data-i18n="ic_title">ضغط وتصغير الصور</div>
-    <div class="card-subtitle" data-i18n="ic_sub">يعمل داخل متصفحك — لا يتم رفع صورك لأي خادم ✅</div>
+    <div class="card-title" data-i18n="ic_title">Image Compressor</div>
+    <div class="card-subtitle" data-i18n="ic_sub">Works in your browser — your images are never uploaded ✅</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">اضغط صورتك مباشرة داخل المتصفح بدون رفعها لأي خادم. الضغط يتم بالكامل على جهازك مما يضمن خصوصيتك التامة. يدعم JPG وPNG وWebP وقد تصل نسبة التوفير إلى 90% حسب الصورة والإعدادات، مع التحكم الكامل في مستوى الجودة.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Compress your image directly in the browser without uploading to any server. All processing happens on your device, guaranteeing complete privacy. Supports JPG, PNG, and WebP — savings can reach 90% depending on the image and settings, with full control over quality level.</p>
 
     <div class="drop-zone" id="dropZone" onclick="document.getElementById('imgInput').click()">
       <div class="drop-zone-icon">📁</div>
-      <div class="drop-zone-text" data-i18n="ic_drop_text">اضغط هنا أو اسحب صورتك</div>
-      <div class="drop-zone-sub" data-i18n="ic_drop_sub">JPG، PNG، WebP — حتى 20MB</div>
+      <div class="drop-zone-text" data-i18n="ic_drop_text">Click here or drag your image</div>
+      <div class="drop-zone-sub" data-i18n="ic_drop_sub">JPG, PNG, WebP — up to 20MB</div>
     </div>
     <input type="file" id="imgInput" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="loadImage(this)">
 
     <div id="pngWarning" style="display:none;margin-top:12px;padding:12px 16px;background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;font-size:13px;line-height:1.7;color:#92400e;">
-      ⚠️ <strong>تنبيه — PNG والشفافية:</strong> هذا الضاغط يحوّل PNG إلى JPEG. إذا كانت صورتك تحتوي على خلفية شفافة ستُستبدل <strong>بخلفية بيضاء</strong>. إذا كانت الشفافية ضرورية، لا تستخدم هذا الضاغط لهذه الصورة.
+      ⚠️ <strong>PNG transparency notice:</strong> This compressor converts PNG to JPEG. If your image has a transparent background it will be replaced with a <strong>white background</strong>. If transparency is essential, do not use this compressor for that image.
     </div>
 
     <div id="controls" style="display:none;">
       <label style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <span data-i18n="ic_quality_lbl">جودة الضغط:</span>
+        <span data-i18n="ic_quality_lbl">Compression quality:</span>
         <span id="qualityLabel" style="font-weight:700;color:var(--primary);font-size:18px;">80%</span>
       </label>
       <input type="range" class="quality-slider" id="qualitySlider" min="5" max="95" value="80" step="5" oninput="onQualityChange(this.value)">
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px;">
-        <span data-i18n="ic_max_compress">أقصى ضغط</span><span data-i18n="ic_max_quality">أعلى جودة</span>
+        <span data-i18n="ic_max_compress">Max compress</span><span data-i18n="ic_max_quality">Max quality</span>
       </div>
 
       <div class="stat-grid" style="margin-top:16px;">
         <div class="stat-box">
           <div class="stat-val" id="origSize" style="font-size:16px;">—</div>
-          <div class="stat-lbl" data-i18n="ic_orig_size_lbl">الحجم الأصلي</div>
+          <div class="stat-lbl" data-i18n="ic_orig_size_lbl">Original size</div>
         </div>
         <div class="stat-box" style="background:#f0fdf4;">
           <div class="stat-val" id="compSize" style="font-size:16px;color:#16a34a;">—</div>
-          <div class="stat-lbl" data-i18n="ic_comp_size_lbl">بعد الضغط</div>
+          <div class="stat-lbl" data-i18n="ic_comp_size_lbl">Compressed</div>
         </div>
         <div class="stat-box" style="background:#fefce8;">
           <div class="stat-val" id="savings" style="font-size:16px;color:#ca8a04;">—</div>
-          <div class="stat-lbl" data-i18n="ic_savings_lbl">التوفير</div>
+          <div class="stat-lbl" data-i18n="ic_savings_lbl">Savings</div>
         </div>
       </div>
 
-      <div id="smallImgHint" style="display:none;margin-top:10px;padding:10px 14px;background:#fef9c3;border-radius:8px;font-size:13px;color:#854d0e;" data-i18n="ic_small_img">الصورة صغيرة جداً — جرّب تخفيض الجودة أكثر للحصول على توفير أعلى</div>
+      <div id="smallImgHint" style="display:none;margin-top:10px;padding:10px 14px;background:#fef9c3;border-radius:8px;font-size:13px;color:#854d0e;" data-i18n="ic_small_img">Image is very small — try reducing quality further for higher savings</div>
 
       <div class="img-preview-wrap">
         <div class="img-preview-box">
           <img id="origPreview" src="" alt="original">
-          <div class="img-preview-label" data-i18n="ic_orig_img">الصورة الأصلية</div>
+          <div class="img-preview-label" data-i18n="ic_orig_img">Original image</div>
         </div>
         <div class="img-preview-box">
           <img id="compPreview" src="" alt="compressed">
-          <div class="img-preview-label" id="compLabel">الصورة المضغوطة</div>
+          <div class="img-preview-label" id="compLabel">Compressed image</div>
         </div>
       </div>
 
       <button class="btn btn-primary" id="downloadBtn" style="margin-top:16px;width:100%;" onclick="downloadCompressed()" data-i18n="ic_download_btn">
-        ⬇️ تحميل الصورة المضغوطة
+        ⬇️ Download Compressed Image
       </button>
       <button onclick="document.getElementById('imgInput').click()" style="width:100%;margin-top:8px;padding:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:inherit;font-size:14px;color:var(--text);" data-i18n="ic_another_btn">
-        🔄 اختر صورة أخرى
+        🔄 Choose Another Image
       </button>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="ic_privacy_title">🔒 خصوصية تامة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="ic_privacy_title">🔒 Complete Privacy</div>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:8px;" data-i18n="ic_privacy_text">
-      يعمل هذا الضاغط بالكامل داخل متصفحك باستخدام تقنية Canvas API. لا يتم إرسال صورتك إلى أي خادم — بياناتك لا تغادر جهازك.
+      This compressor works entirely inside your browser using the Canvas API. Your image is never sent to any server — your data never leaves your device.
     </p>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="faq_title">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تُرسل الصور إلى أي خادم؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. جميع عمليات الضغط تتم داخل المتصفح مباشرة. ملفاتك لا تغادر جهازك أبداً ولا تُرفع إلى أي خادم.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Are images sent to any server?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">No. All compression happens directly inside the browser. Your files never leave your device and are never uploaded to any server.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الصيغ المدعومة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يدعم المضغاط صيغ JPG/JPEG وPNG وWebP. يحوّل الصور الأخرى إلى JPEG تلقائياً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What formats are supported?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The compressor supports JPG/JPEG, PNG and WebP. All output is automatically converted to JPEG.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم يمكن أن تصل نسبة الضغط؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تتراوح نسبة الضغط عادةً بين 40% و80% بحسب الصورة وجودة الضغط المختارة. صور JPG ذات الجودة العالية الأصلية تستجيب أفضل للضغط.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How much compression can be achieved?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Compression typically ranges between 40% and 80% depending on the image and selected quality. High-quality original JPG images respond best to compression.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يؤثر الضغط على جودة الصورة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يستخدم المضغاط خوارزمية ضغط مرئي (Lossy) تُحسّن حجم الملف مع الحفاظ على جودة مقبولة بصرياً. كلما زادت نسبة الضغط انخفضت الجودة قليلاً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does compression affect image quality?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The compressor uses a lossy compression algorithm that reduces file size while preserving acceptable visual quality. The more compression applied, the slightly lower the quality.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يحافظ الضاغط على شفافية صور PNG؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. هذا الضاغط يحوّل PNG إلى JPEG، وصيغة JPEG لا تدعم الشفافية. إذا كانت صورتك تحتوي على خلفية شفافة (Transparency) ستُستبدل <strong>بخلفية بيضاء تلقائياً</strong>. للحفاظ على شفافية PNG استخدم أدوات ضغط PNG متخصصة مثل TinyPNG.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the compressor preserve PNG transparency?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">No. This compressor converts PNG to JPEG, and JPEG does not support transparency. If your image has a transparent background it will automatically be replaced with a <strong>white background</strong>. To preserve PNG transparency, use a dedicated PNG compressor such as TinyPNG.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما أفضل مستوى جودة للضغط؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;"><strong>80%–85%</strong> مثالية للمشاركة على الإنترنت والبريد الإلكتروني — توازن ممتاز بين الجودة والحجم. <strong>60%–75%</strong> لتقليل الحجم بشكل أكبر مع جودة مقبولة. <strong>90%+</strong> للاستخدامات الطباعية. القيمة الافتراضية 80% مناسبة لمعظم الحالات.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the best quality level for compression?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;"><strong>80%–85%</strong> is ideal for sharing online and via email — excellent balance between quality and size. <strong>60%–75%</strong> for greater size reduction with acceptable quality. <strong>90%+</strong> for print use. The default value of 80% is suitable for most cases.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لماذا قد تكون الصورة المضغوطة أكبر من الأصل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">يحدث ذلك عندما تكون الصورة الأصلية مضغوطة بشكل جيد أصلاً، أو صغيرة الحجم جداً. أيضاً صور PNG كبيرة عند تحويلها إلى JPEG بجودة عالية قد تكون متقاربة الأحجام. الحل: خفّض مستوى الجودة تدريجياً حتى تحقق التوفير المطلوب.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Why might the compressed image be larger than the original?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">This happens when the original image is already well compressed or very small. Also, large PNGs converted to JPEG at high quality may have similar sizes. Solution: gradually lower the quality level until you achieve the desired saving.</p>
     </details>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📋 مقارنة صيغ الصور — متى تستخدم كل صيغة؟</div>
+    <div class="card-title" style="font-size:15px;">📋 Image Format Comparison — When to Use Each</div>
     <div style="overflow-x:auto;margin-top:10px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:center;">
         <thead>
           <tr style="background:var(--surface-2);font-weight:700;">
-            <th style="padding:9px 8px;border:1px solid var(--border);text-align:right;">الصيغة</th>
-            <th style="padding:9px 8px;border:1px solid var(--border);">أفضل استخدام</th>
-            <th style="padding:9px 8px;border:1px solid var(--border);">شفافية</th>
-            <th style="padding:9px 8px;border:1px solid var(--border);">حجم الملف</th>
-            <th style="padding:9px 8px;border:1px solid var(--border);">نوع الضغط</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);text-align:right;">Format</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);">Best use</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);">Transparency</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);">File size</th>
+            <th style="padding:9px 8px;border:1px solid var(--border);">Compression</th>
           </tr>
         </thead>
         <tbody>
           <tr style="background:#f0fdf4;">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">JPEG / JPG</td>
-            <td style="padding:8px;border:1px solid var(--border);">صور فوتوغرافية، خلفيات</td>
-            <td style="padding:8px;border:1px solid var(--border);color:#dc2626;">لا</td>
+            <td style="padding:8px;border:1px solid var(--border);">Photos, backgrounds</td>
+            <td style="padding:8px;border:1px solid var(--border);color:#dc2626;">No</td>
             <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">صغير ⭐</td>
-            <td style="padding:8px;border:1px solid var(--border);">مع فقدان (Lossy)</td>
+            <td style="padding:8px;border:1px solid var(--border);">Lossy</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">PNG</td>
-            <td style="padding:8px;border:1px solid var(--border);">شعارات، نصوص، لقطات شاشة</td>
-            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">نعم ⭐</td>
+            <td style="padding:8px;border:1px solid var(--border);">Logos, text, screenshots</td>
+            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">Yes ⭐</td>
             <td style="padding:8px;border:1px solid var(--border);color:#dc2626;">كبير</td>
-            <td style="padding:8px;border:1px solid var(--border);">بدون فقدان (Lossless)</td>
+            <td style="padding:8px;border:1px solid var(--border);">Lossless</td>
           </tr>
           <tr>
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">WebP</td>
-            <td style="padding:8px;border:1px solid var(--border);">الويب الحديث</td>
-            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">نعم ⭐</td>
-            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">أصغر ⭐⭐</td>
-            <td style="padding:8px;border:1px solid var(--border);">كلاهما</td>
+            <td style="padding:8px;border:1px solid var(--border);">Modern web</td>
+            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">Yes ⭐</td>
+            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">Smaller ⭐⭐</td>
+            <td style="padding:8px;border:1px solid var(--border);">Both</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">GIF</td>
-            <td style="padding:8px;border:1px solid var(--border);">صور متحركة بسيطة</td>
-            <td style="padding:8px;border:1px solid var(--border);">جزئي</td>
-            <td style="padding:8px;border:1px solid var(--border);">متوسط</td>
-            <td style="padding:8px;border:1px solid var(--border);">256 لون فقط</td>
+            <td style="padding:8px;border:1px solid var(--border);">Simple animations</td>
+            <td style="padding:8px;border:1px solid var(--border);">Partial</td>
+            <td style="padding:8px;border:1px solid var(--border);">Medium</td>
+            <td style="padding:8px;border:1px solid var(--border);">256 colors only</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">💡 هذا الضاغط يحوّل جميع الصيغ إلى JPEG — المناسب للصور الفوتوغرافية. للشعارات أو الصور ذات الشفافية استخدم أداة ضغط PNG متخصصة.</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">💡 This compressor converts all formats to JPEG — suitable for photographs. For logos or images with transparency, use a dedicated PNG compressor.</p>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 محوّل الملفات</a>
-      <a href="qr-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📱 منشئ QR</a>
-      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📝 عدّاد الكلمات</a>
+      <a href="file-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📄 File Converter</a>
+      <a href="qr-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📱 QR Generator</a>
+      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📝 Word Counter</a>
     </div>
   </div>
 
@@ -253,11 +253,11 @@
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="footer-links">
-      <a href="about.html" data-i18n="footer_about">من نحن</a>
-      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
-      <a href="privacy.html">الخصوصية</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy</a>
     </div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 
