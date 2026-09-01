@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -47,9 +47,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -61,65 +61,65 @@
   </div>
 </div></nav>
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0f9ff;">🔄</div>
-    <div class="card-title" data-i18n="unit_title">محول الوحدات</div>
-    <div class="card-subtitle" data-i18n="unit_sub">حول بين وحدات الطول والوزن</div>
+    <div class="card-title" data-i18n="unit_title">Unit Converter</div>
+    <div class="card-subtitle" data-i18n="unit_sub">Convert between length, weight & temperature</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">يدعم ثلاثة أنواع من التحويل: الطول (متر، كيلومتر، قدم، بوصة، ميل)، الوزن (كيلوغرام، رطل، غرام، طن)، والحرارة (مئوية، فهرنهايت، كلفن). التحويل فوري بمجرد الإدخال.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Supports three conversion types: length (meter, kilometer, foot, inch, mile), weight (kilogram, pound, gram, tonne), and temperature (Celsius, Fahrenheit, Kelvin). Conversion is instant as you type.</p>
     <div class="tabs">
-      <div class="tab active" data-tab="length" onclick="switchTab('length')" data-i18n="tab_length">الطول</div>
-      <div class="tab" data-tab="weight" onclick="switchTab('weight')" data-i18n="tab_weight">الوزن</div>
+      <div class="tab active" data-tab="length" onclick="switchTab('length')" data-i18n="tab_length">Length</div>
+      <div class="tab" data-tab="weight" onclick="switchTab('weight')" data-i18n="tab_weight">Weight</div>
       <div class="tab" data-tab="temp" onclick="switchTab('temp')">°</div>
     </div>
     <div class="section active" id="section-length">
-      <label data-i18n="unit_value">القيمة</label>
+      <label data-i18n="unit_value">Value</label>
       <input type="number" id="len-val" placeholder="0" oninput="convertLength()">
       <div class="row">
-        <div><label data-i18n="unit_from">من</label>
+        <div><label data-i18n="unit_from">From</label>
           <select id="len-from" onchange="convertLength()">
-            <option value="m">متر (m)</option><option value="km">كيلومتر (km)</option>
-            <option value="cm">سنتيمتر (cm)</option><option value="mm">ميليمتر (mm)</option>
-            <option value="mi">ميل (mi)</option><option value="ft">قدم (ft)</option><option value="in">بوصة (in)</option>
+            <option value="m">Meter (m)</option><option value="km">Kilometer (km)</option>
+            <option value="cm">Centimeter (cm)</option><option value="mm">Millimeter (mm)</option>
+            <option value="mi">Mile (mi)</option><option value="ft">Foot (ft)</option><option value="in">Inch (in)</option>
           </select></div>
-        <div><label data-i18n="unit_to">إلى</label>
+        <div><label data-i18n="unit_to">To</label>
           <select id="len-to" onchange="convertLength()">
-            <option value="m">متر (m)</option><option value="km">كيلومتر (km)</option>
-            <option value="cm" selected>سنتيمتر (cm)</option><option value="mm">ميليمتر (mm)</option>
-            <option value="mi">ميل (mi)</option><option value="ft">قدم (ft)</option><option value="in">بوصة (in)</option>
+            <option value="m">Meter (m)</option><option value="km">Kilometer (km)</option>
+            <option value="cm" selected>Centimeter (cm)</option><option value="mm">Millimeter (mm)</option>
+            <option value="mi">Mile (mi)</option><option value="ft">Foot (ft)</option><option value="in">Inch (in)</option>
           </select></div>
       </div>
       <div id="len-result" class="result-box success"><div class="result-value" id="len-out"></div></div>
     </div>
     <div class="section" id="section-weight">
-      <label data-i18n="unit_value">القيمة</label>
+      <label data-i18n="unit_value">Value</label>
       <input type="number" id="wgt-val" placeholder="0" oninput="convertWeight()">
       <div class="row">
-        <div><label data-i18n="unit_from">من</label>
+        <div><label data-i18n="unit_from">From</label>
           <select id="wgt-from" onchange="convertWeight()">
-            <option value="kg">كيلوغرام (kg)</option><option value="g">غرام (g)</option>
-            <option value="lb">رطل (lb)</option><option value="oz">أونصة (oz)</option><option value="t">طن (t)</option>
+            <option value="kg">Kilogram (kg)</option><option value="g">Gram (g)</option>
+            <option value="lb">Pound (lb)</option><option value="oz">Ounce (oz)</option><option value="t">Tonne (t)</option>
           </select></div>
-        <div><label data-i18n="unit_to">إلى</label>
+        <div><label data-i18n="unit_to">To</label>
           <select id="wgt-to" onchange="convertWeight()">
-            <option value="kg">كيلوغرام (kg)</option><option value="g" selected>غرام (g)</option>
-            <option value="lb">رطل (lb)</option><option value="oz">أونصة (oz)</option><option value="t">طن (t)</option>
+            <option value="kg">Kilogram (kg)</option><option value="g" selected>Gram (g)</option>
+            <option value="lb">Pound (lb)</option><option value="oz">Ounce (oz)</option><option value="t">Tonne (t)</option>
           </select></div>
       </div>
       <div id="wgt-result" class="result-box success"><div class="result-value" id="wgt-out"></div></div>
     </div>
     <div class="section" id="section-temp">
-      <label data-i18n="unit_value">القيمة</label>
+      <label data-i18n="unit_value">Value</label>
       <input type="number" id="tmp-val" placeholder="0" oninput="convertTemp()">
       <div class="row">
-        <div><label data-i18n="unit_from">من</label>
+        <div><label data-i18n="unit_from">From</label>
           <select id="tmp-from" onchange="convertTemp()">
-            <option value="c">مئوية (°C)</option><option value="f">فهرنهايت (°F)</option><option value="k">كلفن (K)</option>
+            <option value="c">Celsius (°C)</option><option value="f">Fahrenheit (°F)</option><option value="k">Kelvin (K)</option>
           </select></div>
-        <div><label data-i18n="unit_to">إلى</label>
+        <div><label data-i18n="unit_to">To</label>
           <select id="tmp-to" onchange="convertTemp()">
-            <option value="c">مئوية (°C)</option><option value="f" selected>فهرنهايت (°F)</option><option value="k">كلفن (K)</option>
+            <option value="c">Celsius (°C)</option><option value="f" selected>Fahrenheit (°F)</option><option value="k">Kelvin (K)</option>
           </select></div>
       </div>
       <div id="tmp-result" class="result-box success"><div class="result-value" id="tmp-out"></div></div>
@@ -127,70 +127,70 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">🔄 تحويلات سريعة مرجعية</div>
+    <div class="card-title" style="font-size:15px;">🔄 Quick Reference Conversions</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--surface-2);">
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">الوحدة</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">تساوي</th>
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">ملاحظة</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Unit</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">Equals</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Note</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">1 كيلومتر</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">0.6214 ميل</td><td style="padding:8px 10px;border:1px solid var(--border);">1 ميل = 1.6093 كم</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">1 متر</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">3.2808 قدم</td><td style="padding:8px 10px;border:1px solid var(--border);">= 39.37 بوصة</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">1 بوصة</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">2.54 سم</td><td style="padding:8px 10px;border:1px solid var(--border);">= 25.4 مم (دقيق رسمي)</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">1 كيلوغرام</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">2.205 رطل</td><td style="padding:8px 10px;border:1px solid var(--border);">1 رطل = 0.4536 كغ</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">0°C (التجمد)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">32°F = 273.15 K</td><td style="padding:8px 10px;border:1px solid var(--border);">نقطة تجمد الماء</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">100°C (الغليان)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">212°F = 373.15 K</td><td style="padding:8px 10px;border:1px solid var(--border);">نقطة غليان الماء</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">1 Kilometer</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">0.6214 miles</td><td style="padding:8px 10px;border:1px solid var(--border);">1 mile = 1.6093 km</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">1 Meter</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">3.2808 feet</td><td style="padding:8px 10px;border:1px solid var(--border);">= 39.37 inches</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">1 Inch</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">2.54 cm</td><td style="padding:8px 10px;border:1px solid var(--border);">= 25.4 mm (exact)</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">1 Kilogram</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">2.205 lbs</td><td style="padding:8px 10px;border:1px solid var(--border);">1 lb = 0.4536 kg</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">0°C (Freezing)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">32°F = 273.15 K</td><td style="padding:8px 10px;border:1px solid var(--border);">Water freezing point</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">100°C (Boiling)</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">212°F = 373.15 K</td><td style="padding:8px 10px;border:1px solid var(--border);">Water boiling point</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم بوصة في القدم؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">القدم = 12 بوصة. المتر = 3.281 قدم = 39.37 بوصة. الكيلومتر = 0.621 ميل.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many inches are in a foot?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 foot = 12 inches. 1 meter = 3.281 feet = 39.37 inches. 1 kilometer = 0.621 miles.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحوّل درجات مئوية إلى فهرنهايت؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">°F = (°C × 9÷5) + 32. مثال: 30°C = (30 × 1.8) + 32 = 86°F. للعكس: °C = (°F − 32) × 5÷9.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I convert Celsius to Fahrenheit?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">°F = (°C × 9÷5) + 32. Example: 30°C = (30 × 1.8) + 32 = 86°F. Reverse: °C = (°F − 32) × 5÷9.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم كيلوغرام في الرطل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 رطل = 0.4536 كيلوغرام. 1 كيلوغرام = 2.205 رطل. 1 طن متري = 1,000 كيلوغرام = 2,205 رطل.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many kilograms are in a pound?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 pound = 0.4536 kilogram. 1 kilogram = 2.205 pounds. 1 metric tonne = 1,000 kilograms = 2,205 pounds.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحوّل الكيلومتر إلى ميل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 كيلومتر = 0.6214 ميل. 1 ميل = 1.6093 كيلومتر. مثال: 100 كيلومتر = 62.14 ميل. استخدم الأداة للتحويل الفوري.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I convert kilometers to miles?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 kilometer = 0.6214 miles. 1 mile = 1.6093 kilometers. Example: 100 km = 62.14 miles. Use the tool for instant conversion.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما هو الكلفن وكيف يختلف عن المئوية؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الكلفن مقياس الحرارة المطلق المستخدم في العلوم. الصفر المطلق (0 K) = −273.15°C وهو أبرد درجة حرارة ممكنة. لتحويل مئوي إلى كلفن: أضف 273.15.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is Kelvin and how does it differ from Celsius?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Kelvin is the absolute temperature scale used in science. Absolute zero (0 K) = −273.15°C and is the coldest possible temperature. To convert Celsius to Kelvin: add 273.15.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم سنتيمتر في البوصة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 بوصة = 2.54 سنتيمتر بالضبط (رقم دقيق محدد دولياً). مثال: شاشة 15 بوصة = 38.1 سنتيمتر قطراً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many centimeters are in an inch?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 inch = exactly 2.54 centimeters (an internationally defined exact figure). Example: a 15-inch screen = 38.1 cm diagonal.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الفرق بين الطن المتري والطن الأمريكي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الطن المتري = 1,000 كيلوغرام. الطن الأمريكي (short ton) = 907.18 كيلوغرام. الطن البريطاني (long ton) = 1,016 كيلوغرام. عند الحديث عن «طن» دولياً يُقصد المتري.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between metric tonne and US ton?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Metric tonne = 1,000 kilograms. US short ton = 907.18 kilograms. UK long ton = 1,016 kilograms. Internationally, "tonne" typically means metric.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم ميليمتر في البوصة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 بوصة = 25.4 ميليمتر بالضبط. هذا الرقم معيار دولي دقيق لا تقريب فيه، محدد منذ اتفاقية 1959.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many millimeters are in an inch?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">1 inch = exactly 25.4 millimeters. This is a precise international standard established by the 1959 international yard and pound agreement.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="currency-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💱 محول العملات</a>
-      <a href="bmi-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">⚖️ حاسبة BMI</a>
-      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة النسبة</a>
+      <a href="currency-converter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💱 Currency Converter</a>
+      <a href="bmi-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">⚖️ BMI Calculator</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 Percentage Calculator</a>
     </div>
   </div>
 
@@ -209,8 +209,8 @@
   </div>
 </div></main>
 <footer class="footer">
-  <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-  <div class="footer-copy" data-i18n="footer_copy">© 2026 أدواتي</div>
+  <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 Adawati</div>
 </footer>
 <script>
 var UNI_T={
