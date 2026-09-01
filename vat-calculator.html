@@ -364,8 +364,8 @@ function updateVATContent(){
   document.getElementById('vat-related-title').textContent=t.related;
   document.getElementById('vat-rel1').textContent=t.rel1;document.getElementById('vat-rel2').textContent=t.rel2;document.getElementById('vat-rel3').textContent=t.rel3;
 }
-window.setLang=function(lang){localStorage.setItem('lang',lang);updateVATContent();if(typeof initI18n==='function')initI18n(lang);calculate();};
+window.onLangChange=function(lang){updateVATContent();calculate();};
 document.addEventListener('DOMContentLoaded',function(){updateVATContent();setMode('add');});
 </script>
-<script src="i18n.js?v=29"></script>
+<script src="i18n.js?v=30"></script>
 </body></html>
