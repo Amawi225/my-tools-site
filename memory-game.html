@@ -234,7 +234,7 @@ const MT={
     lbNew:'🏆 Вы в Топ 3! Введите имя:',lbSave:'💾 Сохранить',lbPh:'Ваше имя',
     lbScore:'Ур. {l} · {s} ходов',lbClear:'🗑 Очистить'},
 };
-let currentLang='ar',currentLevel=0,completedLevels=[];
+let currentLang='en',currentLevel=0,completedLevels=[];
 let moves=0,matched=0,locked=false,first=null,pendingScore=null,flipTimer=null;
 function tr(k){return(MT[currentLang]||MT.en)[k]||k;}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -350,6 +350,7 @@ function nextLevel(){if(currentLevel<MEM_LEVELS.length-1)startLevel(currentLevel
 function restartAll(){completedLevels=[];startLevel(0);}
 function jumpToLevel(i){startLevel(i);}
 document.addEventListener('DOMContentLoaded',()=>{
+  currentLang=document.documentElement.lang||'en';if(!MT[currentLang])currentLang='en';
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();updateStats();renderLb();};
   window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();updateStats();renderLb();};

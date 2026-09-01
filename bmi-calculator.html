@@ -467,11 +467,11 @@ var BMI_T = {
   }
 };
 
-function D(){return BMI_T[localStorage.getItem('lang')||'en'];}
+function D(){var l=document.documentElement.lang||localStorage.getItem('lang')||'en';return BMI_T[l]||BMI_T.en;}
 
 function updateBMIContent(){
   var t=D();
-  var dir=(localStorage.getItem('lang')||'en')==='ar'?'rtl':'ltr';
+  var dir=(document.documentElement.lang||localStorage.getItem('lang')||'en')==='ar'?'rtl':'ltr';
   document.documentElement.dir=dir;
   document.getElementById('bmi-main-title').textContent=t.main_title;
   document.getElementById('bmi-main-sub').textContent=t.main_sub;

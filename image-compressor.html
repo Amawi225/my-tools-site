@@ -206,14 +206,14 @@
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">JPEG / JPG</td>
             <td style="padding:8px;border:1px solid var(--border);">Photos, backgrounds</td>
             <td style="padding:8px;border:1px solid var(--border);color:#dc2626;">No</td>
-            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">صغير ⭐</td>
+            <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">Small ⭐</td>
             <td style="padding:8px;border:1px solid var(--border);">Lossy</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px;border:1px solid var(--border);text-align:right;font-weight:700;">PNG</td>
             <td style="padding:8px;border:1px solid var(--border);">Logos, text, screenshots</td>
             <td style="padding:8px;border:1px solid var(--border);color:#16a34a;font-weight:700;">Yes ⭐</td>
-            <td style="padding:8px;border:1px solid var(--border);color:#dc2626;">كبير</td>
+            <td style="padding:8px;border:1px solid var(--border);color:#dc2626;">Large</td>
             <td style="padding:8px;border:1px solid var(--border);">Lossless</td>
           </tr>
           <tr>
@@ -324,9 +324,9 @@ function compress(quality) {
       const pct = ((saved / originalFile.size) * 100).toFixed(0);
       document.getElementById('savings').textContent = (saved > 0 ? '−' : '+') + formatSize(Math.abs(saved)) + ' (' + Math.abs(pct) + '%)';
       document.getElementById('savings').style.color = saved > 0 ? '#ca8a04' : '#dc2626';
-      const lang = localStorage.getItem('lang') || 'en';
-      const tObj = (typeof T !== 'undefined' && T[lang]) ? T[lang] : T.ar;
-      document.getElementById('compLabel').textContent = (tObj.ic_comp_img || 'مضغوطة') + ' — ' + (tObj.ic_quality_short || 'جودة') + ' ' + quality + '%';
+      const lang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
+      const tObj = (typeof T !== 'undefined' && T[lang]) ? T[lang] : T.en;
+      document.getElementById('compLabel').textContent = (tObj.ic_comp_img || 'Compressed') + ' — ' + (tObj.ic_quality_short || 'Quality') + ' ' + quality + '%';
       // Show hint for images where compression is minimal
       const hint = document.getElementById('smallImgHint');
       if (hint) hint.style.display = (originalFile.size < 50000 || Math.abs(pct) < 5) ? 'block' : 'none';
