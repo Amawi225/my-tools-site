@@ -347,6 +347,7 @@ function jumpToLevel(i){startLevel(i);}
 document.addEventListener('DOMContentLoaded',()=>{
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();updateStats();renderLb();};
+  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();updateStats();renderLb();};
   startLevel(0);
 });
 </script>
