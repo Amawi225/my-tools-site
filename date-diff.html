@@ -348,7 +348,7 @@ var DD_T={
     days:['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота']
   }
 };
-function DDT(){return DD_T[localStorage.getItem('lang')||'ar'];}
+function DDT(){return DD_T[localStorage.getItem('lang')||'en'];}
 function updateDDContent(){
   var t=DDT();
   document.getElementById('dd-faq-title').textContent=t.faq_title;
@@ -360,7 +360,7 @@ function updateDDContent(){
   document.getElementById('dd-rel1').textContent=t.rel1;
   document.getElementById('dd-rel2').textContent=t.rel2;
   document.getElementById('dd-rel3').textContent=t.rel3;
-  var lang=localStorage.getItem('lang')||'ar';
+  var lang=localStorage.getItem('lang')||'en';
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
 }
