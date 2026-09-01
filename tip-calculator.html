@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -47,9 +47,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
       <div class="lang-menu" id="langMenu">
@@ -61,96 +61,96 @@
   </div>
 </div></nav>
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fdf4ff;">🤝</div>
-    <div class="card-title" data-i18n="tip_title">حاسبة الإكرامية</div>
-    <div class="card-subtitle" data-i18n="tip_sub">احسب الإكرامية وقسّم الفاتورة بسهولة</div>
+    <div class="card-title" data-i18n="tip_title">Tip Calculator</div>
+    <div class="card-subtitle" data-i18n="tip_sub">Calculate the tip and split the bill easily</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">احسب الإكرامية المناسبة وقسّم الفاتورة بالتساوي على أي عدد من الأشخاص. حرّك الشريط لاختيار نسبة الإكرامية (0% حتى 30%) وأدخل عدد الأشخاص للحصول فوراً على حصة كل شخص.</p>
-    <label data-i18n="tip_bill">إجمالي الفاتورة</label>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Calculate the appropriate tip and split the bill equally among any number of people. Move the slider to choose a tip percentage (0% to 30%) and enter the number of people to instantly get each person's share.</p>
+    <label data-i18n="tip_bill">Total bill</label>
     <input type="number" id="bill" placeholder="0.00" oninput="calcTip()">
-    <label><span data-i18n="tip_pct">نسبة الإكرامية:</span> <span id="tipPctLabel">15</span>%</label>
+    <label><span data-i18n="tip_pct">Tip percentage:</span> <span id="tipPctLabel">15</span>%</label>
     <input type="range" id="tipSlider" min="0" max="30" value="15" oninput="document.getElementById('tipPctLabel').textContent=this.value;calcTip()" style="width:100%;accent-color:var(--primary);margin:8px 0 4px;">
     <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px;"><span>0%</span><span>10%</span><span>15%</span><span>20%</span><span>30%</span></div>
-    <label data-i18n="tip_people">عدد الأشخاص</label>
+    <label data-i18n="tip_people">Number of people</label>
     <input type="number" id="people" value="1" min="1" oninput="calcTip()">
     <div id="results" style="display:none;margin-top:20px;">
       <div class="stat-grid">
-        <div class="stat-box"><div class="stat-val" id="tipAmt"></div><div class="stat-lbl" data-i18n="tip_amount">الإكرامية</div></div>
-        <div class="stat-box"><div class="stat-val" id="totalAmt"></div><div class="stat-lbl" data-i18n="tip_total">الإجمالي</div></div>
+        <div class="stat-box"><div class="stat-val" id="tipAmt"></div><div class="stat-lbl" data-i18n="tip_amount">Tip amount</div></div>
+        <div class="stat-box"><div class="stat-val" id="totalAmt"></div><div class="stat-lbl" data-i18n="tip_total">Total</div></div>
       </div>
       <div class="result-box show success" style="margin-top:14px;">
         <div class="result-value" id="perPerson"></div>
-        <div class="result-label" data-i18n="tip_per_person">للشخص الواحد</div>
+        <div class="result-label" data-i18n="tip_per_person">Per person</div>
       </div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">💡 نسب الإكرامية حسب السياق والدولة</div>
+    <div class="card-title" style="font-size:15px;">💡 Tip Rates by Country and Context</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--surface-2);">
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">السياق / الدولة</th>
-            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">نسبة شائعة</th>
-            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">ملاحظة</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Country / Context</th>
+            <th style="padding:8px 10px;text-align:center;border:1px solid var(--border);">Common rate</th>
+            <th style="padding:8px 10px;text-align:right;border:1px solid var(--border);">Note</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">الولايات المتحدة</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">18–22%</td><td style="padding:8px 10px;border:1px solid var(--border);">شبه إلزامي اجتماعياً</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">أوروبا</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">10–15%</td><td style="padding:8px 10px;border:1px solid var(--border);">غير إلزامي، شائع في المطاعم الفاخرة</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">عُمان والخليج</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">0–15%</td><td style="padding:8px 10px;border:1px solid var(--border);">اختياري؛ بعض المطاعم تضيف service charge</td></tr>
-          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">المطاعم الفندقية</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">10–15%</td><td style="padding:8px 10px;border:1px solid var(--border);">تحقق من الفاتورة: قد تكون مضافة مسبقاً</td></tr>
-          <tr><td style="padding:8px 10px;border:1px solid var(--border);">خدمة التوصيل</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">10%</td><td style="padding:8px 10px;border:1px solid var(--border);">اختياري، يُقدَّر من السائق</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">United States</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">18–22%</td><td style="padding:8px 10px;border:1px solid var(--border);">Socially expected</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Europe</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">10–15%</td><td style="padding:8px 10px;border:1px solid var(--border);">Not mandatory, common in upscale restaurants</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Oman & Gulf</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">0–15%</td><td style="padding:8px 10px;border:1px solid var(--border);">Optional; some restaurants add a service charge</td></tr>
+          <tr style="background:var(--surface-2);"><td style="padding:8px 10px;border:1px solid var(--border);">Hotel restaurants</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">10–15%</td><td style="padding:8px 10px;border:1px solid var(--border);">Check the bill — may already be included</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid var(--border);">Delivery service</td><td style="padding:8px 10px;text-align:center;border:1px solid var(--border);">10%</td><td style="padding:8px 10px;border:1px solid var(--border);">Optional, appreciated by the driver</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كم نسبة الإكرامية المعتادة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">في الدول الغربية 15-20%. في الخليج العربي الإكرامية غير إلزامية، لكن 10-15% شائعة في المطاعم الفندقية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the usual tip percentage?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">In Western countries 15-20%. In the Gulf, tipping is not mandatory but 10-15% is common in hotel restaurants.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الإكرامية تُحسب قبل أم بعد الضريبة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">عادةً على السعر قبل ضريبة القيمة المضافة (VAT). الممارسات تختلف بين الدول والمطاعم.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is the tip calculated before or after VAT?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Usually on the pre-VAT price. Practices differ between countries and restaurants.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أقسّم الفاتورة بالتساوي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أدخل إجمالي الفاتورة ونسبة الإكرامية، ثم غيّر عدد الأشخاص. ستظهر حصة كل شخص تلقائياً شاملة الإكرامية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I split the bill equally?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Enter the total bill and tip percentage, then change the number of people. Each person's share including the tip will appear automatically.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل الإكرامية إلزامية في عُمان والخليج؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا، الإكرامية اختيارية قانونياً في دول الخليج. بعض المطاعم الفندقية تُضيف «رسوم الخدمة» (5-15%) تلقائياً في الفاتورة — تحقق منها قبل إضافة إكرامية إضافية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is tipping mandatory in Oman and the Gulf?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">No, tipping is legally optional in Gulf countries. Some hotel restaurants automatically add a service charge (5-15%) to the bill — check before adding an additional tip.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما معنى «Service Charge» في الفاتورة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">رسوم الخدمة نسبة مئوية (عادةً 5-15%) يُضيفها المطعم تلقائياً وتذهب لإدارة المطعم وليس بالضرورة للنادل مباشرة. إن وُجدت في الفاتورة فالإكرامية الإضافية اختيارية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What does "Service Charge" on the bill mean?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">A service charge is a percentage (usually 5-15%) added automatically by the restaurant that goes to management — not necessarily directly to the server. If it appears on the bill, any additional tip is optional.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحسب الإكرامية لمجموعة كبيرة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">أدخل الإجمالي في الأداة، اختر نسبة الإكرامية (10-15% للخليج)، ثم أدخل عدد الأشخاص. ستظهر حصة كل شخص شاملة الإكرامية فوراً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I calculate the tip for a large group?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Enter the total in the tool, choose a tip percentage (10-15% for Gulf), then enter the number of people. Each person's share including the tip will appear instantly.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">متى يُنصح بنسبة إكرامية 20%؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">عند خدمة ممتازة، أو وجبة احتفالية، أو عند الإقامة في الولايات المتحدة حيث الراتب الأساسي للنوادل منخفض جداً ويعتمد أساساً على الإكرامية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">When is a 20% tip recommended?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">For excellent service, a celebratory meal, or when visiting the United States where servers' base salaries are very low and they depend mainly on tips.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل أترك إكرامية على خدمة التوصيل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، إكرامية 10% للتوصيل شائعة ومُقدَّرة. تطبيقات التوصيل كـ Talabat وCareem تتيح إضافتها مباشرة عند الطلب أو الاستلام.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Should I tip for delivery service?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, 10% for delivery is common and appreciated. Delivery apps like Talabat and Careem allow adding it directly when ordering or upon receipt.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="discount-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 حاسبة الخصم</a>
-      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">% حاسبة النسبة</a>
-      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 حاسبة VAT</a>
+      <a href="discount-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💯 Discount Calculator</a>
+      <a href="percentage-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">% Percentage Calculator</a>
+      <a href="vat-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧾 VAT Calculator</a>
     </div>
   </div>
 
@@ -170,8 +170,8 @@
 </div></main>
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
-    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 <script>
