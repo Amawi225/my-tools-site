@@ -118,7 +118,7 @@ function setGender(g) {
   document.querySelector(`.option-btn[data-gender="${g}"]`).classList.add('active');
 }
 function calculate() {
-  const lang = localStorage.getItem('lang') || 'ar';
+  const lang = localStorage.getItem('lang') || 'en';
   const t = T[lang];
   const age = parseFloat(document.getElementById('age').value);
   const weight = parseFloat(document.getElementById('weight').value);
