@@ -666,7 +666,7 @@ async function fetchRates() {
       }
     } catch(e) {}
     rates = FALLBACK; rateSource = 'offline'; rateTs = 0; rateState = 'fallback';
-    setStatus('warn', D().fallback);
+    setStatus('err', D().fallback);
     convert();
   }
 }
@@ -679,7 +679,7 @@ async function forceRefresh() {
   const ok = await tryLiveFetch();
   if (!ok) {
     rates = rates || FALLBACK; rateState = 'fallback';
-    setStatus('warn', D().fallback);
+    setStatus('err', D().fallback);
     convert();
   }
   btn.disabled = false;
