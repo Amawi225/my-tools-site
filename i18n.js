@@ -1100,6 +1100,12 @@ function setLang(lang) {
   }
   // Render FAQ section if page has one in PAGE_FAQ
   renderFAQ(lang);
+  // Fire per-page language hook
+  if (typeof window.onLangChange === 'function') window.onLangChange(lang);
+  // Hide English-only static sections for non-English
+  document.querySelectorAll('[lang="en"]:not(html)').forEach(function(el) {
+    el.style.display = lang === 'en' ? '' : 'none';
+  });
 }
 
 function toggleLangMenu() {
