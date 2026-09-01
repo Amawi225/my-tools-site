@@ -7,6 +7,7 @@
     <loc>https://adawati2027.github.io/my-tools-site/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -16,6 +17,7 @@
     <loc>https://adawati2027.github.io/my-tools-site/om/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -26,6 +28,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
     <xhtml:link rel="alternate" hreflang="en-AE" href="https://adawati2027.github.io/my-tools-site/ae/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -36,6 +39,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
     <xhtml:link rel="alternate" hreflang="ar-SA" href="https://adawati2027.github.io/my-tools-site/sa/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -46,6 +50,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://adawati2027.github.io/my-tools-site/us/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -56,6 +61,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://adawati2027.github.io/my-tools-site/uk/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -66,6 +72,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/"/>
     <xhtml:link rel="alternate" hreflang="ar-JO" href="https://adawati2027.github.io/my-tools-site/jo/"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -73,37 +80,48 @@
   <!-- Country-Specific Tool Pages -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/us/tip-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/tip-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://adawati2027.github.io/my-tools-site/us/tip-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/tip-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/ae/vat-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="en-AE" href="https://adawati2027.github.io/my-tools-site/ae/vat-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://adawati2027.github.io/my-tools-site/sa/vat-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/sa/vat-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://adawati2027.github.io/my-tools-site/ae/vat-calculator/"/>
     <xhtml:link rel="alternate" hreflang="ar-SA" href="https://adawati2027.github.io/my-tools-site/sa/vat-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/uk/percentage-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/percentage-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://adawati2027.github.io/my-tools-site/uk/percentage-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/percentage-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/om/salary-calculator/</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://adawati2027.github.io/my-tools-site/om/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/salary-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="ar-OM" href="https://adawati2027.github.io/my-tools-site/om/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/salary-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -111,16 +129,25 @@
   <!-- Health Tools -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/bmi-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/bmi-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/bmi-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/diet-plan.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/diet-plan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/diet-plan.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/age-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/age-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/age-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -128,26 +155,51 @@
   <!-- Money Tools -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/percentage-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/percentage-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://adawati2027.github.io/my-tools-site/uk/percentage-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/percentage-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://adawati2027.github.io/my-tools-site/discount-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/discount-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/discount-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://adawati2027.github.io/my-tools-site/currency-converter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/currency-converter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/currency-converter.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/loan-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/loan-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/loan-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/tip-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/tip-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://adawati2027.github.io/my-tools-site/us/tip-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/tip-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/compound-interest.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/compound-interest.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/compound-interest.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -155,26 +207,41 @@
   <!-- Productivity Tools -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/unit-converter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/unit-converter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/unit-converter.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/password-generator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/password-generator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/password-generator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/word-counter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/word-counter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/word-counter.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/file-converter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/file-converter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/file-converter.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/image-compressor.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/image-compressor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/image-compressor.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -182,48 +249,78 @@
   <!-- Quick Tools -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/qr-generator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/qr-generator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/qr-generator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/timezone-converter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/timezone-converter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/timezone-converter.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/random-number.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/random-number.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/random-number.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/stopwatch.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/stopwatch.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/stopwatch.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/date-diff.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/date-diff.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/date-diff.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- Oman Tools -->
+  <!-- Oman / Regional Tools -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/vat-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://adawati2027.github.io/my-tools-site/ae/vat-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://adawati2027.github.io/my-tools-site/sa/vat-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/vat-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/salary-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/salary-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-OM" href="https://adawati2027.github.io/my-tools-site/om/salary-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/salary-calculator.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/end-of-service.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/end-of-service.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/end-of-service.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/hijri-converter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/hijri-converter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/hijri-converter.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -231,31 +328,49 @@
   <!-- Games -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/number-guess.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/number-guess.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/number-guess.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/memory-game.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/memory-game.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/memory-game.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/quick-math.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/quick-math.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/quick-math.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/reaction-test.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/reaction-test.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/reaction-test.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/car-game.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/car-game.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/car-game.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/jump-game.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/jump-game.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/jump-game.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -263,6 +378,9 @@
   <!-- Education -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/kids-learn.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://adawati2027.github.io/my-tools-site/kids-learn.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/kids-learn.html"/>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -270,21 +388,25 @@
   <!-- Static Pages -->
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/about.html</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/contact.html</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/privacy.html</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://adawati2027.github.io/my-tools-site/terms.html</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
