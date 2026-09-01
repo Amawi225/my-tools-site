@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -56,9 +56,9 @@
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">أدواتي</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
@@ -72,23 +72,23 @@
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
 
   <div class="card">
     <div class="card-icon" style="background:#fdf4ff;">🌙</div>
-    <div class="card-title" data-i18n="hijri_card_title">محوّل التاريخ الهجري والميلادي</div>
-    <div class="card-subtitle" data-i18n="hij_sub">تحويل فوري ودقيق في كلا الاتجاهين</div>
+    <div class="card-title" data-i18n="hijri_card_title">Hijri ↔ Gregorian Date Converter</div>
+    <div class="card-subtitle" data-i18n="hij_sub">Instant and accurate conversion in both directions</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">يُحوّل هذا المحوّل بين التقويم الهجري القمري والتقويم الميلادي الشمسي بدقة فلكية فورية. يستخدم كثيراً لمعرفة تواريخ المناسبات الإسلامية كرمضان وعيد الأضحى، وللأعمال الرسمية في دول الخليج العربي. يدعم التحويل في كلا الاتجاهين ويعرض التاريخ الهجري الحالي تلقائياً.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">This converter converts between the Islamic (Hijri) lunar calendar and the Gregorian solar calendar with instant astronomical precision. Commonly used to find dates for Islamic occasions such as Ramadan and Eid al-Adha, and for official use in Gulf states. Supports conversion in both directions and displays today's Hijri date automatically.</p>
 
     <div class="option-toggle">
-      <button class="option-btn active" id="modeGH" onclick="setConvMode('g2h')" data-i18n="hij_mode_gh">🗓️ ميلادي ← هجري</button>
-      <button class="option-btn" id="modeHG" onclick="setConvMode('h2g')" data-i18n="hij_mode_hg">🌙 هجري ← ميلادي</button>
+      <button class="option-btn active" id="modeGH" onclick="setConvMode('g2h')" data-i18n="hij_mode_gh">🗓️ Gregorian → Hijri</button>
+      <button class="option-btn" id="modeHG" onclick="setConvMode('h2g')" data-i18n="hij_mode_hg">🌙 Hijri → Gregorian</button>
     </div>
 
     <!-- Gregorian to Hijri -->
     <div id="gregSection">
-      <label for="gregDate" data-i18n="hij_greg_date_lbl">اختر التاريخ الميلادي</label>
+      <label for="gregDate" data-i18n="hij_greg_date_lbl">Select Gregorian Date</label>
       <input type="date" id="gregDate" onchange="convertGtoH()">
       <div id="ghResult" style="display:none;" class="hijri-result-box" style="background:var(--surface-2);">
         <div class="hijri-date-display" id="ghDateDisplay"></div>
@@ -100,15 +100,15 @@
     <div id="hijriSection" style="display:none;">
       <div class="row">
         <div>
-          <label for="hijriDay" data-i18n="hij_day_lbl">اليوم</label>
+          <label for="hijriDay" data-i18n="hij_day_lbl">Day</label>
           <input type="number" id="hijriDay" min="1" max="30" placeholder="1-30" oninput="convertHtoG()">
         </div>
         <div>
-          <label for="hijriYear" data-i18n="hij_year_lbl">السنة الهجرية</label>
+          <label for="hijriYear" data-i18n="hij_year_lbl">Hijri Year</label>
           <input type="number" id="hijriYear" min="1300" max="1600" placeholder="1446" oninput="convertHtoG()">
         </div>
       </div>
-      <label data-i18n="hij_month_lbl">الشهر الهجري</label>
+      <label data-i18n="hij_month_lbl">Hijri Month</label>
       <div class="month-grid" id="monthGrid"></div>
       <div id="hgResult" style="display:none;margin-top:16px;" class="hijri-result-box">
         <div class="hijri-date-display" id="hgDateDisplay"></div>
@@ -119,70 +119,70 @@
 
   <!-- Today's date panel -->
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="hij_today_title">📅 التاريخ الهجري لليوم</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="hij_today_title">📅 Today's Hijri Date</div>
     <div id="todayHijri" style="font-size:20px;font-weight:700;margin-top:10px;text-align:center;"></div>
     <div id="todayGreg" style="font-size:14px;color:var(--text-muted);text-align:center;margin-top:4px;"></div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" data-i18n="hij_months_title">🌙 الأشهر الهجرية</div>
+    <div class="card-title" style="font-size:15px;" data-i18n="hij_months_title">🌙 Hijri Months</div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:10px;font-size:13px;">
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">1 — محرّم</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">2 — صفر</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">3 — ربيع الأول</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">4 — ربيع الآخر</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">5 — جمادى الأولى</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">6 — جمادى الآخرة</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">7 — رجب</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">8 — شعبان</div>
-      <div style="padding:6px 10px;background:#fef9c3;border-radius:6px;font-weight:700;">9 — رمضان</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">10 — شوال</div>
-      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">11 — ذو القعدة</div>
-      <div style="padding:6px 10px;background:#fef9c3;border-radius:6px;font-weight:700;">12 — ذو الحجة</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">1 — Muharram</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">2 — Safar</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">3 — Rabi al-Awwal</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">4 — Rabi al-Thani</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">5 — Jumada al-Awwal</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">6 — Jumada al-Thani</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">7 — Rajab</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">8 — Sha'ban</div>
+      <div style="padding:6px 10px;background:#fef9c3;border-radius:6px;font-weight:700;">9 — Ramadan</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">10 — Shawwal</div>
+      <div style="padding:6px 10px;background:var(--surface-2);border-radius:6px;">11 — Dhu al-Qi'dah</div>
+      <div style="padding:6px 10px;background:#fef9c3;border-radius:6px;font-weight:700;">12 — Dhu al-Hijjah</div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;" id="hij-faq-title">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" id="hij-faq-title">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q1">ما الفرق بين التقويم الهجري والميلادي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a1">التقويم الهجري قمري (يعتمد على دورة القمر) ويتكون من 354-355 يوماً في السنة. التقويم الميلادي شمسي ويتكون من 365-366 يوماً. لهذا تتقدم السنة الهجرية بحوالي 11 يوماً كل سنة ميلادية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q1">What is the difference between Hijri and Gregorian calendars?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a1">The Hijri calendar is lunar (based on moon cycles) with 354-355 days per year. The Gregorian calendar is solar with 365-366 days. This is why the Hijri year advances about 11 days each Gregorian year.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q2">متى بدأ التقويم الهجري؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a2">بدأ التقويم الهجري من هجرة النبي محمد ﷺ من مكة إلى المدينة المنورة، وهو ما يوافق 16 يوليو 622 ميلادي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q2">When did the Hijri calendar begin?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a2">The Hijri calendar began from the Prophet Muhammad's ﷺ migration (Hijra) from Mecca to Medina, corresponding to July 16, 622 CE.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q3">لماذا قد يختلف التاريخ الهجري يوماً؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a3">يعتمد التحديد الرسمي في كثير من الدول على رؤية الهلال بالعين المجردة، مما قد يُحدث فارقاً يوماً واحداً بين الدول. الأداة تستخدم الحساب الفلكي.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q3">Why might the Hijri date differ by a day?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a3">Official determination in many countries depends on naked-eye moon sighting, which can cause a one-day difference between countries. This tool uses astronomical calculation.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أعرف التاريخ الهجري لليوم؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تعرض الأداة التاريخ الهجري الحالي تلقائياً في بطاقة "التاريخ الهجري لليوم" بمجرد فتح الصفحة. لا حاجة لإدخال أي تاريخ.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I find today's Hijri date?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The tool displays the current Hijri date automatically in the "Today's Hijri Date" panel as soon as you open the page. No input required.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما هي الأشهر الهجرية بالترتيب؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">محرّم، صفر، ربيع الأول، ربيع الآخر، جمادى الأولى، جمادى الآخرة، رجب، شعبان، رمضان، شوال، ذو القعدة، ذو الحجة — 12 شهراً قمرياً في كل سنة هجرية.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What are the Hijri months in order?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Muharram, Safar, Rabi al-Awwal, Rabi al-Thani, Jumada al-Awwal, Jumada al-Thani, Rajab, Sha'ban, Ramadan, Shawwal, Dhu al-Qi'dah, Dhu al-Hijjah — 12 lunar months in each Hijri year.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف أحوّل تاريخ ميلادي إلى هجري بدقة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">استخدم التبويب الأول «ميلادي ← هجري» وأدخل التاريخ الميلادي. الأداة تستخدم خوارزمية فلكية للتحويل الفوري. تذكر أن التاريخ الرسمي في بعض الدول قد يختلف يوماً بسبب رؤية الهلال.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I accurately convert a Gregorian date to Hijri?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Use the first tab "Gregorian → Hijri" and enter the Gregorian date. The tool uses an astronomical algorithm for instant conversion. Note that the official date in some countries may differ by one day due to moon sighting.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما هي الأشهر الهجرية الحرام؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الأشهر الحرام الأربعة هي: ذو القعدة، ذو الحجة، محرّم (ثلاثة متتالية)، ورجب (منفرد). سُمّيت حُرُماً لأن القتال فيها كان محرّماً في الجاهلية وجاء الإسلام فأقرّه.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What are the sacred (Haram) Hijri months?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The four sacred months are: Dhu al-Qi'dah, Dhu al-Hijjah, Muharram (three consecutive), and Rajab (separate). They were called sacred because fighting was prohibited in them, a prohibition confirmed by Islam.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تدعم الأداة التواريخ القديمة قبل 1900 ميلادي؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، تدعم حقل السنة الهجرية نطاق 1300-1600 هجري (حوالي 1882-2174 ميلادي). للتواريخ خارج هذا النطاق يُنصح باستخدام مصدر متخصص للتحويل الدقيق.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the tool support dates before 1900 CE?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes, the Hijri year field supports the range 1300-1600 AH (approximately 1882-2174 CE). For dates outside this range, a specialized source is recommended for precise conversion.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong id="hij-related-title">أدوات مرتبطة:</strong>
+    <strong id="hij-related-title">Related Tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="hij-rel1">📅 حاسبة العمر</a>
-      <a href="end-of-service.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="hij-rel2">📋 نهاية الخدمة</a>
+      <a href="age-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="hij-rel1">📅 Age Calculator</a>
+      <a href="end-of-service.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;" id="hij-rel2">📋 End of Service</a>
     </div>
   </div>
 
@@ -199,12 +199,12 @@
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="footer-links">
-      <a href="about.html" data-i18n="footer_about">من نحن</a>
-      <a href="contact.html" data-i18n="footer_contact">تواصل معنا</a>
-      <a href="privacy.html">سياسة الخصوصية</a>
-      <a href="terms.html">الشروط</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy</a>
+      <a href="terms.html" data-i18n="footer_terms">Terms</a>
     </div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 
