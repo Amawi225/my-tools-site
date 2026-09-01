@@ -32,7 +32,7 @@
 ]},
 {"@type":"FAQPage","mainEntity":[
   {"@type":"Question","name":"هل ملفاتي آمنة عند التحويل؟","acceptedAnswer":{"@type":"Answer","text":"نعم، التحويل يتم داخل متصفحك بالكامل ولا يتم رفع أي ملف إلى خادم. ملفاتك لا تغادر جهازك أبداً."}},
-  {"@type":"Question","name":"ما الصيغ المدعومة للتحويل؟","acceptedAnswer":{"@type":"Answer","text":"Word (DOCX) إلى PDF أو HTML أو TXT، Excel (XLSX/XLS) إلى CSV أو PDF أو Word، CSV إلى Excel أو PDF أو Word، PDF إلى TXT أو Word أو صورة (JPG/PNG)، TXT إلى PDF أو Word أو HTML، وتحويل صيغ الصور (JPG/PNG/WebP) بين بعضها وإلى PDF."}},
+  {"@type":"Question","name":"ما الصيغ المدعومة للتحويل؟","acceptedAnswer":{"@type":"Answer","text":"Word (DOCX) to PDF, HTML or TXT; Excel (XLSX/XLS) to CSV, PDF or Word; CSV to Excel, PDF or Word; PDF to TXT, Word or image (JPG/PNG); TXT to PDF, Word or HTML; and image formats (JPG/PNG/WebP) between each other and to PDF."}},
   {"@type":"Question","name":"ما الحد الأقصى لحجم الملف؟","acceptedAnswer":{"@type":"Answer","text":"الحد الأقصى هو 50MB. للملفات الأكبر يُنصح بتقسيمها أو استخدام برنامج متخصص."}},
   {"@type":"Question","name":"هل يمكنني تحويل PDF إلى نص قابل للنسخ؟","acceptedAnswer":{"@type":"Answer","text":"نعم، يمكنك تحويل PDF إلى نص عادي (Plain Text) قابل للنسخ والتحرير. الجودة تعتمد على ملف PDF الأصلي — الملفات التي تحتوي نصاً حقيقياً (لا صوراً ممسوحة ضوئياً) تعطي أفضل النتائج."}},
   {"@type":"Question","name":"هل يعمل المحوّل بدون إنترنت؟","acceptedAnswer":{"@type":"Answer","text":"معظم التحويلات (TXT، CSV، صيغ الصور) تعمل بدون إنترنت إذا فتحت الصفحة مسبقاً. التحويلات التي تعتمد على مكتبات خارجية (PDF، DOCX) تحتاج تحميل المكتبة مرة واحدة عند الاستخدام الأول."}},
@@ -94,14 +94,14 @@
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand">أدواتي</a>
+  <a href="index.html" class="nav-brand">Adawati</a>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-    <a href="about.html" data-i18n="nav_about">من نحن</a>
-    <a href="contact.html" data-i18n="nav_contact">تواصل معنا</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
     
     <div class="lang-switcher">
-      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">عر</span> ▾</button>
+      <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
       <div class="lang-menu" id="langMenu">
         <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
         <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
@@ -112,23 +112,23 @@
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="index.html" data-i18n="back">← العودة للرئيسية</a></div>
+  <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">🔄</div>
-    <div class="card-title" id="fcTitle">محوّل الملفات</div>
-    <div class="card-subtitle" id="fcSub">حوّل بين صيغ الملفات المختلفة — يعمل في متصفحك بالكامل</div>
+    <div class="card-title" id="fcTitle">File Converter</div>
+    <div class="card-subtitle" id="fcSub">Convert between file formats — runs entirely in your browser</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">حوّل ملفاتك بين الصيغ المختلفة مباشرة في متصفحك — بدون رفعها لأي خادم، بدون تسجيل، وبدون قيود. يدعم تحويل Word إلى PDF، Excel إلى CSV، PDF إلى نص، وصيغ الصور. الحد الأقصى للملف 50MB.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">Convert your files between formats directly in your browser — no server upload, no signup, no limits. Supports Word to PDF, Excel to CSV, PDF to text, and image formats. Max file size 50 MB.</p>
 
     <!-- STEP 1: Upload -->
     <div id="step1">
-      <div class="step-label" id="step1Lbl">الخطوة 1 — ارفع الملف</div>
+      <div class="step-label" id="step1Lbl">Step 1 — Upload file</div>
       <div class="fc-drop" id="dropZone"
         onclick="document.getElementById('fileInput').click()"
         ondrop="handleDrop(event)" ondragover="e=>{e.preventDefault();document.getElementById('dropZone').classList.add('drag-over')}" ondragleave="document.getElementById('dropZone').classList.remove('drag-over')">
         <div class="fc-drop-icon">📂</div>
-        <div class="fc-drop-text" id="dropText">انقر هنا أو اسحب الملف</div>
-        <div class="fc-drop-sub" id="dropSub">Word · Excel · PDF · CSV · TXT · صورة — حتى 50MB</div>
+        <div class="fc-drop-text" id="dropText">Click here or drag your file</div>
+        <div class="fc-drop-sub" id="dropSub">Word · Excel · PDF · CSV · TXT · Image — up to 50MB</div>
       </div>
       <input type="file" id="fileInput" style="display:none"
         accept=".docx,.xlsx,.xls,.csv,.txt,.pdf,.jpg,.jpeg,.png,.webp"
@@ -146,7 +146,7 @@
         <button onclick="resetAll()" class="btn btn-secondary" style="padding:4px 12px;font-size:13px;flex-shrink:0;" id="resetBtn">✕</button>
       </div>
       <div class="fc-arrow">↓</div>
-      <div class="step-label" id="step2Lbl">الخطوة 2 — اختر صيغة الإخراج</div>
+      <div class="step-label" id="step2Lbl">Step 2 — Choose output format</div>
       <div class="fc-targets" id="targetsGrid"></div>
       <div id="noTargetsMsg" style="display:none;color:var(--text-muted);text-align:center;font-size:14px;padding:12px;"></div>
     </div>
@@ -159,14 +159,14 @@
         <span class="to-badge" id="summaryTo"></span>
       </div>
       <div class="fc-convert-row">
-        <button class="btn btn-primary" id="convertBtn" onclick="startConvert()" style="font-size:15px;padding:12px 28px;">⚡ <span id="convertBtnLbl">تحويل</span></button>
-        <button onclick="backToStep2()" class="btn btn-secondary" id="backBtn">← <span id="backBtnLbl">تغيير</span></button>
+        <button class="btn btn-primary" id="convertBtn" onclick="startConvert()" style="font-size:15px;padding:12px 28px;">⚡ <span id="convertBtnLbl">Convert</span></button>
+        <button onclick="backToStep2()" class="btn btn-secondary" id="backBtn">← <span id="backBtnLbl">Change</span></button>
       </div>
       <div class="fc-progress" id="progressWrap" style="margin-top:12px;">
         <div class="fc-progress-bar" id="progressBar"></div>
       </div>
       <div id="statusLine" style="display:none;font-size:13px;color:var(--text-muted);text-align:center;margin-top:6px;">
-        <span class="fc-spinner"></span><span id="statusTxt">جاري التحويل...</span>
+        <span class="fc-spinner"></span><span id="statusTxt">Converting...</span>
       </div>
       <div id="errorLine" class="fc-error" style="display:none;margin-top:10px;"></div>
     </div>
@@ -181,55 +181,55 @@
       </div>
       <div id="resultContent" class="fc-result-box" style="margin-top:12px;"></div>
       <div class="fc-dl-row" id="dlRow"></div>
-      <button onclick="convertAnother()" class="btn btn-secondary" style="margin-top:8px;width:100%;" id="anotherBtn">🔄 <span id="anotherBtnLbl">تحويل ملف آخر</span></button>
+      <button onclick="convertAnother()" class="btn btn-secondary" style="margin-top:8px;width:100%;" id="anotherBtn">🔄 <span id="anotherBtnLbl">Convert another file</span></button>
     </div>
 
     <div class="fc-privacy" style="margin-top:20px;">
-      🔒 <span id="privacyTxt">ملفك لا يغادر متصفحك أبداً — المعالجة تتم محلياً بالكامل</span>
+      🔒 <span id="privacyTxt">Your file never leaves your browser — all processing is local</span>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📋 جدول صيغ التحويل المدعومة</div>
+    <div class="card-title" style="font-size:15px;">📋 Supported File Conversion Formats</div>
     <div style="overflow-x:auto;margin-top:12px;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr style="background:var(--primary);color:#fff;">
-            <th style="padding:9px 12px;text-align:start;white-space:nowrap;">الصيغة المصدر</th>
-            <th style="padding:9px 12px;text-align:start;">الصيغ الناتجة</th>
-            <th style="padding:9px 12px;text-align:start;">ملاحظة</th>
+            <th style="padding:9px 12px;text-align:start;white-space:nowrap;">Source Format</th>
+            <th style="padding:9px 12px;text-align:start;">Output Formats</th>
+            <th style="padding:9px 12px;text-align:start;">Note</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">📝 Word (DOCX)</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);">PDF · HTML · TXT</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">يحافظ PDF على التنسيق الأساسي</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">PDF preserves basic formatting</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">📊 Excel (XLSX/XLS)</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);">CSV · PDF · Word · TXT</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">يعالج الورقة الأولى فقط</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">Processes first sheet only</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">📋 CSV</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);">Excel · PDF · Word · TXT</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">فاصل الأعمدة: فاصلة (comma)</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">Column separator: comma</td>
           </tr>
           <tr style="background:var(--surface-2);">
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">📕 PDF</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);">TXT · Word · JPG · PNG</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">لا يدعم PDF الممسوح ضوئياً (Scanned)</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">Scanned PDFs not supported</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">📄 TXT</td>
             <td style="padding:8px 12px;border-bottom:1px solid var(--border);">PDF · Word · HTML</td>
-            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">نص عادي بدون تنسيق</td>
+            <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">Plain text, no formatting</td>
           </tr>
           <tr style="background:var(--surface-2);">
-            <td style="padding:8px 12px;font-weight:700;">🖼️ صور (JPG/PNG/WebP)</td>
-            <td style="padding:8px 12px;">بين بعضها · PDF</td>
-            <td style="padding:8px 12px;color:var(--text-muted);">PNG → JPG يستبدل الشفافية ببيضاء</td>
+            <td style="padding:8px 12px;font-weight:700;">🖼️ Images (JPG/PNG/WebP)</td>
+            <td style="padding:8px 12px;">Convert between each other · PDF</td>
+            <td style="padding:8px 12px;color:var(--text-muted);">PNG → JPG replaces transparency with white</td>
           </tr>
         </tbody>
       </table>
@@ -237,47 +237,47 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;">❓ Frequently Asked Questions</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل ملفاتي آمنة عند التحويل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، التحويل يتم داخل متصفحك بالكامل ولا يُرفع أي ملف إلى خادم خارجي. ملفاتك لا تغادر جهازك أبداً، وهذا يعني خصوصية تامة بدون قيود.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Are my files safe during conversion?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — conversion runs entirely in your browser and no file is ever uploaded to a server. Your files never leave your device.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الصيغ المدعومة للتحويل؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Word (DOCX) إلى PDF أو HTML أو TXT، Excel (XLSX/XLS) إلى CSV أو PDF أو Word، CSV إلى Excel أو PDF أو Word، PDF إلى TXT أو Word أو صورة (JPG/PNG)، TXT إلى PDF أو Word أو HTML، وتحويل صيغ الصور (JPG/PNG/WebP) بين بعضها وإلى PDF.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What formats are supported?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Word (DOCX) to PDF, HTML or TXT; Excel (XLSX/XLS) to CSV, PDF or Word; CSV to Excel, PDF or Word; PDF to TXT, Word or image (JPG/PNG); TXT to PDF, Word or HTML; and image formats (JPG/PNG/WebP) between each other and to PDF.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما الحد الأقصى لحجم الملف؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الحد الأقصى 50MB. للملفات الأكبر يُنصح بتقسيمها أو استخدام برنامج متخصص على جهازك.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the maximum file size?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Maximum 50MB. For larger files, split them or use dedicated desktop software.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يمكنني تحويل PDF إلى نص قابل للنسخ؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، يمكن تحويل PDF إلى نص عادي (Plain Text) قابل للنسخ والتحرير. الجودة تعتمد على ملف PDF الأصلي — الملفات التي تحتوي نصاً حقيقياً (لا صوراً ممسوحة ضوئياً) تُعطي أفضل النتائج.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Can I convert PDF to copyable text?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes — PDF can be converted to plain text that you can copy and edit. Quality depends on the original PDF; files with real text (not scanned images) give the best results.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يعمل المحوّل بدون إنترنت؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">معظم التحويلات (TXT، CSV، صيغ الصور) تعمل بدون إنترنت إذا فتحت الصفحة مسبقاً. التحويلات التي تعتمد على مكتبات خارجية كـ PDF وDOCX تحتاج تحميل المكتبة مرة واحدة عند أول استخدام فقط.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the converter work offline?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Most conversions (TXT, CSV, image formats) work offline if you have opened the page before. Conversions that rely on external libraries (PDF, DOCX) need to load the library once on first use.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لماذا تحويل PDF إلى Word يظهر نصاً فقط بدون تنسيق؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تحويل PDF إلى Word في المتصفح يستخرج النص فقط، لأن PDF لا يحتفظ ببيانات تنسيق Word الأصلية (جداول، صور، عناوين). للحفاظ على التنسيق الكامل تحتاج برنامجاً متخصصاً مثل Adobe Acrobat.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Why does PDF to Word show plain text without formatting?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Browser-based PDF to Word conversion extracts text only, because PDF does not store original Word formatting data (tables, images, headings). For full formatting you need dedicated software like Adobe Acrobat.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل يدعم المحوّل ملفات PDF الممسوحة ضوئياً (Scanned PDF)؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">لا. ملفات PDF الممسوحة ضوئياً تحتوي على صور فقط وليس نصاً قابلاً للاستخراج. للتعامل معها تحتاج تقنية OCR (التعرف الضوئي على الأحرف) وهذا غير مدعوم حالياً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Does the converter support scanned PDF files?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">No. Scanned PDFs contain only images, not extractable text. To process them you need OCR (Optical Character Recognition), which is not currently supported.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">كيف يختلف هذا المحوّل عن Smallpdf أو ILovePDF؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">الفرق الأساسي: هذا المحوّل يعمل داخل متصفحك بالكامل ولا يرفع ملفاتك لأي خادم خارجي — مما يضمن خصوصية تامة. أدوات مثل Smallpdf وILovePDF ترفع ملفاتك لخوادمها لمعالجتها، وقد تحتفظ بنسخة منها مؤقتاً.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">How does this differ from Smallpdf or ILovePDF?</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The key difference: this converter runs entirely in your browser and never uploads your files to any external server — guaranteeing full privacy. Tools like Smallpdf and ILovePDF upload your files to their servers for processing and may temporarily retain a copy.</p>
     </details>
   </div>
 
   <div style="margin-top:16px;text-align:center;">
-    <strong>أدوات مرتبطة:</strong>
+    <strong>Related tools:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-      <a href="image-compressor.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🖼️ ضاغط الصور</a>
-      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔤 عداد الكلمات</a>
-      <a href="qr-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📱 مولّد QR</a>
+      <a href="image-compressor.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🖼️ Image Compressor</a>
+      <a href="word-counter.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🔤 Word Counter</a>
+      <a href="qr-generator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">📱 QR Generator</a>
     </div>
   </div>
 
@@ -298,8 +298,8 @@
 
 <footer class="footer" style="padding:28px;">
   <div style="max-width:1160px;margin:0 auto;">
-    <div class="footer-links"><a href="about.html" data-i18n="footer_about">من نحن</a><a href="contact.html" data-i18n="footer_contact">تواصل معنا</a></div>
-    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 أدواتي</div>
+    <div class="footer-links"><a href="about.html" data-i18n="footer_about">About</a><a href="contact.html" data-i18n="footer_contact">Contact</a></div>
+    <div class="footer-copy-simple" data-i18n="footer_copy">© 2026 Adawati</div>
   </div>
 </footer>
 
@@ -383,7 +383,7 @@ const CONVERSIONS = {
   webp: [{to:'jpg',icon:'🖼️',label:'JPG'},{to:'png',icon:'🖼️',label:'PNG'},{to:'pdf',icon:'📕',label:'PDF'}],
 };
 
-let lang='ar', currentFile=null, currentExt='', targetFmt='', wordHtml='', xlsxWb=null, csvText='', pdfText='';
+let lang='en', currentFile=null, currentExt='', targetFmt='', wordHtml='', xlsxWb=null, csvText='', pdfText='';
 
 function t(k){return (L[lang]||L.ar)[k]||k;}
 function el(id){return document.getElementById(id);}
