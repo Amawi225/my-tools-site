@@ -150,15 +150,15 @@
         <div class="faq-a" id="faq-a4">Yes, enter any person's date of birth in the field and results appear instantly. The calculator works for any date in the past.</div>
       </div>
     </div>
-    <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+    <details style="margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px;" lang="en">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many days until my next birthday?</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The calculator automatically shows the number of days until your next birthday in the "Days to Birthday" box, along with the day of the week and full date.</p>
     </details>
-    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;" lang="en">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">How many days has a 30 or 40-year-old lived?</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">A 30-year-old has lived approximately 10,950 days (262,800 hours). A 40-year-old approximately 14,610 days (350,640 hours). Enter your birthdate for your exact count.</p>
     </details>
-    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
+    <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;" lang="en">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">What is the difference between my Hijri and Gregorian age?</summary>
       <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">The Hijri year is lunar (354-355 days), shorter than Gregorian by ~11 days. So your Hijri age is always about 3% larger. Example: 30 Gregorian years ≈ 30.9 Hijri years.</p>
     </details>
@@ -231,10 +231,10 @@ var AGE_T={
     hijri_he:' هـ',
     sec_faq:'أسئلة شائعة',
     faq:[
-      {q:'How is my Hijri age calculated?',a:'We convert your birthdate to the Hijri calendar, then calculate the difference between your Hijri birthdate and today's Hijri date in years, months, and days — not by dividing days by an average year.'},
-      {q:'Why is my Hijri age different from my Gregorian age?',a:'السنة الهجرية قمرية (354-355 يوماً) بينما الميلادية شمسية (365-366 يوماً). لهذا يكون العمر بالهجري أكبر من الميلادي دائماً بحوالي 3%.'},
-      {q:'Is the calculator accurate?',a:'Yes, it uses today's actual date and accounts for leap years and varying month lengths.'},
-      {q:'Can I calculate someone else's age?',a:'Yes, enter any person's date of birth in the field and results appear instantly. The calculator works for any date in the past.'}
+      {q:'كيف يُحسب عمري بالهجري؟',a:'نحوّل تاريخ ميلادك إلى التقويم الهجري، ثم نحسب الفارق بين تاريخ ميلادك الهجري واليوم الهجري بالسنوات والأشهر والأيام — لا بقسمة عدد الأيام على متوسط طول السنة.'},
+      {q:'لماذا يختلف عمري الهجري عن الميلادي؟',a:'السنة الهجرية قمرية (354-355 يوماً) بينما الميلادية شمسية (365-366 يوماً). لهذا يكون العمر بالهجري أكبر من الميلادي دائماً بحوالي 3%.'},
+      {q:'هل الحاسبة دقيقة؟',a:'نعم، تستخدم التاريخ الفعلي لليوم وتراعي السنوات الكبيسة وفروق أطوال الشهور.'},
+      {q:'هل يمكنني حساب عمر شخص آخر؟',a:'نعم، أدخل تاريخ ميلاد أي شخص في الحقل وستظهر النتيجة فوراً. الحاسبة تعمل لأي تاريخ في الماضي.'}
     ],
     sec_related:'أدوات ذات صلة',
     rel_datediff:'فرق بين تاريخين',rel_hijri:'محول الهجري',rel_bmi:'حاسبة BMI',rel_diet:'حاسبة السعرات',
@@ -502,13 +502,9 @@ function updateAgeContent(){
 
 function toggleFaq(btn){btn.parentElement.classList.toggle('open');}
 
-window.setLang=function(lang){
-  localStorage.setItem('lang',lang);
-  updateAgeContent();
-  if(typeof initI18n==='function')initI18n(lang);
-};
+window.onLangChange=function(lang){updateAgeContent();};
 
 document.addEventListener('DOMContentLoaded',function(){updateAgeContent();});
 </script>
-<script src="i18n.js?v=29"></script>
+<script src="i18n.js?v=30"></script>
 </body></html>
