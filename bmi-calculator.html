@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
@@ -462,11 +462,11 @@ var BMI_T = {
   }
 };
 
-function D(){return BMI_T[localStorage.getItem('lang')||'ar'];}
+function D(){return BMI_T[localStorage.getItem('lang')||'en'];}
 
 function updateBMIContent(){
   var t=D();
-  var dir=(localStorage.getItem('lang')||'ar')==='ar'?'rtl':'ltr';
+  var dir=(localStorage.getItem('lang')||'en')==='ar'?'rtl':'ltr';
   document.documentElement.dir=dir;
   document.getElementById('bmi-main-title').textContent=t.main_title;
   document.getElementById('bmi-main-sub').textContent=t.main_sub;
