@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v39';
+const CACHE = 'adawati-v40';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -58,6 +58,15 @@ const STATIC = [
   BASE + '/bd/',
   BASE + '/eg/',
   BASE + '/ph/',
+  BASE + '/kids-math.html',
+  BASE + '/kids-times-tables.html',
+  BASE + '/kids-alphabet.html',
+  BASE + '/kids-clock.html',
+  BASE + '/kids-spelling.html',
+  BASE + '/kids-flags.html',
+  BASE + '/kids-science.html',
+  BASE + '/kids-money.html',
+  BASE + '/kids-typing.html',
 ];
 
 self.addEventListener('install', e => {
