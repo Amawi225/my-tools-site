@@ -82,7 +82,7 @@
       <a href="about.html" data-i18n="nav_about">About</a>
       <a href="contact.html" data-i18n="nav_contact">Contact</a>
       <div class="lang-switcher" style="margin-inline-end:4px;">
-        <button class="lang-btn" onclick="toggleCtyMenu()" style="background:var(--primary);color:#fff;border-radius:20px;padding:4px 12px;font-size:13px;">🌍 <span>Global</span></button>
+        <button class="lang-btn" onclick="toggleCtyMenu()" aria-label="Select country" style="background:var(--primary);color:#fff;border-radius:20px;padding:4px 12px;font-size:13px;">🌍 <span>Global</span></button>
         <div class="lang-menu" id="ctyMenu">
           <a style="font-weight:700;color:var(--primary);">🌍 Global ✓</a>
           <a href="om/">🇴🇲 Oman</a>
@@ -94,7 +94,7 @@
         </div>
       </div>
       <div class="lang-switcher">
-        <button class="lang-btn" onclick="toggleLangMenu()">🌐 <span id="currentLang">EN</span> ▾</button>
+        <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Select language">🌐 <span id="currentLang">EN</span> ▾</button>
         <div class="lang-menu" id="langMenu">
           <a onclick="setLang('ar')">🇸🇦 العربية</a><a onclick="setLang('en')">🇬🇧 English</a>
           <a onclick="setLang('fr')">🇫🇷 Français</a><a onclick="setLang('es')">🇪🇸 Español</a>
