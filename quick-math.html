@@ -134,7 +134,7 @@
   <div class="card">
     <div class="card-icon" style="background:#fef3c7;">🔢</div>
     <div class="card-title" data-i18n="qmath_card_title">تحدي الأذكياء — سرعة الحساب</div>
-    <div class="card-subtitle">100 مستوى — من مبتدئ إلى غير قابل للتصديق 🔥</div>
+    <div class="card-subtitle" id="qmSubtitle">100 levels — Beginner to Unbelievable 🔥</div>
     <div class="divider"></div>
 
     <!-- Continue banner (shown if saved progress found) -->
@@ -274,7 +274,7 @@ const QT = {
     lbTitle:'🏆 أذكى 3 لاعبين',lbEmpty:'لا توجد نتائج — كن أول الأذكياء!',
     lbNew:'🏆 دخلت أفضل 3 أذكياء! اكتب اسمك:',lbSave:'💾 حفظ',lbPh:'اسمك',
     lbScore:'مستوى {l} · {c}/{q} صح',lbClear:'🗑 مسح',
-    right:'✅ صحيح!',wrong:'❌ الجواب: {a}',timeUp:'⏰ الوقت! الجواب: {a}'},
+    right:'✅ صحيح!',wrong:'❌ الجواب: {a}',timeUp:'⏰ الوقت! الجواب: {a}',levelLbl:'المستوى',subtitleLbl:'100 مستوى — من مبتدئ إلى غير قابل للتصديق 🔥'},
   en:{correctLbl:'Correct',wrongLbl:'Wrong',qNumLbl:'Question',timerLbl:'sec',
     submitBtn:'→',jumpLbl:'Jump to level:',jumpBtn:'Go →',
     lcTitle:'🎉 Level cleared!',
@@ -290,7 +290,7 @@ const QT = {
     lbTitle:'🏆 Top 3 Smartest',lbEmpty:'No scores yet — be the first genius!',
     lbNew:'🏆 Top 3 Genius! Enter your name:',lbSave:'💾 Save',lbPh:'Your name',
     lbScore:'Level {l} · {c}/{q} correct',lbClear:'🗑 Clear',
-    right:'✅ Correct!',wrong:'❌ Answer: {a}',timeUp:'⏰ Time\'s up! Answer: {a}'},
+    right:'✅ Correct!',wrong:'❌ Answer: {a}',timeUp:'⏰ Time\'s up! Answer: {a}',levelLbl:'Level',subtitleLbl:'100 levels — Beginner to Unbelievable 🔥'},
   fr:{correctLbl:'Correct',wrongLbl:'Faux',qNumLbl:'Question',timerLbl:'sec',
     submitBtn:'→',jumpLbl:'Aller au niveau:',jumpBtn:'Aller →',
     lcTitle:'🎉 Niveau réussi!',lcSub:'{c}/{q} bonnes réponses',
@@ -303,7 +303,7 @@ const QT = {
     lbTitle:'🏆 Top 3 Génies',lbEmpty:'Pas de scores!',
     lbNew:'🏆 Top 3! Entrez votre nom:',lbSave:'💾 Sauver',lbPh:'Votre nom',
     lbScore:'Niv. {l} · {c}/{q}',lbClear:'🗑 Effacer',
-    right:'✅ Correct!',wrong:'❌ Réponse: {a}',timeUp:'⏰ Temps! Réponse: {a}'},
+    right:'✅ Correct!',wrong:'❌ Réponse: {a}',timeUp:'⏰ Temps! Réponse: {a}',levelLbl:'Niveau',subtitleLbl:'100 niveaux — Débutant à Incroyable 🔥'},
   es:{correctLbl:'Correcto',wrongLbl:'Incorrecto',qNumLbl:'Pregunta',timerLbl:'seg',
     submitBtn:'→',jumpLbl:'Ir al nivel:',jumpBtn:'Ir →',
     lcTitle:'🎉 ¡Nivel superado!',lcSub:'{c}/{q} respuestas correctas',
@@ -316,7 +316,7 @@ const QT = {
     lbTitle:'🏆 Top 3 Genios',lbEmpty:'¡Sin puntuaciones!',
     lbNew:'🏆 ¡Top 3! Escribe tu nombre:',lbSave:'💾 Guardar',lbPh:'Tu nombre',
     lbScore:'Niv. {l} · {c}/{q}',lbClear:'🗑 Borrar',
-    right:'✅ ¡Correcto!',wrong:'❌ Respuesta: {a}',timeUp:'⏰ ¡Tiempo! Respuesta: {a}'},
+    right:'✅ ¡Correcto!',wrong:'❌ Respuesta: {a}',timeUp:'⏰ ¡Tiempo! Respuesta: {a}',levelLbl:'Nivel',subtitleLbl:'100 niveles — Principiante a Increíble 🔥'},
   de:{correctLbl:'Richtig',wrongLbl:'Falsch',qNumLbl:'Frage',timerLbl:'Sek',
     submitBtn:'→',jumpLbl:'Zum Level:',jumpBtn:'Gehe →',
     lcTitle:'🎉 Level geschafft!',lcSub:'{c}/{q} richtige Antworten',
@@ -329,7 +329,7 @@ const QT = {
     lbTitle:'🏆 Top 3 Genies',lbEmpty:'Keine Einträge!',
     lbNew:'🏆 Top 3 Genie! Gib deinen Namen ein:',lbSave:'💾 Speichern',lbPh:'Dein Name',
     lbScore:'Lv. {l} · {c}/{q}',lbClear:'🗑 Löschen',
-    right:'✅ Richtig!',wrong:'❌ Antwort: {a}',timeUp:'⏰ Zeit! Antwort: {a}'},
+    right:'✅ Richtig!',wrong:'❌ Antwort: {a}',timeUp:'⏰ Zeit! Antwort: {a}',levelLbl:'Level',subtitleLbl:'100 Level — Anfänger bis Unglaublich 🔥'},
   ru:{correctLbl:'Правильно',wrongLbl:'Неверно',qNumLbl:'Вопрос',timerLbl:'сек',
     submitBtn:'→',jumpLbl:'Перейти к уровню:',jumpBtn:'Перейти →',
     lcTitle:'🎉 Уровень пройден!',lcSub:'{c}/{q} правильных ответов',
@@ -342,7 +342,7 @@ const QT = {
     lbTitle:'🏆 Топ 3 гениев',lbEmpty:'Нет результатов!',
     lbNew:'🏆 Топ 3 гений! Введите имя:',lbSave:'💾 Сохранить',lbPh:'Ваше имя',
     lbScore:'Ур. {l} · {c}/{q}',lbClear:'🗑 Очистить',
-    right:'✅ Правильно!',wrong:'❌ Ответ: {a}',timeUp:'⏰ Время! Ответ: {a}'},
+    right:'✅ Правильно!',wrong:'❌ Ответ: {a}',timeUp:'⏰ Время! Ответ: {a}',levelLbl:'Уровень',subtitleLbl:'100 уровней — Новичок до Невероятного 🔥'},
 };
 
 const MEDALS=['🥇','🥈','🥉'], MEDAL_CLS=['gold','silver','bronze'];
@@ -503,7 +503,7 @@ function renderLevelUI(){
   const pct=Math.max(1,(level/MAX_LEVEL)*100);
   document.getElementById('progressBar').style.width=pct+'%';
   document.getElementById('tierBadge').textContent=`${tier.emoji} ${getTierName(tier)}`;
-  document.getElementById('levelNumLbl').textContent=`المستوى ${level} / ${MAX_LEVEL}`;
+  document.getElementById('levelNumLbl').textContent=`${tr('levelLbl')} ${level} / ${MAX_LEVEL}`;
 }
 
 function updateScoreUI(cfg){
@@ -524,6 +524,7 @@ function updateText(){
   document.getElementById('jumpLbl').textContent=t.jumpLbl;
   document.getElementById('jumpBtn').textContent=t.jumpBtn;
   renderLevelUI();renderLb();
+  const _sub=document.getElementById('qmSubtitle');if(_sub)_sub.textContent=t.subtitleLbl;
 }
 
 /* ── Toast ── */
