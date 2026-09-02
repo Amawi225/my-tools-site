@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v35';
+const CACHE = 'adawati-v36';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -45,9 +45,8 @@ const STATIC = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(STATIC)).then(() => self.skipWaiting())
-  );
+  self.skipWaiting(); // take control immediately without waiting for c.addAll
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(STATIC)));
 });
 
 self.addEventListener('activate', e => {

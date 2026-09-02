@@ -1577,7 +1577,7 @@ if ('serviceWorker' in navigator && !sessionStorage.getItem('sw_reloaded')) {
 function initPWA() {
   if (!('serviceWorker' in navigator)) return;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
-  navigator.serviceWorker.register(base + '/sw.js').catch(() => {});
+  navigator.serviceWorker.register(base + '/sw.js', {updateViaCache:'none'}).catch(() => {});
 
   if (!document.querySelector('link[rel="manifest"]')) {
     const l = document.createElement('link');
