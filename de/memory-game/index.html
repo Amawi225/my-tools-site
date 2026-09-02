@@ -7,8 +7,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memory Card Matching Game — 6 Levels | Adawati</title>
-<meta name="description" content="Match the cards and test your memory. 6 difficulty levels from Easy to Legendary. Free memory game in your browser — no downloads, no signup required.">
+<title>Kostenloses Gedächtnisspiel — Gedächtnis online trainieren | Adawati</title>
+<meta name="description" content="Kartenpaare finden und Gedächtnis trainieren. 6 Schwierigkeitsgrade. Kostenloses Spiel für alle Geräte.">
 <meta name="keywords" content="memory card game, matching game online, free memory game, brain training game, card flip matching game">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati2027.github.io/my-tools-site/de/memory-game/">
@@ -101,8 +101,8 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">🧠</div>
-    <div class="card-title" data-i18n="memory_card_title">لعبة تطابق البطاقات</div>
-    <div class="card-subtitle" data-i18n="memory_card_desc">طابق البطاقات المتشابهة باستخدام ذاكرتك</div>
+    <div class="card-title" data-i18n="memory_card_title">Memory Game</div>
+    <div class="card-subtitle" data-i18n="memory_card_desc">Match the cards and test your memory</div>
     <div class="divider"></div>
 
     <div class="level-steps" id="levelSteps"></div>
@@ -235,7 +235,7 @@ const MT={
     lbNew:'🏆 Вы в Топ 3! Введите имя:',lbSave:'💾 Сохранить',lbPh:'Ваше имя',
     lbScore:'Ур. {l} · {s} ходов',lbClear:'🗑 Очистить'},
 };
-let currentLang='ar',currentLevel=0,completedLevels=[];
+let currentLang='en',currentLevel=0,completedLevels=[];
 let moves=0,matched=0,locked=false,first=null,pendingScore=null,flipTimer=null;
 function tr(k){return(MT[currentLang]||MT.en)[k]||k;}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -352,6 +352,7 @@ function restartAll(){completedLevels=[];startLevel(0);}
 function jumpToLevel(i){startLevel(i);}
 const _PAGE_LANG=document.documentElement.lang||'en';let _initDone=false;
 document.addEventListener('DOMContentLoaded',()=>{
+  currentLang=_PAGE_LANG;if(!MT[currentLang])currentLang='en';
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();updateStats();renderLb();};
   window.onLangChange=function(lang){if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();updateStats();renderLb();};

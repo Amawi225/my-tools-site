@@ -7,8 +7,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Math Challenge — 100 Levels of Mental Arithmetic | Adawati</title>
-<meta name="description" content="Test your mental math speed with 100 levels of arithmetic challenges. Answer questions before time runs out. Free brain game — no downloads, no signup, works in any browser.">
+<title>Jeu de calcul rapide gratuit — Défi intelligent 100 niveaux | Adawati</title>
+<meta name="description" content="Testez votre calcul mental sur 100 niveaux progressifs. Du débutant à l'incroyable. Gratuit, sans inscription.">
 <meta name="keywords" content="quick math game, mental math challenge, arithmetic quiz online, math speed test, free math brain game">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati2027.github.io/my-tools-site/fr/quick-math/">
@@ -135,7 +135,7 @@
   <div class="card">
     <div class="card-icon" style="background:#fef3c7;">🔢</div>
     <div class="card-title" data-i18n="qmath_card_title">تحدي الأذكياء — سرعة الحساب</div>
-    <div class="card-subtitle" id="qmSubtitle">100 مستوى — من مبتدئ إلى غير قابل للتصديق 🔥</div>
+    <div class="card-subtitle" id="qmSubtitle">100 levels — Beginner to Unbelievable 🔥</div>
     <div class="divider"></div>
 
     <!-- Continue banner (shown if saved progress found) -->
@@ -351,7 +351,7 @@ const STORAGE_KEY='adawati_qmath_lb', PROGRESS_KEY='adawati_qmath_progress';
 const MAX_LEVEL=100, BASE_Q=10;
 
 /* ── State ── */
-let currentLang='ar', currentLevel=0, pendingScore=null;
+let currentLang='en', currentLevel=0, pendingScore=null;
 let questionNum=0, correct=0, wrong=0, answer=0;
 let timerInterval=null, timeLeft=0, savedProgress=0;
 let _timerPaused=false, _timerPauseStart=0;
@@ -687,8 +687,10 @@ function onLevelComplete(){
 
 function nextLevel(){if(currentLevel<MAX_LEVEL-1)startLevel(currentLevel+1);}
 function restartAll(){clearProgress();startLevel(0);}
+
 const _PAGE_LANG=document.documentElement.lang||'en';let _initDone=false;
 document.addEventListener('DOMContentLoaded',()=>{
+  currentLang=_PAGE_LANG;if(!QT[currentLang])currentLang='en';
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
   window.onLangChange=function(lang){if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};

@@ -7,8 +7,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reaction Time Test — How Fast Are You? | Adawati</title>
-<meta name="description" content="Test your reaction speed: click when the button turns green. Measures your reaction time in milliseconds. Compare with the average human reaction time. Free, instant, no signup.">
+<title>Test de temps de réaction gratuit — Êtes-vous rapide? | Adawati</title>
+<meta name="description" content="Testez votre temps de réaction sur 6 niveaux. Cliquez quand le bouton devient vert, évitez le rouge. Gratuit.">
 <meta name="keywords" content="reaction time test, reflex test online, how fast are your reflexes, reaction speed test, free reflex game">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati2027.github.io/my-tools-site/fr/reaction-test/">
@@ -120,8 +120,8 @@
   <div class="page-header"><a href="index.html" data-i18n="back">← Back to Home</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">⚡</div>
-    <div class="card-title" data-i18n="react_card_title">اختبار سرعة رد الفعل</div>
-    <div class="card-subtitle" data-i18n="react_card_desc">اضغط عند اخضرار الزر — كن أسرع!</div>
+    <div class="card-title" data-i18n="react_card_title">Reaction Test</div>
+    <div class="card-subtitle" data-i18n="react_card_desc">Click when the button turns green — be fastest!</div>
     <div class="divider"></div>
 
     <div class="level-steps" id="levelSteps"></div>
@@ -283,7 +283,7 @@ const RT={
     lbScore:'Ур. {l} · {a} мс',lbClear:'🗑 Очистить'},
 };
 
-let currentLang='ar', currentLevel=0, completedLevels=[];
+let currentLang='en', currentLevel=0, completedLevels=[];
 let roundNum=0, results=[], waitTimer=null, greenTimer=null, greenStart=0;
 let state='idle', pendingScore=null; // states: idle | waiting | green | red | done
 
@@ -476,8 +476,10 @@ function saveScore(){
 function nextLevel(){if(currentLevel<RT_LEVELS.length-1)startLevel(currentLevel+1);}
 function restartAll(){completedLevels=[];startLevel(0);}
 function jumpToLevel(i){startLevel(i);}
+
 const _PAGE_LANG=document.documentElement.lang||'en';let _initDone=false;
 document.addEventListener('DOMContentLoaded',()=>{
+  currentLang=_PAGE_LANG;if(!RT[currentLang])currentLang='en';
   const origSet=window.setLang;
   window.setLang=function(lang){origSet&&origSet(lang);if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
   window.onLangChange=function(lang){if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
