@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v37';
+const CACHE = 'adawati-v38';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -48,6 +48,10 @@ const STATIC = [
   BASE + '/us/',
   BASE + '/uk/',
   BASE + '/jo/',
+  BASE + '/in/',
+  BASE + '/pk/',
+  BASE + '/oman-salary-guide.html',
+  BASE + '/oman-labour-law-guide.html',
 ];
 
 self.addEventListener('install', e => {
