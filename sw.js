@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v31';
+const CACHE = 'adawati-v32';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -82,7 +82,7 @@ self.addEventListener('fetch', e => {
   const isCore = url.pathname.endsWith('/i18n.js') || url.pathname.endsWith('/style.css');
   if (isHTML || isCore) {
     e.respondWith(
-      fetch(e.request).then(resp => {
+      fetch(e.request, {cache: 'no-cache'}).then(resp => {
         if (resp.status === 200) {
           const clone = resp.clone();
           caches.open(CACHE).then(c => c.put(e.request, clone));
