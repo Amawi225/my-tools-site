@@ -686,11 +686,12 @@ function onLevelComplete(){
 function nextLevel(){if(currentLevel<MAX_LEVEL-1)startLevel(currentLevel+1);}
 function restartAll(){clearProgress();startLevel(0);}
 
+const _PAGE_LANG=document.documentElement.lang||'en';let _bypassLang=false;
 document.addEventListener('DOMContentLoaded',()=>{
-  currentLang=document.documentElement.lang||'en';if(!QT[currentLang])currentLang='en';
+  currentLang=_PAGE_LANG;if(!QT[currentLang])currentLang='en';
   const origSet=window.setLang;
-  window.setLang=function(lang){origSet&&origSet(lang);currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
-  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
+  window.setLang=function(lang){_bypassLang=true;origSet&&origSet(lang);_bypassLang=false;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
+  window.onLangChange=function(lang){if(!_bypassLang&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
   // Pause timer when tab is hidden, resume when visible
   document.addEventListener('visibilitychange',()=>{
     if(!timerInterval) return;
