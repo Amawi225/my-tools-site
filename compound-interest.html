@@ -309,12 +309,9 @@ function calculate() {
   const tbody = document.getElementById('ciTableBody');
   tbody.innerHTML = '';
   let cumulativeInterest = 0;
+  let prevYearTotal = P;
 
   for (let year = 1; year <= Math.min(t, 30); year++) {
-    const startBalance = balance;
-    for (let m = 0; m < 12; m++) {
-      balance = balance * (1 + rate / n) + monthly;
-    }
     const yearEnd = P * Math.pow(1 + rate/n, n * year);
     const rMonthly = rate / 12;
     const nMonths = year * 12;
@@ -324,13 +321,12 @@ function calculate() {
     const total = yearEnd + fvContribs;
     const yearInterest = total - P - monthly * nMonths;
     cumulativeInterest = yearInterest;
-    var prevTotal = year === 1 ? P : prevTotal;
 
     const tr = document.createElement('tr');
     tr.innerHTML =
       '<td>' + year + '</td>' +
       '<td style="font-weight:600;">' + total.toFixed(2) + '</td>' +
-      '<td style="color:#16a34a;">' + (total - (year > 1 ? prevYearTotal : P + monthly*12)).toFixed(2) + '</td>' +
+      '<td style="color:#16a34a;">' + (total - prevYearTotal).toFixed(2) + '</td>' +
       '<td style="color:#2563eb;">' + yearInterest.toFixed(2) + '</td>';
     tbody.appendChild(tr);
     prevYearTotal = total;
