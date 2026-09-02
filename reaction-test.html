@@ -476,12 +476,12 @@ function nextLevel(){if(currentLevel<RT_LEVELS.length-1)startLevel(currentLevel+
 function restartAll(){completedLevels=[];startLevel(0);}
 function jumpToLevel(i){startLevel(i);}
 
-const _PAGE_LANG=document.documentElement.lang||'en';let _bypassLang=false;
+const _PAGE_LANG=document.documentElement.lang||'en';let _initDone=false;
 document.addEventListener('DOMContentLoaded',()=>{
   currentLang=_PAGE_LANG;if(!RT[currentLang])currentLang='en';
   const origSet=window.setLang;
-  window.setLang=function(lang){_bypassLang=true;origSet&&origSet(lang);_bypassLang=false;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
-  window.onLangChange=function(lang){if(!_bypassLang&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
+  window.setLang=function(lang){origSet&&origSet(lang);if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
+  window.onLangChange=function(lang){if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';renderLevelUI();renderLb();};
   // Clear pending timers when tab hides to avoid ghost clicks/misses
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden&&(state==='waiting'||state==='green'||state==='red')){
@@ -492,8 +492,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   });
   startLevel(0);
+  setTimeout(function(){_initDone=true;window.setLang(_PAGE_LANG);},0);
 });
 </script>
-<script src="i18n.js?v=33"></script>
+<script src="i18n.js?v=34"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
 </body></html>

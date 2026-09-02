@@ -686,11 +686,11 @@ function onLevelComplete(){
 
 function nextLevel(){if(currentLevel<MAX_LEVEL-1)startLevel(currentLevel+1);}
 function restartAll(){clearProgress();startLevel(0);}
-const _PAGE_LANG=document.documentElement.lang||'en';let _bypassLang=false;
+const _PAGE_LANG=document.documentElement.lang||'en';let _initDone=false;
 document.addEventListener('DOMContentLoaded',()=>{
   const origSet=window.setLang;
-  window.setLang=function(lang){_bypassLang=true;origSet&&origSet(lang);_bypassLang=false;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
-  window.onLangChange=function(lang){if(!_bypassLang&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
+  window.setLang=function(lang){origSet&&origSet(lang);if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
+  window.onLangChange=function(lang){if(!_initDone&&lang!==_PAGE_LANG)return;currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateText();};
   // Pause timer when tab is hidden, resume when visible
   document.addEventListener('visibilitychange',()=>{
     if(!timerInterval) return;
@@ -717,8 +717,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   checkContinueBanner();
   startLevel(0);
+  setTimeout(function(){_initDone=true;window.setLang(_PAGE_LANG);},0);
 });
 </script>
-<script src="i18n.js?v=33"></script>
+<script src="i18n.js?v=34"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js');</script>
 </body></html>
