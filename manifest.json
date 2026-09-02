@@ -1,15 +1,15 @@
 {
-  "name": "أدواتي — أدوات مجانية",
-  "short_name": "أدواتي",
-  "description": "14 أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون إعلانات",
+  "name": "Adawati — Free Online Tools",
+  "short_name": "Adawati",
+  "description": "30 free tools in your browser: calculators, converters, games. No signup required.",
   "start_url": "/my-tools-site/",
   "scope": "/my-tools-site/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#2563eb",
   "background_color": "#f0f4ff",
-  "lang": "ar",
-  "dir": "rtl",
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     { "src": "icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
     { "src": "icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
@@ -17,8 +17,8 @@
   "screenshots": [],
   "categories": ["utilities", "productivity"],
   "shortcuts": [
-    { "name": "حاسبة BMI", "url": "/my-tools-site/bmi-calculator.html", "description": "احسب مؤشر كتلة الجسم" },
-    { "name": "محول العملات", "url": "/my-tools-site/currency-converter.html", "description": "تحويل العملات" },
-    { "name": "مولد كلمات المرور", "url": "/my-tools-site/password-generator.html", "description": "توليد كلمات مرور" }
+    { "name": "BMI Calculator", "url": "/my-tools-site/bmi-calculator.html", "description": "Calculate body mass index" },
+    { "name": "Currency Converter", "url": "/my-tools-site/currency-converter.html", "description": "Convert currencies" },
+    { "name": "Password Generator", "url": "/my-tools-site/password-generator.html", "description": "Generate secure passwords" }
   ]
 }
