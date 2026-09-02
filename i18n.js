@@ -1565,6 +1565,15 @@ function injectDarkToggle() {
 
 /* ── PWA / Service Worker ── */
 let _deferredInstall = null;
+// Auto-reload when a new SW takes over, so stale HTML is never served to users
+if ('serviceWorker' in navigator && !sessionStorage.getItem('sw_reloaded')) {
+  navigator.serviceWorker.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'SW_UPDATED') {
+      sessionStorage.setItem('sw_reloaded', '1');
+      location.reload();
+    }
+  });
+}
 function initPWA() {
   if (!('serviceWorker' in navigator)) return;
   const base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';

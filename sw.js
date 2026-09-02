@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v34';
+const CACHE = 'adawati-v35';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -54,7 +54,11 @@ self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    ).then(() => self.clients.claim())
+    ).then(() => self.clients.claim()).then(() =>
+      self.clients.matchAll({type:'window'}).then(clients =>
+        clients.forEach(c => c.postMessage({type:'SW_UPDATED'}))
+      )
+    )
   );
 });
 
