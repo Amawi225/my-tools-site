@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v40';
+const CACHE = 'adawati-v41';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
@@ -67,6 +67,16 @@ const STATIC = [
   BASE + '/kids-science.html',
   BASE + '/kids-money.html',
   BASE + '/kids-typing.html',
+  BASE + '/omr-to-inr.html',
+  BASE + '/omr-to-pkr.html',
+  BASE + '/omr-to-bdt.html',
+  BASE + '/omr-to-egp.html',
+  BASE + '/omr-to-php.html',
+  BASE + '/oman-tax-guide.html',
+  BASE + '/oman-vat-guide.html',
+  BASE + '/oman-minimum-wage.html',
+  BASE + '/oman-loan-guide.html',
+  BASE + '/oman-salary-slip-guide.html',
 ];
 
 self.addEventListener('install', e => {
