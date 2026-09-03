@@ -40,7 +40,7 @@
   {"@type":"Question","name":"Why is my Hijri age different from my Gregorian age?","acceptedAnswer":{"@type":"Answer","text":"The Hijri year is lunar (354-355 days), while the Gregorian year is solar (365-366 days). The Hijri year is shorter by about 11 days, so your Hijri age will be consistently larger — for example, 30 Gregorian years ≈ 30.9 Hijri years."}},
   {"@type":"Question","name":"كم عدد الأيام في حياتي؟","acceptedAnswer":{"@type":"Answer","text":"أدخل تاريخ ميلادك وستظهر إجمالي الأيام المعاشة. الشخص البالغ 30 سنة عاش حوالي 10,950 يوماً، وبالغ 40 سنة عاش حوالي 14,610 يوماً."}},
   {"@type":"Question","name":"Can I calculate someone else's age?","acceptedAnswer":{"@type":"Answer","text":"Yes, enter any person's date of birth in the field and results appear instantly. The calculator works for any date in the past."}},
-  {"@type":"Question","name":"Is the calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"Yes, it uses today's actual date and accounts for leap years, varying month lengths, and the astronomical Hijri calendar algorithm."}},
+  {"@type":"Question","name":"Is the calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"Yes, it uses today's actual date and accounts for leap years, varying month lengths, and a tabular Hijri calendar algorithm (accurate to within 1–2 days of the observed calendar)."}},
   {"@type":"Question","name":"كم يوماً تبقى على عيد ميلادي؟","acceptedAnswer":{"@type":"Answer","text":"تعرض الحاسبة تلقائياً عدد الأيام المتبقية حتى عيد ميلادك القادم مع تاريخه بالميلادي."}},
   {"@type":"Question","name":"هل يمكنني حساب العمر بالميلاد والوفاة لمعرفة عمر شخص تاريخي؟","acceptedAnswer":{"@type":"Answer","text":"نعم، الحاسبة تعمل لأي تاريخين في الماضي. أدخل تاريخ الميلاد كتاريخ ميلاد وتاريخ الوفاة كـ تاريخ اليوم عن طريق تغيير تاريخ جهازك، أو استخدم حاسبة الفرق بين تاريخين."}}
 ]}
@@ -174,19 +174,19 @@
   <div class="age-section">
     <h2 id="sec-related-title">Related Tools</h2>
     <div class="related-grid">
-      <a href="date-diff.html" class="related-card">
+      <a href="ru/date-diff/" class="related-card">
         <span class="rel-icon">📆</span>
         <span id="rel-datediff">Date Difference</span>
       </a>
-      <a href="hijri-converter.html" class="related-card">
+      <a href="ru/hijri-converter/" class="related-card">
         <span class="rel-icon">🌙</span>
         <span id="rel-hijri">Hijri Converter</span>
       </a>
-      <a href="bmi-calculator.html" class="related-card">
+      <a href="ru/bmi-calculator/" class="related-card">
         <span class="rel-icon">⚖️</span>
         <span id="rel-bmi">BMI Calculator</span>
       </a>
-      <a href="diet-calculator.html" class="related-card">
+      <a href="ru/diet-plan/" class="related-card">
         <span class="rel-icon">🥗</span>
         <span id="rel-diet">Calorie Calculator</span>
       </a>
@@ -399,6 +399,8 @@ function getZodiac(month,day){
   return t.zodiac[0];
 }
 
+function isHijriLeap(y){return[2,5,7,10,13,16,18,21,24,26,29].indexOf(y%30)!==-1;}
+function hijriDaysInMonth(m,y){if(m%2===1)return 30;if(m===12&&isHijriLeap(y))return 30;return 29;}
 function toHijri(day,month,year){
   var jd=Math.floor((1461*(year+4800+Math.floor((month-14)/12)))/4)
     +Math.floor((367*(month-2-12*Math.floor((month-14)/12)))/12)
@@ -438,7 +440,7 @@ function calcAge(){
   var hToday=toHijri(today.getDate(),today.getMonth()+1,today.getFullYear());
 
   var hY=hToday.year-hBirth.year,hM=hToday.month-hBirth.month,hD=hToday.day-hBirth.day;
-  if(hD<0){hM--;hD+=30;}
+  if(hD<0){var pm=hToday.month>1?hToday.month-1:12,py=hToday.month>1?hToday.year:hToday.year-1;hM--;hD+=hijriDaysInMonth(pm,py);}
   if(hM<0){hY--;hM+=12;}
   var hijriAgeStr=hY+' '+t.lbl_years+' '+hM+' '+t.lbl_months+' '+hD+' '+t.lbl_days+t.hijri_suffix;
 
