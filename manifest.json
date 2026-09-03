@@ -1,7 +1,7 @@
 {
   "name": "Adawati — Free Online Tools",
   "short_name": "Adawati",
-  "description": "30 free tools in your browser: calculators, converters, games. No signup required.",
+  "description": "Free tools, calculators & practical guides in your browser. No signup required.",
   "start_url": "/my-tools-site/",
   "scope": "/my-tools-site/",
   "display": "standalone",
