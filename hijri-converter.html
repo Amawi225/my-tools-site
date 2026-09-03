@@ -19,7 +19,7 @@
 <link rel="alternate" hreflang="ru" href="https://adawati2027.github.io/my-tools-site/ru/hijri-converter/">
 <link rel="alternate" hreflang="x-default" href="https://adawati2027.github.io/my-tools-site/hijri-converter.html">
 <meta property="og:title" content="Hijri & Gregorian Date Converter — Islamic Calendar | Adawati">
-<meta property="og:description" content="Convert any Hijri date to Gregorian and back with astronomical precision. Shows today in Hijri and all Islamic month names.">
+<meta property="og:description" content="Convert any Hijri date to Gregorian and back using a tabular Hijri calendar algorithm. Shows today's Hijri date and all Islamic month names.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://adawati2027.github.io/my-tools-site/hijri-converter.html">
 <script type="application/ld+json">
@@ -82,9 +82,9 @@
   <div class="card">
     <div class="card-icon" style="background:#fdf4ff;">🌙</div>
     <div class="card-title" data-i18n="hijri_card_title">Hijri ↔ Gregorian Date Converter</div>
-    <div class="card-subtitle" data-i18n="hij_sub">Instant and accurate conversion in both directions</div>
+    <div class="card-subtitle" data-i18n="hij_sub">Instant tabular Hijri calendar conversion in both directions</div>
     <div class="divider"></div>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">This converter converts between the Islamic (Hijri) lunar calendar and the Gregorian solar calendar with instant astronomical precision. Commonly used to find dates for Islamic occasions such as Ramadan and Eid al-Adha, and for official use in Gulf states. Supports conversion in both directions and displays today's Hijri date automatically.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">This converter converts between the Islamic (Hijri) lunar calendar and the Gregorian solar calendar using a tabular algorithm. Commonly used to find dates for Islamic occasions such as Ramadan and Eid al-Adha, and for official use in Gulf states. Supports conversion in both directions and displays today's Hijri date automatically.</p>
 
     <div class="option-toggle">
       <button class="option-btn active" id="modeGH" onclick="setConvMode('g2h')" data-i18n="hij_mode_gh">🗓️ Gregorian → Hijri</button>
@@ -120,6 +120,10 @@
         <div class="hijri-date-sub" id="hgDateSub"></div>
       </div>
     </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:14px;line-height:1.6;text-align:center;">
+      Note: This converter uses a tabular Hijri calendar. Dates may differ by 1–2 days from local moon-sighting calendars.<br>
+      ملاحظة: يستخدم هذا المحوّل تقويماً هجرياً حسابياً (Tabular Hijri). قد يختلف التاريخ بيوم أو يومين عن التقويم المعتمد على رؤية الهلال المحلية.
+    </p>
   </div>
 
   <!-- Today's date panel -->
@@ -159,7 +163,7 @@
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="hij-faq-q3">Why might the Hijri date differ by a day?</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a3">Official determination in many countries depends on naked-eye moon sighting, which can cause a one-day difference between countries. This tool uses astronomical calculation.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="hij-faq-a3">Official determination in many countries depends on naked-eye moon sighting, which can cause a one-day difference between countries. This tool uses a tabular Hijri calendar algorithm, which may differ by 1–2 days from the observed calendar.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I find today's Hijri date?</summary>
@@ -171,7 +175,7 @@
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">How do I accurately convert a Gregorian date to Hijri?</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Use the first tab "Gregorian → Hijri" and enter the Gregorian date. The tool uses an astronomical algorithm for instant conversion. Note that the official date in some countries may differ by one day due to moon sighting.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Use the first tab "Gregorian → Hijri" and enter the Gregorian date. The tool uses a tabular Hijri calendar algorithm. Note that the official date in some countries may differ by 1–2 days due to local moon sighting.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">What are the sacred (Haram) Hijri months?</summary>
@@ -196,8 +200,8 @@
     <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">The Hijri calendar is a <strong>lunar calendar</strong> with 12 months of 29 or 30 days each, totalling 354-355 days per year — about 11 days shorter than the Gregorian year. This means Islamic dates shift earlier through the Gregorian calendar by approximately 11 days each year. The year 1 Hijri corresponds to the Prophet Muhammad's migration (Hijra) from Mecca to Medina in 622 CE.</p>
     <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">The 12 Hijri months</h3>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">Muharram, Safar, Rabi' al-Awwal, Rabi' al-Thani, Jumada al-Awwal, Jumada al-Thani, Rajab, Sha'ban, Ramadan, Shawwal, Dhu al-Qi'dah, Dhu al-Hijjah. Ramadan (fasting) and Dhu al-Hijjah (Hajj season) are the two most significant religious months.</p>
-    <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Astronomical vs. calculated Hijri dates</h3>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:0;">Some countries determine the start of Hijri months by physical moon sighting (Oman, Saudi Arabia, UAE), which can vary by one day from calculated dates. This converter uses the standard astronomical calculation (Umm al-Qura system used in Saudi Arabia as the international reference).</p>
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Tabular vs. observed Hijri dates</h3>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:0;">Some countries determine the start of Hijri months by physical moon sighting (Oman, Saudi Arabia, UAE), which can vary by one day from calculated dates. This converter uses a tabular Hijri calendar algorithm — a standard mathematical approximation accurate to within 1–2 days of the observed calendar.</p>
   </div>
   <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:16px;" lang="en">Last updated: September 2026</p>
 </div></main>
@@ -224,7 +228,7 @@ var HIJ_T={
     faq_title:'❓ أسئلة شائعة',
     faq_q1:'ما الفرق بين التقويم الهجري والميلادي؟',faq_a1:'التقويم الهجري قمري (يعتمد على دورة القمر) ويتكون من 354-355 يوماً في السنة. التقويم الميلادي شمسي ويتكون من 365-366 يوماً. لهذا تتقدم السنة الهجرية بحوالي 11 يوماً كل سنة ميلادية.',
     faq_q2:'متى بدأ التقويم الهجري؟',faq_a2:'بدأ التقويم الهجري من هجرة النبي محمد ﷺ من مكة إلى المدينة المنورة، وهو ما يوافق 16 يوليو 622 ميلادي.',
-    faq_q3:'لماذا قد يختلف التاريخ الهجري يوماً؟',faq_a3:'يعتمد التحديد الرسمي في كثير من الدول على رؤية الهلال بالعين المجردة، مما قد يُحدث فارقاً يوماً واحداً بين الدول. الأداة تستخدم الحساب الفلكي.',
+    faq_q3:'لماذا قد يختلف التاريخ الهجري يوماً؟',faq_a3:'يعتمد التحديد الرسمي في كثير من الدول على رؤية الهلال بالعين المجردة، مما قد يُحدث فارقاً يوماً أو يومين. هذه الأداة تستخدم خوارزمية التقويم الهجري الجدولي (Tabular Hijri).',
     related:'أدوات مرتبطة:',rel1:'📅 حاسبة العمر',rel2:'📋 نهاية الخدمة'
   },
   en:{
@@ -235,7 +239,7 @@ var HIJ_T={
     faq_title:'❓ FAQ',
     faq_q1:'What is the difference between Hijri and Gregorian calendars?',faq_a1:'The Hijri calendar is lunar (based on moon cycles) with 354-355 days per year. The Gregorian calendar is solar with 365-366 days. This means the Hijri year advances about 11 days each Gregorian year.',
     faq_q2:'When did the Hijri calendar begin?',faq_a2:'The Hijri calendar began from the Prophet Muhammad\'s ﷺ migration (Hijra) from Mecca to Medina, corresponding to July 16, 622 CE.',
-    faq_q3:'Why might the Hijri date differ by a day?',faq_a3:'Official determination in many countries depends on naked-eye moon sighting, which can cause a one-day difference between countries. This tool uses astronomical calculation.',
+    faq_q3:'Why might the Hijri date differ by a day?',faq_a3:'Official determination in many countries depends on naked-eye moon sighting, which can cause a one-day difference between countries. This tool uses a tabular Hijri calendar algorithm, which may differ by 1–2 days from the observed calendar.',
     related:'Related tools:',rel1:'📅 Age Calculator',rel2:'📋 End of Service'
   },
   fr:{
@@ -246,7 +250,7 @@ var HIJ_T={
     faq_title:'❓ Questions fréquentes',
     faq_q1:'Quelle est la différence entre le calendrier hégirien et grégorien?',faq_a1:'Le calendrier hégirien est lunaire avec 354-355 jours par an. Le calendrier grégorien est solaire avec 365-366 jours. L\'année hégirienne avance d\'environ 11 jours chaque année grégorienne.',
     faq_q2:'Quand le calendrier hégirien a-t-il commencé?',faq_a2:'Le calendrier hégirien a commencé avec la migration du Prophète Muhammad ﷺ de La Mecque à Médine, correspondant au 16 juillet 622 EC.',
-    faq_q3:'Pourquoi la date hégirienne peut-elle différer d\'un jour?',faq_a3:'La détermination officielle dans de nombreux pays dépend de l\'observation de la lune à l\'œil nu. Cet outil utilise le calcul astronomique.',
+    faq_q3:'Pourquoi la date hégirienne peut-elle différer d\'un jour?',faq_a3:'La détermination officielle dans de nombreux pays dépend de l\'observation de la lune à l\'œil nu. Cet outil utilise un algorithme de calendrier hégirien tabulaire, qui peut différer de 1 à 2 jours du calendrier observé.',
     related:'Outils connexes:',rel1:'📅 Calculateur d\'âge',rel2:'📋 Fin de service'
   },
   es:{
@@ -257,7 +261,7 @@ var HIJ_T={
     faq_title:'❓ Preguntas frecuentes',
     faq_q1:'¿Cuál es la diferencia entre los calendarios hijri y gregoriano?',faq_a1:'El calendario hijri es lunar con 354-355 días por año. El calendario gregoriano es solar con 365-366 días. El año hijri avanza aproximadamente 11 días cada año gregoriano.',
     faq_q2:'¿Cuándo comenzó el calendario hijri?',faq_a2:'El calendario hijri comenzó con la migración del Profeta Muhammad ﷺ de La Meca a Medina, correspondiente al 16 de julio de 622 EC.',
-    faq_q3:'¿Por qué puede diferir la fecha hijri en un día?',faq_a3:'La determinación oficial en muchos países depende de la observación de la luna. Esta herramienta utiliza cálculo astronómico.',
+    faq_q3:'¿Por qué puede diferir la fecha hijri en un día?',faq_a3:'La determinación oficial en muchos países depende de la observación de la luna. Esta herramienta utiliza un algoritmo de calendario hijri tabular, que puede diferir 1–2 días del calendario observado.',
     related:'Herramientas relacionadas:',rel1:'📅 Calculadora de edad',rel2:'📋 Fin de servicio'
   },
   de:{
@@ -268,7 +272,7 @@ var HIJ_T={
     faq_title:'❓ Häufige Fragen',
     faq_q1:'Was ist der Unterschied zwischen Hijri- und Gregorianischem Kalender?',faq_a1:'Der Hijri-Kalender ist Mondkalender mit 354-355 Tagen pro Jahr. Der Gregorianische Kalender ist Sonnenkalender mit 365-366 Tagen. Das Hijri-Jahr rückt jährlich um ca. 11 Tage vor.',
     faq_q2:'Wann begann der Hijri-Kalender?',faq_a2:'Der Hijri-Kalender begann mit der Auswanderung des Propheten Muhammad ﷺ von Mekka nach Medina, entsprechend dem 16. Juli 622 n.Chr.',
-    faq_q3:'Warum kann das Hijri-Datum um einen Tag abweichen?',faq_a3:'Die offizielle Bestimmung in vielen Ländern hängt von der Mondbeobachtung ab. Dieses Tool verwendet astronomische Berechnung.',
+    faq_q3:'Warum kann das Hijri-Datum um einen Tag abweichen?',faq_a3:'Die offizielle Bestimmung in vielen Ländern hängt von der Mondbeobachtung ab. Dieses Tool verwendet einen tabulierten Hijri-Kalenderalgorithmus, der 1–2 Tage vom beobachteten Kalender abweichen kann.',
     related:'Verwandte Tools:',rel1:'📅 Altersrechner',rel2:'📋 Dienstzeitende'
   },
   ru:{
@@ -279,7 +283,7 @@ var HIJ_T={
     faq_title:'❓ Часто задаваемые вопросы',
     faq_q1:'В чём разница между календарями хиджры и григорианским?',faq_a1:'Календарь хиджры лунный — 354-355 дней в году. Григорианский солнечный — 365-366 дней. Год хиджры опережает григорианский примерно на 11 дней ежегодно.',
     faq_q2:'Когда начался календарь хиджры?',faq_a2:'Календарь хиджры начался с переселения Пророка Мухаммада ﷺ из Мекки в Медину, что соответствует 16 июля 622 н.э.',
-    faq_q3:'Почему дата хиджры может отличаться на один день?',faq_a3:'Официальное определение во многих странах зависит от наблюдения луны невооружённым глазом. Этот инструмент использует астрономический расчёт.',
+    faq_q3:'Почему дата хиджры может отличаться на один день?',faq_a3:'Официальное определение во многих странах зависит от наблюдения луны невооружённым глазом. Этот инструмент использует табличный алгоритм хиджры, который может отличаться на 1–2 дня от наблюдаемого календаря.',
     related:'Связанные инструменты:',rel1:'📅 Калькулятор возраста',rel2:'📋 Выходное пособие'
   }
 };
