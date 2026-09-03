@@ -591,8 +591,8 @@ function updateToolCount() {
   const n = all.length;
   const s = document.getElementById('toolCountStat');
   const b = document.getElementById('toolCountBadge');
-  if (s) s.textContent = n;
-  if (b) b.textContent = n;
+  if (s) s.textContent = n >= 40 ? '40+' : n;
+  if (b) b.textContent = n >= 40 ? '40+' : n;
 }
 document.addEventListener('DOMContentLoaded', function(){ updateToolCount(); filterTools(); });
 function setCat(cat) {

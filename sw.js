@@ -1,4 +1,4 @@
-const CACHE = 'adawati-v41';
+const CACHE = 'adawati-v42';
 const BASE = '/my-tools-site';
 const STATIC = [
   BASE + '/',
