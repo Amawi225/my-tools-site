@@ -2,7 +2,7 @@ const T = {
   ar: {
     nav_home:'الرئيسية', nav_about:'من نحن', nav_contact:'تواصل معنا',
     back:'← العودة للرئيسية', footer_about:'من نحن', footer_contact:'تواصل معنا',
-    footer_copy:'© 2026 أدواتي — كل الأدوات مجانية وخاصة',
+    footer_copy:'© 2026 أدواتي — أدوات مجانية، ومعظمها يعمل داخل متصفحك',
     hero_title:'أدوات مجانية أونلاين للحساب والتحويل والإنتاجية',
     hero_sub:'احسب، حوّل، أنشئ واستخدم أدوات مجانية مباشرة من متصفحك — بدون تثبيت، تعمل على الهاتف والكمبيوتر',
     badge_count:'40+ أداة', badge_free:'مجانية 100%', badge_noreg:'بدون تسجيل', badge_privacy:'معالجة محلية',
@@ -183,7 +183,7 @@ const T = {
   en: {
     nav_home:'Home', nav_about:'About', nav_contact:'Contact',
     back:'← Back to Home', footer_about:'About', footer_contact:'Contact',
-    footer_copy:'© 2026 Adawati — All tools are free and private',
+    footer_copy:'© 2026 Adawati — Free tools; most run locally in your browser',
     hero_title:'Free Online Tools for Calculation, Conversion & Productivity',
     hero_sub:'Calculate, convert, create and use free tools directly from your browser — no install, works on mobile and desktop',
     badge_count:'40+ Tools', badge_free:'100% Free', badge_noreg:'No Registration', badge_privacy:'Local Processing',
@@ -364,7 +364,7 @@ const T = {
   fr: {
     nav_home:'Accueil', nav_about:'À propos', nav_contact:'Contact',
     back:'← Retour à l\'accueil', footer_about:'À propos', footer_contact:'Contact',
-    footer_copy:'© 2026 Adawati — Tous les outils sont gratuits et privés',
+    footer_copy:'© 2026 Adawati — Outils gratuits ; la plupart fonctionnent dans votre navigateur',
     hero_title:'Outils gratuits en ligne pour calculer, convertir et être productif',
     hero_sub:'Outils rapides et précis, fonctionnant directement dans votre navigateur — sans inscription, 100% gratuit',
     badge_count:'40+ Outils', badge_free:'100% Gratuit', badge_noreg:'Sans inscription', badge_privacy:'Traitement local',
@@ -537,7 +537,7 @@ const T = {
   es: {
     nav_home:'Inicio', nav_about:'Sobre nosotros', nav_contact:'Contacto',
     back:'← Volver al inicio', footer_about:'Sobre nosotros', footer_contact:'Contacto',
-    footer_copy:'© 2026 Adawati — Todas las herramientas son gratuitas y privadas',
+    footer_copy:'© 2026 Adawati — Herramientas gratuitas; la mayoría funciona en tu navegador',
     hero_title:'Herramientas gratuitas en línea para calcular, convertir y ser productivo',
     hero_sub:'Herramientas rápidas y precisas que funcionan en tu navegador — sin registro, 100% gratuito',
     badge_count:'40+ Herramientas', badge_free:'100% Gratis', badge_noreg:'Sin registro', badge_privacy:'Procesamiento local',
@@ -710,7 +710,7 @@ const T = {
   de: {
     nav_home:'Startseite', nav_about:'Über uns', nav_contact:'Kontakt',
     back:'← Zurück zur Startseite', footer_about:'Über uns', footer_contact:'Kontakt',
-    footer_copy:'© 2026 Adawati — Alle Tools sind kostenlos und privat',
+    footer_copy:'© 2026 Adawati — Kostenlose Tools; die meisten laufen lokal in Ihrem Browser',
     hero_title:'Kostenlose Online-Tools zum Berechnen, Konvertieren und Produktivsein',
     hero_sub:'Schnelle und genaue Tools, die direkt in Ihrem Browser funktionieren — ohne Registrierung, 100% kostenlos',
     badge_count:'40+ Tools', badge_free:'100% Kostenlos', badge_noreg:'Ohne Registrierung', badge_privacy:'Lokale Verarbeitung',
@@ -883,7 +883,7 @@ const T = {
   ru: {
     nav_home:'Главная', nav_about:'О нас', nav_contact:'Контакт',
     back:'← Назад на главную', footer_about:'О нас', footer_contact:'Контакт',
-    footer_copy:'© 2026 Adawati — Все инструменты бесплатны и конфиденциальны',
+    footer_copy:'© 2026 Adawati — Бесплатные инструменты; большинство работает локально в браузере',
     hero_title:'Бесплатные онлайн-инструменты для расчётов, конвертации и продуктивности',
     hero_sub:'Быстрые и точные инструменты, работающие прямо в вашем браузере — без регистрации, 100% бесплатно',
     badge_count:'40+ инструментов', badge_free:'100% бесплатно', badge_noreg:'Без регистрации', badge_privacy:'Локальная обработка',
