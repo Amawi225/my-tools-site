@@ -30,15 +30,15 @@
 <body>
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">Adawati</a>
-  <div class="nav-links"><a href="kids-learn.html">🧒 Kids</a><a href="index.html">Home</a></div>
+  <div class="nav-links"><a href="kids-learn.html" id="navKids">🧒 Kids</a><a href="index.html" id="navHome">Home</a></div>
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="kids-learn.html">← Back to Kids</a></div>
+  <div class="page-header"><a href="kids-learn.html" id="backToKids">← Back to Kids</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fef9c3;">➕</div>
     <h1 class="card-title">Kids Math Game</h1>
-    <div class="card-subtitle">Addition & Subtraction — Ages 6–9</div>
+    <div class="card-subtitle" id="kmSubtitle">Addition & Subtraction — Ages 6–9</div>
     <div class="divider"></div>
 
     <div class="km-level">
@@ -58,9 +58,9 @@
 
   <div class="card" style="margin-top:16px;">
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-      <a href="kids-times-tables.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">✖️ Times Tables</a>
-      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">🧒 All Kids Tools</a>
-      <a href="kids-spelling.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">🔤 Spelling Bee</a>
+      <a href="kids-times-tables.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkTimesTables">✖️ Times Tables</a>
+      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkAllKids">🧒 All Kids Tools</a>
+      <a href="kids-spelling.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkSpelling">🔤 Spelling Bee</a>
     </div>
   </div>
 </div></main>
@@ -68,6 +68,38 @@
 <script>
 const EMOJIS = ['🍎','🌸','🚗','🎈','🌟','🍕','🐝','🦋','🌳','🐟'];
 let level='easy', score=0, total=10, qIdx=0, answered=false, questions=[];
+
+const KM_T = {
+  en:{subtitle:'Addition & Subtraction — Ages 6–9',lvlEasy:'⭐ Easy (1–10)',lvlMed:'⭐⭐ Medium (1–20)',lvlHard:'⭐⭐⭐ Hard (1–50)',
+      loading:'Loading...',score:'Score',question:'Question',of:'of',correct:'✅ Correct!',wrong:v=>`❌ The answer is ${v}`,correctSpoken:'Correct!',playAgain:'Play Again',
+      amazing:'🎉 Amazing! You\'re a Math Star!',great:'👍 Great job! Keep going!',keep:'💪 Keep practicing!',
+      timesTables:'✖️ Times Tables',allKidsTools:'🧒 All Kids Tools',spellingBee:'🔤 Spelling Bee',backToKids:'← Back to Kids',kids:'🧒 Kids',home:'Home'},
+  ar:{subtitle:'الجمع والطرح — للأطفال من 6 إلى 9 سنوات',lvlEasy:'⭐ سهل (1–10)',lvlMed:'⭐⭐ متوسط (1–20)',lvlHard:'⭐⭐⭐ صعب (1–50)',
+      loading:'جارٍ التحميل...',score:'النتيجة',question:'سؤال',of:'من',correct:'✅ إجابة صحيحة!',wrong:v=>`❌ الإجابة هي ${v}`,correctSpoken:'إجابة صحيحة!',playAgain:'العب مجدداً',
+      amazing:'🎉 رائع! أنت نجم الرياضيات!',great:'👍 عمل رائع! استمر!',keep:'💪 استمر في التمرين!',
+      timesTables:'✖️ جدول الضرب',allKidsTools:'🧒 كل أدوات الأطفال',spellingBee:'🔤 مسابقة التهجئة',backToKids:'← رجوع للأطفال',kids:'🧒 الأطفال',home:'الرئيسية'},
+  fr:{subtitle:'Addition et soustraction — 6 à 9 ans',lvlEasy:'⭐ Facile (1–10)',lvlMed:'⭐⭐ Moyen (1–20)',lvlHard:'⭐⭐⭐ Difficile (1–50)',
+      loading:'Chargement...',score:'Score',question:'Question',of:'sur',correct:'✅ Correct !',wrong:v=>`❌ La réponse est ${v}`,correctSpoken:'Correct !',playAgain:'Rejouer',
+      amazing:'🎉 Incroyable ! Tu es une star des maths !',great:'👍 Bon travail ! Continue !',keep:'💪 Continue à t\'entraîner !',
+      timesTables:'✖️ Tables de multiplication',allKidsTools:'🧒 Tous les jeux enfants',spellingBee:'🔤 Concours d\'orthographe',backToKids:'← Retour aux jeux enfants',kids:'🧒 Enfants',home:'Accueil'},
+  es:{subtitle:'Suma y resta — 6 a 9 años',lvlEasy:'⭐ Fácil (1–10)',lvlMed:'⭐⭐ Medio (1–20)',lvlHard:'⭐⭐⭐ Difícil (1–50)',
+      loading:'Cargando...',score:'Puntaje',question:'Pregunta',of:'de',correct:'✅ ¡Correcto!',wrong:v=>`❌ La respuesta es ${v}`,correctSpoken:'¡Correcto!',playAgain:'Jugar de nuevo',
+      amazing:'🎉 ¡Increíble! ¡Eres una estrella de las matemáticas!',great:'👍 ¡Buen trabajo! ¡Sigue así!',keep:'💪 ¡Sigue practicando!',
+      timesTables:'✖️ Tablas de multiplicar',allKidsTools:'🧒 Todos los juegos infantiles',spellingBee:'🔤 Concurso de ortografía',backToKids:'← Volver a juegos infantiles',kids:'🧒 Niños',home:'Inicio'},
+  de:{subtitle:'Addition und Subtraktion — 6 bis 9 Jahre',lvlEasy:'⭐ Leicht (1–10)',lvlMed:'⭐⭐ Mittel (1–20)',lvlHard:'⭐⭐⭐ Schwer (1–50)',
+      loading:'Wird geladen...',score:'Punkte',question:'Frage',of:'von',correct:'✅ Richtig!',wrong:v=>`❌ Die Antwort ist ${v}`,correctSpoken:'Richtig!',playAgain:'Nochmal spielen',
+      amazing:'🎉 Fantastisch! Du bist ein Mathe-Star!',great:'👍 Gut gemacht! Weiter so!',keep:'💪 Übe weiter!',
+      timesTables:'✖️ Einmaleins',allKidsTools:'🧒 Alle Kinderspiele',spellingBee:'🔤 Buchstabierwettbewerb',backToKids:'← Zurück zu Kinderspielen',kids:'🧒 Kinder',home:'Startseite'},
+  ru:{subtitle:'Сложение и вычитание — от 6 до 9 лет',lvlEasy:'⭐ Легко (1–10)',lvlMed:'⭐⭐ Средне (1–20)',lvlHard:'⭐⭐⭐ Сложно (1–50)',
+      loading:'Загрузка...',score:'Счёт',question:'Вопрос',of:'из',correct:'✅ Правильно!',wrong:v=>`❌ Правильный ответ: ${v}`,correctSpoken:'Правильно!',playAgain:'Играть снова',
+      amazing:'🎉 Потрясающе! Ты звезда математики!',great:'👍 Отличная работа! Продолжай!',keep:'💪 Продолжай тренироваться!',
+      timesTables:'✖️ Таблица умножения',allKidsTools:'🧒 Все детские игры',spellingBee:'🔤 Конкурс правописания',backToKids:'← Назад к детским играм',kids:'🧒 Детям',home:'Главная'},
+};
+const _PAGE_LANG = (document.documentElement.lang && KM_T[document.documentElement.lang]) ? document.documentElement.lang : 'en';
+let currentLang=_PAGE_LANG;
+function kmt(k){return (KM_T[currentLang]||KM_T.en)[k];}
+
+const SPEECH_LANG_CODES = {ar:'ar-SA',en:'en-US',fr:'fr-FR',es:'es-ES',de:'de-DE',ru:'ru-RU'};
 
 function setLevel(l){
   level=l;
@@ -110,13 +142,13 @@ function startGame(){
 function renderQ(){
   if(qIdx>=total){
     const pct=Math.round(score/total*100);
-    const msg=pct>=80?'🎉 Amazing! You\'re a Math Star!':pct>=50?'👍 Great job! Keep going!':'💪 Keep practicing!';
+    const msg=pct>=80?kmt('amazing'):pct>=50?kmt('great'):kmt('keep');
     document.getElementById('gameArea').innerHTML=`
       <div class="km-done">
         <div style="font-size:60px;">🏆</div>
         <div style="font-size:22px;font-weight:900;color:var(--primary);margin:10px 0;">${msg}</div>
-        <div style="font-size:16px;color:var(--text-muted);">Score: ${score} / ${total} (${pct}%)</div>
-        <button class="btn btn-primary" style="margin-top:16px;" onclick="startGame()">Play Again</button>
+        <div style="font-size:16px;color:var(--text-muted);">${kmt('score')}: ${score} / ${total} (${pct}%)</div>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="startGame()">${kmt('playAgain')}</button>
       </div>`;
     return;
   }
@@ -129,7 +161,7 @@ function renderQ(){
     visual=`<div>${emoji.repeat(q.a)}</div><div style="font-size:24px;">−</div><div style="text-decoration:line-through;opacity:.4;">${emoji.repeat(q.b)}</div>`;
   }
   const choices=makeChoices(q.ans, level==='easy'?10:level==='medium'?20:50);
-  document.getElementById('kmScore').textContent=`Score: ${score} / ${total} | Question ${qIdx+1} of ${total}`;
+  document.getElementById('kmScore').textContent=`${kmt('score')}: ${score} / ${total} | ${kmt('question')} ${qIdx+1} ${kmt('of')} ${total}`;
   document.getElementById('kmVisual').innerHTML=visual;
   document.getElementById('kmQuestion').textContent=`${q.a} ${q.op==='+'?'+':'−'} ${q.b} = ?`;
   document.getElementById('kmChoices').innerHTML=choices.map(c=>
@@ -145,17 +177,43 @@ function answerQ(btn,chosen,correct){
   if(chosen===correct){
     btn.classList.add('correct');
     score++;
-    document.getElementById('kmFeedback').textContent='✅ Correct!';
-    if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('Correct!');u.lang='en-US';speechSynthesis.speak(u);}
+    document.getElementById('kmFeedback').textContent=kmt('correct');
+    if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(kmt('correctSpoken'));u.lang=SPEECH_LANG_CODES[currentLang]||'en-US';speechSynthesis.speak(u);}
   } else {
     btn.classList.add('wrong');
     document.querySelectorAll('.km-choice').forEach(b=>{if(parseInt(b.textContent)===correct) b.classList.add('correct');});
-    document.getElementById('kmFeedback').textContent=`❌ The answer is ${correct}`;
+    document.getElementById('kmFeedback').textContent=kmt('wrong')(correct);
   }
   setTimeout(()=>{qIdx++;renderQ();},1000);
 }
 
-startGame();
+function updateStaticText(){
+  document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  set('kmSubtitle',kmt('subtitle'));
+  set('lvlEasy',kmt('lvlEasy'));
+  set('lvlMed',kmt('lvlMed'));
+  set('lvlHard',kmt('lvlHard'));
+  set('linkTimesTables',kmt('timesTables'));
+  set('linkAllKids',kmt('allKidsTools'));
+  set('linkSpelling',kmt('spellingBee'));
+  set('backToKids',kmt('backToKids'));
+  set('navKids',kmt('kids'));
+  set('navHome',kmt('home'));
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    updateStaticText();
+    renderQ();
+  };
+  window.onLangChange=function(lang){currentLang=lang;updateStaticText();renderQ();};
+  updateStaticText();
+  startGame();
+});
 </script>
 <script src="i18n.js?v=39" defer></script>
 </body></html>
