@@ -774,7 +774,7 @@ async function imgToImg(fmt) {
   const blob = await new Promise(r => canvas.toBlob(r, mime, 0.92));
   setProgress(95);
   const dlUrl = URL.createObjectURL(blob);
-  const preview = `<div style="text-align:center;padding:16px;"><img src="${dlUrl}" style="max-width:100%;max-height:360px;border-radius:8px;box-shadow:0 2px 12px #0001;"></div>`;
+  const preview = `<div style="text-align:center;padding:16px;"><img src="${dlUrl}" alt="Converted image preview" style="max-width:100%;max-height:360px;border-radius:8px;box-shadow:0 2px 12px #0001;"></div>`;
   const ext = fmt === 'jpg' ? 'jpg' : fmt;
   const dlBtn = makeBtn(t('download') + ' ' + ext.toUpperCase(), 'btn btn-primary', () => dlBlob(blob, baseName() + '.' + ext));
   showResult(preview, [dlBtn]);
@@ -800,7 +800,7 @@ async function pdfToImg(fmt) {
   const dlUrl = URL.createObjectURL(blob);
   const pages = pdf.numPages;
   const note = pages > 1 ? `<p style="font-size:12px;color:#999;margin-top:8px;">Page 1 of ${pages}</p>` : '';
-  const preview = `<div style="text-align:center;padding:16px;"><img src="${dlUrl}" style="max-width:100%;max-height:360px;border-radius:8px;box-shadow:0 2px 12px #0001;">${note}</div>`;
+  const preview = `<div style="text-align:center;padding:16px;"><img src="${dlUrl}" alt="Converted image preview" style="max-width:100%;max-height:360px;border-radius:8px;box-shadow:0 2px 12px #0001;">${note}</div>`;
   const dlBtn = makeBtn(t('download') + ' ' + fmt.toUpperCase(), 'btn btn-primary', () => dlBlob(blob, baseName() + '_p1.' + fmt));
   showResult(preview, [dlBtn]);
 }
