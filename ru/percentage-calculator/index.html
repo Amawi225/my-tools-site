@@ -245,7 +245,7 @@ function calc1() {
   const res = document.getElementById('res1');
   if (isNaN(pct) || isNaN(num)) { res.style.display='none'; return; }
   const result = (num * pct) / 100;
-  const lang = localStorage.getItem('lang') || 'en';
+  const lang = document.documentElement.lang||localStorage.getItem('lang')||'en';
   const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
   const pctOf = t.pct_pct_of || '% من';
   const is = t.pct_is || '=';
@@ -260,7 +260,7 @@ function calc2() {
   const res = document.getElementById('res2');
   if (isNaN(a) || isNaN(b) || b === 0) { res.style.display='none'; return; }
   const result = (a / b) * 100;
-  const lang = localStorage.getItem('lang') || 'en';
+  const lang = document.documentElement.lang||localStorage.getItem('lang')||'en';
   const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
   const is = t.pct_is || 'هو';
   document.getElementById('res2val').textContent = fmt(result) + '%';
@@ -275,7 +275,7 @@ function calc3() {
   if (isNaN(a) || isNaN(b) || a === 0) { res.style.display='none'; return; }
   const change = ((b - a) / Math.abs(a)) * 100;
   const isIncrease = change >= 0;
-  const lang = localStorage.getItem('lang') || 'en';
+  const lang = document.documentElement.lang||localStorage.getItem('lang')||'en';
   const t = (typeof T !== 'undefined' && T[lang]) ? T[lang] : {};
   document.getElementById('res3val').textContent = (isIncrease ? '+' : '') + fmt(change) + '%';
   document.getElementById('res3lbl').textContent = isIncrease

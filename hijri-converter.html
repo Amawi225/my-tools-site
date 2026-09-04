@@ -287,10 +287,10 @@ var HIJ_T={
     related:'Связанные инструменты:',rel1:'📅 Калькулятор возраста',rel2:'📋 Выходное пособие'
   }
 };
-function HT(){return HIJ_T[localStorage.getItem('lang')||'en'];}
+function HT(){return HIJ_T[document.documentElement.lang||localStorage.getItem('lang')||'en'];}
 function updateHijriContent(){
   var t=HT();
-  var lang=localStorage.getItem('lang')||'en';
+  var lang=document.documentElement.lang||localStorage.getItem('lang')||'en';
   document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
   document.getElementById('hij-faq-title').textContent=t.faq_title;
   document.getElementById('hij-faq-q1').textContent=t.faq_q1;document.getElementById('hij-faq-a1').textContent=t.faq_a1;

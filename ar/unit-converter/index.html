@@ -228,11 +228,11 @@ var UNI_T={
   ru:{len:{m:'Метр (m)',km:'Километр (km)',cm:'Сантиметр (cm)',mm:'Миллиметр (mm)',mi:'Миля (mi)',ft:'Фут (ft)',in:'Дюйм (in)'},wgt:{kg:'Килограмм (kg)',g:'Грамм (g)',lb:'Фунт (lb)',oz:'Унция (oz)',t:'Тонна (t)'},tmp:{c:'Цельсий (°C)',f:'Фаренгейт (°F)',k:'Кельвин (K)'}}
 };
 function updateUnitOptions(){
-  var t=UNI_T[localStorage.getItem('lang')||'en'];
+  var t=UNI_T[document.documentElement.lang||localStorage.getItem('lang')||'en'];
   ['len-from','len-to'].forEach(function(id){Array.from(document.getElementById(id).options).forEach(function(o){if(t.len[o.value])o.text=t.len[o.value];});});
   ['wgt-from','wgt-to'].forEach(function(id){Array.from(document.getElementById(id).options).forEach(function(o){if(t.wgt[o.value])o.text=t.wgt[o.value];});});
   ['tmp-from','tmp-to'].forEach(function(id){Array.from(document.getElementById(id).options).forEach(function(o){if(t.tmp[o.value])o.text=t.tmp[o.value];});});
-  var lang=localStorage.getItem('lang')||'en';
+  var lang=document.documentElement.lang||localStorage.getItem('lang')||'en';
   document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
 }
 window.onLangChange=function(lang){updateUnitOptions();};

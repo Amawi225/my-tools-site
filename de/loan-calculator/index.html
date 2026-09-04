@@ -483,7 +483,7 @@ var LOAN_T = {
   }
 };
 
-function D(){return LOAN_T[localStorage.getItem('lang')||'en'];}
+function D(){return LOAN_T[document.documentElement.lang||localStorage.getItem('lang')||'en'];}
 function fmt(n){return n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
 
 function calcLoan(){
@@ -562,7 +562,7 @@ function buildChart(years,t){
 
 function updateLoanContent(){
   var t=D();
-  var dir=(localStorage.getItem('lang')||'en')==='ar'?'rtl':'ltr';
+  var dir=(document.documentElement.lang||localStorage.getItem('lang')||'en')==='ar'?'rtl':'ltr';
   document.documentElement.dir=dir;
   document.getElementById('loan-main-title').textContent=t.main_title;
   document.getElementById('loan-main-sub').textContent=t.main_sub;

@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
     salLang = lang;
     updateSalaryText();
   };
-  salLang = localStorage.getItem('lang') || 'en';
+  salLang = document.documentElement.lang||localStorage.getItem('lang')||'en';
   updateSalaryText();
 });
 </script>
