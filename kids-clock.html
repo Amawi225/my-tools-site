@@ -29,15 +29,15 @@
 <body>
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">Adawati</a>
-  <div class="nav-links"><a href="kids-learn.html">🧒 Kids</a><a href="index.html">Home</a></div>
+  <div class="nav-links"><a href="kids-learn.html" id="navKids">🧒 Kids</a><a href="index.html" id="navHome">Home</a></div>
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="kids-learn.html">← Back to Kids</a></div>
+  <div class="page-header"><a href="kids-learn.html" id="backToKids">← Back to Kids</a></div>
   <div class="card">
     <div class="card-icon" style="background:#f0fdf4;">🕐</div>
     <h1 class="card-title">Tell the Time!</h1>
-    <div class="card-subtitle">Clock Reading Game — Ages 5–9</div>
+    <div class="card-subtitle" id="clockSubtitle">Clock Reading Game — Ages 5–9</div>
     <div class="divider"></div>
 
     <div class="clock-levels">
@@ -64,26 +64,26 @@
           <circle cx="100" cy="100" r="6" fill="#1e293b"/>
         </svg>
       </div>
-      <div style="text-align:center;font-size:17px;font-weight:700;color:var(--text-muted);margin-bottom:8px;">What time does the clock show?</div>
+      <div style="text-align:center;font-size:17px;font-weight:700;color:var(--text-muted);margin-bottom:8px;" id="clockQuestion">What time does the clock show?</div>
       <div class="clock-choices" id="cChoices"></div>
       <div style="font-size:20px;font-weight:800;text-align:center;min-height:28px;" id="cFeedback"></div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;padding:16px;">
-    <div style="font-size:14px;font-weight:700;margin-bottom:10px;">📚 Time Tips</div>
+    <div style="font-size:14px;font-weight:700;margin-bottom:10px;" id="tipsTitle">📚 Time Tips</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
-      <div style="background:var(--surface-2);padding:10px;border-radius:8px;"><strong>Short hand</strong> = Hour (where it points)</div>
-      <div style="background:var(--surface-2);padding:10px;border-radius:8px;"><strong>Long hand</strong> = Minutes (blue)</div>
-      <div style="background:var(--surface-2);padding:10px;border-radius:8px;">Long hand at <strong>12</strong> = O'clock</div>
-      <div style="background:var(--surface-2);padding:10px;border-radius:8px;">Long hand at <strong>6</strong> = Half past</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:8px;" id="tip1"><strong>Short hand</strong> = Hour (where it points)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:8px;" id="tip2"><strong>Long hand</strong> = Minutes (blue)</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:8px;" id="tip3">Long hand at <strong>12</strong> = O'clock</div>
+      <div style="background:var(--surface-2);padding:10px;border-radius:8px;" id="tip4">Long hand at <strong>6</strong> = Half past</div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-      <a href="kids-math.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">➕ Math Game</a>
-      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">🧒 All Kids Tools</a>
+      <a href="kids-math.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkMath">➕ Math Game</a>
+      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkAllKids">🧒 All Kids Tools</a>
     </div>
   </div>
 </div></main>
@@ -91,6 +91,76 @@
 <script>
 let level='oclock', score=0, qIdx=0, answered=false, currentTime={h:0,m:0};
 const TOTAL=10;
+
+const CT = {
+  en:{subtitle:'Clock Reading Game — Ages 5–9',lvlO:"🕐 O'Clock",lvlH:'🕧 Half Hours',lvlQ:'🕑 Quarters',
+      question:'What time does the clock show?',score:'Score',q:'Q',of:'of',playAgain:'Play Again',
+      master:'⏰ Clock Master!',nice:'👍 Nice work!',keep:'💪 Keep practicing!',
+      tipsTitle:'📚 Time Tips',tip1:'<strong>Short hand</strong> = Hour (where it points)',tip2:'<strong>Long hand</strong> = Minutes (blue)',
+      tip3:'Long hand at <strong>12</strong> = O\'clock',tip4:'Long hand at <strong>6</strong> = Half past',
+      mathGame:'➕ Math Game',allKidsTools:'🧒 All Kids Tools',backToKids:'← Back to Kids',kids:'🧒 Kids',home:'Home',
+      correctText:v=>`It is ${v}`,
+      readable:(h,m)=>m===0?`${h} o'clock`:m===30?`half past ${h}`:m===15?`quarter past ${h}`:m===45?`quarter to ${h===12?1:h+1}`:`${h}:${m}`},
+  ar:{subtitle:'لعبة قراءة الساعة — للأطفال من 5 إلى 9 سنوات',lvlO:'🕐 بالضبط',lvlH:'🕧 نصف الساعة',lvlQ:'🕑 الأرباع',
+      question:'كم الساعة الآن؟',score:'النتيجة',q:'سؤال',of:'من',playAgain:'العب مجدداً',
+      master:'⏰ سيد الساعة!',nice:'👍 عمل جيد!',keep:'💪 استمر في التمرين!',
+      tipsTitle:'📚 نصائح عن الساعة',tip1:'<strong>العقرب القصير</strong> = الساعة (إلى أين يشير)',tip2:'<strong>العقرب الطويل</strong> = الدقائق (أزرق)',
+      tip3:'العقرب الطويل على <strong>12</strong> = بالضبط',tip4:'العقرب الطويل على <strong>6</strong> = والنصف',
+      mathGame:'➕ لعبة الرياضيات',allKidsTools:'🧒 كل أدوات الأطفال',backToKids:'← رجوع للأطفال',kids:'🧒 الأطفال',home:'الرئيسية',
+      correctText:v=>`الساعة ${v}`,
+      readable:(h,m)=>m===0?`${h} تماماً`:m===30?`${h} والنصف`:m===15?`${h} وربع`:m===45?`${h===12?1:h+1} إلا ربع`:`${h}:${m}`},
+  fr:{subtitle:'Jeu de lecture de l\'heure — 5 à 9 ans',lvlO:'🕐 Heures pile',lvlH:'🕧 Demi-heures',lvlQ:'🕑 Quarts',
+      question:'Quelle heure indique l\'horloge ?',score:'Score',q:'Q',of:'sur',playAgain:'Rejouer',
+      master:'⏰ Maître de l\'horloge !',nice:'👍 Bon travail !',keep:'💪 Continue à t\'entraîner !',
+      tipsTitle:'📚 Astuces horaires',tip1:'<strong>Petite aiguille</strong> = Heure (où elle pointe)',tip2:'<strong>Grande aiguille</strong> = Minutes (bleue)',
+      tip3:'Grande aiguille sur <strong>12</strong> = Heure pile',tip4:'Grande aiguille sur <strong>6</strong> = Et demie',
+      mathGame:'➕ Jeu de calcul',allKidsTools:'🧒 Tous les jeux enfants',backToKids:'← Retour aux jeux enfants',kids:'🧒 Enfants',home:'Accueil',
+      correctText:v=>`Il est ${v}`,
+      readable:(h,m)=>m===0?`${h} heures`:m===30?`${h} heures et demie`:m===15?`${h} heures et quart`:m===45?`${h===12?1:h+1} heures moins le quart`:`${h}:${m}`},
+  es:{subtitle:'Juego de lectura del reloj — 5 a 9 años',lvlO:'🕐 En punto',lvlH:'🕧 Medias horas',lvlQ:'🕑 Cuartos',
+      question:'¿Qué hora muestra el reloj?',score:'Puntaje',q:'P',of:'de',playAgain:'Jugar de nuevo',
+      master:'⏰ ¡Maestro del reloj!',nice:'👍 ¡Buen trabajo!',keep:'💪 ¡Sigue practicando!',
+      tipsTitle:'📚 Consejos de tiempo',tip1:'<strong>Manecilla corta</strong> = Hora (hacia dónde apunta)',tip2:'<strong>Manecilla larga</strong> = Minutos (azul)',
+      tip3:'Manecilla larga en <strong>12</strong> = En punto',tip4:'Manecilla larga en <strong>6</strong> = Y media',
+      mathGame:'➕ Juego de matemáticas',allKidsTools:'🧒 Todos los juegos infantiles',backToKids:'← Volver a juegos infantiles',kids:'🧒 Niños',home:'Inicio',
+      correctText:v=>`Son las ${v}`,
+      readable:(h,m)=>m===0?`${h} en punto`:m===30?`${h} y media`:m===15?`${h} y cuarto`:m===45?`${h===12?1:h+1} menos cuarto`:`${h}:${m}`},
+  de:{subtitle:'Uhrzeit-Lesespiel — 5 bis 9 Jahre',lvlO:'🕐 Volle Stunde',lvlH:'🕧 Halbe Stunden',lvlQ:'🕑 Viertelstunden',
+      question:'Wie viel Uhr zeigt die Uhr?',score:'Punkte',q:'F',of:'von',playAgain:'Nochmal spielen',
+      master:'⏰ Uhrzeit-Meister!',nice:'👍 Gut gemacht!',keep:'💪 Übe weiter!',
+      tipsTitle:'📚 Zeit-Tipps',tip1:'<strong>Kurzer Zeiger</strong> = Stunde (wohin er zeigt)',tip2:'<strong>Langer Zeiger</strong> = Minuten (blau)',
+      tip3:'Langer Zeiger auf <strong>12</strong> = Volle Stunde',tip4:'Langer Zeiger auf <strong>6</strong> = Halb',
+      mathGame:'➕ Rechenspiel',allKidsTools:'🧒 Alle Kinderspiele',backToKids:'← Zurück zu Kinderspielen',kids:'🧒 Kinder',home:'Startseite',
+      correctText:v=>`Es ist ${v}`,
+      readable:(h,m)=>{
+        const NUM=['zwölf','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf'];
+        const next=h===12?1:h+1;
+        if(m===0) return `${NUM[h]} Uhr`;
+        if(m===30) return `halb ${NUM[next]}`;
+        if(m===15) return `Viertel nach ${NUM[h]}`;
+        if(m===45) return `Viertel vor ${NUM[next]}`;
+        return `${h}:${m}`;
+      }},
+  ru:{subtitle:'Игра на чтение часов — от 5 до 9 лет',lvlO:'🕐 Ровно',lvlH:'🕧 Полчаса',lvlQ:'🕑 Четверти',
+      question:'Сколько времени показывают часы?',score:'Счёт',q:'Вопрос',of:'из',playAgain:'Играть снова',
+      master:'⏰ Мастер часов!',nice:'👍 Отличная работа!',keep:'💪 Продолжай тренироваться!',
+      tipsTitle:'📚 Советы о времени',tip1:'<strong>Короткая стрелка</strong> = Час (куда указывает)',tip2:'<strong>Длинная стрелка</strong> = Минуты (синяя)',
+      tip3:'Длинная стрелка на <strong>12</strong> = Ровно',tip4:'Длинная стрелка на <strong>6</strong> = Половина',
+      mathGame:'➕ Игра с числами',allKidsTools:'🧒 Все детские игры',backToKids:'← Назад к детским играм',kids:'🧒 Детям',home:'Главная',
+      correctText:v=>`Сейчас ${v}`,
+      readable:(h,m)=>{
+        const ORD=['двенадцатого','первого','второго','третьего','четвёртого','пятого','шестого','седьмого','восьмого','девятого','десятого','одиннадцатого','двенадцатого'];
+        const next=h===12?1:h+1;
+        if(m===0) return `${h}:00`;
+        if(m===30) return `половина ${ORD[next]}`;
+        if(m===15) return `четверть ${ORD[next]}`;
+        if(m===45) return `без четверти ${ORD[next]}`;
+        return `${h}:${m}`;
+      }},
+};
+const _PAGE_LANG = (document.documentElement.lang && CT[document.documentElement.lang]) ? document.documentElement.lang : 'en';
+let currentLang=_PAGE_LANG;
+function ct(k){return (CT[currentLang]||CT.en)[k];}
 
 function setLevel(l){
   level=l;
@@ -114,11 +184,7 @@ function fmt(h,m){
 }
 
 function readableTime(h,m){
-  if(m===0) return `${h} o'clock`;
-  if(m===30) return `half past ${h}`;
-  if(m===15) return `quarter past ${h}`;
-  if(m===45) return `quarter to ${h===12?1:h+1}`;
-  return fmt(h,m);
+  return ct('readable')(h,m);
 }
 
 function drawClock(h,m){
@@ -164,16 +230,16 @@ function renderQ(){
     document.getElementById('gameArea').innerHTML=`
       <div class="clock-done">
         <div style="font-size:60px;">🏆</div>
-        <div style="font-size:22px;font-weight:900;color:#15803d;margin:10px 0;">${pct>=80?'⏰ Clock Master!':pct>=50?'👍 Nice work!':'💪 Keep practicing!'}</div>
-        <div style="font-size:15px;color:var(--text-muted);">Score: ${score} / ${TOTAL} (${pct}%)</div>
-        <button class="btn btn-primary" style="margin-top:16px;" onclick="startGame()">Play Again</button>
+        <div style="font-size:22px;font-weight:900;color:#15803d;margin:10px 0;">${pct>=80?ct('master'):pct>=50?ct('nice'):ct('keep')}</div>
+        <div style="font-size:15px;color:var(--text-muted);">${ct('score')}: ${score} / ${TOTAL} (${pct}%)</div>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="startGame()">${ct('playAgain')}</button>
       </div>`;
     return;
   }
   currentTime=randTime();
   const choices=wrongTimes(currentTime,3);
   drawClock(currentTime.h,currentTime.m);
-  document.getElementById('cScore').textContent=`Score: ${score} / ${TOTAL} | Q ${qIdx+1} of ${TOTAL}`;
+  document.getElementById('cScore').textContent=`${ct('score')}: ${score} / ${TOTAL} | ${ct('q')} ${qIdx+1} ${ct('of')} ${TOTAL}`;
   document.getElementById('cChoices').innerHTML=choices.map(c=>
     `<button class="clock-choice" onclick="answerQ(this,'${c}','${fmt(currentTime.h,currentTime.m)}')">${c}</button>`
   ).join('');
@@ -181,6 +247,7 @@ function renderQ(){
   answered=false;
 }
 
+const SPEECH_LANG_CODES = {ar:'ar-SA',en:'en-US',fr:'fr-FR',es:'es-ES',de:'de-DE',ru:'ru-RU'};
 function answerQ(btn,chosen,correct){
   if(answered) return;
   answered=true;
@@ -189,16 +256,48 @@ function answerQ(btn,chosen,correct){
     btn.classList.add('correct');
     score++;
     document.getElementById('cFeedback').textContent=`✅ ${rt}`;
-    if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(`It is ${rt}`);u.lang='en-US';speechSynthesis.speak(u);}
+    if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(ct('correctText')(rt));u.lang=SPEECH_LANG_CODES[currentLang]||'en-US';speechSynthesis.speak(u);}
   } else {
     btn.classList.add('wrong');
     document.querySelectorAll('.clock-choice').forEach(b=>{if(b.textContent===correct)b.classList.add('correct');});
-    document.getElementById('cFeedback').textContent=`❌ It's ${rt}`;
+    document.getElementById('cFeedback').textContent=`❌ ${rt}`;
   }
   setTimeout(()=>{qIdx++;renderQ();},1100);
 }
 
-startGame();
+function updateStaticText(){
+  document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  const setHtml=(id,val)=>{const el=document.getElementById(id);if(el)el.innerHTML=val;};
+  set('clockSubtitle',ct('subtitle'));
+  set('lvlO',ct('lvlO'));
+  set('lvlH',ct('lvlH'));
+  set('lvlQ',ct('lvlQ'));
+  set('clockQuestion',ct('question'));
+  set('tipsTitle',ct('tipsTitle'));
+  setHtml('tip1',ct('tip1'));
+  setHtml('tip2',ct('tip2'));
+  setHtml('tip3',ct('tip3'));
+  setHtml('tip4',ct('tip4'));
+  set('linkMath',ct('mathGame'));
+  set('linkAllKids',ct('allKidsTools'));
+  set('backToKids',ct('backToKids'));
+  set('navKids',ct('kids'));
+  set('navHome',ct('home'));
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    updateStaticText();
+    renderQ();
+  };
+  window.onLangChange=function(lang){currentLang=lang;updateStaticText();renderQ();};
+  updateStaticText();
+  startGame();
+});
 </script>
 <script src="i18n.js?v=39" defer></script>
 </body></html>
