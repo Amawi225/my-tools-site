@@ -32,18 +32,18 @@
 <body>
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">Adawati</a>
-  <div class="nav-links"><a href="kids-learn.html">🧒 Kids</a><a href="index.html">Home</a></div>
+  <div class="nav-links"><a href="kids-learn.html" id="navKids">🧒 Kids</a><a href="index.html" id="navHome">Home</a></div>
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="kids-learn.html">← Back to Kids</a></div>
+  <div class="page-header"><a href="kids-learn.html" id="backToKids">← Back to Kids</a></div>
   <div class="card">
     <div class="card-icon" style="background:#fef9c3;">✖️</div>
     <h1 class="card-title">Times Tables</h1>
-    <div class="card-subtitle">Multiplication Practice — Ages 7–12</div>
+    <div class="card-subtitle" id="ttSubtitle">Multiplication Practice — Ages 7–12</div>
     <div class="divider"></div>
 
-    <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-align:center;margin-bottom:8px;">Choose a table (or Mix for random):</div>
+    <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-align:center;margin-bottom:8px;" id="chooseTable">Choose a table (or Mix for random):</div>
     <div class="tt-grid" id="tableGrid"></div>
 
     <div id="gameArea">
@@ -56,14 +56,14 @@
   </div>
 
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">📋 Quick Reference</div>
+    <div class="card-title" style="font-size:15px;" id="quickRef">📋 Quick Reference</div>
     <div class="tt-ref" id="ttRef"></div>
   </div>
 
   <div class="card" style="margin-top:16px;">
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-      <a href="kids-math.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">➕ Math Game</a>
-      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">🧒 All Kids Tools</a>
+      <a href="kids-math.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkMath">➕ Math Game</a>
+      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkAllKids">🧒 All Kids Tools</a>
     </div>
   </div>
 </div></main>
@@ -72,10 +72,40 @@
 let selectedTable=0, score=0, qIdx=0, answered=false, questions=[], timerVal=0, timerInterval=null;
 const TOTAL=10;
 
+const TT_T = {
+  en:{subtitle:'Multiplication Practice — Ages 7–12',chooseTable:'Choose a table (or Mix for random):',mix:'🎲 Mix',
+      score:'Score',q:'Q',of:'of',ready:'Ready!',correct:'✅ Correct!',wrong:v=>`❌ Answer: ${v}`,timeUp:v=>`⏱ Time! Answer: ${v}`,playAgain:'Play Again',
+      champion:'🏆 Perfect! You\'re a Math Champion!',excellent:'🎉 Excellent! Keep it up!',good:'👍 Good job! Try again for more stars!',keep:'💪 Keep practicing! You\'ll get there!',
+      quickRef:'📋 Quick Reference',mathGame:'➕ Math Game',allKidsTools:'🧒 All Kids Tools',backToKids:'← Back to Kids',kids:'🧒 Kids',home:'Home'},
+  ar:{subtitle:'تمرين الضرب — للأطفال من 7 إلى 12 سنة',chooseTable:'اختر جدولاً (أو مختلط للعشوائي):',mix:'🎲 مختلط',
+      score:'النتيجة',q:'سؤال',of:'من',ready:'استعد!',correct:'✅ إجابة صحيحة!',wrong:v=>`❌ الإجابة: ${v}`,timeUp:v=>`⏱ انتهى الوقت! الإجابة: ${v}`,playAgain:'العب مجدداً',
+      champion:'🏆 ممتاز! أنت بطل الرياضيات!',excellent:'🎉 رائع! استمر!',good:'👍 عمل جيد! حاول مجدداً لنجوم أكثر!',keep:'💪 استمر في التمرين! ستصل!',
+      quickRef:'📋 مرجع سريع',mathGame:'➕ لعبة الرياضيات',allKidsTools:'🧒 كل أدوات الأطفال',backToKids:'← رجوع للأطفال',kids:'🧒 الأطفال',home:'الرئيسية'},
+  fr:{subtitle:'Pratique de multiplication — 7 à 12 ans',chooseTable:'Choisis une table (ou Mix pour aléatoire) :',mix:'🎲 Mix',
+      score:'Score',q:'Q',of:'sur',ready:'Prêt !',correct:'✅ Correct !',wrong:v=>`❌ Réponse : ${v}`,timeUp:v=>`⏱ Temps écoulé ! Réponse : ${v}`,playAgain:'Rejouer',
+      champion:'🏆 Parfait ! Tu es un champion des maths !',excellent:'🎉 Excellent ! Continue !',good:'👍 Bon travail ! Réessaie pour plus d\'étoiles !',keep:'💪 Continue à t\'entraîner !',
+      quickRef:'📋 Référence rapide',mathGame:'➕ Jeu de calcul',allKidsTools:'🧒 Tous les jeux enfants',backToKids:'← Retour aux jeux enfants',kids:'🧒 Enfants',home:'Accueil'},
+  es:{subtitle:'Práctica de multiplicación — 7 a 12 años',chooseTable:'Elige una tabla (o Mix para aleatorio):',mix:'🎲 Mix',
+      score:'Puntaje',q:'P',of:'de',ready:'¡Listo!',correct:'✅ ¡Correcto!',wrong:v=>`❌ Respuesta: ${v}`,timeUp:v=>`⏱ ¡Tiempo! Respuesta: ${v}`,playAgain:'Jugar de nuevo',
+      champion:'🏆 ¡Perfecto! ¡Eres un campeón de matemáticas!',excellent:'🎉 ¡Excelente! ¡Sigue así!',good:'👍 ¡Buen trabajo! ¡Intenta de nuevo por más estrellas!',keep:'💪 ¡Sigue practicando!',
+      quickRef:'📋 Referencia rápida',mathGame:'➕ Juego de matemáticas',allKidsTools:'🧒 Todos los juegos infantiles',backToKids:'← Volver a juegos infantiles',kids:'🧒 Niños',home:'Inicio'},
+  de:{subtitle:'Multiplikationsübung — 7 bis 12 Jahre',chooseTable:'Wähle eine Tabelle (oder Mix für zufällig):',mix:'🎲 Mix',
+      score:'Punkte',q:'F',of:'von',ready:'Bereit!',correct:'✅ Richtig!',wrong:v=>`❌ Antwort: ${v}`,timeUp:v=>`⏱ Zeit um! Antwort: ${v}`,playAgain:'Nochmal spielen',
+      champion:'🏆 Perfekt! Du bist ein Mathe-Champion!',excellent:'🎉 Ausgezeichnet! Weiter so!',good:'👍 Gut gemacht! Versuch es nochmal für mehr Sterne!',keep:'💪 Übe weiter! Du schaffst das!',
+      quickRef:'📋 Schnellübersicht',mathGame:'➕ Rechenspiel',allKidsTools:'🧒 Alle Kinderspiele',backToKids:'← Zurück zu Kinderspielen',kids:'🧒 Kinder',home:'Startseite'},
+  ru:{subtitle:'Тренировка умножения — от 7 до 12 лет',chooseTable:'Выбери таблицу (или Микс для случайной):',mix:'🎲 Микс',
+      score:'Счёт',q:'Вопрос',of:'из',ready:'Готовься!',correct:'✅ Правильно!',wrong:v=>`❌ Ответ: ${v}`,timeUp:v=>`⏱ Время вышло! Ответ: ${v}`,playAgain:'Играть снова',
+      champion:'🏆 Идеально! Ты чемпион по математике!',excellent:'🎉 Отлично! Продолжай!',good:'👍 Хорошая работа! Попробуй ещё раз для большего числа звёзд!',keep:'💪 Продолжай тренироваться! У тебя получится!',
+      quickRef:'📋 Быстрая справка',mathGame:'➕ Игра с числами',allKidsTools:'🧒 Все детские игры',backToKids:'← Назад к детским играм',kids:'🧒 Детям',home:'Главная'},
+};
+const _PAGE_LANG = (document.documentElement.lang && TT_T[document.documentElement.lang]) ? document.documentElement.lang : 'en';
+let currentLang=_PAGE_LANG;
+function ttt(k){return (TT_T[currentLang]||TT_T.en)[k];}
+
 function buildGrid(){
   const g=document.getElementById('tableGrid');
   const tables=[0,2,3,4,5,6,7,8,9,10,11,12];
-  g.innerHTML=tables.map(t=>`<button class="tt-tbl${t===selectedTable?' active':''}" onclick="pickTable(${t})">${t===0?'🎲 Mix':t+'×'}</button>`).join('');
+  g.innerHTML=tables.map(t=>`<button class="tt-tbl${t===selectedTable?' active':''}" onclick="pickTable(${t})">${t===0?ttt('mix'):t+'×'}</button>`).join('');
 }
 
 function pickTable(t){
@@ -98,7 +128,6 @@ function makeChoices(ans){
     const v=ans+[-1,1,-2,2,-selectedTable||1,selectedTable||1][randInt(0,5)];
     if(v>0&&v!==ans) s.add(v);
   }
-  // ensure 4 choices
   while(s.size<4){s.add(ans+randInt(1,5));}
   return [...s].sort(()=>Math.random()-.5);
 }
@@ -115,19 +144,18 @@ function renderQ(){
     if(timerInterval) clearInterval(timerInterval);
     const pct=Math.round(score/TOTAL*100);
     const stars='⭐'.repeat(Math.min(5,Math.ceil(pct/20)));
-    const msg=pct>=90?'🏆 Perfect! You\'re a Math Champion!':pct>=70?'🎉 Excellent! Keep it up!':pct>=50?'👍 Good job! Try again for more stars!':'💪 Keep practicing! You\'ll get there!';
+    const msg=pct>=90?ttt('champion'):pct>=70?ttt('excellent'):pct>=50?ttt('good'):ttt('keep');
     document.getElementById('gameArea').innerHTML=`
       <div class="tt-done">
         <div style="font-size:60px;">🏆</div>
         <div style="font-size:22px;font-weight:900;color:#92400e;margin:10px 0;">${msg}</div>
         <div style="font-size:18px;">${stars}</div>
-        <div style="font-size:15px;color:var(--text-muted);margin:8px 0;">Score: ${score} / ${TOTAL}</div>
-        <button class="btn btn-primary" style="margin-top:16px;" onclick="startGame()">Play Again</button>
+        <div style="font-size:15px;color:var(--text-muted);margin:8px 0;">${ttt('score')}: ${score} / ${TOTAL}</div>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="startGame()">${ttt('playAgain')}</button>
       </div>`;
     return;
   }
   const q=questions[qIdx];
-  // Timer per question
   if(timerInterval) clearInterval(timerInterval);
   timerVal=10;
   document.getElementById('ttTimer').textContent=`⏱ ${timerVal}s`;
@@ -138,7 +166,7 @@ function renderQ(){
   },1000);
 
   const choices=makeChoices(q.ans);
-  document.getElementById('ttScore').textContent=`Score: ${score} / ${TOTAL} | Q ${qIdx+1} of ${TOTAL}`;
+  document.getElementById('ttScore').textContent=`${ttt('score')}: ${score} / ${TOTAL} | ${ttt('q')} ${qIdx+1} ${ttt('of')} ${TOTAL}`;
   document.getElementById('ttQ').textContent=`${q.a} × ${q.b} = ?`;
   document.getElementById('ttChoices').innerHTML=choices.map(c=>
     `<button class="tt-choice" onclick="answerQ(this,${c},${q.ans})">${c}</button>`
@@ -152,7 +180,7 @@ function timeOut(){
   answered=true;
   const q=questions[qIdx];
   document.querySelectorAll('.tt-choice').forEach(b=>{if(parseInt(b.textContent)===q.ans) b.classList.add('correct');});
-  document.getElementById('ttFeedback').textContent=`⏱ Time! Answer: ${q.ans}`;
+  document.getElementById('ttFeedback').textContent=ttt('timeUp')(q.ans);
   setTimeout(()=>{qIdx++;renderQ();},1200);
 }
 
@@ -163,11 +191,11 @@ function answerQ(btn,chosen,correct){
   if(chosen===correct){
     btn.classList.add('correct');
     score++;
-    document.getElementById('ttFeedback').textContent='✅ Correct!';
+    document.getElementById('ttFeedback').textContent=ttt('correct');
   } else {
     btn.classList.add('wrong');
     document.querySelectorAll('.tt-choice').forEach(b=>{if(parseInt(b.textContent)===correct) b.classList.add('correct');});
-    document.getElementById('ttFeedback').textContent=`❌ Answer: ${correct}`;
+    document.getElementById('ttFeedback').textContent=ttt('wrong')(correct);
   }
   setTimeout(()=>{qIdx++;renderQ();},900);
 }
@@ -178,11 +206,34 @@ function buildRef(){
   r.innerHTML=Array.from({length:12},(_,i)=>`<div class="tt-ref-row">${t} × ${i+1} = <strong>${t*(i+1)}</strong></div>`).join('');
 }
 
-buildGrid();
-startGame();
-buildRef();
+function updateStaticText(){
+  document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  set('ttSubtitle',ttt('subtitle'));
+  set('chooseTable',ttt('chooseTable'));
+  set('quickRef',ttt('quickRef'));
+  set('linkMath',ttt('mathGame'));
+  set('linkAllKids',ttt('allKidsTools'));
+  set('backToKids',ttt('backToKids'));
+  set('navKids',ttt('kids'));
+  set('navHome',ttt('home'));
+  buildGrid();
+}
 
-document.querySelector('#tableGrid').addEventListener('click',()=>setTimeout(buildRef,50));
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    updateStaticText();
+    renderQ();
+  };
+  window.onLangChange=function(lang){currentLang=lang;updateStaticText();renderQ();};
+  updateStaticText();
+  startGame();
+  buildRef();
+  document.querySelector('#tableGrid').addEventListener('click',()=>setTimeout(buildRef,50));
+});
 </script>
 <script src="i18n.js?v=39" defer></script>
 </body></html>
