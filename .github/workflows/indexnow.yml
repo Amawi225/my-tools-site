@@ -18,7 +18,7 @@ jobs:
       - name: Build URL list from changed files
         id: urls
         run: |
-          BASE="https://adawati2027.github.io/my-tools-site"
+          BASE="https://adawati.space"
 
           CHANGED=$(git diff --name-only HEAD~1 HEAD -- '*.html' '**/*.html' 'sitemap.xml')
           echo "Changed: $CHANGED"
@@ -45,11 +45,11 @@ jobs:
         if: steps.urls.outputs.urlList != ''
         run: |
           KEY="d0b90a0519994afea0fecdc0906071a2"
-          BASE="https://adawati2027.github.io/my-tools-site"
+          BASE="https://adawati.space"
 
           PAYLOAD=$(cat <<EOF
           {
-            "host": "adawati2027.github.io",
+            "host": "adawati.space",
             "key": "$KEY",
             "keyLocation": "$BASE/$KEY.txt",
             "urlList": [${{ steps.urls.outputs.urlList }}]
