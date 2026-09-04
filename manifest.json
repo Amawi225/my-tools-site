@@ -2,8 +2,8 @@
   "name": "Adawati — Free Online Tools",
   "short_name": "Adawati",
   "description": "Free tools, calculators & practical guides in your browser. No signup required.",
-  "start_url": "/my-tools-site/",
-  "scope": "/my-tools-site/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#2563eb",
@@ -17,8 +17,8 @@
   "screenshots": [],
   "categories": ["utilities", "productivity"],
   "shortcuts": [
-    { "name": "BMI Calculator", "url": "/my-tools-site/bmi-calculator.html", "description": "Calculate body mass index" },
-    { "name": "Currency Converter", "url": "/my-tools-site/currency-converter.html", "description": "Convert currencies" },
-    { "name": "Password Generator", "url": "/my-tools-site/password-generator.html", "description": "Generate secure passwords" }
+    { "name": "BMI Calculator", "url": "/bmi-calculator.html", "description": "Calculate body mass index" },
+    { "name": "Currency Converter", "url": "/currency-converter.html", "description": "Convert currencies" },
+    { "name": "Password Generator", "url": "/password-generator.html", "description": "Generate secure passwords" }
   ]
 }
