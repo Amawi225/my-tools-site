@@ -130,26 +130,26 @@
     </div>
   </div>
   <div class="card" style="margin-top:16px;">
-    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <div class="card-title" style="font-size:15px;" id="faqTitle">❓ أسئلة شائعة</div>
     <details style="margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">لأي أعمار تناسب هذه اللعبة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">مُصمَّمة للأطفال من 2 إلى 6 سنوات، مع محتوى تعليمي بسيط يشمل الأرقام والألوان والحيوانات. المحتوى بدون إعلانات وآمن للأطفال.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="faqQ1">لأي أعمار تناسب هذه اللعبة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="faqA1">مُصمَّمة للأطفال من 2 إلى 6 سنوات، مع محتوى تعليمي بسيط يشمل الأرقام والألوان والحيوانات. المحتوى بدون إعلانات وآمن للأطفال.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل تحتاج إلى إنترنت؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">اللعبة تعمل بالكامل في المتصفح ولا تحتاج إلى اتصال بالإنترنت بعد تحميل الصفحة.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="faqQ2">هل تحتاج إلى إنترنت؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="faqA2">اللعبة تعمل بالكامل في المتصفح ولا تحتاج إلى اتصال بالإنترنت بعد تحميل الصفحة.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">ما اللغات التي تدعمها اللعبة؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تدعم اللعبة ست لغات: العربية، الإنجليزية، الفرنسية، الإسبانية، الألمانية، والروسية — يمكن تغيير اللغة من القائمة في الأعلى.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="faqQ3">ما اللغات التي تدعمها اللعبة؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="faqA3">تدعم اللعبة ست لغات: العربية، الإنجليزية، الفرنسية، الإسبانية، الألمانية، والروسية — يمكن تغيير اللغة من القائمة في الأعلى.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل هناك صوت لنطق الكلمات؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">نعم، النقر على البطاقة يُشغّل نطق الرقم أو الكلمة باللغة المختارة باستخدام تقنية تحويل النص إلى كلام المدمجة في المتصفح.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="faqQ4">هل هناك صوت لنطق الكلمات؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="faqA4">نعم، النقر على البطاقة يُشغّل نطق الرقم أو الكلمة باللغة المختارة باستخدام تقنية تحويل النص إلى كلام المدمجة في المتصفح.</p>
     </details>
     <details style="margin-top:8px;border:1px solid var(--border);border-radius:8px;padding:12px;">
-      <summary style="font-weight:700;cursor:pointer;font-size:14px;">Is this game safe for children?</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">Yes. No ads within the game, no data collected, and no external services required. It works entirely in the browser.</p>
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;" id="faqQ5">هل هذه اللعبة آمنة للأطفال؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;" id="faqA5">نعم. لا توجد إعلانات داخل اللعبة، ولا يتم جمع أي بيانات، ولا حاجة لأي خدمات خارجية. تعمل بالكامل داخل المتصفح.</p>
     </details>
   </div>
 
@@ -283,8 +283,54 @@ const KT = {
 };
 function kt(k){return(KT[currentLang]||KT.ar)[k]||KT.ar[k]||k;}
 
+const FAQ_T = {
+  ar:{title:'❓ أسئلة شائعة',
+    q1:'لأي أعمار تناسب هذه اللعبة؟', a1:'مُصمَّمة للأطفال من 2 إلى 6 سنوات، مع محتوى تعليمي بسيط يشمل الأرقام والألوان والحيوانات. المحتوى بدون إعلانات وآمن للأطفال.',
+    q2:'هل تحتاج إلى إنترنت؟', a2:'اللعبة تعمل بالكامل في المتصفح ولا تحتاج إلى اتصال بالإنترنت بعد تحميل الصفحة.',
+    q3:'ما اللغات التي تدعمها اللعبة؟', a3:'تدعم اللعبة ست لغات: العربية، الإنجليزية، الفرنسية، الإسبانية، الألمانية، والروسية — يمكن تغيير اللغة من القائمة في الأعلى.',
+    q4:'هل هناك صوت لنطق الكلمات؟', a4:'نعم، النقر على البطاقة يُشغّل نطق الرقم أو الكلمة باللغة المختارة باستخدام تقنية تحويل النص إلى كلام المدمجة في المتصفح.',
+    q5:'هل هذه اللعبة آمنة للأطفال؟', a5:'نعم. لا توجد إعلانات داخل اللعبة، ولا يتم جمع أي بيانات، ولا حاجة لأي خدمات خارجية. تعمل بالكامل داخل المتصفح.'},
+  en:{title:'❓ FAQ',
+    q1:'What ages is this game suitable for?', a1:'Designed for children ages 2 to 6, with simple educational content covering numbers, colors, and animals. The content is ad-free and safe for kids.',
+    q2:'Do I need internet access?', a2:'The game runs entirely in the browser and doesn\'t need an internet connection after the page has loaded.',
+    q3:'What languages does the game support?', a3:'The game supports six languages: Arabic, English, French, Spanish, German, and Russian — you can change the language from the menu at the top.',
+    q4:'Is there audio pronunciation of the words?', a4:'Yes, tapping the card plays the pronunciation of the number or word in the selected language using the browser\'s built-in text-to-speech technology.',
+    q5:'Is this game safe for children?', a5:'Yes. No ads within the game, no data collected, and no external services required. It works entirely in the browser.'},
+  fr:{title:'❓ FAQ',
+    q1:'À partir de quel âge ce jeu convient-il ?', a1:'Conçu pour les enfants de 2 à 6 ans, avec un contenu éducatif simple couvrant les chiffres, les couleurs et les animaux. Contenu sans publicité et sûr pour les enfants.',
+    q2:'Ai-je besoin d\'Internet ?', a2:'Le jeu fonctionne entièrement dans le navigateur et ne nécessite pas de connexion Internet une fois la page chargée.',
+    q3:'Quelles langues le jeu prend-il en charge ?', a3:'Le jeu prend en charge six langues : arabe, anglais, français, espagnol, allemand et russe — vous pouvez changer de langue depuis le menu en haut.',
+    q4:'Y a-t-il une prononciation audio des mots ?', a4:'Oui, appuyer sur la carte joue la prononciation du chiffre ou du mot dans la langue sélectionnée grâce à la technologie de synthèse vocale intégrée au navigateur.',
+    q5:'Ce jeu est-il sûr pour les enfants ?', a5:'Oui. Aucune publicité dans le jeu, aucune donnée collectée et aucun service externe requis. Il fonctionne entièrement dans le navigateur.'},
+  es:{title:'❓ Preguntas frecuentes',
+    q1:'¿Para qué edades es adecuado este juego?', a1:'Diseñado para niños de 2 a 6 años, con contenido educativo sencillo que cubre números, colores y animales. Contenido sin anuncios y seguro para niños.',
+    q2:'¿Necesito conexión a internet?', a2:'El juego funciona completamente en el navegador y no necesita conexión a internet después de cargar la página.',
+    q3:'¿Qué idiomas admite el juego?', a3:'El juego admite seis idiomas: árabe, inglés, francés, español, alemán y ruso — puedes cambiar el idioma desde el menú superior.',
+    q4:'¿Hay pronunciación en audio de las palabras?', a4:'Sí, al tocar la tarjeta se reproduce la pronunciación del número o la palabra en el idioma seleccionado usando la tecnología de texto a voz integrada del navegador.',
+    q5:'¿Es este juego seguro para niños?', a5:'Sí. No hay anuncios dentro del juego, no se recopilan datos y no se requieren servicios externos. Funciona completamente en el navegador.'},
+  de:{title:'❓ Häufige Fragen',
+    q1:'Für welches Alter ist dieses Spiel geeignet?', a1:'Entwickelt für Kinder von 2 bis 6 Jahren, mit einfachen Lerninhalten zu Zahlen, Farben und Tieren. Werbefrei und sicher für Kinder.',
+    q2:'Benötige ich eine Internetverbindung?', a2:'Das Spiel läuft vollständig im Browser und benötigt nach dem Laden der Seite keine Internetverbindung.',
+    q3:'Welche Sprachen unterstützt das Spiel?', a3:'Das Spiel unterstützt sechs Sprachen: Arabisch, Englisch, Französisch, Spanisch, Deutsch und Russisch — die Sprache kann oben im Menü geändert werden.',
+    q4:'Gibt es eine Audio-Aussprache der Wörter?', a4:'Ja, durch Tippen auf die Karte wird die Aussprache der Zahl oder des Wortes in der gewählten Sprache über die integrierte Text-zu-Sprache-Funktion des Browsers abgespielt.',
+    q5:'Ist dieses Spiel sicher für Kinder?', a5:'Ja. Keine Werbung im Spiel, keine Datenerfassung und keine externen Dienste erforderlich. Es funktioniert vollständig im Browser.'},
+  ru:{title:'❓ Часто задаваемые вопросы',
+    q1:'Для какого возраста подходит эта игра?', a1:'Разработана для детей от 2 до 6 лет с простым обучающим материалом: цифры, цвета и животные. Без рекламы и безопасно для детей.',
+    q2:'Нужен ли интернет?', a2:'Игра полностью работает в браузере и не требует подключения к интернету после загрузки страницы.',
+    q3:'Какие языки поддерживает игра?', a3:'Игра поддерживает шесть языков: арабский, английский, французский, испанский, немецкий и русский — язык можно изменить в меню сверху.',
+    q4:'Есть ли аудио-произношение слов?', a4:'Да, при нажатии на карточку воспроизводится произношение числа или слова на выбранном языке с помощью встроенной в браузер технологии преобразования текста в речь.',
+    q5:'Безопасна ли эта игра для детей?', a5:'Да. В игре нет рекламы, данные не собираются, внешние сервисы не требуются. Всё работает полностью в браузере.'},
+};
+function renderFAQ(){
+  const f = FAQ_T[currentLang] || FAQ_T.en;
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  set('faqTitle',f.title);
+  for(let i=1;i<=5;i++){set('faqQ'+i,f['q'+i]);set('faqA'+i,f['a'+i]);}
+}
+
 const LANG_CODES = {ar:'ar-SA',en:'en-US',fr:'fr-FR',es:'es-ES',de:'de-DE',ru:'ru-RU'};
-let currentLang='ar', currentMode='numbers', currentIdx=0;
+const _PAGE_LANG = (document.documentElement.lang && KT[document.documentElement.lang]) ? document.documentElement.lang : 'en';
+let currentLang=_PAGE_LANG, currentMode='numbers', currentIdx=0;
 
 function getName(item){return item[currentLang]||item.ar||item.en||'';}
 
@@ -482,14 +528,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     currentLang=lang;
     document.documentElement.dir=lang==='ar'?'rtl':'ltr';
     updateModeLabels();
+    renderFAQ();
     if(currentMode==='quiz') renderQuiz(); else renderLearn();
   };
-  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateModeLabels();if(currentMode==='quiz')renderQuiz();else renderLearn();};
+  window.onLangChange=function(lang){currentLang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';updateModeLabels();renderFAQ();if(currentMode==='quiz')renderQuiz();else renderLearn();};
   // Stop speech when user leaves the tab
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden&&window.speechSynthesis) speechSynthesis.cancel();
   });
   updateModeLabels();
+  renderFAQ();
   renderLearn();
   // Keyboard nav for learn mode
   document.addEventListener('keydown',e=>{
@@ -502,5 +550,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <script src="i18n.js?v=39" defer></script>
-<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js',{updateViaCache:'none'});</script>
 </body></html>
