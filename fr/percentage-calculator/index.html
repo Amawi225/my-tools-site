@@ -7,7 +7,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculateur de pourcentage — Remise, TVA &amp; ratio | Adawati</title>
+<title>Calculateur de pourcentage gratuit — Remise, TVA &amp; ratio | Adawati</title>
 <meta name="description" content="Calculateur de pourcentage gratuit en ligne : trouvez X% d'un nombre, calculez l'augmentation ou la diminution en pourcentage. Résultats instantanés.">
 <meta name="keywords" content="percentage calculator, free percentage calculator online, how to calculate percentage, discount calculator, percentage increase calculator, percentage change calculator, 5% of a number, VAT percentage calculator, حاسبة النسبة المئوية, كيف أحسب النسبة المئوية, حاسبة الخصم, حساب الزيادة والنقص بالنسبة">
 <meta name="robots" content="index, follow">
@@ -48,7 +48,7 @@
 ]}
 ]}
 </script>
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
@@ -89,12 +89,12 @@
     <div id="panel1">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
         <div style="flex:1;min-width:100px;">
-          <label data-i18n="pct_pct">Percentage %</label>
+          <label for="p1pct" data-i18n="pct_pct">Percentage %</label>
           <input type="number" id="p1pct" placeholder="e.g. 15" min="0" step="any" oninput="calc1()">
         </div>
         <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);" data-i18n="pct_of">of</div>
         <div style="flex:1;min-width:100px;">
-          <label data-i18n="pct_num">Number</label>
+          <label for="p1num" data-i18n="pct_num">Number</label>
           <input type="number" id="p1num" placeholder="e.g. 200" min="0" step="any" oninput="calc1()">
         </div>
       </div>
@@ -108,12 +108,12 @@
     <div id="panel2" style="display:none;">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
         <div style="flex:1;min-width:100px;">
-          <label data-i18n="pct_first">First number</label>
+          <label for="p2a" data-i18n="pct_first">First number</label>
           <input type="number" id="p2a" placeholder="e.g. 30" step="any" oninput="calc2()">
         </div>
         <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);" data-i18n="pct_of">of</div>
         <div style="flex:1;min-width:100px;">
-          <label data-i18n="pct_second">Second number</label>
+          <label for="p2b" data-i18n="pct_second">Second number</label>
           <input type="number" id="p2b" placeholder="e.g. 150" step="any" oninput="calc2()">
         </div>
       </div>
@@ -127,12 +127,12 @@
     <div id="panel3" style="display:none;">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
         <div style="flex:1;min-width:100px;">
-          <label data-i18n="pct_from_val">From value</label>
+          <label for="p3a" data-i18n="pct_from_val">From value</label>
           <input type="number" id="p3a" placeholder="e.g. 100" step="any" oninput="calc3()">
         </div>
         <div style="padding-top:20px;font-size:18px;font-weight:700;color:var(--text-muted);">→</div>
         <div style="flex:1;min-width:100px;">
-          <label data-i18n="pct_to_val">To value</label>
+          <label for="p3b" data-i18n="pct_to_val">To value</label>
           <input type="number" id="p3b" placeholder="e.g. 130" step="any" oninput="calc3()">
         </div>
       </div>
@@ -291,5 +291,5 @@ function quickFill(pct) {
   calc1();
 }
 </script>
-<script src="../../i18n.js?v=33" defer></script>
+<script src="i18n.js?v=33" defer></script>
 </body></html>

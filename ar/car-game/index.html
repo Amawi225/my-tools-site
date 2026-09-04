@@ -7,7 +7,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لعبة سباق السيارات — تجنب المرور وسجّل نقاط | أدواتي</title>
+<title>لعبة سباق السيارات المجانية — تجنب المرور وسجّل أعلى نقاط | أدواتي</title>
 <meta name="description" content="قد سيارتك وتجنب السيارات القادمة. تمسّك أطول فترة ممكنة وحطّم رقمك القياسي. لعبة سيارات مجانية في المتصفح.">
 <meta name="keywords" content="car dodge game, free car game online, driving game browser, car game for kids, free online car game no download">
 <meta name="robots" content="index, follow">
@@ -27,7 +27,7 @@
 {"@type":"Question","name":"Does the car game work on mobile phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. The game includes on-screen touch buttons for mobile and tablet play. No download or app installation is needed — it runs entirely in your browser."}}
 ]}]}
 </script>
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="style.css">
 <style>
 .game-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;}
 #gameCanvas{border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);display:block;max-width:100%;}
@@ -377,13 +377,14 @@ function saveScore(){
   pendingScore=null; document.getElementById('nameEntry').style.display='none'; document.getElementById('nameInput').value='';
   renderLb();
 }
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function renderLb(){
   const lb=getLb();
   document.getElementById('lbTitle').textContent=tr('top3');
   document.getElementById('clearBtn').textContent=tr('clear');
   const rows=document.getElementById('lbRows');
   if(!lb.length){rows.innerHTML=`<div class="lb-empty">${tr('no_scores')}</div>`;return;}
-  rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${e.name}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
+  rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${esc(e.name)}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -414,6 +415,6 @@ function drawInitOverlay(){
   drawOverlay(tr('game_title'),tr('dodge'),tr('start'));
 }
 </script>
-<script src="../../i18n.js?v=33" defer></script>
+<script src="i18n.js?v=33" defer></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/my-tools-site/sw.js',{updateViaCache:'none'});</script>
 </body></html>

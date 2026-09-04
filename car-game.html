@@ -376,13 +376,14 @@ function saveScore(){
   pendingScore=null; document.getElementById('nameEntry').style.display='none'; document.getElementById('nameInput').value='';
   renderLb();
 }
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function renderLb(){
   const lb=getLb();
   document.getElementById('lbTitle').textContent=tr('top3');
   document.getElementById('clearBtn').textContent=tr('clear');
   const rows=document.getElementById('lbRows');
   if(!lb.length){rows.innerHTML=`<div class="lb-empty">${tr('no_scores')}</div>`;return;}
-  rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${e.name}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
+  rows.innerHTML=lb.map((e,i)=>`<div class="lb-row ${MEDAL_CLS[i]||''}"><span class="lb-medal">${MEDALS[i]||''}</span><span class="lb-name">${esc(e.name)}</span><span class="lb-score">${e.score} pts</span></div>`).join('');
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
