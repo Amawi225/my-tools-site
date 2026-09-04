@@ -36,15 +36,15 @@
 <body>
 <nav class="navbar"><div class="nav-container">
   <a href="index.html" class="nav-brand">Adawati</a>
-  <div class="nav-links"><a href="kids-learn.html">🧒 Kids</a><a href="index.html">Home</a></div>
+  <div class="nav-links"><a href="kids-learn.html" id="navKids">🧒 Kids</a><a href="index.html" id="navHome">Home</a></div>
 </div></nav>
 
 <main><div class="tool-page">
-  <div class="page-header"><a href="kids-learn.html">← Back to Kids</a></div>
+  <div class="page-header"><a href="kids-learn.html" id="backToKids">← Back to Kids</a></div>
   <div class="card">
     <div class="card-icon" style="background:#eff6ff;">🔬</div>
     <h1 class="card-title">Science Explorer</h1>
-    <div class="card-subtitle">Solar System, Body & Nature — Ages 8–13</div>
+    <div class="card-subtitle" id="sciSubtitle">Solar System, Body & Nature — Ages 8–13</div>
     <div class="divider"></div>
 
     <div class="sci-tabs">
@@ -59,7 +59,7 @@
         <div class="sci-icon" id="sciIcon">☀️</div>
         <div class="sci-name" id="sciName">Loading...</div>
         <div class="sci-fact" id="sciFact"></div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">🔊 Tap to hear</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;" id="tapToHear">🔊 Tap to hear</div>
       </div>
       <div class="sci-nav">
         <button onclick="prev()">◀</button>
@@ -79,8 +79,8 @@
 
   <div class="card" style="margin-top:16px;">
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-      <a href="kids-flags.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">🌍 Flags Quiz</a>
-      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;">🧒 All Kids Tools</a>
+      <a href="kids-flags.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkFlags">🌍 Flags Quiz</a>
+      <a href="kids-learn.html" class="btn" style="background:var(--surface-2);color:var(--text);text-decoration:none;" id="linkAllKids">🧒 All Kids Tools</a>
     </div>
   </div>
 </div></main>
@@ -88,34 +88,192 @@
 <script>
 const DATA = {
   planets: [
-    {icon:'☀️',name:'The Sun',fact:'The Sun is a star! It is 109 times wider than Earth and 4.6 billion years old.',q:'Is the Sun a star or a planet?',choices:['A star','A planet','A moon','A comet'],ans:'A star'},
-    {icon:'🪨',name:'Mercury',fact:'Mercury is the closest planet to the Sun. A year on Mercury is only 88 Earth days!',q:'Which planet is closest to the Sun?',choices:['Mercury','Venus','Mars','Jupiter'],ans:'Mercury'},
-    {icon:'🌡️',name:'Venus',fact:'Venus is the hottest planet at 465°C, even hotter than Mercury!',q:'Which is the hottest planet in our solar system?',choices:['Venus','Mercury','Mars','Saturn'],ans:'Venus'},
-    {icon:'🌍',name:'Earth',fact:'Earth is the only planet known to have life. It is covered 71% by water.',q:'What percentage of Earth is covered by water?',choices:['71%','50%','90%','30%'],ans:'71%'},
-    {icon:'🔴',name:'Mars',fact:'Mars is called the Red Planet. It has the tallest volcano in the solar system: Olympus Mons!',q:'What is Mars called?',choices:['The Red Planet','The Blue Planet','The Gas Giant','The Ice Planet'],ans:'The Red Planet'},
-    {icon:'🪐',name:'Jupiter',fact:'Jupiter is the largest planet. It has a storm called the Great Red Spot bigger than Earth!',q:'Which is the largest planet?',choices:['Jupiter','Saturn','Neptune','Uranus'],ans:'Jupiter'},
-    {icon:'🪐',name:'Saturn',fact:'Saturn has beautiful rings made of ice and rock. It is the second largest planet.',q:'Which planet has famous rings of ice and rock?',choices:['Saturn','Jupiter','Uranus','Neptune'],ans:'Saturn'},
-    {icon:'🩵',name:'Uranus',fact:'Uranus spins on its side! Its axis is tilted at 98 degrees.',q:'Which planet spins on its side?',choices:['Uranus','Neptune','Saturn','Mars'],ans:'Uranus'},
-    {icon:'🔵',name:'Neptune',fact:'Neptune is the farthest planet from the Sun. Winds there blow at 2,100 km/h!',q:'Which is the farthest planet from the Sun?',choices:['Neptune','Uranus','Pluto','Saturn'],ans:'Neptune'},
+    {icon:'☀️',ansIdx:0,
+      en:{name:'The Sun',fact:'The Sun is a star! It is 109 times wider than Earth and 4.6 billion years old.',q:'Is the Sun a star or a planet?',choices:['A star','A planet','A moon','A comet']},
+      ar:{name:'الشمس',fact:'الشمس نجم! يبلغ عرضها 109 أضعاف عرض الأرض، وعمرها 4.6 مليار سنة.',q:'هل الشمس نجم أم كوكب؟',choices:['نجم','كوكب','قمر','مذنب']},
+      fr:{name:'Le Soleil',fact:'Le Soleil est une étoile ! Il est 109 fois plus large que la Terre et âgé de 4,6 milliards d\'années.',q:'Le Soleil est-il une étoile ou une planète ?',choices:['Une étoile','Une planète','Une lune','Une comète']},
+      es:{name:'El Sol',fact:'¡El Sol es una estrella! Es 109 veces más ancho que la Tierra y tiene 4600 millones de años.',q:'¿El Sol es una estrella o un planeta?',choices:['Una estrella','Un planeta','Una luna','Un cometa']},
+      de:{name:'Die Sonne',fact:'Die Sonne ist ein Stern! Sie ist 109-mal breiter als die Erde und 4,6 Milliarden Jahre alt.',q:'Ist die Sonne ein Stern oder ein Planet?',choices:['Ein Stern','Ein Planet','Ein Mond','Ein Komet']},
+      ru:{name:'Солнце',fact:'Солнце — это звезда! Оно в 109 раз шире Земли и ему 4,6 миллиарда лет.',q:'Солнце — это звезда или планета?',choices:['Звезда','Планета','Луна','Комета']}},
+    {icon:'🪨',ansIdx:0,
+      en:{name:'Mercury',fact:'Mercury is the closest planet to the Sun. A year on Mercury is only 88 Earth days!',q:'Which planet is closest to the Sun?',choices:['Mercury','Venus','Mars','Jupiter']},
+      ar:{name:'عطارد',fact:'عطارد أقرب كوكب إلى الشمس. السنة على عطارد 88 يوماً أرضياً فقط!',q:'ما أقرب كوكب إلى الشمس؟',choices:['عطارد','الزهرة','المريخ','المشتري']},
+      fr:{name:'Mercure',fact:'Mercure est la planète la plus proche du Soleil. Une année sur Mercure ne dure que 88 jours terrestres !',q:'Quelle planète est la plus proche du Soleil ?',choices:['Mercure','Vénus','Mars','Jupiter']},
+      es:{name:'Mercurio',fact:'Mercurio es el planeta más cercano al Sol. ¡Un año en Mercurio dura solo 88 días terrestres!',q:'¿Qué planeta está más cerca del Sol?',choices:['Mercurio','Venus','Marte','Júpiter']},
+      de:{name:'Merkur',fact:'Merkur ist der sonnennächste Planet. Ein Jahr auf Merkur dauert nur 88 Erdtage!',q:'Welcher Planet ist der Sonne am nächsten?',choices:['Merkur','Venus','Mars','Jupiter']},
+      ru:{name:'Меркурий',fact:'Меркурий — ближайшая к Солнцу планета. Год на Меркурии длится всего 88 земных дней!',q:'Какая планета ближе всего к Солнцу?',choices:['Меркурий','Венера','Марс','Юпитер']}},
+    {icon:'🌡️',ansIdx:0,
+      en:{name:'Venus',fact:'Venus is the hottest planet at 465°C, even hotter than Mercury!',q:'Which is the hottest planet in our solar system?',choices:['Venus','Mercury','Mars','Saturn']},
+      ar:{name:'الزهرة',fact:'الزهرة أشد الكواكب حرارة بدرجة 465 مئوية، أكثر سخونة من عطارد!',q:'ما أشد كوكب حرارة في نظامنا الشمسي؟',choices:['الزهرة','عطارد','المريخ','زحل']},
+      fr:{name:'Vénus',fact:'Vénus est la planète la plus chaude avec 465°C, encore plus chaude que Mercure !',q:'Quelle est la planète la plus chaude de notre système solaire ?',choices:['Vénus','Mercure','Mars','Saturne']},
+      es:{name:'Venus',fact:'¡Venus es el planeta más caliente con 465°C, incluso más que Mercurio!',q:'¿Cuál es el planeta más caliente de nuestro sistema solar?',choices:['Venus','Mercurio','Marte','Saturno']},
+      de:{name:'Venus',fact:'Venus ist mit 465°C der heißeste Planet, sogar heißer als Merkur!',q:'Welcher ist der heißeste Planet in unserem Sonnensystem?',choices:['Venus','Merkur','Mars','Saturn']},
+      ru:{name:'Венера',fact:'Венера — самая горячая планета, 465°C, даже горячее Меркурия!',q:'Какая планета самая горячая в нашей Солнечной системе?',choices:['Венера','Меркурий','Марс','Сатурн']}},
+    {icon:'🌍',ansIdx:0,
+      en:{name:'Earth',fact:'Earth is the only planet known to have life. It is covered 71% by water.',q:'What percentage of Earth is covered by water?',choices:['71%','50%','90%','30%']},
+      ar:{name:'الأرض',fact:'الأرض هي الكوكب الوحيد المعروف بوجود حياة عليه. تغطي المياه 71% من سطحها.',q:'كم نسبة سطح الأرض التي تغطيها المياه؟',choices:['71%','50%','90%','30%']},
+      fr:{name:'La Terre',fact:'La Terre est la seule planète connue abritant la vie. Elle est couverte à 71% d\'eau.',q:'Quel pourcentage de la Terre est couvert d\'eau ?',choices:['71%','50%','90%','30%']},
+      es:{name:'La Tierra',fact:'La Tierra es el único planeta conocido con vida. Está cubierta en un 71% de agua.',q:'¿Qué porcentaje de la Tierra está cubierto de agua?',choices:['71%','50%','90%','30%']},
+      de:{name:'Die Erde',fact:'Die Erde ist der einzige bekannte Planet mit Leben. Sie ist zu 71% von Wasser bedeckt.',q:'Wie viel Prozent der Erde sind mit Wasser bedeckt?',choices:['71%','50%','90%','30%']},
+      ru:{name:'Земля',fact:'Земля — единственная известная планета с жизнью. Она на 71% покрыта водой.',q:'Какой процент поверхности Земли покрыт водой?',choices:['71%','50%','90%','30%']}},
+    {icon:'🔴',ansIdx:0,
+      en:{name:'Mars',fact:'Mars is called the Red Planet. It has the tallest volcano in the solar system: Olympus Mons!',q:'What is Mars called?',choices:['The Red Planet','The Blue Planet','The Gas Giant','The Ice Planet']},
+      ar:{name:'المريخ',fact:'يُسمى المريخ بالكوكب الأحمر. يحتوي على أطول بركان في النظام الشمسي: جبل أوليمبوس!',q:'بماذا يُلقّب المريخ؟',choices:['الكوكب الأحمر','الكوكب الأزرق','العملاق الغازي','كوكب الجليد']},
+      fr:{name:'Mars',fact:'Mars est appelée la planète rouge. Elle possède le plus haut volcan du système solaire : Olympus Mons !',q:'Comment appelle-t-on Mars ?',choices:['La planète rouge','La planète bleue','La géante gazeuse','La planète de glace']},
+      es:{name:'Marte',fact:'Marte es llamado el Planeta Rojo. ¡Tiene el volcán más alto del sistema solar: el Monte Olimpo!',q:'¿Cómo se llama Marte?',choices:['El Planeta Rojo','El Planeta Azul','El Gigante Gaseoso','El Planeta de Hielo']},
+      de:{name:'Mars',fact:'Mars wird der Rote Planet genannt. Er hat den höchsten Vulkan im Sonnensystem: Olympus Mons!',q:'Wie wird der Mars genannt?',choices:['Der Rote Planet','Der Blaue Planet','Der Gasriese','Der Eisplanet']},
+      ru:{name:'Марс',fact:'Марс называют Красной планетой. На нём находится самый высокий вулкан в Солнечной системе — гора Олимп!',q:'Как называют Марс?',choices:['Красная планета','Голубая планета','Газовый гигант','Ледяная планета']}},
+    {icon:'🪐',ansIdx:0,
+      en:{name:'Jupiter',fact:'Jupiter is the largest planet. It has a storm called the Great Red Spot bigger than Earth!',q:'Which is the largest planet?',choices:['Jupiter','Saturn','Neptune','Uranus']},
+      ar:{name:'المشتري',fact:'المشتري أكبر الكواكب. لديه عاصفة تسمى البقعة الحمراء الكبرى أكبر من الأرض!',q:'ما أكبر كوكب؟',choices:['المشتري','زحل','نبتون','أورانوس']},
+      fr:{name:'Jupiter',fact:'Jupiter est la plus grande planète. Elle a une tempête appelée la Grande Tache rouge, plus grande que la Terre !',q:'Quelle est la plus grande planète ?',choices:['Jupiter','Saturne','Neptune','Uranus']},
+      es:{name:'Júpiter',fact:'Júpiter es el planeta más grande. ¡Tiene una tormenta llamada la Gran Mancha Roja, más grande que la Tierra!',q:'¿Cuál es el planeta más grande?',choices:['Júpiter','Saturno','Neptuno','Urano']},
+      de:{name:'Jupiter',fact:'Jupiter ist der größte Planet. Er hat einen Sturm namens Großer Roter Fleck, größer als die Erde!',q:'Welcher ist der größte Planet?',choices:['Jupiter','Saturn','Neptun','Uranus']},
+      ru:{name:'Юпитер',fact:'Юпитер — самая большая планета. На нём есть буря под названием Большое красное пятно, больше Земли!',q:'Какая планета самая большая?',choices:['Юпитер','Сатурн','Нептун','Уран']}},
+    {icon:'🪐',ansIdx:0,
+      en:{name:'Saturn',fact:'Saturn has beautiful rings made of ice and rock. It is the second largest planet.',q:'Which planet has famous rings of ice and rock?',choices:['Saturn','Jupiter','Uranus','Neptune']},
+      ar:{name:'زحل',fact:'يمتلك زحل حلقات جميلة مكونة من الجليد والصخور. وهو ثاني أكبر كوكب.',q:'أي كوكب يشتهر بحلقاته من الجليد والصخور؟',choices:['زحل','المشتري','أورانوس','نبتون']},
+      fr:{name:'Saturne',fact:'Saturne a de magnifiques anneaux faits de glace et de roche. C\'est la deuxième plus grande planète.',q:'Quelle planète a de célèbres anneaux de glace et de roche ?',choices:['Saturne','Jupiter','Uranus','Neptune']},
+      es:{name:'Saturno',fact:'Saturno tiene hermosos anillos hechos de hielo y roca. Es el segundo planeta más grande.',q:'¿Qué planeta tiene famosos anillos de hielo y roca?',choices:['Saturno','Júpiter','Urano','Neptuno']},
+      de:{name:'Saturn',fact:'Saturn hat wunderschöne Ringe aus Eis und Gestein. Er ist der zweitgrößte Planet.',q:'Welcher Planet hat berühmte Ringe aus Eis und Gestein?',choices:['Saturn','Jupiter','Uranus','Neptun']},
+      ru:{name:'Сатурн',fact:'У Сатурна красивые кольца изо льда и камня. Это вторая по величине планета.',q:'У какой планеты знаменитые кольца изо льда и камня?',choices:['Сатурн','Юпитер','Уран','Нептун']}},
+    {icon:'🩵',ansIdx:0,
+      en:{name:'Uranus',fact:'Uranus spins on its side! Its axis is tilted at 98 degrees.',q:'Which planet spins on its side?',choices:['Uranus','Neptune','Saturn','Mars']},
+      ar:{name:'أورانوس',fact:'يدور أورانوس على جانبه! محوره مائل بزاوية 98 درجة.',q:'أي كوكب يدور على جانبه؟',choices:['أورانوس','نبتون','زحل','المريخ']},
+      fr:{name:'Uranus',fact:'Uranus tourne sur le côté ! Son axe est incliné à 98 degrés.',q:'Quelle planète tourne sur le côté ?',choices:['Uranus','Neptune','Saturne','Mars']},
+      es:{name:'Urano',fact:'¡Urano gira de lado! Su eje está inclinado 98 grados.',q:'¿Qué planeta gira de lado?',choices:['Urano','Neptuno','Saturno','Marte']},
+      de:{name:'Uranus',fact:'Uranus dreht sich auf der Seite! Seine Achse ist um 98 Grad geneigt.',q:'Welcher Planet dreht sich auf der Seite?',choices:['Uranus','Neptun','Saturn','Mars']},
+      ru:{name:'Уран',fact:'Уран вращается лёжа на боку! Его ось наклонена на 98 градусов.',q:'Какая планета вращается лёжа на боку?',choices:['Уран','Нептун','Сатурн','Марс']}},
+    {icon:'🔵',ansIdx:0,
+      en:{name:'Neptune',fact:'Neptune is the farthest planet from the Sun. Winds there blow at 2,100 km/h!',q:'Which is the farthest planet from the Sun?',choices:['Neptune','Uranus','Pluto','Saturn']},
+      ar:{name:'نبتون',fact:'نبتون أبعد كوكب عن الشمس. تهب الرياح هناك بسرعة 2,100 كم/سا!',q:'ما أبعد كوكب عن الشمس؟',choices:['نبتون','أورانوس','بلوتو','زحل']},
+      fr:{name:'Neptune',fact:'Neptune est la planète la plus éloignée du Soleil. Les vents y soufflent à 2 100 km/h !',q:'Quelle est la planète la plus éloignée du Soleil ?',choices:['Neptune','Uranus','Pluton','Saturne']},
+      es:{name:'Neptuno',fact:'Neptuno es el planeta más lejano del Sol. ¡Los vientos allí soplan a 2100 km/h!',q:'¿Cuál es el planeta más lejano del Sol?',choices:['Neptuno','Urano','Plutón','Saturno']},
+      de:{name:'Neptun',fact:'Neptun ist der sonnenfernste Planet. Dort wehen Winde mit 2.100 km/h!',q:'Welcher Planet ist am weitesten von der Sonne entfernt?',choices:['Neptun','Uranus','Pluto','Saturn']},
+      ru:{name:'Нептун',fact:'Нептун — самая далёкая от Солнца планета. Там дуют ветра со скоростью 2100 км/ч!',q:'Какая планета самая далёкая от Солнца?',choices:['Нептун','Уран','Плутон','Сатурн']}},
   ],
   body: [
-    {icon:'🧠',name:'Brain',fact:'Your brain has about 86 billion neurons. It uses 20% of all your body\'s energy!',q:'How many neurons does the human brain have?',choices:['86 billion','1 million','1 billion','500 million'],ans:'86 billion'},
-    {icon:'❤️',name:'Heart',fact:'Your heart beats about 100,000 times a day and pumps 5 litres of blood every minute.',q:'How many times does the heart beat per day?',choices:['100,000','1,000','10,000','1 million'],ans:'100,000'},
-    {icon:'🫁',name:'Lungs',fact:'You have 2 lungs. They hold about 6 litres of air and you breathe 20,000 times a day!',q:'How many litres of air can your lungs hold?',choices:['6 litres','1 litre','10 litres','20 litres'],ans:'6 litres'},
-    {icon:'🦴',name:'Skeleton',fact:'Adults have 206 bones! Babies are born with about 270 bones — some fuse together.',q:'How many bones does an adult human have?',choices:['206','300','100','270'],ans:'206'},
-    {icon:'👁️',name:'Eyes',fact:'Your eyes can see about 10 million colours. They have over 120 million light receptors!',q:'How many colours can human eyes see?',choices:['10 million','1,000','100,000','1 million'],ans:'10 million'},
-    {icon:'🦷',name:'Teeth',fact:'Adults have 32 teeth. Teeth are the hardest substance in your body!',q:'How many teeth does an adult have?',choices:['32','20','28','36'],ans:'32'},
+    {icon:'🧠',ansIdx:0,
+      en:{name:'Brain',fact:'Your brain has about 86 billion neurons. It uses 20% of all your body\'s energy!',q:'How many neurons does the human brain have?',choices:['86 billion','1 million','1 billion','500 million']},
+      ar:{name:'الدماغ',fact:'يحتوي دماغك على حوالي 86 مليار خلية عصبية. يستهلك 20% من طاقة جسمك بالكامل!',q:'كم عدد الخلايا العصبية في دماغ الإنسان؟',choices:['86 مليار','مليون','مليار','500 مليون']},
+      fr:{name:'Le cerveau',fact:'Ton cerveau compte environ 86 milliards de neurones. Il utilise 20% de toute l\'énergie de ton corps !',q:'Combien de neurones a le cerveau humain ?',choices:['86 milliards','1 million','1 milliard','500 millions']},
+      es:{name:'El cerebro',fact:'Tu cerebro tiene unos 86 mil millones de neuronas. ¡Usa el 20% de toda la energía de tu cuerpo!',q:'¿Cuántas neuronas tiene el cerebro humano?',choices:['86 mil millones','1 millón','1 mil millones','500 millones']},
+      de:{name:'Das Gehirn',fact:'Dein Gehirn hat etwa 86 Milliarden Neuronen. Es verbraucht 20% der gesamten Energie deines Körpers!',q:'Wie viele Neuronen hat das menschliche Gehirn?',choices:['86 Milliarden','1 Million','1 Milliarde','500 Millionen']},
+      ru:{name:'Мозг',fact:'В твоём мозге около 86 миллиардов нейронов. Он использует 20% всей энергии тела!',q:'Сколько нейронов в человеческом мозге?',choices:['86 миллиардов','1 миллион','1 миллиард','500 миллионов']}},
+    {icon:'❤️',ansIdx:0,
+      en:{name:'Heart',fact:'Your heart beats about 100,000 times a day and pumps 5 litres of blood every minute.',q:'How many times does the heart beat per day?',choices:['100,000','1,000','10,000','1 million']},
+      ar:{name:'القلب',fact:'ينبض قلبك حوالي 100,000 مرة يومياً ويضخ 5 لترات من الدم كل دقيقة.',q:'كم مرة ينبض القلب في اليوم؟',choices:['100,000','1,000','10,000','مليون']},
+      fr:{name:'Le cœur',fact:'Ton cœur bat environ 100 000 fois par jour et pompe 5 litres de sang chaque minute.',q:'Combien de fois le cœur bat-il par jour ?',choices:['100 000','1 000','10 000','1 million']},
+      es:{name:'El corazón',fact:'Tu corazón late unas 100.000 veces al día y bombea 5 litros de sangre cada minuto.',q:'¿Cuántas veces late el corazón al día?',choices:['100.000','1.000','10.000','1 millón']},
+      de:{name:'Das Herz',fact:'Dein Herz schlägt etwa 100.000 Mal am Tag und pumpt jede Minute 5 Liter Blut.',q:'Wie oft schlägt das Herz pro Tag?',choices:['100.000','1.000','10.000','1 Million']},
+      ru:{name:'Сердце',fact:'Твоё сердце бьётся около 100 000 раз в день и перекачивает 5 литров крови каждую минуту.',q:'Сколько раз сердце бьётся в день?',choices:['100 000','1 000','10 000','1 миллион']}},
+    {icon:'🫁',ansIdx:0,
+      en:{name:'Lungs',fact:'You have 2 lungs. They hold about 6 litres of air and you breathe 20,000 times a day!',q:'How many litres of air can your lungs hold?',choices:['6 litres','1 litre','10 litres','20 litres']},
+      ar:{name:'الرئتان',fact:'لديك رئتان. تحملان حوالي 6 لترات من الهواء، وأنت تتنفس 20,000 مرة في اليوم!',q:'كم لتراً من الهواء تحمل رئتاك؟',choices:['6 لترات','لتر واحد','10 لترات','20 لتراً']},
+      fr:{name:'Les poumons',fact:'Tu as 2 poumons. Ils contiennent environ 6 litres d\'air et tu respires 20 000 fois par jour !',q:'Combien de litres d\'air tes poumons peuvent-ils contenir ?',choices:['6 litres','1 litre','10 litres','20 litres']},
+      es:{name:'Los pulmones',fact:'Tienes 2 pulmones. Contienen unos 6 litros de aire y respiras 20.000 veces al día!',q:'¿Cuántos litros de aire pueden contener tus pulmones?',choices:['6 litros','1 litro','10 litros','20 litros']},
+      de:{name:'Die Lungen',fact:'Du hast 2 Lungen. Sie fassen etwa 6 Liter Luft und du atmest 20.000 Mal am Tag!',q:'Wie viele Liter Luft können deine Lungen fassen?',choices:['6 Liter','1 Liter','10 Liter','20 Liter']},
+      ru:{name:'Лёгкие',fact:'У тебя 2 лёгких. Они вмещают около 6 литров воздуха, и ты дышишь 20 000 раз в день!',q:'Сколько литров воздуха вмещают лёгкие?',choices:['6 литров','1 литр','10 литров','20 литров']}},
+    {icon:'🦴',ansIdx:0,
+      en:{name:'Skeleton',fact:'Adults have 206 bones! Babies are born with about 270 bones — some fuse together.',q:'How many bones does an adult human have?',choices:['206','300','100','270']},
+      ar:{name:'الهيكل العظمي',fact:'يمتلك الكبار 206 عظمة! يولد الأطفال بحوالي 270 عظمة، وبعضها يندمج معاً.',q:'كم عدد عظام جسم الإنسان البالغ؟',choices:['206','300','100','270']},
+      fr:{name:'Le squelette',fact:'Les adultes ont 206 os ! Les bébés naissent avec environ 270 os — certains fusionnent ensuite.',q:'Combien d\'os a un adulte ?',choices:['206','300','100','270']},
+      es:{name:'El esqueleto',fact:'¡Los adultos tienen 206 huesos! Los bebés nacen con unos 270 huesos, algunos se fusionan después.',q:'¿Cuántos huesos tiene un adulto?',choices:['206','300','100','270']},
+      de:{name:'Das Skelett',fact:'Erwachsene haben 206 Knochen! Babys werden mit etwa 270 Knochen geboren — einige verwachsen später.',q:'Wie viele Knochen hat ein erwachsener Mensch?',choices:['206','300','100','270']},
+      ru:{name:'Скелет',fact:'У взрослых 206 костей! Младенцы рождаются примерно с 270 костями — некоторые потом срастаются.',q:'Сколько костей у взрослого человека?',choices:['206','300','100','270']}},
+    {icon:'👁️',ansIdx:0,
+      en:{name:'Eyes',fact:'Your eyes can see about 10 million colours. They have over 120 million light receptors!',q:'How many colours can human eyes see?',choices:['10 million','1,000','100,000','1 million']},
+      ar:{name:'العينان',fact:'تستطيع عيناك رؤية حوالي 10 ملايين لون. تحتويان على أكثر من 120 مليون مستقبل ضوئي!',q:'كم لوناً تستطيع عين الإنسان رؤيته؟',choices:['10 ملايين','1,000','100,000','مليون']},
+      fr:{name:'Les yeux',fact:'Tes yeux peuvent voir environ 10 millions de couleurs. Ils ont plus de 120 millions de récepteurs de lumière !',q:'Combien de couleurs les yeux humains peuvent-ils voir ?',choices:['10 millions','1 000','100 000','1 million']},
+      es:{name:'Los ojos',fact:'Tus ojos pueden ver unos 10 millones de colores. ¡Tienen más de 120 millones de receptores de luz!',q:'¿Cuántos colores pueden ver los ojos humanos?',choices:['10 millones','1.000','100.000','1 millón']},
+      de:{name:'Die Augen',fact:'Deine Augen können etwa 10 Millionen Farben sehen. Sie haben über 120 Millionen Lichtrezeptoren!',q:'Wie viele Farben können menschliche Augen sehen?',choices:['10 Millionen','1.000','100.000','1 Million']},
+      ru:{name:'Глаза',fact:'Твои глаза способны видеть около 10 миллионов цветов. В них более 120 миллионов световых рецепторов!',q:'Сколько цветов способны видеть глаза человека?',choices:['10 миллионов','1 000','100 000','1 миллион']}},
+    {icon:'🦷',ansIdx:0,
+      en:{name:'Teeth',fact:'Adults have 32 teeth. Teeth are the hardest substance in your body!',q:'How many teeth does an adult have?',choices:['32','20','28','36']},
+      ar:{name:'الأسنان',fact:'يمتلك الكبار 32 سناً. الأسنان هي أصلب مادة في جسمك!',q:'كم سناً يمتلك الشخص البالغ؟',choices:['32','20','28','36']},
+      fr:{name:'Les dents',fact:'Les adultes ont 32 dents. Les dents sont la substance la plus dure de ton corps !',q:'Combien de dents a un adulte ?',choices:['32','20','28','36']},
+      es:{name:'Los dientes',fact:'Los adultos tienen 32 dientes. ¡Los dientes son la sustancia más dura de tu cuerpo!',q:'¿Cuántos dientes tiene un adulto?',choices:['32','20','28','36']},
+      de:{name:'Die Zähne',fact:'Erwachsene haben 32 Zähne. Zähne sind die härteste Substanz in deinem Körper!',q:'Wie viele Zähne hat ein Erwachsener?',choices:['32','20','28','36']},
+      ru:{name:'Зубы',fact:'У взрослых 32 зуба. Зубы — самое твёрдое вещество в твоём теле!',q:'Сколько зубов у взрослого человека?',choices:['32','20','28','36']}},
   ],
   nature: [
-    {icon:'💧',name:'Water',fact:'Water covers 71% of Earth. Only 3% of all water is fresh (drinkable) water.',q:'What % of Earth\'s water is fresh water?',choices:['3%','50%','71%','25%'],ans:'3%'},
-    {icon:'🌳',name:'Trees',fact:'Trees produce oxygen. One large tree can produce enough oxygen for 2 people per day!',q:'How many people can one tree provide oxygen for per day?',choices:['2 people','10 people','50 people','100 people'],ans:'2 people'},
-    {icon:'🌈',name:'Rainbow',fact:'Rainbows are circles! We usually see half a circle because the ground blocks the rest.',q:'What shape is a complete rainbow?',choices:['A circle','A semicircle','A line','A square'],ans:'A circle'},
-    {icon:'⚡',name:'Lightning',fact:'Lightning is 5 times hotter than the surface of the Sun — about 30,000°C!',q:'How hot is lightning?',choices:['30,000°C','1,000°C','100°C','5,000°C'],ans:'30,000°C'},
-    {icon:'🌊',name:'Oceans',fact:'The ocean is about 3,688 metres deep on average. The Mariana Trench is 11 km deep!',q:'How deep is the deepest ocean trench?',choices:['11 km','5 km','3 km','1 km'],ans:'11 km'},
-    {icon:'🔥',name:'Volcanoes',fact:'There are about 1,500 active volcanoes on Earth. Most are under the ocean!',q:'How many active volcanoes are on Earth?',choices:['1,500','50','5,000','100'],ans:'1,500'},
+    {icon:'💧',ansIdx:0,
+      en:{name:'Water',fact:'Water covers 71% of Earth. Only 3% of all water is fresh (drinkable) water.',q:'What % of Earth\'s water is fresh water?',choices:['3%','50%','71%','25%']},
+      ar:{name:'الماء',fact:'يغطي الماء 71% من سطح الأرض. 3% فقط من كل المياه هي مياه عذبة (صالحة للشرب).',q:'ما نسبة المياه العذبة من مياه الأرض؟',choices:['3%','50%','71%','25%']},
+      fr:{name:'L\'eau',fact:'L\'eau couvre 71% de la Terre. Seulement 3% de toute l\'eau est de l\'eau douce (potable).',q:'Quel % de l\'eau terrestre est de l\'eau douce ?',choices:['3%','50%','71%','25%']},
+      es:{name:'El agua',fact:'El agua cubre el 71% de la Tierra. Solo el 3% de toda el agua es agua dulce (potable).',q:'¿Qué % del agua de la Tierra es agua dulce?',choices:['3%','50%','71%','25%']},
+      de:{name:'Das Wasser',fact:'Wasser bedeckt 71% der Erde. Nur 3% allen Wassers ist Süßwasser (trinkbar).',q:'Wie viel % des Wassers der Erde ist Süßwasser?',choices:['3%','50%','71%','25%']},
+      ru:{name:'Вода',fact:'Вода покрывает 71% Земли. Только 3% всей воды — пресная (питьевая) вода.',q:'Какой % воды на Земле — пресная вода?',choices:['3%','50%','71%','25%']}},
+    {icon:'🌳',ansIdx:0,
+      en:{name:'Trees',fact:'Trees produce oxygen. One large tree can produce enough oxygen for 2 people per day!',q:'How many people can one tree provide oxygen for per day?',choices:['2 people','10 people','50 people','100 people']},
+      ar:{name:'الأشجار',fact:'تنتج الأشجار الأكسجين. يمكن لشجرة كبيرة واحدة إنتاج أكسجين كافٍ لشخصين يومياً!',q:'كم شخصاً يمكن لشجرة واحدة تزويده بالأكسجين يومياً؟',choices:['شخصان','10 أشخاص','50 شخصاً','100 شخص']},
+      fr:{name:'Les arbres',fact:'Les arbres produisent de l\'oxygène. Un grand arbre peut produire assez d\'oxygène pour 2 personnes par jour !',q:'Pour combien de personnes un arbre peut-il fournir de l\'oxygène par jour ?',choices:['2 personnes','10 personnes','50 personnes','100 personnes']},
+      es:{name:'Los árboles',fact:'Los árboles producen oxígeno. ¡Un árbol grande puede producir suficiente oxígeno para 2 personas al día!',q:'¿Para cuántas personas puede un árbol producir oxígeno al día?',choices:['2 personas','10 personas','50 personas','100 personas']},
+      de:{name:'Die Bäume',fact:'Bäume produzieren Sauerstoff. Ein großer Baum kann genug Sauerstoff für 2 Personen pro Tag produzieren!',q:'Für wie viele Menschen kann ein Baum pro Tag Sauerstoff produzieren?',choices:['2 Personen','10 Personen','50 Personen','100 Personen']},
+      ru:{name:'Деревья',fact:'Деревья производят кислород. Одно большое дерево может производить достаточно кислорода для 2 человек в день!',q:'Для скольких человек одно дерево может производить кислород в день?',choices:['2 человек','10 человек','50 человек','100 человек']}},
+    {icon:'🌈',ansIdx:0,
+      en:{name:'Rainbow',fact:'Rainbows are circles! We usually see half a circle because the ground blocks the rest.',q:'What shape is a complete rainbow?',choices:['A circle','A semicircle','A line','A square']},
+      ar:{name:'قوس قزح',fact:'قوس قزح دائري الشكل! نرى عادة نصف دائرة لأن الأرض تحجب الباقي.',q:'ما شكل قوس قزح الكامل؟',choices:['دائرة','نصف دائرة','خط مستقيم','مربع']},
+      fr:{name:'L\'arc-en-ciel',fact:'Les arcs-en-ciel sont des cercles ! On en voit généralement la moitié car le sol bloque le reste.',q:'Quelle est la forme d\'un arc-en-ciel complet ?',choices:['Un cercle','Un demi-cercle','Une ligne','Un carré']},
+      es:{name:'El arcoíris',fact:'¡Los arcoíris son círculos! Normalmente vemos medio círculo porque el suelo bloquea el resto.',q:'¿Qué forma tiene un arcoíris completo?',choices:['Un círculo','Un semicírculo','Una línea','Un cuadrado']},
+      de:{name:'Der Regenbogen',fact:'Regenbögen sind Kreise! Wir sehen meist nur einen Halbkreis, weil der Boden den Rest verdeckt.',q:'Welche Form hat ein vollständiger Regenbogen?',choices:['Ein Kreis','Ein Halbkreis','Eine Linie','Ein Quadrat']},
+      ru:{name:'Радуга',fact:'Радуга — это круг! Обычно мы видим только половину круга, потому что землю закрывает остальное.',q:'Какую форму имеет полная радуга?',choices:['Круг','Полукруг','Линия','Квадрат']}},
+    {icon:'⚡',ansIdx:0,
+      en:{name:'Lightning',fact:'Lightning is 5 times hotter than the surface of the Sun — about 30,000°C!',q:'How hot is lightning?',choices:['30,000°C','1,000°C','100°C','5,000°C']},
+      ar:{name:'البرق',fact:'البرق أشد حرارة من سطح الشمس بخمس مرات، حوالي 30,000 درجة مئوية!',q:'كم تبلغ حرارة البرق؟',choices:['30,000°C','1,000°C','100°C','5,000°C']},
+      fr:{name:'La foudre',fact:'La foudre est 5 fois plus chaude que la surface du Soleil — environ 30 000°C !',q:'Quelle est la température de la foudre ?',choices:['30 000°C','1 000°C','100°C','5 000°C']},
+      es:{name:'El rayo',fact:'¡El rayo es 5 veces más caliente que la superficie del Sol, unos 30.000°C!',q:'¿Qué temperatura tiene un rayo?',choices:['30.000°C','1.000°C','100°C','5.000°C']},
+      de:{name:'Der Blitz',fact:'Ein Blitz ist 5-mal heißer als die Sonnenoberfläche — etwa 30.000°C!',q:'Wie heiß ist ein Blitz?',choices:['30.000°C','1.000°C','100°C','5.000°C']},
+      ru:{name:'Молния',fact:'Молния в 5 раз горячее поверхности Солнца — около 30 000°C!',q:'Насколько горяча молния?',choices:['30 000°C','1 000°C','100°C','5 000°C']}},
+    {icon:'🌊',ansIdx:0,
+      en:{name:'Oceans',fact:'The ocean is about 3,688 metres deep on average. The Mariana Trench is 11 km deep!',q:'How deep is the deepest ocean trench?',choices:['11 km','5 km','3 km','1 km']},
+      ar:{name:'المحيطات',fact:'يبلغ متوسط عمق المحيط حوالي 3,688 متراً. عمق خندق ماريانا 11 كم!',q:'ما عمق أعمق خندق محيطي؟',choices:['11 كم','5 كم','3 كم','1 كم']},
+      fr:{name:'Les océans',fact:'L\'océan a une profondeur moyenne d\'environ 3 688 mètres. La fosse des Mariannes fait 11 km de profondeur !',q:'Quelle est la profondeur de la fosse océanique la plus profonde ?',choices:['11 km','5 km','3 km','1 km']},
+      es:{name:'Los océanos',fact:'El océano tiene una profundidad media de unos 3688 metros. ¡La Fosa de las Marianas tiene 11 km de profundidad!',q:'¿Qué profundidad tiene la fosa oceánica más profunda?',choices:['11 km','5 km','3 km','1 km']},
+      de:{name:'Die Ozeane',fact:'Der Ozean ist im Durchschnitt etwa 3.688 Meter tief. Der Marianengraben ist 11 km tief!',q:'Wie tief ist der tiefste Ozeangraben?',choices:['11 km','5 km','3 km','1 km']},
+      ru:{name:'Океаны',fact:'Средняя глубина океана около 3688 метров. Марианская впадина имеет глубину 11 км!',q:'Насколько глубока самая глубокая океаническая впадина?',choices:['11 км','5 км','3 км','1 км']}},
+    {icon:'🔥',ansIdx:0,
+      en:{name:'Volcanoes',fact:'There are about 1,500 active volcanoes on Earth. Most are under the ocean!',q:'How many active volcanoes are on Earth?',choices:['1,500','50','5,000','100']},
+      ar:{name:'البراكين',fact:'يوجد حوالي 1,500 بركان نشط على الأرض. معظمها تحت المحيط!',q:'كم عدد البراكين النشطة على الأرض؟',choices:['1,500','50','5,000','100']},
+      fr:{name:'Les volcans',fact:'Il y a environ 1 500 volcans actifs sur Terre. La plupart sont sous l\'océan !',q:'Combien de volcans actifs y a-t-il sur Terre ?',choices:['1 500','50','5 000','100']},
+      es:{name:'Los volcanes',fact:'Hay unos 1500 volcanes activos en la Tierra. ¡La mayoría están bajo el océano!',q:'¿Cuántos volcanes activos hay en la Tierra?',choices:['1500','50','5000','100']},
+      de:{name:'Die Vulkane',fact:'Es gibt etwa 1.500 aktive Vulkane auf der Erde. Die meisten liegen unter dem Ozean!',q:'Wie viele aktive Vulkane gibt es auf der Erde?',choices:['1.500','50','5.000','100']},
+      ru:{name:'Вулканы',fact:'На Земле около 1500 действующих вулканов. Большинство находится под океаном!',q:'Сколько действующих вулканов на Земле?',choices:['1 500','50','5 000','100']}},
   ]
 };
 
+const SCI_UI = {
+  en:{subtitle:'Solar System, Body & Nature — Ages 8–13',tabPlanets:'🪐 Planets',tabBody:'🫀 Body',tabNature:'🌿 Nature',tabQuiz:'🎯 Quiz',
+      tapToHear:'🔊 Tap to hear',flagsQuiz:'🌍 Flags Quiz',allKidsTools:'🧒 All Kids Tools',backToKids:'← Back to Kids',kids:'🧒 Kids',home:'Home',
+      score:'Score',q:'Q',of:'of',correct:'✅ Correct!',playAgain:'Play Again',
+      genius:'🏆 Science Genius!',good:'👍 Good scientist!',keep:'💪 Keep exploring!'},
+  ar:{subtitle:'النظام الشمسي وجسم الإنسان والطبيعة — للأطفال من 8 إلى 13 سنة',tabPlanets:'🪐 الكواكب',tabBody:'🫀 الجسم',tabNature:'🌿 الطبيعة',tabQuiz:'🎯 اختبار',
+      tapToHear:'🔊 انقر للاستماع',flagsQuiz:'🌍 مسابقة الأعلام',allKidsTools:'🧒 كل أدوات الأطفال',backToKids:'← رجوع للأطفال',kids:'🧒 الأطفال',home:'الرئيسية',
+      score:'النتيجة',q:'سؤال',of:'من',correct:'✅ إجابة صحيحة!',playAgain:'العب مجدداً',
+      genius:'🏆 عبقري العلوم!',good:'👍 عالم جيد!',keep:'💪 استمر في الاستكشاف!'},
+  fr:{subtitle:'Système solaire, corps et nature — 8 à 13 ans',tabPlanets:'🪐 Planètes',tabBody:'🫀 Corps',tabNature:'🌿 Nature',tabQuiz:'🎯 Quiz',
+      tapToHear:'🔊 Toucher pour écouter',flagsQuiz:'🌍 Quiz drapeaux',allKidsTools:'🧒 Tous les jeux enfants',backToKids:'← Retour aux jeux enfants',kids:'🧒 Enfants',home:'Accueil',
+      score:'Score',q:'Q',of:'sur',correct:'✅ Correct !',playAgain:'Rejouer',
+      genius:'🏆 Génie des sciences !',good:'👍 Bon scientifique !',keep:'💪 Continue d\'explorer !'},
+  es:{subtitle:'Sistema solar, cuerpo y naturaleza — 8 a 13 años',tabPlanets:'🪐 Planetas',tabBody:'🫀 Cuerpo',tabNature:'🌿 Naturaleza',tabQuiz:'🎯 Quiz',
+      tapToHear:'🔊 Toca para escuchar',flagsQuiz:'🌍 Quiz de banderas',allKidsTools:'🧒 Todos los juegos infantiles',backToKids:'← Volver a juegos infantiles',kids:'🧒 Niños',home:'Inicio',
+      score:'Puntaje',q:'P',of:'de',correct:'✅ ¡Correcto!',playAgain:'Jugar de nuevo',
+      genius:'🏆 ¡Genio de la ciencia!',good:'👍 ¡Buen científico!',keep:'💪 ¡Sigue explorando!'},
+  de:{subtitle:'Sonnensystem, Körper & Natur — 8 bis 13 Jahre',tabPlanets:'🪐 Planeten',tabBody:'🫀 Körper',tabNature:'🌿 Natur',tabQuiz:'🎯 Quiz',
+      tapToHear:'🔊 Zum Anhören tippen',flagsQuiz:'🌍 Flaggen-Quiz',allKidsTools:'🧒 Alle Kinderspiele',backToKids:'← Zurück zu Kinderspielen',kids:'🧒 Kinder',home:'Startseite',
+      score:'Punkte',q:'F',of:'von',correct:'✅ Richtig!',playAgain:'Nochmal spielen',
+      genius:'🏆 Wissenschaftsgenie!',good:'👍 Guter Wissenschaftler!',keep:'💪 Erkunde weiter!'},
+  ru:{subtitle:'Солнечная система, тело и природа — от 8 до 13 лет',tabPlanets:'🪐 Планеты',tabBody:'🫀 Тело',tabNature:'🌿 Природа',tabQuiz:'🎯 Квиз',
+      tapToHear:'🔊 Нажми, чтобы услышать',flagsQuiz:'🌍 Квиз флагов',allKidsTools:'🧒 Все детские игры',backToKids:'← Назад к детским играм',kids:'🧒 Детям',home:'Главная',
+      score:'Счёт',q:'Вопрос',of:'из',correct:'✅ Правильно!',playAgain:'Играть снова',
+      genius:'🏆 Гений науки!',good:'👍 Хороший учёный!',keep:'💪 Продолжай исследовать!'},
+};
+const _PAGE_LANG = (document.documentElement.lang && SCI_UI[document.documentElement.lang]) ? document.documentElement.lang : 'en';
+let currentLang=_PAGE_LANG;
+function sui(k){return (SCI_UI[currentLang]||SCI_UI.en)[k];}
+function itemT(item){return item[currentLang]||item.en;}
+
+const SPEECH_LANG_CODES = {ar:'ar-SA',en:'en-US',fr:'fr-FR',es:'es-ES',de:'de-DE',ru:'ru-RU'};
 let section='planets', idx=0, quizQ=[], qIdx=0, qScore=0, qAnswered=false;
 
 function setSection(s){
@@ -138,24 +296,26 @@ function setSection(s){
 function renderCard(){
   const d=DATA[section];
   const item=d[idx];
+  const t=itemT(item);
   document.getElementById('sciCard').style.background=
     section==='planets'?'linear-gradient(135deg,#0f172a,#1e3a5f)':
     section==='body'?'linear-gradient(135deg,#fff1f2,#fecdd3)':
     'linear-gradient(135deg,#f0fdf4,#bbf7d0)';
   document.getElementById('sciIcon').textContent=item.icon;
   document.getElementById('sciName').style.color=section==='planets'?'#93c5fd':'var(--primary)';
-  document.getElementById('sciName').textContent=item.name;
+  document.getElementById('sciName').textContent=t.name;
   document.getElementById('sciFact').style.color=section==='planets'?'#cbd5e1':'var(--text-muted)';
-  document.getElementById('sciFact').textContent=item.fact;
+  document.getElementById('sciFact').textContent=t.fact;
   document.getElementById('sciProg').textContent=`${idx+1} / ${d.length}`;
 }
 
 function speakCard(){
   const item=DATA[section][idx];
+  const t=itemT(item);
   if(!window.speechSynthesis) return;
   speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(`${item.name}. ${item.fact}`);
-  u.lang='en-US'; u.rate=0.85;
+  const u=new SpeechSynthesisUtterance(`${t.name}. ${t.fact}`);
+  u.lang=SPEECH_LANG_CODES[currentLang]||'en-US'; u.rate=0.85;
   speechSynthesis.speak(u);
 }
 
@@ -175,32 +335,63 @@ function renderQuiz(){
     document.getElementById('quizArea').innerHTML=`
       <div style="text-align:center;padding:24px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:16px;">
         <div style="font-size:60px;">🔭</div>
-        <div style="font-size:22px;font-weight:900;color:var(--primary);margin:10px 0;">${pct>=80?'🏆 Science Genius!':pct>=50?'👍 Good scientist!':'💪 Keep exploring!'}</div>
-        <div style="font-size:15px;color:var(--text-muted);">Score: ${qScore} / ${quizQ.length} (${pct}%)</div>
-        <button class="btn btn-primary" style="margin-top:16px;" onclick="startQuiz()">Play Again</button>
+        <div style="font-size:22px;font-weight:900;color:var(--primary);margin:10px 0;">${pct>=80?sui('genius'):pct>=50?sui('good'):sui('keep')}</div>
+        <div style="font-size:15px;color:var(--text-muted);">${sui('score')}: ${qScore} / ${quizQ.length} (${pct}%)</div>
+        <button class="btn btn-primary" style="margin-top:16px;" onclick="startQuiz()">${sui('playAgain')}</button>
       </div>`;
     return;
   }
   const q=quizQ[qIdx];
-  document.getElementById('qScore').textContent=`Score: ${qScore} / ${quizQ.length} | Q ${qIdx+1} of ${quizQ.length}`;
+  const t=itemT(q);
+  document.getElementById('qScore').textContent=`${sui('score')}: ${qScore} / ${quizQ.length} | ${sui('q')} ${qIdx+1} ${sui('of')} ${quizQ.length}`;
   document.getElementById('qIcon').textContent=q.icon;
-  document.getElementById('qText').textContent=q.q;
-  document.getElementById('qChoices').innerHTML=q.choices.map(c=>
-    `<button class="sci-choice" onclick="answerQuiz(this,'${c.replace(/'/g,"\\'")}','${q.ans.replace(/'/g,"\\'")}')">${c}</button>`
+  document.getElementById('qText').textContent=t.q;
+  document.getElementById('qChoices').innerHTML=t.choices.map((c,i)=>
+    `<button class="sci-choice" onclick="answerQuiz(this,${i})">${c}</button>`
   ).join('');
   document.getElementById('qFeedback').textContent='';
   qAnswered=false;
 }
 
-function answerQuiz(btn,chosen,correct){
+function answerQuiz(btn,chosenIdx){
   if(qAnswered) return;
   qAnswered=true;
-  if(chosen===correct){btn.classList.add('correct');qScore++;document.getElementById('qFeedback').textContent='✅ Correct!';}
-  else{btn.classList.add('wrong');document.querySelectorAll('.sci-choice').forEach(b=>{if(b.textContent===correct)b.classList.add('correct');});document.getElementById('qFeedback').textContent=`❌ ${correct}`;}
+  const q=quizQ[qIdx];
+  const t=itemT(q);
+  const correctText=t.choices[q.ansIdx];
+  if(chosenIdx===q.ansIdx){btn.classList.add('correct');qScore++;document.getElementById('qFeedback').textContent=sui('correct');}
+  else{btn.classList.add('wrong');document.querySelectorAll('.sci-choice').forEach(b=>{if(b.textContent===correctText)b.classList.add('correct');});document.getElementById('qFeedback').textContent=`❌ ${correctText}`;}
   setTimeout(()=>{qIdx++;renderQuiz();},1100);
 }
 
-renderCard();
+function updateStaticText(){
+  document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  set('sciSubtitle',sui('subtitle'));
+  set('tabPlanets',sui('tabPlanets'));
+  set('tabBody',sui('tabBody'));
+  set('tabNature',sui('tabNature'));
+  set('tabQuiz',sui('tabQuiz'));
+  set('tapToHear',sui('tapToHear'));
+  set('linkFlags',sui('flagsQuiz'));
+  set('linkAllKids',sui('allKidsTools'));
+  set('backToKids',sui('backToKids'));
+  set('navKids',sui('kids'));
+  set('navHome',sui('home'));
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const origSet=window.setLang;
+  window.setLang=function(lang){
+    origSet&&origSet(lang);
+    currentLang=lang;
+    updateStaticText();
+    if(section==='quiz') renderQuiz(); else renderCard();
+  };
+  window.onLangChange=function(lang){currentLang=lang;updateStaticText();if(section==='quiz')renderQuiz();else renderCard();};
+  updateStaticText();
+  renderCard();
+});
 </script>
 <script src="i18n.js?v=39" defer></script>
 </body></html>
