@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مواقيت الصلاة في الأردن اليوم — عمّان، إربد، الزرقاء والمزيد | Adawati</title>
+<meta name="description" content="مواقيت الصلاة اليوم لكل مدن الأردن: عمّان، إربد، الزرقاء، العقبة، السلط والمزيد. الفجر، الظهر، العصر، المغرب والعشاء محدّثة لحظياً. مجانية بدون تسجيل.">
+<meta name="keywords" content="مواقيت الصلاة الاردن, اوقات الصلاة عمان اليوم, مواقيت الصلاة اربد, مواقيت الصلاة الزرقاء, prayer times Jordan">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/prayer-times/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/prayer-times/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/prayer-times/">
+<meta property="og:title" content="مواقيت الصلاة في الأردن اليوم | Adawati">
+<meta property="og:description" content="مواقيت الصلاة اليوم لكل مدن الأردن، محدّثة لحظياً.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/prayer-times/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"مواقيت الصلاة","item":"https://adawati.space/jo/prayer-times/"}
+]},
+{"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"من أين تُحسب مواقيت الصلاة في هذه الصفحة؟","acceptedAnswer":{"@type":"Answer","text":"تُحسب المواقيت آلياً حسب إحداثيات كل مدينة أردنية باستخدام طريقة الهيئة المصرية العامة للمساحة، وهي من أكثر الطرق استخداماً في الأردن والمنطقة، عبر خدمة Aladhan API."}},
+  {"@type":"Question","name":"هل المواقيت دقيقة 100%؟","acceptedAnswer":{"@type":"Answer","text":"المواقيت محسوبة فلكياً وتقريبية بدقة عالية، لكن قد تختلف بدقائق بسيطة عن إعلان المساجد المحلية حسب الطريقة المعتمدة. للمناسبات المهمة (كرمضان)، تأكد من مسجد حيك أو الجهات الرسمية."}}
+]}
+]}
+</script>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">🕌</div>
+    <h1 class="card-title">مواقيت الصلاة في الأردن 🇯🇴</h1>
+    <div class="card-subtitle" id="dateSubtitle">اختر مدينتك لعرض مواقيت اليوم</div>
+    <div class="divider"></div>
+
+    <label>المدينة</label>
+    <select id="citySelect" onchange="fetchTimes()" style="width:100%;padding:10px;font-size:15px;border:1px solid var(--border);border-radius:8px;">
+      <option value="Amman">عمّان</option>
+      <option value="Irbid">إربد</option>
+      <option value="Zarqa">الزرقاء</option>
+      <option value="Aqaba">العقبة</option>
+      <option value="As-Salt">السلط</option>
+      <option value="Karak">الكرك</option>
+      <option value="Mafraq">المفرق</option>
+      <option value="Jerash">جرش</option>
+      <option value="Ajloun">عجلون</option>
+      <option value="Madaba">مادبا</option>
+      <option value="Ma'an">معان</option>
+      <option value="Tafilah">الطفيلة</option>
+    </select>
+
+    <div id="loadingMsg" style="text-align:center;padding:20px;color:var(--text-muted);">⏳ جاري التحميل...</div>
+    <div id="timesGrid" style="display:none;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;margin-top:18px;">
+      <div class="stat-box"><div class="stat-val" id="t-Fajr"></div><div class="stat-lbl">الفجر</div></div>
+      <div class="stat-box"><div class="stat-val" id="t-Sunrise"></div><div class="stat-lbl">الشروق</div></div>
+      <div class="stat-box"><div class="stat-val" id="t-Dhuhr"></div><div class="stat-lbl">الظهر</div></div>
+      <div class="stat-box"><div class="stat-val" id="t-Asr"></div><div class="stat-lbl">العصر</div></div>
+      <div class="stat-box"><div class="stat-val" id="t-Maghrib"></div><div class="stat-lbl">المغرب</div></div>
+      <div class="stat-box"><div class="stat-val" id="t-Isha"></div><div class="stat-lbl">العشاء</div></div>
+    </div>
+    <div id="errorMsg" style="display:none;text-align:center;padding:20px;color:#dc2626;">⚠️ تعذّر تحميل المواقيت الآن. حاول تحديث الصفحة.</div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">❓ أسئلة شائعة</div>
+    <details style="margin-top:10px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">من أين تُحسب هذه المواقيت؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">تُحسب آلياً حسب إحداثيات كل مدينة باستخدام طريقة الهيئة المصرية العامة للمساحة (شائعة الاستخدام بالأردن والمنطقة)، عبر خدمة Aladhan API المجانية.</p>
+    </details>
+    <details style="margin-top:10px;">
+      <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل المواقيت دقيقة 100%؟</summary>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">دقيقة فلكياً بشكل عام، لكن قد تختلف بدقائق بسيطة عن إعلان مسجد حيّك. للمناسبات المهمة، تأكد من مسجدك المحلي.</p>
+    </details>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/calculators/tawjihi-average/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🎓 حاسبة معدل التوجيهي</a>
+      <a href="jo/emergency-numbers/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🚨 أرقام الطوارئ</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const CITY_NAMES_AR = {Amman:'عمّان',Irbid:'إربد',Zarqa:'الزرقاء',Aqaba:'العقبة','As-Salt':'السلط',Karak:'الكرك',Mafraq:'المفرق',Jerash:'جرش',Ajloun:'عجلون',Madaba:'مادبا',"Ma'an":'معان',Tafilah:'الطفيلة'};
+
+const AR_MONTHS = ['','يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+
+function to12h(t) {
+  if (!t) return '--';
+  const clean = t.split(' ')[0];
+  const parts = clean.split(':');
+  let h = parseInt(parts[0], 10);
+  const m = parts[1];
+  const suffix = h >= 12 ? 'م' : 'ص';
+  h = h % 12; if (h === 0) h = 12;
+  return h + ':' + m + ' ' + suffix;
+}
+
+function fetchTimes() {
+  const city = document.getElementById('citySelect').value;
+  document.getElementById('loadingMsg').style.display = 'block';
+  document.getElementById('timesGrid').style.display = 'none';
+  document.getElementById('errorMsg').style.display = 'none';
+
+  const url = 'https://api.aladhan.com/v1/timingsByCity?city=' + encodeURIComponent(city) + '&country=Jordan&method=5';
+  fetch(url)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      const t = data.data.timings;
+      document.getElementById('t-Fajr').textContent = to12h(t.Fajr);
+      document.getElementById('t-Sunrise').textContent = to12h(t.Sunrise);
+      document.getElementById('t-Dhuhr').textContent = to12h(t.Dhuhr);
+      document.getElementById('t-Asr').textContent = to12h(t.Asr);
+      document.getElementById('t-Maghrib').textContent = to12h(t.Maghrib);
+      document.getElementById('t-Isha').textContent = to12h(t.Isha);
+      const g = data.data.date.gregorian;
+      document.getElementById('dateSubtitle').textContent = 'مواقيت اليوم في ' + (CITY_NAMES_AR[city] || city) + ' — ' + parseInt(g.day, 10) + ' ' + AR_MONTHS[g.month.number] + ' ' + g.year;
+      document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('timesGrid').style.display = 'grid';
+    })
+    .catch(function() {
+      document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'block';
+    });
+}
+
+fetchTimes();
+</script>
+</body></html>
