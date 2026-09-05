@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة زكاة المال — النصاب والمقدار | Adawati</title>
+<meta name="description" content="احسب زكاة مالك حسب نصاب الذهب (85 غرام) أو الفضة (595 غرام) بنسبة 2.5%. أدخل مدخراتك وديونك واحصل على المقدار الواجب فوراً. مجانية وبدون تسجيل.">
+<meta name="keywords" content="حاسبة الزكاة, نصاب الزكاة, زكاة المال, كيف احسب زكاتي, Zakat calculator">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/calculators/zakat/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/calculators/zakat/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/calculators/zakat/">
+<meta property="og:title" content="حاسبة زكاة المال | Adawati">
+<meta property="og:description" content="احسب زكاة مالك حسب النصاب بنسبة 2.5%.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/calculators/zakat/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"حاسبة الزكاة","item":"https://adawati.space/jo/calculators/zakat/"}
+]},
+{"@type":"WebApplication","name":"حاسبة زكاة المال","url":"https://adawati.space/jo/calculators/zakat/","description":"احسب زكاة المال حسب نصاب الذهب أو الفضة بنسبة 2.5%.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}},
+{"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"كم نصاب الزكاة؟","acceptedAnswer":{"@type":"Answer","text":"نصاب الذهب 85 غراماً من الذهب الخالص (عيار 24)، ونصاب الفضة 595 غراماً من الفضة. هذا برأي جمهور الفقهاء، مبني على 20 مثقالاً للذهب و200 درهم للفضة."}},
+  {"@type":"Question","name":"كم نسبة الزكاة الواجبة؟","acceptedAnswer":{"@type":"Answer","text":"2.5% من إجمالي المال الذي بلغ النصاب ومرّ عليه حول هجري كامل (سنة قمرية)."}}
+]}
+]}
+</script>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">🕌</div>
+    <h1 class="card-title">حاسبة زكاة المال 🇯🇴</h1>
+    <div class="card-subtitle">النصاب والمقدار حسب رأي جمهور الفقهاء</div>
+    <div class="divider"></div>
+
+    <label>إجمالي النقد والمدخرات (دينار)</label>
+    <input type="number" id="cash" placeholder="0.000" min="0" step="any" oninput="calc()">
+    <label style="margin-top:8px;display:block;">قيمة الذهب والفضة اللي تملكها (دينار، إن وجد)</label>
+    <input type="number" id="goldValue" placeholder="0.000" min="0" step="any" oninput="calc()">
+    <label style="margin-top:8px;display:block;">قيمة استثمارات أو تجارة قابلة للتسييل (اختياري)</label>
+    <input type="number" id="investments" placeholder="0.000" min="0" step="any" oninput="calc()">
+    <label style="margin-top:8px;display:block;">ديون مستحقة عليك تُخصم (اختياري)</label>
+    <input type="number" id="debts" placeholder="0.000" min="0" step="any" oninput="calc()">
+
+    <div class="divider"></div>
+    <label>سعر غرام الذهب عيار 24 اليوم (دينار) — لحساب النصاب</label>
+    <input type="number" id="goldPricePerGram" placeholder="مثال: 55" min="0" step="any" oninput="calc()">
+    <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">💡 تأكد من السعر الحالي لغرام الذهب عيار 24 من أي محل مجوهرات أو موقع أسعار موثوق، وأدخله هون. النصاب = 85 غرام ذهب.</p>
+
+    <div id="zakatResult" style="display:none;margin-top:20px;"></div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">📌 معلومات عن نصاب الزكاة</div>
+    <div style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-top:8px;">
+      <ul style="padding-inline-start:18px;">
+        <li>نصاب الذهب: <strong>85 غراماً</strong> من الذهب الخالص (20 مثقالاً)</li>
+        <li>نصاب الفضة: <strong>595 غراماً</strong> من الفضة (200 درهم)</li>
+        <li>نسبة الزكاة الواجبة: <strong>2.5%</strong> من إجمالي المال إذا بلغ النصاب ومرّ عليه حول هجري كامل</li>
+      </ul>
+      <p style="margin-top:8px;font-size:12px;">هذه الحاسبة مبنية على رأي جمهور الفقهاء. لحالات خاصة (زكاة التجارة، الأسهم، الذهب المستعمل للزينة) يُنصح بمراجعة عالم شرعي مختص.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/calculators/rent-vs-buy/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🏠 أأجر ولا أشتري؟</a>
+      <a href="jo/prayer-times/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🕌 مواقيت الصلاة</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const NISAB_GOLD_GRAMS = 85;
+
+function calc() {
+  const cash = parseFloat(document.getElementById('cash').value) || 0;
+  const goldValue = parseFloat(document.getElementById('goldValue').value) || 0;
+  const investments = parseFloat(document.getElementById('investments').value) || 0;
+  const debts = parseFloat(document.getElementById('debts').value) || 0;
+  const goldPrice = parseFloat(document.getElementById('goldPricePerGram').value) || 0;
+
+  const result = document.getElementById('zakatResult');
+  if (!cash && !goldValue && !investments) { result.style.display = 'none'; return; }
+
+  const totalWealth = Math.max(0, cash + goldValue + investments - debts);
+  const nisabValue = goldPrice * NISAB_GOLD_GRAMS;
+
+  if (!goldPrice) {
+    result.innerHTML = '<p style="font-size:13px;color:var(--text-muted);text-align:center;padding:10px;">أدخل سعر غرام الذهب عشان نحسب النصاب ونطلعلك المقدار الواجب.</p>';
+    result.style.display = 'block';
+    return;
+  }
+
+  if (totalWealth < nisabValue) {
+    result.innerHTML =
+      '<div class="result-box show" style="margin-top:0;background:var(--surface-2);"><div class="result-value" style="font-size:18px;">لا تجب عليك الزكاة حالياً</div><div class="result-label">مالك (' + totalWealth.toFixed(3) + ' د.أ) أقل من النصاب (' + nisabValue.toFixed(3) + ' د.أ)</div></div>';
+  } else {
+    const zakatDue = totalWealth * 0.025;
+    result.innerHTML =
+      '<div class="result-box show success" style="margin-top:0;"><div class="result-value">' + zakatDue.toFixed(3) + ' د.أ</div><div class="result-label">مقدار الزكاة الواجبة (2.5%)</div></div>' +
+      '<div class="stat-grid" style="margin-top:12px;">' +
+        '<div class="stat-box"><div class="stat-val">' + totalWealth.toFixed(3) + '</div><div class="stat-lbl">إجمالي المال الزكوي</div></div>' +
+        '<div class="stat-box"><div class="stat-val">' + nisabValue.toFixed(3) + '</div><div class="stat-lbl">قيمة النصاب</div></div>' +
+      '</div>';
+  }
+  result.style.display = 'block';
+}
+</script>
+</body></html>
