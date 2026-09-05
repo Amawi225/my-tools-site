@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>طقس الأردن اليوم — عمّان، إربد، الزرقاء والمزيد | Adawati</title>
+<meta name="description" content="طقس الأردن اليوم لكل المدن: عمّان، إربد، الزرقاء، العقبة، السلط والمزيد. درجة الحرارة، الشعور الحقيقي، الرطوبة وسرعة الرياح محدّثة لحظياً. مجانية بدون تسجيل.">
+<meta name="keywords" content="طقس الاردن اليوم, طقس عمان, طقس اربد, طقس الزرقاء, طقس العقبة, Jordan weather today">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/weather/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/weather/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/weather/">
+<meta property="og:title" content="طقس الأردن اليوم | Adawati">
+<meta property="og:description" content="طقس الأردن اليوم لكل المدن، محدّث لحظياً.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/weather/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"طقس الأردن","item":"https://adawati.space/jo/weather/"}
+]}
+]}
+</script>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#eff6ff;">🌤️</div>
+    <h1 class="card-title">طقس الأردن اليوم 🇯🇴</h1>
+    <div class="card-subtitle" id="updatedSubtitle">اختر مدينتك لعرض الطقس الحالي</div>
+    <div class="divider"></div>
+
+    <label>المدينة</label>
+    <select id="citySelect" onchange="fetchWeather()" style="width:100%;padding:10px;font-size:15px;border:1px solid var(--border);border-radius:8px;">
+      <option value="Amman">عمّان</option>
+      <option value="Irbid">إربد</option>
+      <option value="Zarqa">الزرقاء</option>
+      <option value="Aqaba">العقبة</option>
+      <option value="Salt">السلط</option>
+      <option value="Karak">الكرك</option>
+      <option value="Mafraq">المفرق</option>
+      <option value="Jerash">جرش</option>
+      <option value="Ajloun">عجلون</option>
+      <option value="Madaba">مادبا</option>
+      <option value="Maan">معان</option>
+      <option value="Tafilah">الطفيلة</option>
+    </select>
+
+    <div id="loadingMsg" style="text-align:center;padding:20px;color:var(--text-muted);">⏳ جاري التحميل...</div>
+    <div id="weatherBox" style="display:none;text-align:center;margin-top:18px;">
+      <div id="wIcon" style="font-size:56px;"></div>
+      <div id="wTemp" style="font-size:40px;font-weight:800;color:var(--primary);margin-top:4px;"></div>
+      <div id="wDesc" style="font-size:15px;color:var(--text-muted);margin-top:2px;"></div>
+      <div class="stat-grid" style="margin-top:18px;">
+        <div class="stat-box"><div class="stat-val" id="wFeels"></div><div class="stat-lbl">الشعور الحقيقي</div></div>
+        <div class="stat-box"><div class="stat-val" id="wHumidity"></div><div class="stat-lbl">الرطوبة</div></div>
+        <div class="stat-box"><div class="stat-val" id="wWind"></div><div class="stat-lbl">سرعة الرياح</div></div>
+      </div>
+    </div>
+    <div id="errorMsg" style="display:none;text-align:center;padding:20px;color:#dc2626;">⚠️ تعذّر تحميل بيانات الطقس الآن. حاول تحديث الصفحة.</div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">📌 مصدر البيانات</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-top:6px;line-height:1.7;">بيانات الطقس مقدّمة عبر خدمة <a href="https://open-meteo.com" target="_blank" rel="noopener" style="color:var(--primary);">Open-Meteo</a> المجانية، وتُحدَّث كل ساعة تقريباً. للتوقعات الرسمية طويلة المدى، راجع دائرة الأرصاد الجوية الأردنية.</p>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/prayer-times/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🕌 مواقيت الصلاة</a>
+      <a href="jo/emergency-numbers/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🚨 أرقام الطوارئ</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const CITY_COORDS = {
+  Amman: {lat:31.9552, lon:35.9450, ar:'عمّان'},
+  Irbid: {lat:32.5556, lon:35.8500, ar:'إربد'},
+  Zarqa: {lat:32.0728, lon:36.0876, ar:'الزرقاء'},
+  Aqaba: {lat:29.5321, lon:35.0063, ar:'العقبة'},
+  Salt: {lat:32.0389, lon:35.7273, ar:'السلط'},
+  Karak: {lat:31.1854, lon:35.7047, ar:'الكرك'},
+  Mafraq: {lat:32.3434, lon:36.2081, ar:'المفرق'},
+  Jerash: {lat:32.2811, lon:35.8994, ar:'جرش'},
+  Ajloun: {lat:32.3325, lon:35.7517, ar:'عجلون'},
+  Madaba: {lat:31.7197, lon:35.7930, ar:'مادبا'},
+  Maan: {lat:30.1962, lon:35.7345, ar:'معان'},
+  Tafilah: {lat:30.8375, lon:35.6044, ar:'الطفيلة'}
+};
+
+const WEATHER_CODES = {
+  0: ['☀️','سماء صافية'], 1: ['🌤️','غائم جزئياً'], 2: ['⛅','غائم جزئياً'], 3: ['☁️','غائم'],
+  45: ['🌫️','ضباب'], 48: ['🌫️','ضباب متجمد'],
+  51: ['🌦️','رذاذ خفيف'], 53: ['🌦️','رذاذ'], 55: ['🌧️','رذاذ كثيف'],
+  61: ['🌧️','مطر خفيف'], 63: ['🌧️','مطر'], 65: ['🌧️','مطر غزير'],
+  71: ['🌨️','ثلج خفيف'], 73: ['🌨️','ثلج'], 75: ['❄️','ثلج غزير'],
+  80: ['🌦️','زخات مطر خفيفة'], 81: ['🌧️','زخات مطر'], 82: ['⛈️','زخات مطر غزيرة'],
+  95: ['⛈️','عاصفة رعدية'], 96: ['⛈️','عاصفة رعدية مع برد'], 99: ['⛈️','عاصفة رعدية شديدة']
+};
+
+function fetchWeather() {
+  const city = document.getElementById('citySelect').value;
+  const c = CITY_COORDS[city];
+  document.getElementById('loadingMsg').style.display = 'block';
+  document.getElementById('weatherBox').style.display = 'none';
+  document.getElementById('errorMsg').style.display = 'none';
+
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon +
+    '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m&timezone=Asia%2FAmman';
+
+  fetch(url)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      const cur = data.current;
+      const wc = WEATHER_CODES[cur.weather_code] || ['🌡️','—'];
+      document.getElementById('wIcon').textContent = wc[0];
+      document.getElementById('wTemp').textContent = Math.round(cur.temperature_2m) + '°';
+      document.getElementById('wDesc').textContent = wc[1];
+      document.getElementById('wFeels').textContent = Math.round(cur.apparent_temperature) + '°';
+      document.getElementById('wHumidity').textContent = cur.relative_humidity_2m + '%';
+      document.getElementById('wWind').textContent = Math.round(cur.wind_speed_10m) + ' كم/س';
+      document.getElementById('updatedSubtitle').textContent = 'الطقس الحالي في ' + c.ar;
+      document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('weatherBox').style.display = 'block';
+    })
+    .catch(function() {
+      document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'block';
+    });
+}
+
+fetchWeather();
+</script>
+</body></html>
