@@ -69,7 +69,8 @@
         </select>
       </div>
     </div>
-    <div id="goldPriceStatus" style="font-size:12px;color:var(--text-muted);margin-top:-4px;">⏳ جاري تحميل سعر الذهب اللحظي...</div>
+    <div id="goldNisabStatus" style="font-size:13px;font-weight:700;margin-top:4px;"></div>
+    <div id="goldPriceStatus" style="font-size:12px;color:var(--text-muted);margin-top:6px;">⏳ جاري تحميل سعر الذهب اللحظي...</div>
 
     <div class="divider"></div>
     <label>قيمة استثمارات أو تجارة قابلة للتسييل (اختياري)</label>
@@ -140,6 +141,18 @@ function calc() {
 
   const goldPriceForKarat = goldPrice24 * (karat / 24);
   const goldValue = goldGrams * goldPriceForKarat;
+
+  const nisabStatus = document.getElementById('goldNisabStatus');
+  if (!goldGrams) {
+    nisabStatus.textContent = '';
+  } else if (goldGrams < NISAB_GOLD_GRAMS) {
+    nisabStatus.style.color = '#16a34a';
+    nisabStatus.textContent = '✅ ذهبك (' + goldGrams + ' غرام) أقل من نصاب الذهب (85 غرام) — ما عليه زكاة لحاله (بيدخل بحساب باقي أموالك تحت لو موجودة).';
+  } else {
+    const diff = goldGrams - NISAB_GOLD_GRAMS;
+    nisabStatus.style.color = '#ca8a04';
+    nisabStatus.textContent = '⚠️ ذهبك (' + goldGrams + ' غرام) فوق نصاب الذهب (85 غرام) بمقدار ' + diff.toFixed(2) + ' غرام.';
+  }
 
   const result = document.getElementById('zakatResult');
   if (!cash && !goldGrams && !investments) { result.style.display = 'none'; return; }

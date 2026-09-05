@@ -2129,11 +2129,15 @@ async function initCountryDetect() {
   const _urlCode = (new URLSearchParams(location.search).get('country') || '').toUpperCase();
   if (_urlCode && COUNTRY_DATA[_urlCode]) { renderCountrySection(_urlCode); return; }
   // Country-specific pages override country from URL path (/om/ → OM, /ae/ → AE …)
-  var _urlCountryMap = {om:'OM',ae:'AE',sa:'SA',us:'US',uk:'GB',jo:'JO'};
+  var _urlCountryMap = {om:'OM',ae:'AE',sa:'SA',us:'US',uk:'GB',jo:'JO',in:'IN',pk:'PK',bd:'BD',eg:'EG',ph:'PH'};
   var _pathParts = location.pathname.split('/').filter(function(s){return s.length>0;});
   for (var _pi = 0; _pi < _pathParts.length; _pi++) {
     var _mapped = _urlCountryMap[_pathParts[_pi]];
-    if (_mapped && COUNTRY_DATA[_mapped]) { renderCountrySection(_mapped); return; }
+    if (_mapped && COUNTRY_DATA[_mapped]) {
+      sessionStorage.setItem('adawati_country', _mapped);
+      renderCountrySection(_mapped);
+      return;
+    }
   }
   // Use sessionStorage so country detection is fresh each browser session
   let code = sessionStorage.getItem('adawati_country');
