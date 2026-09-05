@@ -149,9 +149,8 @@ function calc() {
     nisabStatus.style.color = '#16a34a';
     nisabStatus.textContent = '✅ ذهبك (' + goldGrams + ' غرام) أقل من نصاب الذهب (85 غرام) — ما عليه زكاة لحاله (بيدخل بحساب باقي أموالك تحت لو موجودة).';
   } else {
-    const diff = goldGrams - NISAB_GOLD_GRAMS;
-    nisabStatus.style.color = '#ca8a04';
-    nisabStatus.textContent = '⚠️ ذهبك (' + goldGrams + ' غرام) فوق نصاب الذهب (85 غرام) بمقدار ' + diff.toFixed(2) + ' غرام.';
+    nisabStatus.style.color = '#16a34a';
+    nisabStatus.textContent = '✅ ذهبك (' + goldGrams + ' غرام) بلغ نصاب الذهب (85 غرام) — زكاته محسوبة ضمن إجمالي الزكاة بالدينار أسفل (مش بالغرام).';
   }
 
   const result = document.getElementById('zakatResult');
