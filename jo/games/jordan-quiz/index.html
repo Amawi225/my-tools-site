@@ -55,6 +55,10 @@
       </div>
     </div>
 
+    <div id="joinerWaitingArea" style="display:none;margin-bottom:16px;padding:14px;background:#fef3c7;border-radius:10px;text-align:center;">
+      <div style="font-weight:700;">⏳ قبلت التحدي! بانتظار ما يبلش صاحبك اللعب... بتبلشوا مع بعض.</div>
+    </div>
+
     <div id="challengeWaitingArea" style="display:none;margin-bottom:16px;padding:14px;background:#dbeafe;border-radius:10px;">
       <div style="font-weight:700;margin-bottom:8px;">⏳ التحدي جاهز! ابعت الرابط لصاحبك — بمجرد ما يقبل التحدي، رح تقدر تبلش تلعب انت كمان.</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -86,7 +90,10 @@
       <div style="font-size:48px;margin-bottom:8px;" id="resultEmoji"></div>
       <div style="font-size:24px;font-weight:800;color:var(--primary);margin-bottom:6px;" id="resultScore"></div>
       <div style="font-size:15px;color:var(--text-muted);margin-bottom:20px;" id="resultMessage"></div>
-      <button onclick="restart()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">🔄 جرّب مرة ثانية</button>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="shareResult()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">📤 شارك نتيجتك</button>
+        <button onclick="restart()" style="padding:10px 20px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">🔄 جرّب مرة ثانية</button>
+      </div>
 
       <div id="challengeShareArea" style="display:none;margin-top:20px;padding:14px;background:var(--surface-2);border-radius:10px;text-align:right;">
         <div style="font-weight:700;margin-bottom:8px;">📤 شارك التحدي مع أصحابك</div>
@@ -453,13 +460,47 @@ function listenForAcceptance() {
     }, function() { /* listener error: link still works manually, no UI change needed */ });
 }
 
-function creatorStartPlaying() {
+async function creatorStartPlaying() {
   if (acceptsUnsub) { acceptsUnsub(); acceptsUnsub = null; }
   document.getElementById('challengeWaitingArea').style.display = 'none';
   currentQ = 0; score = 0; quizStartTime = Date.now();
   document.getElementById('quizArea').style.display = 'block';
   showActiveChallengeLink();
   loadQuestion();
+  try {
+    await db.collection('challenges').doc(challengeId).collection('starts').add({
+      startedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  } catch (e) { /* non-critical: friend's own click can't force-start, but their tab may need a manual refresh */ }
+}
+
+let startUnsub = null;
+
+function listenForStart() {
+  if (startUnsub) startUnsub();
+  startUnsub = db.collection('challenges').doc(challengeId).collection('starts')
+    .onSnapshot(function(snap) {
+      if (!snap.empty) {
+        if (startUnsub) { startUnsub(); startUnsub = null; }
+        document.getElementById('joinerWaitingArea').style.display = 'none';
+        currentQ = 0; score = 0; quizStartTime = Date.now();
+        document.getElementById('quizArea').style.display = 'block';
+        showActiveChallengeLink();
+        loadQuestion();
+      }
+    }, function() { /* listener error: nothing to do, joiner stays in waiting state */ });
+}
+
+function challengeStorageKey(id) {
+  return 'adawati_quiz_played_' + id;
+}
+
+function getPlayedRecord(id) {
+  try { return JSON.parse(localStorage.getItem(challengeStorageKey(id))); } catch (e) { return null; }
+}
+
+function savePlayedRecord(id, data) {
+  try { localStorage.setItem(challengeStorageKey(id), JSON.stringify(data)); } catch (e) {}
 }
 
 async function showChallengeJoinIntro(id) {
@@ -473,6 +514,19 @@ async function showChallengeJoinIntro(id) {
     }
     const data = doc.data();
     activeQuestions = data.questions;
+
+    const played = getPlayedRecord(id);
+    if (played) {
+      playerName = played.name;
+      score = played.score;
+      challengeMode = true;
+      challengeSubmitted = true;
+      document.getElementById('challengeJoinArea').style.display = 'none';
+      document.getElementById('quizArea').style.display = 'none';
+      showResult();
+      return;
+    }
+
     document.getElementById('challengeJoinMsg').textContent = '🏆 ' + escapeHtml(data.creatorName) + ' تحداك! جاهز تنافسه؟';
   } catch (e) {
     document.getElementById('challengeJoinMsg').textContent = 'صار خطأ بتحميل التحدي، تأكد من اتصالك وجرب تاني.';
@@ -487,16 +541,14 @@ async function joinChallenge() {
   challengeMode = true;
   challengeSubmitted = false;
   document.getElementById('challengeJoinArea').style.display = 'none';
-  currentQ = 0; score = 0; quizStartTime = Date.now();
-  document.getElementById('quizArea').style.display = 'block';
-  showActiveChallengeLink();
-  loadQuestion();
+  document.getElementById('joinerWaitingArea').style.display = 'block';
   try {
     await db.collection('challenges').doc(challengeId).collection('accepts').add({
       name: name,
       acceptedAt: firebase.firestore.FieldValue.serverTimestamp()
     });
   } catch (e) { /* non-critical: creator can still see the leaderboard once score is submitted */ }
+  listenForStart();
 }
 
 async function submitChallengeScore() {
@@ -509,34 +561,56 @@ async function submitChallengeScore() {
       timeMs: timeMs,
       submittedAt: firebase.firestore.FieldValue.serverTimestamp()
     });
+    savePlayedRecord(challengeId, { name: playerName, score: score, total: activeQuestions.length });
   } catch (e) { /* still render leaderboard best-effort below */ }
   renderLeaderboard();
 }
 
-async function renderLeaderboard() {
+let leaderboardUnsub = null;
+
+function renderLeaderboard() {
   document.getElementById('leaderboardArea').style.display = 'block';
   document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;color:var(--text-muted);">جاري التحميل...</td></tr>';
-  try {
-    const snap = await db.collection('challenges').doc(challengeId).collection('players')
-      .orderBy('score', 'desc').orderBy('timeMs', 'asc').get();
-    const rows = [];
-    let rank = 1;
-    snap.forEach(function(doc) {
-      const d = doc.data();
-      const mine = d.name === playerName;
-      rows.push('<tr' + (mine ? ' style="font-weight:800;color:var(--primary);"' : '') + '><td style="padding:6px;">' + rank + '</td><td style="padding:6px;">' + escapeHtml(d.name) + '</td><td style="padding:6px;">' + d.score + '/' + d.total + '</td></tr>');
-      rank++;
+  if (leaderboardUnsub) { leaderboardUnsub(); leaderboardUnsub = null; }
+  leaderboardUnsub = db.collection('challenges').doc(challengeId).collection('players')
+    .orderBy('score', 'desc').orderBy('timeMs', 'asc')
+    .onSnapshot(function(snap) {
+      const rows = [];
+      let rank = 1;
+      snap.forEach(function(doc) {
+        const d = doc.data();
+        const mine = d.name === playerName;
+        rows.push('<tr' + (mine ? ' style="font-weight:800;color:var(--primary);"' : '') + '><td style="padding:6px;">' + rank + '</td><td style="padding:6px;">' + escapeHtml(d.name) + '</td><td style="padding:6px;">' + d.score + '/' + d.total + '</td></tr>');
+        rank++;
+      });
+      document.getElementById('leaderboardBody').innerHTML = rows.join('') || '<tr><td colspan="3" style="padding:8px;text-align:center;">لسا محدا لعب</td></tr>';
+    }, function() {
+      document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;">تعذر تحميل لوحة الترتيب حالياً</td></tr>';
     });
-    document.getElementById('leaderboardBody').innerHTML = rows.join('') || '<tr><td colspan="3" style="padding:8px;text-align:center;">لسا محدا لعب</td></tr>';
-  } catch (e) {
-    document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;">تعذر تحميل لوحة الترتيب حالياً</td></tr>';
-  }
   document.getElementById('challengeShareArea').style.display = 'block';
   document.getElementById('challengeShareLink').value = location.origin + location.pathname + '?challenge=' + challengeId;
 }
 
 function copyChallengeLink() {
   copyLinkGeneric('challengeShareLink', 'copyLinkBtn');
+}
+
+function shareResult() {
+  const pct = Math.round((score / activeQuestions.length) * 100);
+  const text = 'حصلت على ' + score + '/' + activeQuestions.length + ' (' + pct + '%) بكويز "شو بتعرف عن الأردن؟" 🇯🇴 جرب تتحداني!';
+  const url = (challengeMode && challengeId)
+    ? (location.origin + location.pathname + '?challenge=' + challengeId)
+    : (location.origin + location.pathname);
+  if (navigator.share) {
+    navigator.share({ title: 'شو بتعرف عن الأردن؟ 🇯🇴', text: text, url: url }).catch(function() {});
+    return;
+  }
+  const full = text + ' ' + url;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(full).then(function() { alert('تم نسخ نتيجتك! الصقها بأي مكان بدك تشاركها فيه.'); }).catch(function() { alert(full); });
+  } else {
+    alert(full);
+  }
 }
 
 function shareOrCopy(inputId, btnId) {
@@ -654,6 +728,8 @@ function showResult() {
 }
 
 function restart() {
+  if (leaderboardUnsub) { leaderboardUnsub(); leaderboardUnsub = null; }
+  if (startUnsub) { startUnsub(); startUnsub = null; }
   if (!challengeMode) pickQuestions();
   currentQ = 0;
   score = 0;

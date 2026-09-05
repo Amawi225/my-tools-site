@@ -29,7 +29,7 @@
 {"@type":"WebApplication","name":"حاسبة ضريبة الدخل الأردني","url":"https://adawati.space/jo/calculators/income-tax/","description":"احسب ضريبة الدخل السنوية في الأردن حسب الشرائح التصاعدية والإعفاءات الشخصية والعائلية.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}},
 {"@type":"FAQPage","mainEntity":[
   {"@type":"Question","name":"شو شرائح ضريبة الدخل بالأردن؟","acceptedAnswer":{"@type":"Answer","text":"5% لأول 5000 دينار، 10% للـ5000 التالية، 15% للـ5000 التالية، 20% للـ5000 التالية (حتى 20 ألف)، 25% لما بين 20,001 ومليون دينار، و30% لما يزيد عن مليون دينار من الدخل الخاضع للضريبة."}},
-  {"@type":"Question","name":"كم الإعفاء الشخصي والعائلي؟","acceptedAnswer":{"@type":"Answer","text":"9000 دينار إعفاء شخصي لكل مكلف، و9000 دينار إضافية إعفاء عائلي للمتزوج أو المعيل، بالإضافة لإمكانية خصم مصاريف موثقة (تعليم، صحة، سكن) حتى 5000 دينار، بحد أقصى إجمالي 23000 دينار لكل الإعفاءات مجتمعة."}},
+  {"@type":"Question","name":"كم الإعفاء الشخصي والعائلي؟","acceptedAnswer":{"@type":"Answer","text":"9000 دينار إعفاء شخصي لكل مكلف، و9000 دينار إضافية إعفاء عائلي للمتزوج أو المعيل. بالإضافة لذلك، يمكن خصم مصاريف موثقة (علاج، تعليم، سكن) وفق تفصيل: 1000 دينار للمكلف نفسه، 1000 دينار إضافية لشريك الحياة (إن وجد)، وحتى 1000 دينار لكل ابن معال بحد أقصى 3 أبناء (أي حتى 3000 دينار للأبناء) — بحد أقصى إجمالي 23000 دينار لكل الإعفاءات مجتمعة وفق المادة 9 من قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته."}},
   {"@type":"Question","name":"هل يُخصم اشتراك الضمان الاجتماعي قبل حساب الضريبة؟", "acceptedAnswer":{"@type":"Answer","text":"لم نتمكن من تأكيد هذه النقطة بشكل قاطع من المصادر المتاحة. هذه الحاسبة تحسب الضريبة على الدخل الإجمالي كما هو — راجع دائرة ضريبة الدخل والمبيعات (istd.gov.jo) للتأكد من طريقة الاحتساب الدقيقة لحالتك."}}
 ]}
 ]}
@@ -66,8 +66,14 @@
       <button class="option-btn" id="statusMarried" onclick="setStatus('married')">متزوج/معيل (إعفاء 18,000)</button>
     </div>
 
-    <label style="margin-top:10px;display:block;">مصاريف موثقة إضافية (تعليم/صحة/سكن) — اختياري، حد أقصى 5,000</label>
-    <input type="number" id="extraExpenses" placeholder="0.000" min="0" max="5000" step="any" oninput="calc()">
+    <div id="kidsField" style="display:none;margin-top:10px;">
+      <label style="display:block;">عدد الأبناء المعالين (لغايات إعفاء المصاريف الإضافية فقط، حد أقصى 3)</label>
+      <input type="number" id="numKids" placeholder="0" min="0" max="3" step="1" value="0" oninput="onKidsChange()">
+    </div>
+
+    <label style="margin-top:10px;display:block;">مصاريف موثقة إضافية (علاج/تعليم/سكن وفوائد قرض إسكان) — اختياري</label>
+    <div id="extraExpensesHint" style="font-size:12px;color:var(--text-muted);margin-bottom:4px;"></div>
+    <input type="number" id="extraExpenses" placeholder="0.000" min="0" step="any" oninput="calc()">
 
     <div id="taxResult" style="display:none;margin-top:20px;">
       <div class="result-box show success" style="margin-top:0;">
@@ -110,11 +116,11 @@
       <ul style="padding-inline-start:18px;">
         <li>الإعفاء الشخصي: <strong>9,000 دينار</strong> لكل مكلف</li>
         <li>الإعفاء العائلي: <strong>9,000 دينار</strong> إضافية للمتزوج أو المعيل</li>
-        <li>مصاريف موثقة إضافية (تعليم، صحة، سكن): حتى <strong>5,000 دينار</strong> (تحتاج فواتير/إثباتات)</li>
+        <li>مصاريف موثقة إضافية (علاج، تعليم، سكن): <strong>1,000 دينار للمكلف نفسه</strong> + <strong>1,000 دينار لشريك الحياة</strong> (إن وجد) + <strong>حتى 1,000 دينار لكل ابن معال</strong> (بحد أقصى 3 أبناء) — تحتاج فواتير/إثباتات</li>
         <li>الحد الأقصى الإجمالي لكل الإعفاءات مجتمعة: <strong>23,000 دينار</strong></li>
       </ul>
       <p style="margin-top:8px;font-size:13px;"><strong>المرجع الرسمي:</strong> دائرة ضريبة الدخل والمبيعات — <a href="https://istd.gov.jo" target="_blank" rel="noopener" style="color:var(--primary);">istd.gov.jo</a> — قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته.</p>
-      <p style="margin-top:6px;font-size:12px;">تم التحقق من هذه الأرقام عبر أكثر من مصدر (دليل مكتب تدقيق حسابات متخصص + مصدر توعوي مالي مستقل)، وتباينت بعض المصادر الأخرى حول الشريحة العليا — اعتمدنا الرواية الأكثر تفصيلاً واتساقاً مع نص القانون. آخر تحديث: سبتمبر 2026.</p>
+      <p style="margin-top:6px;font-size:12px;">تنبيه: صفحة "الجديد في أحكام القانون" على istd.gov.jo لسا تذكر أرقام النسخة الأصلية للقانون رقم 34 لسنة 2014 عند صدوره (شرائح 7%/14%/20% وسقف إعفاء 28,000)، وهذي غير محدّثة لتعكس التعديلات اللاحقة. الأرقام المعتمدة بالحاسبة (الشرائح الحالية والإعفاءات 9,000/9,000/حتى 5,000) موثّقة من مصدر يقتبس نص المادة 9 مباشرة كما هي سارية منذ 2020، ومتطابقة مع مصدر مستقل ثانٍ ومع مقال إخباري رسمي عن فترة الانتقال بـ2019. إذا كانت حالتك معقدة أو بدك تأكيد رسمي قاطع، راجع دائرة ضريبة الدخل والمبيعات مباشرة. آخر تحديث: سبتمبر 2026.</p>
     </div>
   </div>
 
@@ -165,6 +171,27 @@ function setStatus(s) {
   maritalStatus = s;
   document.getElementById('statusSingle').classList.toggle('active', s === 'single');
   document.getElementById('statusMarried').classList.toggle('active', s === 'married');
+  document.getElementById('kidsField').style.display = s === 'married' ? 'block' : 'none';
+  onKidsChange();
+}
+
+function maxExtraCap() {
+  const kids = Math.min(parseInt(document.getElementById('numKids').value) || 0, 3);
+  let cap = 1000; // المكلف نفسه، بغض النظر عن الحالة الاجتماعية
+  if (maritalStatus === 'married') {
+    cap += 1000; // الزوج/ة
+    cap += kids * 1000; // كل ابن معال، حتى 3
+  }
+  return cap;
+}
+
+function onKidsChange() {
+  const maxExtra = maxExtraCap();
+  document.getElementById('extraExpenses').max = maxExtra;
+  const breakdown = maritalStatus === 'married'
+    ? ' (1,000 لك + 1,000 لشريك حياتك + حتى 1,000 لكل ابن معال حتى 3 أبناء)'
+    : ' (1,000 دينار لمصاريفك الشخصية فقط — إعفاء الزوج/ة والأبناء يتطلب اختيار "متزوج/معيل" أعلاه)';
+  document.getElementById('extraExpensesHint').textContent = '💡 الحد الأقصى المتاح لك حسب حالتك: ' + maxExtra.toLocaleString() + ' دينار' + breakdown;
   calc();
 }
 
@@ -188,7 +215,7 @@ function calc() {
   const income = parseFloat(document.getElementById('annualIncome').value) || 0;
   if (!income) { document.getElementById('taxResult').style.display = 'none'; return; }
 
-  const extra = Math.min(parseFloat(document.getElementById('extraExpenses').value) || 0, 5000);
+  const extra = Math.min(parseFloat(document.getElementById('extraExpenses').value) || 0, maxExtraCap());
   const baseExemption = maritalStatus === 'married' ? 18000 : 9000;
   const totalExemption = Math.min(baseExemption + extra, 23000);
 
