@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة تكلفة الزواج في الأردن | Adawati</title>
+<meta name="description" content="احسب تكلفة عرسك الكاملة: المهر، الذهب، قاعة الفرح، الفستان والبدلة، التصوير، تجهيز بيت الزوجية والمزيد. اعرف كم لازم توفر بالشهر. مجانية بدون تسجيل.">
+<meta name="keywords" content="تكلفة الزواج في الاردن, كم تكلفة العرس, حاسبة مصاريف الزواج, تجهيز بيت الزوجية">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/calculators/wedding-cost/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/calculators/wedding-cost/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/calculators/wedding-cost/">
+<meta property="og:title" content="حاسبة تكلفة الزواج في الأردن | Adawati">
+<meta property="og:description" content="اجمع كل مصاريف عرسك بمكان واحد واعرف كم بدك توفر بالشهر.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/calculators/wedding-cost/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"حاسبة تكلفة الزواج","item":"https://adawati.space/jo/calculators/wedding-cost/"}
+]},
+{"@type":"WebApplication","name":"حاسبة تكلفة الزواج","url":"https://adawati.space/jo/calculators/wedding-cost/","description":"احسب التكلفة الكاملة المتوقعة لعرسك حسب البنود المختلفة، واعرف كم لازم توفر شهرياً.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}}
+]}
+</script>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#fdf4ff;">💍</div>
+    <h1 class="card-title">حاسبة تكلفة الزواج 🇯🇴</h1>
+    <div class="card-subtitle">اجمع كل بنود العرس بمكان واحد</div>
+    <div class="divider"></div>
+
+    <div class="row">
+      <div><label>المهر المقدم</label><input type="number" id="mahr" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+      <div><label>الذهب والشبكة</label><input type="number" id="gold" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+    </div>
+    <div class="row">
+      <div><label>قاعة الفرح والضيافة</label><input type="number" id="venue" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+      <div><label>فستان العروس وبدلة العريس</label><input type="number" id="attire" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+    </div>
+    <div class="row">
+      <div><label>التصوير والفيديو</label><input type="number" id="photography" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+      <div><label>تجهيز بيت الزوجية (أثاث)</label><input type="number" id="furniture" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+    </div>
+    <label>بنود أخرى (دعوات، زفة، مكياج...)</label>
+    <input type="number" id="other" placeholder="0.000" min="0" step="any" oninput="calc()">
+
+    <div class="divider"></div>
+    <label>خلال كم شهر بدك تجمع المبلغ؟ (اختياري)</label>
+    <input type="number" id="months" placeholder="مثال: 12" min="1" step="1" oninput="calc()">
+
+    <div id="weddingResult" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="totalCost"></div>
+        <div class="result-label">التكلفة الكاملة المتوقعة</div>
+      </div>
+      <div id="monthlyBox" style="display:none;margin-top:12px;">
+        <div class="stat-grid">
+          <div class="stat-box" style="background:#eff6ff;"><div class="stat-val" id="monthlySaving" style="color:#2563eb;"></div><div class="stat-lbl">لازم توفر بالشهر</div></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:14px;line-height:2;" id="breakdown"></div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/calculators/zakat/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🕌 حاسبة الزكاة</a>
+      <a href="jo/calculators/rent-vs-buy/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🏠 أأجر ولا أشتري؟</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+function calc() {
+  const mahr = parseFloat(document.getElementById('mahr').value) || 0;
+  const gold = parseFloat(document.getElementById('gold').value) || 0;
+  const venue = parseFloat(document.getElementById('venue').value) || 0;
+  const attire = parseFloat(document.getElementById('attire').value) || 0;
+  const photography = parseFloat(document.getElementById('photography').value) || 0;
+  const furniture = parseFloat(document.getElementById('furniture').value) || 0;
+  const other = parseFloat(document.getElementById('other').value) || 0;
+  const months = parseFloat(document.getElementById('months').value) || 0;
+
+  const total = mahr + gold + venue + attire + photography + furniture + other;
+  if (!total) { document.getElementById('weddingResult').style.display = 'none'; return; }
+
+  document.getElementById('totalCost').textContent = total.toFixed(3) + ' د.أ';
+  document.getElementById('breakdown').innerHTML =
+    (mahr ? 'المهر: <strong>' + mahr.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (gold ? 'الذهب: <strong>' + gold.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (venue ? 'القاعة: <strong>' + venue.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (attire ? 'الفستان/البدلة: <strong>' + attire.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (photography ? 'التصوير: <strong>' + photography.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (furniture ? 'الأثاث: <strong>' + furniture.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (other ? 'أخرى: <strong>' + other.toFixed(3) + ' د.أ</strong><br>' : '') +
+    'الإجمالي: <strong style="color:var(--primary);font-size:16px;">' + total.toFixed(3) + ' د.أ</strong>';
+
+  const monthlyBox = document.getElementById('monthlyBox');
+  if (months > 0) {
+    document.getElementById('monthlySaving').textContent = (total / months).toFixed(3) + ' د.أ';
+    monthlyBox.style.display = 'block';
+  } else {
+    monthlyBox.style.display = 'none';
+  }
+
+  document.getElementById('weddingResult').style.display = 'block';
+}
+</script>
+</body></html>
