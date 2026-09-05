@@ -55,17 +55,27 @@
 
     <label>إجمالي النقد والمدخرات (دينار)</label>
     <input type="number" id="cash" placeholder="0.000" min="0" step="any" oninput="calc()">
-    <label style="margin-top:8px;display:block;">قيمة الذهب والفضة اللي تملكها (دينار، إن وجد)</label>
-    <input type="number" id="goldValue" placeholder="0.000" min="0" step="any" oninput="calc()">
-    <label style="margin-top:8px;display:block;">قيمة استثمارات أو تجارة قابلة للتسييل (اختياري)</label>
+
+    <div class="divider"></div>
+    <label style="font-weight:700;">🪙 الذهب اللي تملكه</label>
+    <div class="row" style="margin-top:8px;">
+      <div><label>كم غرام ذهب عندك؟</label><input type="number" id="goldGrams" placeholder="0" min="0" step="any" oninput="calc()"></div>
+      <div><label>عيار الذهب</label>
+        <select id="goldKarat" onchange="calc()" style="width:100%;padding:10px;font-size:15px;border:1px solid var(--border);border-radius:8px;">
+          <option value="24">24 (خالص)</option>
+          <option value="22">22</option>
+          <option value="21" selected>21</option>
+          <option value="18">18</option>
+        </select>
+      </div>
+    </div>
+    <div id="goldPriceStatus" style="font-size:12px;color:var(--text-muted);margin-top:-4px;">⏳ جاري تحميل سعر الذهب اللحظي...</div>
+
+    <div class="divider"></div>
+    <label>قيمة استثمارات أو تجارة قابلة للتسييل (اختياري)</label>
     <input type="number" id="investments" placeholder="0.000" min="0" step="any" oninput="calc()">
     <label style="margin-top:8px;display:block;">ديون مستحقة عليك تُخصم (اختياري)</label>
     <input type="number" id="debts" placeholder="0.000" min="0" step="any" oninput="calc()">
-
-    <div class="divider"></div>
-    <label>سعر غرام الذهب عيار 24 اليوم (دينار) — لحساب النصاب</label>
-    <input type="number" id="goldPricePerGram" placeholder="مثال: 55" min="0" step="any" oninput="calc()">
-    <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">💡 تأكد من السعر الحالي لغرام الذهب عيار 24 من أي محل مجوهرات أو موقع أسعار موثوق، وأدخله هون. النصاب = 85 غرام ذهب.</p>
 
     <div id="zakatResult" style="display:none;margin-top:20px;"></div>
   </div>
@@ -78,7 +88,7 @@
         <li>نصاب الفضة: <strong>595 غراماً</strong> من الفضة (200 درهم)</li>
         <li>نسبة الزكاة الواجبة: <strong>2.5%</strong> من إجمالي المال إذا بلغ النصاب ومرّ عليه حول هجري كامل</li>
       </ul>
-      <p style="margin-top:8px;font-size:12px;">هذه الحاسبة مبنية على رأي جمهور الفقهاء. لحالات خاصة (زكاة التجارة، الأسهم، الذهب المستعمل للزينة) يُنصح بمراجعة عالم شرعي مختص.</p>
+      <p style="margin-top:8px;font-size:12px;">هذه الحاسبة مبنية على رأي جمهور الفقهاء. سعر الذهب يُحدَّث لحظياً تلقائياً من سعر الذهب العالمي. لحالات خاصة (زكاة التجارة، الأسهم، الذهب المستعمل للزينة) يُنصح بمراجعة عالم شرعي مختص.</p>
     </div>
   </div>
 
@@ -90,6 +100,7 @@
       <a href="jo/calculators/wedding-cost/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💍 حاسبة تكلفة الزواج</a>
       <a href="jo/games/jordan-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🇯🇴 كويز شو بتعرف عن الأردن؟</a>
       <a href="jo/games/wordle/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🟩 كلمة اليوم</a>
+      <a href="jo/gold-price/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🪙 سعر الذهب اليوم</a>
       <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
     </div>
   </div>
@@ -104,22 +115,39 @@
 
 <script>
 const NISAB_GOLD_GRAMS = 85;
+let goldPrice24 = 0;
+
+function fetchGoldPrice() {
+  fetch('https://xaus.com/api/v1/spot?currency=JOD&unit=gram')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      goldPrice24 = data.xau.price;
+      document.getElementById('goldPriceStatus').innerHTML = '✅ سعر عيار 24 اللحظي: ' + goldPrice24.toFixed(3) + ' د.أ/غرام (<a href="jo/gold-price/" style="color:var(--primary);">كل الأعيرة</a>)';
+      calc();
+    })
+    .catch(function() {
+      document.getElementById('goldPriceStatus').innerHTML = '⚠️ تعذّر تحميل سعر الذهب اللحظي — راجع <a href="jo/gold-price/" style="color:var(--primary);">صفحة أسعار الذهب</a> يدوياً.';
+    });
+}
 
 function calc() {
   const cash = parseFloat(document.getElementById('cash').value) || 0;
-  const goldValue = parseFloat(document.getElementById('goldValue').value) || 0;
+  const goldGrams = parseFloat(document.getElementById('goldGrams').value) || 0;
+  const karat = parseFloat(document.getElementById('goldKarat').value) || 24;
   const investments = parseFloat(document.getElementById('investments').value) || 0;
   const debts = parseFloat(document.getElementById('debts').value) || 0;
-  const goldPrice = parseFloat(document.getElementById('goldPricePerGram').value) || 0;
+
+  const goldPriceForKarat = goldPrice24 * (karat / 24);
+  const goldValue = goldGrams * goldPriceForKarat;
 
   const result = document.getElementById('zakatResult');
-  if (!cash && !goldValue && !investments) { result.style.display = 'none'; return; }
+  if (!cash && !goldGrams && !investments) { result.style.display = 'none'; return; }
 
   const totalWealth = Math.max(0, cash + goldValue + investments - debts);
-  const nisabValue = goldPrice * NISAB_GOLD_GRAMS;
+  const nisabValue = goldPrice24 * NISAB_GOLD_GRAMS;
 
-  if (!goldPrice) {
-    result.innerHTML = '<p style="font-size:13px;color:var(--text-muted);text-align:center;padding:10px;">أدخل سعر غرام الذهب عشان نحسب النصاب ونطلعلك المقدار الواجب.</p>';
+  if (!goldPrice24) {
+    result.innerHTML = '<p style="font-size:13px;color:var(--text-muted);text-align:center;padding:10px;">جاري تحميل سعر الذهب لحساب النصاب...</p>';
     result.style.display = 'block';
     return;
   }
@@ -138,5 +166,7 @@ function calc() {
   }
   result.style.display = 'block';
 }
+
+fetchGoldPrice();
 </script>
 </body></html>
