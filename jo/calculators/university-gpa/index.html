@@ -29,7 +29,7 @@
 {"@type":"WebApplication","name":"حاسبة معدل الجامعة الأردني","url":"https://adawati.space/jo/calculators/university-gpa/","description":"احسب معدلك الفصلي والتراكمي في الجامعات الأردنية بناءً على ساعات موادك وتقديراتها، مع جدول تقدير قابل للتعديل حسب جامعتك.","applicationCategory":"EducationApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}},
 {"@type":"FAQPage","mainEntity":[
   {"@type":"Question","name":"كيف يُحسب معدل الفصل الجامعي؟","acceptedAnswer":{"@type":"Answer","text":"يُضرب عدد نقاط كل مادة (حسب التقدير) في عدد ساعاتها المعتمدة، ثم تُجمع نواتج كل المواد وتُقسم على إجمالي عدد الساعات المسجلة بالفصل."}},
-  {"@type":"Question","name":"شو الفرق بين نظام النقاط ونظام العلامة المئوية؟","acceptedAnswer":{"@type":"Answer","text":"بعض الجامعات الأردنية (كجامعة اليرموك) تُصدر المعدل مباشرة كعلامة من 100 دون تحويلها لنقاط، بينما جامعات أخرى تستخدم نظام نقاط من 4.0 أو 4.2. تحقق من كشف علاماتك الرسمي واختر النظام المطابق، وعدّل جدول النقاط إذا كان الحد الأقصى لجامعتك 4.2."}},
+  {"@type":"Question","name":"شو الفرق بين نظام النقاط ونظام العلامة المئوية؟","acceptedAnswer":{"@type":"Answer","text":"بعض الجامعات الأردنية (كجامعة اليرموك) تُصدر المعدل مباشرة كعلامة من 100 دون تحويلها لنقاط، بينما جامعات أخرى تستخدم نظام نقاط من 4.0 أو 4.2. تحقق من كشف علاماتك الرسمي واختر النظام المطابق من القائمة المنسدلة أعلى الحاسبة، وعدّل جدول النقاط إذا لزم حسب جامعتك."}},
   {"@type":"Question","name":"هل جدول التقدير نفسه في كل الجامعات الأردنية؟","acceptedAnswer":{"@type":"Answer","text":"لا. تختلف جداول تحويل التقدير الحرفي إلى نقاط قليلاً بين الجامعات الأردنية (كالجامعة الأردنية، JUST، الزيتونة، الألمانية الأردنية وغيرها). القيم الظاهرة بالحاسبة شائعة الاستخدام وقابلة للتعديل — راجع دليل جامعتك الرسمي للتأكد."}},
   {"@type":"Question","name":"كيف يُحسب المعدل التراكمي الجديد؟","acceptedAnswer":{"@type":"Answer","text":"تُجمع نقاط الفصل الحالي (المعدل × الساعات) مع نقاط الفصول السابقة (المعدل التراكمي السابق × الساعات المنجزة سابقاً)، ثم يُقسم المجموع على إجمالي عدد الساعات (السابقة + الحالية)."}},
   {"@type":"Question","name":"هل هذه الحاسبة رسمية أو معتمدة من الجامعة؟","acceptedAnswer":{"@type":"Answer","text":"لا، هذه أداة مساعدة تقديرية فقط لتسهيل الحساب اليومي. اعتمد دائماً على كشف العلامات الرسمي الصادر من جامعتك عند اتخاذ أي قرار أكاديمي."}}
@@ -57,12 +57,13 @@
     <div class="divider"></div>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:12px 0 16px;">أدخل موادك مع عدد الساعات المعتمدة والتقدير لكل مادة، وبتحسب الحاسبة معدل الفصل تلقائياً. لو أضفت معدلك التراكمي السابق وساعاتك المنجزة، بتطلعلك المعدل التراكمي الجديد كمان.</p>
 
-    <label style="font-weight:700;">نظام جامعتك</label>
-    <div class="option-toggle" style="margin-top:6px;margin-bottom:12px;">
-      <button class="option-btn active" id="sysGpa" onclick="setSystem('gpa')">نقاط (4.0 أو 4.2 حسب جامعتك)</button>
-      <button class="option-btn" id="sysPct" onclick="setSystem('pct')">علامة مئوية من 100 مباشرة</button>
-    </div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:-6px;margin-bottom:12px;">💡 بعض الجامعات (كجامعة اليرموك) تعتمد معدلها مباشرة كعلامة من 100 بدون تحويلها لنقاط، وبعضها الآخر تستخدم نظام نقاط من 4.0 وبعضها 4.2. لو جامعتك نظامها من 4.2، اختر "نقاط" وعدّل قيمة أعلى تقدير (A) بجدول التحويل أسفل من 4.00 إلى 4.20 (والباقي حسب كشف علاماتك) — الحاسبة بتحسب بنفس الطريقة بغض النظر عن الحد الأقصى.</p>
+    <label style="font-weight:700;" for="systemSelect">المعدل من كم؟ (نظام جامعتك)</label>
+    <select id="systemSelect" onchange="setSystem(this.value)" style="width:100%;margin-top:6px;margin-bottom:12px;">
+      <option value="gpa4">نقاط من 4.0</option>
+      <option value="gpa42">نقاط من 4.2</option>
+      <option value="pct">علامة مئوية من 100 مباشرة</option>
+    </select>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:-6px;margin-bottom:12px;">💡 بعض الجامعات (كجامعة اليرموك) تعتمد معدلها مباشرة كعلامة من 100 بدون تحويلها لنقاط. لو اخترت "نقاط من 4.2"، جدول التحويل تحت بيتعبى تلقائياً بقيم تقريبية مقاسة على 4.2 — تأكد منها وعدّلها حسب كشف علاماتك الرسمي لأنها تختلف شوي بين الجامعات.</p>
 
     <details id="gradeTableDetails" style="margin-bottom:16px;background:var(--surface-2);border-radius:var(--radius-sm);padding:10px 14px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">⚙️ جدول تحويل التقدير إلى نقاط (عدّله حسب جامعتك)</summary>
@@ -130,7 +131,7 @@
     <div class="card-title" style="font-size:15px;" id="gpa-faq-title">❓ أسئلة شائعة</div>
     <details style="margin-top:10px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">شو الفرق بين نظام النقاط ونظام العلامة المئوية؟</summary>
-      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">بعض الجامعات الأردنية (كجامعة اليرموك) تُصدر معدلك مباشرة كعلامة من 100 بدون تحويلها لنقاط، بينما جامعات أخرى تحوّل كل تقدير حرفي لنقطة على مقياس من 4.0 أو 4.2. تأكد من كشف علاماتك الرسمي عشان تعرف أي نظام تتبعه جامعتك — لو نظامها 4.2، اختر "نقاط" وعدّل قيمة أعلى تقدير بجدول التحويل من 4.00 إلى 4.20.</p>
+      <p style="margin-top:8px;font-size:14px;color:var(--text-muted);line-height:1.7;">بعض الجامعات الأردنية (كجامعة اليرموك) تُصدر معدلك مباشرة كعلامة من 100 بدون تحويلها لنقاط، بينما جامعات أخرى تحوّل كل تقدير حرفي لنقطة على مقياس من 4.0 أو 4.2. تأكد من كشف علاماتك الرسمي عشان تعرف أي نظام تتبعه جامعتك، واختره من القائمة المنسدلة أعلى الحاسبة — لو اخترت "نقاط من 4.2"، جدول التحويل بيتعبى تلقائياً بقيم تقريبية وتقدر تعدّلها.</p>
     </details>
     <details style="margin-top:10px;">
       <summary style="font-weight:700;cursor:pointer;font-size:14px;">هل جدول التقدير نفسه في كل الجامعات الأردنية؟</summary>
@@ -194,19 +195,31 @@
 
 <script>
 const GRADE_DEFAULTS = {'A':4.00,'A-':3.75,'B+':3.50,'B':3.25,'B-':3.00,'C+':2.75,'C':2.50,'C-':2.25,'D+':2.00,'D':1.75,'F':0.00};
+const SCALE_42_FACTOR = 4.2 / 4.0;
 let gradePoints = Object.assign({}, GRADE_DEFAULTS);
 let courseCount = 0;
-let system = 'gpa';
+let system = 'gpa4';
+
+function isPointsSystem() {
+  return system === 'gpa4' || system === 'gpa42';
+}
 
 function setSystem(s) {
   system = s;
-  document.getElementById('sysGpa').classList.toggle('active', s === 'gpa');
-  document.getElementById('sysPct').classList.toggle('active', s === 'pct');
-  document.getElementById('gradeTableDetails').style.display = s === 'gpa' ? 'block' : 'none';
-  document.getElementById('prevGpa').max = s === 'gpa' ? 10 : 100;
-  document.getElementById('prevGpa').placeholder = s === 'gpa' ? 'مثال: 3.20' : 'مثال: 82.5';
-  document.getElementById('planCurrentGpa').placeholder = s === 'gpa' ? 'مثال: 3.00' : 'مثال: 78';
-  document.getElementById('planTargetGpa').placeholder = s === 'gpa' ? 'مثال: 3.30' : 'مثال: 85';
+  document.getElementById('systemSelect').value = s;
+  const points = isPointsSystem();
+  document.getElementById('gradeTableDetails').style.display = points ? 'block' : 'none';
+  if (s === 'gpa42') {
+    gradePoints = {};
+    Object.keys(GRADE_DEFAULTS).forEach(function(g) { gradePoints[g] = Math.round(GRADE_DEFAULTS[g] * SCALE_42_FACTOR * 100) / 100; });
+  } else if (s === 'gpa4') {
+    gradePoints = Object.assign({}, GRADE_DEFAULTS);
+  }
+  if (points) buildGradeTable();
+  document.getElementById('prevGpa').max = s === 'gpa4' ? 4 : (s === 'gpa42' ? 4.2 : 100);
+  document.getElementById('prevGpa').placeholder = s === 'gpa4' ? 'مثال: 3.20' : (s === 'gpa42' ? 'مثال: 3.36' : 'مثال: 82.5');
+  document.getElementById('planCurrentGpa').placeholder = s === 'gpa4' ? 'مثال: 3.00' : (s === 'gpa42' ? 'مثال: 3.15' : 'مثال: 78');
+  document.getElementById('planTargetGpa').placeholder = s === 'gpa4' ? 'مثال: 3.30' : (s === 'gpa42' ? 'مثال: 3.47' : 'مثال: 85');
   document.getElementById('coursesList').innerHTML = '';
   courseCount = 0;
   for (let i = 0; i < 5; i++) addCourse();
@@ -217,7 +230,7 @@ function buildGradeTable() {
   const wrap = document.getElementById('gradeTable');
   wrap.innerHTML = Object.keys(GRADE_DEFAULTS).map(g =>
     '<div><label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:3px;">' + g + '</label>' +
-    '<input type="number" id="gp-' + g + '" value="' + GRADE_DEFAULTS[g].toFixed(2) + '" step="0.05" min="0" max="10" ' +
+    '<input type="number" id="gp-' + g + '" value="' + gradePoints[g].toFixed(2) + '" step="0.05" min="0" max="10" ' +
     'style="width:100%;padding:6px;font-size:13px;border:1px solid var(--border);border-radius:6px;" onchange="updateGradeTable()">' +
     '</div>'
   ).join('');
@@ -250,7 +263,7 @@ function addCourse() {
   div.id = 'course-' + id;
   div.style.alignItems = 'flex-end';
   div.style.gap = '8px';
-  const gradeInputHtml = system === 'gpa'
+  const gradeInputHtml = isPointsSystem()
     ? '<div style="width:120px;"><label>التقدير</label><select class="course-grade" id="grade-' + id + '" onchange="calc()">' + gradeOptions() + '</select></div>'
     : '<div style="width:110px;"><label>العلامة (من 100)</label><input type="number" class="course-pct" id="pct-' + id + '" min="0" max="100" step="any" oninput="calc()"></div>';
   div.innerHTML =
@@ -276,7 +289,7 @@ function calc() {
     const hours = parseFloat(hoursEl.value) || 0;
     if (hours <= 0) return;
 
-    if (system === 'gpa') {
+    if (isPointsSystem()) {
       const gradeEl = document.getElementById('grade-' + id);
       if (!gradeEl) return;
       totalPoints += hours * gradePoints[gradeEl.value];
