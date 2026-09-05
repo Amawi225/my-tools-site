@@ -50,15 +50,16 @@
   <div class="card" style="text-align:center;">
     <div class="card-icon" style="background:#f0fdf4;margin:0 auto;">🟩</div>
     <h1 class="card-title">كلمة اليوم 🇯🇴</h1>
-    <div class="card-subtitle">خمّن الكلمة المكوّنة من 5 حروف خلال 6 محاولات</div>
+    <div class="card-subtitle" id="cardSubtitle">خمّن الكلمة المكوّنة من 5 حروف خلال 6 محاولات</div>
     <div class="divider"></div>
 
     <div class="wordle-grid" id="grid"></div>
     <div id="message" style="min-height:24px;font-weight:700;color:var(--primary);margin-bottom:10px;"></div>
     <div id="keyboard"></div>
 
-    <div id="shareBox" style="display:none;margin-top:16px;">
+    <div id="shareBox" style="display:none;margin-top:16px;gap:8px;justify-content:center;flex-wrap:wrap;">
       <button onclick="shareResult()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">📤 انسخ نتيجتك للمشاركة</button>
+      <button onclick="playAgain()" style="padding:10px 20px;background:var(--surface-2);color:var(--text);border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">🔄 العب مرة ثانية (كلمة عشوائية)</button>
     </div>
   </div>
 
@@ -67,6 +68,7 @@
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
       <a href="jo/games/jordan-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🇯🇴 كويز شو بتعرف عن الأردن؟</a>
       <a href="jo/gold-price/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🪙 سعر الذهب اليوم</a>
+      <a href="jo/students/scholarships-loans/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🎓 منح وقروض الجامعة</a>
       <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
     </div>
   </div>
@@ -89,13 +91,13 @@ function dayIndex() {
   return ((diffDays % WORDS.length) + WORDS.length) % WORDS.length;
 }
 
-const TARGET = [...WORDS[dayIndex()]];
+let TARGET = [...WORDS[dayIndex()]];
 const WORD_LEN = 5;
 const MAX_TRIES = 6;
 let currentGuess = [];
 let attempts = [];
 let gameOver = false;
-const keyStates = {};
+let keyStates = {};
 
 const KEY_ROWS = [
   ['ض','ص','ث','ق','ف','غ','ع','ه','خ','ح','ج','د'],
@@ -213,7 +215,7 @@ function submitGuess() {
   if (guess.join('') === TARGET.join('')) {
     gameOver = true;
     showMessage('🎉 برافو! خمّنتها صح!');
-    document.getElementById('shareBox').style.display = 'block';
+    document.getElementById('shareBox').style.display = 'flex';
     return;
   }
 
@@ -221,8 +223,21 @@ function submitGuess() {
   if (attempts.length >= MAX_TRIES) {
     gameOver = true;
     showMessage('الكلمة كانت: ' + TARGET.join(''));
-    document.getElementById('shareBox').style.display = 'block';
+    document.getElementById('shareBox').style.display = 'flex';
   }
+}
+
+function playAgain() {
+  TARGET = [...WORDS[Math.floor(Math.random() * WORDS.length)]];
+  currentGuess = [];
+  attempts = [];
+  gameOver = false;
+  keyStates = {};
+  document.getElementById('shareBox').style.display = 'none';
+  document.getElementById('message').textContent = '';
+  document.getElementById('cardSubtitle') && (document.getElementById('cardSubtitle').textContent = 'جولة عشوائية جديدة — 5 حروف، 6 محاولات');
+  buildGrid();
+  buildKeyboard();
 }
 
 function shareResult() {
