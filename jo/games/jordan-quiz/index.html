@@ -117,6 +117,7 @@
   <div style="margin-top:16px;text-align:center;">
     <strong>أدوات الأردن الأخرى:</strong>
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/games/world-sports-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🏆 كويز الرياضة العالمية</a>
       <a href="jo/calculators/wedding-cost/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💍 حاسبة تكلفة الزواج</a>
       <a href="jo/games/wordle/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🟩 كلمة اليوم</a>
       <a href="jo/gold-price/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🪙 سعر الذهب اليوم</a>
@@ -136,16 +137,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
 <script>
-firebase.initializeApp({
-  apiKey: "AIzaSyAO8ZKfiaKlqTIw8xUfEp5xHFy0ilBztKQ",
-  authDomain: "adawati-challenges.firebaseapp.com",
-  projectId: "adawati-challenges",
-  storageBucket: "adawati-challenges.firebasestorage.app",
-  messagingSenderId: "360902823980",
-  appId: "1:360902823980:web:bd85f87de77dcfc315c189"
-});
-const db = firebase.firestore();
-
 const QUESTIONS = [
   {q:'شو عاصمة الأردن؟', opts:['إربد','عمّان','الزرقاء','العقبة'], correct:1},
   {q:'أي بحر بيعتبر أخفض نقطة على سطح الأرض وموجود بالأردن؟', opts:['البحر الأحمر','البحر الأبيض المتوسط','البحر الميت','بحر قزوين'], correct:2},
@@ -391,364 +382,89 @@ const QUESTIONS = [
   {q:'محمية وادي رم الطبيعية سُجلت كموقع تراث عالمي لليونسكو بأي سنة؟', opts:['2011','1985','2000','1970'], correct:0},
   {q:'مدينة البتراء الأثرية سُجلت كموقع تراث عالمي لليونسكو بأي سنة؟', opts:['1985','1946','2007','1970'], correct:0},
   {q:'قصير عمرة (القصر الصحراوي المشهور برسوماته الجدارية) سُجل كموقع تراث عالمي لليونسكو بأي سنة؟', opts:['1985','2011','1946','2000'], correct:0},
+
+  // --- expanded batch 2 (verified) ---
+  {q:'شو اسم الخبز الرقيق التقليدي اللي بيتخبز على الصاج وبيُستخدم غالباً تحت أرز المنسف؟', opts:['الشراك','الطابون','الكماج','المفتول'], correct:0},
+  {q:'شركة الطيران الوطنية الأردنية "الملكية الأردنية" تأسست بأي سنة؟', opts:['1953','1963','1973','1983'], correct:1},
+  {q:'الخطوط الملكية الأردنية انضمت لتحالف الطيران العالمي "ون ورلد" (oneworld) بأي سنة؟', opts:['1999','2003','2007','2012'], correct:2},
+  {q:'متحف الأردن (أكبر متحف بالمملكة) بمنطقة رأس العين بعمّان افتتح بأي سنة؟', opts:['2010','2014','2018','2021'], correct:1},
+  {q:'خليج العقبة تطل عليه كم دولة (الأردن، مصر، السعودية، وإسرائيل)؟', opts:['دولتين','3 دول','4 دول','5 دول'], correct:2},
+  {q:'محمية الأزرق المائية كانت أول موقع رطب بالأردن يُسجّل ضمن اتفاقية رامسار العالمية، وكانت الأردن بذلك أول دولة عربية تنضم للاتفاقية — بأي سنة صار هذا؟', opts:['1971','1977','1989','1998'], correct:1},
+  {q:'تقريباً كم نوع من الطيور تم تسجيله بمحمية الأزرق المائية؟', opts:['حوالي 100 نوع','حوالي 200 نوع','حوالي 307 أنواع','حوالي 500 نوع'], correct:2},
+  {q:'حلف المدن العشرة (الديكابوليس) اللي كانت جرش وعمّان وأم قيس جزء منه، أسسه القائد الروماني بومبيوس الكبير بأي سنة تقريباً؟', opts:['64 قبل الميلاد','30 قبل الميلاد','14 ميلادي','106 ميلادي'], correct:0},
+  {q:'شو كان الهدف الرئيسي من إنشاء حلف الديكابوليس (المدن العشرة)؟', opts:['الوقوف بوجه نفوذ الأنباط جنوباً','محاربة الفرس','حماية طرق الحرير','مواجهة الإغريق'], correct:0},
+  {q:'جامعة مؤتة (قرب الكرك) تأسست بقرار ملكي بأي سنة؟', opts:['1971','1981','1991','2001'], correct:1},
+  {q:'جامعة مؤتة فيها جناح مدني وجناح عسكري — الجناح العسكري باشر أعماله بأي سنة؟', opts:['1981','1984','1990','1995'], correct:1},
+  {q:'الجامعة الهاشمية (بمحافظة الزرقاء) تأسست بأي سنة؟', opts:['1985','1990','1995','2000'], correct:2},
+  {q:'جامعة آل البيت (بمحافظة المفرق) تأسست بأي سنة؟', opts:['1989','1993','1997','2002'], correct:1},
+  {q:'أي جبل من جبال عمّان السبعة الأصلية يُلقّب أحياناً بـ"جبل الثقافة" لتركّز الفن والمعارض فيه؟', opts:['جبل اللويبدة','جبل الحسين','جبل النصر','جبل التاج'], correct:0},
+  {q:'سكة حديد الحجاز (اللي تمر بالأردن) بناها السلطان العثماني؟', opts:['سليمان القانوني','عبدالحميد الثاني','محمد الفاتح','سليم الأول'], correct:1},
+  {q:'شو كان الهدف الرئيسي من إنشاء سكة حديد الحجاز؟', opts:['نقل حجاج بيت الله الحرام إلى الحجاز','نقل الفوسفات فقط','ربط دمشق بالقاهرة','نقل الجيش العثماني فقط'], correct:0},
+  {q:'سكة حديد الحجاز وصلت لمحطة معان الأردنية بأي سنة؟', opts:['1898','1904','1913','1920'], correct:1},
+  {q:'الفرع اللي بيربط معان بالعقبة بسكة الحديد أُنشئ بشكل رئيسي لنقل؟', opts:['الفوسفات','الحجاج','الركاب السياح','البترول'], correct:0},
+  {q:'فرع سكة الحديد بين معان والعقبة افتُتح رسمياً بأي سنة؟', opts:['1965','1975','1985','1995'], correct:1},
+  {q:'الطريق الصحراوي (طريق 15) اللي بيربط جنوب الأردن بشماله طوله تقريباً؟', opts:['150 كم','230 كم','315 كم','450 كم'], correct:2},
+  {q:'البنك المركزي الأردني بدأ مباشرة أعماله رسمياً بأي سنة؟', opts:['1950','1959','1964','1971'], correct:2},
+  {q:'قبل تأسيس البنك المركزي الأردني، كانت مهامه يقوم فيها جهاز اسمه؟', opts:['مجلس النقد الأردني','بنك الإسكان','بنك القاهرة عمان','صندوق النقد العربي'], correct:0},
+  {q:'محمية ضانا الطبيعية (أكبر محمية أردنية) أُنشئت بأي سنة؟', opts:['1975','1989','1998','2005'], correct:1},
+  {q:'محمية ضانا صُنّفت رسمياً كمحمية محيط حيوي عالمية من اليونسكو بأي سنة؟', opts:['1989','1994','1998','2004'], correct:2},
+  {q:'سلطة منطقة العقبة الاقتصادية الخاصة (ASEZA) بدأت عملها الفعلي بأي سنة؟', opts:['1995','1998','2001','2005'], correct:2},
+  {q:'مطار الملكة علياء الدولي سُمي تخليداً لذكرى الملكة علياء اللي كانت زوجة أي ملك أردني؟', opts:['الملك عبدالله الأول','الملك طلال','الملك حسين','الملك عبدالله الثاني'], correct:2},
+  {q:'مهرجان جرش للثقافة والفنون (يُقام بالمدرج الأثري) انطلق لأول مرة بأي سنة؟', opts:['1975','1981','1990','2000'], correct:1},
+  {q:'سد الملك طلال (أكبر سدود الأردن) بيقع بأي محافظة؟', opts:['جرش','عجلون','السلط','مادبا'], correct:0},
+  {q:'سد الملك طلال أُنشئ بأي سنة؟', opts:['1963','1977','1985','1993'], correct:1},
+  {q:'حمامات ماعين الحارة (الشهيرة بالسياحة العلاجية) تقع بأي محافظة أردنية؟', opts:['البلقاء','مادبا','الكرك','الطفيلة'], correct:1},
+  {q:'درجة حرارة بعض ينابيع حمامات ماعين الحارة توصل تقريباً لـ؟', opts:['40 درجة مئوية','50 درجة مئوية','63 درجة مئوية','80 درجة مئوية'], correct:2},
+  {q:'محمية وادي رم الطبيعية مساحتها تقريباً؟', opts:['200 كم²','450 كم²','720 كم²','1200 كم²'], correct:2},
+  {q:'الدير بالبتراء (ثاني أشهر معلم بعد الخزنة) مقارنة بالخزنة من حيث الحجم؟', opts:['أصغر بكثير من الخزنة','نفس حجم الخزنة تقريباً','أكبر من الخزنة','نصف حجم الخزنة'], correct:2},
+  {q:'الدير بالبتراء أكبر حجماً من الخزنة، وتشير الكتابات المكتشفة إنه شُيّد تخليداً لذكرى أي ملك نبطي؟', opts:['الحارث الرابع','عبيدة الأول','رب إيل الثاني','مالك الثاني'], correct:1},
+
+  // --- expanded batch 3 (verified) ---
+  {q:'نهر الأردن ينبع أساساً من سفوح جبل؟', opts:['جبل الشيخ (حرمون)','جبل نيبو','جبل عجلون','جبل القلعة'], correct:0},
+  {q:'نهر الأردن بسبب تعرجاته الكتير، طوله الفعلي أطول من المسافة المستقيمة بين منبعه والبحر الميت — طوله الفعلي يوصل لحوالي كم كيلومتر؟', opts:['حوالي 360 كم','حوالي 100 كم','حوالي 1000 كم','حوالي 50 كم'], correct:0},
+  {q:'اللجنة الأولمبية الأردنية تأسست بأي سنة؟', opts:['1948','1957','1967','1980'], correct:1},
+  {q:'الجيش العربي (الذي أصبح لاحقاً نواة الجيش الأردني) تأسس كقوة شرطة بأي سنة؟', opts:['1920','1935','1946','1956'], correct:0},
+  {q:'قيادة "الجيش العربي" تحوّلت رسمياً من ضباط بريطانيين لضباط أردنيين بأي سنة؟', opts:['1946','1956','1967','1973'], correct:1},
+  {q:'كنيسة البتراء البيزنطية (اللي اشتهرت بفسيفسائها) شُيّدت تقريباً بأي سنة ميلادية؟', opts:['450 م','100 ق.م','700 م','1200 م'], correct:0},
+  {q:'المعبد الكبير (Great Temple) بالبتراء بُني على الأغلب بعهد أي ملك نبطي؟', opts:['الحارث الرابع','عبيدة الأول','رب إيل الثاني','مالك الثاني'], correct:0},
+  {q:'البتراء الصغيرة (سيق البريد) بتبعد عن مركز البتراء الرئيسي تقريباً كم كيلومتر؟', opts:['حوالي 9 كم','حوالي 1 كم','حوالي 50 كم','حوالي 100 كم'], correct:0},
+  {q:'موقع البيضا الأثري (قرب البتراء الصغيرة) من أقدم مواقع الاستيطان البشري بالمنطقة، ويعود تقريباً لـ؟', opts:['حوالي 7000 سنة قبل الميلاد','500 سنة قبل الميلاد','العصر الروماني فقط','القرن التاسع عشر'], correct:0},
+  {q:'شو اسم الزهرة الوطنية الرسمية للأردن؟', opts:['السوسن الأسود','الياسمين','الورد الجوري','النرجس'], correct:0},
+  {q:'السوسن الأسود اعتُمد رسمياً كزهرة وطنية للأردن بأي سنة؟', opts:['1999','1950','2005','1921'], correct:0},
+  {q:'السوسن الأسود (الزهرة الوطنية) بينتشر بشكل خاص بأي محافظة أردنية؟', opts:['الكرك','العقبة','المفرق','إربد'], correct:0},
+  {q:'موقع بيت راس الأثري (قرب إربد) هو الاسم الحديث لمدينة الديكابوليس القديمة؟', opts:['كابيتولياس','جدارا','فيلادلفيا','بيلا'], correct:0},
+  {q:'مدينة كابيتولياس (بيت راس) سُميت تخليداً لأي إله روماني؟', opts:['زيوس (جوبيتر) كابيتولينوس','أبولو','مارس','نبتون'], correct:0},
+  {q:'تلفريك عجلون (اللي بيربط القلعة بالمحمية) افتتح بأي سنة؟', opts:['2023','2010','2015','2019'], correct:0},
+  {q:'تلفريك عجلون بيمتد لمسافة تقريباً؟', opts:['2.5 كم','500 متر','10 كم','1 كم'], correct:0},
+  {q:'مسجد الملك الحسين بن طلال بعمّان (أكبر مسجد بالأردن) يتسع لحوالي كم مصلٍ؟', opts:['5500 مصلٍ','1000 مصلٍ','20000 مصلٍ','500 مصلٍ'], correct:0},
+  {q:'مسجد الملك الحسين بن طلال (أكبر مسجد بالأردن) افتُتح بأي سنة؟', opts:['2005','1989','1965','2010'], correct:0},
+  {q:'حسب الأسطورة الشعبية البدوية، إيش كان يُعتقد إنه مخبّأ داخل الجرة الحجرية أعلى الخزنة بالبتراء؟', opts:['كنز فرعوني','ماء مقدس','عظام ملك نبطي','مخطوطات قديمة'], correct:0},
+  {q:'آثار الرصاص (طلقات نارية) الظاهرة على جرة الخزنة بالبتراء سببها؟', opts:['بدو حاولوا فتحها بحثاً عن كنز مزعوم','زلزال قديم','حرب حديثة','عمال ترميم بالخطأ'], correct:0},
+  {q:'أكبر قبيلة بدوية تقطن محمية وادي رم وتشتغل بمعظم رحلات السفاري فيها؟', opts:['قبيلة الزلابية','قبيلة الحويطات فقط','قبيلة بني صخر','قبيلة العدوان'], correct:0},
+  {q:'محمية وادي رم أُنشئت رسمياً كمنطقة محمية (قبل ما تُسجل لاحقاً كموقع تراث عالمي) بأي سنة؟', opts:['1997','1985','2005','1970'], correct:0},
+  {q:'الساحة البيضاوية بجرش تتميز بشكلها الهندسي غير المعتاد، وهو؟', opts:['شكل بيضاوي بدل المربع أو المستطيل المعتاد بالساحات الرومانية','شكل مثلث','شكل نجمة سباعية','دائرة كاملة'], correct:0},
+  {q:'ساحل العقبة (المنفذ البحري الوحيد للأردن) عبارة عن شريط ضيق واقع بين حدود؟', opts:['إسرائيل والسعودية','مصر والسعودية','سوريا والعراق','لبنان وفلسطين'], correct:0},
+  {q:'شو الشخصية التاريخية الظاهرة على ورقة الدينار الواحد الأردنية؟', opts:['الشريف حسين بن علي','الملك عبدالله الأول','الملك حسين بن طلال','الملك طلال'], correct:0},
+  {q:'شو الشخصية التاريخية الظاهرة على ورقة الخمسة دنانير الأردنية؟', opts:['الملك عبدالله الأول بن الحسين','الشريف حسين بن علي','الملك حسين بن طلال','الملك عبدالله الثاني'], correct:0},
+  {q:'شو اسم الآلة الوترية التقليدية المشهورة عند البدو الأردنيين وبترافق غناء الشعر الشعبي (الزجل)؟', opts:['الربابة','البيانو','الكمان الغربي','الغيتار'], correct:0},
+  {q:'محمية غابات عجلون أنشأتها الجمعية الملكية لحماية الطبيعة بأي سنة؟', opts:['1987','1966','2000','1950'], correct:0},
+  {q:'محمية غابات عجلون مساحتها تقريباً؟', opts:['13 كم²','1 كم²','100 كم²','500 كم²'], correct:0},
 ];
 
-let currentQ = 0;
-let score = 0;
-let answered = false;
-const QUESTIONS_PER_GAME = 12;
-let activeQuestions = [];
-
-let challengeId = null;
-let challengeMode = false;
-let challengeSubmitted = false;
-let playerName = '';
-let quizStartTime = 0;
-
-function getChallengeIdFromUrl() {
-  return new URLSearchParams(location.search).get('challenge');
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, function(c) {
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
-  });
-}
-
-async function createChallenge() {
-  const name = document.getElementById('creatorNameInput').value.trim();
-  if (!name) { alert('اكتب اسمك الأول 🙂'); return; }
-  const btn = document.querySelector('#challengeStartArea button');
-  document.getElementById('creatorNameInput').disabled = true;
-  btn.disabled = true; btn.textContent = 'جاري الإنشاء...';
-  try {
-    pickQuestions();
-    const ref = await db.collection('challenges').add({
-      creatorName: name,
-      questions: activeQuestions,
-      game: 'jordan-quiz',
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    challengeId = ref.id;
-    challengeMode = true;
-    challengeSubmitted = false;
-    playerName = name;
-    document.getElementById('challengeStartArea').style.display = 'none';
-    document.getElementById('quizArea').style.display = 'none';
-    document.getElementById('resultArea').style.display = 'none';
-    document.getElementById('challengeWaitingLinkInput').value = location.origin + location.pathname + '?challenge=' + challengeId;
-    document.getElementById('challengeWaitingArea').style.display = 'block';
-    listenForAcceptance();
-  } catch (e) {
-    alert('صار خطأ بإنشاء التحدي، جرب مرة ثانية.');
-    document.getElementById('creatorNameInput').disabled = false;
-    btn.disabled = false; btn.textContent = 'ابدأ تحدي';
-  }
-}
-
-let acceptsUnsub = null;
-
-function listenForAcceptance() {
-  if (acceptsUnsub) acceptsUnsub();
-  acceptsUnsub = db.collection('challenges').doc(challengeId).collection('accepts')
-    .onSnapshot(function(snap) {
-      if (!snap.empty) {
-        const first = snap.docs[0].data();
-        document.getElementById('accepterNameSpan').textContent = escapeHtml(first.name || 'صاحبك');
-        document.getElementById('challengeAcceptedBox').style.display = 'block';
-      }
-    }, function() { /* listener error: link still works manually, no UI change needed */ });
-}
-
-async function creatorStartPlaying() {
-  if (acceptsUnsub) { acceptsUnsub(); acceptsUnsub = null; }
-  document.getElementById('challengeWaitingArea').style.display = 'none';
-  currentQ = 0; score = 0; quizStartTime = Date.now();
-  document.getElementById('quizArea').style.display = 'block';
-  showActiveChallengeLink();
-  loadQuestion();
-  try {
-    await db.collection('challenges').doc(challengeId).collection('starts').add({
-      startedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-  } catch (e) { /* non-critical: friend's own click can't force-start, but their tab may need a manual refresh */ }
-}
-
-let startUnsub = null;
-
-function listenForStart() {
-  if (startUnsub) startUnsub();
-  startUnsub = db.collection('challenges').doc(challengeId).collection('starts')
-    .onSnapshot(function(snap) {
-      if (!snap.empty) {
-        if (startUnsub) { startUnsub(); startUnsub = null; }
-        document.getElementById('joinerWaitingArea').style.display = 'none';
-        currentQ = 0; score = 0; quizStartTime = Date.now();
-        document.getElementById('quizArea').style.display = 'block';
-        showActiveChallengeLink();
-        loadQuestion();
-      }
-    }, function() { /* listener error: nothing to do, joiner stays in waiting state */ });
-}
-
-function challengeStorageKey(id) {
-  return 'adawati_quiz_played_' + id;
-}
-
-function getPlayedRecord(id) {
-  try { return JSON.parse(localStorage.getItem(challengeStorageKey(id))); } catch (e) { return null; }
-}
-
-function savePlayedRecord(id, data) {
-  try { localStorage.setItem(challengeStorageKey(id), JSON.stringify(data)); } catch (e) {}
-}
-
-async function showChallengeJoinIntro(id) {
-  challengeId = id;
-  try {
-    const doc = await db.collection('challenges').doc(id).get();
-    if (!doc.exists) {
-      document.getElementById('challengeJoinMsg').textContent = 'هذا التحدي غير موجود أو انتهى، جرب رابط جديد.';
-      document.getElementById('challengeJoinForm').style.display = 'none';
-      return;
-    }
-    const data = doc.data();
-    activeQuestions = data.questions;
-
-    const played = getPlayedRecord(id);
-    if (played) {
-      playerName = played.name;
-      score = played.score;
-      challengeMode = true;
-      challengeSubmitted = true;
-      document.getElementById('challengeJoinArea').style.display = 'none';
-      document.getElementById('quizArea').style.display = 'none';
-      showResult();
-      return;
-    }
-
-    document.getElementById('challengeJoinMsg').textContent = '🏆 ' + escapeHtml(data.creatorName) + ' تحداك! جاهز تنافسه؟';
-  } catch (e) {
-    document.getElementById('challengeJoinMsg').textContent = 'صار خطأ بتحميل التحدي، تأكد من اتصالك وجرب تاني.';
-    document.getElementById('challengeJoinForm').style.display = 'none';
-  }
-}
-
-async function joinChallenge() {
-  const name = document.getElementById('joinerNameInput').value.trim();
-  if (!name) { alert('اكتب اسمك الأول 🙂'); return; }
-  playerName = name;
-  challengeMode = true;
-  challengeSubmitted = false;
-  document.getElementById('challengeJoinArea').style.display = 'none';
-  document.getElementById('joinerWaitingArea').style.display = 'block';
-  try {
-    await db.collection('challenges').doc(challengeId).collection('accepts').add({
-      name: name,
-      acceptedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-  } catch (e) { /* non-critical: creator can still see the leaderboard once score is submitted */ }
-  listenForStart();
-}
-
-async function submitChallengeScore() {
-  try {
-    const timeMs = Date.now() - quizStartTime;
-    await db.collection('challenges').doc(challengeId).collection('players').add({
-      name: playerName,
-      score: score,
-      total: activeQuestions.length,
-      timeMs: timeMs,
-      submittedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    savePlayedRecord(challengeId, { name: playerName, score: score, total: activeQuestions.length });
-  } catch (e) { /* still render leaderboard best-effort below */ }
-  renderLeaderboard();
-}
-
-let leaderboardUnsub = null;
-
-function renderLeaderboard() {
-  document.getElementById('leaderboardArea').style.display = 'block';
-  document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;color:var(--text-muted);">جاري التحميل...</td></tr>';
-  if (leaderboardUnsub) { leaderboardUnsub(); leaderboardUnsub = null; }
-  leaderboardUnsub = db.collection('challenges').doc(challengeId).collection('players')
-    .orderBy('score', 'desc').orderBy('timeMs', 'asc')
-    .onSnapshot(function(snap) {
-      const rows = [];
-      let rank = 1;
-      snap.forEach(function(doc) {
-        const d = doc.data();
-        const mine = d.name === playerName;
-        rows.push('<tr' + (mine ? ' style="font-weight:800;color:var(--primary);"' : '') + '><td style="padding:6px;">' + rank + '</td><td style="padding:6px;">' + escapeHtml(d.name) + '</td><td style="padding:6px;">' + d.score + '/' + d.total + '</td></tr>');
-        rank++;
-      });
-      document.getElementById('leaderboardBody').innerHTML = rows.join('') || '<tr><td colspan="3" style="padding:8px;text-align:center;">لسا محدا لعب</td></tr>';
-    }, function() {
-      document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;">تعذر تحميل لوحة الترتيب حالياً</td></tr>';
-    });
-  document.getElementById('challengeShareArea').style.display = 'block';
-  document.getElementById('challengeShareLink').value = location.origin + location.pathname + '?challenge=' + challengeId;
-}
-
-function copyChallengeLink() {
-  copyLinkGeneric('challengeShareLink', 'copyLinkBtn');
-}
-
-function shareResult() {
-  const pct = Math.round((score / activeQuestions.length) * 100);
-  const text = 'حصلت على ' + score + '/' + activeQuestions.length + ' (' + pct + '%) بكويز "شو بتعرف عن الأردن؟" 🇯🇴 جرب تتحداني!';
-  const url = (challengeMode && challengeId)
-    ? (location.origin + location.pathname + '?challenge=' + challengeId)
-    : (location.origin + location.pathname);
-  if (navigator.share) {
-    navigator.share({ title: 'شو بتعرف عن الأردن؟ 🇯🇴', text: text, url: url }).catch(function() {});
-    return;
-  }
-  const full = text + ' ' + url;
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(full).then(function() { alert('تم نسخ نتيجتك! الصقها بأي مكان بدك تشاركها فيه.'); }).catch(function() { alert(full); });
-  } else {
-    alert(full);
-  }
-}
-
-function shareOrCopy(inputId, btnId) {
-  const url = document.getElementById(inputId).value;
-  if (navigator.share) {
-    navigator.share({ title: 'شو بتعرف عن الأردن؟ 🇯🇴', text: 'تحداك بكويز عن الأردن، جاهز تنافسني؟', url: url }).catch(function() {});
-  } else {
-    copyLinkGeneric(inputId, btnId);
-  }
-}
-
-function copyLinkGeneric(inputId, btnId) {
-  const input = document.getElementById(inputId);
-  input.select();
-  input.setSelectionRange(0, 99999);
-  const btn = document.getElementById(btnId);
-  const done = function() {
-    const old = btn.textContent;
-    btn.textContent = '✅ تم النسخ';
-    setTimeout(function(){ btn.textContent = old; }, 1500);
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(input.value).then(done).catch(function(){ try { document.execCommand('copy'); } catch(e){} done(); });
-  } else {
-    try { document.execCommand('copy'); } catch(e) {}
-    done();
-  }
-}
-
-function showActiveChallengeLink() {
-  document.getElementById('challengeActiveLinkInput').value = location.origin + location.pathname + '?challenge=' + challengeId;
-  document.getElementById('challengeActiveLink').style.display = 'block';
-}
-
-function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function pickQuestions() {
-  const selected = shuffle(QUESTIONS).slice(0, QUESTIONS_PER_GAME);
-  activeQuestions = selected.map(function(q) {
-    const order = shuffle(q.opts.map(function(_, i) { return i; }));
-    return {
-      q: q.q,
-      opts: order.map(function(i) { return q.opts[i]; }),
-      correct: order.indexOf(q.correct)
-    };
-  });
-}
-
-function loadQuestion() {
-  answered = false;
-  const q = activeQuestions[currentQ];
-  document.getElementById('progressLabel').textContent = 'سؤال ' + (currentQ + 1) + ' من ' + activeQuestions.length;
-  document.getElementById('questionText').textContent = q.q;
-  const optionsArea = document.getElementById('optionsArea');
-  optionsArea.innerHTML = '';
-  q.opts.forEach(function(opt, i) {
-    const btn = document.createElement('button');
-    btn.textContent = opt;
-    btn.style.cssText = 'padding:12px;border:2px solid var(--border);border-radius:8px;background:var(--surface);font-size:15px;cursor:pointer;text-align:right;';
-    btn.onclick = function() { selectAnswer(i, btn); };
-    optionsArea.appendChild(btn);
-  });
-}
-
-function selectAnswer(i, btn) {
-  if (answered) return;
-  answered = true;
-  const q = activeQuestions[currentQ];
-  const allButtons = document.querySelectorAll('#optionsArea button');
-  allButtons.forEach(function(b, idx) {
-    b.disabled = true;
-    if (idx === q.correct) { b.style.background = '#dcfce7'; b.style.borderColor = '#16a34a'; }
-    else if (idx === i) { b.style.background = '#fee2e2'; b.style.borderColor = '#dc2626'; }
-  });
-  if (i === q.correct) score++;
-  setTimeout(function() {
-    currentQ++;
-    if (currentQ < activeQuestions.length) loadQuestion();
-    else showResult();
-  }, 900);
-}
-
-function showResult() {
-  document.getElementById('quizArea').style.display = 'none';
-  document.getElementById('challengeActiveLink').style.display = 'none';
-  document.getElementById('resultArea').style.display = 'block';
-  const pct = Math.round((score / activeQuestions.length) * 100);
-  let emoji, msg;
-  if (pct >= 90) { emoji = '🏆'; msg = 'أردني أصيل! نتيجة رهيبة.'; }
-  else if (pct >= 70) { emoji = '🇯🇴'; msg = 'معلوماتك عن الأردن ممتازة!'; }
-  else if (pct >= 50) { emoji = '👍'; msg = 'مش بطال، بس فيه مجال تتحسن.'; }
-  else { emoji = '📚'; msg = 'وقتها نراجع شوي عن الأردن!'; }
-  document.getElementById('resultEmoji').textContent = emoji;
-  document.getElementById('resultScore').textContent = score + ' من ' + activeQuestions.length + ' (' + pct + '%)';
-  document.getElementById('resultMessage').textContent = msg;
-
-  if (challengeMode && challengeId) {
-    if (!challengeSubmitted) {
-      challengeSubmitted = true;
-      submitChallengeScore();
-    } else {
-      renderLeaderboard();
-    }
-  } else {
-    document.getElementById('challengeShareArea').style.display = 'none';
-    document.getElementById('leaderboardArea').style.display = 'none';
-  }
-}
-
-function restart() {
-  if (leaderboardUnsub) { leaderboardUnsub(); leaderboardUnsub = null; }
-  if (startUnsub) { startUnsub(); startUnsub = null; }
-  if (!challengeMode) pickQuestions();
-  currentQ = 0;
-  score = 0;
-  quizStartTime = Date.now();
-  document.getElementById('quizArea').style.display = 'block';
-  document.getElementById('resultArea').style.display = 'none';
-  if (challengeMode && challengeId) showActiveChallengeLink();
-  loadQuestion();
-}
-
-const urlChallengeId = getChallengeIdFromUrl();
-if (urlChallengeId) {
-  document.getElementById('challengeStartArea').style.display = 'none';
-  document.getElementById('quizArea').style.display = 'none';
-  document.getElementById('challengeJoinArea').style.display = 'block';
-  showChallengeJoinIntro(urlChallengeId);
-} else {
-  pickQuestions();
-  loadQuestion();
-}
+const QUIZ_CONFIG = {
+  gameId: 'jordan-quiz',
+  shareTitle: 'شو بتعرف عن الأردن؟ 🇯🇴',
+  challengeText: 'تحداك بكويز عن الأردن، جاهز تنافسني؟',
+  resultText: function(score, total, pct) {
+    return 'حصلت على ' + score + '/' + total + ' (' + pct + '%) بكويز "شو بتعرف عن الأردن؟" 🇯🇴 جرب تتحداني!';
+  },
+  resultMessages: [
+    {min:90, emoji:'🏆', msg:'أردني أصيل! نتيجة رهيبة.'},
+    {min:70, emoji:'🇯🇴', msg:'معلوماتك عن الأردن ممتازة!'},
+    {min:50, emoji:'👍', msg:'مش بطال، بس فيه مجال تتحسن.'},
+    {min:0,  emoji:'📚', msg:'وقتها نراجع شوي عن الأردن!'}
+  ]
+};
 </script>
+<script src="jo/games/quiz-engine.js"></script>
 </body></html>

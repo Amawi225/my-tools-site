@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كويز الرياضة العالمية — كأس العالم والأولمبياد | Adawati</title>
+<meta name="description" content="اختبر معلوماتك بالرياضة العالمية: كأس العالم، دوري أبطال أوروبا، الأولمبياد، NBA، التنس والملاكمة. 12 سؤال عشوائي من بنك أسئلة أوسع في كل مرة، شارك نتيجتك مع أصحابك أو تحداهم. مجاني وبدون تسجيل.">
+<meta name="keywords" content="كويز رياضة, اسئلة عن كرة القدم, كأس العالم كويز, اختبار معلومات رياضية, Sports trivia quiz Arabic">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/games/world-sports-quiz/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/games/world-sports-quiz/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/games/world-sports-quiz/">
+<meta property="og:title" content="كويز الرياضة العالمية | Adawati">
+<meta property="og:description" content="اختبر معلوماتك بالرياضة العالمية بـ12 سؤال ممتع في كل مرة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/games/world-sports-quiz/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"كويز الرياضة العالمية","item":"https://adawati.space/jo/games/world-sports-quiz/"}
+]},
+{"@type":"WebApplication","name":"كويز الرياضة العالمية","url":"https://adawati.space/jo/games/world-sports-quiz/","description":"اختبر معلوماتك بالرياضة العالمية: كأس العالم، الأولمبياد، NBA، التنس والملاكمة، مع إمكانية تحدي أصحابك.","applicationCategory":"GameApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}}
+]}
+</script>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#eff6ff;">🏆</div>
+    <h1 class="card-title">رياضة عالمية: شو بتعرف؟</h1>
+    <div class="card-subtitle" id="progressLabel">سؤال 1 من 12</div>
+    <div class="divider"></div>
+
+    <div id="challengeStartArea" style="margin-bottom:16px;padding:14px;background:var(--surface-2);border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:8px;">🏆 تحدَّ أصحابك بنفس الأسئلة!</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input id="creatorNameInput" placeholder="اسمك" maxlength="30" style="flex:1;min-width:120px;padding:8px;border:1px solid var(--border);border-radius:8px;">
+        <button onclick="createChallenge()" style="padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ تحدي</button>
+      </div>
+    </div>
+
+    <div id="challengeJoinArea" style="display:none;margin-bottom:16px;padding:14px;background:#fef3c7;border-radius:10px;text-align:center;">
+      <div id="challengeJoinMsg" style="font-weight:700;margin-bottom:10px;">جاري تحميل التحدي...</div>
+      <div id="challengeJoinForm" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+        <input id="joinerNameInput" placeholder="اسمك" maxlength="30" style="flex:1;min-width:120px;padding:8px;border:1px solid var(--border);border-radius:8px;">
+        <button onclick="joinChallenge()" style="padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">قبول التحدي ✅</button>
+      </div>
+    </div>
+
+    <div id="joinerWaitingArea" style="display:none;margin-bottom:16px;padding:14px;background:#fef3c7;border-radius:10px;text-align:center;">
+      <div style="font-weight:700;">⏳ قبلت التحدي! بانتظار ما يبلش صاحبك اللعب... بتبلشوا مع بعض.</div>
+    </div>
+
+    <div id="challengeWaitingArea" style="display:none;margin-bottom:16px;padding:14px;background:#dbeafe;border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:8px;">⏳ التحدي جاهز! ابعت الرابط لصاحبك — بمجرد ما يقبل التحدي، رح تقدر تبلش تلعب انت كمان.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input id="challengeWaitingLinkInput" readonly style="flex:1;min-width:140px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+        <button id="shareWaitingLinkBtn" onclick="shareOrCopy('challengeWaitingLinkInput','shareWaitingLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">📤 مشاركة</button>
+        <button id="copyWaitingLinkBtn" onclick="copyLinkGeneric('challengeWaitingLinkInput','copyWaitingLinkBtn')" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+      </div>
+      <div id="challengeAcceptedBox" style="display:none;margin-top:14px;padding:12px;background:#dcfce7;border-radius:8px;text-align:center;">
+        <div style="font-weight:700;margin-bottom:8px;">🎮 <span id="accepterNameSpan"></span> قبل التحدي! جاهز تلعب؟</div>
+        <button onclick="creatorStartPlaying()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ اللعب 🚀</button>
+      </div>
+    </div>
+
+    <div id="challengeActiveLink" style="display:none;margin-bottom:16px;padding:12px;background:#dbeafe;border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:6px;font-size:13px;">🔗 رابط التحدي — شاركه مع صاحبك قبل أو أثناء اللعب:</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input id="challengeActiveLinkInput" readonly style="flex:1;min-width:140px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+        <button id="shareActiveLinkBtn" onclick="shareOrCopy('challengeActiveLinkInput','shareActiveLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">📤 مشاركة</button>
+        <button id="copyActiveLinkBtn" onclick="copyLinkGeneric('challengeActiveLinkInput','copyActiveLinkBtn')" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div id="quizArea">
+      <div id="questionText" style="font-size:17px;font-weight:700;margin-bottom:16px;"></div>
+      <div id="optionsArea" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+
+    <div id="resultArea" style="display:none;text-align:center;">
+      <div style="font-size:48px;margin-bottom:8px;" id="resultEmoji"></div>
+      <div style="font-size:24px;font-weight:800;color:var(--primary);margin-bottom:6px;" id="resultScore"></div>
+      <div style="font-size:15px;color:var(--text-muted);margin-bottom:20px;" id="resultMessage"></div>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="shareResult()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">📤 شارك نتيجتك</button>
+        <button onclick="restart()" style="padding:10px 20px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">🔄 جرّب مرة ثانية</button>
+      </div>
+
+      <div id="challengeShareArea" style="display:none;margin-top:20px;padding:14px;background:var(--surface-2);border-radius:10px;text-align:right;">
+        <div style="font-weight:700;margin-bottom:8px;">📤 شارك التحدي مع أصحابك</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input id="challengeShareLink" readonly style="flex:1;min-width:140px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+          <button id="shareLinkBtn" onclick="shareOrCopy('challengeShareLink','shareLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">📤 مشاركة</button>
+          <button id="copyLinkBtn" onclick="copyChallengeLink()" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+        </div>
+      </div>
+
+      <div id="leaderboardArea" style="display:none;margin-top:16px;text-align:right;">
+        <div style="font-weight:700;margin-bottom:8px;">🏆 لوحة الترتيب</div>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead><tr style="border-bottom:2px solid var(--border);"><th style="padding:6px;text-align:right;">#</th><th style="padding:6px;text-align:right;">الاسم</th><th style="padding:6px;text-align:right;">النتيجة</th></tr></thead>
+          <tbody id="leaderboardBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/games/jordan-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🇯🇴 كويز شو بتعرف عن الأردن؟</a>
+      <a href="jo/games/wordle/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🟩 كلمة اليوم</a>
+      <a href="jo/gold-price/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🪙 سعر الذهب اليوم</a>
+      <a href="jo/students/scholarships-loans/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🎓 منح وقروض الجامعة</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+const QUESTIONS = [
+  {q:'مين الفريق اللي فاز بأول كأس عالم لكرة القدم بتاريخ 1930؟', opts:['الأرجنتين','الأوروغواي','البرازيل','إيطاليا'], correct:1},
+  {q:'كأس العالم 1930 استضافته أي دولة؟', opts:['البرازيل','الأوروغواي','فرنسا','إيطاليا'], correct:1},
+  {q:'أي دولة فازت بكأس العالم لكرة القدم أكبر عدد من المرات (5 مرات)؟', opts:['ألمانيا','البرازيل','إيطاليا','الأرجنتين'], correct:1},
+  {q:'كأس العالم 1950 اللي استضافته البرازيل، مين فاز فيه بمفاجأة كبيرة؟', opts:['البرازيل','الأوروغواي','إسبانيا','السويد'], correct:1},
+  {q:'مين فاز بكأس العالم 1958 بالسويد وكانت أول بطولة عالمية لأسطورة كرة القدم بيليه؟', opts:['السويد','البرازيل','فرنسا','ألمانيا الغربية'], correct:1},
+  {q:'منتخب إنجلترا فاز بكأس العالم الوحيد له سنة 1966 وكان يستضيفه بلده. مين كان الخصم بالنهائي؟', opts:['ألمانيا الغربية','البرازيل','هولندا','إيطاليا'], correct:0},
+  {q:'كأس العالم 1970 بالمكسيك فاز فيه؟', opts:['إيطاليا','البرازيل','ألمانيا الغربية','الأرجنتين'], correct:1},
+  {q:'كأس العالم 1974 استضافته ألمانيا الغربية وفازت فيه؟', opts:['هولندا','ألمانيا الغربية','البرازيل','بولندا'], correct:1},
+  {q:'كأس العالم 1978 بالأرجنتين فازت فيه؟', opts:['هولندا','الأرجنتين','البرازيل','إيطاليا'], correct:1},
+  {q:'كأس العالم 1982 بإسبانيا فازت فيه؟', opts:['إيطاليا','ألمانيا الغربية','فرنسا','البرازيل'], correct:0},
+  {q:'كأس العالم 1986 بالمكسيك، مين قاد الأرجنتين للفوز فيه بقيادة نجمها الأسطوري؟', opts:['دييغو مارادونا','ليونيل ميسي','ماريو كيمبيس','غابرييل باتيستوتا'], correct:0},
+  {q:'نهائي كأس العالم 1990 بإيطاليا انتهى بفوز؟', opts:['الأرجنتين','ألمانيا الغربية','إيطاليا','إنجلترا'], correct:1},
+  {q:'كأس العالم 1994 استضافته الولايات المتحدة وفازت فيه؟', opts:['إيطاليا','البرازيل','ألمانيا','هولندا'], correct:1},
+  {q:'فرنسا فازت بأول كأس عالم لها سنة 1998 وكانت الدولة المستضيفة أيضاً. مين كان الخصم بالنهائي؟', opts:['البرازيل','إيطاليا','الأرجنتين','كرواتيا'], correct:0},
+  {q:'كأس العالم 2002 استضافته دولتان آسيويتان معاً، شو هما؟', opts:['الصين والهند','كوريا الجنوبية واليابان','اليابان والصين','تايلاند وفيتنام'], correct:1},
+  {q:'كأس العالم 2006 بألمانيا فازت فيه؟', opts:['فرنسا','إيطاليا','البرازيل','إسبانيا'], correct:1},
+  {q:'إسبانيا فازت بأول كأس عالم لها سنة 2010، وكانت الدولة المستضيفة؟', opts:['جنوب أفريقيا','ألمانيا','البرازيل','روسيا'], correct:0},
+  {q:'كأس العالم 2014 بالبرازيل فازت فيه؟', opts:['الأرجنتين','ألمانيا','هولندا','البرازيل'], correct:1},
+  {q:'كأس العالم 2018 استضافته روسيا وفازت فيه؟', opts:['كرواتيا','فرنسا','بلجيكا','إنجلترا'], correct:1},
+  {q:'كأس العالم 2022 بقطر فازت فيه الأرجنتين بضربات الترجيح ضد؟', opts:['فرنسا','كرواتيا','المغرب','البرازيل'], correct:0},
+  {q:'هداف كأس العالم 2022 بقطر، وكان صاحب هاتريك بالنهائي؟', opts:['ليونيل ميسي','كيليان مبابي','أوليفييه جيرو','نيمار'], correct:1},
+  {q:'هداف كأس العالم 1998 بفرنسا؟', opts:['رونالدو','دافور شوكر','زين الدين زيدان','أليساندرو ديل بييرو'], correct:1},
+  {q:'هداف كأس العالم 2002 برصيد 8 أهداف؟', opts:['رونالدينيو','رونالدو','فيري فان نيستلروي','ميروسلاف كلوزه'], correct:1},
+  {q:'هداف كأس العالم 2010 بجنوب أفريقيا؟', opts:['توماس مولر','ديفيد فيا','فيسلي شنايدر','دييغو فورلان'], correct:0},
+  {q:'شو أول دولة فازت ببطولة أمم أوروبا (يورو) سنة 1960؟', opts:['الاتحاد السوفييتي','إسبانيا','فرنسا','ألمانيا الغربية'], correct:0},
+  {q:'أي دولة فازت بأكبر عدد من بطولات يورو (4 مرات)؟', opts:['ألمانيا','إسبانيا','فرنسا','إيطاليا'], correct:1},
+  {q:'اليونان فازت بيورو 2004 بشكل مفاجئ، وكانت الدولة المستضيفة؟', opts:['اليونان','البرتغال','فرنسا','ألمانيا'], correct:1},
+  {q:'يورو 2024 بألمانيا فازت فيه؟', opts:['إنجلترا','إسبانيا','فرنسا','إيطاليا'], correct:1},
+  {q:'يورو 2016 بفرنسا فازت فيه البرتغال بقيادة نجمها؟', opts:['كريستيانو رونالدو','ليونيل ميسي','زين الدين زيدان','لويس فيغو'], correct:0},
+  {q:'أي دولة تعتبر الأكثر تتويجاً بكوبا أمريكا (16 لقب)؟', opts:['البرازيل','الأوروغواي','الأرجنتين','تشيلي'], correct:2},
+  {q:'ثاني أكثر دولة تتويجاً بكوبا أمريكا برصيد 15 لقب؟', opts:['البرازيل','تشيلي','كولومبيا','الأوروغواي'], correct:3},
+  {q:'أي نادي أوروبي فاز بأكبر عدد من ألقاب دوري أبطال أوروبا (15 لقب)؟', opts:['برشلونة','بايرن ميونخ','ريال مدريد','ميلان'], correct:2},
+  {q:'ريال مدريد فاز بلقبه الأخير بدوري الأبطال (2024) بمواجهة؟', opts:['بايرن ميونخ','مانشستر سيتي','بوروسيا دورتموند','ليفربول'], correct:2},
+  {q:'مين حاصل على أكبر عدد من جوائز الكرة الذهبية (8 مرات)؟', opts:['كريستيانو رونالدو','ليونيل ميسي','مارادونا','بيليه'], correct:1},
+  {q:'كريستيانو رونالدو فاز بالكرة الذهبية كم مرة؟', opts:['3 مرات','5 مرات','7 مرات','8 مرات'], correct:1},
+  {q:'ليونيل ميسي فاز بالكرة الذهبية 4 مرات متتالية بين أي سنوات؟', opts:['2009-2012','2015-2018','2005-2008','2019-2022'], correct:0},
+  {q:'أي فريق فاز بأكبر عدد من بطولات NBA (18 لقب)؟', opts:['لوس أنجلوس ليكرز','بوسطن سيلتيكس','شيكاغو بولز','ميامي هيت'], correct:1},
+  {q:'لوس أنجلوس ليكرز فاز بكم بطولة NBA؟', opts:['15','17','20','12'], correct:1},
+  {q:'مايكل جوردان فاز مع شيكاغو بولز بكم بطولة NBA؟', opts:['3','4','6','8'], correct:2},
+  {q:'مايكل جوردان حاز على جائزة أفضل لاعب بالنهائي (Finals MVP) كل مرة فاز فيها بالبطولة، يعني كم مرة؟', opts:['4','5','6','3'], correct:2},
+  {q:'مين حامل الرقم القياسي لأكبر عدد من جوائز MVP بموسم NBA العادي (6 مرات)؟', opts:['مايكل جوردان','كريم عبدالجبار','بيل راسل','ليبرون جيمس'], correct:1},
+  {q:'مين كسر الرقم القياسي لأكثر نقاط بتاريخ NBA سنة 2023 متجاوزاً كريم عبدالجبار؟', opts:['كوبي براينت','ليبرون جيمس','كيفن دورانت','ستيفن كاري'], correct:1},
+  {q:'سجل كريم عبدالجبار اللي كسره ليبرون جيمس كان حوالي كم نقطة؟', opts:['25,000 نقطة','38,387 نقطة','50,000 نقطة','20,000 نقطة'], correct:1},
+  {q:'مين حامل الرقم القياسي لأكبر عدد بطولات غراند سلام للرجال (24 بطولة)؟', opts:['روجيه فيدرر','رافائيل نادال','نوفاك ديوكوفيتش','أندي موراي'], correct:2},
+  {q:'رافائيل نادال فاز بكم بطولة غراند سلام بمسيرته؟', opts:['18','20','22','24'], correct:2},
+  {q:'روجيه فيدرر فاز بكم بطولة غراند سلام بمسيرته؟', opts:['14','17','20','24'], correct:2},
+  {q:'مين حاملة الرقم القياسي المطلق لأكبر عدد بطولات غراند سلام للسيدات (24 بطولة)؟', opts:['سيرينا ويليامز','مارغريت كورت','شتيفي غراف','مارتينا نافراتيلوفا'], correct:1},
+  {q:'سيرينا ويليامز فازت بكم بطولة غراند سلام (الرقم القياسي بالعصر المفتوح)؟', opts:['19','21','23','24'], correct:2},
+  {q:'أول نسخة حديثة من الألعاب الأولمبية أُقيمت سنة 1896 بأي مدينة؟', opts:['روما','أثينا','باريس','لندن'], correct:1},
+  {q:'أولمبياد 2004 أُقيمت بأثينا للمرة الثانية بتاريخها، أول مرة كانت سنة؟', opts:['1896','1900','1924','1936'], correct:0},
+  {q:'أولمبياد 2008 الصيفية استضافتها؟', opts:['طوكيو','بكين','لندن','ريو دي جانيرو'], correct:1},
+  {q:'أولمبياد 2012 الصيفية استضافتها؟', opts:['لندن','باريس','ريو دي جانيرو','طوكيو'], correct:0},
+  {q:'أولمبياد 2016 الصيفية استضافتها؟', opts:['بكين','ريو دي جانيرو','طوكيو','لندن'], correct:1},
+  {q:'أولمبياد 2024 الصيفية استضافتها؟', opts:['باريس','لوس أنجلوس','برلين','مدريد'], correct:0},
+  {q:'مين أكثر رياضي حصل على ميداليات أولمبية بالتاريخ (28 ميدالية)؟', opts:['يوسين بولت','مايكل فيلبس','كارل لويس','مايكل جوردان'], correct:1},
+  {q:'مايكل فيلبس حصل على كم ميدالية ذهبية أولمبية بمسيرته (رقم قياسي)؟', opts:['18','20','23','25'], correct:2},
+  {q:'بأولمبياد بكين 2008، مايكل فيلبس حقق رقماً قياسياً بعدد الذهبيات بنسخة أولمبية واحدة، كم كانت؟', opts:['6 ذهبيات','7 ذهبيات','8 ذهبيات','10 ذهبيات'], correct:2},
+  {q:'يوسين بولت سجل الرقم القياسي العالمي لسباق 100 متر ببطولة العالم 2009 ببرلين، بزمن؟', opts:['9.58 ثانية','9.72 ثانية','9.90 ثانية','10.10 ثانية'], correct:0},
+  {q:'يوسين بولت سجل الرقم القياسي العالمي لسباق 200 متر ببرلين 2009، بزمن؟', opts:['19.19 ثانية','20.05 ثانية','18.90 ثانية','21.34 ثانية'], correct:0},
+  {q:'يوسين بولت رياضي من أي دولة؟', opts:['الولايات المتحدة','جامايكا','كينيا','ترينيداد وتوباغو'], correct:1},
+  {q:'إليود كيبتشوغي أول إنسان يركض مسافة الماراثون بأقل من ساعتين (بظروف غير رسمية) بفيينا 2019، بزمن؟', opts:['1:59:40','2:01:09','1:55:20','2:10:00'], correct:0},
+  {q:'إليود كيبتشوغي رياضي من أي دولة؟', opts:['إثيوبيا','كينيا','المغرب','أوغندا'], correct:1},
+  {q:'مباراة "رامبل إن ذا جانغل" الشهيرة بين محمد علي وجورج فورمان أُقيمت سنة 1974 بأي مدينة؟', opts:['نيويورك','كينشاسا','مانيلا','لاس فيغاس'], correct:1},
+  {q:'محمد علي هزم جورج فورمان بمباراة "رامبل إن ذا جانغل" بالضربة القاضية بأي جولة؟', opts:['الجولة الثالثة','الجولة الثامنة','الجولة الأولى','الجولة الثانية عشر'], correct:1},
+  {q:'مباراة "ثريلا إن مانيلا" الثالثة والأخيرة بين محمد علي وجو فريزر أُقيمت سنة 1975 بأي مدينة؟', opts:['مانيلا','كينشاسا','لاس فيغاس','نيويورك'], correct:0},
+  {q:'مايك تايسون صار أصغر بطل عالم بوزن الثقيل بالتاريخ سنة 1986 بعمر؟', opts:['18 سنة','20 سنة','23 سنة','25 سنة'], correct:1},
+  {q:'مايك تايسون حقق لقب أصغر بطل عالم بوزن الثقيل بالفوز على؟', opts:['جورج فورمان','تريفور بيربيك','إيفاندر هوليفيلد','لينوكس لويس'], correct:1},
+  {q:'أي سائقين يتشاركان الرقم القياسي لأكبر عدد بطولات فورمولا 1 (7 لكل واحد)؟', opts:['شوماخر وهاميلتون','سينا وبروست','فيتيل وفيرشتابن','لاودا وستيوارت'], correct:0},
+  {q:'مايكل شوماخر فاز بـ5 بطولات فورمولا 1 متتالية مع أي فريق؟', opts:['مكلارين','ويليامز','فيراري','ريدبول'], correct:2},
+  {q:'لويس هاميلتون توّج ببطولته السابعة (المعادلة لرقم شوماخر) سنة 2020 مع أي فريق؟', opts:['مرسيدس','فيراري','مكلارين','ريدبول'], correct:0},
+  {q:'أي دولة الأكثر تتويجاً بكأس العالم للكريكيت (6 مرات)؟', opts:['الهند','أستراليا','إنجلترا','الهند الغربية'], correct:1},
+  {q:'الهند فازت بكأس العالم للكريكيت مرتين، بأي سنتين؟', opts:['1983 و2011','1975 و1979','1996 و2003','2007 و2015'], correct:0},
+  {q:'أول نسختين من كأس العالم للكريكيت (1975 و1979) فازت فيهم؟', opts:['أستراليا','الهند الغربية','إنجلترا','باكستان'], correct:1},
+  {q:'أي دولة الأكثر تتويجاً بكأس العالم للرغبي (4 مرات)؟', opts:['نيوزيلندا','جنوب أفريقيا','أستراليا','إنجلترا'], correct:1},
+  {q:'أول نسخة من كأس العالم للرغبي أُقيمت سنة 1987 وفازت فيها؟', opts:['أستراليا','نيوزيلندا','جنوب أفريقيا','إنجلترا'], correct:1},
+  {q:'جنوب أفريقيا فازت بأحدث كأس عالم للرغبي (2023) بأي دولة أُقيمت؟', opts:['فرنسا','إنجلترا','اليابان','نيوزيلندا'], correct:0},
+  {q:'لانس أرمسترونغ جُرّد من ألقابه بطواف فرنسا (7 ألقاب) سنة 2012 بسبب؟', opts:['مخالفات مالية','تعاطي المنشطات','مشاكل بجنسيته','إصابة رياضية'], correct:1},
+  {q:'بعد تجريد أرمسترونغ من ألقابه، بعض الدراجين تعادلوا برقم 5 ألقاب بطواف فرنسا، من بينهم؟', opts:['إيدي ميركس','ماركو بانتاني','فابيان كانشيلارا','توم بومرل'], correct:0},
+  {q:'مين حامل الرقم القياسي لأكبر عدد بطولات غولف كبرى (ميجورز) برصيد 18 بطولة؟', opts:['تايغر وودز','جاك نيكلاوس','آرنولد بالمر','فيل ميكلسون'], correct:1},
+  {q:'تايغر وودز فاز بكم بطولة غولف كبرى (ميجورز) بمسيرته؟', opts:['12','15','18','20'], correct:1},
+  {q:'بيليه هو اللاعب الوحيد بالتاريخ اللي فاز بكأس العالم 3 مرات، بأي سنوات؟', opts:['1958، 1962، 1970','1970، 1978، 1982','1950، 1958، 1962','1962، 1970، 1978'], correct:0},
+  {q:'بيليه بنهائي كأس العالم 1970 ضد إيطاليا؟', opts:['سجل هدف افتتح فيه النتيجة','سجل هاتريك كامل','لم يسجل أي هدف','طُرد من الملعب'], correct:0},
+  {q:'أي منتخب نسائي الأكثر تتويجاً بكأس العالم لكرة القدم للسيدات (4 مرات)؟', opts:['ألمانيا','الولايات المتحدة','اليابان','النرويج'], correct:1},
+  {q:'ألمانيا فازت بكأس العالم لكرة القدم للسيدات مرتين، بأي سنتين؟', opts:['2003 و2007','1991 و1999','2015 و2019','2011 و2015'], correct:0},
+  {q:'نهائي كأس العالم 2022 انتهى بالتعادل 3-3 وحُسم بضربات الترجيح، مين سجل هاتريك بالمباراة؟', opts:['ليونيل ميسي','كيليان مبابي','أنخيل دي ماريا','أوسمان دمبيلي'], correct:1},
+  {q:'ليونيل ميسي حصل على جائزة الكرة الذهبية لبطولة كأس العالم (أفضل لاعب) بنسخة؟', opts:['2018','2022','2014','2010'], correct:1},
+  {q:'هولندا وصلت لنهائي كأس العالم 3 مرات (1974، 1978، 2010) بدون ما تفوز بأي مرة. مين هزمها بنهائي 2010؟', opts:['ألمانيا','إسبانيا','البرازيل','إيطاليا'], correct:1},
+  {q:'الدنمارك فازت بيورو 1992 بشكل مفاجئ رغم إنها ما كانت مؤهلة أصلاً. مين هزمت بالنهائي؟', opts:['ألمانيا','هولندا','فرنسا','إيطاليا'], correct:0},
+  {q:'جنوب أفريقيا فازت بأول كأس عالم للرغبي شاركت فيه سنة 1995 وكانت الدولة المستضيفة أيضاً، بمناسبة عودتها من العزلة الرياضية بعد؟', opts:['نظام الفصل العنصري (أبارتايد)','حرب أهلية','عقوبات اقتصادية','كارثة طبيعية'], correct:0},
+  {q:'الهند فازت بأول كأس عالم لها بالكريكيت سنة 1983 بقيادة؟', opts:['سونيل غافاسكار','كابيل ديف','سچين تندولكار','فيرات كوهلي'], correct:1},
+  {q:'خوان مانويل فانخيو حامل الرقم القياسي القديم لبطولات فورمولا 1 بالخمسينيات برصيد؟', opts:['3 بطولات','5 بطولات','7 بطولات','4 بطولات'], correct:1}
+];
+
+const QUIZ_CONFIG = {
+  gameId: 'world-sports-quiz',
+  shareTitle: 'رياضة عالمية: شو بتعرف؟ 🏆',
+  challengeText: 'تحداك بكويز الرياضة العالمية، جاهز تنافسني؟',
+  resultText: function(score, total, pct) {
+    return 'حصلت على ' + score + '/' + total + ' (' + pct + '%) بكويز الرياضة العالمية 🏆 جرب تتحداني!';
+  },
+  resultMessages: [
+    {min:90, emoji:'🏆', msg:'خبير رياضة حقيقي! نتيجة رهيبة.'},
+    {min:70, emoji:'⚽', msg:'معلوماتك الرياضية ممتازة!'},
+    {min:50, emoji:'👍', msg:'مش بطال، بس فيه مجال تتحسن.'},
+    {min:0,  emoji:'📚', msg:'وقتها نراجع شوي بالرياضة!'}
+  ]
+};
+</script>
+<script src="jo/games/quiz-engine.js"></script>
+</body></html>

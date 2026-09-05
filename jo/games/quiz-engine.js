@@ -1,0 +1,363 @@
+firebase.initializeApp({
+  apiKey: "AIzaSyAO8ZKfiaKlqTIw8xUfEp5xHFy0ilBztKQ",
+  authDomain: "adawati-challenges.firebaseapp.com",
+  projectId: "adawati-challenges",
+  storageBucket: "adawati-challenges.firebasestorage.app",
+  messagingSenderId: "360902823980",
+  appId: "1:360902823980:web:bd85f87de77dcfc315c189"
+});
+const db = firebase.firestore();
+
+let currentQ = 0;
+let score = 0;
+let answered = false;
+const QUESTIONS_PER_GAME = 12;
+let activeQuestions = [];
+
+let challengeId = null;
+let challengeMode = false;
+let challengeSubmitted = false;
+let playerName = '';
+let quizStartTime = 0;
+
+function getChallengeIdFromUrl() {
+  return new URLSearchParams(location.search).get('challenge');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, function(c) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
+async function createChallenge() {
+  const name = document.getElementById('creatorNameInput').value.trim();
+  if (!name) { alert('اكتب اسمك الأول 🙂'); return; }
+  const btn = document.querySelector('#challengeStartArea button');
+  document.getElementById('creatorNameInput').disabled = true;
+  btn.disabled = true; btn.textContent = 'جاري الإنشاء...';
+  try {
+    pickQuestions();
+    const ref = await db.collection('challenges').add({
+      creatorName: name,
+      questions: activeQuestions,
+      game: QUIZ_CONFIG.gameId,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    challengeId = ref.id;
+    challengeMode = true;
+    challengeSubmitted = false;
+    playerName = name;
+    document.getElementById('challengeStartArea').style.display = 'none';
+    document.getElementById('quizArea').style.display = 'none';
+    document.getElementById('resultArea').style.display = 'none';
+    document.getElementById('challengeWaitingLinkInput').value = location.origin + location.pathname + '?challenge=' + challengeId;
+    document.getElementById('challengeWaitingArea').style.display = 'block';
+    listenForAcceptance();
+  } catch (e) {
+    alert('صار خطأ بإنشاء التحدي، جرب مرة ثانية.');
+    document.getElementById('creatorNameInput').disabled = false;
+    btn.disabled = false; btn.textContent = 'ابدأ تحدي';
+  }
+}
+
+let acceptsUnsub = null;
+
+function listenForAcceptance() {
+  if (acceptsUnsub) acceptsUnsub();
+  acceptsUnsub = db.collection('challenges').doc(challengeId).collection('accepts')
+    .onSnapshot(function(snap) {
+      if (!snap.empty) {
+        const first = snap.docs[0].data();
+        document.getElementById('accepterNameSpan').textContent = escapeHtml(first.name || 'صاحبك');
+        document.getElementById('challengeAcceptedBox').style.display = 'block';
+      }
+    }, function() { /* listener error: link still works manually, no UI change needed */ });
+}
+
+async function creatorStartPlaying() {
+  if (acceptsUnsub) { acceptsUnsub(); acceptsUnsub = null; }
+  document.getElementById('challengeWaitingArea').style.display = 'none';
+  currentQ = 0; score = 0; quizStartTime = Date.now();
+  document.getElementById('quizArea').style.display = 'block';
+  showActiveChallengeLink();
+  loadQuestion();
+  try {
+    await db.collection('challenges').doc(challengeId).collection('starts').add({
+      startedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  } catch (e) { /* non-critical: friend's own click can't force-start, but their tab may need a manual refresh */ }
+}
+
+let startUnsub = null;
+
+function listenForStart() {
+  if (startUnsub) startUnsub();
+  startUnsub = db.collection('challenges').doc(challengeId).collection('starts')
+    .onSnapshot(function(snap) {
+      if (!snap.empty) {
+        if (startUnsub) { startUnsub(); startUnsub = null; }
+        document.getElementById('joinerWaitingArea').style.display = 'none';
+        currentQ = 0; score = 0; quizStartTime = Date.now();
+        document.getElementById('quizArea').style.display = 'block';
+        showActiveChallengeLink();
+        loadQuestion();
+      }
+    }, function() { /* listener error: nothing to do, joiner stays in waiting state */ });
+}
+
+function challengeStorageKey(id) {
+  return 'adawati_quiz_played_' + id;
+}
+
+function getPlayedRecord(id) {
+  try { return JSON.parse(localStorage.getItem(challengeStorageKey(id))); } catch (e) { return null; }
+}
+
+function savePlayedRecord(id, data) {
+  try { localStorage.setItem(challengeStorageKey(id), JSON.stringify(data)); } catch (e) {}
+}
+
+async function showChallengeJoinIntro(id) {
+  challengeId = id;
+  try {
+    const doc = await db.collection('challenges').doc(id).get();
+    if (!doc.exists) {
+      document.getElementById('challengeJoinMsg').textContent = 'هذا التحدي غير موجود أو انتهى، جرب رابط جديد.';
+      document.getElementById('challengeJoinForm').style.display = 'none';
+      return;
+    }
+    const data = doc.data();
+    activeQuestions = data.questions;
+
+    const played = getPlayedRecord(id);
+    if (played) {
+      playerName = played.name;
+      score = played.score;
+      challengeMode = true;
+      challengeSubmitted = true;
+      document.getElementById('challengeJoinArea').style.display = 'none';
+      document.getElementById('quizArea').style.display = 'none';
+      showResult();
+      return;
+    }
+
+    document.getElementById('challengeJoinMsg').textContent = '🏆 ' + escapeHtml(data.creatorName) + ' تحداك! جاهز تنافسه؟';
+  } catch (e) {
+    document.getElementById('challengeJoinMsg').textContent = 'صار خطأ بتحميل التحدي، تأكد من اتصالك وجرب تاني.';
+    document.getElementById('challengeJoinForm').style.display = 'none';
+  }
+}
+
+async function joinChallenge() {
+  const name = document.getElementById('joinerNameInput').value.trim();
+  if (!name) { alert('اكتب اسمك الأول 🙂'); return; }
+  playerName = name;
+  challengeMode = true;
+  challengeSubmitted = false;
+  document.getElementById('challengeJoinArea').style.display = 'none';
+  document.getElementById('joinerWaitingArea').style.display = 'block';
+  try {
+    await db.collection('challenges').doc(challengeId).collection('accepts').add({
+      name: name,
+      acceptedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  } catch (e) { /* non-critical: creator can still see the leaderboard once score is submitted */ }
+  listenForStart();
+}
+
+async function submitChallengeScore() {
+  try {
+    const timeMs = Date.now() - quizStartTime;
+    await db.collection('challenges').doc(challengeId).collection('players').add({
+      name: playerName,
+      score: score,
+      total: activeQuestions.length,
+      timeMs: timeMs,
+      submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    savePlayedRecord(challengeId, { name: playerName, score: score, total: activeQuestions.length });
+  } catch (e) { /* still render leaderboard best-effort below */ }
+  renderLeaderboard();
+}
+
+let leaderboardUnsub = null;
+
+function renderLeaderboard() {
+  document.getElementById('leaderboardArea').style.display = 'block';
+  document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;color:var(--text-muted);">جاري التحميل...</td></tr>';
+  if (leaderboardUnsub) { leaderboardUnsub(); leaderboardUnsub = null; }
+  leaderboardUnsub = db.collection('challenges').doc(challengeId).collection('players')
+    .orderBy('score', 'desc').orderBy('timeMs', 'asc')
+    .onSnapshot(function(snap) {
+      const rows = [];
+      let rank = 1;
+      snap.forEach(function(doc) {
+        const d = doc.data();
+        const mine = d.name === playerName;
+        rows.push('<tr' + (mine ? ' style="font-weight:800;color:var(--primary);"' : '') + '><td style="padding:6px;">' + rank + '</td><td style="padding:6px;">' + escapeHtml(d.name) + '</td><td style="padding:6px;">' + d.score + '/' + d.total + '</td></tr>');
+        rank++;
+      });
+      document.getElementById('leaderboardBody').innerHTML = rows.join('') || '<tr><td colspan="3" style="padding:8px;text-align:center;">لسا محدا لعب</td></tr>';
+    }, function() {
+      document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="3" style="padding:8px;text-align:center;">تعذر تحميل لوحة الترتيب حالياً</td></tr>';
+    });
+  document.getElementById('challengeShareArea').style.display = 'block';
+  document.getElementById('challengeShareLink').value = location.origin + location.pathname + '?challenge=' + challengeId;
+}
+
+function copyChallengeLink() {
+  copyLinkGeneric('challengeShareLink', 'copyLinkBtn');
+}
+
+function shareResult() {
+  const pct = Math.round((score / activeQuestions.length) * 100);
+  const text = QUIZ_CONFIG.resultText(score, activeQuestions.length, pct);
+  const url = (challengeMode && challengeId)
+    ? (location.origin + location.pathname + '?challenge=' + challengeId)
+    : (location.origin + location.pathname);
+  if (navigator.share) {
+    navigator.share({ title: QUIZ_CONFIG.shareTitle, text: text, url: url }).catch(function() {});
+    return;
+  }
+  const full = text + ' ' + url;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(full).then(function() { alert('تم نسخ نتيجتك! الصقها بأي مكان بدك تشاركها فيه.'); }).catch(function() { alert(full); });
+  } else {
+    alert(full);
+  }
+}
+
+function shareOrCopy(inputId, btnId) {
+  const url = document.getElementById(inputId).value;
+  if (navigator.share) {
+    navigator.share({ title: QUIZ_CONFIG.shareTitle, text: QUIZ_CONFIG.challengeText, url: url }).catch(function() {});
+  } else {
+    copyLinkGeneric(inputId, btnId);
+  }
+}
+
+function copyLinkGeneric(inputId, btnId) {
+  const input = document.getElementById(inputId);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  const btn = document.getElementById(btnId);
+  const done = function() {
+    const old = btn.textContent;
+    btn.textContent = '✅ تم النسخ';
+    setTimeout(function(){ btn.textContent = old; }, 1500);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(input.value).then(done).catch(function(){ try { document.execCommand('copy'); } catch(e){} done(); });
+  } else {
+    try { document.execCommand('copy'); } catch(e) {}
+    done();
+  }
+}
+
+function showActiveChallengeLink() {
+  document.getElementById('challengeActiveLinkInput').value = location.origin + location.pathname + '?challenge=' + challengeId;
+  document.getElementById('challengeActiveLink').style.display = 'block';
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickQuestions() {
+  const selected = shuffle(QUESTIONS).slice(0, QUESTIONS_PER_GAME);
+  activeQuestions = selected.map(function(q) {
+    const order = shuffle(q.opts.map(function(_, i) { return i; }));
+    return {
+      q: q.q,
+      opts: order.map(function(i) { return q.opts[i]; }),
+      correct: order.indexOf(q.correct)
+    };
+  });
+}
+
+function loadQuestion() {
+  answered = false;
+  const q = activeQuestions[currentQ];
+  document.getElementById('progressLabel').textContent = 'سؤال ' + (currentQ + 1) + ' من ' + activeQuestions.length;
+  document.getElementById('questionText').textContent = q.q;
+  const optionsArea = document.getElementById('optionsArea');
+  optionsArea.innerHTML = '';
+  q.opts.forEach(function(opt, i) {
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+    btn.style.cssText = 'padding:12px;border:2px solid var(--border);border-radius:8px;background:var(--surface);font-size:15px;cursor:pointer;text-align:right;';
+    btn.onclick = function() { selectAnswer(i, btn); };
+    optionsArea.appendChild(btn);
+  });
+}
+
+function selectAnswer(i, btn) {
+  if (answered) return;
+  answered = true;
+  const q = activeQuestions[currentQ];
+  const allButtons = document.querySelectorAll('#optionsArea button');
+  allButtons.forEach(function(b, idx) {
+    b.disabled = true;
+    if (idx === q.correct) { b.style.background = '#dcfce7'; b.style.borderColor = '#16a34a'; }
+    else if (idx === i) { b.style.background = '#fee2e2'; b.style.borderColor = '#dc2626'; }
+  });
+  if (i === q.correct) score++;
+  setTimeout(function() {
+    currentQ++;
+    if (currentQ < activeQuestions.length) loadQuestion();
+    else showResult();
+  }, 900);
+}
+
+function showResult() {
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('challengeActiveLink').style.display = 'none';
+  document.getElementById('resultArea').style.display = 'block';
+  const pct = Math.round((score / activeQuestions.length) * 100);
+  const rm = QUIZ_CONFIG.resultMessages.find(function(r) { return pct >= r.min; }) || QUIZ_CONFIG.resultMessages[QUIZ_CONFIG.resultMessages.length - 1];
+  document.getElementById('resultEmoji').textContent = rm.emoji;
+  document.getElementById('resultScore').textContent = score + ' من ' + activeQuestions.length + ' (' + pct + '%)';
+  document.getElementById('resultMessage').textContent = rm.msg;
+
+  if (challengeMode && challengeId) {
+    if (!challengeSubmitted) {
+      challengeSubmitted = true;
+      submitChallengeScore();
+    } else {
+      renderLeaderboard();
+    }
+  } else {
+    document.getElementById('challengeShareArea').style.display = 'none';
+    document.getElementById('leaderboardArea').style.display = 'none';
+  }
+}
+
+function restart() {
+  if (leaderboardUnsub) { leaderboardUnsub(); leaderboardUnsub = null; }
+  if (startUnsub) { startUnsub(); startUnsub = null; }
+  if (!challengeMode) pickQuestions();
+  currentQ = 0;
+  score = 0;
+  quizStartTime = Date.now();
+  document.getElementById('quizArea').style.display = 'block';
+  document.getElementById('resultArea').style.display = 'none';
+  if (challengeMode && challengeId) showActiveChallengeLink();
+  loadQuestion();
+}
+
+const urlChallengeId = getChallengeIdFromUrl();
+if (urlChallengeId) {
+  document.getElementById('challengeStartArea').style.display = 'none';
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('challengeJoinArea').style.display = 'block';
+  showChallengeJoinIntro(urlChallengeId);
+} else {
+  pickQuestions();
+  loadQuestion();
+}
