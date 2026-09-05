@@ -97,6 +97,9 @@
       <div><label>غسيل ومستلزمات شهرياً (دينار)</label><input type="number" id="carwash" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
       <div><label>الإهلاك السنوي التقديري (دينار)</label><input type="number" id="depreciation" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
     </div>
+    <label>متوسط المخالفات المرورية بالسنة (دينار)</label>
+    <input type="number" id="fines" placeholder="0.000" min="0" step="any" oninput="calc()">
+    <p style="font-size:12px;color:var(--text-muted);margin-top:-4px;">💡 قدّر متوسط مخالفاتك بالسنة الماضية (سرعة، وقوف خاطئ، إلخ) — لو ما عندك مخالفات، سيبه فاضي.</p>
     <p style="font-size:12px;color:var(--text-muted);margin-top:-4px;">💡 الإهلاك = مقدار ما تنقص قيمة سيارتك بالسوق كل سنة — لو ما بتعرفه بالضبط، قارن سعرها الحالي بسعرها قبل سنة بمواقع بيع السيارات المستعملة، أو سيبه فاضي.</p>
 
     <div id="carResult" style="display:none;margin-top:20px;">
@@ -166,6 +169,7 @@ function calc() {
   const parking = parseFloat(document.getElementById('parking').value) || 0;
   const carwash = parseFloat(document.getElementById('carwash').value) || 0;
   const depreciationYearly = parseFloat(document.getElementById('depreciation').value) || 0;
+  const finesYearly = parseFloat(document.getElementById('fines').value) || 0;
 
   let fuelMonthly = 0;
   if (carType === 'fuel') {
@@ -178,7 +182,7 @@ function calc() {
     fuelMonthly = parseFloat(document.getElementById('electricBill').value) || 0;
   }
 
-  if (!installment && !fuelMonthly && !insuranceYearly && !licenseYearly && !maintenance && !inspectionYearly && !parking && !carwash && !depreciationYearly) {
+  if (!installment && !fuelMonthly && !insuranceYearly && !licenseYearly && !maintenance && !inspectionYearly && !parking && !carwash && !depreciationYearly && !finesYearly) {
     document.getElementById('carResult').style.display = 'none';
     return;
   }
@@ -187,8 +191,9 @@ function calc() {
   const licenseMonthly = licenseYearly / 12;
   const inspectionMonthly = inspectionYearly / 12;
   const depreciationMonthly = depreciationYearly / 12;
+  const finesMonthly = finesYearly / 12;
 
-  const totalMonthly = installment + fuelMonthly + insuranceMonthly + licenseMonthly + maintenance + inspectionMonthly + parking + carwash + depreciationMonthly;
+  const totalMonthly = installment + fuelMonthly + insuranceMonthly + licenseMonthly + maintenance + inspectionMonthly + parking + carwash + depreciationMonthly + finesMonthly;
   const totalYearly = totalMonthly * 12;
 
   document.getElementById('totalMonthly').textContent = totalMonthly.toFixed(3) + ' د.أ';
@@ -207,6 +212,7 @@ function calc() {
     (parking ? 'الموقف: <strong>' + parking.toFixed(3) + ' د.أ</strong><br>' : '') +
     (carwash ? 'الغسيل والمستلزمات: <strong>' + carwash.toFixed(3) + ' د.أ</strong><br>' : '') +
     (depreciationMonthly ? 'الإهلاك: <strong>' + depreciationMonthly.toFixed(3) + ' د.أ</strong><br>' : '') +
+    (finesMonthly ? 'المخالفات: <strong>' + finesMonthly.toFixed(3) + ' د.أ</strong><br>' : '') +
     'الإجمالي الشهري: <strong style="color:var(--primary);font-size:16px;">' + totalMonthly.toFixed(3) + ' د.أ</strong>';
 
   document.getElementById('carResult').style.display = 'block';
