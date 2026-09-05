@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أأجر ولا أشتري بيت؟ — حاسبة مقارنة | Adawati</title>
+<meta name="description" content="قارن بين استئجار بيت أو شرائه بالتقسيط: القسط الشهري المتوقع، إجمالي التكلفة عبر سنوات التمويل، والفرق مقابل الإيجار الحالي. مجانية وفورية.">
+<meta name="keywords" content="اجر ولا اشتري بيت, حاسبة قرض عقاري الاردن, قسط شقة شهري, rent vs buy calculator Jordan">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/calculators/rent-vs-buy/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/calculators/rent-vs-buy/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/calculators/rent-vs-buy/">
+<meta property="og:title" content="أأجر ولا أشتري بيت؟ | Adawati">
+<meta property="og:description" content="قارن القسط الشهري المتوقع للشراء مقابل إيجارك الحالي.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/calculators/rent-vs-buy/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"أأجر ولا أشتري؟","item":"https://adawati.space/jo/calculators/rent-vs-buy/"}
+]},
+{"@type":"WebApplication","name":"حاسبة أأجر ولا أشتري","url":"https://adawati.space/jo/calculators/rent-vs-buy/","description":"قارن القسط الشهري المتوقع لشراء بيت بالتمويل العقاري مقابل الإيجار الشهري الحالي.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}}
+]}
+</script>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#fff7ed;">🏠</div>
+    <h1 class="card-title">أأجر ولا أشتري بيت؟ 🇯🇴</h1>
+    <div class="card-subtitle">قارن القسط الشهري المتوقع مقابل إيجارك الحالي</div>
+    <div class="divider"></div>
+    <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:14px;">💡 نسبة الفائدة تختلف بين البنوك — تأكد من العرض الفعلي من بنكك وأدخله هون.</p>
+
+    <label>إيجارك الشهري الحالي (دينار)</label>
+    <input type="number" id="currentRent" placeholder="0.000" min="0" step="any" oninput="calc()">
+
+    <div class="divider"></div>
+    <div class="row">
+      <div><label>سعر البيت (دينار)</label><input type="number" id="price" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+      <div><label>الدفعة الأولى (دينار)</label><input type="number" id="downPayment" placeholder="0.000" min="0" step="any" oninput="calc()"></div>
+    </div>
+    <div class="row">
+      <div><label>مدة التمويل (سنوات)</label><input type="number" id="years" placeholder="مثال: 20" min="1" step="1" oninput="calc()"></div>
+      <div><label>نسبة الفائدة السنوية (%)</label><input type="number" id="rate" placeholder="مثال: 6.5" min="0" step="any" oninput="calc()"></div>
+    </div>
+
+    <div id="buyResult" style="display:none;margin-top:20px;">
+      <div class="result-box show success" style="margin-top:0;">
+        <div class="result-value" id="monthlyPayment"></div>
+        <div class="result-label">القسط الشهري المتوقع</div>
+      </div>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-box"><div class="stat-val" id="loanAmount"></div><div class="stat-lbl">قيمة التمويل</div></div>
+        <div class="stat-box" style="background:#fef2f2;"><div class="stat-val" id="totalInterest" style="color:#dc2626;"></div><div class="stat-lbl">إجمالي الفوائد</div></div>
+        <div class="stat-box" style="background:#eff6ff;"><div class="stat-val" id="totalPaid" style="color:#2563eb;"></div><div class="stat-lbl">إجمالي المدفوع</div></div>
+      </div>
+      <div id="verdictBox" style="margin-top:14px;padding:14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:14px;line-height:1.9;"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title" style="font-size:15px;">📌 أشياء الحاسبة ما بتحسبها</div>
+    <p style="font-size:14px;color:var(--text-muted);margin-top:8px;line-height:1.8;">رسوم التسجيل والدلالية، الصيانة كمالك، احتمال ارتفاع قيمة العقار مستقبلاً، ومرونة الانتقال كمستأجر — كلها عوامل حقيقية بس مش سهل تحويلها لرقم واحد. خذ المقارنة كنقطة بداية.</p>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/tools/jordan-vs-gulf/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🌍 الأردن أم الخليج؟</a>
+      <a href="loan-calculator.html" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🧮 حاسبة القسط العامة</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+function calc() {
+  const rent = parseFloat(document.getElementById('currentRent').value) || 0;
+  const price = parseFloat(document.getElementById('price').value) || 0;
+  const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+  const years = parseFloat(document.getElementById('years').value) || 0;
+  const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+
+  if (!price || !years) { document.getElementById('buyResult').style.display = 'none'; return; }
+
+  const loan = Math.max(0, price - downPayment);
+  const monthlyRate = (annualRate / 100) / 12;
+  const numPayments = years * 12;
+
+  let monthlyPayment;
+  if (monthlyRate === 0) {
+    monthlyPayment = loan / numPayments;
+  } else {
+    monthlyPayment = loan * monthlyRate * Math.pow(1 + monthlyRate, numPayments) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+  }
+
+  const totalPaid = monthlyPayment * numPayments;
+  const totalInterest = totalPaid - loan;
+
+  document.getElementById('monthlyPayment').textContent = monthlyPayment.toFixed(3) + ' د.أ';
+  document.getElementById('loanAmount').textContent = loan.toFixed(3);
+  document.getElementById('totalInterest').textContent = totalInterest.toFixed(3);
+  document.getElementById('totalPaid').textContent = totalPaid.toFixed(3);
+
+  let verdict = '';
+  if (rent > 0) {
+    const diff = monthlyPayment - rent;
+    if (Math.abs(diff) < 20) {
+      verdict = '💡 القسط الشهري قريب جداً من إيجارك الحالي — الفرق بيصير بالملكية طويلة المدى مقابل مرونة الإيجار.';
+    } else if (diff > 0) {
+      verdict = '💡 القسط الشهري أعلى من إيجارك الحالي بـ' + diff.toFixed(0) + ' دينار — بس بعد ' + years + ' سنة رح تكون مالك البيت بالكامل بدل ما تكون دفعت إيجار بلا مقابل.';
+    } else {
+      verdict = '💡 القسط الشهري أقل من إيجارك الحالي بـ' + Math.abs(diff).toFixed(0) + ' دينار — الشراء يبدو مجدي مالياً بهاي الشروط، تأكد بس من الدفعة الأولى والرسوم الإضافية.';
+    }
+  }
+  document.getElementById('verdictBox').innerHTML = verdict;
+
+  document.getElementById('buyResult').style.display = 'block';
+}
+</script>
+</body></html>
