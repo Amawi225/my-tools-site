@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شو بتعرف عن الأردن؟ — كويز تفاعلي | Adawati</title>
+<meta name="description" content="اختبر معلوماتك عن الأردن: الجغرافيا، التاريخ، الثقافة والمعالم. 12 سؤال ممتع، شارك نتيجتك مع أصحابك. مجاني وبدون تسجيل.">
+<meta name="keywords" content="كويز عن الاردن, اسئلة عن الاردن, اختبار معلومات الاردن, Jordan trivia quiz">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/games/jordan-quiz/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/games/jordan-quiz/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/games/jordan-quiz/">
+<meta property="og:title" content="شو بتعرف عن الأردن؟ | Adawati">
+<meta property="og:description" content="اختبر معلوماتك عن الأردن بـ12 سؤال ممتع.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/games/jordan-quiz/">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#fef3c7;">🇯🇴</div>
+    <h1 class="card-title">شو بتعرف عن الأردن؟</h1>
+    <div class="card-subtitle" id="progressLabel">سؤال 1 من 12</div>
+    <div class="divider"></div>
+
+    <div id="quizArea">
+      <div id="questionText" style="font-size:17px;font-weight:700;margin-bottom:16px;"></div>
+      <div id="optionsArea" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+
+    <div id="resultArea" style="display:none;text-align:center;">
+      <div style="font-size:48px;margin-bottom:8px;" id="resultEmoji"></div>
+      <div style="font-size:24px;font-weight:800;color:var(--primary);margin-bottom:6px;" id="resultScore"></div>
+      <div style="font-size:15px;color:var(--text-muted);margin-bottom:20px;" id="resultMessage"></div>
+      <button onclick="restart()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">🔄 جرّب مرة ثانية</button>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/calculators/wedding-cost/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">💍 حاسبة تكلفة الزواج</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const QUESTIONS = [
+  {q:'شو عاصمة الأردن؟', opts:['إربد','عمّان','الزرقاء','العقبة'], correct:1},
+  {q:'أي بحر بيعتبر أخفض نقطة على سطح الأرض وموجود بالأردن؟', opts:['البحر الأحمر','البحر الأبيض المتوسط','البحر الميت','بحر قزوين'], correct:2},
+  {q:'مدينة البتراء الأثرية نحتها شعب...', opts:['الفراعنة','الأنباط','الآشوريون','الفينيقيون'], correct:1},
+  {q:'شو اسم العملة الرسمية بالأردن؟', opts:['الريال','الدرهم','الدينار','الجنيه'], correct:2},
+  {q:'شو الأكلة الوطنية الأردنية الأشهر؟', opts:['الكبسة','المنسف','الملوخية','المقلوبة'], correct:1},
+  {q:'الأردن بيطل على أي بحر من جهة مدينة العقبة؟', opts:['البحر الأحمر','البحر الأسود','بحر العرب','الخليج العربي'], correct:0},
+  {q:'شو اسم النهر اللي بيشكل جزء من حدود الأردن الغربية؟', opts:['نهر النيل','نهر الفرات','نهر الأردن','نهر دجلة'], correct:2},
+  {q:'كم عدد محافظات الأردن؟', opts:['8','10','12','14'], correct:2},
+  {q:'أي مدينة أردنية تشتهر بالمدرج الروماني القديم؟', opts:['جرش','الكرك','مادبا','السلط'], correct:0},
+  {q:'أي جبل بالأردن يُعتقد أن النبي موسى عليه السلام رأى منه أرض فلسطين؟', opts:['جبل نيبو','جبل عجلون','جبل القلعة','جبل اللويبدة'], correct:0},
+  {q:'الأردن بيشترك بحدود مع كم دولة؟', opts:['3','4','5','6'], correct:2},
+  {q:'شو اسم أشهر محمية طبيعية صحراوية بالأردن اشتهرت بأفلام السينما العالمية؟', opts:['وادي رم','ديانا','ضانا','الأزرق'], correct:0}
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+  answered = false;
+  const q = QUESTIONS[currentQ];
+  document.getElementById('progressLabel').textContent = 'سؤال ' + (currentQ + 1) + ' من ' + QUESTIONS.length;
+  document.getElementById('questionText').textContent = q.q;
+  const optionsArea = document.getElementById('optionsArea');
+  optionsArea.innerHTML = '';
+  q.opts.forEach(function(opt, i) {
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+    btn.style.cssText = 'padding:12px;border:2px solid var(--border);border-radius:8px;background:var(--surface);font-size:15px;cursor:pointer;text-align:right;';
+    btn.onclick = function() { selectAnswer(i, btn); };
+    optionsArea.appendChild(btn);
+  });
+}
+
+function selectAnswer(i, btn) {
+  if (answered) return;
+  answered = true;
+  const q = QUESTIONS[currentQ];
+  const allButtons = document.querySelectorAll('#optionsArea button');
+  allButtons.forEach(function(b, idx) {
+    b.disabled = true;
+    if (idx === q.correct) { b.style.background = '#dcfce7'; b.style.borderColor = '#16a34a'; }
+    else if (idx === i) { b.style.background = '#fee2e2'; b.style.borderColor = '#dc2626'; }
+  });
+  if (i === q.correct) score++;
+  setTimeout(function() {
+    currentQ++;
+    if (currentQ < QUESTIONS.length) loadQuestion();
+    else showResult();
+  }, 900);
+}
+
+function showResult() {
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('resultArea').style.display = 'block';
+  const pct = Math.round((score / QUESTIONS.length) * 100);
+  let emoji, msg;
+  if (pct >= 90) { emoji = '🏆'; msg = 'أردني أصيل! نتيجة رهيبة.'; }
+  else if (pct >= 70) { emoji = '🇯🇴'; msg = 'معلوماتك عن الأردن ممتازة!'; }
+  else if (pct >= 50) { emoji = '👍'; msg = 'مش بطال، بس فيه مجال تتحسن.'; }
+  else { emoji = '📚'; msg = 'وقتها نراجع شوي عن الأردن!'; }
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultScore').textContent = score + ' من ' + QUESTIONS.length + ' (' + pct + '%)';
+  document.getElementById('resultMessage').textContent = msg;
+}
+
+function restart() {
+  currentQ = 0;
+  score = 0;
+  document.getElementById('quizArea').style.display = 'block';
+  document.getElementById('resultArea').style.display = 'none';
+  loadQuestion();
+}
+
+loadQuestion();
+</script>
+</body></html>
