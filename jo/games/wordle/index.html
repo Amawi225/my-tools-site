@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كلمة اليوم — ووردل بالعربي | Adawati</title>
+<meta name="description" content="خمّن كلمة اليوم العربية المكوّنة من 5 حروف خلال 6 محاولات. لعبة جديدة كل يوم، شارك نتيجتك مع أصحابك. مجانية وبدون تسجيل.">
+<meta name="keywords" content="ووردل عربي, كلمة اليوم, لعبة تخمين الكلمات, Arabic Wordle">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/games/wordle/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/games/wordle/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/games/wordle/">
+<meta property="og:title" content="كلمة اليوم — ووردل بالعربي | Adawati">
+<meta property="og:description" content="خمّن كلمة اليوم من 5 حروف خلال 6 محاولات.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/games/wordle/">
+<link rel="stylesheet" href="../../../style.css">
+<style>
+.wordle-grid{display:flex;flex-direction:column;gap:6px;align-items:center;margin:16px 0;}
+.wordle-row{display:flex;gap:6px;direction:rtl;}
+.wordle-cell{width:48px;height:48px;border:2px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;text-transform:none;}
+.wordle-cell.filled{border-color:#9ca3af;}
+.wordle-cell.correct{background:#16a34a;border-color:#16a34a;color:#fff;}
+.wordle-cell.present{background:#ca8a04;border-color:#ca8a04;color:#fff;}
+.wordle-cell.absent{background:#6b7280;border-color:#6b7280;color:#fff;}
+.wordle-key{padding:10px 6px;min-width:30px;border:none;border-radius:6px;background:var(--surface-2);font-size:14px;font-weight:700;cursor:pointer;}
+.wordle-key.correct{background:#16a34a;color:#fff;}
+.wordle-key.present{background:#ca8a04;color:#fff;}
+.wordle-key.absent{background:#9ca3af;color:#fff;}
+.wordle-keyboard-row{display:flex;gap:5px;justify-content:center;margin-bottom:6px;direction:rtl;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card" style="text-align:center;">
+    <div class="card-icon" style="background:#f0fdf4;margin:0 auto;">🟩</div>
+    <h1 class="card-title">كلمة اليوم 🇯🇴</h1>
+    <div class="card-subtitle">خمّن الكلمة المكوّنة من 5 حروف خلال 6 محاولات</div>
+    <div class="divider"></div>
+
+    <div class="wordle-grid" id="grid"></div>
+    <div id="message" style="min-height:24px;font-weight:700;color:var(--primary);margin-bottom:10px;"></div>
+    <div id="keyboard"></div>
+
+    <div id="shareBox" style="display:none;margin-top:16px;">
+      <button onclick="shareResult()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">📤 انسخ نتيجتك للمشاركة</button>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/games/jordan-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🇯🇴 كويز شو بتعرف عن الأردن؟</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script>
+const WORDS = ['مدرسة','طاولة','سيارة','حديقة','ملعقة','جامعة','مزرعة','محفظة','تفاحة','ملابس','شمسية','سماعة','طبيعة','حكومة','مملكة','عائلة','رياضة','سياسة','صداقة','عاصمة','كتابة','قراءة','زراعة','صناعة','تجارة','بطاقة','جريدة','قصيدة','رسالة','بداية','نهاية','حقيبة','سفينة','طائرة','دراجة','نافذة','مسافر','مهندس','جميلة','كبيرة','صغيرة','سريعة','بطيئة'];
+
+function dayIndex() {
+  const epoch = new Date('2026-01-01T00:00:00Z');
+  const now = new Date();
+  const diffDays = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - epoch.getTime()) / 86400000);
+  return ((diffDays % WORDS.length) + WORDS.length) % WORDS.length;
+}
+
+const TARGET = [...WORDS[dayIndex()]];
+const WORD_LEN = 5;
+const MAX_TRIES = 6;
+let currentGuess = [];
+let attempts = [];
+let gameOver = false;
+const keyStates = {};
+
+const KEY_ROWS = [
+  ['ض','ص','ث','ق','ف','غ','ع','ه','خ','ح','ج','د'],
+  ['ش','س','ي','ب','ل','ا','ت','ن','م','ك','ط'],
+  ['ئ','ء','ؤ','ر','ى','ة','و','ز','ظ']
+];
+
+function buildGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  for (let r = 0; r < MAX_TRIES; r++) {
+    const row = document.createElement('div');
+    row.className = 'wordle-row';
+    row.id = 'row-' + r;
+    for (let c = 0; c < WORD_LEN; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'wordle-cell';
+      cell.id = 'cell-' + r + '-' + c;
+      row.appendChild(cell);
+    }
+    grid.appendChild(row);
+  }
+}
+
+function buildKeyboard() {
+  const kb = document.getElementById('keyboard');
+  kb.innerHTML = '';
+  KEY_ROWS.forEach(function(row) {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'wordle-keyboard-row';
+    row.forEach(function(letter) {
+      const btn = document.createElement('button');
+      btn.className = 'wordle-key';
+      btn.textContent = letter;
+      btn.id = 'key-' + letter;
+      btn.onclick = function() { pressLetter(letter); };
+      rowDiv.appendChild(btn);
+    });
+    kb.appendChild(rowDiv);
+  });
+  const controlsRow = document.createElement('div');
+  controlsRow.className = 'wordle-keyboard-row';
+  const delBtn = document.createElement('button');
+  delBtn.className = 'wordle-key';
+  delBtn.textContent = '⌫ حذف';
+  delBtn.onclick = deleteLetter;
+  const enterBtn = document.createElement('button');
+  enterBtn.className = 'wordle-key';
+  enterBtn.textContent = '✔ إدخال';
+  enterBtn.onclick = submitGuess;
+  controlsRow.appendChild(delBtn);
+  controlsRow.appendChild(enterBtn);
+  kb.appendChild(controlsRow);
+}
+
+function pressLetter(letter) {
+  if (gameOver || currentGuess.length >= WORD_LEN) return;
+  currentGuess.push(letter);
+  renderCurrentRow();
+}
+
+function deleteLetter() {
+  if (gameOver) return;
+  currentGuess.pop();
+  renderCurrentRow();
+}
+
+function renderCurrentRow() {
+  const r = attempts.length;
+  for (let c = 0; c < WORD_LEN; c++) {
+    const cell = document.getElementById('cell-' + r + '-' + c);
+    cell.textContent = currentGuess[c] || '';
+    cell.classList.toggle('filled', !!currentGuess[c]);
+  }
+}
+
+function showMessage(msg) {
+  document.getElementById('message').textContent = msg;
+  setTimeout(function() { document.getElementById('message').textContent = ''; }, 2000);
+}
+
+function submitGuess() {
+  if (gameOver) return;
+  if (currentGuess.length !== WORD_LEN) { showMessage('أكمل الكلمة أول (5 حروف)'); return; }
+
+  const guess = [...currentGuess];
+  const result = new Array(WORD_LEN).fill('absent');
+  const targetCopy = [...TARGET];
+
+  for (let i = 0; i < WORD_LEN; i++) {
+    if (guess[i] === targetCopy[i]) { result[i] = 'correct'; targetCopy[i] = null; }
+  }
+  for (let i = 0; i < WORD_LEN; i++) {
+    if (result[i] === 'correct') continue;
+    const idx = targetCopy.indexOf(guess[i]);
+    if (idx !== -1) { result[i] = 'present'; targetCopy[idx] = null; }
+  }
+
+  const r = attempts.length;
+  for (let c = 0; c < WORD_LEN; c++) {
+    const cell = document.getElementById('cell-' + r + '-' + c);
+    cell.classList.add(result[c]);
+    const key = document.getElementById('key-' + guess[c]);
+    if (key) {
+      const rank = {absent:0, present:1, correct:2};
+      if (!keyStates[guess[c]] || rank[result[c]] > rank[keyStates[guess[c]]]) {
+        keyStates[guess[c]] = result[c];
+        key.className = 'wordle-key ' + result[c];
+      }
+    }
+  }
+
+  attempts.push({guess: guess, result: result});
+
+  if (guess.join('') === TARGET.join('')) {
+    gameOver = true;
+    showMessage('🎉 برافو! خمّنتها صح!');
+    document.getElementById('shareBox').style.display = 'block';
+    return;
+  }
+
+  currentGuess = [];
+  if (attempts.length >= MAX_TRIES) {
+    gameOver = true;
+    showMessage('الكلمة كانت: ' + TARGET.join(''));
+    document.getElementById('shareBox').style.display = 'block';
+  }
+}
+
+function shareResult() {
+  const emojiMap = {correct:'🟩', present:'🟨', absent:'⬜'};
+  let text = 'أدواتي — كلمة اليوم 🇯🇴\n' + attempts.length + '/' + MAX_TRIES + '\n\n';
+  attempts.forEach(function(a) {
+    text += a.result.map(function(r) { return emojiMap[r]; }).join('') + '\n';
+  });
+  text += '\nجرّب أنت كمان: ' + location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() { showMessage('📋 انسخت! الصقها بواتساب'); });
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') submitGuess();
+  else if (e.key === 'Backspace') deleteLetter();
+});
+
+buildGrid();
+buildKeyboard();
+</script>
+</body></html>
