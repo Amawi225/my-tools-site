@@ -55,6 +55,14 @@
       </div>
     </div>
 
+    <div id="challengeActiveLink" style="display:none;margin-bottom:16px;padding:12px;background:#dbeafe;border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:6px;font-size:13px;">🔗 رابط التحدي — شاركه مع صاحبك قبل أو أثناء اللعب:</div>
+      <div style="display:flex;gap:8px;">
+        <input id="challengeActiveLinkInput" readonly style="flex:1;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+        <button id="copyActiveLinkBtn" onclick="copyLinkGeneric('challengeActiveLinkInput','copyActiveLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+      </div>
+    </div>
+
     <div id="quizArea">
       <div id="questionText" style="font-size:17px;font-weight:700;margin-bottom:16px;"></div>
       <div id="optionsArea" style="display:flex;flex-direction:column;gap:10px;"></div>
@@ -273,6 +281,7 @@ async function createChallenge() {
     currentQ = 0; score = 0; quizStartTime = Date.now();
     document.getElementById('resultArea').style.display = 'none';
     document.getElementById('quizArea').style.display = 'block';
+    showActiveChallengeLink();
     loadQuestion();
   } catch (e) {
     alert('صار خطأ بإنشاء التحدي، جرب مرة ثانية.');
@@ -308,6 +317,7 @@ function joinChallenge() {
   document.getElementById('challengeJoinArea').style.display = 'none';
   currentQ = 0; score = 0; quizStartTime = Date.now();
   document.getElementById('quizArea').style.display = 'block';
+  showActiveChallengeLink();
   loadQuestion();
 }
 
@@ -348,10 +358,14 @@ async function renderLeaderboard() {
 }
 
 function copyChallengeLink() {
-  const input = document.getElementById('challengeShareLink');
+  copyLinkGeneric('challengeShareLink', 'copyLinkBtn');
+}
+
+function copyLinkGeneric(inputId, btnId) {
+  const input = document.getElementById(inputId);
   input.select();
   input.setSelectionRange(0, 99999);
-  const btn = document.getElementById('copyLinkBtn');
+  const btn = document.getElementById(btnId);
   const done = function() {
     const old = btn.textContent;
     btn.textContent = '✅ تم النسخ';
@@ -363,6 +377,11 @@ function copyChallengeLink() {
     try { document.execCommand('copy'); } catch(e) {}
     done();
   }
+}
+
+function showActiveChallengeLink() {
+  document.getElementById('challengeActiveLinkInput').value = location.origin + location.pathname + '?challenge=' + challengeId;
+  document.getElementById('challengeActiveLink').style.display = 'block';
 }
 
 function shuffle(arr) {
@@ -422,6 +441,7 @@ function selectAnswer(i, btn) {
 
 function showResult() {
   document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('challengeActiveLink').style.display = 'none';
   document.getElementById('resultArea').style.display = 'block';
   const pct = Math.round((score / activeQuestions.length) * 100);
   let emoji, msg;
@@ -453,6 +473,7 @@ function restart() {
   quizStartTime = Date.now();
   document.getElementById('quizArea').style.display = 'block';
   document.getElementById('resultArea').style.display = 'none';
+  if (challengeMode && challengeId) showActiveChallengeLink();
   loadQuestion();
 }
 
