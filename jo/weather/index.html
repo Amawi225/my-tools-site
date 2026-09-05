@@ -7,8 +7,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>طقس الأردن اليوم — عمّان، إربد، الزرقاء والمزيد | Adawati</title>
-<meta name="description" content="طقس الأردن اليوم لكل المدن: عمّان، إربد، الزرقاء، العقبة، السلط والمزيد. درجة الحرارة، الشعور الحقيقي، الرطوبة وسرعة الرياح محدّثة لحظياً. مجانية بدون تسجيل.">
+<title>طقس الأردن اليوم وتوقعات 5 أيام | Adawati</title>
+<meta name="description" content="طقس الأردن اليوم وتوقعات 5 أيام لكل المدن: عمّان، إربد، الزرقاء، العقبة، السلط والمزيد. درجة الحرارة، الشعور الحقيقي، الرطوبة وسرعة الرياح محدّثة لحظياً. مجانية بدون تسجيل.">
 <meta name="keywords" content="طقس الاردن اليوم, طقس عمان, طقس اربد, طقس الزرقاء, طقس العقبة, Jordan weather today">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati.space/jo/weather/">
@@ -76,6 +76,11 @@
       </div>
     </div>
     <div id="errorMsg" style="display:none;text-align:center;padding:20px;color:#dc2626;">⚠️ تعذّر تحميل بيانات الطقس الآن. حاول تحديث الصفحة.</div>
+  </div>
+
+  <div class="card" id="forecastCard" style="margin-top:16px;display:none;">
+    <div class="card-title" style="font-size:15px;">📅 توقعات 5 أيام</div>
+    <div id="forecastRow" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px;"></div>
   </div>
 
   <div class="card" style="margin-top:16px;">
@@ -148,7 +153,10 @@ function fetchWeather() {
   document.getElementById('errorMsg').style.display = 'none';
 
   const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon +
-    '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m&timezone=Asia%2FAmman';
+    '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m' +
+    '&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=6&timezone=Asia%2FAmman';
+
+  const DAY_NAMES = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 
   fetch(url)
     .then(function(r) { return r.json(); })
@@ -164,9 +172,25 @@ function fetchWeather() {
       document.getElementById('updatedSubtitle').textContent = 'الطقس الحالي في ' + c.ar;
       document.getElementById('loadingMsg').style.display = 'none';
       document.getElementById('weatherBox').style.display = 'block';
+
+      const daily = data.daily;
+      const forecastRow = document.getElementById('forecastRow');
+      forecastRow.innerHTML = '';
+      for (let i = 1; i < daily.time.length; i++) {
+        const d = new Date(daily.time[i] + 'T00:00:00');
+        const dwc = WEATHER_CODES[daily.weather_code[i]] || ['🌡️','—'];
+        const box = document.createElement('div');
+        box.style.cssText = 'text-align:center;padding:10px 4px;background:var(--surface-2);border-radius:8px;';
+        box.innerHTML = '<div style="font-size:12px;font-weight:700;margin-bottom:4px;">' + DAY_NAMES[d.getDay()] + '</div>' +
+          '<div style="font-size:22px;">' + dwc[0] + '</div>' +
+          '<div style="font-size:13px;margin-top:4px;"><strong>' + Math.round(daily.temperature_2m_max[i]) + '°</strong> / ' + Math.round(daily.temperature_2m_min[i]) + '°</div>';
+        forecastRow.appendChild(box);
+      }
+      document.getElementById('forecastCard').style.display = 'block';
     })
     .catch(function() {
       document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('forecastCard').style.display = 'none';
       document.getElementById('errorMsg').style.display = 'block';
     });
 }

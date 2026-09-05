@@ -8,7 +8,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>شو بتعرف عن الأردن؟ — كويز تفاعلي | Adawati</title>
-<meta name="description" content="اختبر معلوماتك عن الأردن: الجغرافيا، التاريخ، الثقافة والمعالم. 12 سؤال ممتع، شارك نتيجتك مع أصحابك. مجاني وبدون تسجيل.">
+<meta name="description" content="اختبر معلوماتك عن الأردن: الجغرافيا، التاريخ، الثقافة والمعالم. 12 سؤال عشوائي من بنك أسئلة أوسع في كل مرة، شارك نتيجتك مع أصحابك. مجاني وبدون تسجيل.">
 <meta name="keywords" content="كويز عن الاردن, اسئلة عن الاردن, اختبار معلومات الاردن, Jordan trivia quiz">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://adawati.space/jo/games/jordan-quiz/">
@@ -83,17 +83,59 @@ const QUESTIONS = [
   {q:'أي مدينة أردنية تشتهر بالمدرج الروماني القديم؟', opts:['جرش','الكرك','مادبا','السلط'], correct:0},
   {q:'أي جبل بالأردن يُعتقد أن النبي موسى عليه السلام رأى منه أرض فلسطين؟', opts:['جبل نيبو','جبل عجلون','جبل القلعة','جبل اللويبدة'], correct:0},
   {q:'الأردن بيشترك بحدود مع كم دولة؟', opts:['3','4','5','6'], correct:2},
-  {q:'شو اسم أشهر محمية طبيعية صحراوية بالأردن اشتهرت بأفلام السينما العالمية؟', opts:['وادي رم','ديانا','ضانا','الأزرق'], correct:0}
+  {q:'شو اسم أشهر محمية طبيعية صحراوية بالأردن اشتهرت بأفلام السينما العالمية؟', opts:['وادي رم','ديانا','ضانا','الأزرق'], correct:0},
+  {q:'من هو مؤسس الدولة الأردنية الحديثة؟', opts:['الملك عبدالله الأول','الملك طلال','الملك حسين','الملك عبدالله الثاني'], correct:0},
+  {q:'من هو ملك الأردن الحالي؟', opts:['الملك حسين','الملك طلال','الملك عبدالله الثاني','الملك فيصل'], correct:2},
+  {q:'شو اسم أكبر محمية طبيعية بمساحتها بالأردن؟', opts:['محمية ضانا','محمية الأزرق','محمية الموجب','محمية اليرموك'], correct:0},
+  {q:'ما اللغة الرسمية للدولة الأردنية؟', opts:['الإنجليزية','العربية','الفرنسية','التركية'], correct:1},
+  {q:'شو اسم المنتخب الوطني الأردني لكرة القدم؟', opts:['الصقور','النشامى','الأشبال','الفرسان'], correct:1},
+  {q:'في أي رياضة أولمبية حقق الأردن أول ميدالية ذهبية أولمبية له (ريو 2016)؟', opts:['الملاكمة','رفع الأثقال','التايكوندو','المصارعة'], correct:2},
+  {q:'شو الاسم القديم لمدينة عمّان في العصر الروماني؟', opts:['تدمر','فيلادلفيا','بترا','جراسا'], correct:1},
+  {q:'أي محافظة أردنية الأكبر مساحة؟', opts:['المفرق','إربد','الكرك','معان'], correct:0},
+  {q:'شو اسم الرقصة الشعبية الأردنية التقليدية؟', opts:['الدبكة','التنورة','السامري','العرضة'], correct:0},
+  {q:'شو اسم أعلى قمة جبلية بالأردن؟', opts:['جبل نيبو','جبل أم الدامي','جبل عجلون','جبل القلعة'], correct:1},
+  {q:'أي مدينة أردنية هي ثاني أكبر مدينة من حيث عدد السكان؟', opts:['إربد','الزرقاء','العقبة','السلط'], correct:1},
+  {q:'شو الطبق التقليدي المصنوع من الأرز واللحم واللبن الجميد؟', opts:['المسخن','المنسف','المقلوبة','الفتة'], correct:1},
+  {q:'شو اسم أقدم وأكبر جامعة حكومية أردنية؟', opts:['الجامعة الأردنية','جامعة اليرموك','جامعة العلوم والتكنولوجيا','الجامعة الهاشمية'], correct:0},
+  {q:'الأردن انضم إلى الأمم المتحدة عام؟', opts:['1946','1955','1967','1973'], correct:1},
+  {q:'شو اسم القلعة الأثرية الشهيرة الموجودة في محافظة الكرك؟', opts:['قلعة عجلون','قلعة الكرك','قلعة الشوبك','قلعة الأزرق'], correct:1},
+  {q:'أي مدينة أردنية تشتهر بالفسيفساء التاريخية وخريطة فلسطين القديمة؟', opts:['مادبا','السلط','جرش','الطفيلة'], correct:0},
+  {q:'شو اسم أشهر ميناء بحري أردني؟', opts:['ميناء العقبة','ميناء الزرقاء','ميناء إربد','ميناء معان'], correct:0},
+  {q:'الأردن قطر عربي يقع في أي منطقة جغرافية؟', opts:['شمال أفريقيا','بلاد الشام','شبه الجزيرة العربية','القرن الأفريقي'], correct:1},
+  {q:'شو اسم قلعة أثرية إسلامية مشهورة في محافظة عجلون؟', opts:['قلعة الربض (عجلون)','قلعة الكرك','قلعة الأزرق','قلعة الشوبك'], correct:0}
 ];
 
 let currentQ = 0;
 let score = 0;
 let answered = false;
+const QUESTIONS_PER_GAME = 12;
+let activeQuestions = [];
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickQuestions() {
+  const selected = shuffle(QUESTIONS).slice(0, QUESTIONS_PER_GAME);
+  activeQuestions = selected.map(function(q) {
+    const order = shuffle(q.opts.map(function(_, i) { return i; }));
+    return {
+      q: q.q,
+      opts: order.map(function(i) { return q.opts[i]; }),
+      correct: order.indexOf(q.correct)
+    };
+  });
+}
 
 function loadQuestion() {
   answered = false;
-  const q = QUESTIONS[currentQ];
-  document.getElementById('progressLabel').textContent = 'سؤال ' + (currentQ + 1) + ' من ' + QUESTIONS.length;
+  const q = activeQuestions[currentQ];
+  document.getElementById('progressLabel').textContent = 'سؤال ' + (currentQ + 1) + ' من ' + activeQuestions.length;
   document.getElementById('questionText').textContent = q.q;
   const optionsArea = document.getElementById('optionsArea');
   optionsArea.innerHTML = '';
@@ -109,7 +151,7 @@ function loadQuestion() {
 function selectAnswer(i, btn) {
   if (answered) return;
   answered = true;
-  const q = QUESTIONS[currentQ];
+  const q = activeQuestions[currentQ];
   const allButtons = document.querySelectorAll('#optionsArea button');
   allButtons.forEach(function(b, idx) {
     b.disabled = true;
@@ -119,7 +161,7 @@ function selectAnswer(i, btn) {
   if (i === q.correct) score++;
   setTimeout(function() {
     currentQ++;
-    if (currentQ < QUESTIONS.length) loadQuestion();
+    if (currentQ < activeQuestions.length) loadQuestion();
     else showResult();
   }, 900);
 }
@@ -127,18 +169,19 @@ function selectAnswer(i, btn) {
 function showResult() {
   document.getElementById('quizArea').style.display = 'none';
   document.getElementById('resultArea').style.display = 'block';
-  const pct = Math.round((score / QUESTIONS.length) * 100);
+  const pct = Math.round((score / activeQuestions.length) * 100);
   let emoji, msg;
   if (pct >= 90) { emoji = '🏆'; msg = 'أردني أصيل! نتيجة رهيبة.'; }
   else if (pct >= 70) { emoji = '🇯🇴'; msg = 'معلوماتك عن الأردن ممتازة!'; }
   else if (pct >= 50) { emoji = '👍'; msg = 'مش بطال، بس فيه مجال تتحسن.'; }
   else { emoji = '📚'; msg = 'وقتها نراجع شوي عن الأردن!'; }
   document.getElementById('resultEmoji').textContent = emoji;
-  document.getElementById('resultScore').textContent = score + ' من ' + QUESTIONS.length + ' (' + pct + '%)';
+  document.getElementById('resultScore').textContent = score + ' من ' + activeQuestions.length + ' (' + pct + '%)';
   document.getElementById('resultMessage').textContent = msg;
 }
 
 function restart() {
+  pickQuestions();
   currentQ = 0;
   score = 0;
   document.getElementById('quizArea').style.display = 'block';
@@ -146,6 +189,7 @@ function restart() {
   loadQuestion();
 }
 
+pickQuestions();
 loadQuestion();
 </script>
 </body></html>
