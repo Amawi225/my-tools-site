@@ -324,7 +324,7 @@ function compress(quality) {
       const pct = ((saved / originalFile.size) * 100).toFixed(0);
       document.getElementById('savings').textContent = (saved > 0 ? '−' : '+') + formatSize(Math.abs(saved)) + ' (' + Math.abs(pct) + '%)';
       document.getElementById('savings').style.color = saved > 0 ? '#ca8a04' : '#dc2626';
-      const lang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
+      const lang = (document.documentElement.lang!=='en'?document.documentElement.lang:null)||localStorage.getItem('lang')||document.documentElement.lang||'en';
       const tObj = (typeof T !== 'undefined' && T[lang]) ? T[lang] : T.en;
       document.getElementById('compLabel').textContent = (tObj.ic_comp_img || 'Compressed') + ' — ' + (tObj.ic_quality_short || 'Quality') + ' ' + quality + '%';
       // Show hint for images where compression is minimal

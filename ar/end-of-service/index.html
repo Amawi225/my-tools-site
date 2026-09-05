@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
     eosLang = lang;
     updateEosText();
   };
-  eosLang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
+  eosLang = (document.documentElement.lang!=='en'?document.documentElement.lang:null)||localStorage.getItem('lang')||document.documentElement.lang||'en';
   if (!EOS_T[eosLang]) eosLang = 'en';
   updateEosText();
 });

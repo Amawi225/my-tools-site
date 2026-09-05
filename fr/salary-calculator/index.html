@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
     salLang = lang;
     updateSalaryText();
   };
-  salLang = document.documentElement.lang||localStorage.getItem('lang')||'en';
+  salLang = (document.documentElement.lang!=='en'?document.documentElement.lang:null)||localStorage.getItem('lang')||document.documentElement.lang||'en';
   updateSalaryText();
 });
 </script>
