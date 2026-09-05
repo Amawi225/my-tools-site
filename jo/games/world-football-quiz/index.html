@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<base href="https://adawati.space/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97DQT5FHPF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97DQT5FHPF');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3337905412116301" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كويز كرة القدم العالمية | Adawati</title>
+<meta name="description" content="اختبر معلوماتك بكرة القدم العالمية: أساطير اللاعبين، الملاعب التاريخية، الكلاسيكو، كأس جول ريميه وكأس الأمم الأفريقية. 12 سؤال عشوائي من بنك أسئلة أوسع في كل مرة، تحدَّ أصحابك. مجاني وبدون تسجيل.">
+<meta name="keywords" content="كويز كرة قدم, اسئلة عن كرة القدم, اختبار معلومات كرة القدم, Football trivia quiz Arabic">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://adawati.space/jo/games/world-football-quiz/">
+<link rel="alternate" hreflang="x-default" href="https://adawati.space/">
+<link rel="alternate" hreflang="ar" href="https://adawati.space/jo/games/world-football-quiz/">
+<link rel="alternate" hreflang="ar-JO" href="https://adawati.space/jo/games/world-football-quiz/">
+<meta property="og:title" content="كويز كرة القدم العالمية | Adawati">
+<meta property="og:description" content="اختبر معلوماتك بكرة القدم العالمية بـ12 سؤال ممتع في كل مرة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adawati.space/jo/games/world-football-quiz/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Adawati","item":"https://adawati.space/"},
+  {"@type":"ListItem","position":2,"name":"أدوات الأردن","item":"https://adawati.space/jo/"},
+  {"@type":"ListItem","position":3,"name":"كويز كرة القدم العالمية","item":"https://adawati.space/jo/games/world-football-quiz/"}
+]},
+{"@type":"WebApplication","name":"كويز كرة القدم العالمية","url":"https://adawati.space/jo/games/world-football-quiz/","description":"اختبر معلوماتك بكرة القدم العالمية: أساطير اللاعبين، الملاعب التاريخية، الكلاسيكو وكأس الأمم الأفريقية، مع إمكانية تحدي أصحابك.","applicationCategory":"GameApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"JOD"}}
+]}
+</script>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a href="jo/" class="nav-brand">Adawati 🇯🇴</a>
+  <div class="nav-links">
+    <a href="jo/">أدوات الأردن</a>
+    <a href="index.html">عالمي</a>
+  </div>
+</div></nav>
+
+<main><div class="tool-page">
+  <div class="page-header"><a href="jo/">→ العودة لأدوات الأردن</a></div>
+
+  <div class="card">
+    <div class="card-icon" style="background:#f0fdf4;">⚽</div>
+    <h1 class="card-title">كرة قدم عالمية: شو بتعرف؟</h1>
+    <div class="card-subtitle" id="progressLabel">سؤال 1 من 12</div>
+    <div class="divider"></div>
+
+    <div id="challengeStartArea" style="margin-bottom:16px;padding:14px;background:var(--surface-2);border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:8px;">🏆 تحدَّ أصحابك بنفس الأسئلة!</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input id="creatorNameInput" placeholder="اسمك" maxlength="30" style="flex:1;min-width:120px;padding:8px;border:1px solid var(--border);border-radius:8px;">
+        <button onclick="createChallenge()" style="padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ تحدي</button>
+      </div>
+    </div>
+
+    <div id="challengeJoinArea" style="display:none;margin-bottom:16px;padding:14px;background:#fef3c7;border-radius:10px;text-align:center;">
+      <div id="challengeJoinMsg" style="font-weight:700;margin-bottom:10px;">جاري تحميل التحدي...</div>
+      <div id="challengeJoinForm" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+        <input id="joinerNameInput" placeholder="اسمك" maxlength="30" style="flex:1;min-width:120px;padding:8px;border:1px solid var(--border);border-radius:8px;">
+        <button onclick="joinChallenge()" style="padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">قبول التحدي ✅</button>
+      </div>
+    </div>
+
+    <div id="joinerWaitingArea" style="display:none;margin-bottom:16px;padding:14px;background:#fef3c7;border-radius:10px;text-align:center;">
+      <div style="font-weight:700;">⏳ قبلت التحدي! بانتظار ما يبلش صاحبك اللعب... بتبلشوا مع بعض.</div>
+    </div>
+
+    <div id="challengeWaitingArea" style="display:none;margin-bottom:16px;padding:14px;background:#dbeafe;border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:8px;">⏳ التحدي جاهز! ابعت الرابط لصاحبك — بمجرد ما يقبل التحدي، رح تقدر تبلش تلعب انت كمان.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input id="challengeWaitingLinkInput" readonly style="flex:1;min-width:140px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+        <button id="shareWaitingLinkBtn" onclick="shareOrCopy('challengeWaitingLinkInput','shareWaitingLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">📤 مشاركة</button>
+        <button id="copyWaitingLinkBtn" onclick="copyLinkGeneric('challengeWaitingLinkInput','copyWaitingLinkBtn')" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+      </div>
+      <div id="challengeAcceptedBox" style="display:none;margin-top:14px;padding:12px;background:#dcfce7;border-radius:8px;text-align:center;">
+        <div style="font-weight:700;margin-bottom:8px;">🎮 <span id="accepterNameSpan"></span> قبل التحدي! جاهز تلعب؟</div>
+        <button onclick="creatorStartPlaying()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ اللعب 🚀</button>
+      </div>
+    </div>
+
+    <div id="challengeActiveLink" style="display:none;margin-bottom:16px;padding:12px;background:#dbeafe;border-radius:10px;">
+      <div style="font-weight:700;margin-bottom:6px;font-size:13px;">🔗 رابط التحدي — شاركه مع صاحبك قبل أو أثناء اللعب:</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input id="challengeActiveLinkInput" readonly style="flex:1;min-width:140px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+        <button id="shareActiveLinkBtn" onclick="shareOrCopy('challengeActiveLinkInput','shareActiveLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">📤 مشاركة</button>
+        <button id="copyActiveLinkBtn" onclick="copyLinkGeneric('challengeActiveLinkInput','copyActiveLinkBtn')" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+      </div>
+    </div>
+
+    <div id="quizArea">
+      <div id="questionText" style="font-size:17px;font-weight:700;margin-bottom:16px;"></div>
+      <div id="optionsArea" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+
+    <div id="resultArea" style="display:none;text-align:center;">
+      <div style="font-size:48px;margin-bottom:8px;" id="resultEmoji"></div>
+      <div style="font-size:24px;font-weight:800;color:var(--primary);margin-bottom:6px;" id="resultScore"></div>
+      <div style="font-size:15px;color:var(--text-muted);margin-bottom:20px;" id="resultMessage"></div>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="shareResult()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">📤 شارك نتيجتك</button>
+        <button onclick="restart()" style="padding:10px 20px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">🔄 جرّب مرة ثانية</button>
+      </div>
+
+      <div id="challengeShareArea" style="display:none;margin-top:20px;padding:14px;background:var(--surface-2);border-radius:10px;text-align:right;">
+        <div style="font-weight:700;margin-bottom:8px;">📤 شارك التحدي مع أصحابك</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input id="challengeShareLink" readonly style="flex:1;min-width:140px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;">
+          <button id="shareLinkBtn" onclick="shareOrCopy('challengeShareLink','shareLinkBtn')" style="padding:8px 14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">📤 مشاركة</button>
+          <button id="copyLinkBtn" onclick="copyChallengeLink()" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
+        </div>
+      </div>
+
+      <div id="leaderboardArea" style="display:none;margin-top:16px;text-align:right;">
+        <div style="font-weight:700;margin-bottom:8px;">🏆 لوحة الترتيب</div>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead><tr style="border-bottom:2px solid var(--border);"><th style="padding:6px;text-align:right;">#</th><th style="padding:6px;text-align:right;">الاسم</th><th style="padding:6px;text-align:right;">النتيجة</th></tr></thead>
+          <tbody id="leaderboardBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center;">
+    <strong>أدوات الأردن الأخرى:</strong>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="jo/games/jordan-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🇯🇴 كويز شو بتعرف عن الأردن؟</a>
+      <a href="jo/games/world-sports-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🏆 كويز الرياضة العالمية</a>
+      <a href="jo/games/wordle/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🟩 كلمة اليوم</a>
+      <a href="jo/gold-price/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🪙 سعر الذهب اليوم</a>
+      <a href="jo/students/scholarships-loans/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🎓 منح وقروض الجامعة</a>
+      <a href="jo/" style="font-size:13px;padding:8px 14px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;">🇯🇴 كل أدوات الأردن</a>
+    </div>
+  </div>
+</div></main>
+
+<footer class="footer" style="padding:28px;">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">تواصل</a><a href="jo/">أدوات الأردن</a></div>
+    <div class="footer-copy-simple">© 2026 أدواتي</div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+const QUESTIONS = [
+  {q:'زين الدين زيدان احترف كرة القدم لأول مرة مع أي نادي فرنسي؟', opts:['نادي كان','بوردو','موناكو','ليل'], correct:0},
+  {q:'زيدان انتقل من نادي كان لبوردو سنة 1992، ثم انتقل لأي نادي إيطالي سنة 1996؟', opts:['يوفنتوس','ميلان','إنتر ميلان','روما'], correct:0},
+  {q:'زيدان انتقل من يوفنتوس لريال مدريد سنة 2001 بصفقة قياسية آنذاك بقيمة تقارب؟', opts:['77.5 مليون يورو','30 مليون يورو','50 مليون يورو','100 مليون يورو'], correct:0},
+  {q:'دييغو مارادونا بدأ مسيرته الاحترافية مع أي نادي أرجنتيني؟', opts:['أرخنتينوس جونيورز','بوكا جونيورز','ريفر بليت','إندبندنتي'], correct:0},
+  {q:'مارادونا انتقل لنادي نابولي الإيطالي سنة 1984 قادماً من؟', opts:['برشلونة','بوكا جونيورز','إشبيلية','يوفنتوس'], correct:0},
+  {q:'مارادونا قاد نابولي للفوز بالدوري الإيطالي (سكوديتو) لأول مرة بتاريخ النادي، وكرر ذلك مرة ثانية، بأي سنتين؟', opts:['1987 و1990','1985 و1988','1990 و1993','1980 و1984'], correct:0},
+  {q:'مارادونا أنهى مسيرته الاحترافية لاعباً سنة 1997 مع نادي؟', opts:['بوكا جونيورز','نيوإلز أولد بويز','إشبيلية','ريفر بليت'], correct:0},
+  {q:'يوهان كرويف بدأ مسيرته وتألق مع أي نادي هولندي؟', opts:['أياكس','فاينورد','PSV أيندهوفن','فيتيسه'], correct:0},
+  {q:'كرويف فاز بالكرة الذهبية الأوروبية 3 مرات بمسيرته (1971، 1973، 1974)، كم مرة فاز فيها وهو محترف مع برشلونة؟', opts:['مرتين (1973 و1974)','مرة وحدة','3 مرات','ولا مرة'], correct:0},
+  {q:'المدرب الهولندي المنسوب له تطوير أسلوب "الكرة الشاملة" (توتال فوتبول) بالسبعينيات؟', opts:['رينوس ميكلز','يوهان كرويف','رينيه فان دي كركوف','دينيس بيركامب'], correct:0},
+  {q:'كرويف اعتزل اللعب مع نادي؟', opts:['فاينورد','أياكس','برشلونة','لوس أنجلوس أزتيكس'], correct:0},
+  {q:'رونالدينيو بدأ مسيرته الاحترافية مع أي نادي برازيلي؟', opts:['غريميو','فلامنغو','سانتوس','كورينثيانز'], correct:0},
+  {q:'رونالدينيو انتقل لبرشلونة سنة 2003 قادماً من؟', opts:['باريس سان جيرمان','ميلان','مانشستر يونايتد','ريال مدريد'], correct:0},
+  {q:'رونالدينيو انتقل من برشلونة لأي نادي إيطالي سنة 2008؟', opts:['إيه سي ميلان','يوفنتوس','إنتر ميلان','روما'], correct:0},
+  {q:'فرانز بيكنباور الألماني معروف بلقب؟', opts:['الإمبراطور (دير كايزر)','الفهد الأسود','الطائر الذهبي','الأسطورة الحديدية'], correct:0},
+  {q:'بيكنباور يُنسب له ابتكار مركز الليبرو (الكاسحة الهجومية) بكرة القدم، وطوّر أغلب مسيرته الاحترافية بألمانيا مع أي نادي؟', opts:['بايرن ميونخ','هامبورغ','بوروسيا مونشنغلادباخ','كولن'], correct:0},
+  {q:'بيكنباور بعد بايرن ميونخ انتقل ليلعب بالدوري الأمريكي مع نادي؟', opts:['نيويورك كوزموس','لوس أنجلوس أزتيكس','شيكاغو ستينغ','دالاس تورنادو'], correct:0},
+  {q:'رونالدو البرازيلي الملقب بـ"الظاهرة" بدأ مسيرته الاحترافية مع نادي؟', opts:['كروزيرو','فلامنغو','فاسكو دا غاما','سانتوس'], correct:0},
+  {q:'رونالدو "الظاهرة" انتقل لأوروبا أول مرة سنة 1994 لنادي PSV الهولندي، ثم انتقل سنة 1996 لأي نادي إسباني؟', opts:['برشلونة','ريال مدريد','فالنسيا','أتلتيكو مدريد'], correct:0},
+  {q:'رونالدو "الظاهرة" فاز بكأس العالم مرتين مع البرازيل (1994 و2002) لكنه لعب فعلياً بنهائي واحد بس وسجل هدفين فيه، أي نسخة؟', opts:['2002','1994','1998','2006'], correct:0},
+  {q:'استاد سانتياغو برنابيو (ملعب ريال مدريد) افتُتح رسمياً سنة؟', opts:['1947','1957','1930','1975'], correct:0},
+  {q:'استاد كامب نو (ملعب برشلونة) افتُتح سنة؟', opts:['1957','1947','1965','1982'], correct:0},
+  {q:'ملعب أولد ترافورد (ملعب مانشستر يونايتد) استضاف أول مباراة فيه سنة 1910 أمام أي فريق؟', opts:['ليفربول','مانشستر سيتي','إيفرتون','آرسنال'], correct:0},
+  {q:'ملعب أنفيلد (ملعب ليفربول) يستضيف الفريق منذ سنة؟', opts:['1892','1900','1878','1920'], correct:0},
+  {q:'استاد سان سيرو بميلانو الإيطالية يشترك فيه ناديا؟', opts:['ميلان وإنتر ميلان','يوفنتوس وتورينو','نابولي وروما','لاتسيو وروما'], correct:0},
+  {q:'استاد سان سيرو بُني سنة 1926 لصالح نادي ميلان فقط، ومتى صار إنتر ميلان شريكاً فيه؟', opts:['1947','1926','1960','1990'], correct:0},
+  {q:'مباراة الأرجنتين وإنجلترا بربع نهائي كأس عالم 1986 (اللي فيها هدفا "يد الله" و"هدف القرن") أُقيمت بأي استاد؟', opts:['استاد أزتيكا بمكسيكو سيتي','ماراكانا','ويمبلي','سانتياغو برنابيو'], correct:0},
+  {q:'هدف "يد الله" الشهير لمارادونا سُجل بيده أمام أي حارس مرمى إنجليزي؟', opts:['بيتر شيلتون','غوردون بانكس','ديفيد سيمان','جو هارت'], correct:0},
+  {q:'هدف مارادونا الثاني بنفس المباراة ("هدف القرن") انطلق من نص الملعب بجري منفرد تخطى فيه حوالي؟', opts:['خمسة لاعبين إنجليز','لاعب واحد','لاعبين اثنين','عشرة لاعبين'], correct:0},
+  {q:'هدف مارادونا "هدف القرن" اختير كأفضل هدف بتاريخ كأس العالم بتصويت جماهيري نظمته الفيفا سنة؟', opts:['2002','1990','2010','1998'], correct:0},
+  {q:'كأس العالم الأصلية (قبل الكأس الحالية) كانت تحمل اسم؟', opts:['كأس جول ريميه','كأس فيفا الذهبية','كأس النصر','كأس الأمم'], correct:0},
+  {q:'كأس جول ريميه سُرقت لأول مرة قبل مونديال 1966 بإنجلترا، ومين اللي عثر عليها؟', opts:['كلب اسمه بيكلز','شرطي متقاعد','طفل صغير','عامل نظافة'], correct:0},
+  {q:'كأس جول ريميه انتقلت ملكيتها بشكل دائم للبرازيل سنة 1970 بعد فوزها للمرة الثالثة، لكنها سُرقت مرة ثانية سنة 1983 من مقر الاتحاد البرازيلي و؟', opts:['لم يُعثر عليها أبداً','عُثر عليها بعد سنة','استُرجعت جزئياً منصهرة','عُثر عليها بمزاد سري'], correct:0},
+  {q:'شو لقب المنتخب الهولندي لكرة القدم؟', opts:['البرتقالي (أورانيه)','الأزرق','الأسود','الأبيض'], correct:0},
+  {q:'شو لقب المنتخب الإيطالي؟', opts:['الأزرق (أزوري)','الأخضر','الذهبي','الفضي'], correct:0},
+  {q:'شو لقب المنتخب الأرجنتيني؟', opts:['الأبيض السماوي (ألبيسيليستي)','الأصفر والأخضر','الأحمر والأسود','البرتقالي'], correct:0},
+  {q:'شو لقب المنتخب الفرنسي؟', opts:['الأزرق (لي بلو)','الديك الأحمر','النسر الذهبي','الفهد'], correct:0},
+  {q:'شو لقب المنتخب الألماني؟', opts:['المنتخب (دي مانشافت)','النسر الأسود','الفهد الرمادي','الصاروخ الأبيض'], correct:0},
+  {q:'شو لقب المنتخب الإنجليزي؟', opts:['الأسود الثلاثة (ثري لايونز)','الوردة الحمراء','التاج الملكي','الجزيرة البيضاء'], correct:0},
+  {q:'شو لقب المنتخب البرازيلي المرتبط بلون قميصه الأصفر؟', opts:['الكناري الصغير (كناريينيو)','النسر الأخضر','الشمس الذهبية','الفهد البرازيلي'], correct:0},
+  {q:'أول مباراة دولية رسمية بتاريخ كرة القدم أُقيمت سنة 1872 بين أي منتخبين؟', opts:['اسكتلندا وإنجلترا','إنجلترا وويلز','فرنسا وبلجيكا','البرازيل والأوروغواي'], correct:0},
+  {q:'أول مباراة دولية رسمية (اسكتلندا-إنجلترا 1872) انتهت بنتيجة؟', opts:['تعادل سلبي 0-0','فوز اسكتلندا 1-0','فوز إنجلترا 2-1','تعادل 1-1'], correct:0},
+  {q:'الفيفا (الاتحاد الدولي لكرة القدم) تأسس سنة 1904 بمدينة؟', opts:['باريس','لندن','زيورخ','مدريد'], correct:0},
+  {q:'الفيفا تأسست سنة 1904 بواسطة كم اتحاد وطني مؤسس؟', opts:['7 اتحادات','4 اتحادات','10 اتحادات','15 اتحاد'], correct:0},
+  {q:'الاتحاد الأوروبي لكرة القدم (يويفا) تأسس سنة؟', opts:['1954','1904','1930','1970'], correct:0},
+  {q:'شو اسم المباراة الشهيرة بين ريال مدريد وبرشلونة؟', opts:['الكلاسيكو','السوبركلاسيكو','ديربي العاصمة','ديربي الأندلس'], correct:0},
+  {q:'شو اسم الديربي الشهير بين بوكا جونيورز وريفر بليت بالأرجنتين؟', opts:['السوبركلاسيكو','الكلاسيكو','ديربي بوينس آيرس','ديربي الفضة'], correct:0},
+  {q:'بوكا جونيورز وريفر بليت الناديان المتنافسان بالسوبركلاسيكو، من أي مدينة أرجنتينية؟', opts:['بوينس آيرس','قرطبة','روساريو','مندوزا'], correct:0},
+  {q:'شو اسم الديربي الاسكتلندي الشهير بين سلتيك ورينجرز بغلاسكو؟', opts:['أولد فيرم','ديربي الشمال','السوبركلاسيكو الاسكتلندي','ديربي التاج'], correct:0},
+  {q:'أصل مصطلح "كلاسيكو" لوصف المباريات الكبرى يُنسب أصلاً لأي دولة؟', opts:['الأرجنتين','إسبانيا','إيطاليا','إنجلترا'], correct:0},
+  {q:'أسلوب "تيكي تاكا" بكرة القدم (تمريرات قصيرة وسيطرة على الاستحواذ) ارتبط بشكل رئيسي بأي مدرب مع برشلونة؟', opts:['بيب غوارديولا','يوهان كرويف','لويس فان خال','فرانك ريكارد'], correct:0},
+  {q:'بيب غوارديولا طوّر أسلوب التيكي تاكا مع برشلونة بالفترة؟', opts:['2008-2012','1995-1999','2015-2019','2000-2004'], correct:0},
+  {q:'أول فائز بجائزة أفضل لاعب بالعالم من الفيفا سنة 1991 كان الألماني؟', opts:['لوثار ماتيوس','يورغن كلينسمان','فرانز بيكنباور','كارل هاينز رومينيغه'], correct:0},
+  {q:'جائزة أفضل لاعب بالعالم من الفيفا اندمجت مع الكرة الذهبية بين سنتي 2010 و2015 تحت اسم؟', opts:['الفيفا بالون دور','الكرة الذهبية العالمية','جائزة النخبة الذهبية','كأس أفضل لاعب'], correct:0},
+  {q:'من سنة 2016، جوائز الفيفا لأفضل لاعب صارت تُعرف باسم؟', opts:['ذا بيست فيفا فوتبول أواردز','فيفا بالون دور','جائزة النجم الذهبي','كأس فيفا للتميز'], correct:0},
+  {q:'دوري أبطال أوروبا للسيدات تأسس سنة 2001 وأول بطولة فاز فيها نادي؟', opts:['فرانكفورت الألماني','ليون الفرنسي','برشلونة','تشيلسي'], correct:0},
+  {q:'أي نادي الأكثر تتويجاً بدوري أبطال أوروبا للسيدات برصيد 8 ألقاب؟', opts:['أولمبيك ليون','فولفسبورغ','برشلونة','بايرن ميونخ'], correct:0},
+  {q:'نادي ليون الفرنسي حقق سلسلة تاريخية بالفوز بدوري أبطال أوروبا للسيدات كم مرة متتالية؟', opts:['5 مرات متتالية','3 مرات متتالية','7 مرات متتالية','مرتين متتاليتين'], correct:0},
+  {q:'أي منتخب أفريقي الأكثر تتويجاً بكأس الأمم الأفريقية برصيد 7 ألقاب؟', opts:['مصر','الكاميرون','غانا','نيجيريا'], correct:0},
+  {q:'منتخب مصر حقق إنجازاً تاريخياً بالفوز بكأس الأمم الأفريقية 3 مرات متتالية بين أي سنوات؟', opts:['2006-2008-2010','1998-2000-2002','1986-1990-1994','2017-2019-2021'], correct:0},
+  {q:'ثاني أكثر منتخب أفريقي تتويجاً بكأس الأمم الأفريقية (5 ألقاب)؟', opts:['الكاميرون','غانا','نيجيريا','تونس'], correct:0},
+  {q:'أول نسخة من كأس الأمم الأفريقية أُقيمت سنة 1957 وفاز بها؟', opts:['مصر','السودان','إثيوبيا','جنوب أفريقيا'], correct:0},
+];
+
+const QUIZ_CONFIG = {
+  gameId: 'world-football-quiz',
+  shareTitle: 'كرة قدم عالمية: شو بتعرف؟ ⚽',
+  challengeText: 'تحداك بكويز كرة القدم العالمية، جاهز تنافسني؟',
+  resultText: function(score, total, pct) {
+    return 'حصلت على ' + score + '/' + total + ' (' + pct + '%) بكويز كرة القدم العالمية ⚽ جرب تتحداني!';
+  },
+  resultMessages: [
+    {min:90, emoji:'🏆', msg:'موسوعة كرة قدم حقيقية! نتيجة رهيبة.'},
+    {min:70, emoji:'⚽', msg:'معلوماتك بكرة القدم ممتازة!'},
+    {min:50, emoji:'👍', msg:'مش بطال، بس فيه مجال تتحسن.'},
+    {min:0,  emoji:'📚', msg:'وقتها نراجع شوي بكرة القدم!'}
+  ]
+};
+</script>
+<script src="jo/games/quiz-engine.js"></script>
+</body></html>
