@@ -1674,9 +1674,16 @@ function detectDefaultLang() {
   for (var j = 0; j < pathParts.length; j++) {
     if (cmap[pathParts[j]] !== undefined) return cmap[pathParts[j]];
   }
-  // 3. Root pages (no language in URL): always English.
+  // 3. Root pages (no language in URL): check this session's detected country
+  //    (set by initCountryDetect() when the user visited a country hub like /jo/)
+  //    rather than blindly forcing English and discarding that context.
+  try {
+    var sessCountry = sessionStorage.getItem('adawati_country');
+    var countryLangMap = {OM:'ar', SA:'ar', JO:'ar', AE:'en', US:'en', GB:'en'};
+    if (sessCountry && countryLangMap[sessCountry]) return countryLangMap[sessCountry];
+  } catch(e) {}
+  // No session country detected: default to English.
   //    Arabic/French/Spanish users should use /ar/ /fr/ /es/ subdirectories.
-  //    This prevents localStorage contamination from country page visits.
   return 'en';
 }
 
@@ -2162,6 +2169,23 @@ function autoTrackRecent() {
   if (TOOL_META[page] && page !== 'index') trackRecent(page);
 }
 
+/* ── Country-aware "home" link: respects the country hub the user is actually in ── */
+function getHomeHref() {
+  var base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+  try {
+    var country = sessionStorage.getItem('adawati_country');
+    var countryHubMap = {OM:'om/', SA:'sa/', JO:'jo/', AE:'ae/', US:'us/', GB:'uk/'};
+    if (country && countryHubMap[country]) return base + '/' + countryHubMap[country];
+  } catch(e) {}
+  return base + '/index.html';
+}
+
+/* ── Fix the static "← Back to Home" link on tool pages to respect country context ── */
+function fixBackLink() {
+  var link = document.querySelector('.page-header a[data-i18n="back"]');
+  if (link) link.setAttribute('href', getHomeHref());
+}
+
 /* ── Universal "Return to Home" floating prompt ── */
 var _homePromptShown = false;
 var _homePromptTimer = null;
@@ -2184,7 +2208,7 @@ function showHomePrompt() {
     ru: '🏠 На главную'
   };
   var msg = msgs[lang] || msgs.en;
-  var base = location.pathname.includes('/my-tools-site') ? '/my-tools-site' : '';
+  var homeHref = getHomeHref();
 
   // Inject CSS once
   if (!document.getElementById('hp-style')) {
@@ -2210,7 +2234,7 @@ function showHomePrompt() {
 
   var prompt = document.createElement('div');
   prompt.className = 'hp-prompt';
-  prompt.innerHTML = '<a href="' + base + '/index.html">' + msg + '</a>' +
+  prompt.innerHTML = '<a href="' + homeHref + '">' + msg + '</a>' +
     '<button class="hp-dismiss" onclick="this.parentNode.remove()" title="Dismiss">✕</button>';
   document.body.appendChild(prompt);
 
@@ -2234,6 +2258,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initPWA();
   autoTrackRecent();
   initHomePrompt();
+  fixBackLink();
   if (document.getElementById('toolsGrid')) {
     renderFavSection();
     renderRecentSection();

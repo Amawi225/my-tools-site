@@ -50,7 +50,8 @@
     <div class="divider"></div>
 
     <div id="challengeStartArea" style="margin-bottom:16px;padding:14px;background:var(--surface-2);border-radius:10px;">
-      <div style="font-weight:700;margin-bottom:8px;">🏆 تحدَّ أصحابك بنفس الأسئلة!</div>
+      <div style="font-weight:700;margin-bottom:6px;">🏆 تحدَّ أصحابك بنفس الأسئلة!</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">لازم صديق واحد ع الأقل يشارك (من 2 لـ20 شخص) — اكتب اسمك، ابدأ التحدي، وشارك الرابط.</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <input id="creatorNameInput" placeholder="اسمك" maxlength="30" style="flex:1;min-width:120px;padding:8px;border:1px solid var(--border);border-radius:8px;">
         <button onclick="createChallenge()" style="padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ تحدي</button>
@@ -77,8 +78,9 @@
         <button id="copyWaitingLinkBtn" onclick="copyLinkGeneric('challengeWaitingLinkInput','copyWaitingLinkBtn')" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;">نسخ الرابط</button>
       </div>
       <div id="challengeAcceptedBox" style="display:none;margin-top:14px;padding:12px;background:#dcfce7;border-radius:8px;text-align:center;">
-        <div style="font-weight:700;margin-bottom:8px;">🎮 <span id="accepterNameSpan"></span> قبل التحدي! جاهز تلعب؟</div>
-        <button onclick="creatorStartPlaying()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ اللعب 🚀</button>
+        <div style="font-weight:700;margin-bottom:6px;">🎮 انضم للتحدي: <span id="accepterNameSpan"></span></div>
+        <div id="acceptCountLabel" style="font-size:13px;color:var(--text-muted);margin-bottom:10px;"></div>
+        <button id="creatorStartBtn" onclick="creatorStartPlaying()" style="padding:10px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">ابدأ اللعب 🚀</button>
       </div>
     </div>
 
@@ -129,6 +131,7 @@
     <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
       <a href="jo/games/jordan-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🇯🇴 كويز شو بتعرف عن الأردن؟</a>
       <a href="jo/games/world-football-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">⚽ كويز كرة القدم العالمية</a>
+      <a href="jo/games/songs-quiz/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🎵 كويز الأغاني</a>
       <a href="jo/games/wordle/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🟩 كلمة اليوم</a>
       <a href="jo/gold-price/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🪙 سعر الذهب اليوم</a>
       <a href="jo/students/scholarships-loans/" style="font-size:13px;padding:8px 14px;background:var(--surface-2);color:var(--text);text-decoration:none;border-radius:8px;">🎓 منح وقروض الجامعة</a>

@@ -19,6 +19,8 @@ let challengeMode = false;
 let challengeSubmitted = false;
 let playerName = '';
 let quizStartTime = 0;
+const MIN_PLAYERS = 2;
+const MAX_PLAYERS = 20;
 
 function getChallengeIdFromUrl() {
   return new URLSearchParams(location.search).get('challenge');
@@ -68,9 +70,16 @@ function listenForAcceptance() {
   acceptsUnsub = db.collection('challenges').doc(challengeId).collection('accepts')
     .onSnapshot(function(snap) {
       if (!snap.empty) {
-        const first = snap.docs[0].data();
-        document.getElementById('accepterNameSpan').textContent = escapeHtml(first.name || 'صاحبك');
+        const names = snap.docs.map(function(d) { return d.data().name || 'صاحبك'; });
+        const totalPlayers = names.length + 1; // +1 for the creator
+        const shown = names.slice(0, 3).map(escapeHtml).join('، ');
+        const extra = names.length > 3 ? ' و' + (names.length - 3) + ' غيرهم' : '';
+        document.getElementById('accepterNameSpan').textContent = shown + extra;
+        const countLabel = document.getElementById('acceptCountLabel');
+        if (countLabel) countLabel.textContent = totalPlayers + ' من ' + MAX_PLAYERS + ' لاعب انضموا';
         document.getElementById('challengeAcceptedBox').style.display = 'block';
+        const startBtn = document.getElementById('creatorStartBtn');
+        if (startBtn) startBtn.disabled = totalPlayers < MIN_PLAYERS;
       }
     }, function() { /* listener error: link still works manually, no UI change needed */ });
 }
@@ -142,7 +151,15 @@ async function showChallengeJoinIntro(id) {
       return;
     }
 
-    document.getElementById('challengeJoinMsg').textContent = '🏆 ' + escapeHtml(data.creatorName) + ' تحداك! جاهز تنافسه؟';
+    const acceptsSnap = await db.collection('challenges').doc(id).collection('accepts').get();
+    const joinedCount = acceptsSnap.size + 1; // +1 for the creator
+    if (joinedCount >= MAX_PLAYERS) {
+      document.getElementById('challengeJoinMsg').textContent = 'التحدي مكتمل! وصل للحد الأقصى (' + MAX_PLAYERS + ' لاعب). اطلب من صاحبك يعمل تحدي جديد.';
+      document.getElementById('challengeJoinForm').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('challengeJoinMsg').textContent = '🏆 ' + escapeHtml(data.creatorName) + ' تحداك! جاهز تنافسه؟ (' + joinedCount + '/' + MAX_PLAYERS + ' انضموا)';
   } catch (e) {
     document.getElementById('challengeJoinMsg').textContent = 'صار خطأ بتحميل التحدي، تأكد من اتصالك وجرب تاني.';
     document.getElementById('challengeJoinForm').style.display = 'none';
@@ -152,6 +169,11 @@ async function showChallengeJoinIntro(id) {
 async function joinChallenge() {
   const name = document.getElementById('joinerNameInput').value.trim();
   if (!name) { alert('اكتب اسمك الأول 🙂'); return; }
+  const acceptsSnap = await db.collection('challenges').doc(challengeId).collection('accepts').get();
+  if (acceptsSnap.size + 1 >= MAX_PLAYERS) {
+    alert('للأسف التحدي مكتمل، وصل للحد الأقصى (' + MAX_PLAYERS + ' لاعب).');
+    return;
+  }
   playerName = name;
   challengeMode = true;
   challengeSubmitted = false;
@@ -352,12 +374,9 @@ function restart() {
 }
 
 const urlChallengeId = getChallengeIdFromUrl();
+document.getElementById('quizArea').style.display = 'none';
 if (urlChallengeId) {
   document.getElementById('challengeStartArea').style.display = 'none';
-  document.getElementById('quizArea').style.display = 'none';
   document.getElementById('challengeJoinArea').style.display = 'block';
   showChallengeJoinIntro(urlChallengeId);
-} else {
-  pickQuestions();
-  loadQuestion();
 }
